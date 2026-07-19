@@ -44,6 +44,14 @@ if (localStorage.getItem(AUTH_KEY) === PASS_HASH) {
 let TOPICS = [];          // in curriculum order
 let DOMAINS = [];
 
+const DOMAIN_ICONS = {
+  "Algebra": "➗",
+  "Advanced Math": "🧮",
+  "Problem-Solving and Data Analysis": "📊",
+  "Geometry and Trigonometry": "📐",
+};
+const MODULE_ICON = "📘";
+
 async function boot() {
   const manifest = await (await fetch("data/manifest.json")).json();
   DOMAINS = manifest.domains;
@@ -70,6 +78,29 @@ const domainSlug = moduleSlug;
 
 const qCount = (t) => t.questions.length;
 const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
+const domClass = (domain) => "dom-" + domainSlug(domain);
+
+// A module's accent = its lessons' domain (or "mixed" if they differ)
+function moduleDomClass(topics) {
+  const d = new Set(topics.map((t) => t.satDomain));
+  return d.size === 1 ? domClass(topics[0].satDomain) : "dom-mixed";
+}
+
+// ---------- Best-score persistence ----------
+
+const scoreKey = (id) => "satpractice.best." + id;
+
+function bestScore(id) {
+  try { return JSON.parse(localStorage.getItem(scoreKey(id))); }
+  catch { return null; }
+}
+
+function saveScore(id, correct, total) {
+  const prev = bestScore(id);
+  if (!prev || prev.total !== total || correct > prev.correct) {
+    localStorage.setItem(scoreKey(id), JSON.stringify({ correct, total }));
+  }
+}
 
 // ---------- Routing ----------
 
@@ -114,21 +145,59 @@ function el(tag, className, text) {
   return n;
 }
 
-function countBadge(n) {
-  const b = el("span", "badge" + (n ? "" : " soon"), n ? plural(n, "question") : "coming soon");
-  return b;
+function statsStrip() {
+  const totalQ = TOPICS.reduce((s, t) => s + qCount(t), 0);
+  const totalV = TOPICS.reduce((s, t) => s + (t.videos ? t.videos.length : 0), 0);
+  const done = TOPICS.filter((t) => bestScore(t.id)).length;
+  const strip = el("div", "stats");
+  const chip = (label) => strip.appendChild(el("span", "stat-chip", label));
+  chip(`📚 ${plural(TOPICS.length, "lesson")}`);
+  chip(`📝 ${plural(totalQ, "question")}`);
+  chip(`🎬 ${plural(totalV, "video")}`);
+  if (done) chip(`⭐ ${done} completed`);
+  return strip;
+}
+
+function countBadge(t) {
+  const n = qCount(t);
+  const best = bestScore(t.id);
+  if (best && best.total === n && n > 0) {
+    return el("span", "badge score", `⭐ ${best.correct}/${best.total}`);
+  }
+  return el("span", "badge" + (n ? "" : " soon"), n ? plural(n, "question") : "coming soon");
+}
+
+function bigCard(href, domCls, icon, title, sub) {
+  const a = el("a", "card " + domCls);
+  a.href = href;
+  a.appendChild(el("div", "card-icon", icon));
+  const body = el("div", "card-body");
+  body.appendChild(el("div", "card-title", title));
+  body.appendChild(el("div", "card-sub", sub));
+  a.appendChild(body);
+  a.appendChild(el("span", "card-arrow", "›"));
+  return a;
 }
 
 function lessonCard(t) {
-  const a = el("a", "card");
+  const a = el("a", "card " + domClass(t.satDomain));
   a.href = "#/topic/" + t.id;
-  const row = el("div", "lesson-row");
-  row.appendChild(el("span", "lesson-code", t.lessonCode));
-  const title = el("span", "card-title", t.title);
-  title.appendChild(countBadge(qCount(t)));
-  row.appendChild(title);
-  a.appendChild(row);
+  a.appendChild(el("div", "card-icon", DOMAIN_ICONS[t.satDomain] || "📘"));
+  const body = el("div", "card-body");
+  const title = el("div", "card-title", t.title);
+  title.appendChild(countBadge(t));
+  body.appendChild(title);
+  const extras = [t.lessonCode];
+  if (t.videos && t.videos.length) extras.push(`🎬 ${plural(t.videos.length, "video")}`);
+  body.appendChild(el("div", "card-sub", extras.join(" · ")));
+  a.appendChild(body);
+  a.appendChild(el("span", "card-arrow", "›"));
   return a;
+}
+
+function subLine(topics) {
+  const total = topics.reduce((s, t) => s + qCount(t), 0);
+  return `${plural(topics.length, "lesson")} · ${total ? plural(total, "question") : "questions coming soon"}`;
 }
 
 // ---------- Views ----------
@@ -136,16 +205,11 @@ function lessonCard(t) {
 function renderModules() {
   main.replaceChildren();
   main.appendChild(el("h2", "page-title", "Browse by curriculum module"));
+  main.appendChild(statsStrip());
   for (const m of moduleList()) {
-    const total = m.topics.reduce((s, t) => s + qCount(t), 0);
-    const a = el("a", "card");
-    a.href = "#/module/" + moduleSlug(m.name);
-    a.appendChild(el("div", "card-title", m.name));
-    a.appendChild(
-      el("div", "card-sub",
-        `${plural(m.topics.length, "lesson")} · ${total ? plural(total, "question") : "questions coming soon"}`)
+    main.appendChild(
+      bigCard("#/module/" + moduleSlug(m.name), moduleDomClass(m.topics), MODULE_ICON, m.name, subLine(m.topics))
     );
-    main.appendChild(a);
   }
 }
 
@@ -161,17 +225,12 @@ function renderModule(slug) {
 function renderDomains() {
   main.replaceChildren();
   main.appendChild(el("h2", "page-title", "Browse by SAT Math domain"));
+  main.appendChild(statsStrip());
   for (const d of DOMAINS) {
     const topics = TOPICS.filter((t) => t.satDomain === d);
-    const total = topics.reduce((s, t) => s + qCount(t), 0);
-    const a = el("a", "card");
-    a.href = "#/domain/" + domainSlug(d);
-    a.appendChild(el("div", "card-title", d));
-    a.appendChild(
-      el("div", "card-sub",
-        `${plural(topics.length, "lesson")} · ${total ? plural(total, "question") : "questions coming soon"}`)
+    main.appendChild(
+      bigCard("#/domain/" + domainSlug(d), domClass(d), DOMAIN_ICONS[d] || "📘", d, subLine(topics))
     );
-    main.appendChild(a);
   }
 }
 
@@ -196,7 +255,36 @@ function backLink(href, text) {
   return a;
 }
 
-// ---------- Quiz ----------
+// ---------- Lesson page: videos + quiz ----------
+
+function youtubeId(url) {
+  const m = String(url).match(
+    /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{11})/
+  );
+  return m ? m[1] : null;
+}
+
+function videoCard(v) {
+  const card = el("div", "video-card");
+  const frame = el("div", "video-frame");
+  const id = youtubeId(v.url);
+  if (id) {
+    const ifr = document.createElement("iframe");
+    ifr.src = "https://www.youtube-nocookie.com/embed/" + id;
+    ifr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    ifr.allowFullscreen = true;
+    ifr.title = v.title || "Explanation video";
+    frame.appendChild(ifr);
+  } else {
+    const vid = document.createElement("video");
+    vid.src = v.url;
+    vid.controls = true;
+    frame.appendChild(vid);
+  }
+  card.appendChild(frame);
+  if (v.title) card.appendChild(el("div", "video-title", v.title));
+  return card;
+}
 
 function renderTopic(id) {
   const t = TOPICS.find((t) => t.id === id);
@@ -204,14 +292,25 @@ function renderTopic(id) {
 
   main.replaceChildren();
   main.appendChild(backLink("#/module/" + moduleSlug(t.curriculumModule), "← " + t.curriculumModule));
-  const h = el("h2", "page-title", `${t.lessonCode} ${t.title}`);
-  main.appendChild(h);
-  main.appendChild(el("div", "quiz-meta", `SAT domain: ${t.satDomain}`));
+  main.appendChild(el("h2", "page-title", `${t.lessonCode} ${t.title}`));
 
+  const chips = el("div", "meta-chips " + domClass(t.satDomain));
+  chips.appendChild(el("span", "chip", `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`));
+  chips.appendChild(el("span", "chip plain", t.curriculumModule));
+  main.appendChild(chips);
+
+  // Explanation videos
+  main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
+  if (t.videos && t.videos.length) {
+    for (const v of t.videos) main.appendChild(videoCard(v));
+  } else {
+    main.appendChild(el("div", "empty-note", "Explanation video coming soon."));
+  }
+
+  // Quiz
+  main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
   if (!t.questions.length) {
-    main.appendChild(
-      el("div", "empty-note", "No questions here yet — this lesson is coming soon.")
-    );
+    main.appendChild(el("div", "empty-note", "Quiz questions coming soon."));
     return;
   }
 
@@ -250,13 +349,14 @@ function showQuestion(quiz, holder) {
   const done = (isCorrect, correctText) => {
     if (isCorrect) quiz.correct++;
     const fb = el("div", "feedback " + (isCorrect ? "good" : "bad"));
-    fb.appendChild(el("div", "verdict", isCorrect ? "Correct!" : "Incorrect" + (correctText ? ` — the answer is ${correctText}` : "")));
+    fb.appendChild(el("div", "verdict",
+      isCorrect ? "✅ Correct!" : "❌ Incorrect" + (correctText ? ` — the answer is ${correctText}` : "")));
     if (q.explanation) fb.appendChild(el("div", null, q.explanation));
     card.appendChild(fb);
 
     const actions = el("div", "q-actions");
     const next = el("button", "btn btn-primary",
-      quiz.i + 1 < t.questions.length ? "Next question" : "See results");
+      quiz.i + 1 < t.questions.length ? "Next question →" : "See results");
     next.addEventListener("click", () => {
       quiz.i++;
       if (quiz.i < t.questions.length) showQuestion(quiz, holder);
@@ -316,22 +416,52 @@ function showQuestion(quiz, holder) {
 
 function showResults(quiz, holder) {
   const t = quiz.topic;
+  saveScore(t.id, quiz.correct, t.questions.length);
+
   holder.replaceChildren();
   const card = el("div", "result-card");
-  card.appendChild(el("div", null, "Lesson complete"));
-  card.appendChild(el("div", "result-score", `${quiz.correct} / ${t.questions.length}`));
   const pct = Math.round((quiz.correct / t.questions.length) * 100);
+
+  card.appendChild(el("div", null, "Quiz complete"));
+
+  const ring = el("div", "score-ring");
+  ring.style.setProperty("--pct", pct);
+  ring.style.setProperty("--ring", pct === 100 ? "#16a34a" : pct >= 70 ? "#4f46e5" : "#d97706");
+  const inner = el("div");
+  inner.appendChild(el("div", "score-num", `${quiz.correct}/${t.questions.length}`));
+  inner.appendChild(el("div", "score-pct", `${pct}%`));
+  ring.appendChild(inner);
+  card.appendChild(ring);
+
   card.appendChild(el("div", "result-note",
-    pct === 100 ? "Perfect score — excellent work!"
-    : pct >= 70 ? "Nice work — review the ones you missed."
-    : "Keep practicing — reread the explanations and try again."));
+    pct === 100 ? "🏆 Perfect score — excellent work!"
+    : pct >= 70 ? "💪 Nice work — review the ones you missed."
+    : "📖 Keep practicing — rewatch the video and try again."));
+
+  const actions = el("div", "result-actions");
   const again = el("button", "btn btn-primary", "Try again");
   again.addEventListener("click", () => {
     quiz.i = 0; quiz.correct = 0;
     showQuestion(quiz, holder);
   });
-  card.appendChild(again);
+  const back = el("a", "btn btn-quiet", "More lessons");
+  back.href = "#/module/" + moduleSlug(t.curriculumModule);
+  actions.appendChild(again);
+  actions.appendChild(back);
+  card.appendChild(actions);
+
+  if (pct === 100) celebrate(card);
   holder.appendChild(card);
+}
+
+function celebrate(card) {
+  const emoji = ["🎉", "⭐", "🎊", "✨", "🏆"];
+  for (let i = 0; i < 14; i++) {
+    const s = el("span", "confetti", emoji[i % emoji.length]);
+    s.style.left = Math.random() * 96 + "%";
+    s.style.animationDelay = Math.random() * 0.7 + "s";
+    card.appendChild(s);
+  }
 }
 
 // ---------- Grid-in answer checking ----------

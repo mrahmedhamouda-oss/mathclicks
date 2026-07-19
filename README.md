@@ -36,6 +36,16 @@ objects to the `"questions"` array. Two kinds:
 }
 ```
 
+**Explanation videos** — each lesson can also have a `"videos"` array (shown
+above the quiz). YouTube links are embedded automatically; direct `.mp4` links
+also work:
+
+```json
+"videos": [
+  { "title": "Factoring quadratics — full explanation", "url": "https://www.youtube.com/watch?v=XXXXXXXXXXX" }
+]
+```
+
 Notes:
 
 - Math goes between `$...$` (LaTeX, rendered by KaTeX). Example: `$\frac{3}{4}$`, `$x^2$`, `$\sqrt{5}$`.
