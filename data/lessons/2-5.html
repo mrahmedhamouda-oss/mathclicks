@@ -1,0 +1,187 @@
+<!-- Lesson 2-5 · Solving Systems of Equations Algebraically — interactive notes -->
+
+<div class="lesson-sec">
+  <div class="lesson-sec-title"><span class="num">1</span><h4>Vocabulary</h4></div>
+
+  <div class="concept-card">
+    <h5>📚 Key Terms</h5>
+    <div class="key-rule">
+      <strong>Substitution</strong> — an algebraic method where one equation is solved for one variable, then that expression is substituted into the other equation.
+    </div>
+    <div class="key-rule" style="margin-top:10px;">
+      <strong>Elimination</strong> — an algebraic method that uses addition or subtraction to eliminate one variable.
+    </div>
+  </div>
+</div>
+
+<div class="lesson-sec">
+  <div class="lesson-sec-title"><span class="num">2</span><h4>Substitution Method</h4></div>
+
+  <div class="concept-card">
+    <h5>🔢 Steps</h5>
+    <ol style="margin:0;padding-left:20px;line-height:2;">
+      <li><strong>Step 1:</strong> Solve at least one equation for one variable.</li>
+      <li><strong>Step 2:</strong> Substitute that expression into the other equation and solve.</li>
+      <li><strong>Step 3:</strong> Substitute back to find the other variable. Write as an ordered pair.</li>
+    </ol>
+  </div>
+
+  <!-- Example 1 accordion -->
+  <div class="ex-block">
+    <button class="ex-toggle" onclick="toggleEx(this)">
+      <span class="ex-num">Example 1</span>
+      <span>Substitution — One Solution: $8x - 3y = -1$, $x + 2y = -12$</span>
+      <span class="ex-arr">▶</span>
+    </button>
+    <div class="ex-body" style="display:none;">
+      <p><strong>Step 1 — Solve for $x$ in Equation 2:</strong></p>
+      <div class="work-row"><span>$x + 2y = -12$</span><span class="work-note">Equation 2</span></div>
+      <div class="work-row"><span>$x = -2y - 12$</span><span class="work-note">Subtract $2y$</span></div>
+      <p><strong>Step 2 — Substitute into Equation 1:</strong></p>
+      <div class="work-row"><span>$8(-2y-12) - 3y = -1$</span><span class="work-note">Substitute</span></div>
+      <div class="work-row"><span>$-16y - 96 - 3y = -1$</span><span class="work-note">Distribute</span></div>
+      <div class="work-row"><span>$-19y = 95$</span><span class="work-note">Add 96, simplify</span></div>
+      <div class="work-row"><span>$y = -5$</span><span class="work-note">Divide by $-19$</span></div>
+      <p><strong>Step 3 — Solve for $x$:</strong></p>
+      <div class="work-row"><span>$x + 2(-5) = -12$</span><span class="work-note">Substitute $y = -5$</span></div>
+      <div class="work-row"><span>$x = -2$</span><span class="work-note">Simplify</span></div>
+      <div class="sol-box">Solution: $(-2,\ -5)$</div>
+    </div>
+  </div>
+
+  <!-- Example 2 accordion -->
+  <div class="ex-block">
+    <button class="ex-toggle" onclick="toggleEx(this)">
+      <span class="ex-num">Example 2</span>
+      <span>Substitution — No Solution: $-5x + 2.5y = -15$, $y = 2x - 11$</span>
+      <span class="ex-arr">▶</span>
+    </button>
+    <div class="ex-body" style="display:none;">
+      <p>Equation 2 is already solved for $y$. Substitute $2x - 11$ for $y$:</p>
+      <div class="work-row"><span>$-5x + 2.5(2x-11) = -15$</span><span class="work-note">Substitute</span></div>
+      <div class="work-row"><span>$-5x + 5x - 27.5 = -15$</span><span class="work-note">Distribute</span></div>
+      <div class="work-row"><span>$-27.5 = -15$</span><span class="work-note">Variable eliminates</span></div>
+      <div class="warn-box">⚠️ $-27.5 = -15$ is <strong>false</strong> → the system has <strong>no solution</strong>. The lines are parallel.</div>
+      <div class="sol-box">No Solution</div>
+    </div>
+  </div>
+
+  <!-- Example 3 accordion -->
+  <div class="ex-block">
+    <button class="ex-toggle" onclick="toggleEx(this)">
+      <span class="ex-num">Example 3</span>
+      <span>Apply Substitution — HCl Mixture (Chemistry)</span>
+      <span class="ex-arr">▶</span>
+    </button>
+    <div class="ex-body" style="display:none;">
+      <p>Ms. Washington needs 300 mL of a 5% HCl solution by mixing 3.5% ($x$ mL) and 7% ($y$ mL).</p>
+      <div class="work-row"><span>$x + y = 300$</span><span class="work-note">Total volume</span></div>
+      <div class="work-row"><span>$0.035x + 0.07y = 15$</span><span class="work-note">Total acid</span></div>
+      <p>Solve Equation 1 for $x$: $x = -y + 300$. Substitute:</p>
+      <div class="work-row"><span>$0.035(-y+300) + 0.07y = 15$</span><span class="work-note">Substitute</span></div>
+      <div class="work-row"><span>$0.035y = 4.5$</span><span class="work-note">Simplify</span></div>
+      <div class="work-row"><span>$y \approx 128.57$</span><span class="work-note">Divide by 0.035</span></div>
+      <div class="work-row"><span>$x \approx 171.43$</span><span class="work-note">Substitute back</span></div>
+      <div class="sol-box">≈171.43 mL of 3.5% solution and ≈128.57 mL of 7% solution</div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-sec">
+  <div class="lesson-sec-title"><span class="num">3</span><h4>Elimination Method</h4></div>
+
+  <div class="concept-card">
+    <h5>🔢 Steps</h5>
+    <ol style="margin:0;padding-left:20px;line-height:2;">
+      <li><strong>Step 1:</strong> Multiply one or both equations so that a variable's coefficients are opposites.</li>
+      <li><strong>Step 2:</strong> Add or subtract the equations to eliminate that variable. Solve.</li>
+      <li><strong>Step 3:</strong> Substitute back to find the other variable. Write as an ordered pair.</li>
+    </ol>
+  </div>
+
+  <!-- Example 4 accordion -->
+  <div class="ex-block">
+    <button class="ex-toggle" onclick="toggleEx(this)">
+      <span class="ex-num">Example 4</span>
+      <span>Elimination — One Solution: $-2x - 9y = -25$, $-4x - 9y = -23$</span>
+      <span class="ex-arr">▶</span>
+    </button>
+    <div class="ex-body" style="display:none;">
+      <p>Multiply Equation 2 by $-1$ to create opposite $y$-terms:</p>
+      <div class="work-row"><span>$-4x - 9y = -23 \;\to\; 4x + 9y = 23$</span><span class="work-note">$\times(-1)$</span></div>
+      <p>Add Equation 1 and the new Equation 2:</p>
+      <div class="work-row"><span>$(-2x - 9y) + (4x + 9y) = -25 + 23$</span><span class="work-note">Add</span></div>
+      <div class="work-row"><span>$2x = -2 \;\to\; x = -1$</span><span class="work-note">Solve</span></div>
+      <div class="work-row"><span>$-4(-1) - 9y = -23 \;\to\; y = 3$</span><span class="work-note">Substitute $x = -1$</span></div>
+      <div class="sol-box">Solution: $(-1,\ 3)$</div>
+    </div>
+  </div>
+
+  <!-- Example 5 accordion -->
+  <div class="ex-block">
+    <button class="ex-toggle" onclick="toggleEx(this)">
+      <span class="ex-num">Example 5</span>
+      <span>Elimination — Multiply Both: $2x + 5y = 1$, $3x - 4y = -10$</span>
+      <span class="ex-arr">▶</span>
+    </button>
+    <div class="ex-body" style="display:none;">
+      <p>Multiply Equation 1 by 3 and Equation 2 by 2 to create matching $x$-terms:</p>
+      <div class="work-row"><span>Eq 1 $\times 3$: $\;6x + 15y = 3$</span></div>
+      <div class="work-row"><span>Eq 2 $\times 2$: $\;6x - 8y = -20$</span></div>
+      <p>Subtract Equation 2 × 2 from Equation 1 × 3:</p>
+      <div class="work-row"><span>$23y = 23 \;\to\; y = 1$</span><span class="work-note">Subtract, $x$ cancels</span></div>
+      <div class="work-row"><span>$2x + 5(1) = 1 \;\to\; x = -2$</span><span class="work-note">Substitute $y = 1$</span></div>
+      <div class="sol-box">Solution: $(-2,\ 1)$</div>
+    </div>
+  </div>
+
+  <!-- Example 6 accordion -->
+  <div class="ex-block">
+    <button class="ex-toggle" onclick="toggleEx(this)">
+      <span class="ex-num">Example 6</span>
+      <span>Elimination — No Solution: $18x + 21y = 14$, $6x + 7y = 2$</span>
+      <span class="ex-arr">▶</span>
+    </button>
+    <div class="ex-body" style="display:none;">
+      <p>Multiply Equation 2 by $-3$:</p>
+      <div class="work-row"><span>$-18x - 21y = -6$</span><span class="work-note">Eq 2 $\times(-3)$</span></div>
+      <p>Add the equations:</p>
+      <div class="work-row"><span>$(18x+21y) + (-18x-21y) = 14 + (-6)$</span></div>
+      <div class="work-row"><span>$0 = 8$</span><span class="work-note">Both variables eliminate</span></div>
+      <div class="warn-box">⚠️ $0 = 8$ is <strong>false</strong> → the system has <strong>no solution</strong>. The lines are parallel.</div>
+      <div class="sol-box">No Solution</div>
+    </div>
+  </div>
+</div>
+
+<div class="lesson-sec">
+  <div class="lesson-sec-title"><span class="num">4</span><h4>Special Cases</h4></div>
+  <div class="concept-card accent">
+    <h5>⚠️ What to Watch For</h5>
+    <ul style="margin:0;padding-left:20px;line-height:1.9;">
+      <li><strong>No solution:</strong> variables eliminate and you get a <em>false</em> statement (e.g. $0 = 8$). Lines are parallel — same slope, different $y$-intercept.</li>
+      <li><strong>Infinitely many solutions:</strong> variables eliminate and you get a <em>true</em> statement (e.g. $0 = 0$). The two equations describe the same line.</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+.work-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:5px 0;border-bottom:1px dashed #e5e9f0;font-family:'Courier New',monospace;font-size:0.93rem;align-items:center;}
+.work-note{color:#1a4fa0;font-family:system-ui,sans-serif;font-size:0.82rem;white-space:nowrap;}
+.warn-box{background:#fdf1e8;border-left:4px solid #e05c2a;border-radius:6px;padding:10px 14px;margin:10px 0;font-size:0.93rem;}
+.sol-box{background:#0f2d6b;color:#fff;border-radius:8px;padding:12px 16px;margin-top:12px;font-family:'Courier New',monospace;font-size:1rem;text-align:center;}
+.ex-block{border:1px solid var(--border,#dbe3f0);border-radius:10px;margin-bottom:12px;overflow:hidden;}
+.ex-toggle{width:100%;background:#0f2d6b;color:#fff;border:none;padding:14px 18px;cursor:pointer;display:flex;align-items:center;gap:10px;text-align:left;font-size:0.92rem;}
+.ex-num{background:#e05c2a;padding:2px 10px;border-radius:14px;font-size:0.8rem;white-space:nowrap;}
+.ex-arr{margin-left:auto;transition:transform 0.2s;}
+.ex-toggle.open .ex-arr{transform:rotate(90deg);}
+.ex-body{padding:16px 18px;}
+</style>
+
+<script>
+function toggleEx(btn){
+  btn.classList.toggle('open');
+  const body = btn.nextElementSibling;
+  body.style.display = body.style.display === 'none' ? 'block' : 'none';
+}
+</script>

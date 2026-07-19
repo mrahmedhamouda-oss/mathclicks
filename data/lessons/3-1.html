@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3-1: Graphing Quadratic Functions</title>
+<style>
+  :root{
+    --navy:#0f2d6b; --blue:#1a4fa0; --orange:#e05c2a; --green:#16a34a;
+    --light:#f4f7fc; --border:#dde5f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:system-ui,'Segoe UI',Arial,sans-serif;background:var(--light);color:#1e293b;line-height:1.6;}
+  .math{font-family:'Courier New',monospace;font-weight:bold;}
+  header{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 60%,#2a6bc9 100%);color:#fff;padding:48px 20px 40px;text-align:center;}
+  .badge{display:inline-block;background:var(--orange);color:#fff;padding:5px 16px;border-radius:20px;font-size:.85rem;font-weight:700;letter-spacing:1px;margin-bottom:14px;}
+  header h1{font-size:2.1rem;margin-bottom:10px;}
+  header p{max-width:640px;margin:0 auto;opacity:.92;}
+  nav{position:sticky;top:0;background:#fff;box-shadow:0 2px 8px rgba(15,45,107,.12);z-index:50;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:8px;}
+  nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:.92rem;padding:8px 14px;border-radius:8px;}
+  nav a:hover{background:var(--light);color:var(--orange);}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 16px 60px;}
+  h2.sec{color:var(--navy);font-size:1.6rem;margin:44px 0 6px;display:flex;align-items:center;gap:10px;}
+  h2.sec .num{background:var(--orange);color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem;flex:none;}
+  .sub{color:#64748b;margin-bottom:18px;}
+  .card{background:#fff;border:1px solid var(--border);border-left:5px solid var(--blue);border-radius:10px;box-shadow:0 2px 6px rgba(15,45,107,.06);padding:20px 22px;margin-bottom:16px;}
+  .card.orange{border-left-color:var(--orange);}
+  .card.green{border-left-color:var(--green);}
+  .card h3{color:var(--navy);margin-bottom:8px;font-size:1.12rem;}
+  .kbox{background:#eef4fd;border:1px solid #c9dcf5;border-radius:8px;padding:12px 16px;margin:10px 0;}
+  .kbox .math{color:var(--navy);font-size:1.05rem;}
+  .warn{background:#fdf0e9;border:1px solid #f5cdb8;border-left:4px solid var(--orange);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.95rem;}
+  .good{background:#ecfdf3;border:1px solid #bbe7cd;border-left:4px solid var(--green);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.95rem;}
+  .steps{counter-reset:st;list-style:none;margin:12px 0;}
+  .steps li{position:relative;padding:6px 0 6px 44px;counter-increment:st;}
+  .steps li::before{content:counter(st);position:absolute;left:0;top:6px;background:var(--blue);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr;}}
+  .vocab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+  @media(max-width:600px){.vocab{grid-template-columns:1fr;}}
+  .vterm{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;transition:.15s;}
+  .vterm:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 10px rgba(15,45,107,.1);}
+  .vterm b{color:var(--orange);}
+  .vterm span{display:none;font-size:.92rem;color:#475569;}
+  .vterm.open span{display:block;margin-top:4px;}
+  /* collapsible examples */
+  .ex{background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 6px rgba(15,45,107,.06);}
+  .ex-head{width:100%;text-align:left;border:none;background:#fff;padding:16px 20px;cursor:pointer;display:flex;gap:12px;align-items:center;font-size:1rem;}
+  .ex-head:hover{background:#f8fafc;}
+  .ex-head .tag{background:var(--navy);color:#fff;border-radius:6px;padding:3px 10px;font-weight:700;font-size:.8rem;flex:none;}
+  .ex-head .arr{margin-left:auto;color:var(--blue);transition:.2s;flex:none;}
+  .ex.open .arr{transform:rotate(90deg);}
+  .ex-body{display:none;padding:4px 22px 20px;border-top:1px solid var(--border);}
+  .ex.open .ex-body{display:block;}
+  .final{background:linear-gradient(135deg,#eef4fd,#e2f0ff);border:2px solid var(--blue);border-radius:10px;padding:12px 18px;margin-top:12px;text-align:center;font-size:1.05rem;color:var(--navy);}
+  /* interactive panels */
+  .panel{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 3px 10px rgba(15,45,107,.08);margin-bottom:18px;}
+  .panel h3{color:var(--navy);margin-bottom:4px;}
+  canvas.graph{background:#fff;border:1px solid var(--border);border-radius:8px;width:100%;max-width:460px;touch-action:none;display:block;}
+  .ctl{display:flex;flex-direction:column;gap:12px;}
+  .ctl label{font-weight:600;color:var(--navy);font-size:.95rem;display:flex;justify-content:space-between;}
+  .ctl input[type=range]{width:100%;accent-color:var(--orange);}
+  .readout{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:.95rem;}
+  .readout div{padding:2px 0;}
+  .readout b{color:var(--navy);}
+  .btn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-weight:600;cursor:pointer;font-size:.92rem;}
+  .btn:hover{filter:brightness(1.1);}
+  .btn.orange{background:var(--orange);}
+  .btn.green{background:var(--green);}
+  .btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--border);}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+  .probsel{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+  .probsel button{border:2px solid var(--border);background:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;font-family:'Courier New',monospace;font-weight:bold;font-size:.9rem;}
+  .probsel button.active{border-color:var(--orange);background:#fdf0e9;color:var(--orange);}
+  .msg{margin-top:10px;padding:10px 14px;border-radius:8px;font-weight:600;display:none;}
+  .msg.show{display:block;}
+  .msg.ok{background:#ecfdf3;color:var(--green);border:1px solid #bbe7cd;}
+  .msg.mid{background:#fef9e7;color:#b7791f;border:1px solid #f4e3a1;}
+  .msg.bad{background:#fdecec;color:#dc2626;border:1px solid #f5c2c2;}
+  /* quiz */
+  .quiz-title{background:linear-gradient(135deg,var(--orange),#c73e14);color:#fff;border-radius:12px;padding:26px;text-align:center;margin-bottom:18px;}
+  .q{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:14px;box-shadow:0 2px 6px rgba(15,45,107,.06);}
+  .q h4{color:var(--navy);margin-bottom:10px;}
+  .q h4 .qn{color:var(--orange);}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:600px){.opts{grid-template-columns:1fr;}}
+  .opt{text-align:left;border:2px solid var(--border);background:#fff;border-radius:8px;padding:10px 12px;cursor:pointer;font-size:.95rem;font-family:'Courier New',monospace;font-weight:bold;}
+  .opt:hover{border-color:var(--blue);}
+  .opt.correct{border-color:var(--green);background:#ecfdf3;}
+  .opt.wrong{border-color:#dc2626;background:#fdecec;}
+  .opt:disabled{cursor:default;}
+  .expl{display:none;margin-top:10px;font-size:.92rem;background:var(--light);border-radius:8px;padding:10px 12px;font-family:system-ui,'Segoe UI',sans-serif;font-weight:normal;}
+  .expl.show{display:block;}
+  #scorePanel{display:none;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-radius:12px;padding:30px;text-align:center;margin-top:20px;}
+  #scorePanel .big{font-size:2.6rem;font-weight:800;}
+  footer{text-align:center;color:#94a3b8;font-size:.85rem;padding:20px;}
+  svg text{font-family:system-ui,'Segoe UI',sans-serif;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">MODULE 3 &middot; LESSON 3-1</div>
+  <h1>Graphing Quadratic Functions</h1>
+  <p>Learn to graph parabolas, find the vertex, axis of symmetry, maximum and minimum values, and compute the average rate of change &mdash; with live graphs you can control and draw yourself.</p>
+</header>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#explorer">Live Explorer</a>
+  <a href="#examples">Worked Examples</a>
+  <a href="#drawit">Draw It Yourself</a>
+  <a href="#arc">Rate of Change</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ CONCEPTS ============ -->
+<h2 class="sec" id="concepts"><span class="num">1</span> Key Concepts</h2>
+<p class="sub">Tap each vocabulary card to reveal its definition.</p>
+
+<div class="card">
+  <h3>What is a Quadratic Function?</h3>
+  <p>A <b>quadratic function</b> is a function that can be written in <b>standard form</b>:</p>
+  <div class="kbox"><span class="math">f(x) = ax&sup2; + bx + c,&nbsp; where a &ne; 0</span></div>
+  <p>Its graph is a U-shaped curve called a <b>parabola</b>.</p>
+  <div class="vocab">
+    <div class="vterm" onclick="this.classList.toggle('open')"><b>parabola</b><span>The U-shaped graph of a quadratic function.</span></div>
+    <div class="vterm" onclick="this.classList.toggle('open')"><b>vertex</b><span>The highest or lowest point of a parabola &mdash; where the graph turns around.</span></div>
+    <div class="vterm" onclick="this.classList.toggle('open')"><b>axis of symmetry</b><span>The vertical line x = &minus;b/(2a) that cuts the parabola into two mirror-image halves. It always passes through the vertex.</span></div>
+    <div class="vterm" onclick="this.classList.toggle('open')"><b>y-intercept</b><span>Where the graph crosses the y-axis. For f(x) = ax&sup2; + bx + c it is always the point (0, c).</span></div>
+    <div class="vterm" onclick="this.classList.toggle('open')"><b>maximum / minimum</b><span>The y-value of the vertex. It is a minimum if the parabola opens up (a &gt; 0), a maximum if it opens down (a &lt; 0).</span></div>
+    <div class="vterm" onclick="this.classList.toggle('open')"><b>average rate of change</b><span>How much f(x) changes per unit of x over an interval [a, b]: (f(b) &minus; f(a)) &divide; (b &minus; a).</span></div>
+  </div>
+</div>
+
+<div class="card orange">
+  <h3>Anatomy of a Parabola</h3>
+  <p>Every feature you need to identify, on one picture:</p>
+  <div style="text-align:center;margin-top:10px;">
+  <svg viewBox="0 0 640 360" style="max-width:640px;width:100%;" xmlns="http://www.w3.org/2000/svg">
+    <rect width="640" height="360" fill="#f8fafc" rx="10"/>
+    <!-- grid -->
+    <g stroke="#e2e8f0" stroke-width="1">
+      <line x1="80" y1="30" x2="80" y2="320"/><line x1="160" y1="30" x2="160" y2="320"/>
+      <line x1="240" y1="30" x2="240" y2="320"/><line x1="320" y1="30" x2="320" y2="320"/>
+      <line x1="400" y1="30" x2="400" y2="320"/><line x1="480" y1="30" x2="480" y2="320"/>
+      <line x1="40" y1="80" x2="520" y2="80"/><line x1="40" y1="140" x2="520" y2="140"/>
+      <line x1="40" y1="200" x2="520" y2="200"/><line x1="40" y1="260" x2="520" y2="260"/>
+    </g>
+    <!-- axes -->
+    <line x1="40" y1="290" x2="530" y2="290" stroke="#475569" stroke-width="2"/>
+    <line x1="160" y1="25" x2="160" y2="330" stroke="#475569" stroke-width="2"/>
+    <text x="524" y="308" font-size="15" fill="#475569" font-style="italic">x</text>
+    <text x="168" y="40" font-size="15" fill="#475569" font-style="italic">y</text>
+    <!-- axis of symmetry -->
+    <line x1="320" y1="30" x2="320" y2="325" stroke="#e05c2a" stroke-width="2.5" stroke-dasharray="8 5"/>
+    <!-- upward-opening parabola, vertex (320,260), arms up to y=60 at x=140 and x=500 -->
+    <path d="M 140 60 Q 320 460 500 60" fill="none" stroke="#1a4fa0" stroke-width="4" stroke-linecap="round"/>
+    <!-- vertex point -->
+    <circle cx="320" cy="260" r="7" fill="#e05c2a" stroke="#fff" stroke-width="2"/>
+    <!-- y-intercept point on curve at x=160 -->
+    <circle cx="160" cy="102" r="7" fill="#16a34a" stroke="#fff" stroke-width="2"/>
+    <!-- labels -->
+    <text x="336" y="252" font-size="15" font-weight="bold" fill="#e05c2a">vertex (h, k) &mdash; minimum here</text>
+    <text x="336" y="345" font-size="14" font-weight="bold" fill="#e05c2a">axis of symmetry x = &minus;b/(2a)</text>
+    <text x="178" y="98" font-size="15" font-weight="bold" fill="#16a34a">y-intercept (0, c)</text>
+    <text x="452" y="200" font-size="15" font-weight="bold" fill="#1a4fa0">opens UP</text>
+    <text x="452" y="220" font-size="14" fill="#1a4fa0">because a &gt; 0</text>
+  </svg>
+  </div>
+  <div class="grid2" style="margin-top:14px;">
+    <div class="kbox"><b style="color:var(--green)">a &gt; 0</b> &rarr; opens <b>up</b>, vertex is a <b>minimum</b>, range: <span class="math">y &ge; k</span></div>
+    <div class="kbox"><b style="color:var(--orange)">a &lt; 0</b> &rarr; opens <b>down</b>, vertex is a <b>maximum</b>, range: <span class="math">y &le; k</span></div>
+  </div>
+  <div class="warn"><b>Watch out!</b> The domain of <em>every</em> quadratic function is all real numbers &mdash; only the <em>range</em> is restricted by the vertex.</div>
+</div>
+
+<div class="card green">
+  <h3>How to Graph a Quadratic (5 Steps)</h3>
+  <ol class="steps">
+    <li>Find the <b>axis of symmetry</b>: <span class="math">x = &minus;b/(2a)</span>.</li>
+    <li>Find the <b>vertex</b>: substitute that x-value into f(x) to get the y-coordinate.</li>
+    <li>Plot the <b>y-intercept</b> <span class="math">(0, c)</span> &mdash; and its mirror point across the axis of symmetry.</li>
+    <li>Make a <b>table of values</b> with points on both sides of the vertex.</li>
+    <li>Draw a smooth <b>U-shaped curve</b> through the points. State the domain and range.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>Average Rate of Change</h3>
+  <p>For nonlinear functions the rate of change is <em>not constant</em>, so we measure it over an interval:</p>
+  <div class="kbox" style="text-align:center;"><span class="math" style="font-size:1.15rem;">average rate of change = ( f(b) &minus; f(a) ) / ( b &minus; a )</span> &nbsp;over [a, b]</div>
+  <p>Geometrically, this is the <b>slope of the line</b> connecting the two points (a, f(a)) and (b, f(b)) on the graph &mdash; try it live in the <a href="#arc" style="color:var(--orange);font-weight:700;">Rate of Change lab</a>.</p>
+</div>
+
+<!-- ============ EXPLORER ============ -->
+<h2 class="sec" id="explorer"><span class="num">2</span> Live Parabola Explorer</h2>
+<p class="sub">Drag the sliders for <span class="math">a</span>, <span class="math">b</span>, and <span class="math">c</span> and watch the graph, vertex, and axis of symmetry update instantly.</p>
+
+<div class="panel">
+  <div class="grid2">
+    <div>
+      <canvas id="expCanvas" class="graph" width="460" height="460"></canvas>
+    </div>
+    <div class="ctl">
+      <div>
+        <label>a (opens up / down) <span id="aVal" class="math">1</span></label>
+        <input type="range" id="aSlide" min="-4" max="4" step="0.5" value="1">
+      </div>
+      <div>
+        <label>b <span id="bVal" class="math">-4</span></label>
+        <input type="range" id="bSlide" min="-10" max="10" step="1" value="-4">
+      </div>
+      <div>
+        <label>c (y-intercept) <span id="cVal" class="math">3</span></label>
+        <input type="range" id="cSlide" min="-10" max="10" step="1" value="3">
+      </div>
+      <div class="readout" id="expInfo"></div>
+      <div class="btnrow">
+        <button class="btn ghost" onclick="setExp(1,-4,3)">x&sup2;&minus;4x+3</button>
+        <button class="btn ghost" onclick="setExp(-1,-2,2)">&minus;x&sup2;&minus;2x+2</button>
+        <button class="btn ghost" onclick="setExp(1,6,8)">x&sup2;+6x+8</button>
+        <button class="btn ghost" onclick="setExp(-2,0,0)">&minus;2x&sup2;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EXAMPLES ============ -->
+<h2 class="sec" id="examples"><span class="num">3</span> Worked Examples</h2>
+<p class="sub">Click an example to expand its full step-by-step solution.</p>
+
+<div class="ex open">
+  <button class="ex-head" onclick="this.parentElement.classList.toggle('open')">
+    <span class="tag">EX 1</span><span>Graph <span class="math">f(x) = x&sup2; + 6x + 8</span>. Then state the domain and range.</span><span class="arr">&#9654;</span>
+  </button>
+  <div class="ex-body">
+    <ol class="steps">
+      <li><b>Axis of symmetry:</b> <span class="math">x = &minus;b/(2a) = &minus;6/(2&middot;1) = &minus;3</span></li>
+      <li><b>Vertex:</b> <span class="math">f(&minus;3) = (&minus;3)&sup2; + 6(&minus;3) + 8 = 9 &minus; 18 + 8 = &minus;1</span> &rarr; vertex <span class="math">(&minus;3, &minus;1)</span></li>
+      <li><b>y-intercept:</b> <span class="math">(0, 8)</span>; its mirror across x = &minus;3 is <span class="math">(&minus;6, 8)</span></li>
+      <li><b>Table of values:</b> <span class="math">f(&minus;5)=3, f(&minus;4)=0, f(&minus;3)=&minus;1, f(&minus;2)=0, f(&minus;1)=3</span></li>
+      <li><b>Draw the curve</b> through the points &mdash; it opens up since <span class="math">a = 1 &gt; 0</span>.</li>
+    </ol>
+    <div class="good"><b>Check:</b> the points (&minus;4, 0) and (&minus;2, 0) are mirror images across x = &minus;3 &mdash; the symmetry confirms the graph.</div>
+    <div class="final">Domain: <span class="math">all real numbers</span> &nbsp;&middot;&nbsp; Range: <span class="math">y &ge; &minus;1</span></div>
+    <p style="margin-top:10px;"><button class="btn" onclick="setExp(1,6,8);document.getElementById('explorer').scrollIntoView({behavior:'smooth'})">&#9654; See this graph live in the Explorer</button></p>
+  </div>
+</div>
+
+<div class="ex">
+  <button class="ex-head" onclick="this.parentElement.classList.toggle('open')">
+    <span class="tag">EX 2</span><span>Maximum or minimum? Find it for <span class="math">f(x) = &minus;3x&sup2; &minus; 9x + 2</span>.</span><span class="arr">&#9654;</span>
+  </button>
+  <div class="ex-body">
+    <ol class="steps">
+      <li><b>Look at a:</b> <span class="math">a = &minus;3 &lt; 0</span>, so the parabola opens <b>down</b> &rarr; the vertex is a <b>maximum</b>.</li>
+      <li><b>x-coordinate of vertex:</b> <span class="math">x = &minus;b/(2a) = &minus;(&minus;9)/(2&middot;&minus;3) = 9/(&minus;6) = &minus;1.5</span></li>
+      <li><b>Maximum value:</b> <span class="math">f(&minus;1.5) = &minus;3(2.25) &minus; 9(&minus;1.5) + 2 = &minus;6.75 + 13.5 + 2 = 8.75</span></li>
+    </ol>
+    <div class="warn"><b>Watch out!</b> Two sign traps: &minus;b means take the <em>opposite</em> of b, and 2a keeps a's negative sign. <span class="math">&minus;(&minus;9) = +9</span> and <span class="math">2(&minus;3) = &minus;6</span>.</div>
+    <div class="final">Maximum value: <span class="math">8.75</span> at <span class="math">x = &minus;1.5</span> &nbsp;&middot;&nbsp; Range: <span class="math">y &le; 8.75</span></div>
+  </div>
+</div>
+
+<div class="ex">
+  <button class="ex-head" onclick="this.parentElement.classList.toggle('open')">
+    <span class="tag">EX 3</span><span>Compare <span class="math">f(x) = x&sup2; &minus; 10x + 5</span> to the quadratic g(x) given by a table. Which has the lesser minimum?</span><span class="arr">&#9654;</span>
+  </button>
+  <div class="ex-body">
+    <p>g(x) from the table: <span class="math">g(&minus;10)=170, g(&minus;5)=70, g(0)=10, g(5)=&minus;10, g(10)=10</span></p>
+    <ol class="steps">
+      <li><b>Minimum of f:</b> axis <span class="math">x = &minus;(&minus;10)/(2&middot;1) = 5</span>; <span class="math">f(5) = 25 &minus; 50 + 5 = &minus;20</span>. Minimum of f is <b>&minus;20</b>.</li>
+      <li><b>Minimum of g:</b> the table is symmetric around <span class="math">x = 5</span> (g(0) = g(10) = 10), so the vertex is at <span class="math">(5, &minus;10)</span>. Minimum of g is <b>&minus;10</b>.</li>
+      <li><b>Compare:</b> <span class="math">&minus;20 &lt; &minus;10</span>.</li>
+    </ol>
+    <div class="final"><span class="math">f(x)</span> has the lesser minimum: <span class="math">&minus;20 &lt; &minus;10</span></div>
+  </div>
+</div>
+
+<div class="ex">
+  <button class="ex-head" onclick="this.parentElement.classList.toggle('open')">
+    <span class="tag">EX 4</span><span>Average rate of change of <span class="math">f(x) = &minus;x&sup2; + 2x &minus; 1</span> over <span class="math">[&minus;4, 4]</span> (from an equation).</span><span class="arr">&#9654;</span>
+  </button>
+  <div class="ex-body">
+    <ol class="steps">
+      <li><b>Set up:</b> <span class="math">( f(4) &minus; f(&minus;4) ) / ( 4 &minus; (&minus;4) )</span></li>
+      <li><b>Evaluate the endpoints:</b></li>
+    </ol>
+    <div class="grid2">
+      <div class="kbox"><b>Case 1: f(4)</b><br><span class="math">&minus;(4)&sup2; + 2(4) &minus; 1<br>= &minus;16 + 8 &minus; 1 = &minus;9</span></div>
+      <div class="kbox"><b>Case 2: f(&minus;4)</b><br><span class="math">&minus;(&minus;4)&sup2; + 2(&minus;4) &minus; 1<br>= &minus;16 &minus; 8 &minus; 1 = &minus;25</span></div>
+    </div>
+    <ol class="steps" start="3" style="counter-reset:st 2;">
+      <li><b>Divide:</b> <span class="math">( &minus;9 &minus; (&minus;25) ) / 8 = 16 / 8 = 2</span></li>
+    </ol>
+    <div class="warn"><b>Watch out!</b> <span class="math">&minus;(&minus;4)&sup2; = &minus;16</span>, not +16 &mdash; square first, then apply the front negative.</div>
+    <div class="final">Average rate of change = <span class="math">2</span></div>
+    <p style="margin-top:10px;"><button class="btn orange" onclick="document.getElementById('arc').scrollIntoView({behavior:'smooth'})">&#9654; See this as a secant line in the lab</button></p>
+  </div>
+</div>
+
+<div class="ex">
+  <button class="ex-head" onclick="this.parentElement.classList.toggle('open')">
+    <span class="tag">EX 5</span><span>Average rate of change from a <b>table</b> over <span class="math">[&minus;3, 3]</span>.</span><span class="arr">&#9654;</span>
+  </button>
+  <div class="ex-body">
+    <p>Table: <span class="math">f(&minus;3)=48, f(&minus;2)=21, f(&minus;1)=0, f(0)=&minus;15, f(1)=&minus;24, f(2)=&minus;27, f(3)=&minus;24</span></p>
+    <ol class="steps">
+      <li><b>Read the endpoints only:</b> <span class="math">f(3) = &minus;24</span> and <span class="math">f(&minus;3) = 48</span>. The middle rows are not needed!</li>
+      <li><b>Substitute:</b> <span class="math">( f(3) &minus; f(&minus;3) ) / ( 3 &minus; (&minus;3) ) = ( &minus;24 &minus; 48 ) / 6</span></li>
+      <li><b>Simplify:</b> <span class="math">&minus;72 / 6 = &minus;12</span></li>
+    </ol>
+    <div class="final">Average rate of change = <span class="math">&minus;12</span></div>
+  </div>
+</div>
+
+<div class="ex">
+  <button class="ex-head" onclick="this.parentElement.classList.toggle('open')">
+    <span class="tag">EX 6</span><span>Average rate of change from a <b>graph</b> (estimate, then check algebraically).</span><span class="arr">&#9654;</span>
+  </button>
+  <div class="ex-body">
+    <p>A graph of spending shows the points <span class="math">(0, 15.72)</span> and <span class="math">(10, 20.99)</span>.</p>
+    <ol class="steps">
+      <li><b>Estimate from the graph:</b> the y-values rise about 5.5 while x changes by 10 &rarr; roughly <span class="math">5.5/10 = 0.55</span>.</li>
+      <li><b>Check algebraically:</b> <span class="math">( f(10) &minus; f(0) ) / ( 10 &minus; 0 ) = ( 20.99 &minus; 15.72 ) / 10 = 5.27/10</span></li>
+      <li><b>Simplify:</b> <span class="math">= 0.527</span> &mdash; close to the estimate, so the estimate was reasonable.</li>
+    </ol>
+    <div class="good"><b>Check:</b> the algebraic answer 0.527 &asymp; the graphical estimate 0.55.</div>
+    <div class="final">Average rate of change &asymp; <span class="math">0.527</span> per unit</div>
+  </div>
+</div>
+
+<!-- ============ DRAW IT ============ -->
+<h2 class="sec" id="drawit"><span class="num">4</span> Draw the Graph Yourself</h2>
+<p class="sub">Pick a function, then <b>click (or tap) on the grid</b> to plot points of the parabola. Place at least 5 points, then press <b>Check my graph</b>.</p>
+
+<div class="panel">
+  <div class="probsel" id="probSel"></div>
+  <div class="grid2">
+    <div>
+      <canvas id="drawCanvas" class="graph" width="460" height="460"></canvas>
+    </div>
+    <div>
+      <div class="readout" id="drawHints"></div>
+      <div class="btnrow">
+        <button class="btn ghost" onclick="undoPoint()">&#8630; Undo</button>
+        <button class="btn ghost" onclick="clearPoints()">Clear</button>
+        <button class="btn green" onclick="checkDrawing()">&#10003; Check my graph</button>
+        <button class="btn orange" onclick="revealCurve()">Show answer</button>
+      </div>
+      <div class="msg" id="drawMsg"></div>
+      <div class="warn" style="margin-top:14px;"><b>Strategy:</b> plot the vertex first, then the y-intercept, then mirror your points across the axis of symmetry.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ARC LAB ============ -->
+<h2 class="sec" id="arc"><span class="num">5</span> Rate of Change Lab</h2>
+<p class="sub">The <b style="color:var(--green)">green secant line</b> connects two points on <span class="math">f(x) = &minus;x&sup2; + 2x &minus; 1</span>. Its slope IS the average rate of change. Move the interval endpoints and watch it change.</p>
+
+<div class="panel">
+  <div class="grid2">
+    <div>
+      <canvas id="arcCanvas" class="graph" width="460" height="460"></canvas>
+    </div>
+    <div class="ctl">
+      <div>
+        <label>Left endpoint a <span id="arcAVal" class="math">-4</span></label>
+        <input type="range" id="arcA" min="-6" max="6" step="1" value="-4">
+      </div>
+      <div>
+        <label>Right endpoint b <span id="arcBVal" class="math">4</span></label>
+        <input type="range" id="arcB" min="-6" max="6" step="1" value="4">
+      </div>
+      <div class="readout" id="arcInfo"></div>
+      <div class="btnrow">
+        <button class="btn ghost" onclick="setArc(-4,4)">[&minus;4, 4]</button>
+        <button class="btn ghost" onclick="setArc(-3,1)">[&minus;3, 1]</button>
+        <button class="btn ghost" onclick="setArc(1,3)">[1, 3]</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<h2 class="sec" id="quiz"><span class="num">6</span> Practice Quiz</h2>
+<div class="quiz-title">
+  <h3 style="font-size:1.5rem;">15-Question Mastery Check</h3>
+  <p>Vertex, axis of symmetry, max/min, range, and average rate of change. Pick an answer to get instant feedback.</p>
+</div>
+<div id="quizBox"></div>
+<div id="scorePanel">
+  <div class="big"><span id="scoreNum">0</span> / 15</div>
+  <div id="scoreMsg" style="font-size:1.15rem;margin:8px 0 16px;"></div>
+  <button class="btn orange" onclick="resetQuiz()">&#8635; Try Again</button>
+</div>
+
+<script>
+/* ================= helpers ================= */
+function fmt(n){ return Math.abs(n-Math.round(n))<1e-9 ? String(Math.round(n)) : String(+n.toFixed(2)); }
+function eq(a,b,c){
+  let s='';
+  s += (a===1?'':a===-1?'-':fmt(a))+'x²';
+  if(b!==0) s += (b>0?' + ':' − ')+(Math.abs(b)===1?'':fmt(Math.abs(b)))+'x';
+  if(c!==0) s += (c>0?' + ':' − ')+fmt(Math.abs(c));
+  return 'f(x) = '+s;
+}
+/* canvas world: x,y in [-11,11] */
+function makeView(cv){
+  const ctx=cv.getContext('2d'), W=cv.width, H=cv.height, R=11;
+  const X=x=>(x+R)/(2*R)*W, Y=y=>H-(y+R)/(2*R)*H;
+  const invX=px=>px/W*2*R-R, invY=py=>(H-py)/H*2*R-R;
+  function grid(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='#e8eef7'; ctx.lineWidth=1;
+    for(let i=-10;i<=10;i++){
+      ctx.beginPath();ctx.moveTo(X(i),0);ctx.lineTo(X(i),H);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,Y(i));ctx.lineTo(W,Y(i));ctx.stroke();
+    }
+    ctx.strokeStyle='#475569'; ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(0,Y(0));ctx.lineTo(W,Y(0));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(X(0),0);ctx.lineTo(X(0),H);ctx.stroke();
+    ctx.fillStyle='#64748b'; ctx.font='11px system-ui';
+    for(let i=-10;i<=10;i+=2){ if(i!==0){ ctx.fillText(i,X(i)+2,Y(0)+13); ctx.fillText(i,X(0)+4,Y(i)-2);} }
+  }
+  function curve(f,color,width,dash){
+    ctx.save(); if(dash)ctx.setLineDash(dash);
+    ctx.strokeStyle=color; ctx.lineWidth=width||3; ctx.beginPath();
+    let started=false;
+    for(let px=0;px<=W;px++){
+      const x=invX(px), y=f(x);
+      if(y<-R-5||y>R+5){started=false;continue;}
+      const py=Y(y);
+      if(!started){ctx.moveTo(px,py);started=true;} else ctx.lineTo(px,py);
+    }
+    ctx.stroke(); ctx.restore();
+  }
+  function dot(x,y,color,r){
+    ctx.fillStyle=color; ctx.strokeStyle='#fff'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(X(x),Y(y),r||6,0,7); ctx.fill(); ctx.stroke();
+  }
+  function vline(x,color){
+    ctx.save(); ctx.setLineDash([7,5]); ctx.strokeStyle=color; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(X(x),0); ctx.lineTo(X(x),H); ctx.stroke(); ctx.restore();
+  }
+  function line(x1,y1,x2,y2,color,width){
+    ctx.strokeStyle=color; ctx.lineWidth=width||2.5;
+    ctx.beginPath(); ctx.moveTo(X(x1),Y(y1)); ctx.lineTo(X(x2),Y(y2)); ctx.stroke();
+  }
+  return {ctx,grid,curve,dot,vline,line,X,Y,invX,invY,W,H};
+}
+
+/* ================= explorer ================= */
+const expV = makeView(document.getElementById('expCanvas'));
+const aS=document.getElementById('aSlide'), bS=document.getElementById('bSlide'), cS=document.getElementById('cSlide');
+function setExp(a,b,c){ aS.value=a; bS.value=b; cS.value=c; drawExp(); }
+function drawExp(){
+  let a=+aS.value, b=+bS.value, c=+cS.value;
+  if(a===0){ a=0.5; aS.value=0.5; }
+  document.getElementById('aVal').textContent=fmt(a);
+  document.getElementById('bVal').textContent=fmt(b);
+  document.getElementById('cVal').textContent=fmt(c);
+  const h=-b/(2*a), k=a*h*h+b*h+c, f=x=>a*x*x+b*x+c;
+  expV.grid();
+  expV.vline(h,'#e05c2a');
+  expV.curve(f,'#1a4fa0',3.5);
+  expV.dot(h,k,'#e05c2a',7);
+  expV.dot(0,c,'#16a34a',6);
+  const up=a>0;
+  document.getElementById('expInfo').innerHTML =
+    '<div style="font-family:Courier New,monospace;font-weight:bold;color:#0f2d6b;">'+eq(a,b,c)+'</div>'+
+    '<div><b>Opens:</b> '+(up?'up (a &gt; 0)':'down (a &lt; 0)')+'</div>'+
+    '<div><b>Axis of symmetry:</b> <span class="math">x = '+fmt(h)+'</span></div>'+
+    '<div><b>Vertex:</b> <span class="math">('+fmt(h)+', '+fmt(k)+')</span> &mdash; '+(up?'minimum':'maximum')+'</div>'+
+    '<div><b>y-intercept:</b> <span class="math">(0, '+fmt(c)+')</span></div>'+
+    '<div><b>Domain:</b> all real numbers</div>'+
+    '<div><b>Range:</b> <span class="math">y '+(up?'≥':'≤')+' '+fmt(k)+'</span></div>';
+}
+[aS,bS,cS].forEach(s=>s.addEventListener('input',drawExp));
+drawExp();
+
+/* ================= draw-it-yourself ================= */
+const drawV = makeView(document.getElementById('drawCanvas'));
+const problems=[
+  {a:1,b:6,c:8},
+  {a:1,b:-4,c:3},
+  {a:-1,b:-2,c:2},
+  {a:-2,b:0,c:0},
+  {a:0.5,b:-2,c:-3}
+];
+let curProb=0, pts=[], revealed=false;
+const probSel=document.getElementById('probSel');
+problems.forEach((p,i)=>{
+  const btn=document.createElement('button');
+  btn.innerHTML=eq(p.a,p.b,p.c).replace('f(x) = ','');
+  btn.onclick=()=>{curProb=i; pts=[]; revealed=false; syncProb();};
+  probSel.appendChild(btn);
+});
+function pf(x){ const p=problems[curProb]; return p.a*x*x+p.b*x+p.c; }
+function syncProb(){
+  [...probSel.children].forEach((b,i)=>b.classList.toggle('active',i===curProb));
+  const p=problems[curProb], h=-p.b/(2*p.a), k=pf(h);
+  document.getElementById('drawHints').innerHTML=
+    '<div style="font-family:Courier New,monospace;font-weight:bold;color:#0f2d6b;">'+eq(p.a,p.b,p.c)+'</div>'+
+    '<div>Points placed: <b id="ptCount">0</b> (need at least 5)</div>'+
+    '<div style="color:#64748b;font-size:.88rem;">Hint: start with x = '+fmt(h)+' (the axis of symmetry).</div>';
+  hideMsg(); redrawDraw();
+}
+function redrawDraw(showCurve, results){
+  drawV.grid();
+  if(showCurve||revealed){
+    const p=problems[curProb], h=-p.b/(2*p.a), k=pf(h);
+    drawV.vline(h,'#e05c2a');
+    drawV.curve(pf,'#1a4fa0',3.5);
+    drawV.dot(h,k,'#e05c2a',7);
+  }
+  pts.forEach((pt,i)=>{
+    let col='#0f2d6b';
+    if(results) col = results[i] ? '#16a34a' : '#dc2626';
+    drawV.dot(pt.x,pt.y,col,6);
+  });
+  const pc=document.getElementById('ptCount'); if(pc)pc.textContent=pts.length;
+}
+document.getElementById('drawCanvas').addEventListener('pointerdown',e=>{
+  const cv=e.currentTarget, r=cv.getBoundingClientRect();
+  const px=(e.clientX-r.left)*cv.width/r.width, py=(e.clientY-r.top)*cv.height/r.height;
+  let x=drawV.invX(px), y=drawV.invY(py);
+  x=Math.round(x*2)/2; y=Math.round(y*2)/2;
+  pts.push({x,y}); hideMsg(); redrawDraw();
+});
+function undoPoint(){ pts.pop(); hideMsg(); redrawDraw(); }
+function clearPoints(){ pts=[]; revealed=false; hideMsg(); redrawDraw(); }
+function revealCurve(){ revealed=true; redrawDraw(true); }
+function hideMsg(){ document.getElementById('drawMsg').className='msg'; }
+function checkDrawing(){
+  const m=document.getElementById('drawMsg');
+  if(pts.length<5){
+    m.className='msg show mid'; m.textContent='Place at least 5 points first — you have '+pts.length+'.';
+    return;
+  }
+  const results=pts.map(pt=>Math.abs(pf(pt.x)-pt.y)<=0.75);
+  const good=results.filter(Boolean).length, pct=good/pts.length;
+  redrawDraw(true,results);
+  if(pct===1){ m.className='msg show ok'; m.textContent='Perfect! All '+good+' points lie on the parabola. \u{1F389}'; }
+  else if(pct>=0.7){ m.className='msg show mid'; m.textContent=good+' of '+pts.length+' points are on the curve — red points are off. Compare with the blue answer curve.'; }
+  else { m.className='msg show bad'; m.textContent='Only '+good+' of '+pts.length+' points fit. Find the vertex with x = −b/(2a), then mirror points across the dashed axis.'; }
+}
+syncProb();
+
+/* ================= ARC lab ================= */
+const arcV = makeView(document.getElementById('arcCanvas'));
+const arcAS=document.getElementById('arcA'), arcBS=document.getElementById('arcB');
+const arcF=x=>-x*x+2*x-1;
+function setArc(a,b){ arcAS.value=a; arcBS.value=b; drawArc(); }
+function drawArc(){
+  let a=+arcAS.value, b=+arcBS.value;
+  if(a>=b){ a=b-1; arcAS.value=a; }
+  document.getElementById('arcAVal').textContent=fmt(a);
+  document.getElementById('arcBVal').textContent=fmt(b);
+  const fa=arcF(a), fb=arcF(b), rate=(fb-fa)/(b-a);
+  arcV.grid();
+  arcV.curve(arcF,'#1a4fa0',3.5);
+  /* extended secant */
+  const m=rate, yl=fa+m*(-11-a), yr=fa+m*(11-a);
+  arcV.line(-11,yl,11,yr,'#16a34a',2.5);
+  arcV.dot(a,fa,'#e05c2a',7); arcV.dot(b,fb,'#e05c2a',7);
+  document.getElementById('arcInfo').innerHTML=
+    '<div style="font-family:Courier New,monospace;font-weight:bold;color:#0f2d6b;">f(x) = −x² + 2x − 1 on ['+fmt(a)+', '+fmt(b)+']</div>'+
+    '<div><b>f('+fmt(a)+') =</b> <span class="math">'+fmt(fa)+'</span> &nbsp; <b>f('+fmt(b)+') =</b> <span class="math">'+fmt(fb)+'</span></div>'+
+    '<div><b>Average rate of change</b></div>'+
+    '<div class="math">= ('+fmt(fb)+' − ('+fmt(fa)+')) / ('+fmt(b)+' − ('+fmt(a)+'))</div>'+
+    '<div class="math">= '+fmt(fb-fa)+' / '+fmt(b-a)+' = <span style="color:#16a34a;">'+fmt(rate)+'</span></div>'+
+    '<div style="color:#64748b;font-size:.88rem;">= slope of the green secant line</div>';
+}
+[arcAS,arcBS].forEach(s=>s.addEventListener('input',drawArc));
+drawArc();
+
+/* ================= quiz ================= */
+const QUIZ=[
+ {q:'What is the axis of symmetry of f(x) = x² + 6x + 8?',
+  o:['x = −3','x = 3','x = −6','x = 6'],a:0,
+  e:'x = −b/(2a) = −6/(2·1) = −3.'},
+ {q:'What is the vertex of f(x) = x² − 4x + 3?',
+  o:['(2, −1)','(−2, 15)','(2, 3)','(4, 3)'],a:0,
+  e:'x = −(−4)/2 = 2 and f(2) = 4 − 8 + 3 = −1.'},
+ {q:'Which statement is true for f(x) = −2x² + 8x − 1?',
+  o:['Opens down; has a maximum','Opens up; has a minimum','Opens down; has a minimum','Opens up; has a maximum'],a:0,
+  e:'a = −2 &lt; 0, so the parabola opens down and its vertex is a maximum.'},
+ {q:'What is the y-intercept of f(x) = 3x² − 5x + 7?',
+  o:['(0, 7)','(0, 3)','(0, −5)','(7, 0)'],a:0,
+  e:'The y-intercept of ax² + bx + c is always (0, c) = (0, 7).'},
+ {q:'What is the range of f(x) = x² + 2?',
+  o:['y ≥ 2','y ≤ 2','all real numbers','y ≥ 0'],a:0,
+  e:'Vertex (0, 2) with a &gt; 0 (opens up), so y ≥ 2.'},
+ {q:'What is the range of f(x) = −x² + 4x?',
+  o:['y ≤ 4','y ≥ 4','y ≤ 2','all real numbers'],a:0,
+  e:'Vertex at x = 2, f(2) = 4; opens down, so y ≤ 4.'},
+ {q:'What is the domain of f(x) = −7x² + 21x − 8?',
+  o:['all real numbers','x ≥ 1.5','x ≤ 1.5','x ≥ 0'],a:0,
+  e:'The domain of every quadratic function is all real numbers.'},
+ {q:'What is the minimum value of f(x) = 2x² − 8x + 3?',
+  o:['−5','3','2','−8'],a:0,
+  e:'x = 8/4 = 2 and f(2) = 8 − 16 + 3 = −5.'},
+ {q:'What is the average rate of change of f(x) = x² over [1, 3]?',
+  o:['4','8','2','9'],a:0,
+  e:'(f(3) − f(1))/(3 − 1) = (9 − 1)/2 = 4.'},
+ {q:'What is the average rate of change of f(x) = −x² + 2x − 1 over [−4, 4]?',
+  o:['2','−2','16','−17/4'],a:0,
+  e:'(f(4) − f(−4))/8 = (−9 − (−25))/8 = 16/8 = 2.'},
+ {q:'A table gives f(−3) = 48 and f(3) = −24. What is the average rate of change over [−3, 3]?',
+  o:['−12','12','−72','−4'],a:0,
+  e:'(−24 − 48)/(3 − (−3)) = −72/6 = −12.'},
+ {q:'Which function has the greater maximum: f(x) = −(x − 1)² + 3 or g(x) = −(x + 2)² + 5?',
+  o:['g(x); 5 > 3','f(x); 1 > −2','f(x); 3 > −5','They are equal'],a:0,
+  e:'Maximum of f is 3 (vertex y-value); maximum of g is 5; 5 > 3.'},
+ {q:'What is the axis of symmetry of f(x) = −3x² − 9x + 2?',
+  o:['x = −1.5','x = 1.5','x = −3','x = 3'],a:0,
+  e:'x = −(−9)/(2·(−3)) = 9/(−6) = −1.5.'},
+ {q:'What is the vertex of f(x) = x² − 10x + 5?',
+  o:['(5, −20)','(−5, 80)','(5, 5)','(10, 5)'],a:0,
+  e:'x = 10/2 = 5 and f(5) = 25 − 50 + 5 = −20.'},
+ {q:'Does f(x) = 9x − 1 − 18x² have a maximum or a minimum value?',
+  o:['Maximum, because a = −18','Minimum, because a = 9','Minimum, because c = −1','Neither'],a:0,
+  e:'Rewrite as −18x² + 9x − 1: a = −18 &lt; 0, so it opens down and has a maximum.'}
+];
+let answered=0, score=0;
+const quizBox=document.getElementById('quizBox');
+function buildQuiz(){
+  answered=0; score=0; quizBox.innerHTML=''; document.getElementById('scorePanel').style.display='none';
+  QUIZ.forEach((item,qi)=>{
+    const letters=['A','B','C','D'];
+    const order=[0,1,2,3].sort(()=>Math.random()-.5);
+    const div=document.createElement('div'); div.className='q';
+    div.innerHTML='<h4><span class="qn">Q'+(qi+1)+'.</span> '+item.q+'</h4>';
+    const opts=document.createElement('div'); opts.className='opts';
+    order.forEach((oi,slot)=>{
+      const b=document.createElement('button'); b.className='opt';
+      b.innerHTML='<b>'+letters[slot]+'.</b> '+item.o[oi];
+      b.onclick=()=>{
+        [...opts.children].forEach(x=>x.disabled=true);
+        const correct = oi===item.a;
+        if(correct){ b.classList.add('correct'); score++; }
+        else{
+          b.classList.add('wrong');
+          [...opts.children].forEach((x,s)=>{ if(order[s]===item.a) x.classList.add('correct'); });
+        }
+        expl.className='expl show'; expl.innerHTML=(correct?'✅ Correct! ':'❌ ')+item.e;
+        answered++;
+        if(answered===QUIZ.length) showScore();
+      };
+      opts.appendChild(b);
+    });
+    const expl=document.createElement('div'); expl.className='expl';
+    div.appendChild(opts); div.appendChild(expl); quizBox.appendChild(div);
+  });
+}
+function showScore(){
+  const p=document.getElementById('scorePanel');
+  document.getElementById('scoreNum').textContent=score;
+  const pct=score/QUIZ.length;
+  document.getElementById('scoreMsg').textContent =
+    pct===1?'Flawless! You have mastered graphing quadratics. \u{1F3C6}':
+    pct>=0.8?'Excellent work — just review the ones you missed.':
+    pct>=0.6?'Good effort! Revisit the worked examples and try again.':
+    'Keep going — reread the concept cards, use the explorer, then retake the quiz.';
+  p.style.display='block'; p.scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){ buildQuiz(); document.getElementById('quiz').scrollIntoView({behavior:'smooth'}); }
+buildQuiz();
+</script>
+</div>
+<footer>Lesson 3-1 &middot; Graphing Quadratic Functions &middot; Interactive Study Page</footer>
+</body>
+</html>

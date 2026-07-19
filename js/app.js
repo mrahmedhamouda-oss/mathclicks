@@ -1,4 +1,4 @@
-/* 10SAT Math Practice — all site logic.
+/* MathClicks — all site logic.
    Content lives in data/topics/*.json; this file never needs editing to add lessons. */
 
 "use strict";
@@ -70,6 +70,7 @@ async function boot() {
   // Students only ever see lessons marked ready by the teacher
   TOPICS = all.filter((t) => t.published);
   window.addEventListener("hashchange", route);
+  initSearch();
   route();
 }
 
@@ -118,12 +119,25 @@ function saveScore(id, correct, total) {
 const main = document.getElementById("main");
 
 function route() {
-  const parts = (location.hash || "#/modules").slice(2).split("/");
+  const parts = (location.hash || "#/").slice(2).split("/");
+  const view = parts[0] || "home";
   window.scrollTo(0, 0);
-  if (parts[0] === "module") renderModule(decodeURIComponent(parts[1] || ""));
-  else if (parts[0] === "topic") renderTopic(decodeURIComponent(parts[1] || ""));
-  else renderModules();
+  main.dataset.view = view;
+  if (view === "module") renderModule(decodeURIComponent(parts[1] || ""));
+  else if (view === "topic") renderTopic(decodeURIComponent(parts[1] || ""));
+  else if (view === "modules") renderModules();
+  else if (view === "igcse") renderIgcse();
+  else renderHome();
+  setActiveNav(view);
   typeset(main);
+}
+
+function setActiveNav(view) {
+  const topicViews = new Set(["modules", "module", "topic"]);
+  document.querySelectorAll(".nav-link").forEach((a) => {
+    const active = a.dataset.nav === "topics" ? topicViews.has(view) : view === "home";
+    a.classList.toggle("active", active);
+  });
 }
 
 function typeset(el) {
@@ -169,27 +183,37 @@ function countBadge(t) {
   return el("span", "badge" + (n ? "" : " soon"), n ? plural(n, "question") : "coming soon");
 }
 
-function bigCard(href, domCls, icon, title, sub) {
-  const a = el("a", "card " + domCls);
-  a.href = href;
-  a.appendChild(el("div", "card-icon", icon));
+function moduleCard(m) {
+  const a = el("a", "card " + moduleDomClass(m.topics));
+  a.href = "#/module/" + moduleSlug(m.name);
+  a.appendChild(el("div", "card-icon", MODULE_ICON));
   const body = el("div", "card-body");
-  body.appendChild(el("div", "card-title", title));
-  body.appendChild(el("div", "card-sub", sub));
+  body.appendChild(el("div", "card-title", m.name));
+  body.appendChild(el("div", "card-sub", subLine(m.topics)));
+  const done = m.topics.filter((t) => bestScore(t.id)).length;
+  const prog = el("div", "mprog");
+  const bar = el("div", "mprog-bar");
+  const fill = el("div", "mprog-fill");
+  fill.style.width = (done / m.topics.length) * 100 + "%";
+  bar.appendChild(fill);
+  prog.appendChild(bar);
+  prog.appendChild(el("span", "mprog-label", `${done}/${m.topics.length} done`));
+  body.appendChild(prog);
   a.appendChild(body);
   a.appendChild(el("span", "card-arrow", "›"));
   return a;
 }
 
-function lessonCard(t) {
+function lessonCard(t, i) {
   const a = el("a", "card " + domClass(t.satDomain));
   a.href = "#/topic/" + t.id;
-  a.appendChild(el("div", "card-icon", DOMAIN_ICONS[t.satDomain] || "📘"));
+  const done = bestScore(t.id);
+  a.appendChild(el("div", "step-dot" + (done ? " done" : ""), done ? "✓" : String(i + 1)));
   const body = el("div", "card-body");
   const title = el("div", "card-title", t.title);
   title.appendChild(countBadge(t));
   body.appendChild(title);
-  const extras = [t.lessonCode];
+  const extras = [t.lessonCode, `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`];
   if (t.videos && t.videos.length) extras.push(`🎬 ${plural(t.videos.length, "video")}`);
   body.appendChild(el("div", "card-sub", extras.join(" · ")));
   a.appendChild(body);
@@ -204,19 +228,109 @@ function subLine(topics) {
 
 // ---------- Views ----------
 
+function renderHome() {
+  main.replaceChildren();
+
+  // Hero
+  const hero = el("section", "hero");
+  const syms = el("div", "hero-symbols");
+  ["∑", "π", "√x", "÷", "x²", "∞", "θ"].forEach((s, i) =>
+    syms.appendChild(el("span", "sym s" + (i + 1), s))
+  );
+  hero.appendChild(syms);
+  const inner = el("div", "hero-inner");
+  inner.appendChild(el("div", "hero-eyebrow", "MathClicks"));
+  const h1 = el("h1", "hero-title", "Now it's your turn to ");
+  h1.appendChild(el("span", "hero-click", "click it."));
+  inner.appendChild(h1);
+  inner.appendChild(el("p", "hero-sub",
+    "Short video explanations, interactive notes, and instant-feedback quizzes — built for IGCSE and SAT math students."));
+  const cta = el("div", "hero-cta");
+  const browse = el("a", "btn btn-cta", "Browse Topics →");
+  browse.href = "#/modules";
+  cta.appendChild(browse);
+  inner.appendChild(cta);
+  hero.appendChild(inner);
+  main.appendChild(hero);
+
+  // Feature strip
+  const feats = el("div", "features");
+  for (const [icon, title, sub] of [
+    ["🎬", "Watch", "Short video explanations"],
+    ["🧠", "Learn", "Interactive lesson notes"],
+    ["⚡", "Practice", "Quizzes with instant feedback"],
+  ]) {
+    const f = el("div", "feature");
+    f.appendChild(el("div", "feature-icon", icon));
+    const b = el("div");
+    b.appendChild(el("div", "feature-title", title));
+    b.appendChild(el("div", "feature-sub", sub));
+    f.appendChild(b);
+    feats.appendChild(f);
+  }
+  main.appendChild(feats);
+
+  // Subject areas
+  main.appendChild(el("h2", "home-sec-title", "Pick your path"));
+  const grid = el("div", "subject-grid");
+
+  const totalQ = TOPICS.reduce((s, t) => s + qCount(t), 0);
+  const done = TOPICS.filter((t) => bestScore(t.id)).length;
+  const satChips = [`📚 ${plural(TOPICS.length, "lesson")}`, `📝 ${plural(totalQ, "question")}`];
+  if (done) satChips.push(`⭐ ${done} completed`);
+  grid.appendChild(subjectCard({
+    cls: "sat", href: "#/modules", icon: "🎯", title: "American Pathway",
+    sub: "",
+    chips: satChips, cta: "Start practicing →",
+  }));
+  grid.appendChild(subjectCard({
+    cls: "igcse", href: "#/igcse", icon: "📘", title: "IGCSE Math",
+    sub: "New lessons are on the way — stay tuned!",
+    chips: [], cta: "Peek inside →", soon: true,
+  }));
+  main.appendChild(grid);
+}
+
+function subjectCard(o) {
+  const a = el("a", "subject " + o.cls);
+  a.href = o.href;
+  a.appendChild(el("div", "subject-icon", o.icon));
+  a.appendChild(el("div", "subject-title", o.title));
+  a.appendChild(el("div", "subject-sub", o.sub));
+  const meta = el("div", "subject-meta");
+  for (const c of o.chips) meta.appendChild(el("span", "subject-chip", c));
+  a.appendChild(meta);
+  a.appendChild(el("span", "subject-go", o.cta));
+  if (o.soon) a.appendChild(el("span", "soon-badge", "Coming soon"));
+  return a;
+}
+
+function renderIgcse() {
+  main.replaceChildren();
+  main.appendChild(backLink("#/", "← Home"));
+  main.appendChild(el("h2", "page-title", "IGCSE Math"));
+  const box = el("div", "empty-note big");
+  box.appendChild(el("div", "empty-emoji", "🚧"));
+  box.appendChild(el("div", "empty-title", "Coming soon!"));
+  box.appendChild(el("p", null,
+    "IGCSE lessons are being prepared. In the meantime, SAT Prep is ready for you."));
+  const b = el("a", "btn btn-cta", "Browse SAT Topics");
+  b.href = "#/modules";
+  box.appendChild(b);
+  main.appendChild(box);
+}
+
 function renderModules() {
   main.replaceChildren();
-  main.appendChild(el("h2", "page-title", "Lessons"));
+  main.appendChild(backLink("#/", "← Home"));
+  main.appendChild(el("h2", "page-title", "SAT Prep"));
+  main.appendChild(el("p", "page-sub", "American Pathway — pick a module to begin."));
   if (!TOPICS.length) {
     main.appendChild(el("div", "empty-note", "Lessons will appear here as we cover them in class — check back soon!"));
     return;
   }
   main.appendChild(statsStrip());
-  for (const m of moduleList()) {
-    main.appendChild(
-      bigCard("#/module/" + moduleSlug(m.name), moduleDomClass(m.topics), MODULE_ICON, m.name, subLine(m.topics))
-    );
-  }
+  for (const m of moduleList()) main.appendChild(moduleCard(m));
 }
 
 function renderModule(slug) {
@@ -225,13 +339,74 @@ function renderModule(slug) {
   main.replaceChildren();
   main.appendChild(backLink("#/modules", "← All modules"));
   main.appendChild(el("h2", "page-title", m.name));
-  for (const t of m.topics) main.appendChild(lessonCard(t));
+  m.topics.forEach((t, i) => main.appendChild(lessonCard(t, i)));
 }
 
 function backLink(href, text) {
   const a = el("a", "back-link", text);
   a.href = href;
   return a;
+}
+
+// ---------- Lesson search overlay ----------
+
+function initSearch() {
+  const overlay = document.getElementById("search-overlay");
+  const input = document.getElementById("search-input");
+  const results = document.getElementById("search-results");
+
+  function renderResults(q) {
+    results.replaceChildren();
+    q = q.trim().toLowerCase();
+    const hits = TOPICS.filter((t) =>
+      !q ||
+      t.title.toLowerCase().includes(q) ||
+      t.lessonCode.toLowerCase().includes(q) ||
+      t.curriculumModule.toLowerCase().includes(q)
+    ).slice(0, 12);
+    if (!hits.length) {
+      results.appendChild(el("div", "search-empty",
+        q ? "No lessons match — try a different word." : "No lessons published yet."));
+      return;
+    }
+    for (const t of hits) {
+      const a = el("a", "search-hit " + domClass(t.satDomain));
+      a.href = "#/topic/" + t.id;
+      a.appendChild(el("span", "hit-code", t.lessonCode));
+      const b = el("div", "hit-body");
+      b.appendChild(el("div", "hit-title", t.title));
+      b.appendChild(el("div", "hit-sub", t.curriculumModule));
+      a.appendChild(b);
+      results.appendChild(a);
+    }
+  }
+
+  const open = () => {
+    overlay.classList.remove("hidden");
+    document.body.classList.add("no-scroll");
+    input.value = "";
+    renderResults("");
+    setTimeout(() => input.focus(), 0);
+  };
+  const close = () => {
+    overlay.classList.add("hidden");
+    document.body.classList.remove("no-scroll");
+  };
+
+  document.getElementById("nav-search").addEventListener("click", open);
+  document.getElementById("search-close").addEventListener("click", close);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !overlay.classList.contains("hidden")) close();
+  });
+  input.addEventListener("input", () => renderResults(input.value));
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const first = results.querySelector("a");
+      if (first) first.click();
+    }
+  });
+  results.addEventListener("click", (e) => { if (e.target.closest("a")) close(); });
 }
 
 // ---------- Lesson page: videos + quiz ----------
@@ -349,7 +524,7 @@ function initNumberLine(box) {
   box.appendChild(readout);
   box.appendChild(svgBox);
 
-  const color = getComputedStyle(box).getPropertyValue("--dc").trim() || "#4f46e5";
+  const color = getComputedStyle(box).getPropertyValue("--dc").trim() || "#3B5BDB";
 
   function render() {
     const av = parseInt(a.input.value), cv = parseInt(c.input.value);
@@ -562,7 +737,7 @@ function showResults(quiz, holder) {
 
   const ring = el("div", "score-ring");
   ring.style.setProperty("--pct", pct);
-  ring.style.setProperty("--ring", pct === 100 ? "#16a34a" : pct >= 70 ? "#4f46e5" : "#d97706");
+  ring.style.setProperty("--ring", pct === 100 ? "#0CA678" : pct >= 70 ? "#2A3A7C" : "#E8590C");
   const inner = el("div");
   inner.appendChild(el("div", "score-num", `${quiz.correct}/${t.questions.length}`));
   inner.appendChild(el("div", "score-pct", `${pct}%`));

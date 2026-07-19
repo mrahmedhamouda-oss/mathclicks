@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <title>10SAT Math Practice</title>
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <meta name="theme-color" content="#1F2B5B">
+  <title>MathClicks — IGCSE &amp; SAT Math</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
@@ -15,13 +19,24 @@
   <!-- Passcode gate -->
   <div id="gate" class="gate hidden">
     <div class="gate-card">
-      <div class="gate-logo">🎯</div>
-      <h1>10SAT Math Practice</h1>
-      <p>Enter the class passcode to continue.</p>
+      <div class="gate-logo" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="56" height="56" role="img" aria-label="MathClicks logo">
+          <rect x="1" y="1" width="38" height="38" rx="11" fill="#1F2B5B"/>
+          <text x="19" y="28" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="900" font-size="21" fill="#ffffff">M</text>
+          <g stroke="#FF6B5C" stroke-width="2.6" stroke-linecap="round">
+            <line x1="30" y1="10.5" x2="33.5" y2="7"/>
+            <line x1="31.5" y1="15.5" x2="36.5" y2="14.5"/>
+            <line x1="25.5" y1="8.5" x2="26.5" y2="3.5"/>
+          </g>
+        </svg>
+      </div>
+      <h1>Math<span class="brand-accent">Clicks</span></h1>
+      <p class="gate-tag">Now it's your turn to click it.</p>
+      <p class="gate-note">Enter the class passcode to continue.</p>
       <form id="gate-form">
         <input type="password" id="gate-input" inputmode="text" autocomplete="off"
                placeholder="Passcode" aria-label="Passcode">
-        <button type="submit" class="btn btn-primary">Enter</button>
+        <button type="submit" class="btn btn-cta">Enter</button>
       </form>
       <p id="gate-error" class="gate-error hidden">That passcode isn't right — check with your teacher.</p>
     </div>
@@ -29,16 +44,63 @@
 
   <!-- Site -->
   <div id="site" class="hidden">
-    <header class="site-header">
-      <div class="header-inner">
-        <a href="#/modules" class="site-title">🎯 10SAT Math Practice</a>
-        <p class="site-sub">Watch the explanation, then test your understanding — lesson by lesson.</p>
+    <header class="topnav">
+      <div class="topnav-inner">
+        <a href="#/" class="brand" aria-label="MathClicks home">
+          <svg class="brand-logo" viewBox="0 0 40 40" width="32" height="32" aria-hidden="true">
+            <rect x="1" y="1" width="38" height="38" rx="11" fill="#1F2B5B"/>
+            <text x="19" y="28" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="900" font-size="21" fill="#ffffff">M</text>
+            <g stroke="#FF6B5C" stroke-width="2.6" stroke-linecap="round">
+              <line x1="30" y1="10.5" x2="33.5" y2="7"/>
+              <line x1="31.5" y1="15.5" x2="36.5" y2="14.5"/>
+              <line x1="25.5" y1="8.5" x2="26.5" y2="3.5"/>
+            </g>
+          </svg>
+          <span class="brand-name">Math<span class="brand-accent">Clicks</span></span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-link" data-nav="home" href="#/">Home</a>
+          <a class="nav-link" data-nav="topics" href="#/modules">Topics</a>
+        </nav>
+        <button id="nav-search" class="nav-search" type="button" aria-label="Search lessons">
+          <span aria-hidden="true">🔍</span><span class="nav-search-label">Search</span>
+        </button>
       </div>
     </header>
-    <main id="main"></main>
-    <footer class="site-footer">Algebra 2 &amp; Geometry · American Pathway · 2026–2027</footer>
+
+    <main id="main" data-view="home"></main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand-name">Math<span class="brand-accent">Clicks</span></span>
+          <p class="footer-tag">Now it's your turn to click it.</p>
+        </div>
+        <div class="footer-social">
+          <a class="social-btn" href="https://www.youtube.com/channel/UC6QrK419Gg5w1SXzlBbYXCw" target="_blank" rel="noopener">
+            <span aria-hidden="true">▶</span> YouTube
+          </a>
+          <a class="social-btn" href="https://www.tiktok.com/@apple.user3799222" target="_blank" rel="noopener">
+            <span aria-hidden="true">♪</span> TikTok
+          </a>
+        </div>
+      </div>
+      <p class="footer-small">© 2026 MathClicks · IGCSE &amp; SAT math, one click at a time</p>
+    </footer>
   </div>
 
-  <script defer src="js/app.js?v=5"></script>
+  <!-- Lesson search overlay -->
+  <div id="search-overlay" class="search-overlay hidden" role="dialog" aria-modal="true" aria-label="Search lessons">
+    <div class="search-panel">
+      <div class="search-bar">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search lessons — try “quadratic”" autocomplete="off" aria-label="Search lessons">
+        <button id="search-close" class="search-close" type="button" aria-label="Close search">✕</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+
+  <script defer src="js/app.js?v=7"></script>
 </body>
 </html>
