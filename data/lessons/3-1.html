@@ -399,6 +399,7 @@
 </div>
 
 <script>
+(function(){
 /* ================= helpers ================= */
 function fmt(n){ return Math.abs(n-Math.round(n))<1e-9 ? String(Math.round(n)) : String(+n.toFixed(2)); }
 function eq(a,b,c){
@@ -670,6 +671,12 @@ function showScore(){
 }
 function resetQuiz(){ buildQuiz(); document.getElementById('quiz').scrollIntoView({behavior:'smooth'}); }
 buildQuiz();
+// Expose onclick handlers to global scope
+window.setExp=setExp; window.setArc=setArc;
+window.checkDrawing=checkDrawing; window.undoPoint=undoPoint;
+window.clearPoints=clearPoints; window.revealCurve=revealCurve;
+window.resetQuiz=resetQuiz;
+})();
 </script>
 </div>
 <footer>Lesson 3-1 &middot; Graphing Quadratic Functions &middot; Interactive Study Page</footer>
