@@ -613,6 +613,12 @@ function renderTopic(id) {
       .then((r) => r.text())
       .then((html) => {
         box.innerHTML = html;
+        // Re-execute inline scripts (innerHTML doesn't run them)
+        box.querySelectorAll("script").forEach((s) => {
+          const ns = document.createElement("script");
+          if (s.src) { ns.src = s.src; } else { ns.textContent = s.textContent; }
+          document.head.appendChild(ns).parentNode.removeChild(ns);
+        });
         wireLesson(box);
         typeset(box);
       });
