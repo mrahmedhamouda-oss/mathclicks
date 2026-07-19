@@ -41,8 +41,7 @@ if (localStorage.getItem(AUTH_KEY) === PASS_HASH) {
 
 // ---------- Data loading ----------
 
-let TOPICS = [];          // in curriculum order
-let DOMAINS = [];
+let TOPICS = [];          // published lessons, in curriculum order
 
 const DOMAIN_ICONS = {
   "Algebra": "➗",
@@ -54,10 +53,11 @@ const MODULE_ICON = "📘";
 
 async function boot() {
   const manifest = await (await fetch("data/manifest.json")).json();
-  DOMAINS = manifest.domains;
-  TOPICS = await Promise.all(
+  const all = await Promise.all(
     manifest.topics.map((f) => fetch("data/topics/" + f).then((r) => r.json()))
   );
+  // Students only ever see lessons marked ready by the teacher
+  TOPICS = all.filter((t) => t.published);
   window.addEventListener("hashchange", route);
   route();
 }
@@ -108,20 +108,11 @@ const main = document.getElementById("main");
 
 function route() {
   const parts = (location.hash || "#/modules").slice(2).split("/");
-  setActiveTab(parts[0]);
   window.scrollTo(0, 0);
-  if (parts[0] === "domains") renderDomains();
-  else if (parts[0] === "domain") renderDomain(decodeURIComponent(parts[1] || ""));
-  else if (parts[0] === "module") renderModule(decodeURIComponent(parts[1] || ""));
+  if (parts[0] === "module") renderModule(decodeURIComponent(parts[1] || ""));
   else if (parts[0] === "topic") renderTopic(decodeURIComponent(parts[1] || ""));
   else renderModules();
   typeset(main);
-}
-
-function setActiveTab(view) {
-  const domainy = view === "domains" || view === "domain";
-  document.getElementById("tab-modules").classList.toggle("active", !domainy);
-  document.getElementById("tab-domains").classList.toggle("active", domainy);
 }
 
 function typeset(el) {
@@ -204,7 +195,11 @@ function subLine(topics) {
 
 function renderModules() {
   main.replaceChildren();
-  main.appendChild(el("h2", "page-title", "Browse by curriculum module"));
+  main.appendChild(el("h2", "page-title", "Lessons"));
+  if (!TOPICS.length) {
+    main.appendChild(el("div", "empty-note", "Lessons will appear here as we cover them in class — check back soon!"));
+    return;
+  }
   main.appendChild(statsStrip());
   for (const m of moduleList()) {
     main.appendChild(
@@ -220,33 +215,6 @@ function renderModule(slug) {
   main.appendChild(backLink("#/modules", "← All modules"));
   main.appendChild(el("h2", "page-title", m.name));
   for (const t of m.topics) main.appendChild(lessonCard(t));
-}
-
-function renderDomains() {
-  main.replaceChildren();
-  main.appendChild(el("h2", "page-title", "Browse by SAT Math domain"));
-  main.appendChild(statsStrip());
-  for (const d of DOMAINS) {
-    const topics = TOPICS.filter((t) => t.satDomain === d);
-    main.appendChild(
-      bigCard("#/domain/" + domainSlug(d), domClass(d), DOMAIN_ICONS[d] || "📘", d, subLine(topics))
-    );
-  }
-}
-
-function renderDomain(slug) {
-  const d = DOMAINS.find((d) => domainSlug(d) === slug);
-  if (!d) return renderDomains();
-  main.replaceChildren();
-  main.appendChild(backLink("#/domains", "← All domains"));
-  main.appendChild(el("h2", "page-title", d));
-  // group by module, curriculum order
-  for (const m of moduleList()) {
-    const topics = m.topics.filter((t) => t.satDomain === d);
-    if (!topics.length) continue;
-    main.appendChild(el("div", "group-label", m.name));
-    for (const t of topics) main.appendChild(lessonCard(t));
-  }
 }
 
 function backLink(href, text) {

@@ -3,6 +3,12 @@
 SAT Math practice site for 10SAT (Algebra 2 & Geometry, American Pathway, 2026–2027).
 Static site — no build step. All content lives in `data/`.
 
+## Publishing lessons
+
+Every lesson file in `data/topics/` has a `"published"` flag. Students only see
+lessons where it is `true` — everything else is invisible to them. When a
+lesson's content is ready, flip `"published": false` to `true`.
+
 ## Adding questions to a lesson
 
 Every lesson already has a file in `data/topics/`. Open it and add question
