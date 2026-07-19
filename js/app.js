@@ -3,6 +3,9 @@
 
 "use strict";
 
+// Cache-buster so students always see freshly published content
+const BUST = "?t=" + Date.now();
+
 // ---------- Passcode gate (courtesy gate, not real security) ----------
 
 const PASS_HASH = "51a12285";
@@ -20,7 +23,15 @@ const site = document.getElementById("site");
 function unlock() {
   gate.classList.add("hidden");
   site.classList.remove("hidden");
-  boot();
+  boot().catch((err) => {
+    console.error("boot failed:", err);
+    const main = document.getElementById("main");
+    main.replaceChildren();
+    const note = document.createElement("div");
+    note.className = "empty-note";
+    note.textContent = "Couldn't load the lessons — check your connection and refresh the page.";
+    main.appendChild(note);
+  });
 }
 
 if (localStorage.getItem(AUTH_KEY) === PASS_HASH) {
@@ -52,9 +63,9 @@ const DOMAIN_ICONS = {
 const MODULE_ICON = "📘";
 
 async function boot() {
-  const manifest = await (await fetch("data/manifest.json")).json();
+  const manifest = await (await fetch("data/manifest.json" + BUST)).json();
   const all = await Promise.all(
-    manifest.topics.map((f) => fetch("data/topics/" + f).then((r) => r.json()))
+    manifest.topics.map((f) => fetch("data/topics/" + f + BUST).then((r) => r.json()))
   );
   // Students only ever see lessons marked ready by the teacher
   TOPICS = all.filter((t) => t.published);
@@ -254,6 +265,145 @@ function videoCard(v) {
   return card;
 }
 
+// ---------- Interactive lesson-notes behaviors ----------
+
+function wireLesson(root) {
+  // Collapsible examples (first one open)
+  root.querySelectorAll(".example-card").forEach((card) => {
+    card.querySelector(".example-header").addEventListener("click", () =>
+      card.classList.toggle("open")
+    );
+  });
+  const first = root.querySelector(".example-card");
+  if (first) first.classList.add("open");
+
+  // Vocabulary flip cards
+  root.querySelectorAll(".vocab-card").forEach((c) =>
+    c.addEventListener("click", () => c.classList.toggle("flipped"))
+  );
+
+  // Step-by-step reveal sequences
+  root.querySelectorAll(".reveal-seq").forEach(wireRevealSeq);
+
+  // Number line explorers
+  root.querySelectorAll(".nl-explorer").forEach(initNumberLine);
+}
+
+function wireRevealSeq(seq) {
+  const items = [...seq.children];
+  if (!items.length) return;
+  items.forEach((it) => (it.hidden = true));
+
+  const label = (i) =>
+    items[i].classList.contains("solution-display")
+      ? "✨ Show the solution"
+      : `👀 Show step ${i + 1} of ${items.filter((x) => !x.classList.contains("solution-display")).length}`;
+
+  const btn = el("button", "reveal-btn", label(0));
+  seq.after(btn);
+  let i = 0;
+  btn.addEventListener("click", () => {
+    items[i].hidden = false;
+    items[i].scrollIntoView({ behavior: "smooth", block: "nearest" });
+    i++;
+    if (i >= items.length) btn.remove();
+    else btn.textContent = label(i);
+  });
+}
+
+// Live number-line explorer for |x - a| (sym) c
+function initNumberLine(box) {
+  const controls = el("div", "nl-controls");
+
+  const symWrap = el("label", null, "Symbol ");
+  const sym = document.createElement("select");
+  for (const [v, txt] of [["lt", "<"], ["le", "≤"], ["gt", ">"], ["ge", "≥"]]) {
+    const o = document.createElement("option");
+    o.value = v; o.textContent = txt;
+    sym.appendChild(o);
+  }
+  symWrap.appendChild(sym);
+
+  const mkSlider = (labelText, min, max, val) => {
+    const wrap = el("label", null, labelText + " ");
+    const out = el("output", null, String(val));
+    const input = document.createElement("input");
+    input.type = "range"; input.min = min; input.max = max; input.value = val; input.step = 1;
+    wrap.appendChild(out);
+    wrap.appendChild(input);
+    return { wrap, input, out };
+  };
+  const a = mkSlider("Center a:", -4, 4, 1);
+  const c = mkSlider("Distance c:", 1, 7, 3);
+
+  const join = el("span", "nl-join", "");
+  controls.appendChild(symWrap);
+  controls.appendChild(a.wrap);
+  controls.appendChild(c.wrap);
+  controls.appendChild(join);
+
+  const readout = el("div", "nl-readout");
+  const svgBox = el("div", "nl-svg");
+  box.appendChild(controls);
+  box.appendChild(readout);
+  box.appendChild(svgBox);
+
+  const color = getComputedStyle(box).getPropertyValue("--dc").trim() || "#4f46e5";
+
+  function render() {
+    const av = parseInt(a.input.value), cv = parseInt(c.input.value);
+    a.out.textContent = av; c.out.textContent = cv;
+    const s = sym.value;
+    const between = s === "lt" || s === "le";
+    const closed = s === "le" || s === "ge";
+    const lo = av - cv, hi = av + cv;
+    const inner = av === 0 ? "x" : av > 0 ? `x - ${av}` : `x + ${-av}`;
+    const S = { lt: "<", le: "\\le", gt: ">", ge: "\\ge" }[s];
+    const Sflip = { lt: ">", le: "\\ge", gt: "<", ge: "\\le" }[s];
+
+    join.textContent = between ? "AND — between" : "OR — outside";
+
+    const tex = between
+      ? `\\left|${inner}\\right| ${S} ${cv} \\;\\Rightarrow\\; ${-cv} ${S} ${inner} ${S} ${cv} \\;\\Rightarrow\\; ${lo} ${S} x ${S} ${hi}`
+      : `\\left|${inner}\\right| ${S} ${cv} \\;\\Rightarrow\\; x ${S} ${hi} \\;\\text{ or }\\; x ${Sflip} ${lo}`;
+    if (window.katex) katex.render(tex, readout, { throwOnError: false });
+    else readout.textContent = tex.replace(/\\left|\\right|\\;|\\le/g, "≤").replace(/\\ge/g, "≥");
+
+    // SVG number line: x in [-12, 12]
+    const W = 640, PAD = 26, AX = 46;
+    const xm = (v) => PAD + ((v + 12) * (W - 2 * PAD)) / 24;
+    let p = "";
+    for (let v = -12; v <= 12; v++) {
+      p += `<line x1="${xm(v)}" y1="${AX - 4}" x2="${xm(v)}" y2="${AX + 4}" stroke="#98a2b3" stroke-width="1"/>`;
+      if (v % 2 === 0)
+        p += `<text x="${xm(v)}" y="${AX + 22}" font-size="11" text-anchor="middle" fill="#667085">${v}</text>`;
+    }
+    const seg = (x1, x2, arrowLeft, arrowRight) => {
+      let out = `<line x1="${x1}" y1="${AX}" x2="${x2}" y2="${AX}" stroke="${color}" stroke-width="6" stroke-linecap="round" opacity="0.85"/>`;
+      out += `<rect x="${Math.min(x1, x2)}" y="${AX - 9}" width="${Math.abs(x2 - x1)}" height="18" rx="9" fill="${color}" opacity="0.14"/>`;
+      if (arrowLeft) out += `<polygon points="${x1 - 10},${AX} ${x1 + 2},${AX - 7} ${x1 + 2},${AX + 7}" fill="${color}"/>`;
+      if (arrowRight) out += `<polygon points="${x2 + 10},${AX} ${x2 - 2},${AX - 7} ${x2 - 2},${AX + 7}" fill="${color}"/>`;
+      return out;
+    };
+    let shade = "";
+    if (between) shade = seg(xm(lo), xm(hi), false, false);
+    else shade = seg(xm(-12), xm(lo), true, false) + seg(xm(hi), xm(12), false, true);
+    const dot = (v) =>
+      `<circle cx="${xm(v)}" cy="${AX}" r="7" fill="${closed ? color : "#fff"}" stroke="${color}" stroke-width="2.5"/>`;
+
+    svgBox.innerHTML =
+      `<svg viewBox="0 0 ${W} 76" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="number line">` +
+      `<line x1="${PAD - 12}" y1="${AX}" x2="${W - PAD + 12}" y2="${AX}" stroke="#98a2b3" stroke-width="2"/>` +
+      p + shade + dot(lo) + dot(hi) +
+      `</svg>`;
+  }
+
+  sym.addEventListener("input", render);
+  a.input.addEventListener("input", render);
+  c.input.addEventListener("input", render);
+  render();
+}
+
 function renderTopic(id) {
   const t = TOPICS.find((t) => t.id === id);
   if (!t) return renderModules();
@@ -267,11 +417,26 @@ function renderTopic(id) {
   chips.appendChild(el("span", "chip plain", t.curriculumModule));
   main.appendChild(chips);
 
+  // Interactive lesson notes
+  if (t.lessonHtml) {
+    main.appendChild(el("h3", "section-title", "📖 Learn the lesson"));
+    const box = el("div", "lesson-content " + domClass(t.satDomain));
+    main.appendChild(box);
+    fetch("data/" + t.lessonHtml + BUST)
+      .then((r) => r.text())
+      .then((html) => {
+        box.innerHTML = html;
+        wireLesson(box);
+        typeset(box);
+      });
+  }
+
   // Explanation videos
-  main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
   if (t.videos && t.videos.length) {
+    main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
     for (const v of t.videos) main.appendChild(videoCard(v));
-  } else {
+  } else if (!t.lessonHtml) {
+    main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
     main.appendChild(el("div", "empty-note", "Explanation video coming soon."));
   }
 

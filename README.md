@@ -52,6 +52,11 @@ also work:
 ]
 ```
 
+**Interactive lesson notes** — a lesson can have `"lessonHtml": "lessons/2-2.html"`
+pointing to an HTML fragment in `data/lessons/`. It renders as a "Learn the
+lesson" section (concept cards, collapsible examples with step-by-step reveal
+buttons, vocabulary flip cards, number-line explorer) above the video and quiz.
+
 Notes:
 
 - Math goes between `$...$` (LaTeX, rendered by KaTeX). Example: `$\frac{3}{4}$`, `$x^2$`, `$\sqrt{5}$`.
@@ -72,7 +77,8 @@ The site loads JSON with `fetch`, so it needs a local server (double-clicking
 
 ```
 cd sat-math-practice
-python3 -m http.server 8000
+python3 serve.py
 ```
 
-then open <http://localhost:8000>.
+then open <http://localhost:8017>. (`serve.py` disables caching so edits
+appear on refresh.)

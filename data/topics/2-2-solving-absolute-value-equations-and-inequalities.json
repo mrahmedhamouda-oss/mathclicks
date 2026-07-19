@@ -4,6 +4,104 @@
   "title": "Solving Absolute Value Equations and Inequalities",
   "curriculumModule": "Module 2: Linear Equations, Inequalities and Systems",
   "satDomain": "Advanced Math",
-  "published": false,
-  "questions": []
+  "published": true,
+  "lessonHtml": "lessons/2-2.html",
+  "videos": [],
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "difficulty": "easy",
+      "prompt": "Solve: $|x| = 7$",
+      "choices": ["$x = 7$ only", "$x = 7$ or $x = -7$", "$x = 0$", "No solution"],
+      "answer": "B",
+      "explanation": "$|x| = b$ means $x = b$ or $x = -b$. So $x = 7$ or $x = -7$."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "difficulty": "easy",
+      "prompt": "Solve: $|2x - 4| = 10$",
+      "choices": ["$x = 3$ or $x = -7$", "$x = 7$ only", "$x = 7$ or $x = -3$", "$x = -7$ or $x = 3$"],
+      "answer": "C",
+      "explanation": "Case 1: $2x - 4 = 10$ gives $x = 7$. Case 2: $2x - 4 = -10$ gives $x = -3$. Both check out."
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "difficulty": "medium",
+      "prompt": "What is the solution set of $|3x + 6| + 5 = 2$?",
+      "choices": ["$x = -1$ or $x = -3$", "$x = 0$", "$x = 3$", "$\\varnothing$ (no solution)"],
+      "answer": "D",
+      "explanation": "Isolate: $|3x + 6| = 2 - 5 = -3$. Absolute value can never equal a negative number, so there is no solution."
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "difficulty": "easy",
+      "prompt": "For $|ax + b| < c$ (with $c > 0$), the solution is written as which type of compound inequality?",
+      "choices": [
+        "$ax + b > c$  OR  $ax + b < -c$",
+        "$-c < ax + b < c$  (AND)",
+        "$ax + b > c$  AND  $ax + b > -c$",
+        "$ax + b = c$  or  $ax + b = -c$"
+      ],
+      "answer": "B",
+      "explanation": "\"Less than\" inequalities split into an AND compound inequality: $-c < ax + b < c$ — the solution is sandwiched between two values."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "difficulty": "medium",
+      "prompt": "Solve: $|x + 3| < 8$",
+      "choices": ["$-11 < x < 5$", "$x < 5$ or $x > -11$", "$x > 5$ or $x < -11$", "$-5 < x < 11$"],
+      "answer": "A",
+      "explanation": "$|x + 3| < 8 \\Rightarrow -8 < x + 3 < 8 \\Rightarrow -11 < x < 5$."
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "difficulty": "medium",
+      "prompt": "Solve: $|2x - 1| \\ge 7$",
+      "choices": ["$-3 \\le x \\le 4$", "$x \\ge 4$", "$x \\ge 4$ or $x \\le -3$", "$x > 4$ or $x < -3$"],
+      "answer": "C",
+      "explanation": "$|2x - 1| \\ge 7 \\Rightarrow 2x - 1 \\ge 7$ or $2x - 1 \\le -7 \\Rightarrow x \\ge 4$ or $x \\le -3$. The endpoints are included because of $\\ge$."
+    },
+    {
+      "id": "q7",
+      "type": "mcq",
+      "difficulty": "hard",
+      "prompt": "Which value is an extraneous solution of $|x - 2| = 3x - 10$?",
+      "choices": ["$x = 4$", "$x = 3$", "$x = 5$", "$x = 6$"],
+      "answer": "B",
+      "explanation": "Case 2 gives $x - 2 = -(3x - 10) \\Rightarrow 4x = 12 \\Rightarrow x = 3$. But substituting back: $|3 - 2| = 1$ while $3(3) - 10 = -1$, and $1 \\ne -1$ — so $x = 3$ is extraneous. (Case 1 gives $x = 4$, which does check: $|2| = 2 = 3(4) - 10$.)"
+    },
+    {
+      "id": "q8",
+      "type": "mcq",
+      "difficulty": "medium",
+      "prompt": "Solve: $3|x + 4| - 6 < 9$",
+      "choices": ["$x < -9$ or $x > 1$", "$-9 < x < 1$", "$x > 1$", "$-1 < x < 9$"],
+      "answer": "B",
+      "explanation": "$3|x + 4| < 15 \\Rightarrow |x + 4| < 5 \\Rightarrow -5 < x + 4 < 5 \\Rightarrow -9 < x < 1$."
+    },
+    {
+      "id": "q9",
+      "type": "mcq",
+      "difficulty": "easy",
+      "prompt": "What is the solution set of $|5x| = -25$?",
+      "choices": ["$\\varnothing$ (no solution)", "$x = -5$", "$x = 5$ or $x = -5$", "$x = 5$"],
+      "answer": "A",
+      "explanation": "$|5x| = -25$ is impossible because absolute value is always $\\ge 0$. The solution set is $\\varnothing$."
+    },
+    {
+      "id": "q10",
+      "type": "mcq",
+      "difficulty": "hard",
+      "prompt": "Which inequality represents the graph with open circles at $-4$ and $2$ and shading on both outer sides?",
+      "choices": ["$|x + 1| < 3$", "$|x - 1| \\le 3$", "$|x + 1| > 3$", "$|x - 1| \\ge 3$"],
+      "answer": "C",
+      "explanation": "Open circles with shading outside mean a strict \"greater than.\" The center is $\\frac{-4 + 2}{2} = -1$ and the distance to each endpoint is $3$, so $|x + 1| > 3$."
+    }
+  ]
 }
