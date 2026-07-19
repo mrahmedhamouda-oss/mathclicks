@@ -268,6 +268,13 @@ a.card:active { transform: none; }
 }
 .chip.plain { background: #f2f4f7; color: var(--muted); }
 
+.video-row { display: flex; flex-wrap: wrap; gap: .8rem; align-items: flex-start; }
+.video-row .video-card { flex: 1 1 100%; }
+.video-row .video-card--short { flex: 1 1 12rem; max-width: 15rem; }
+@media (max-width: 560px) {
+  .video-row .video-card--short { max-width: 100%; flex-basis: 100%; }
+}
+
 .video-card {
   background: var(--card);
   border: 1px solid var(--line);
@@ -276,7 +283,9 @@ a.card:active { transform: none; }
   overflow: hidden;
   margin-bottom: .8rem;
 }
+.video-row .video-card { margin-bottom: 0; }
 .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #101828; }
+.video-frame--tall { aspect-ratio: 9 / 16; }
 .video-frame iframe, .video-frame video {
   position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
 }

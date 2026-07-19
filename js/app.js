@@ -244,8 +244,9 @@ function youtubeId(url) {
 }
 
 function videoCard(v) {
-  const card = el("div", "video-card");
-  const frame = el("div", "video-frame");
+  const isShort = /\/shorts\//.test(String(v.url));
+  const card = el("div", "video-card" + (isShort ? " video-card--short" : ""));
+  const frame = el("div", "video-frame" + (isShort ? " video-frame--tall" : ""));
   const id = youtubeId(v.url);
   if (id) {
     const ifr = document.createElement("iframe");
@@ -417,6 +418,17 @@ function renderTopic(id) {
   chips.appendChild(el("span", "chip plain", t.curriculumModule));
   main.appendChild(chips);
 
+  // Explanation videos
+  if (t.videos && t.videos.length) {
+    main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
+    const row = el("div", "video-row");
+    for (const v of t.videos) row.appendChild(videoCard(v));
+    main.appendChild(row);
+  } else if (!t.lessonHtml) {
+    main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
+    main.appendChild(el("div", "empty-note", "Explanation video coming soon."));
+  }
+
   // Interactive lesson notes
   if (t.lessonHtml) {
     main.appendChild(el("h3", "section-title", "📖 Learn the lesson"));
@@ -429,15 +441,6 @@ function renderTopic(id) {
         wireLesson(box);
         typeset(box);
       });
-  }
-
-  // Explanation videos
-  if (t.videos && t.videos.length) {
-    main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
-    for (const v of t.videos) main.appendChild(videoCard(v));
-  } else if (!t.lessonHtml) {
-    main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
-    main.appendChild(el("div", "empty-note", "Explanation video coming soon."));
   }
 
   // Quiz
