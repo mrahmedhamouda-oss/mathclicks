@@ -95,6 +95,13 @@
   #scorePanel .big{font-size:2.6rem;font-weight:800;}
   footer{text-align:center;color:#94a3b8;font-size:.85rem;padding:20px;}
   svg text{font-family:system-ui,'Segoe UI',sans-serif;}
+  .vocab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;}
+  @media(max-width:700px){.vocab-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:440px){.vocab-grid{grid-template-columns:1fr;}}
+  .vtile{background:var(--bg);border:2px solid var(--c);border-radius:12px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:4px;}
+  .vtile-icon{font-size:1.4rem;font-weight:900;color:var(--c);line-height:1;}
+  .vtile-term{font-weight:800;color:var(--c);font-size:.95rem;margin-top:2px;}
+  .vtile-def{font-size:.87rem;color:#374151;line-height:1.45;}
 </style>
 </head>
 <body>
@@ -125,49 +132,95 @@
   <p>A <b>quadratic function</b> is a function that can be written in <b>standard form</b>:</p>
   <div class="kbox"><span class="math">f(x) = ax&sup2; + bx + c,&nbsp; where a &ne; 0</span></div>
   <p>Its graph is a U-shaped curve called a <b>parabola</b>.</p>
-  <div class="vocab">
-    <div class="vterm" onclick="this.classList.toggle('open')"><b>parabola</b><span>The U-shaped graph of a quadratic function.</span></div>
-    <div class="vterm" onclick="this.classList.toggle('open')"><b>vertex</b><span>The highest or lowest point of a parabola &mdash; where the graph turns around.</span></div>
-    <div class="vterm" onclick="this.classList.toggle('open')"><b>axis of symmetry</b><span>The vertical line x = &minus;b/(2a) that cuts the parabola into two mirror-image halves. It always passes through the vertex.</span></div>
-    <div class="vterm" onclick="this.classList.toggle('open')"><b>y-intercept</b><span>Where the graph crosses the y-axis. For f(x) = ax&sup2; + bx + c it is always the point (0, c).</span></div>
-    <div class="vterm" onclick="this.classList.toggle('open')"><b>maximum / minimum</b><span>The y-value of the vertex. It is a minimum if the parabola opens up (a &gt; 0), a maximum if it opens down (a &lt; 0).</span></div>
-    <div class="vterm" onclick="this.classList.toggle('open')"><b>average rate of change</b><span>How much f(x) changes per unit of x over an interval [a, b]: (f(b) &minus; f(a)) &divide; (b &minus; a).</span></div>
+  <div class="vocab-grid">
+    <div class="vtile" style="--c:#1a4fa0;--bg:#eef4fd;">
+      <div class="vtile-icon">∪</div>
+      <div class="vtile-term">parabola</div>
+      <div class="vtile-def">The U-shaped curve that is the graph of every quadratic function.</div>
+    </div>
+    <div class="vtile" style="--c:#e05c2a;--bg:#fdf0e9;">
+      <div class="vtile-icon">★</div>
+      <div class="vtile-term">vertex</div>
+      <div class="vtile-def">The highest or lowest point of a parabola — where it turns around.</div>
+    </div>
+    <div class="vtile" style="--c:#7c3aed;--bg:#f3f0ff;">
+      <div class="vtile-icon">⟷</div>
+      <div class="vtile-term">axis of symmetry</div>
+      <div class="vtile-def">The vertical line <b>x = &minus;b/(2a)</b> that splits the parabola into two mirror halves.</div>
+    </div>
+    <div class="vtile" style="--c:#16a34a;--bg:#ecfdf3;">
+      <div class="vtile-icon">◉</div>
+      <div class="vtile-term">y-intercept</div>
+      <div class="vtile-def">Where the curve crosses the y-axis. Always the point <b>(0, c)</b>.</div>
+    </div>
+    <div class="vtile" style="--c:#b45309;--bg:#fef9e7;">
+      <div class="vtile-icon">▲▼</div>
+      <div class="vtile-term">maximum / minimum</div>
+      <div class="vtile-def">The y-value of the vertex. <b>Min</b> when a &gt; 0 (opens up), <b>max</b> when a &lt; 0 (opens down).</div>
+    </div>
+    <div class="vtile" style="--c:#0369a1;--bg:#e0f2fe;">
+      <div class="vtile-icon">Δy/Δx</div>
+      <div class="vtile-term">avg. rate of change</div>
+      <div class="vtile-def">How much f(x) changes per unit of x over [a,b]: <b>(f(b)&minus;f(a))/(b&minus;a)</b>.</div>
+    </div>
   </div>
 </div>
 
 <div class="card orange">
   <h3>Anatomy of a Parabola</h3>
   <p>Every feature you need to identify, on one picture:</p>
-  <div style="text-align:center;margin-top:10px;">
-  <svg viewBox="0 0 640 360" style="max-width:640px;width:100%;" xmlns="http://www.w3.org/2000/svg">
-    <rect width="640" height="360" fill="#f8fafc" rx="10"/>
+  <div style="text-align:center;margin-top:14px;">
+  <svg viewBox="0 0 800 480" style="width:100%;max-width:800px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="480" fill="#f8fafc" rx="14"/>
     <!-- grid -->
     <g stroke="#e2e8f0" stroke-width="1">
-      <line x1="80" y1="30" x2="80" y2="320"/><line x1="160" y1="30" x2="160" y2="320"/>
-      <line x1="240" y1="30" x2="240" y2="320"/><line x1="320" y1="30" x2="320" y2="320"/>
-      <line x1="400" y1="30" x2="400" y2="320"/><line x1="480" y1="30" x2="480" y2="320"/>
-      <line x1="40" y1="80" x2="520" y2="80"/><line x1="40" y1="140" x2="520" y2="140"/>
-      <line x1="40" y1="200" x2="520" y2="200"/><line x1="40" y1="260" x2="520" y2="260"/>
+      <line x1="80" y1="30" x2="80" y2="420"/><line x1="160" y1="30" x2="160" y2="420"/>
+      <line x1="240" y1="30" x2="240" y2="420"/><line x1="320" y1="30" x2="320" y2="420"/>
+      <line x1="400" y1="30" x2="400" y2="420"/><line x1="480" y1="30" x2="480" y2="420"/>
+      <line x1="560" y1="30" x2="560" y2="420"/>
+      <line x1="40" y1="90" x2="600" y2="90"/><line x1="40" y1="170" x2="600" y2="170"/>
+      <line x1="40" y1="250" x2="600" y2="250"/><line x1="40" y1="330" x2="600" y2="330"/>
+      <line x1="40" y1="410" x2="600" y2="410"/>
     </g>
     <!-- axes -->
-    <line x1="40" y1="290" x2="530" y2="290" stroke="#475569" stroke-width="2"/>
-    <line x1="160" y1="25" x2="160" y2="330" stroke="#475569" stroke-width="2"/>
-    <text x="524" y="308" font-size="15" fill="#475569" font-style="italic">x</text>
-    <text x="168" y="40" font-size="15" fill="#475569" font-style="italic">y</text>
+    <line x1="40" y1="380" x2="610" y2="380" stroke="#475569" stroke-width="2.5"/>
+    <line x1="200" y1="25" x2="200" y2="430" stroke="#475569" stroke-width="2.5"/>
+    <text x="598" y="400" font-size="18" fill="#475569" font-style="italic">x</text>
+    <text x="210" y="42" font-size="18" fill="#475569" font-style="italic">y</text>
     <!-- axis of symmetry -->
-    <line x1="320" y1="30" x2="320" y2="325" stroke="#e05c2a" stroke-width="2.5" stroke-dasharray="8 5"/>
-    <!-- upward-opening parabola, vertex (320,260), arms up to y=60 at x=140 and x=500 -->
-    <path d="M 140 60 Q 320 460 500 60" fill="none" stroke="#1a4fa0" stroke-width="4" stroke-linecap="round"/>
+    <line x1="400" y1="30" x2="400" y2="430" stroke="#e05c2a" stroke-width="3" stroke-dasharray="10 6"/>
+    <!-- parabola: vertex at (400,350), opens up -->
+    <path d="M 160 80 Q 400 580 640 80" fill="none" stroke="#1a4fa0" stroke-width="5" stroke-linecap="round"/>
     <!-- vertex point -->
-    <circle cx="320" cy="260" r="7" fill="#e05c2a" stroke="#fff" stroke-width="2"/>
-    <!-- y-intercept point on curve at x=160 -->
-    <circle cx="160" cy="102" r="7" fill="#16a34a" stroke="#fff" stroke-width="2"/>
-    <!-- labels -->
-    <text x="336" y="252" font-size="15" font-weight="bold" fill="#e05c2a">vertex (h, k) &mdash; minimum here</text>
-    <text x="336" y="345" font-size="14" font-weight="bold" fill="#e05c2a">axis of symmetry x = &minus;b/(2a)</text>
-    <text x="178" y="98" font-size="15" font-weight="bold" fill="#16a34a">y-intercept (0, c)</text>
-    <text x="452" y="200" font-size="15" font-weight="bold" fill="#1a4fa0">opens UP</text>
-    <text x="452" y="220" font-size="14" fill="#1a4fa0">because a &gt; 0</text>
+    <circle cx="400" cy="350" r="9" fill="#e05c2a" stroke="#fff" stroke-width="3"/>
+    <!-- y-intercept at x=200 on curve -->
+    <circle cx="200" cy="138" r="9" fill="#16a34a" stroke="#fff" stroke-width="3"/>
+
+    <!-- label: vertex -->
+    <line x1="400" y1="350" x2="490" y2="300" stroke="#e05c2a" stroke-width="1.5"/>
+    <rect x="492" y="276" width="220" height="46" rx="8" fill="#fdf0e9" stroke="#e05c2a" stroke-width="1.5"/>
+    <text x="602" y="296" font-size="15" font-weight="bold" fill="#e05c2a" text-anchor="middle">vertex (h, k)</text>
+    <text x="602" y="314" font-size="13" fill="#c0490c" text-anchor="middle">minimum — lowest point</text>
+
+    <!-- label: axis of symmetry -->
+    <rect x="408" y="430" width="250" height="36" rx="8" fill="#fdf0e9" stroke="#e05c2a" stroke-width="1.5"/>
+    <text x="533" y="445" font-size="13" font-weight="bold" fill="#e05c2a" text-anchor="middle">axis of symmetry</text>
+    <text x="533" y="460" font-size="13" fill="#c0490c" text-anchor="middle">x = −b/(2a)</text>
+
+    <!-- label: y-intercept -->
+    <line x1="200" y1="138" x2="130" y2="100" stroke="#16a34a" stroke-width="1.5"/>
+    <rect x="10" y="72" width="118" height="40" rx="8" fill="#ecfdf3" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="69" y="89" font-size="13" font-weight="bold" fill="#16a34a" text-anchor="middle">y-intercept</text>
+    <text x="69" y="106" font-size="13" fill="#15803d" text-anchor="middle">(0, c)</text>
+
+    <!-- label: opens up -->
+    <text x="668" y="140" font-size="16" font-weight="bold" fill="#1a4fa0" text-anchor="middle">opens UP</text>
+    <text x="668" y="160" font-size="14" fill="#1a4fa0" text-anchor="middle">a &gt; 0</text>
+
+    <!-- label: domain -->
+    <rect x="620" y="360" width="170" height="40" rx="8" fill="#eef4fd" stroke="#1a4fa0" stroke-width="1.5"/>
+    <text x="705" y="377" font-size="13" font-weight="bold" fill="#0f2d6b" text-anchor="middle">Domain: all reals</text>
+    <text x="705" y="394" font-size="13" fill="#1a4fa0" text-anchor="middle">Range: y ≥ k</text>
   </svg>
   </div>
   <div class="grid2" style="margin-top:14px;">
