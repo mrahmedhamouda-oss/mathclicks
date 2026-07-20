@@ -6,49 +6,15 @@
 // Cache-buster so students always see freshly published content
 const BUST = "?t=" + Date.now();
 
-// ---------- Passcode gate (courtesy gate, not real security) ----------
+// ---------- localStorage keys ----------
+// Old "satpractice." keys are kept for best scores so nobody loses progress.
 
-const PASS_HASH = "51a12285";
-const AUTH_KEY = "satpractice.auth";
-
-function passHash(s) {
-  let h = 5381;
-  for (const c of s) h = (Math.imul(h, 33) ^ c.codePointAt(0)) >>> 0;
-  return h.toString(16);
-}
-
-const gate = document.getElementById("gate");
-const site = document.getElementById("site");
-
-function unlock() {
-  gate.classList.add("hidden");
-  site.classList.remove("hidden");
-  boot().catch((err) => {
-    console.error("boot failed:", err);
-    const main = document.getElementById("main");
-    main.replaceChildren();
-    const note = document.createElement("div");
-    note.className = "empty-note";
-    note.textContent = "Couldn't load the lessons — check your connection and refresh the page.";
-    main.appendChild(note);
-  });
-}
-
-if (localStorage.getItem(AUTH_KEY) === PASS_HASH) {
-  unlock();
-} else {
-  gate.classList.remove("hidden");
-  document.getElementById("gate-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const val = document.getElementById("gate-input").value.trim();
-    if (passHash(val) === PASS_HASH) {
-      localStorage.setItem(AUTH_KEY, PASS_HASH);
-      unlock();
-    } else {
-      document.getElementById("gate-error").classList.remove("hidden");
-    }
-  });
-}
+const K_THEME = "mathclicks.theme";
+const K_EXAM = "mathclicks.examDate";
+const K_LAST = "mathclicks.lastVisited";
+const K_TRACK = "mathclicks.track";
+const statusKey = (id) => "mathclicks.status." + id;
+const scoreKey = (id) => "satpractice.best." + id;
 
 // ---------- Data loading ----------
 
@@ -70,9 +36,21 @@ async function boot() {
   // Students only ever see lessons marked ready by the teacher
   TOPICS = all.filter((t) => t.published);
   window.addEventListener("hashchange", route);
-  initSearch();
+  initHeader();
+  initFormulaPanel();
+  initModal();
   route();
 }
+
+boot().catch((err) => {
+  console.error("boot failed:", err);
+  const main = document.getElementById("main");
+  main.replaceChildren();
+  const note = document.createElement("div");
+  note.className = "empty-note";
+  note.textContent = "Couldn't load the lessons — check your connection and refresh the page.";
+  main.appendChild(note);
+});
 
 // Modules in curriculum order (first appearance wins)
 function moduleList() {
@@ -92,15 +70,11 @@ const qCount = (t) => t.questions.length;
 const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
 const domClass = (domain) => "dom-" + domainSlug(domain);
 
-// A module's accent = its lessons' domain (or "mixed" if they differ)
-function moduleDomClass(topics) {
-  const d = new Set(topics.map((t) => t.satDomain));
-  return d.size === 1 ? domClass(topics[0].satDomain) : "dom-mixed";
-}
+// A lesson's track: "igcse" if its JSON says so, otherwise SAT
+const topicTrack = (t) => (t.track === "igcse" ? "igcse" : "sat");
+const moduleTrack = (m) => topicTrack(m.topics[0]);
 
-// ---------- Best-score persistence ----------
-
-const scoreKey = (id) => "satpractice.best." + id;
+// ---------- Progress persistence (all localStorage, no accounts) ----------
 
 function bestScore(id) {
   try { return JSON.parse(localStorage.getItem(scoreKey(id))); }
@@ -114,9 +88,43 @@ function saveScore(id, correct, total) {
   }
 }
 
+// Lesson status: null = not started, "progress", "done"
+const lessonStatus = (id) => localStorage.getItem(statusKey(id));
+function setLessonStatus(id, s) {
+  if (s) localStorage.setItem(statusKey(id), s);
+  else localStorage.removeItem(statusKey(id));
+}
+
+// A lesson counts as done if marked done, or a perfect quiz score exists
+function isDone(id) {
+  if (lessonStatus(id) === "done") return true;
+  const b = bestScore(id);
+  return !!(b && b.total > 0 && b.correct === b.total);
+}
+
+function isStarted(id) {
+  return !!lessonStatus(id) || !!bestScore(id);
+}
+
+// Module status from its lessons
+function moduleStatus(m) {
+  if (m.topics.every((t) => isDone(t.id))) return "done";
+  if (m.topics.some((t) => isStarted(t.id))) return "progress";
+  return "none";
+}
+
+// Last-visited lesson (for the Resume banner / button)
+function lastVisited() {
+  try {
+    const v = JSON.parse(localStorage.getItem(K_LAST));
+    return v && TOPICS.find((t) => t.id === v.id) || null;
+  } catch { return null; }
+}
+
 // ---------- Routing ----------
 
 const main = document.getElementById("main");
+let pendingScroll = null; // section to scroll to after the next home render
 
 function route() {
   const parts = (location.hash || "#/").slice(2).split("/");
@@ -125,19 +133,24 @@ function route() {
   main.dataset.view = view;
   if (view === "module") renderModule(decodeURIComponent(parts[1] || ""));
   else if (view === "topic") renderTopic(decodeURIComponent(parts[1] || ""));
-  else if (view === "modules") renderModules();
-  else if (view === "igcse") renderIgcse();
-  else renderHome();
-  setActiveNav(view);
+  else if (view === "modules" || view === "igcse") {
+    if (view === "igcse") localStorage.setItem(K_TRACK, "igcse");
+    pendingScroll = pendingScroll || "#browse";
+    renderHome();
+  } else renderHome();
   typeset(main);
+  if (pendingScroll) {
+    const target = document.querySelector(pendingScroll);
+    pendingScroll = null;
+    if (target) requestAnimationFrame(() =>
+      target.scrollIntoView({ behavior: "smooth", block: "start" }));
+  }
 }
 
-function setActiveNav(view) {
-  const topicViews = new Set(["modules", "module", "topic"]);
-  document.querySelectorAll(".nav-link").forEach((a) => {
-    const active = a.dataset.nav === "topics" ? topicViews.has(view) : view === "home";
-    a.classList.toggle("active", active);
-  });
+function goHome(section) {
+  pendingScroll = section;
+  if ((location.hash || "#/") === "#/" || location.hash.startsWith("#/modules")) route();
+  else location.hash = "#/";
 }
 
 function typeset(el) {
@@ -161,17 +174,497 @@ function el(tag, className, text) {
   return n;
 }
 
-function statsStrip() {
-  const totalQ = TOPICS.reduce((s, t) => s + qCount(t), 0);
-  const totalV = TOPICS.reduce((s, t) => s + (t.videos ? t.videos.length : 0), 0);
-  const done = TOPICS.filter((t) => bestScore(t.id)).length;
+// ---------- Header: exam countdown + dark mode + quick actions ----------
+
+function initHeader() {
+  // Dark mode
+  const toggle = document.getElementById("theme-toggle");
+  const setIcon = () =>
+    (toggle.textContent = document.documentElement.dataset.theme === "dark" ? "☀️" : "🌙");
+  setIcon();
+  toggle.addEventListener("click", () => {
+    const dark = document.documentElement.dataset.theme === "dark";
+    if (dark) delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = "dark";
+    localStorage.setItem(K_THEME, dark ? "light" : "dark");
+    setIcon();
+  });
+
+  // Exam-date countdown
+  updateExamChip();
+  document.getElementById("exam-chip").addEventListener("click", openExamModal);
+
+  // "What do you need right now?" buttons
+  document.getElementById("need-trick").addEventListener("click", () => goHome("#quick-wins"));
+  document.getElementById("need-new").addEventListener("click", () => goHome("#browse"));
+  document.getElementById("need-resume").addEventListener("click", () => {
+    const last = lastVisited();
+    if (last) location.hash = "#/topic/" + last.id;
+    else goHome("#browse");
+  });
+}
+
+function daysToExam() {
+  const d = localStorage.getItem(K_EXAM);
+  if (!d) return null;
+  const exam = new Date(d + "T00:00:00");
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  return Math.round((exam - today) / 86400000);
+}
+
+function updateExamChip() {
+  const label = document.getElementById("exam-chip-label");
+  const days = daysToExam();
+  if (days == null) label.textContent = "My exam date";
+  else if (days > 1) label.textContent = `${days} days to exam`;
+  else if (days === 1) label.textContent = "Exam tomorrow!";
+  else if (days === 0) label.textContent = "Exam day — you've got this!";
+  else label.textContent = "Exam done 🎉";
+}
+
+function openExamModal() {
+  const box = el("div", "exam-modal");
+  box.appendChild(el("h3", "modal-title", "📅 My exam date"));
+  box.appendChild(el("p", "modal-sub",
+    "Set it once — the header will count down the days for you. Saved on this device only."));
+  const input = document.createElement("input");
+  input.type = "date";
+  input.className = "exam-input";
+  input.value = localStorage.getItem(K_EXAM) || "";
+  box.appendChild(input);
+  const actions = el("div", "modal-actions");
+  const save = el("button", "btn btn-cta", "Save");
+  save.addEventListener("click", () => {
+    if (input.value) localStorage.setItem(K_EXAM, input.value);
+    updateExamChip();
+    closeModal();
+  });
+  actions.appendChild(save);
+  if (localStorage.getItem(K_EXAM)) {
+    const clear = el("button", "btn btn-quiet", "Remove");
+    clear.addEventListener("click", () => {
+      localStorage.removeItem(K_EXAM);
+      updateExamChip();
+      closeModal();
+    });
+    actions.appendChild(clear);
+  }
+  box.appendChild(actions);
+  openModal(box);
+}
+
+// ---------- Generic modal ----------
+
+const modal = document.getElementById("modal");
+const modalBody = document.getElementById("modal-body");
+
+function initModal() {
+  document.getElementById("modal-close").addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!modal.classList.contains("hidden")) closeModal();
+    else if (fpanel.classList.contains("open")) closeFormulas();
+  });
+}
+
+function openModal(content) {
+  modalBody.replaceChildren(content);
+  modal.classList.remove("hidden");
+  document.body.classList.add("no-scroll");
+  typeset(modalBody);
+}
+
+function closeModal() {
+  modal.classList.add("hidden");
+  document.body.classList.remove("no-scroll");
+}
+
+// ---------- Views ----------
+
+function renderHome() {
+  main.replaceChildren();
+  main.appendChild(resumeBanner());
+  main.appendChild(quickWinsSection());
+  main.appendChild(browseSection());
+}
+
+// Hero: "pick up where you left off" (or a friendly first-visit default)
+function resumeBanner() {
+  const hero = el("section", "hero hero--dash");
+  const syms = el("div", "hero-symbols");
+  ["∑", "π", "√x", "x²"].forEach((s, i) =>
+    syms.appendChild(el("span", "sym s" + (i + 1), s))
+  );
+  hero.appendChild(syms);
+
+  const inner = el("div", "hero-inner");
+  const last = lastVisited();
+  const target = last || TOPICS[0];
+
+  if (last) {
+    inner.appendChild(el("div", "hero-eyebrow", "Welcome back 👋"));
+    inner.appendChild(el("p", "hero-kicker", "Pick up where you left off:"));
+    inner.appendChild(el("h1", "hero-title hero-title--sm", `${last.lessonCode} ${last.title}`));
+  } else if (target) {
+    inner.appendChild(el("div", "hero-eyebrow", "New here? 👋"));
+    inner.appendChild(el("p", "hero-kicker", "Start with our most popular lesson:"));
+    inner.appendChild(el("h1", "hero-title hero-title--sm", `${target.lessonCode} ${target.title}`));
+  } else {
+    inner.appendChild(el("div", "hero-eyebrow", "MathClicks"));
+    inner.appendChild(el("h1", "hero-title hero-title--sm", "Lessons are on their way!"));
+  }
+
+  const cta = el("div", "hero-cta");
+  if (target) {
+    const go = el("a", "btn btn-cta", last ? "▶ Resume" : "▶ Start now");
+    go.href = "#/topic/" + target.id;
+    cta.appendChild(go);
+  }
+  const browse = el("button", "btn btn-ghost", "Browse all topics");
+  browse.addEventListener("click", () => goHome("#browse"));
+  cta.appendChild(browse);
+  inner.appendChild(cta);
+  hero.appendChild(inner);
+  return hero;
+}
+
+// ---------- Quick Wins & Mental Math ----------
+
+const TRICKS = [
+  { id: "x11", icon: "✖️", cls: "qw-coral", title: "×11 Multiplication",
+    sub: "Multiply by 11 in your head — instantly." },
+  { id: "pct", icon: "🔄", cls: "qw-teal", title: "Percentage Swaps",
+    sub: "8% of 50 is hard. 50% of 8 is easy. Same thing!" },
+  { id: "odd", icon: "🟨", cls: "qw-yellow", title: "Squares = Odd Sums",
+    sub: "Every square number hides a staircase of odd numbers." },
+  { id: "calc", icon: "⏱️", cls: "qw-navy", title: "30-Second SAT Calculator",
+    sub: "Desmos shortcuts that solve questions for you." },
+];
+
+function quickWinsSection() {
+  const sec = el("section", "qw-section");
+  sec.id = "quick-wins";
+  sec.appendChild(el("h2", "home-sec-title", "⚡ Quick Wins & Mental Math"));
+  sec.appendChild(el("p", "home-sec-sub", "Two-minute tricks that make you faster on test day."));
+
+  const wrap = el("div", "qw-wrap");
+  const row = el("div", "qw-row");
+  for (const tr of TRICKS) {
+    const card = el("button", "qw-card " + tr.cls);
+    card.type = "button";
+    card.appendChild(el("span", "qw-icon", tr.icon));
+    card.appendChild(el("span", "qw-title", tr.title));
+    card.appendChild(el("span", "qw-sub", tr.sub));
+    card.appendChild(el("span", "qw-go", "Try it →"));
+    card.addEventListener("click", () => openTrick(tr.id));
+    row.appendChild(card);
+  }
+
+  const mkArrow = (dir) => {
+    const b = el("button", "qw-arrow qw-arrow--" + dir, dir === "left" ? "‹" : "›");
+    b.type = "button";
+    b.setAttribute("aria-label", dir === "left" ? "Scroll tricks left" : "Scroll tricks right");
+    b.addEventListener("click", () =>
+      row.scrollBy({ left: (dir === "left" ? -1 : 1) * (row.clientWidth * 0.8), behavior: "smooth" }));
+    return b;
+  };
+  wrap.appendChild(mkArrow("left"));
+  wrap.appendChild(row);
+  wrap.appendChild(mkArrow("right"));
+  sec.appendChild(wrap);
+  return sec;
+}
+
+function openTrick(id) {
+  const box = el("div", "trick");
+  if (id === "x11") trickX11(box);
+  else if (id === "pct") trickPct(box);
+  else if (id === "odd") trickOdd(box);
+  else trickCalc(box);
+  openModal(box);
+}
+
+// ×11: split the digits, add them, tuck the sum in the middle
+function trickX11(box) {
+  box.appendChild(el("h3", "modal-title", "✖️ Multiply by 11 — instantly"));
+  box.appendChild(el("p", "modal-sub",
+    "For any two-digit number: split the digits apart, add them, and tuck the sum in the middle."));
+
+  const ctrl = el("div", "trick-ctrl");
+  const input = document.createElement("input");
+  input.type = "number"; input.min = 10; input.max = 99; input.value = 45;
+  input.className = "trick-input";
+  input.setAttribute("aria-label", "Two-digit number");
+  const btn = el("button", "btn btn-cta", "Show me");
+  ctrl.appendChild(el("span", "trick-lbl", "Pick a two-digit number:"));
+  ctrl.appendChild(input);
+  ctrl.appendChild(btn);
+  box.appendChild(ctrl);
+
+  const out = el("div", "trick-out");
+  box.appendChild(out);
+
+  function show() {
+    const n = Math.floor(Number(input.value));
+    if (!(n >= 10 && n <= 99)) {
+      out.replaceChildren(el("p", "trick-warn", "Pick a number from 10 to 99."));
+      return;
+    }
+    const a = Math.floor(n / 10), b = n % 10, s = a + b;
+    out.replaceChildren();
+    const steps = [];
+    steps.push([`1. Split the digits`, `${n} → ${a} _ ${b}`]);
+    steps.push([`2. Add them`, `${a} + ${b} = ${s}`]);
+    if (s < 10) {
+      steps.push([`3. Tuck the sum in the middle`, `${a} ${s} ${b} → ${n * 11}`]);
+    } else {
+      steps.push([`3. Sum is ${s} — write ${s - 10}, carry the 1`, `(${a}+1) ${s - 10} ${b}`]);
+      steps.push([`4. So the answer is`, `${n} × 11 = ${n * 11}`]);
+    }
+    steps.forEach(([label, math], i) => {
+      const st = el("div", "trick-step");
+      st.style.animationDelay = i * 0.35 + "s";
+      st.appendChild(el("div", "trick-step-lbl", label));
+      st.appendChild(el("div", "trick-step-math", math));
+      out.appendChild(st);
+    });
+    const check = el("p", "trick-check", `Check it: ${n} × 11 = ${n * 11} ✓`);
+    check.style.animationDelay = steps.length * 0.35 + "s";
+    out.appendChild(check);
+  }
+  btn.addEventListener("click", show);
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") show(); });
+  show();
+}
+
+// a% of b = b% of a
+function trickPct(box) {
+  box.appendChild(el("h3", "modal-title", "🔄 Percentage Swaps"));
+  box.appendChild(el("p", "modal-sub",
+    "x% of y is always the same as y% of x — so flip the pair to whichever side is easier."));
+
+  const ctrl = el("div", "trick-ctrl");
+  const mk = (v) => {
+    const i = document.createElement("input");
+    i.type = "number"; i.value = v; i.min = 0; i.className = "trick-input";
+    return i;
+  };
+  const a = mk(8), b = mk(50);
+  ctrl.appendChild(a);
+  ctrl.appendChild(el("span", "trick-lbl", "% of"));
+  ctrl.appendChild(b);
+  box.appendChild(ctrl);
+
+  const out = el("div", "trick-out");
+  box.appendChild(out);
+
+  const presets = el("div", "trick-presets");
+  for (const [pa, pb] of [[8, 50], [4, 75], [16, 25], [7, 300]]) {
+    const p = el("button", "trick-preset", `${pa}% of ${pb}`);
+    p.type = "button";
+    p.addEventListener("click", () => { a.value = pa; b.value = pb; show(); });
+    presets.appendChild(p);
+  }
+  box.appendChild(presets);
+
+  function show() {
+    const av = Number(a.value), bv = Number(b.value);
+    out.replaceChildren();
+    if (!isFinite(av) || !isFinite(bv)) return;
+    const val = Math.round(av * bv) / 100;
+    const line = el("div", "trick-step trick-step--big");
+    line.appendChild(el("div", "trick-step-math",
+      `${av}% of ${bv}  =  ${bv}% of ${av}  =  ${val}`));
+    out.appendChild(line);
+    out.appendChild(el("p", "trick-check",
+      "Flip it whenever one side lands on an easy percent like 50%, 25%, or 10%."));
+  }
+  a.addEventListener("input", show);
+  b.addEventListener("input", show);
+  show();
+}
+
+// n² = sum of the first n odd numbers
+function trickOdd(box) {
+  box.appendChild(el("h3", "modal-title", "🟨 Square numbers are stacks of odd numbers"));
+  box.appendChild(el("p", "modal-sub",
+    "n² is the sum of the first n odd numbers. Each L-shaped layer adds the next odd number."));
+
+  const ctrl = el("div", "trick-ctrl");
+  const slider = document.createElement("input");
+  slider.type = "range"; slider.min = 1; slider.max = 10; slider.value = 4;
+  slider.setAttribute("aria-label", "n");
+  const outN = el("output", "trick-n", "n = 4");
+  ctrl.appendChild(outN);
+  ctrl.appendChild(slider);
+  box.appendChild(ctrl);
+
+  const svgBox = el("div", "trick-svg");
+  const line = el("div", "trick-step-math trick-oddline");
+  box.appendChild(svgBox);
+  box.appendChild(line);
+
+  const colors = ["#FF6B5C", "#0CA678", "#FFC43D", "#3B5BDB", "#7048E8"];
+  function show() {
+    const n = Number(slider.value);
+    outN.textContent = "n = " + n;
+    const cell = 26, pad = 8, size = n * cell + pad * 2;
+    let dots = "";
+    for (let r = 0; r < n; r++)
+      for (let c = 0; c < n; c++) {
+        const ring = Math.max(r, c);
+        dots += `<circle cx="${pad + c * cell + cell / 2}" cy="${pad + r * cell + cell / 2}" r="9" fill="${colors[ring % colors.length]}" opacity="0.9"/>`;
+      }
+    svgBox.innerHTML =
+      `<svg viewBox="0 0 ${size} ${size}" style="max-width:${size}px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="dot grid">${dots}</svg>`;
+    const odds = Array.from({ length: n }, (_, k) => 2 * k + 1);
+    line.textContent = `${n}² = ${odds.join(" + ")} = ${n * n}`;
+  }
+  slider.addEventListener("input", show);
+  show();
+}
+
+// Desmos / calculator shortcuts for the digital SAT
+function trickCalc(box) {
+  box.appendChild(el("h3", "modal-title", "⏱️ 30-Second SAT Calculator Shortcuts"));
+  box.appendChild(el("p", "modal-sub",
+    "The digital SAT has Desmos built in. Let it do the algebra for you:"));
+  const tips = [
+    ["Solve any equation by graphing", "Type each side as its own graph (y = left side, y = right side). The x-value of the intersection is your answer."],
+    ["Systems of equations", "Type both equations exactly as written. Click the intersection point — that's (x, y). Done."],
+    ["Quadratics: roots & vertex", "Graph the quadratic and tap the gray points — Desmos labels the x-intercepts and the vertex for you."],
+    ["\"Which value of x…\" questions", "Graph the equation, then just look — no factoring, no quadratic formula needed."],
+    ["Mean & median instantly", "Type mean(1,4,6,6,13) or median(...) with the list from the question."],
+    ["Sliders for unknown constants", "If a question has an unknown constant k, type it as a slider and drag until the condition works."],
+  ];
+  const list = el("div", "trick-tips");
+  tips.forEach(([t, d], i) => {
+    const tip = el("div", "trick-tip");
+    tip.appendChild(el("div", "trick-tip-num", String(i + 1)));
+    const bdy = el("div");
+    bdy.appendChild(el("div", "trick-tip-title", t));
+    bdy.appendChild(el("div", "trick-tip-sub", d));
+    tip.appendChild(bdy);
+    list.appendChild(tip);
+  });
+  box.appendChild(list);
+}
+
+// ---------- Topics & Modules grid ----------
+
+function browseSection() {
+  const sec = el("section", "browse-section");
+  sec.id = "browse";
+
+  const head = el("div", "browse-head");
+  head.appendChild(el("h2", "home-sec-title", "📚 Topics & Modules"));
+
+  // IGCSE / SAT track filter
+  const track = localStorage.getItem(K_TRACK) === "igcse" ? "igcse" : "sat";
+  const toggle = el("div", "track-toggle");
+  toggle.setAttribute("role", "tablist");
+  for (const [val, label] of [["sat", "SAT"], ["igcse", "IGCSE"]]) {
+    const b = el("button", "track-btn track-btn--" + val + (val === track ? " active" : ""), label);
+    b.type = "button";
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", String(val === track));
+    b.addEventListener("click", () => {
+      localStorage.setItem(K_TRACK, val);
+      pendingScroll = "#browse";
+      renderHome();
+      const t2 = document.querySelector(pendingScroll);
+      pendingScroll = null;
+      if (t2) t2.scrollIntoView({ block: "start" });
+    });
+    toggle.appendChild(b);
+  }
+  head.appendChild(toggle);
+  sec.appendChild(head);
+
+  const modules = moduleList().filter((m) => moduleTrack(m) === track);
+
+  if (!modules.length) {
+    const box = el("div", "empty-note big");
+    box.appendChild(el("div", "empty-emoji", track === "igcse" ? "🚧" : "📚"));
+    box.appendChild(el("div", "empty-title", "Coming soon!"));
+    box.appendChild(el("p", null, track === "igcse"
+      ? "IGCSE lessons are being prepared. In the meantime, the SAT track is ready for you."
+      : "Lessons will appear here as we cover them in class — check back soon!"));
+    sec.appendChild(box);
+    return sec;
+  }
+
+  // Quick stats
+  const totalQ = modules.reduce((s, m) => s + m.topics.reduce((x, t) => x + qCount(t), 0), 0);
+  const lessons = modules.reduce((s, m) => s + m.topics.length, 0);
+  const done = modules.reduce((s, m) => s + m.topics.filter((t) => isDone(t.id)).length, 0);
   const strip = el("div", "stats");
-  const chip = (label) => strip.appendChild(el("span", "stat-chip", label));
-  chip(`📚 ${plural(TOPICS.length, "lesson")}`);
-  chip(`📝 ${plural(totalQ, "question")}`);
-  chip(`🎬 ${plural(totalV, "video")}`);
-  if (done) chip(`⭐ ${done} completed`);
-  return strip;
+  strip.appendChild(el("span", "stat-chip", `📚 ${plural(lessons, "lesson")}`));
+  strip.appendChild(el("span", "stat-chip", `📝 ${plural(totalQ, "question")}`));
+  if (done) strip.appendChild(el("span", "stat-chip", `⭐ ${done} completed`));
+  sec.appendChild(strip);
+
+  const grid = el("div", "module-grid");
+  for (const m of modules) grid.appendChild(moduleGridCard(m));
+  sec.appendChild(grid);
+  return sec;
+}
+
+const STATUS_LABELS = { done: "✓ Completed", progress: "In Progress", none: "Not Started" };
+
+function moduleGridCard(m) {
+  const track = moduleTrack(m);
+  const a = el("a", "gcard track-" + track);
+  a.href = "#/module/" + moduleSlug(m.name);
+
+  const top = el("div", "gcard-top");
+  top.appendChild(el("span", "gcard-track", track.toUpperCase()));
+  const st = moduleStatus(m);
+  top.appendChild(el("span", "gcard-status st-" + st, STATUS_LABELS[st]));
+  a.appendChild(top);
+
+  a.appendChild(el("div", "gcard-icon", MODULE_ICON));
+  a.appendChild(el("div", "gcard-title", m.name));
+  const total = m.topics.reduce((s, t) => s + qCount(t), 0);
+  a.appendChild(el("div", "gcard-sub",
+    `${plural(m.topics.length, "lesson")} · ${total ? plural(total, "question") : "coming soon"}`));
+
+  const done = m.topics.filter((t) => isDone(t.id)).length;
+  const bar = el("div", "mprog-bar");
+  const fill = el("div", "mprog-fill");
+  fill.style.width = (done / m.topics.length) * 100 + "%";
+  bar.appendChild(fill);
+  a.appendChild(bar);
+  a.appendChild(el("div", "mprog-label", `${done}/${m.topics.length} done`));
+  return a;
+}
+
+function renderModule(slug) {
+  const m = moduleList().find((m) => moduleSlug(m.name) === slug);
+  if (!m) return renderHome();
+  main.replaceChildren();
+  main.appendChild(backLink("#/", "← All topics"));
+  main.appendChild(el("h2", "page-title", m.name));
+  m.topics.forEach((t, i) => main.appendChild(lessonCard(t, i)));
+}
+
+function lessonCard(t, i) {
+  const a = el("a", "card " + domClass(t.satDomain));
+  a.href = "#/topic/" + t.id;
+  const done = isDone(t.id);
+  a.appendChild(el("div", "step-dot" + (done ? " done" : ""), done ? "✓" : String(i + 1)));
+  const body = el("div", "card-body");
+  const title = el("div", "card-title", t.title);
+  title.appendChild(countBadge(t));
+  body.appendChild(title);
+  const extras = [t.lessonCode, `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`];
+  if (t.videos && t.videos.length) extras.push(`🎬 ${plural(t.videos.length, "video")}`);
+  if (!done && lessonStatus(t.id) === "progress") extras.push("🕐 in progress");
+  body.appendChild(el("div", "card-sub", extras.join(" · ")));
+  a.appendChild(body);
+  a.appendChild(el("span", "card-arrow", "›"));
+  return a;
 }
 
 function countBadge(t) {
@@ -183,233 +676,13 @@ function countBadge(t) {
   return el("span", "badge" + (n ? "" : " soon"), n ? plural(n, "question") : "coming soon");
 }
 
-function moduleCard(m) {
-  const a = el("a", "card " + moduleDomClass(m.topics));
-  a.href = "#/module/" + moduleSlug(m.name);
-  a.appendChild(el("div", "card-icon", MODULE_ICON));
-  const body = el("div", "card-body");
-  body.appendChild(el("div", "card-title", m.name));
-  body.appendChild(el("div", "card-sub", subLine(m.topics)));
-  const done = m.topics.filter((t) => bestScore(t.id)).length;
-  const prog = el("div", "mprog");
-  const bar = el("div", "mprog-bar");
-  const fill = el("div", "mprog-fill");
-  fill.style.width = (done / m.topics.length) * 100 + "%";
-  bar.appendChild(fill);
-  prog.appendChild(bar);
-  prog.appendChild(el("span", "mprog-label", `${done}/${m.topics.length} done`));
-  body.appendChild(prog);
-  a.appendChild(body);
-  a.appendChild(el("span", "card-arrow", "›"));
-  return a;
-}
-
-function lessonCard(t, i) {
-  const a = el("a", "card " + domClass(t.satDomain));
-  a.href = "#/topic/" + t.id;
-  const done = bestScore(t.id);
-  a.appendChild(el("div", "step-dot" + (done ? " done" : ""), done ? "✓" : String(i + 1)));
-  const body = el("div", "card-body");
-  const title = el("div", "card-title", t.title);
-  title.appendChild(countBadge(t));
-  body.appendChild(title);
-  const extras = [t.lessonCode, `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`];
-  if (t.videos && t.videos.length) extras.push(`🎬 ${plural(t.videos.length, "video")}`);
-  body.appendChild(el("div", "card-sub", extras.join(" · ")));
-  a.appendChild(body);
-  a.appendChild(el("span", "card-arrow", "›"));
-  return a;
-}
-
-function subLine(topics) {
-  const total = topics.reduce((s, t) => s + qCount(t), 0);
-  return `${plural(topics.length, "lesson")} · ${total ? plural(total, "question") : "questions coming soon"}`;
-}
-
-// ---------- Views ----------
-
-function renderHome() {
-  main.replaceChildren();
-
-  // Hero
-  const hero = el("section", "hero");
-  const syms = el("div", "hero-symbols");
-  ["∑", "π", "√x", "÷", "x²", "∞", "θ"].forEach((s, i) =>
-    syms.appendChild(el("span", "sym s" + (i + 1), s))
-  );
-  hero.appendChild(syms);
-  const inner = el("div", "hero-inner");
-  inner.appendChild(el("div", "hero-eyebrow", "MathClicks"));
-  const h1 = el("h1", "hero-title", "Now it's your turn to ");
-  h1.appendChild(el("span", "hero-click", "click it."));
-  inner.appendChild(h1);
-  inner.appendChild(el("p", "hero-sub",
-    "Short video explanations, interactive notes, and instant-feedback quizzes — built for IGCSE and SAT math students."));
-  const cta = el("div", "hero-cta");
-  const browse = el("a", "btn btn-cta", "Browse Topics →");
-  browse.href = "#/modules";
-  cta.appendChild(browse);
-  inner.appendChild(cta);
-  hero.appendChild(inner);
-  main.appendChild(hero);
-
-  // Feature strip
-  const feats = el("div", "features");
-  for (const [icon, title, sub] of [
-    ["🎬", "Watch", "Short video explanations"],
-    ["🧠", "Learn", "Interactive lesson notes"],
-    ["⚡", "Practice", "Quizzes with instant feedback"],
-  ]) {
-    const f = el("div", "feature");
-    f.appendChild(el("div", "feature-icon", icon));
-    const b = el("div");
-    b.appendChild(el("div", "feature-title", title));
-    b.appendChild(el("div", "feature-sub", sub));
-    f.appendChild(b);
-    feats.appendChild(f);
-  }
-  main.appendChild(feats);
-
-  // Subject areas
-  main.appendChild(el("h2", "home-sec-title", "Pick your path"));
-  const grid = el("div", "subject-grid");
-
-  const totalQ = TOPICS.reduce((s, t) => s + qCount(t), 0);
-  const done = TOPICS.filter((t) => bestScore(t.id)).length;
-  const satChips = [`📚 ${plural(TOPICS.length, "lesson")}`, `📝 ${plural(totalQ, "question")}`];
-  if (done) satChips.push(`⭐ ${done} completed`);
-  grid.appendChild(subjectCard({
-    cls: "sat", href: "#/modules", icon: "🎯", title: "American Pathway",
-    sub: "",
-    chips: satChips, cta: "Start practicing →",
-  }));
-  grid.appendChild(subjectCard({
-    cls: "igcse", href: "#/igcse", icon: "📘", title: "IGCSE Math",
-    sub: "New lessons are on the way — stay tuned!",
-    chips: [], cta: "Peek inside →", soon: true,
-  }));
-  main.appendChild(grid);
-}
-
-function subjectCard(o) {
-  const a = el("a", "subject " + o.cls);
-  a.href = o.href;
-  a.appendChild(el("div", "subject-icon", o.icon));
-  a.appendChild(el("div", "subject-title", o.title));
-  a.appendChild(el("div", "subject-sub", o.sub));
-  const meta = el("div", "subject-meta");
-  for (const c of o.chips) meta.appendChild(el("span", "subject-chip", c));
-  a.appendChild(meta);
-  a.appendChild(el("span", "subject-go", o.cta));
-  if (o.soon) a.appendChild(el("span", "soon-badge", "Coming soon"));
-  return a;
-}
-
-function renderIgcse() {
-  main.replaceChildren();
-  main.appendChild(backLink("#/", "← Home"));
-  main.appendChild(el("h2", "page-title", "IGCSE Math"));
-  const box = el("div", "empty-note big");
-  box.appendChild(el("div", "empty-emoji", "🚧"));
-  box.appendChild(el("div", "empty-title", "Coming soon!"));
-  box.appendChild(el("p", null,
-    "IGCSE lessons are being prepared. In the meantime, SAT Prep is ready for you."));
-  const b = el("a", "btn btn-cta", "Browse SAT Topics");
-  b.href = "#/modules";
-  box.appendChild(b);
-  main.appendChild(box);
-}
-
-function renderModules() {
-  main.replaceChildren();
-  main.appendChild(backLink("#/", "← Home"));
-  main.appendChild(el("h2", "page-title", "SAT Prep"));
-  main.appendChild(el("p", "page-sub", "American Pathway — pick a module to begin."));
-  if (!TOPICS.length) {
-    main.appendChild(el("div", "empty-note", "Lessons will appear here as we cover them in class — check back soon!"));
-    return;
-  }
-  main.appendChild(statsStrip());
-  for (const m of moduleList()) main.appendChild(moduleCard(m));
-}
-
-function renderModule(slug) {
-  const m = moduleList().find((m) => moduleSlug(m.name) === slug);
-  if (!m) return renderModules();
-  main.replaceChildren();
-  main.appendChild(backLink("#/modules", "← All modules"));
-  main.appendChild(el("h2", "page-title", m.name));
-  m.topics.forEach((t, i) => main.appendChild(lessonCard(t, i)));
-}
-
 function backLink(href, text) {
   const a = el("a", "back-link", text);
   a.href = href;
   return a;
 }
 
-// ---------- Lesson search overlay ----------
-
-function initSearch() {
-  const overlay = document.getElementById("search-overlay");
-  const input = document.getElementById("search-input");
-  const results = document.getElementById("search-results");
-
-  function renderResults(q) {
-    results.replaceChildren();
-    q = q.trim().toLowerCase();
-    const hits = TOPICS.filter((t) =>
-      !q ||
-      t.title.toLowerCase().includes(q) ||
-      t.lessonCode.toLowerCase().includes(q) ||
-      t.curriculumModule.toLowerCase().includes(q)
-    ).slice(0, 12);
-    if (!hits.length) {
-      results.appendChild(el("div", "search-empty",
-        q ? "No lessons match — try a different word." : "No lessons published yet."));
-      return;
-    }
-    for (const t of hits) {
-      const a = el("a", "search-hit " + domClass(t.satDomain));
-      a.href = "#/topic/" + t.id;
-      a.appendChild(el("span", "hit-code", t.lessonCode));
-      const b = el("div", "hit-body");
-      b.appendChild(el("div", "hit-title", t.title));
-      b.appendChild(el("div", "hit-sub", t.curriculumModule));
-      a.appendChild(b);
-      results.appendChild(a);
-    }
-  }
-
-  const open = () => {
-    overlay.classList.remove("hidden");
-    document.body.classList.add("no-scroll");
-    input.value = "";
-    renderResults("");
-    setTimeout(() => input.focus(), 0);
-  };
-  const close = () => {
-    overlay.classList.add("hidden");
-    document.body.classList.remove("no-scroll");
-  };
-
-  document.getElementById("nav-search").addEventListener("click", open);
-  document.getElementById("search-close").addEventListener("click", close);
-  overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !overlay.classList.contains("hidden")) close();
-  });
-  input.addEventListener("input", () => renderResults(input.value));
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const first = results.querySelector("a");
-      if (first) first.click();
-    }
-  });
-  results.addEventListener("click", (e) => { if (e.target.closest("a")) close(); });
-}
-
-// ---------- Lesson page: videos + quiz ----------
+// ---------- Lesson page: videos + notes + quiz ----------
 
 function youtubeId(url) {
   const m = String(url).match(
@@ -426,6 +699,7 @@ function videoCard(v) {
   if (id) {
     const ifr = document.createElement("iframe");
     ifr.src = "https://www.youtube-nocookie.com/embed/" + id;
+    ifr.loading = "lazy";
     ifr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
     ifr.allowFullscreen = true;
     ifr.title = v.title || "Explanation video";
@@ -434,6 +708,7 @@ function videoCard(v) {
     const vid = document.createElement("video");
     vid.src = v.url;
     vid.controls = true;
+    vid.preload = "none";
     frame.appendChild(vid);
   }
   card.appendChild(frame);
@@ -582,11 +857,19 @@ function initNumberLine(box) {
 
 function renderTopic(id) {
   const t = TOPICS.find((t) => t.id === id);
-  if (!t) return renderModules();
+  if (!t) return renderHome();
+
+  // Remember for the Resume banner + mark in progress
+  localStorage.setItem(K_LAST, JSON.stringify({ id: t.id }));
+  if (!lessonStatus(t.id)) setLessonStatus(t.id, "progress");
 
   main.replaceChildren();
   main.appendChild(backLink("#/module/" + moduleSlug(t.curriculumModule), "← " + t.curriculumModule));
-  main.appendChild(el("h2", "page-title", `${t.lessonCode} ${t.title}`));
+
+  const titleRow = el("div", "topic-title-row");
+  titleRow.appendChild(el("h2", "page-title", `${t.lessonCode} ${t.title}`));
+  titleRow.appendChild(markDoneButton(t));
+  main.appendChild(titleRow);
 
   const chips = el("div", "meta-chips " + domClass(t.satDomain));
   chips.appendChild(el("span", "chip", `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`));
@@ -637,6 +920,23 @@ function renderTopic(id) {
   showQuestion(quiz, holder);
 }
 
+function markDoneButton(t) {
+  const btn = el("button", "mark-done");
+  btn.type = "button";
+  const paint = () => {
+    const done = lessonStatus(t.id) === "done";
+    btn.textContent = done ? "✓ Done!" : "Mark as done ✓";
+    btn.classList.toggle("is-done", done);
+    btn.title = done ? "Tap to un-mark" : "Finished this lesson? Mark it done";
+  };
+  btn.addEventListener("click", () => {
+    setLessonStatus(t.id, lessonStatus(t.id) === "done" ? "progress" : "done");
+    paint();
+  });
+  paint();
+  return btn;
+}
+
 function showQuestion(quiz, holder) {
   const t = quiz.topic;
   const q = t.questions[quiz.i];
@@ -659,6 +959,7 @@ function showQuestion(quiz, holder) {
   if (q.image) {
     const img = el("img", "q-image");
     img.src = q.image;
+    img.loading = "lazy";
     img.alt = "question diagram";
     card.appendChild(img);
   }
@@ -739,6 +1040,16 @@ function showResults(quiz, holder) {
   const card = el("div", "result-card");
   const pct = Math.round((quiz.correct / t.questions.length) * 100);
 
+  // Perfect score = lesson done (also updates the header button if visible)
+  if (pct === 100) {
+    setLessonStatus(t.id, "done");
+    const btn = document.querySelector(".mark-done");
+    if (btn) {
+      btn.textContent = "✓ Done!";
+      btn.classList.add("is-done");
+    }
+  }
+
   card.appendChild(el("div", null, "Quiz complete"));
 
   const ring = el("div", "score-ring");
@@ -804,4 +1115,136 @@ function gridinCorrect(given, accepted) {
     const aNum = parseNumeric(aStr);
     return !isNaN(gNum) && !isNaN(aNum) && Math.abs(gNum - aNum) < 1e-9;
   });
+}
+
+// ---------- Formula sheet (floating panel) ----------
+
+const FORMULA_GROUPS = [
+  {
+    name: "SAT · Reference & Essentials", cls: "fg-sat",
+    sections: [
+      ["Area & Perimeter", [
+        ["Circle", "$A = \\pi r^2$ · $C = 2\\pi r$"],
+        ["Rectangle", "$A = \\ell w$"],
+        ["Triangle", "$A = \\tfrac{1}{2}bh$"],
+        ["Trapezoid", "$A = \\tfrac{1}{2}(b_1 + b_2)h$"],
+      ]],
+      ["Triangles", [
+        ["Pythagorean theorem", "$a^2 + b^2 = c^2$"],
+        ["45°–45°–90°", "$x,\\; x,\\; x\\sqrt{2}$"],
+        ["30°–60°–90°", "$x,\\; x\\sqrt{3},\\; 2x$"],
+        ["Angles of a triangle", "sum $= 180^\\circ$"],
+      ]],
+      ["Volume", [
+        ["Box", "$V = \\ell w h$"],
+        ["Cylinder", "$V = \\pi r^2 h$"],
+        ["Sphere", "$V = \\tfrac{4}{3}\\pi r^3$"],
+        ["Cone", "$V = \\tfrac{1}{3}\\pi r^2 h$"],
+        ["Pyramid", "$V = \\tfrac{1}{3}\\ell w h$"],
+      ]],
+      ["Lines & Slope", [
+        ["Slope", "$m = \\dfrac{y_2 - y_1}{x_2 - x_1}$"],
+        ["Slope-intercept", "$y = mx + b$"],
+        ["Midpoint", "$\\left(\\tfrac{x_1+x_2}{2},\\; \\tfrac{y_1+y_2}{2}\\right)$"],
+        ["Distance", "$d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$"],
+      ]],
+      ["Quadratics", [
+        ["Quadratic formula", "$x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"],
+        ["Vertex x-coordinate", "$x = -\\dfrac{b}{2a}$"],
+        ["Discriminant", "$b^2 - 4ac$ (0 → one root, + → two, − → none)"],
+        ["Difference of squares", "$a^2 - b^2 = (a-b)(a+b)$"],
+      ]],
+      ["Exponents & Radicals", [
+        ["Product / quotient", "$x^a x^b = x^{a+b}$ · $\\dfrac{x^a}{x^b} = x^{a-b}$"],
+        ["Power of a power", "$(x^a)^b = x^{ab}$"],
+        ["Negative & fractional", "$x^{-a} = \\tfrac{1}{x^a}$ · $x^{a/b} = \\sqrt[b]{x^a}$"],
+      ]],
+      ["Percent & Data", [
+        ["Percent change", "$\\dfrac{\\text{new} - \\text{old}}{\\text{old}} \\times 100\\%$"],
+        ["Average", "$\\text{mean} = \\dfrac{\\text{sum}}{\\text{count}}$"],
+        ["Growth / decay", "$y = a(1 \\pm r)^t$"],
+        ["Probability", "$P = \\dfrac{\\text{favorable}}{\\text{total}}$"],
+      ]],
+    ],
+  },
+  {
+    name: "IGCSE · Quick Reference", cls: "fg-igcse",
+    sections: [
+      ["Number", [
+        ["Compound interest", "$A = P\\left(1 + \\tfrac{r}{100}\\right)^n$"],
+        ["Speed–distance–time", "$s = \\dfrac{d}{t}$"],
+        ["Density", "$\\rho = \\dfrac{m}{V}$"],
+      ]],
+      ["Algebra", [
+        ["Quadratic formula", "$x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"],
+        ["Laws of indices", "$x^a x^b = x^{a+b}$ · $(x^a)^b = x^{ab}$"],
+        ["nth term (linear)", "$a + (n-1)d$"],
+      ]],
+      ["Mensuration", [
+        ["Arc length", "$\\dfrac{\\theta}{360} \\times 2\\pi r$"],
+        ["Sector area", "$\\dfrac{\\theta}{360} \\times \\pi r^2$"],
+        ["Cylinder", "$V = \\pi r^2 h$, curved $SA = 2\\pi r h$"],
+        ["Cone", "$V = \\tfrac{1}{3}\\pi r^2 h$, curved $SA = \\pi r \\ell$"],
+        ["Sphere", "$V = \\tfrac{4}{3}\\pi r^3$, $SA = 4\\pi r^2$"],
+      ]],
+      ["Trigonometry", [
+        ["SOH CAH TOA", "$\\sin = \\tfrac{O}{H}$ · $\\cos = \\tfrac{A}{H}$ · $\\tan = \\tfrac{O}{A}$"],
+        ["Sine rule", "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$"],
+        ["Cosine rule", "$a^2 = b^2 + c^2 - 2bc\\cos A$"],
+        ["Area of a triangle", "$A = \\tfrac{1}{2}ab\\sin C$"],
+      ]],
+    ],
+  },
+];
+
+const fpanel = document.getElementById("fpanel");
+let formulasBuilt = false;
+
+function initFormulaPanel() {
+  document.getElementById("fab").addEventListener("click", () => {
+    if (fpanel.classList.contains("open")) closeFormulas();
+    else openFormulas();
+  });
+  document.getElementById("fpanel-close").addEventListener("click", closeFormulas);
+  document.getElementById("fpanel-backdrop").addEventListener("click", closeFormulas);
+}
+
+function buildFormulas() {
+  const body = document.getElementById("fpanel-body");
+  for (const group of FORMULA_GROUPS) {
+    const g = el("div", "fgroup " + group.cls);
+    g.appendChild(el("div", "fgroup-name", group.name));
+    for (const [title, rows] of group.sections) {
+      const d = document.createElement("details");
+      d.className = "fsec";
+      const s = document.createElement("summary");
+      s.textContent = title;
+      d.appendChild(s);
+      for (const [label, tex] of rows) {
+        const row = el("div", "frow");
+        row.appendChild(el("span", "frow-label", label));
+        row.appendChild(el("span", "frow-math", tex));
+        d.appendChild(row);
+      }
+      g.appendChild(d);
+    }
+    body.appendChild(g);
+  }
+  // Open the first section of each group so the panel never looks empty
+  body.querySelectorAll(".fgroup > details:first-of-type").forEach((d) => (d.open = true));
+  typeset(body);
+}
+
+function openFormulas() {
+  // Built once and kept in the DOM, so scroll position survives while browsing
+  if (!formulasBuilt) { buildFormulas(); formulasBuilt = true; }
+  fpanel.classList.add("open");
+  fpanel.setAttribute("aria-hidden", "false");
+  document.getElementById("fpanel-backdrop").classList.remove("hidden");
+}
+
+function closeFormulas() {
+  fpanel.classList.remove("open");
+  fpanel.setAttribute("aria-hidden", "true");
+  document.getElementById("fpanel-backdrop").classList.add("hidden");
 }
