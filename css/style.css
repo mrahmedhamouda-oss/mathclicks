@@ -339,12 +339,12 @@ h3.section-title {
 .planet-ring {
   position: absolute; inset: 0; border-radius: 50%;
   border: 2px dashed rgba(245, 166, 35, .4);
-  animation: spinSlow 38s linear infinite;
+  animation: spinSlow 38s linear infinite reverse;
 }
 .planet-ring--inner {
   inset: calc(var(--stage) * .12);
   border-color: rgba(47, 143, 224, .35);
-  animation-duration: 26s; animation-direction: reverse;
+  animation-duration: 26s; animation-direction: normal;
 }
 .planet-core {
   position: absolute; inset: calc(var(--stage) * .17);
@@ -374,7 +374,7 @@ h3.section-title {
 .oc5 { animation-delay: -25s; background: rgba(255,255,255,.16); color: #fff; }
 @keyframes orbit {
   from { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
-  to   { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+  to   { transform: rotate(-360deg) translateX(var(--orbit-r)) rotate(360deg); }
 }
 @media (max-width: 560px) { .planet-stage { --stage: 250px; --orbit-r: 116px; } }
 
