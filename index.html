@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
@@ -40,23 +40,18 @@
           <span class="brand-name">Math<span class="brand-accent">Clicks</span></span>
         </a>
         <div class="nav-tools">
-          <button id="exam-chip" class="tool-chip" type="button" title="Set your exam date">📅 <span id="exam-chip-label">My exam date</span></button>
+          <nav class="nav-links" aria-label="Main navigation">
+            <a class="nav-link" data-nav="home" href="#/">Home</a>
+            <a class="nav-link" data-nav="topics" href="#/modules">Topics</a>
+          </nav>
+          <button id="exam-chip" class="tool-chip" type="button" title="Set your exam date">📅 <span id="exam-chip-label">Exam date</span></button>
           <button id="theme-toggle" class="tool-chip tool-icon" type="button" aria-label="Toggle dark mode">🌙</button>
+          <button id="nav-search" class="tool-chip" type="button" aria-label="Search lessons">
+            🔍 <span class="nav-search-label">Search</span>
+          </button>
         </div>
       </div>
     </header>
-
-    <!-- "What do you need right now?" quick actions -->
-    <div class="need-bar">
-      <div class="need-inner">
-        <span class="need-label">What do you need right now?</span>
-        <div class="need-btns">
-          <button id="need-trick" class="need-btn nb-trick" type="button">⚡ Quick Trick</button>
-          <button id="need-resume" class="need-btn nb-resume" type="button">▶ Resume Topic</button>
-          <button id="need-new" class="need-btn nb-new" type="button">📚 Start Something New</button>
-        </div>
-      </div>
-    </div>
 
     <main id="main" data-view="home"></main>
 
@@ -79,10 +74,29 @@
     </footer>
   </div>
 
-  <!-- Floating formula-sheet button + slide-out panel -->
-  <button id="fab" class="fab" type="button" aria-label="Open formula sheet">
-    <span aria-hidden="true">📐</span><span class="fab-label">Formulas</span>
-  </button>
+  <!-- Lesson search overlay -->
+  <div id="search-overlay" class="search-overlay hidden" role="dialog" aria-modal="true" aria-label="Search lessons">
+    <div class="search-panel">
+      <div class="search-bar">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search lessons — try “quadratic”" autocomplete="off" aria-label="Search lessons">
+        <button id="search-close" class="search-close" type="button" aria-label="Close search">✕</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Floating action buttons (stacked bottom-right) -->
+  <div class="fab-stack">
+    <button id="fab" class="fab fab-formula" type="button" aria-label="Open formula sheet">
+      <span aria-hidden="true">📐</span><span class="fab-label">Formulas</span>
+    </button>
+    <button id="ask-fab" class="fab fab-ask" type="button" aria-label="Ask Mr Hamouda a math question">
+      <span class="ask-avatar" aria-hidden="true">🧑🏻‍🏫</span><span class="fab-label">Ask Mr Hamouda</span>
+    </button>
+  </div>
+
+  <!-- Formula-sheet slide-out panel -->
   <div id="fpanel-backdrop" class="fpanel-backdrop hidden"></div>
   <aside id="fpanel" class="fpanel" aria-label="Formula sheet" aria-hidden="true">
     <div class="fpanel-head">
@@ -92,6 +106,25 @@
     <div id="fpanel-body" class="fpanel-body"></div>
   </aside>
 
+  <!-- Ask Mr Hamouda chat -->
+  <div id="chat-backdrop" class="chat-backdrop hidden"></div>
+  <section id="chat" class="chat" aria-label="Ask Mr Hamouda" aria-hidden="true">
+    <div class="chat-head">
+      <span class="chat-avatar" aria-hidden="true">🧑🏻‍🏫</span>
+      <div class="chat-id">
+        <strong>Mr Hamouda</strong>
+        <span class="chat-status"><span class="chat-dot"></span> Math tutor · online</span>
+      </div>
+      <button id="chat-close" class="icon-close" type="button" aria-label="Close chat">✕</button>
+    </div>
+    <div id="chat-log" class="chat-log" role="log" aria-live="polite"></div>
+    <div id="chat-chips" class="chat-chips"></div>
+    <form id="chat-form" class="chat-form">
+      <input id="chat-input" type="text" autocomplete="off" placeholder="Ask a math question…" aria-label="Ask a math question">
+      <button type="submit" class="chat-send" aria-label="Send">➤</button>
+    </form>
+  </section>
+
   <!-- Generic modal (tricks, exam date) -->
   <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
     <div class="modal-panel">
@@ -100,6 +133,6 @@
     </div>
   </div>
 
-  <script defer src="js/app.js?v=8"></script>
+  <script defer src="js/app.js?v=9"></script>
 </body>
 </html>

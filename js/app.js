@@ -11,7 +11,6 @@ const BUST = "?t=" + Date.now();
 
 const K_THEME = "mathclicks.theme";
 const K_EXAM = "mathclicks.examDate";
-const K_LAST = "mathclicks.lastVisited";
 const K_TRACK = "mathclicks.track";
 const statusKey = (id) => "mathclicks.status." + id;
 const scoreKey = (id) => "satpractice.best." + id;
@@ -37,8 +36,10 @@ async function boot() {
   TOPICS = all.filter((t) => t.published);
   window.addEventListener("hashchange", route);
   initHeader();
+  initSearch();
   initFormulaPanel();
   initModal();
+  initChat();
   route();
 }
 
@@ -70,9 +71,11 @@ const qCount = (t) => t.questions.length;
 const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
 const domClass = (domain) => "dom-" + domainSlug(domain);
 
-// A lesson's track: "igcse" if its JSON says so, otherwise SAT
-const topicTrack = (t) => (t.track === "igcse" ? "igcse" : "sat");
-const moduleTrack = (m) => topicTrack(m.topics[0]);
+// A module's accent = its lessons' domain (or "mixed" if they differ)
+function moduleDomClass(topics) {
+  const d = new Set(topics.map((t) => t.satDomain));
+  return d.size === 1 ? domClass(topics[0].satDomain) : "dom-mixed";
+}
 
 // ---------- Progress persistence (all localStorage, no accounts) ----------
 
@@ -102,29 +105,9 @@ function isDone(id) {
   return !!(b && b.total > 0 && b.correct === b.total);
 }
 
-function isStarted(id) {
-  return !!lessonStatus(id) || !!bestScore(id);
-}
-
-// Module status from its lessons
-function moduleStatus(m) {
-  if (m.topics.every((t) => isDone(t.id))) return "done";
-  if (m.topics.some((t) => isStarted(t.id))) return "progress";
-  return "none";
-}
-
-// Last-visited lesson (for the Resume banner / button)
-function lastVisited() {
-  try {
-    const v = JSON.parse(localStorage.getItem(K_LAST));
-    return v && TOPICS.find((t) => t.id === v.id) || null;
-  } catch { return null; }
-}
-
 // ---------- Routing ----------
 
 const main = document.getElementById("main");
-let pendingScroll = null; // section to scroll to after the next home render
 
 function route() {
   const parts = (location.hash || "#/").slice(2).split("/");
@@ -133,24 +116,19 @@ function route() {
   main.dataset.view = view;
   if (view === "module") renderModule(decodeURIComponent(parts[1] || ""));
   else if (view === "topic") renderTopic(decodeURIComponent(parts[1] || ""));
-  else if (view === "modules" || view === "igcse") {
-    if (view === "igcse") localStorage.setItem(K_TRACK, "igcse");
-    pendingScroll = pendingScroll || "#browse";
-    renderHome();
-  } else renderHome();
+  else if (view === "modules") renderModules();
+  else if (view === "igcse") renderIgcse();
+  else renderHome();
+  setActiveNav(view);
   typeset(main);
-  if (pendingScroll) {
-    const target = document.querySelector(pendingScroll);
-    pendingScroll = null;
-    if (target) requestAnimationFrame(() =>
-      target.scrollIntoView({ behavior: "smooth", block: "start" }));
-  }
 }
 
-function goHome(section) {
-  pendingScroll = section;
-  if ((location.hash || "#/") === "#/" || location.hash.startsWith("#/modules")) route();
-  else location.hash = "#/";
+function setActiveNav(view) {
+  const topicViews = new Set(["modules", "module", "topic"]);
+  document.querySelectorAll(".nav-link").forEach((a) => {
+    const active = a.dataset.nav === "topics" ? topicViews.has(view) : view === "home";
+    a.classList.toggle("active", active);
+  });
 }
 
 function typeset(el) {
@@ -174,10 +152,9 @@ function el(tag, className, text) {
   return n;
 }
 
-// ---------- Header: exam countdown + dark mode + quick actions ----------
+// ---------- Header: exam countdown + dark mode ----------
 
 function initHeader() {
-  // Dark mode
   const toggle = document.getElementById("theme-toggle");
   const setIcon = () =>
     (toggle.textContent = document.documentElement.dataset.theme === "dark" ? "☀️" : "🌙");
@@ -190,18 +167,8 @@ function initHeader() {
     setIcon();
   });
 
-  // Exam-date countdown
   updateExamChip();
   document.getElementById("exam-chip").addEventListener("click", openExamModal);
-
-  // "What do you need right now?" buttons
-  document.getElementById("need-trick").addEventListener("click", () => goHome("#quick-wins"));
-  document.getElementById("need-new").addEventListener("click", () => goHome("#browse"));
-  document.getElementById("need-resume").addEventListener("click", () => {
-    const last = lastVisited();
-    if (last) location.hash = "#/topic/" + last.id;
-    else goHome("#browse");
-  });
 }
 
 function daysToExam() {
@@ -215,7 +182,7 @@ function daysToExam() {
 function updateExamChip() {
   const label = document.getElementById("exam-chip-label");
   const days = daysToExam();
-  if (days == null) label.textContent = "My exam date";
+  if (days == null) label.textContent = "Exam date";
   else if (days > 1) label.textContent = `${days} days to exam`;
   else if (days === 1) label.textContent = "Exam tomorrow!";
   else if (days === 0) label.textContent = "Exam day — you've got this!";
@@ -265,6 +232,9 @@ function initModal() {
     if (e.key !== "Escape") return;
     if (!modal.classList.contains("hidden")) closeModal();
     else if (fpanel.classList.contains("open")) closeFormulas();
+    else if (chat.classList.contains("open")) closeChat();
+    else if (!document.getElementById("search-overlay").classList.contains("hidden"))
+      document.getElementById("search-close").click();
   });
 }
 
@@ -280,53 +250,198 @@ function closeModal() {
   document.body.classList.remove("no-scroll");
 }
 
-// ---------- Views ----------
+// ---------- Stats + badges ----------
+
+function statsStrip(topics) {
+  const totalQ = topics.reduce((s, t) => s + qCount(t), 0);
+  const totalV = topics.reduce((s, t) => s + (t.videos ? t.videos.length : 0), 0);
+  const done = topics.filter((t) => isDone(t.id)).length;
+  const strip = el("div", "stats");
+  const chip = (label) => strip.appendChild(el("span", "stat-chip", label));
+  chip(`📚 ${plural(topics.length, "lesson")}`);
+  chip(`📝 ${plural(totalQ, "question")}`);
+  chip(`🎬 ${plural(totalV, "video")}`);
+  if (done) chip(`⭐ ${done} completed`);
+  return strip;
+}
+
+function countBadge(t) {
+  const n = qCount(t);
+  const best = bestScore(t.id);
+  if (best && best.total === n && n > 0) {
+    return el("span", "badge score", `⭐ ${best.correct}/${best.total}`);
+  }
+  return el("span", "badge" + (n ? "" : " soon"), n ? plural(n, "question") : "coming soon");
+}
+
+function moduleCard(m) {
+  const a = el("a", "card " + moduleDomClass(m.topics));
+  a.href = "#/module/" + moduleSlug(m.name);
+  a.appendChild(el("div", "card-icon", MODULE_ICON));
+  const body = el("div", "card-body");
+  body.appendChild(el("div", "card-title", m.name));
+  body.appendChild(el("div", "card-sub", subLine(m.topics)));
+  const done = m.topics.filter((t) => isDone(t.id)).length;
+  const prog = el("div", "mprog");
+  const bar = el("div", "mprog-bar");
+  const fill = el("div", "mprog-fill");
+  fill.style.width = (done / m.topics.length) * 100 + "%";
+  bar.appendChild(fill);
+  prog.appendChild(bar);
+  prog.appendChild(el("span", "mprog-label", `${done}/${m.topics.length} done`));
+  body.appendChild(prog);
+  a.appendChild(body);
+  a.appendChild(el("span", "card-arrow", "›"));
+  return a;
+}
+
+function lessonCard(t, i) {
+  const a = el("a", "card " + domClass(t.satDomain));
+  a.href = "#/topic/" + t.id;
+  const done = isDone(t.id);
+  a.appendChild(el("div", "step-dot" + (done ? " done" : ""), done ? "✓" : String(i + 1)));
+  const body = el("div", "card-body");
+  const title = el("div", "card-title", t.title);
+  title.appendChild(countBadge(t));
+  body.appendChild(title);
+  const extras = [t.lessonCode, `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`];
+  if (t.videos && t.videos.length) extras.push(`🎬 ${plural(t.videos.length, "video")}`);
+  if (!done && lessonStatus(t.id) === "progress") extras.push("🕐 in progress");
+  body.appendChild(el("div", "card-sub", extras.join(" · ")));
+  a.appendChild(body);
+  a.appendChild(el("span", "card-arrow", "›"));
+  return a;
+}
+
+function subLine(topics) {
+  const total = topics.reduce((s, t) => s + qCount(t), 0);
+  return `${plural(topics.length, "lesson")} · ${total ? plural(total, "question") : "questions coming soon"}`;
+}
+
+// ---------- Home ----------
 
 function renderHome() {
   main.replaceChildren();
-  main.appendChild(resumeBanner());
-  main.appendChild(quickWinsSection());
-  main.appendChild(browseSection());
-}
 
-// Hero: "pick up where you left off" (or a friendly first-visit default)
-function resumeBanner() {
-  const hero = el("section", "hero hero--dash");
+  // Hero
+  const hero = el("section", "hero");
   const syms = el("div", "hero-symbols");
-  ["∑", "π", "√x", "x²"].forEach((s, i) =>
+  ["∑", "π", "√x", "÷", "x²", "∞", "θ"].forEach((s, i) =>
     syms.appendChild(el("span", "sym s" + (i + 1), s))
   );
   hero.appendChild(syms);
-
   const inner = el("div", "hero-inner");
-  const last = lastVisited();
-  const target = last || TOPICS[0];
-
-  if (last) {
-    inner.appendChild(el("div", "hero-eyebrow", "Welcome back 👋"));
-    inner.appendChild(el("p", "hero-kicker", "Pick up where you left off:"));
-    inner.appendChild(el("h1", "hero-title hero-title--sm", `${last.lessonCode} ${last.title}`));
-  } else if (target) {
-    inner.appendChild(el("div", "hero-eyebrow", "New here? 👋"));
-    inner.appendChild(el("p", "hero-kicker", "Start with our most popular lesson:"));
-    inner.appendChild(el("h1", "hero-title hero-title--sm", `${target.lessonCode} ${target.title}`));
-  } else {
-    inner.appendChild(el("div", "hero-eyebrow", "MathClicks"));
-    inner.appendChild(el("h1", "hero-title hero-title--sm", "Lessons are on their way!"));
-  }
-
+  inner.appendChild(el("div", "hero-eyebrow", "MathClicks"));
+  const h1 = el("h1", "hero-title", "Now it's your turn to ");
+  h1.appendChild(el("span", "hero-click", "click it."));
+  inner.appendChild(h1);
+  inner.appendChild(el("p", "hero-sub",
+    "Short video explanations, interactive notes, and instant-feedback quizzes — built for IGCSE and SAT math students."));
   const cta = el("div", "hero-cta");
-  if (target) {
-    const go = el("a", "btn btn-cta", last ? "▶ Resume" : "▶ Start now");
-    go.href = "#/topic/" + target.id;
-    cta.appendChild(go);
-  }
-  const browse = el("button", "btn btn-ghost", "Browse all topics");
-  browse.addEventListener("click", () => goHome("#browse"));
+  const browse = el("a", "btn btn-cta", "Browse Topics →");
+  browse.href = "#/modules";
   cta.appendChild(browse);
+  const ask = el("button", "btn btn-ghost", "💬 Ask Mr Hamouda");
+  ask.addEventListener("click", () => openChat());
+  cta.appendChild(ask);
   inner.appendChild(cta);
   hero.appendChild(inner);
-  return hero;
+  main.appendChild(hero);
+
+  // Feature strip
+  const feats = el("div", "features");
+  for (const [icon, title, sub] of [
+    ["🎬", "Watch", "Short video explanations"],
+    ["🧠", "Learn", "Interactive lesson notes"],
+    ["⚡", "Practice", "Quizzes with instant feedback"],
+  ]) {
+    const f = el("div", "feature");
+    f.appendChild(el("div", "feature-icon", icon));
+    const b = el("div");
+    b.appendChild(el("div", "feature-title", title));
+    b.appendChild(el("div", "feature-sub", sub));
+    f.appendChild(b);
+    feats.appendChild(f);
+  }
+  main.appendChild(feats);
+
+  // Quick Wins & Mental Math
+  main.appendChild(quickWinsSection());
+
+  // Subject areas
+  main.appendChild(el("h2", "home-sec-title", "Pick your path"));
+  const grid = el("div", "subject-grid");
+  const totalQ = TOPICS.reduce((s, t) => s + qCount(t), 0);
+  const done = TOPICS.filter((t) => isDone(t.id)).length;
+  const satChips = [`📚 ${plural(TOPICS.length, "lesson")}`, `📝 ${plural(totalQ, "question")}`];
+  if (done) satChips.push(`⭐ ${done} completed`);
+  grid.appendChild(subjectCard({
+    cls: "sat", href: "#/modules", icon: "🎯", title: "American Pathway",
+    sub: "", chips: satChips, cta: "Start practicing →",
+  }));
+  grid.appendChild(subjectCard({
+    cls: "igcse", href: "#/igcse", icon: "📘", title: "IGCSE Math",
+    sub: "New lessons are on the way — stay tuned!",
+    chips: [], cta: "Peek inside →", soon: true,
+  }));
+  main.appendChild(grid);
+}
+
+function subjectCard(o) {
+  const a = el("a", "subject " + o.cls);
+  a.href = o.href;
+  a.appendChild(el("div", "subject-icon", o.icon));
+  a.appendChild(el("div", "subject-title", o.title));
+  a.appendChild(el("div", "subject-sub", o.sub));
+  const meta = el("div", "subject-meta");
+  for (const c of o.chips) meta.appendChild(el("span", "subject-chip", c));
+  a.appendChild(meta);
+  a.appendChild(el("span", "subject-go", o.cta));
+  if (o.soon) a.appendChild(el("span", "soon-badge", "Coming soon"));
+  return a;
+}
+
+function renderIgcse() {
+  main.replaceChildren();
+  main.appendChild(backLink("#/", "← Home"));
+  main.appendChild(el("h2", "page-title", "IGCSE Math"));
+  const box = el("div", "empty-note big");
+  box.appendChild(el("div", "empty-emoji", "🚧"));
+  box.appendChild(el("div", "empty-title", "Coming soon!"));
+  box.appendChild(el("p", null,
+    "IGCSE lessons are being prepared. In the meantime, SAT Prep is ready for you."));
+  const b = el("a", "btn btn-cta", "Browse SAT Topics");
+  b.href = "#/modules";
+  box.appendChild(b);
+  main.appendChild(box);
+}
+
+function renderModules() {
+  main.replaceChildren();
+  main.appendChild(backLink("#/", "← Home"));
+  main.appendChild(el("h2", "page-title", "SAT Prep"));
+  main.appendChild(el("p", "page-sub", "American Pathway — pick a module to begin."));
+  if (!TOPICS.length) {
+    main.appendChild(el("div", "empty-note", "Lessons will appear here as we cover them in class — check back soon!"));
+    return;
+  }
+  main.appendChild(statsStrip(TOPICS));
+  for (const m of moduleList()) main.appendChild(moduleCard(m));
+}
+
+function renderModule(slug) {
+  const m = moduleList().find((m) => moduleSlug(m.name) === slug);
+  if (!m) return renderModules();
+  main.replaceChildren();
+  main.appendChild(backLink("#/modules", "← All modules"));
+  main.appendChild(el("h2", "page-title", m.name));
+  m.topics.forEach((t, i) => main.appendChild(lessonCard(t, i)));
+}
+
+function backLink(href, text) {
+  const a = el("a", "back-link", text);
+  a.href = href;
+  return a;
 }
 
 // ---------- Quick Wins & Mental Math ----------
@@ -344,7 +459,6 @@ const TRICKS = [
 
 function quickWinsSection() {
   const sec = el("section", "qw-section");
-  sec.id = "quick-wins";
   sec.appendChild(el("h2", "home-sec-title", "⚡ Quick Wins & Mental Math"));
   sec.appendChild(el("p", "home-sec-sub", "Two-minute tricks that make you faster on test day."));
 
@@ -385,12 +499,10 @@ function openTrick(id) {
   openModal(box);
 }
 
-// ×11: split the digits, add them, tuck the sum in the middle
 function trickX11(box) {
   box.appendChild(el("h3", "modal-title", "✖️ Multiply by 11 — instantly"));
   box.appendChild(el("p", "modal-sub",
     "For any two-digit number: split the digits apart, add them, and tuck the sum in the middle."));
-
   const ctrl = el("div", "trick-ctrl");
   const input = document.createElement("input");
   input.type = "number"; input.min = 10; input.max = 99; input.value = 45;
@@ -401,10 +513,8 @@ function trickX11(box) {
   ctrl.appendChild(input);
   ctrl.appendChild(btn);
   box.appendChild(ctrl);
-
   const out = el("div", "trick-out");
   box.appendChild(out);
-
   function show() {
     const n = Math.floor(Number(input.value));
     if (!(n >= 10 && n <= 99)) {
@@ -416,9 +526,8 @@ function trickX11(box) {
     const steps = [];
     steps.push([`1. Split the digits`, `${n} → ${a} _ ${b}`]);
     steps.push([`2. Add them`, `${a} + ${b} = ${s}`]);
-    if (s < 10) {
-      steps.push([`3. Tuck the sum in the middle`, `${a} ${s} ${b} → ${n * 11}`]);
-    } else {
+    if (s < 10) steps.push([`3. Tuck the sum in the middle`, `${a} ${s} ${b} → ${n * 11}`]);
+    else {
       steps.push([`3. Sum is ${s} — write ${s - 10}, carry the 1`, `(${a}+1) ${s - 10} ${b}`]);
       steps.push([`4. So the answer is`, `${n} × 11 = ${n * 11}`]);
     }
@@ -438,12 +547,10 @@ function trickX11(box) {
   show();
 }
 
-// a% of b = b% of a
 function trickPct(box) {
   box.appendChild(el("h3", "modal-title", "🔄 Percentage Swaps"));
   box.appendChild(el("p", "modal-sub",
     "x% of y is always the same as y% of x — so flip the pair to whichever side is easier."));
-
   const ctrl = el("div", "trick-ctrl");
   const mk = (v) => {
     const i = document.createElement("input");
@@ -455,10 +562,8 @@ function trickPct(box) {
   ctrl.appendChild(el("span", "trick-lbl", "% of"));
   ctrl.appendChild(b);
   box.appendChild(ctrl);
-
   const out = el("div", "trick-out");
   box.appendChild(out);
-
   const presets = el("div", "trick-presets");
   for (const [pa, pb] of [[8, 50], [4, 75], [16, 25], [7, 300]]) {
     const p = el("button", "trick-preset", `${pa}% of ${pb}`);
@@ -467,7 +572,6 @@ function trickPct(box) {
     presets.appendChild(p);
   }
   box.appendChild(presets);
-
   function show() {
     const av = Number(a.value), bv = Number(b.value);
     out.replaceChildren();
@@ -485,12 +589,10 @@ function trickPct(box) {
   show();
 }
 
-// n² = sum of the first n odd numbers
 function trickOdd(box) {
   box.appendChild(el("h3", "modal-title", "🟨 Square numbers are stacks of odd numbers"));
   box.appendChild(el("p", "modal-sub",
     "n² is the sum of the first n odd numbers. Each L-shaped layer adds the next odd number."));
-
   const ctrl = el("div", "trick-ctrl");
   const slider = document.createElement("input");
   slider.type = "range"; slider.min = 1; slider.max = 10; slider.value = 4;
@@ -499,12 +601,10 @@ function trickOdd(box) {
   ctrl.appendChild(outN);
   ctrl.appendChild(slider);
   box.appendChild(ctrl);
-
   const svgBox = el("div", "trick-svg");
   const line = el("div", "trick-step-math trick-oddline");
   box.appendChild(svgBox);
   box.appendChild(line);
-
   const colors = ["#FF6B5C", "#0CA678", "#FFC43D", "#3B5BDB", "#7048E8"];
   function show() {
     const n = Number(slider.value);
@@ -525,7 +625,6 @@ function trickOdd(box) {
   show();
 }
 
-// Desmos / calculator shortcuts for the digital SAT
 function trickCalc(box) {
   box.appendChild(el("h3", "modal-title", "⏱️ 30-Second SAT Calculator Shortcuts"));
   box.appendChild(el("p", "modal-sub",
@@ -551,135 +650,62 @@ function trickCalc(box) {
   box.appendChild(list);
 }
 
-// ---------- Topics & Modules grid ----------
+// ---------- Lesson search overlay ----------
 
-function browseSection() {
-  const sec = el("section", "browse-section");
-  sec.id = "browse";
+function initSearch() {
+  const overlay = document.getElementById("search-overlay");
+  const input = document.getElementById("search-input");
+  const results = document.getElementById("search-results");
 
-  const head = el("div", "browse-head");
-  head.appendChild(el("h2", "home-sec-title", "📚 Topics & Modules"));
-
-  // IGCSE / SAT track filter
-  const track = localStorage.getItem(K_TRACK) === "igcse" ? "igcse" : "sat";
-  const toggle = el("div", "track-toggle");
-  toggle.setAttribute("role", "tablist");
-  for (const [val, label] of [["sat", "SAT"], ["igcse", "IGCSE"]]) {
-    const b = el("button", "track-btn track-btn--" + val + (val === track ? " active" : ""), label);
-    b.type = "button";
-    b.setAttribute("role", "tab");
-    b.setAttribute("aria-selected", String(val === track));
-    b.addEventListener("click", () => {
-      localStorage.setItem(K_TRACK, val);
-      pendingScroll = "#browse";
-      renderHome();
-      const t2 = document.querySelector(pendingScroll);
-      pendingScroll = null;
-      if (t2) t2.scrollIntoView({ block: "start" });
-    });
-    toggle.appendChild(b);
-  }
-  head.appendChild(toggle);
-  sec.appendChild(head);
-
-  const modules = moduleList().filter((m) => moduleTrack(m) === track);
-
-  if (!modules.length) {
-    const box = el("div", "empty-note big");
-    box.appendChild(el("div", "empty-emoji", track === "igcse" ? "🚧" : "📚"));
-    box.appendChild(el("div", "empty-title", "Coming soon!"));
-    box.appendChild(el("p", null, track === "igcse"
-      ? "IGCSE lessons are being prepared. In the meantime, the SAT track is ready for you."
-      : "Lessons will appear here as we cover them in class — check back soon!"));
-    sec.appendChild(box);
-    return sec;
+  function renderResults(q) {
+    results.replaceChildren();
+    q = q.trim().toLowerCase();
+    const hits = TOPICS.filter((t) =>
+      !q ||
+      t.title.toLowerCase().includes(q) ||
+      t.lessonCode.toLowerCase().includes(q) ||
+      t.curriculumModule.toLowerCase().includes(q)
+    ).slice(0, 12);
+    if (!hits.length) {
+      results.appendChild(el("div", "search-empty",
+        q ? "No lessons match — try a different word." : "No lessons published yet."));
+      return;
+    }
+    for (const t of hits) {
+      const a = el("a", "search-hit " + domClass(t.satDomain));
+      a.href = "#/topic/" + t.id;
+      a.appendChild(el("span", "hit-code", t.lessonCode));
+      const b = el("div", "hit-body");
+      b.appendChild(el("div", "hit-title", t.title));
+      b.appendChild(el("div", "hit-sub", t.curriculumModule));
+      a.appendChild(b);
+      results.appendChild(a);
+    }
   }
 
-  // Quick stats
-  const totalQ = modules.reduce((s, m) => s + m.topics.reduce((x, t) => x + qCount(t), 0), 0);
-  const lessons = modules.reduce((s, m) => s + m.topics.length, 0);
-  const done = modules.reduce((s, m) => s + m.topics.filter((t) => isDone(t.id)).length, 0);
-  const strip = el("div", "stats");
-  strip.appendChild(el("span", "stat-chip", `📚 ${plural(lessons, "lesson")}`));
-  strip.appendChild(el("span", "stat-chip", `📝 ${plural(totalQ, "question")}`));
-  if (done) strip.appendChild(el("span", "stat-chip", `⭐ ${done} completed`));
-  sec.appendChild(strip);
+  const open = () => {
+    overlay.classList.remove("hidden");
+    document.body.classList.add("no-scroll");
+    input.value = "";
+    renderResults("");
+    setTimeout(() => input.focus(), 0);
+  };
+  const close = () => {
+    overlay.classList.add("hidden");
+    document.body.classList.remove("no-scroll");
+  };
 
-  const grid = el("div", "module-grid");
-  for (const m of modules) grid.appendChild(moduleGridCard(m));
-  sec.appendChild(grid);
-  return sec;
-}
-
-const STATUS_LABELS = { done: "✓ Completed", progress: "In Progress", none: "Not Started" };
-
-function moduleGridCard(m) {
-  const track = moduleTrack(m);
-  const a = el("a", "gcard track-" + track);
-  a.href = "#/module/" + moduleSlug(m.name);
-
-  const top = el("div", "gcard-top");
-  top.appendChild(el("span", "gcard-track", track.toUpperCase()));
-  const st = moduleStatus(m);
-  top.appendChild(el("span", "gcard-status st-" + st, STATUS_LABELS[st]));
-  a.appendChild(top);
-
-  a.appendChild(el("div", "gcard-icon", MODULE_ICON));
-  a.appendChild(el("div", "gcard-title", m.name));
-  const total = m.topics.reduce((s, t) => s + qCount(t), 0);
-  a.appendChild(el("div", "gcard-sub",
-    `${plural(m.topics.length, "lesson")} · ${total ? plural(total, "question") : "coming soon"}`));
-
-  const done = m.topics.filter((t) => isDone(t.id)).length;
-  const bar = el("div", "mprog-bar");
-  const fill = el("div", "mprog-fill");
-  fill.style.width = (done / m.topics.length) * 100 + "%";
-  bar.appendChild(fill);
-  a.appendChild(bar);
-  a.appendChild(el("div", "mprog-label", `${done}/${m.topics.length} done`));
-  return a;
-}
-
-function renderModule(slug) {
-  const m = moduleList().find((m) => moduleSlug(m.name) === slug);
-  if (!m) return renderHome();
-  main.replaceChildren();
-  main.appendChild(backLink("#/", "← All topics"));
-  main.appendChild(el("h2", "page-title", m.name));
-  m.topics.forEach((t, i) => main.appendChild(lessonCard(t, i)));
-}
-
-function lessonCard(t, i) {
-  const a = el("a", "card " + domClass(t.satDomain));
-  a.href = "#/topic/" + t.id;
-  const done = isDone(t.id);
-  a.appendChild(el("div", "step-dot" + (done ? " done" : ""), done ? "✓" : String(i + 1)));
-  const body = el("div", "card-body");
-  const title = el("div", "card-title", t.title);
-  title.appendChild(countBadge(t));
-  body.appendChild(title);
-  const extras = [t.lessonCode, `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`];
-  if (t.videos && t.videos.length) extras.push(`🎬 ${plural(t.videos.length, "video")}`);
-  if (!done && lessonStatus(t.id) === "progress") extras.push("🕐 in progress");
-  body.appendChild(el("div", "card-sub", extras.join(" · ")));
-  a.appendChild(body);
-  a.appendChild(el("span", "card-arrow", "›"));
-  return a;
-}
-
-function countBadge(t) {
-  const n = qCount(t);
-  const best = bestScore(t.id);
-  if (best && best.total === n && n > 0) {
-    return el("span", "badge score", `⭐ ${best.correct}/${best.total}`);
-  }
-  return el("span", "badge" + (n ? "" : " soon"), n ? plural(n, "question") : "coming soon");
-}
-
-function backLink(href, text) {
-  const a = el("a", "back-link", text);
-  a.href = href;
-  return a;
+  document.getElementById("nav-search").addEventListener("click", open);
+  document.getElementById("search-close").addEventListener("click", close);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
+  input.addEventListener("input", () => renderResults(input.value));
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const first = results.querySelector("a");
+      if (first) first.click();
+    }
+  });
+  results.addEventListener("click", (e) => { if (e.target.closest("a")) close(); });
 }
 
 // ---------- Lesson page: videos + notes + quiz ----------
@@ -716,10 +742,7 @@ function videoCard(v) {
   return card;
 }
 
-// ---------- Interactive lesson-notes behaviors ----------
-
 function wireLesson(root) {
-  // Collapsible examples (first one open)
   root.querySelectorAll(".example-card").forEach((card) => {
     card.querySelector(".example-header").addEventListener("click", () =>
       card.classList.toggle("open")
@@ -727,16 +750,10 @@ function wireLesson(root) {
   });
   const first = root.querySelector(".example-card");
   if (first) first.classList.add("open");
-
-  // Vocabulary flip cards
   root.querySelectorAll(".vocab-card").forEach((c) =>
     c.addEventListener("click", () => c.classList.toggle("flipped"))
   );
-
-  // Step-by-step reveal sequences
   root.querySelectorAll(".reveal-seq").forEach(wireRevealSeq);
-
-  // Number line explorers
   root.querySelectorAll(".nl-explorer").forEach(initNumberLine);
 }
 
@@ -744,12 +761,10 @@ function wireRevealSeq(seq) {
   const items = [...seq.children];
   if (!items.length) return;
   items.forEach((it) => (it.hidden = true));
-
   const label = (i) =>
     items[i].classList.contains("solution-display")
       ? "✨ Show the solution"
       : `👀 Show step ${i + 1} of ${items.filter((x) => !x.classList.contains("solution-display")).length}`;
-
   const btn = el("button", "reveal-btn", label(0));
   seq.after(btn);
   let i = 0;
@@ -762,10 +777,8 @@ function wireRevealSeq(seq) {
   });
 }
 
-// Live number-line explorer for |x - a| (sym) c
 function initNumberLine(box) {
   const controls = el("div", "nl-controls");
-
   const symWrap = el("label", null, "Symbol ");
   const sym = document.createElement("select");
   for (const [v, txt] of [["lt", "<"], ["le", "≤"], ["gt", ">"], ["ge", "≥"]]) {
@@ -774,7 +787,6 @@ function initNumberLine(box) {
     sym.appendChild(o);
   }
   symWrap.appendChild(sym);
-
   const mkSlider = (labelText, min, max, val) => {
     const wrap = el("label", null, labelText + " ");
     const out = el("output", null, String(val));
@@ -786,21 +798,17 @@ function initNumberLine(box) {
   };
   const a = mkSlider("Center a:", -4, 4, 1);
   const c = mkSlider("Distance c:", 1, 7, 3);
-
   const join = el("span", "nl-join", "");
   controls.appendChild(symWrap);
   controls.appendChild(a.wrap);
   controls.appendChild(c.wrap);
   controls.appendChild(join);
-
   const readout = el("div", "nl-readout");
   const svgBox = el("div", "nl-svg");
   box.appendChild(controls);
   box.appendChild(readout);
   box.appendChild(svgBox);
-
   const color = getComputedStyle(box).getPropertyValue("--dc").trim() || "#3B5BDB";
-
   function render() {
     const av = parseInt(a.input.value), cv = parseInt(c.input.value);
     a.out.textContent = av; c.out.textContent = cv;
@@ -811,16 +819,12 @@ function initNumberLine(box) {
     const inner = av === 0 ? "x" : av > 0 ? `x - ${av}` : `x + ${-av}`;
     const S = { lt: "<", le: "\\le", gt: ">", ge: "\\ge" }[s];
     const Sflip = { lt: ">", le: "\\ge", gt: "<", ge: "\\le" }[s];
-
     join.textContent = between ? "AND — between" : "OR — outside";
-
     const tex = between
       ? `\\left|${inner}\\right| ${S} ${cv} \\;\\Rightarrow\\; ${-cv} ${S} ${inner} ${S} ${cv} \\;\\Rightarrow\\; ${lo} ${S} x ${S} ${hi}`
       : `\\left|${inner}\\right| ${S} ${cv} \\;\\Rightarrow\\; x ${S} ${hi} \\;\\text{ or }\\; x ${Sflip} ${lo}`;
     if (window.katex) katex.render(tex, readout, { throwOnError: false });
     else readout.textContent = tex.replace(/\\left|\\right|\\;|\\le/g, "≤").replace(/\\ge/g, "≥");
-
-    // SVG number line: x in [-12, 12]
     const W = 640, PAD = 26, AX = 46;
     const xm = (v) => PAD + ((v + 12) * (W - 2 * PAD)) / 24;
     let p = "";
@@ -841,14 +845,11 @@ function initNumberLine(box) {
     else shade = seg(xm(-12), xm(lo), true, false) + seg(xm(hi), xm(12), false, true);
     const dot = (v) =>
       `<circle cx="${xm(v)}" cy="${AX}" r="7" fill="${closed ? color : "#fff"}" stroke="${color}" stroke-width="2.5"/>`;
-
     svgBox.innerHTML =
       `<svg viewBox="0 0 ${W} 76" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="number line">` +
       `<line x1="${PAD - 12}" y1="${AX}" x2="${W - PAD + 12}" y2="${AX}" stroke="#98a2b3" stroke-width="2"/>` +
-      p + shade + dot(lo) + dot(hi) +
-      `</svg>`;
+      p + shade + dot(lo) + dot(hi) + `</svg>`;
   }
-
   sym.addEventListener("input", render);
   a.input.addEventListener("input", render);
   c.input.addEventListener("input", render);
@@ -857,10 +858,8 @@ function initNumberLine(box) {
 
 function renderTopic(id) {
   const t = TOPICS.find((t) => t.id === id);
-  if (!t) return renderHome();
+  if (!t) return renderModules();
 
-  // Remember for the Resume banner + mark in progress
-  localStorage.setItem(K_LAST, JSON.stringify({ id: t.id }));
   if (!lessonStatus(t.id)) setLessonStatus(t.id, "progress");
 
   main.replaceChildren();
@@ -876,7 +875,6 @@ function renderTopic(id) {
   chips.appendChild(el("span", "chip plain", t.curriculumModule));
   main.appendChild(chips);
 
-  // Explanation videos
   if (t.videos && t.videos.length) {
     main.appendChild(el("h3", "section-title", "🎬 Watch the explanation"));
     const row = el("div", "video-row");
@@ -887,7 +885,6 @@ function renderTopic(id) {
     main.appendChild(el("div", "empty-note", "Explanation video coming soon."));
   }
 
-  // Interactive lesson notes
   if (t.lessonHtml) {
     main.appendChild(el("h3", "section-title", "📖 Learn the lesson"));
     const box = el("div", "lesson-content " + domClass(t.satDomain));
@@ -896,7 +893,6 @@ function renderTopic(id) {
       .then((r) => r.text())
       .then((html) => {
         box.innerHTML = html;
-        // Re-execute inline scripts (innerHTML doesn't run them)
         box.querySelectorAll("script").forEach((s) => {
           const ns = document.createElement("script");
           if (s.src) { ns.src = s.src; } else { ns.textContent = s.textContent; }
@@ -907,13 +903,11 @@ function renderTopic(id) {
       });
   }
 
-  // Quiz
   main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
   if (!t.questions.length) {
     main.appendChild(el("div", "empty-note", "Quiz questions coming soon."));
     return;
   }
-
   const quiz = { topic: t, i: 0, correct: 0 };
   const holder = el("div");
   main.appendChild(holder);
@@ -940,7 +934,6 @@ function markDoneButton(t) {
 function showQuestion(quiz, holder) {
   const t = quiz.topic;
   const q = t.questions[quiz.i];
-
   holder.replaceChildren();
 
   const progress = el("div", "progress");
@@ -971,7 +964,6 @@ function showQuestion(quiz, holder) {
       isCorrect ? "✅ Correct!" : "❌ Incorrect" + (correctText ? ` — the answer is ${correctText}` : "")));
     if (q.explanation) fb.appendChild(el("div", null, q.explanation));
     card.appendChild(fb);
-
     const actions = el("div", "q-actions");
     const next = el("button", "btn btn-primary",
       quiz.i + 1 < t.questions.length ? "Next question →" : "See results");
@@ -1027,7 +1019,6 @@ function showQuestion(quiz, holder) {
     });
     card.appendChild(choices);
   }
-
   holder.appendChild(card);
   typeset(card);
 }
@@ -1035,23 +1026,17 @@ function showQuestion(quiz, holder) {
 function showResults(quiz, holder) {
   const t = quiz.topic;
   saveScore(t.id, quiz.correct, t.questions.length);
-
   holder.replaceChildren();
   const card = el("div", "result-card");
   const pct = Math.round((quiz.correct / t.questions.length) * 100);
 
-  // Perfect score = lesson done (also updates the header button if visible)
   if (pct === 100) {
     setLessonStatus(t.id, "done");
     const btn = document.querySelector(".mark-done");
-    if (btn) {
-      btn.textContent = "✓ Done!";
-      btn.classList.add("is-done");
-    }
+    if (btn) { btn.textContent = "✓ Done!"; btn.classList.add("is-done"); }
   }
 
   card.appendChild(el("div", null, "Quiz complete"));
-
   const ring = el("div", "score-ring");
   ring.style.setProperty("--pct", pct);
   ring.style.setProperty("--ring", pct === 100 ? "#0CA678" : pct >= 70 ? "#2A3A7C" : "#E8590C");
@@ -1091,9 +1076,6 @@ function celebrate(card) {
     card.appendChild(s);
   }
 }
-
-// ---------- Grid-in answer checking ----------
-// Accepts exact string matches and numeric equivalents (3/4 === 0.75 === .75)
 
 function parseNumeric(s) {
   s = s.trim().replace(/\s+/g, "");
@@ -1230,14 +1212,13 @@ function buildFormulas() {
     }
     body.appendChild(g);
   }
-  // Open the first section of each group so the panel never looks empty
   body.querySelectorAll(".fgroup > details:first-of-type").forEach((d) => (d.open = true));
   typeset(body);
 }
 
 function openFormulas() {
-  // Built once and kept in the DOM, so scroll position survives while browsing
   if (!formulasBuilt) { buildFormulas(); formulasBuilt = true; }
+  closeChat();
   fpanel.classList.add("open");
   fpanel.setAttribute("aria-hidden", "false");
   document.getElementById("fpanel-backdrop").classList.remove("hidden");
@@ -1247,4 +1228,487 @@ function closeFormulas() {
   fpanel.classList.remove("open");
   fpanel.setAttribute("aria-hidden", "true");
   document.getElementById("fpanel-backdrop").classList.add("hidden");
+}
+
+// ==========================================================================
+//  Ask Mr Hamouda — a math-only tutor bot that runs entirely in the browser
+//  (no server, no API key). It solves and explains; it refuses non-math.
+// ==========================================================================
+
+const chat = document.getElementById("chat");
+let chatStarted = false;
+
+function initChat() {
+  document.getElementById("ask-fab").addEventListener("click", () => {
+    if (chat.classList.contains("open")) closeChat();
+    else openChat();
+  });
+  document.getElementById("chat-close").addEventListener("click", closeChat);
+  document.getElementById("chat-backdrop").addEventListener("click", closeChat);
+  document.getElementById("chat-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = document.getElementById("chat-input");
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = "";
+    sendUserMessage(text);
+  });
+}
+
+function openChat() {
+  closeFormulas();
+  chat.classList.add("open");
+  chat.setAttribute("aria-hidden", "false");
+  document.getElementById("chat-backdrop").classList.remove("hidden");
+  if (!chatStarted) {
+    chatStarted = true;
+    botSay(
+      "Hi, I'm <strong>Mr Hamouda</strong> 👋 your math helper. Ask me to solve an equation, work out a percentage, or explain a formula. " +
+      "I only do <strong>math</strong> — try one of these:"
+    );
+    renderChips([
+      "Solve 3x + 5 = 20",
+      "Solve x^2 - 5x + 6 = 0",
+      "What is 15% of 80?",
+      "Explain the quadratic formula",
+      "Area of a circle radius 7",
+    ]);
+  }
+  setTimeout(() => document.getElementById("chat-input").focus(), 250);
+}
+
+function closeChat() {
+  chat.classList.remove("open");
+  chat.setAttribute("aria-hidden", "true");
+  document.getElementById("chat-backdrop").classList.add("hidden");
+}
+
+function chatLog() { return document.getElementById("chat-log"); }
+
+function appendBubble(who, node) {
+  const row = el("div", "msg msg-" + who);
+  if (who === "bot") row.appendChild(el("span", "msg-avatar", "🧑🏻‍🏫"));
+  const bubble = el("div", "bubble");
+  if (typeof node === "string") bubble.innerHTML = node;
+  else bubble.appendChild(node);
+  row.appendChild(bubble);
+  chatLog().appendChild(row);
+  typeset(bubble);
+  chatLog().scrollTop = chatLog().scrollHeight;
+  return row;
+}
+
+function botSay(html) { appendBubble("bot", html); }
+
+function renderChips(list) {
+  const holder = document.getElementById("chat-chips");
+  holder.replaceChildren();
+  for (const text of list) {
+    const c = el("button", "chat-chip", text);
+    c.type = "button";
+    c.addEventListener("click", () => sendUserMessage(text));
+    holder.appendChild(c);
+  }
+}
+
+function sendUserMessage(text) {
+  appendBubble("user", document.createTextNode(text));
+  document.getElementById("chat-chips").replaceChildren();
+  // Small "typing…" delay so it feels like a person is thinking
+  const typing = appendBubble("bot", '<span class="typing"><i></i><i></i><i></i></span>');
+  setTimeout(() => {
+    typing.remove();
+    const ans = answerMath(text);
+    botSay(ans.html);
+    if (ans.chips) renderChips(ans.chips);
+  }, 380 + Math.random() * 320);
+}
+
+// ---------- The math brain ----------
+
+const MATH_WORDS = /\b(solve|simplify|factor(is|iz)?e?|expand|evaluate|calculate|compute|equation|inequalit|expression|formula|theorem|sum|difference|product|quotient|add|plus|minus|subtract|multiply|times|divide|fraction|decimal|percent|percentage|ratio|proportion|average|mean|median|mode|range|probabilit|exponent|power|squared?|cubed?|root|sqrt|radical|quadratic|linear|polynomial|function|graph|slope|gradient|intercept|parabola|vertex|coordinate|absolute value|area|perimeter|circumference|radius|diameter|volume|surface area|triangle|rectangle|circle|polygon|trapezoid|parallelogram|rhombus|angle|degrees?|radian|sine?|cosine?|tangent|trig|trigonometry|pythagoras|pythagorean|hypotenuse|geometry|algebra|calculus|derivative|integral|logarithm|\blog\b|\bln\b|sequence|series|arithmetic|geometric|prime|factorial|gcd|lcm|integer|numerator|denominator|value of|how many|nth term|simultaneous|matrix|vector)\b/i;
+
+const NON_MATH = /\b(weather|forecast|joke|song|lyrics|movie|film|football|soccer|basketball|game score|instagram|snapchat|dating|girlfriend|boyfriend|recipe|cook|food|pizza|president|election|politic|news|stock|crypto|bitcoin|write.{0,12}(essay|story|poem)|python|javascript|html|css|\bcode\b|programming|history of|capital of|translate|who won|your age|how old are you|love you|marry)\b/i;
+
+function isGreeting(s) { return /^\s*(hi|hey|hello|yo|salam|as-salamu|good (morning|afternoon|evening)|howdy)\b/i.test(s); }
+function isThanks(s) { return /\b(thanks|thank you|thx|shukran|shokran)\b/i.test(s); }
+function isIdentity(s) { return /\b(who are you|what are you|your name|are you (a )?(bot|robot|ai|human|real))\b/i.test(s); }
+
+function hasMathSignal(s) {
+  return /[0-9]/.test(s) || /[=+\-*/^√%<>]/.test(s) || /\bx\b|\by\b/.test(s) || MATH_WORDS.test(s);
+}
+
+function answerMath(raw) {
+  const s = raw.trim();
+
+  if (isIdentity(s))
+    return { html: "I'm <strong>Mr Hamouda</strong>, your built-in math tutor 🧑🏻‍🏫. I can solve equations, crunch numbers, and explain formulas — one click at a time." };
+  if (isThanks(s))
+    return { html: "You're welcome! 😊 Got another math question for me?" };
+  if (isGreeting(s) && !hasMathSignal(s))
+    return { html: "Hey! 👋 Ask me a math question — an equation to solve, a percentage, an area, or a formula to explain." };
+
+  // Math-only gate
+  if (NON_MATH.test(s) || !hasMathSignal(s)) {
+    return {
+      html: "I'm just the <strong>math</strong> helper 📐 — I can't help with that one. But ask me anything in math and I'm all yours! Try “solve 2x − 4 = 10” or “explain SOH CAH TOA”.",
+    };
+  }
+
+  // Try each solver in order of specificity
+  return (
+    tryGeometry(s) ||
+    tryConcept(s) ||
+    tryPercent(s) ||
+    tryEquation(s) ||
+    tryArithmetic(s) ||
+    fallbackMath(s)
+  );
+}
+
+// ----- Geometry with actual numbers -----
+
+function grabNum(s, re) { const m = s.match(re); return m ? parseFloat(m[1]) : null; }
+const approx = (v) => `≈ ${fmt(Math.round(v * 100) / 100)}`;
+
+function tryGeometry(s) {
+  const t = s.toLowerCase();
+  let r = grabNum(t, /radius\s*(?:of|=|:|is)?\s*([\d.]+)/);
+  if (r == null) {
+    const d = grabNum(t, /diameter\s*(?:of|=|:|is)?\s*([\d.]+)/);
+    if (d != null) r = d / 2;
+  }
+  if (/circle/.test(t) && r != null) {
+    if (/circumference|perimeter/.test(t)) {
+      const v = 2 * Math.PI * r;
+      return { html: `Circumference $= 2\\pi r$:<div class="ans">$2\\pi(${fmt(r)}) = ${fmt(v)}$ &nbsp;(${approx(v)})</div>`,
+        chips: ["Area of a circle radius 5", "Explain the distance formula"] };
+    }
+    if (/area/.test(t)) {
+      const v = Math.PI * r * r;
+      return { html: `Area of a circle $= \\pi r^2$:<div class="ans">$\\pi\\,(${fmt(r)})^2 = ${fmt(r * r)}\\pi$ &nbsp;(${approx(v)})</div>`,
+        chips: ["Circumference of circle radius 5", "Volume of a sphere radius 3"] };
+    }
+  }
+  // Sphere volume
+  if (/sphere/.test(t) && r != null && /volume/.test(t)) {
+    const v = 4 / 3 * Math.PI * r ** 3;
+    return { html: `Volume of a sphere $= \\tfrac{4}{3}\\pi r^3$:<div class="ans">$\\tfrac{4}{3}\\pi(${fmt(r)})^3 = ${approx(v).slice(2)}$</div>` };
+  }
+  // Rectangle "area of rectangle 5 by 8" / "5 x 8"
+  let m;
+  if (/rectangle/.test(t) && /area/.test(t) &&
+      (m = t.match(/([\d.]+)\s*(?:by|x|×|\*)\s*([\d.]+)/))) {
+    const a = parseFloat(m[1]), b = parseFloat(m[2]);
+    return { html: `Area of a rectangle $= \\text{length}\\times\\text{width}$:<div class="ans">$${fmt(a)}\\times ${fmt(b)} = ${fmt(a * b)}$</div>` };
+  }
+  // Triangle area from base & height
+  if (/triangle/.test(t) && /area/.test(t)) {
+    const b = grabNum(t, /base\s*(?:of|=|:|is)?\s*([\d.]+)/);
+    const h = grabNum(t, /height\s*(?:of|=|:|is)?\s*([\d.]+)/);
+    if (b != null && h != null)
+      return { html: `Area of a triangle $= \\tfrac{1}{2}bh$:<div class="ans">$\\tfrac{1}{2}\\times ${fmt(b)}\\times ${fmt(h)} = ${fmt(0.5 * b * h)}$</div>` };
+  }
+  return null;
+}
+
+// ----- Expression evaluator (safe; no eval) -----
+
+function preprocessExpr(str) {
+  let e = str.toLowerCase();
+  e = e.replace(/√/g, "sqrt").replace(/×/g, "*").replace(/÷/g, "/").replace(/π/g, "pi");
+  e = e.replace(/\^/g, "**");                 // exponent
+  e = e.replace(/\bpi\b/g, String(Math.PI)).replace(/\be\b/g, String(Math.E));
+  // implicit multiplication: 2( -> 2*(, )( -> )*(, 2x -> 2*x handled at var stage
+  e = e.replace(/(\d)\s*\(/g, "$1*(").replace(/\)\s*\(/g, ")*(");
+  return e;
+}
+
+const FUNCS = {
+  sqrt: Math.sqrt, cbrt: Math.cbrt, abs: Math.abs,
+  ln: Math.log, log: (x) => Math.log10(x), exp: Math.exp,
+  sin: (x) => Math.sin(x * Math.PI / 180),
+  cos: (x) => Math.cos(x * Math.PI / 180),
+  tan: (x) => Math.tan(x * Math.PI / 180),
+  asin: (x) => Math.asin(x) * 180 / Math.PI,
+  acos: (x) => Math.acos(x) * 180 / Math.PI,
+  atan: (x) => Math.atan(x) * 180 / Math.PI,
+};
+
+// Tokenize + shunting-yard evaluate. `vars` maps a variable letter to a number.
+function evalExpr(input, vars) {
+  const e = preprocessExpr(input);
+  const tokens = [];
+  const re = /\s*([A-Za-z_]+|\d+\.?\d*|\.\d+|\*\*|[+\-*/()])/g;
+  let m, last = null;
+  while ((m = re.exec(e)) !== null) {
+    let tok = m[1];
+    // unary minus → 0 - x
+    if (tok === "-" && (last === null || last === "(" || last === "+" || last === "-" || last === "*" || last === "/" || last === "**")) {
+      tokens.push("0"); tokens.push("-");
+      last = "-"; continue;
+    }
+    tokens.push(tok);
+    last = tok;
+  }
+  const prec = { "+": 1, "-": 1, "*": 2, "/": 2, "**": 3 };
+  const rightAssoc = { "**": true };
+  const out = [], ops = [];
+  for (let i = 0; i < tokens.length; i++) {
+    const tok = tokens[i];
+    if (/^(\d|\.)/.test(tok)) out.push(parseFloat(tok));
+    else if (/^[A-Za-z_]+$/.test(tok)) {
+      if (tok in FUNCS) ops.push(tok);
+      else if (vars && tok in vars) out.push(vars[tok]);
+      else throw new Error("unknown: " + tok);
+    } else if (tok in prec) {
+      while (ops.length) {
+        const top = ops[ops.length - 1];
+        if (top in FUNCS) { out.push(ops.pop()); continue; }
+        if (top in prec && (prec[top] > prec[tok] || (prec[top] === prec[tok] && !rightAssoc[tok]))) out.push(ops.pop());
+        else break;
+      }
+      ops.push(tok);
+    } else if (tok === "(") ops.push(tok);
+    else if (tok === ")") {
+      while (ops.length && ops[ops.length - 1] !== "(") out.push(ops.pop());
+      if (!ops.length) throw new Error("mismatched )");
+      ops.pop();
+      if (ops.length && ops[ops.length - 1] in FUNCS) out.push(ops.pop());
+    }
+  }
+  while (ops.length) {
+    const op = ops.pop();
+    if (op === "(") throw new Error("mismatched (");
+    out.push(op);
+  }
+  const st = [];
+  for (const tok of out) {
+    if (typeof tok === "number") st.push(tok);
+    else if (tok in FUNCS) st.push(FUNCS[tok](st.pop()));
+    else {
+      const b = st.pop(), a = st.pop();
+      if (a === undefined || b === undefined) throw new Error("bad expr");
+      st.push(tok === "+" ? a + b : tok === "-" ? a - b : tok === "*" ? a * b : tok === "/" ? a / b : Math.pow(a, b));
+    }
+  }
+  if (st.length !== 1 || !isFinite(st[0])) throw new Error("no result");
+  return st[0];
+}
+
+const fmt = (n) => {
+  if (!isFinite(n)) return String(n);
+  const r = Math.round(n * 1e10) / 1e10;
+  return Number.isInteger(r) ? String(r) : String(parseFloat(r.toFixed(6)));
+};
+
+const escTex = (s) => s.replace(/\*\*/g, "^").replace(/\*/g, "\\times ").replace(/([a-zA-Z0-9_.]+)\/([a-zA-Z0-9_.]+)/g, "\\frac{$1}{$2}");
+
+// ----- Arithmetic / expression questions -----
+
+function tryArithmetic(s) {
+  // strip question words, keep the math expression
+  let expr = s.replace(/^(what('| i)?s|whats|calculate|evaluate|work out|compute|find|how much is|the value of|value of)\b/gi, "");
+  expr = expr.replace(/[?=]+\s*$/g, "").replace(/[?]/g, "").trim();
+  if (!/[0-9)]/.test(expr) || !/[+\-*/^√]/.test(expr) && !/(sqrt|sin|cos|tan|log|ln)/i.test(expr)) return null;
+  if (/[a-wyz]/i.test(expr.replace(/sqrt|sin|cos|tan|log|ln|exp|abs|pi|cbrt|asin|acos|atan/gi, ""))) return null; // has stray variables
+  try {
+    const val = evalExpr(expr);
+    const tex = escTex(preprocessExpr(expr).replace(/([0-9.]+)(?=e[+-])/gi, "$1"));
+    return {
+      html: `Here you go 👇<div class="ans">$${escTex(expr)} = ${fmt(val)}$</div>`,
+      chips: ["√144", "2^10", "15% of 80", "Explain PEMDAS"],
+    };
+  } catch { return null; }
+}
+
+// ----- Percentages -----
+
+function tryPercent(s) {
+  let m;
+  // X% of Y
+  if ((m = s.match(/([\d.]+)\s*(?:%|percent)\s*of\s*([\d.]+)/i))) {
+    const p = parseFloat(m[1]), y = parseFloat(m[2]), v = p / 100 * y;
+    return {
+      html: `<strong>${fmt(p)}% of ${fmt(y)}</strong> means ${fmt(p)}/100 × ${fmt(y)}.<div class="ans">$\\dfrac{${fmt(p)}}{100}\\times ${fmt(y)} = ${fmt(v)}$</div>💡 Tip: ${fmt(p)}% of ${fmt(y)} equals ${fmt(y)}% of ${fmt(p)} — flip whichever is easier!`,
+      chips: ["25% of 80", "12 is what percent of 48?", "Increase 60 by 15%"],
+    };
+  }
+  // X is what percent of Y
+  if ((m = s.match(/([\d.]+)\s*is\s*what\s*percent\s*of\s*([\d.]+)/i))) {
+    const x = parseFloat(m[1]), y = parseFloat(m[2]), v = x / y * 100;
+    return {
+      html: `Divide and multiply by 100:<div class="ans">$\\dfrac{${fmt(x)}}{${fmt(y)}}\\times 100 = ${fmt(v)}\\%$</div>`,
+      chips: ["9 is what percent of 60?", "40% of 25"],
+    };
+  }
+  // increase / decrease Y by X%
+  if ((m = s.match(/(increase|decrease|raise|reduce)\s*([\d.]+)\s*by\s*([\d.]+)\s*%?/i))) {
+    const up = /incre|raise/i.test(m[1]);
+    const y = parseFloat(m[2]), p = parseFloat(m[3]);
+    const v = y * (1 + (up ? 1 : -1) * p / 100);
+    return {
+      html: `${up ? "Increasing" : "Decreasing"} ${fmt(y)} by ${fmt(p)}%:<div class="ans">$${fmt(y)}\\times\\left(1 ${up ? "+" : "-"} \\dfrac{${fmt(p)}}{100}\\right) = ${fmt(v)}$</div>`,
+      chips: ["Increase 200 by 10%", "Decrease 90 by 30%"],
+    };
+  }
+  return null;
+}
+
+// ----- Equations (linear + quadratic) via function sampling -----
+
+function detectVar(s) {
+  const m = s.replace(/sqrt|sin|cos|tan|log|ln|exp|abs|pi|cbrt|asin|acos|atan/gi, " ").match(/[a-z]/i);
+  return m ? m[0].toLowerCase() : "x";
+}
+
+function tryEquation(s) {
+  let body = s.replace(/^(solve|find|what('| i)?s|whats|the value of|value of|for)\b/gi, " ");
+  body = body.replace(/\bfor\s+[a-z]\b/gi, " ").replace(/[?]/g, "").trim();
+  if (!body.includes("=")) return null;
+  const sides = body.split("=");
+  if (sides.length !== 2) return null;
+  const v = detectVar(body);
+
+  // make expressions evaluable: insert * between coefficient/var and var/paren
+  const prep = (str) => str
+    .replace(new RegExp("(\\d|\\))\\s*" + v, "gi"), "$1*" + v)
+    .replace(new RegExp(v + "\\s*(\\d|\\()", "gi"), v + "*$1");
+
+  const L = prep(sides[0]), R = prep(sides[1]);
+  const f = (x) => {
+    const vars = {}; vars[v] = x;
+    return evalExpr(L, vars) - evalExpr(R, vars);
+  };
+  let f0, f1, fm1, f2;
+  try { f0 = f(0); f1 = f(1); fm1 = f(-1); f2 = f(2); }
+  catch { return null; }
+  if (![f0, f1, fm1, f2].every(isFinite)) return null;
+
+  // quadratic coefficients
+  const a = (f1 + fm1) / 2 - f0;
+  const b = (f1 - fm1) / 2;
+  const c = f0;
+  const predict2 = 4 * a + 2 * b + c;
+  if (Math.abs(predict2 - f2) > 1e-6) return null; // not polynomial ≤ 2
+
+  const V = v.toUpperCase() === v ? v : v; // keep as typed lower
+  if (Math.abs(a) < 1e-9) {
+    // linear: b*x + c = 0
+    if (Math.abs(b) < 1e-9)
+      return { html: Math.abs(c) < 1e-9
+        ? "That equation is true for <strong>every</strong> value — infinitely many solutions. ♾️"
+        : "That equation has <strong>no solution</strong> — the two sides can never be equal." };
+    const x = -c / b;
+    return {
+      html:
+        `Let's isolate <strong>${v}</strong> step by step:` +
+        `<div class="ans">$${escTex(prep(sides[0]))} = ${escTex(prep(sides[1]))}$<br>` +
+        `Move everything to one side: $${fmtCoef(b)}${v} ${signed(c)} = 0$<br>` +
+        `So $${v} = \\dfrac{${fmt(-c)}}{${fmt(b)}} = \\mathbf{${fmt(x)}}$</div>`,
+      chips: ["Solve 5x - 2 = 3x + 8", "Solve x/3 + 1 = 4", "Solve x^2 = 49"],
+    };
+  }
+
+  // quadratic: a x^2 + b x + c = 0
+  const D = b * b - 4 * a * c;
+  const head = `Standard form: $${fmtCoef(a)}${v}^2 ${signedCoef(b, v)} ${signed(c)} = 0$<br>` +
+    `Discriminant: $b^2-4ac = (${fmt(b)})^2 - 4(${fmt(a)})(${fmt(c)}) = ${fmt(D)}$<br>`;
+  if (D < -1e-9)
+    return { html: `<div class="ans">${head}Since the discriminant is negative, there are <strong>no real solutions</strong> (the parabola never crosses the x-axis).</div>`,
+      chips: ["Solve x^2 + 1 = 0", "Explain the discriminant"] };
+  const sqrtD = Math.sqrt(Math.max(D, 0));
+  const r1 = (-b + sqrtD) / (2 * a), r2 = (-b - sqrtD) / (2 * a);
+  const roots = Math.abs(D) < 1e-9
+    ? `One (repeated) solution: $${v} = ${fmt(r1)}$`
+    : `Two solutions: $${v} = ${fmt(r1)}$ or $${v} = ${fmt(r2)}$`;
+  return {
+    html: `<div class="ans">${head}$${v} = \\dfrac{-b \\pm \\sqrt{${fmt(D)}}}{2a} = \\dfrac{${fmt(-b)} \\pm ${fmt(sqrtD)}}{${fmt(2 * a)}}$<br><strong>${roots}</strong></div>`,
+    chips: ["Solve x^2 - 7x + 12 = 0", "Explain completing the square"],
+  };
+}
+
+const fmtCoef = (a) => (a === 1 ? "" : a === -1 ? "-" : fmt(a));
+const signed = (n) => (n >= 0 ? "+ " + fmt(n) : "- " + fmt(-n));
+const signedCoef = (b, v) => (b >= 0 ? "+ " + fmtCoef(b) + v : "- " + fmtCoef(-b) + v);
+
+// ----- Concept knowledge base -----
+
+const CONCEPTS = [
+  { k: /quadratic formula/i, t: "Quadratic formula",
+    html: "For $ax^2+bx+c=0$:<div class=\"ans\">$x = \\dfrac{-b \\pm \\sqrt{b^2-4ac}}{2a}$</div>The $\\pm$ gives the two roots. The part under the root, $b^2-4ac$, is the <strong>discriminant</strong> — it tells you how many real roots there are." },
+  { k: /discriminant/i, t: "Discriminant",
+    html: "The discriminant is $b^2-4ac$ (the bit under the square root in the quadratic formula):<div class=\"ans\">$>0$ → two real roots<br>$=0$ → one repeated root<br>$<0$ → no real roots</div>" },
+  { k: /complet(e|ing) the square/i, t: "Completing the square",
+    html: "Turn $x^2+bx+c$ into a perfect square:<div class=\"ans\">$x^2+bx = \\left(x+\\tfrac{b}{2}\\right)^2 - \\left(\\tfrac{b}{2}\\right)^2$</div>Add $\\left(\\tfrac{b}{2}\\right)^2$ to complete the square, then subtract it back to keep things equal." },
+  { k: /pythagoras|pythagorean|hypotenuse/i, t: "Pythagorean theorem",
+    html: "In a right triangle, the square of the hypotenuse equals the sum of the squares of the other two sides:<div class=\"ans\">$a^2 + b^2 = c^2$</div>where $c$ is the side opposite the right angle." },
+  { k: /soh ?cah ?toa|trig(onometry)? ratio|sine.*cosine.*tangent|what is (sin|cos|tan)/i, t: "Trig ratios",
+    html: "For a right triangle (O = opposite, A = adjacent, H = hypotenuse):<div class=\"ans\">$\\sin\\theta=\\dfrac{O}{H},\\quad \\cos\\theta=\\dfrac{A}{H},\\quad \\tan\\theta=\\dfrac{O}{A}$</div>Remember it as <strong>SOH-CAH-TOA</strong>." },
+  { k: /sine rule|law of sines/i, t: "Sine rule",
+    html: "<div class=\"ans\">$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}$</div>Use it when you know an angle and its opposite side." },
+  { k: /cosine rule|law of cosines/i, t: "Cosine rule",
+    html: "<div class=\"ans\">$c^2 = a^2 + b^2 - 2ab\\cos C$</div>Use it with two sides and the angle between them, or all three sides." },
+  { k: /area of a? ?circle/i, t: "Area of a circle",
+    html: "<div class=\"ans\">$A = \\pi r^2$</div>where $r$ is the radius. The circumference is $C = 2\\pi r$." },
+  { k: /area of a? ?triangle/i, t: "Area of a triangle",
+    html: "<div class=\"ans\">$A = \\tfrac{1}{2}\\,b\\,h$</div>base times height, halved. With two sides and the included angle: $A=\\tfrac12 ab\\sin C$." },
+  { k: /area of a? ?(rectangle|square)/i, t: "Area of a rectangle",
+    html: "<div class=\"ans\">$A = \\text{length} \\times \\text{width}$</div>For a square, that's just $A = s^2$." },
+  { k: /(volume|surface area) of a? ?sphere/i, t: "Sphere",
+    html: "<div class=\"ans\">$V = \\tfrac{4}{3}\\pi r^3,\\qquad SA = 4\\pi r^2$</div>" },
+  { k: /(volume) of a? ?cylinder/i, t: "Volume of a cylinder",
+    html: "<div class=\"ans\">$V = \\pi r^2 h$</div>area of the circular base times the height." },
+  { k: /slope|gradient/i, t: "Slope of a line",
+    html: "<div class=\"ans\">$m = \\dfrac{y_2 - y_1}{x_2 - x_1}$</div>rise over run. In $y = mx + b$, $m$ is the slope and $b$ is the y-intercept." },
+  { k: /distance formula/i, t: "Distance formula",
+    html: "<div class=\"ans\">$d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$</div>It's just the Pythagorean theorem on the coordinate plane." },
+  { k: /midpoint/i, t: "Midpoint",
+    html: "<div class=\"ans\">$\\left(\\dfrac{x_1+x_2}{2},\\ \\dfrac{y_1+y_2}{2}\\right)$</div>average the x's and average the y's." },
+  { k: /difference of squares/i, t: "Difference of squares",
+    html: "<div class=\"ans\">$a^2 - b^2 = (a-b)(a+b)$</div>" },
+  { k: /laws? of (indices|exponents)|exponent rules/i, t: "Exponent rules",
+    html: "<div class=\"ans\">$x^a x^b = x^{a+b},\\quad \\dfrac{x^a}{x^b}=x^{a-b},\\quad (x^a)^b = x^{ab}$<br>$x^{-a}=\\dfrac{1}{x^a},\\quad x^0 = 1,\\quad x^{1/n}=\\sqrt[n]{x}$</div>" },
+  { k: /pemdas|bidmas|order of operations/i, t: "Order of operations",
+    html: "Work in this order:<div class=\"ans\"><strong>P</strong>arentheses → <strong>E</strong>xponents → <strong>M</strong>ultiply/<strong>D</strong>ivide (left→right) → <strong>A</strong>dd/<strong>S</strong>ubtract (left→right)</div>" },
+  { k: /compound interest/i, t: "Compound interest",
+    html: "<div class=\"ans\">$A = P\\left(1 + \\dfrac{r}{100}\\right)^n$</div>$P$ = principal, $r$ = rate per period (%), $n$ = number of periods." },
+  { k: /nth term|arithmetic sequence/i, t: "Arithmetic sequence",
+    html: "The nth term of an arithmetic sequence:<div class=\"ans\">$a_n = a + (n-1)d$</div>$a$ = first term, $d$ = common difference." },
+  { k: /(mean|average) (and|,|&|vs).*(median|mode)|what is the (mean|median|mode)/i, t: "Mean, median, mode",
+    html: "<div class=\"ans\"><strong>Mean</strong> = sum ÷ count<br><strong>Median</strong> = middle value when sorted<br><strong>Mode</strong> = most frequent value</div>" },
+  { k: /probabilit/i, t: "Probability",
+    html: "<div class=\"ans\">$P(\\text{event}) = \\dfrac{\\text{favorable outcomes}}{\\text{total outcomes}}$</div>Always between 0 (impossible) and 1 (certain)." },
+  { k: /interior angles?.*polygon|angles? of a polygon/i, t: "Angles of a polygon",
+    html: "Sum of interior angles of an $n$-sided polygon:<div class=\"ans\">$(n-2)\\times 180^\\circ$</div>" },
+];
+
+function tryConcept(s) {
+  for (const c of CONCEPTS) {
+    if (c.k.test(s)) {
+      const html = `<strong>${c.t}</strong><br>${c.html}`;
+      const related = relatedLesson(c.t);
+      return { html: html + related, chips: ["Solve x^2 - 5x + 6 = 0", "Area of a circle radius 5", "What is 20% of 150?"] };
+    }
+  }
+  return null;
+}
+
+// Point students to a published lesson if its title/topic matches the concept
+function relatedLesson(topic) {
+  const words = topic.toLowerCase().split(/\W+/).filter((w) => w.length > 3);
+  const hit = TOPICS.find((t) => {
+    const hay = (t.title + " " + t.curriculumModule).toLowerCase();
+    return words.some((w) => hay.includes(w));
+  });
+  if (!hit) return "";
+  return `<div class="ans-lesson">📚 We have a lesson on this: <a href="#/topic/${hit.id}" onclick="closeChat()">${hit.lessonCode} ${hit.title}</a></div>`;
+}
+
+function fallbackMath(s) {
+  return {
+    html: "That looks like math, but I couldn't crunch it as written 🤔. I'm best at:" +
+      "<ul class=\"bot-list\"><li>solving equations — “solve 2x + 3 = 11”</li><li>arithmetic — “(12 + 5) × 3”</li><li>percentages — “18% of 250”</li><li>explaining formulas — “explain the sine rule”</li></ul>Try rephrasing and I'll give it another go!",
+    chips: ["Solve 4x - 7 = 9", "√169", "Explain Pythagoras"],
+  };
 }
