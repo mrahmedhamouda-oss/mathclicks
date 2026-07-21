@@ -113,7 +113,7 @@ function route() {
   const parts = (location.hash || "#/").slice(2).split("/");
   const view = parts[0] || "home";
   window.scrollTo(0, 0);
-  main.dataset.view = view;
+  main.dataset.view = view === "about" ? "home" : view;
   if (view === "module") renderModule(decodeURIComponent(parts[1] || ""));
   else if (view === "topic") renderTopic(decodeURIComponent(parts[1] || ""));
   else if (view === "modules") renderModules();
@@ -121,12 +121,21 @@ function route() {
   else renderHome();
   setActiveNav(view);
   typeset(main);
+  if (view === "about") {
+    const target = document.getElementById("about");
+    if (target) requestAnimationFrame(() =>
+      target.scrollIntoView({ behavior: "smooth", block: "start" }));
+  }
 }
 
 function setActiveNav(view) {
   const topicViews = new Set(["modules", "module", "topic"]);
   document.querySelectorAll(".nav-link").forEach((a) => {
-    const active = a.dataset.nav === "topics" ? topicViews.has(view) : view === "home";
+    const nav = a.dataset.nav;
+    let active;
+    if (nav === "topics") active = topicViews.has(view);
+    else if (nav === "about") active = view === "about";
+    else active = view === "home";
     a.classList.toggle("active", active);
   });
 }
@@ -322,83 +331,211 @@ function subLine(topics) {
 
 function renderHome() {
   main.replaceChildren();
+  main.appendChild(heroSection());
+  main.appendChild(subjectsSection());
+  main.appendChild(quickWinsSection());
+  main.appendChild(howItWorksSection());
+  main.appendChild(aboutSection());
+  main.appendChild(ctaSection());
+  wireReveal();
+}
 
-  // Hero
+// ----- Hero with the logo as an orbiting "planet" -----
+
+function heroSection() {
   const hero = el("section", "hero");
-  const syms = el("div", "hero-symbols");
-  ["∑", "π", "√x", "÷", "x²", "∞", "θ"].forEach((s, i) =>
-    syms.appendChild(el("span", "sym s" + (i + 1), s))
-  );
-  hero.appendChild(syms);
+  hero.appendChild(el("div", "hero-glow hero-glow--blue"));
+  hero.appendChild(el("div", "hero-glow hero-glow--gold"));
+
   const inner = el("div", "hero-inner");
-  inner.appendChild(el("div", "hero-eyebrow", "MathClicks"));
-  const h1 = el("h1", "hero-title", "Now it's your turn to ");
-  h1.appendChild(el("span", "hero-click", "click it."));
-  inner.appendChild(h1);
-  inner.appendChild(el("p", "hero-sub",
-    "Short video explanations, interactive notes, and instant-feedback quizzes — built for IGCSE and SAT math students."));
+
+  const copy = el("div", "hero-copy");
+  copy.appendChild(el("div", "hero-eyebrow", "IGCSE & American Pathway math, one click at a time"));
+  const h1 = el("h1", "hero-title", "Math finally ");
+  h1.appendChild(el("span", "hero-click", "clicks."));
+  copy.appendChild(h1);
+  copy.appendChild(el("p", "hero-sub",
+    "Clear video lessons, worked examples, and instant-feedback practice — built by Mr Hamouda to make the ideas click, not just get memorized."));
   const cta = el("div", "hero-cta");
-  const browse = el("a", "btn btn-cta", "Browse Topics →");
-  browse.href = "#/modules";
-  cta.appendChild(browse);
+  const explore = el("a", "btn btn-cta", "Explore Topics →");
+  explore.href = "#/modules";
+  const yt = el("a", "btn btn-ghost", "▶ Watch on YouTube");
+  yt.href = "https://www.youtube.com/channel/UC6QrK419Gg5w1SXzlBbYXCw";
+  yt.target = "_blank"; yt.rel = "noopener";
   const ask = el("button", "btn btn-ghost", "💬 Ask Mr Hamouda");
   ask.addEventListener("click", () => openChat());
-  cta.appendChild(ask);
-  inner.appendChild(cta);
+  cta.append(explore, yt, ask);
+  copy.appendChild(cta);
+  inner.appendChild(copy);
+
+  inner.appendChild(heroPlanet());
   hero.appendChild(inner);
-  main.appendChild(hero);
+  return hero;
+}
 
-  // Feature strip
-  const feats = el("div", "features");
-  for (const [icon, title, sub] of [
-    ["🎬", "Watch", "Short video explanations"],
-    ["🧠", "Learn", "Interactive lesson notes"],
-    ["⚡", "Practice", "Quizzes with instant feedback"],
-  ]) {
-    const f = el("div", "feature");
-    f.appendChild(el("div", "feature-icon", icon));
-    const b = el("div");
-    b.appendChild(el("div", "feature-title", title));
-    b.appendChild(el("div", "feature-sub", sub));
-    f.appendChild(b);
-    feats.appendChild(f);
-  }
-  main.appendChild(feats);
+function heroPlanet() {
+  const wrap = el("div", "hero-planet");
+  const stage = el("div", "planet-stage");
+  stage.appendChild(el("div", "planet-ring"));
+  stage.appendChild(el("div", "planet-ring planet-ring--inner"));
+  const core = el("div", "planet-core");
+  const img = el("img", "planet-logo");
+  img.src = "assets/mathclicks-icon.png";
+  img.alt = "MathClicks";
+  core.appendChild(img);
+  stage.appendChild(core);
+  const orbit = el("div", "planet-orbit");
+  ["π", "Σ", "∞", "√", "∫", "×"].forEach((s, i) => {
+    const chip = el("div", "orbit-chip oc" + i);
+    chip.appendChild(el("span", null, s));
+    orbit.appendChild(chip);
+  });
+  stage.appendChild(orbit);
+  wrap.appendChild(stage);
+  return wrap;
+}
 
-  // Quick Wins & Mental Math
-  main.appendChild(quickWinsSection());
+// ----- "Two tracks, one clear path" -----
 
-  // Subject areas
-  main.appendChild(el("h2", "home-sec-title", "Pick your path"));
+function subjectsSection() {
+  const sec = el("section", "home-sec reveal");
+  sec.id = "tracks";
+  const head = el("div", "sec-head");
+  head.appendChild(el("div", "sec-eyebrow blue", "What you'll study"));
+  head.appendChild(el("h2", "sec-title", "Two tracks, one clear path"));
+  sec.appendChild(head);
+
   const grid = el("div", "subject-grid");
   const totalQ = TOPICS.reduce((s, t) => s + qCount(t), 0);
   const done = TOPICS.filter((t) => isDone(t.id)).length;
-  const satChips = [`📚 ${plural(TOPICS.length, "lesson")}`, `📝 ${plural(totalQ, "question")}`];
-  if (done) satChips.push(`⭐ ${done} completed`);
+  const apChips = [`📚 ${plural(TOPICS.length, "lesson")}`, `📝 ${plural(totalQ, "question")}`];
+  if (done) apChips.push(`⭐ ${done} completed`);
+
   grid.appendChild(subjectCard({
-    cls: "sat", href: "#/modules", icon: "🎯", title: "American Pathway",
-    sub: "", chips: satChips, cta: "Start practicing →",
+    cls: "igcse", href: "#/igcse", glyph: "∠", title: "IGCSE Math",
+    desc: "Number, algebra, geometry, statistics — every topic on the syllabus, explained step by step.",
+    chips: [], cta: "View IGCSE topics →", soon: true,
   }));
   grid.appendChild(subjectCard({
-    cls: "igcse", href: "#/igcse", icon: "📘", title: "IGCSE Math",
-    sub: "New lessons are on the way — stay tuned!",
-    chips: [], cta: "Peek inside →", soon: true,
+    cls: "ap", href: "#/modules", glyph: "Σ", title: "American Pathway",
+    desc: "Algebra 2 & Geometry for the American Pathway — taught with the strategy and speed the test rewards.",
+    chips: apChips, cta: "Start practicing →",
   }));
-  main.appendChild(grid);
+  sec.appendChild(grid);
+  return sec;
 }
 
 function subjectCard(o) {
   const a = el("a", "subject " + o.cls);
   a.href = o.href;
-  a.appendChild(el("div", "subject-icon", o.icon));
+  a.appendChild(el("div", "subject-icon", o.glyph));
   a.appendChild(el("div", "subject-title", o.title));
-  a.appendChild(el("div", "subject-sub", o.sub));
-  const meta = el("div", "subject-meta");
-  for (const c of o.chips) meta.appendChild(el("span", "subject-chip", c));
-  a.appendChild(meta);
+  a.appendChild(el("div", "subject-sub", o.desc));
+  if (o.chips && o.chips.length) {
+    const meta = el("div", "subject-meta");
+    for (const c of o.chips) meta.appendChild(el("span", "subject-chip", c));
+    a.appendChild(meta);
+  }
   a.appendChild(el("span", "subject-go", o.cta));
   if (o.soon) a.appendChild(el("span", "soon-badge", "Coming soon"));
   return a;
+}
+
+// ----- "Three clicks to clarity" -----
+
+function howItWorksSection() {
+  const sec = el("section", "home-sec reveal");
+  const head = el("div", "sec-head");
+  head.appendChild(el("div", "sec-eyebrow gold", "How it works"));
+  head.appendChild(el("h2", "sec-title", "Three clicks to clarity"));
+  sec.appendChild(head);
+
+  const grid = el("div", "steps-grid");
+  const steps = [
+    ["1", "Pick a topic", "Choose from every IGCSE or American Pathway math topic, organized clearly.", "blue"],
+    ["2", "Watch & learn", "A short video walkthrough plus interactive notes for every lesson.", "gold"],
+    ["3", "Practice & master", "Answer instant-feedback questions and mark each lesson done.", "blue"],
+  ];
+  for (const [n, title, desc, tone] of steps) {
+    const step = el("div", "step-item");
+    step.appendChild(el("div", "step-badge " + tone, n));
+    step.appendChild(el("h3", "step-title", title));
+    step.appendChild(el("p", "step-desc", desc));
+    grid.appendChild(step);
+  }
+  sec.appendChild(grid);
+  return sec;
+}
+
+// ----- About (teacher photo supplied later) -----
+
+function aboutSection() {
+  const sec = el("section", "about-sec reveal");
+  sec.id = "about";
+  const inner = el("div", "about-inner");
+
+  const photo = el("div", "about-photo");
+  const img = document.createElement("img");
+  img.src = "assets/teacher.jpg";
+  img.alt = "Mr Ahmed Hamouda";
+  img.loading = "lazy";
+  img.addEventListener("error", () => {
+    img.remove();
+    photo.classList.add("is-placeholder");
+    photo.appendChild(el("span", "about-photo-emoji", "🧑🏻‍🏫"));
+    photo.appendChild(el("span", "about-photo-note", "Photo coming soon"));
+  });
+  photo.appendChild(img);
+  inner.appendChild(photo);
+
+  const body = el("div", "about-body");
+  body.appendChild(el("div", "sec-eyebrow blue", "Meet your teacher"));
+  body.appendChild(el("h2", "sec-title", "Mr Ahmed Hamouda"));
+  body.appendChild(el("p", "about-text",
+    "I teach IGCSE and American Pathway math with one goal: make the ideas click, not just the answers. Every lesson breaks a topic into small, worked steps so you build real understanding — and the confidence to solve anything on test day."));
+  const links = el("div", "about-links");
+  const yt = el("a", "about-link", "▶ YouTube");
+  yt.href = "https://www.youtube.com/channel/UC6QrK419Gg5w1SXzlBbYXCw";
+  yt.target = "_blank"; yt.rel = "noopener";
+  const tk = el("a", "about-link", "♪ TikTok");
+  tk.href = "https://www.tiktok.com/@apple.user3799222";
+  tk.target = "_blank"; tk.rel = "noopener";
+  links.append(yt, tk);
+  body.appendChild(links);
+  inner.appendChild(body);
+
+  sec.appendChild(inner);
+  return sec;
+}
+
+// ----- Closing CTA band -----
+
+function ctaSection() {
+  const sec = el("section", "cta-sec reveal");
+  const band = el("div", "cta-band");
+  band.appendChild(el("div", "cta-glow"));
+  band.appendChild(el("h2", "cta-title", "Ready to click into math?"));
+  band.appendChild(el("p", "cta-sub", "Pick a topic and start your first lesson right now."));
+  const btn = el("a", "btn btn-cta", "Browse All Topics");
+  btn.href = "#/modules";
+  band.appendChild(btn);
+  sec.appendChild(band);
+  return sec;
+}
+
+// Scroll-reveal: fade+rise sections in the first time they enter view
+function wireReveal() {
+  const els = main.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach((e) => e.classList.add("in"));
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); }
+    }
+  }, { threshold: 0.12 });
+  els.forEach((e) => obs.observe(e));
 }
 
 function renderIgcse() {
@@ -419,8 +556,8 @@ function renderIgcse() {
 function renderModules() {
   main.replaceChildren();
   main.appendChild(backLink("#/", "← Home"));
-  main.appendChild(el("h2", "page-title", "SAT Prep"));
-  main.appendChild(el("p", "page-sub", "American Pathway — pick a module to begin."));
+  main.appendChild(el("h2", "page-title", "American Pathway"));
+  main.appendChild(el("p", "page-sub", "Algebra 2 & Geometry — pick a module to begin."));
   if (!TOPICS.length) {
     main.appendChild(el("div", "empty-note", "Lessons will appear here as we cover them in class — check back soon!"));
     return;
