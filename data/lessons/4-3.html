@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4-3: Operations with Polynomials</title>
+<style>
+  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--rose:#be123c;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#be123c 60%,#e05c2a 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--rose);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);}
+  .foil-diagram{background:white;border:2px solid #bfd3f5;border-radius:10px;padding:20px;margin:14px 0;text-align:center;}
+  .foil-diagram .foil-eq{font-family:'Courier New',monospace;font-size:18px;color:var(--navy);margin:8px 0;}
+  .foil-arrows{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0;}
+  .foil-part{background:var(--light-blue);border-radius:6px;padding:8px;text-align:center;}
+  .foil-part .lbl{font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;}
+  .foil-part .val{font-family:'Courier New',monospace;font-size:13px;color:var(--navy);margin-top:3px;}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--rose);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--rose);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;}
+  .solution-step{display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:#fafafa;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;}
+  .solution-step .reason{font-size:13px;color:var(--rose);font-style:italic;min-width:170px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;}
+  .warning-box strong{color:var(--orange);}
+  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;}
+  .info-box strong{color:var(--blue);}
+  .methods-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0;}
+  @media(max-width:600px){.methods-grid{grid-template-columns:1fr;}}
+  .method-box{background:#fafafa;border:1px solid #e2e8f0;border-radius:8px;padding:14px;}
+  .method-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+  .method-box .math{font-family:'Courier New',monospace;font-size:13px;line-height:1.7;}
+
+  /* Polynomial Multiplier */
+  .mult-section{background:white;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09);}
+  .mult-controls{display:flex;flex-direction:column;gap:14px;margin-bottom:18px;}
+  .poly-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+  .poly-label{font-size:14px;font-weight:600;color:var(--navy);min-width:50px;}
+  .ctrl-group{display:flex;flex-direction:column;gap:4px;}
+  .ctrl-group label{font-size:11px;font-weight:600;color:var(--navy);}
+  .ctrl-group input{padding:7px 10px;border:2px solid #cbd5e1;border-radius:6px;font-size:14px;width:70px;outline:none;transition:border-color .2s;}
+  .ctrl-group input:focus{border-color:var(--blue);}
+  .btn{padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
+  .btn-primary{background:var(--navy);color:white;}
+  .btn-primary:hover{background:var(--blue);}
+  .operation-select{padding:8px 12px;border:2px solid #cbd5e1;border-radius:6px;font-size:14px;outline:none;background:white;}
+  .result-box{background:#f8faff;border:2px solid #bfd3f5;border-radius:10px;padding:20px;margin-top:16px;font-family:'Courier New',monospace;font-size:15px;line-height:2;}
+  .result-box .step{display:block;color:#475569;font-size:13px;}
+  .result-box .final{color:var(--navy);font-weight:700;font-size:16px;}
+  .foil-box{background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:12px 16px;margin-top:10px;}
+  .foil-box .foil-step{display:flex;gap:8px;margin:4px 0;font-size:13px;font-family:'Courier New',monospace;}
+  .foil-box .foil-step .label{min-width:70px;font-weight:700;}
+  .foil-box .foil-step.F .label{color:var(--orange);}
+  .foil-box .foil-step.O .label{color:var(--blue);}
+  .foil-box .foil-step.I .label{color:var(--green);}
+  .foil-box .foil-step.L .label{color:var(--rose);}
+
+  /* Quiz */
+  .quiz-header{background:linear-gradient(135deg,#be123c,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--rose);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:500px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--rose);background:#fff1f2;}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--rose);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 4 · Lesson 4-3</div>
+  <h1>Operations with Polynomials</h1>
+  <p>Add, subtract, and multiply polynomials — including the FOIL method and distributing across multiple terms</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Examples</a>
+  <a href="#calculator">Polynomial Calculator</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>🔑 What Is a Polynomial?</h3>
+    <p>A polynomial is a <strong>monomial</strong> or the <strong>sum of monomials</strong>. Each term must have a <strong>non-negative integer exponent</strong>.</p>
+    <div class="formula-box">✓ Polynomial: 5x³ − 2x + 7<br>✓ Polynomial: 3a⁴b + 9  (degree = 5)<br>✗ NOT polynomial: x⁻² + 3  (negative exponent)<br>✗ NOT polynomial: ∛x − 1  (fractional exponent 1/3)</div>
+    <p style="margin-top:10px"><strong>Binomial</strong> = sum of 2 monomials &nbsp;&nbsp; <strong>Trinomial</strong> = sum of 3 monomials</p>
+    <div class="info-box"><strong>ℹ Closure Property:</strong> The sum, difference, or product of two polynomials is always a polynomial. The set of polynomials is <strong>closed</strong> under +, −, and ×.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Adding &amp; Subtracting Polynomials</h3>
+    <p>Combine <strong>like terms</strong> — terms with the same variable raised to the same power.</p>
+    <div class="methods-grid">
+      <div class="method-box">
+        <h4>Method 1: Horizontal</h4>
+        <div class="math">(3x² − 2x + 1) + (x² + 5x − 3)<br>= (3x²+x²) + (−2x+5x) + (1−3)<br>= 4x² + 3x − 2</div>
+      </div>
+      <div class="method-box">
+        <h4>Method 2: Vertical (align)</h4>
+        <div class="math">&nbsp;&nbsp;3x² − 2x + 1<br>(+) x² + 5x − 3<br>──────────────<br>&nbsp;&nbsp;4x² + 3x − 2</div>
+      </div>
+    </div>
+    <div class="warning-box"><strong>⚠ Subtracting:</strong> Distribute the negative sign to ALL terms of the subtracted polynomial before combining. (a − b) = a + (−b)</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Multiplying Polynomials</h3>
+    <p>Use the <strong>Distributive Property</strong>: multiply each term in one polynomial by each term in the other.</p>
+    <div class="info-box"><strong>ℹ FOIL Method</strong> (for two binomials only):<br>
+      (a + b)(c + d) = <span style="color:#e05c2a"><strong>F</strong>irst</span> + <span style="color:#1a4fa0"><strong>O</strong>uter</span> + <span style="color:#16a34a"><strong>I</strong>nner</span> + <span style="color:#be123c"><strong>L</strong>ast</span>
+    </div>
+    <div class="foil-diagram">
+      <div class="foil-eq">(2x + 4)(x − 3)</div>
+      <div class="foil-arrows">
+        <div class="foil-part"><div class="lbl">First</div><div class="val">2x · x = 2x²</div></div>
+        <div class="foil-part"><div class="lbl">Outer</div><div class="val">2x · (−3) = −6x</div></div>
+        <div class="foil-part"><div class="lbl">Inner</div><div class="val">4 · x = 4x</div></div>
+        <div class="foil-part"><div class="lbl">Last</div><div class="val">4 · (−3) = −12</div></div>
+      </div>
+      <div class="foil-eq">= 2x² − 6x + 4x − 12 = 2x² − 2x − 12</div>
+    </div>
+    <p style="margin-top:8px;font-size:14px;color:#64748b">For polynomials with more than 2 terms, use the <strong>distributive property</strong> repeated times.</p>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Identify Polynomials and State Degree</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Determine whether each is a polynomial. If it is, state the degree.</div>
+      <div class="solution-step"><span class="math">a. x⁶ + ∛x − 4</span><span class="reason">∛x = x^(1/3) → NOT a polynomial</span></div>
+      <div class="solution-step"><span class="math">b. 5a⁴b + 3a²b⁷ − 9</span><span class="reason">IS a polynomial — degrees: 5, 9, 0 → degree 9</span></div>
+      <div class="solution-step"><span class="math">c. (2/3)x⁻⁵ − 6x⁻³ − x</span><span class="reason">Negative exponents → NOT a polynomial</span></div>
+      <div class="answer-box">Only (b) is a polynomial: degree 9</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Add Polynomials (Two Methods)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find (6x³ + 7x² − 2x + 5) + (x³ − 4x² − 8x + 1).</div>
+      <div class="methods-grid">
+        <div class="method-box">
+          <h4>Method 1: Horizontal</h4>
+          <div class="math">(6x³ + x³) + (7x² − 4x²) + (−2x − 8x) + (5 + 1)<br><br>= 7x³ + 3x² − 10x + 6</div>
+        </div>
+        <div class="method-box">
+          <h4>Method 2: Vertical</h4>
+          <div class="math">&nbsp; 6x³ + 7x² − 2x + 5<br>(+) x³ − 4x² − 8x + 1<br>──────────────────────<br>&nbsp; 7x³ + 3x² − 10x + 6</div>
+        </div>
+      </div>
+      <div class="answer-box">7x³ + 3x² − 10x + 6</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Subtract Polynomials</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find (2x⁵ + 11x⁴ + 7x − 8) − (5x⁴ + 9x³ − 3x + 4).</div>
+      <div class="solution-step"><span class="math">= 2x⁵ + 11x⁴ + 7x − 8 − 5x⁴ − 9x³ + 3x − 4</span><span class="reason">Distribute −1</span></div>
+      <div class="solution-step"><span class="math">= 2x⁵ + (11x⁴ − 5x⁴) + (−9x³) + (7x + 3x) + (−8 − 4)</span><span class="reason">Group like terms</span></div>
+      <div class="solution-step"><span class="math">= 2x⁵ + 6x⁴ − 9x³ + 10x − 12</span><span class="reason">Combine</span></div>
+      <div class="warning-box"><strong>⚠ Key:</strong> Always add a zero placeholder for missing degrees when using vertical method (e.g., 0x²).</div>
+      <div class="answer-box">2x⁵ + 6x⁴ − 9x³ + 10x − 12</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Multiply Using the Distributive Property</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find 2x(4x³ + 5x² − x − 7).</div>
+      <div class="solution-step"><span class="math">2x · 4x³ = 8x⁴</span><span class="reason">Distribute term 1</span></div>
+      <div class="solution-step"><span class="math">2x · 5x² = 10x³</span><span class="reason">Distribute term 2</span></div>
+      <div class="solution-step"><span class="math">2x · (−x) = −2x²</span><span class="reason">Distribute term 3</span></div>
+      <div class="solution-step"><span class="math">2x · (−7) = −14x</span><span class="reason">Distribute term 4</span></div>
+      <div class="answer-box">8x⁴ + 10x³ − 2x² − 14x</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Multiply Binomials (FOIL)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find (3a + 5)(a − 7).</div>
+      <div class="foil-box">
+        <div class="foil-step F"><span class="label">FIRST:</span> <span>3a · a = 3a²</span></div>
+        <div class="foil-step O"><span class="label">OUTER:</span> <span>3a · (−7) = −21a</span></div>
+        <div class="foil-step I"><span class="label">INNER:</span> <span>5 · a = 5a</span></div>
+        <div class="foil-step L"><span class="label">LAST:</span> <span>5 · (−7) = −35</span></div>
+      </div>
+      <div class="solution-step" style="margin-top:10px"><span class="math">= 3a² + (−21a + 5a) − 35</span><span class="reason">Combine like terms</span></div>
+      <div class="solution-step"><span class="math">= 3a² − 16a − 35</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">(3a + 5)(a − 7) = 3a² − 16a − 35</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5b</span>
+      <span class="example-title">Multiply Three Binomials</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find (3a + 5)(a − 7)(4a + 1). Multiply the first two, then by the third.</div>
+      <div class="solution-step"><span class="math">Step 1: (3a + 5)(a − 7) = 3a² − 16a − 35</span><span class="reason">FOIL first two (Example 5)</span></div>
+      <div class="solution-step"><span class="math">Step 2: (3a² − 16a − 35)(4a + 1)</span><span class="reason">Distribute</span></div>
+      <div class="solution-step"><span class="math">= 3a² · 4a + 3a² · 1 + (−16a) · 4a + (−16a) · 1 + (−35) · 4a + (−35) · 1</span><span class="reason">Distribute each term</span></div>
+      <div class="solution-step"><span class="math">= 12a³ + 3a² − 64a² − 16a − 140a − 35</span><span class="reason">Multiply</span></div>
+      <div class="solution-step"><span class="math">= 12a³ + (3 − 64)a² + (−16 − 140)a − 35</span><span class="reason">Group like terms</span></div>
+      <div class="solution-step"><span class="math">= 12a³ − 61a² − 156a − 35</span><span class="reason">Combine</span></div>
+      <div class="answer-box">12a³ − 61a² − 156a − 35</div>
+    </div>
+  </div>
+</section>
+
+<!-- POLYNOMIAL CALCULATOR -->
+<section id="calculator">
+  <h2>Polynomial Operations Calculator</h2>
+  <div class="mult-section">
+    <p style="margin-bottom:14px;font-size:14px;color:#64748b;">Enter coefficients for two polynomials (up to degree 3), choose an operation, and see step-by-step work.</p>
+    <div class="mult-controls">
+      <div class="poly-row">
+        <span class="poly-label">P(x) =</span>
+        <div class="ctrl-group"><label>ax³</label><input type="number" id="p_a3" value="1" step="1"></div>
+        <div class="ctrl-group"><label>bx²</label><input type="number" id="p_a2" value="2" step="1"></div>
+        <div class="ctrl-group"><label>cx</label><input type="number" id="p_a1" value="-3" step="1"></div>
+        <div class="ctrl-group"><label>d</label><input type="number" id="p_a0" value="0" step="1"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <select class="operation-select" id="op_select">
+          <option value="add">Add (+)</option>
+          <option value="sub">Subtract (−)</option>
+          <option value="mul">Multiply (×)</option>
+        </select>
+      </div>
+      <div class="poly-row">
+        <span class="poly-label">Q(x) =</span>
+        <div class="ctrl-group"><label>ax³</label><input type="number" id="q_a3" value="0" step="1"></div>
+        <div class="ctrl-group"><label>bx²</label><input type="number" id="q_a2" value="1" step="1"></div>
+        <div class="ctrl-group"><label>cx</label><input type="number" id="q_a1" value="5" step="1"></div>
+        <div class="ctrl-group"><label>d</label><input type="number" id="q_a0" value="-2" step="1"></div>
+      </div>
+      <button class="btn btn-primary" onclick="compute()" style="align-self:flex-start">Calculate</button>
+    </div>
+    <div class="result-box" id="result" style="display:none"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>📝 Practice Quiz — 15 Questions</h2>
+    <p>Lesson 4-3: Operations with Polynomials</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+
+// ── POLYNOMIAL CALCULATOR ──
+function polyStr(coeffs, labels=['x³','x²','x','']){
+  let terms=[];
+  coeffs.forEach((c,i)=>{
+    if(c===0)return;
+    const l=labels[i];
+    if(c===1&&l)terms.push(l);
+    else if(c===-1&&l)terms.push('-'+l);
+    else terms.push(c+(l||''));
+  });
+  if(terms.length===0)return'0';
+  return terms.join(' + ').replace(/\+ -/g,'− ');
+}
+
+function compute(){
+  const p=[
+    parseFloat(document.getElementById('p_a3').value)||0,
+    parseFloat(document.getElementById('p_a2').value)||0,
+    parseFloat(document.getElementById('p_a1').value)||0,
+    parseFloat(document.getElementById('p_a0').value)||0
+  ];
+  const q=[
+    parseFloat(document.getElementById('q_a3').value)||0,
+    parseFloat(document.getElementById('q_a2').value)||0,
+    parseFloat(document.getElementById('q_a1').value)||0,
+    parseFloat(document.getElementById('q_a0').value)||0
+  ];
+  const op=document.getElementById('op_select').value;
+  const res=document.getElementById('result');
+  res.style.display='block';
+  const ps=polyStr(p);
+  const qs=polyStr(q);
+  let html=`<span class="step">P(x) = ${ps}</span><span class="step">Q(x) = ${qs}</span><br>`;
+
+  if(op==='add'){
+    const r=[p[0]+q[0],p[1]+q[1],p[2]+q[2],p[3]+q[3]];
+    html+=`<span class="step">P(x) + Q(x) — combine like terms:</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;x³: ${p[0]} + ${q[0]} = ${r[0]}</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;x²: ${p[1]} + ${q[1]} = ${r[1]}</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;x:  ${p[2]} + ${q[2]} = ${r[2]}</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;1:  ${p[3]} + ${q[3]} = ${r[3]}</span>`;
+    html+=`<br><span class="final">Answer: ${polyStr(r)}</span>`;
+  } else if(op==='sub'){
+    const r=[p[0]-q[0],p[1]-q[1],p[2]-q[2],p[3]-q[3]];
+    html+=`<span class="step">P(x) − Q(x) — distribute the negative, then combine like terms:</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;x³: ${p[0]} − (${q[0]}) = ${r[0]}</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;x²: ${p[1]} − (${q[1]}) = ${r[1]}</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;x:  ${p[2]} − (${q[2]}) = ${r[2]}</span>`;
+    html+=`<span class="step">&nbsp;&nbsp;1:  ${p[3]} − (${q[3]}) = ${r[3]}</span>`;
+    html+=`<br><span class="final">Answer: ${polyStr(r)}</span>`;
+  } else {
+    // Multiply — up to 6th degree result
+    const r=[0,0,0,0,0,0,0]; // degree 6 max
+    for(let i=0;i<4;i++){
+      for(let j=0;j<4;j++){
+        r[i+j]+=p[i]*q[j];
+      }
+    }
+    html+=`<span class="step">P(x) × Q(x) — distribute each term of P by each term of Q:</span>`;
+    for(let i=0;i<4;i++){
+      if(p[i]===0)continue;
+      const pt=['x³','x²','x',''][i];
+      let termSteps=[];
+      for(let j=0;j<4;j++){
+        if(q[j]===0)continue;
+        const qt=['x³','x²','x',''][j];
+        const deg=6-i-j;
+        const coeff=p[i]*q[j];
+        termSteps.push(`(${p[i]}${pt}) × (${q[j]}${qt}) = ${coeff}x${deg>1?'^'+deg:deg===1?'':''}`);
+      }
+      html+=`<span class="step">&nbsp;&nbsp;${termSteps.join(',  ')}</span>`;
+    }
+    // Build result
+    const labels=['x⁶','x⁵','x⁴','x³','x²','x',''];
+    html+=`<br><span class="final">Answer: ${polyStr(r,labels)}</span>`;
+  }
+  res.innerHTML=html;
+}
+
+// ── QUIZ ──
+const questions=[
+  {q:"Which expression is NOT a polynomial?",opts:["x³ − 5x + 7","3x² + 2x − 1","x + x⁻¹","4x⁴"],ans:2,exp:"x⁻¹ = 1/x has a negative exponent, so x + x⁻¹ is not a polynomial."},
+  {q:"The degree of 5a⁴b + 3a²b⁷ − 9 is:",opts:["4","7","9","5"],ans:2,exp:"The degree is the largest sum of exponents in any term: 2+7=9."},
+  {q:"Find (3x² + 2x − 1) + (x² − 5x + 4):",opts:["4x² − 3x + 3","4x² + 7x + 3","2x² + 3x − 5","4x² − 3x − 3"],ans:0,exp:"Combine like terms: (3+1)x² + (2−5)x + (−1+4) = 4x² − 3x + 3."},
+  {q:"Find (5x³ − 2x + 1) − (2x³ + x² − 3x):",opts:["3x³ − x² + x + 1","3x³ + x² − 5x + 1","7x³ + x² − 5x","3x³ − x² − 5x"],ans:0,exp:"Distribute −1: 5x³ − 2x + 1 − 2x³ − x² + 3x = 3x³ − x² + x + 1."},
+  {q:"Find (x + 3)(x − 5) using FOIL:",opts:["x² − 2x − 15","x² + 8x − 15","x² − 2x + 15","x² + 2x − 15"],ans:0,exp:"F: x², O: −5x, I: 3x, L: −15. Sum: x² − 2x − 15."},
+  {q:"Which operation is the FOIL method used for?",opts:["Two polynomials of any degree","Adding two binomials","Multiplying two binomials","Subtracting polynomials"],ans:2,exp:"FOIL specifically applies to multiplying two binomials."},
+  {q:"Find 3x(2x² − x + 4):",opts:["6x³ − 3x² + 12x","6x² − 3x + 12","5x³ − 4x² + 7x","6x³ + 12x"],ans:0,exp:"Distribute: 3x(2x²) + 3x(−x) + 3x(4) = 6x³ − 3x² + 12x."},
+  {q:"The sum of two polynomials is always:",opts:["A polynomial","A monomial","A trinomial","Always degree 3"],ans:0,exp:"Polynomials are closed under addition — the sum is always a polynomial."},
+  {q:"Find (2x − 3)²:",opts:["4x² − 9","4x² + 9","4x² − 12x + 9","4x² − 6x + 9"],ans:2,exp:"(2x−3)² = (2x)² + 2(2x)(−3) + (−3)² = 4x² − 12x + 9."},
+  {q:"Find (x + 2)(x² − 3x + 1):",opts:["x³ − x² − 5x + 2","x³ + x² + 7x − 2","x³ − x² + 5x + 2","x³ + x² − 5x + 2"],ans:0,exp:"Distribute: x(x²−3x+1)+2(x²−3x+1) = x³−3x²+x+2x²−6x+2 = x³−x²−5x+2."},
+  {q:"Find (a + b)(a − b):",opts:["a² − b²","a² + 2ab − b²","a² − 2ab − b²","a² + b²"],ans:0,exp:"Difference of squares pattern: (a+b)(a−b) = a² − b²."},
+  {q:"Which polynomial is a binomial?",opts:["x³ + 2x² − x","x + 1","x² + 3x − 7","5"],ans:1,exp:"A binomial has exactly 2 terms. x + 1 has 2 terms."},
+  {q:"Find (3x − 1)(x + 2)(x − 1). First: (3x−1)(x+2) =",opts:["3x² + 5x − 2","3x² + x − 2","3x² − 5x + 2","3x² + 7x − 2"],ans:0,exp:"FOIL: 3x²+6x−x−2 = 3x²+5x−2."},
+  {q:"Find (x² + 3)(x² − 3):",opts:["x⁴ − 9","x⁴ + 9","x⁴ − 6x² + 9","x⁴ − 3x² − 9"],ans:0,exp:"Difference of squares: (x²)² − 3² = x⁴ − 9."},
+  {q:"Simplify (5x² − 2x + 3) − (x² + 4x − 1):",opts:["4x² − 6x + 4","6x² + 2x + 2","4x² + 2x + 4","4x² − 6x + 2"],ans:0,exp:"Distribute −1 and combine: (5−1)x² + (−2−4)x + (3+1) = 4x² − 6x + 4."}
+];
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id=`q${i}`;
+    div.innerHTML=`<div class="q-num">Question ${i+1} of ${questions.length}</div><div class="q-text">${q.q}</div><div class="options">${q.opts.map((o,j)=>`<button class="option-btn" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div><div class="feedback" id="fb${i}"></div>`;
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById(`q${qi}`);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById(`fb${qi}`);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.textContent='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.textContent=`✗ Incorrect. Answer: ${String.fromCharCode(65+q.ans)}. ${q.exp}`;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=`${total}/${questions.length}`;
+  const msgs=[[0,'Review FOIL and distribution!'],[60,'Good work! Keep practicing.'],[80,'Great job!'],[95,'Excellent! Operations with polynomials mastered!']];
+  let msg=msgs[0][1];for(const[t,m]of msgs){if(pct>=t)msg=m;}
+  document.getElementById('scoreMsg').textContent=`${pct}% — ${msg}`;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+buildQuiz();
+
+window.toggleExample=toggleExample;window.compute=compute;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</body>
+</html>

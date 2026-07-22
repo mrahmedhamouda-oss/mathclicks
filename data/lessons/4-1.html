@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4-1: Polynomial Functions</title>
+<style>
+  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--teal:#0891b2;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#0891b2 60%,#1a4fa0 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:14px;color:var(--navy);}
+  .end-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+  .end-table th{background:var(--navy);color:white;padding:10px 12px;text-align:left;}
+  .end-table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;font-family:'Courier New',monospace;}
+  .end-table tr:nth-child(even) td{background:var(--light-blue);}
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px;}
+  .vocab-item{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:10px 14px;}
+  .vocab-item strong{color:var(--blue);display:block;font-size:13px;margin-bottom:3px;}
+  .vocab-item span{font-size:13px;color:#475569;}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--teal);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--teal);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;}
+  .solution-step{display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:#fafafa;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;}
+  .solution-step .reason{font-size:13px;color:var(--teal);font-style:italic;min-width:180px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .info-box{background:#f0fdfa;border:1px solid #5eead4;border-radius:6px;padding:12px 16px;margin:10px 0;}
+  .info-box strong{color:var(--teal);}
+  .end-cases{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+  @media(max-width:600px){.end-cases{grid-template-columns:1fr;}}
+  .end-case{border:1px solid #bfd3f5;border-radius:8px;padding:14px;background:white;}
+  .end-case h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .end-case p{font-size:13px;font-family:'Courier New',monospace;color:#475569;margin:2px 0;}
+
+  /* Grapher */
+  .grapher-section{background:white;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09);}
+  .grapher-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:flex-end;}
+  .ctrl-group{display:flex;flex-direction:column;gap:4px;}
+  .ctrl-group label{font-size:12px;font-weight:600;color:var(--navy);}
+  .ctrl-group input{padding:8px 10px;border:2px solid #cbd5e1;border-radius:6px;font-size:14px;width:80px;outline:none;transition:border-color .2s;}
+  .ctrl-group input:focus{border-color:var(--blue);}
+  .btn{padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
+  .btn-primary{background:var(--navy);color:white;}
+  .btn-primary:hover{background:var(--blue);}
+  .btn-orange{background:var(--orange);color:white;margin-top:4px;}
+  .graph-canvas-wrap{position:relative;overflow:hidden;border-radius:8px;border:2px solid #e2e8f0;}
+  canvas{display:block;width:100%;}
+  .graph-info{margin-top:12px;background:var(--light-blue);border-radius:6px;padding:12px 16px;font-size:14px;line-height:1.8;font-family:'Courier New',monospace;color:var(--navy);}
+  .poly-inputs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;}
+  .poly-label{font-size:14px;font-weight:600;color:var(--navy);}
+
+  /* Quiz */
+  .quiz-header{background:linear-gradient(135deg,#0891b2,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:500px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--teal);background:#f0fdfa;}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--teal);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 4 · Lesson 4-1</div>
+  <h1>Polynomial Functions</h1>
+  <p>Graph power functions and polynomial functions — understand end behavior, degree, and zeros</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Examples</a>
+  <a href="#grapher">Graph It</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>🔑 Vocabulary</h3>
+    <div class="vocab-grid">
+      <div class="vocab-item"><strong>Power Function</strong><span>f(x) = axⁿ, a≠0, n nonzero real</span></div>
+      <div class="vocab-item"><strong>Leading Coefficient</strong><span>Value of a in f(x) = axⁿ</span></div>
+      <div class="vocab-item"><strong>Degree</strong><span>Value of n (exponent) in axⁿ</span></div>
+      <div class="vocab-item"><strong>Monomial Function</strong><span>Power function with positive integer n</span></div>
+      <div class="vocab-item"><strong>Polynomial (1 var)</strong><span>aₙxⁿ + aₙ₋₁xⁿ⁻¹ + … + a₁x + a₀</span></div>
+      <div class="vocab-item"><strong>Standard Form</strong><span>Terms written greatest to least degree</span></div>
+      <div class="vocab-item"><strong>Quartic Function</strong><span>Polynomial of degree 4</span></div>
+      <div class="vocab-item"><strong>Quintic Function</strong><span>Polynomial of degree 5</span></div>
+      <div class="vocab-item"><strong>Degree of Polynomial</strong><span>n = greatest degree among all terms</span></div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 End Behavior of Monomial Functions</h3>
+    <p>End behavior describes what happens to f(x) as x → −∞ and as x → +∞.</p>
+    <div class="end-cases">
+      <div class="end-case">
+        <h4>📈 Even degree, positive a</h4>
+        <p>As x → −∞, f(x) → +∞</p>
+        <p>As x → +∞, f(x) → +∞</p>
+        <p style="margin-top:6px;color:#16a34a;font-style:italic">Both ends go UP ↑↑</p>
+      </div>
+      <div class="end-case">
+        <h4>📉 Even degree, negative a</h4>
+        <p>As x → −∞, f(x) → −∞</p>
+        <p>As x → +∞, f(x) → −∞</p>
+        <p style="margin-top:6px;color:#e05c2a;font-style:italic">Both ends go DOWN ↓↓</p>
+      </div>
+      <div class="end-case">
+        <h4>↗ Odd degree, positive a</h4>
+        <p>As x → −∞, f(x) → −∞</p>
+        <p>As x → +∞, f(x) → +∞</p>
+        <p style="margin-top:6px;color:#1a4fa0;font-style:italic">Rises right, falls left ↓↑</p>
+      </div>
+      <div class="end-case">
+        <h4>↙ Odd degree, negative a</h4>
+        <p>As x → −∞, f(x) → +∞</p>
+        <p>As x → +∞, f(x) → −∞</p>
+        <p style="margin-top:6px;color:#7c3aed;font-style:italic">Falls right, rises left ↑↓</p>
+      </div>
+    </div>
+    <div class="info-box"><strong>📌 Key facts on zeros:</strong><br>
+      • Odd-degree monomial functions always have at least one real zero<br>
+      • Even-degree monomial functions may have zero or more real zeros<br>
+      • The degree tells the MAXIMUM number of times the graph crosses the x-axis
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Standard Form of a Polynomial</h3>
+    <div class="formula-box">f(x) = aₙxⁿ + aₙ₋₁xⁿ⁻¹ + … + a₂x² + a₁x + a₀<br><br>• Degree = n (highest exponent)<br>• Leading coefficient = aₙ (coefficient of highest-degree term)<br>• For a polynomial to be valid: all exponents must be non-negative integers</div>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">End Behavior and Degree of a Monomial Function</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Describe the end behavior of f(x) = −2x³. State degree, domain, and range.</div>
+      <div class="solution-step"><span class="math">Leading coefficient = −2 (negative)</span><span class="reason">Identify sign of a</span></div>
+      <div class="solution-step"><span class="math">Degree = 3 (odd)</span><span class="reason">Identify n</span></div>
+      <div class="solution-step"><span class="math">Odd degree, negative leading coefficient:</span><span class="reason">Classify end behavior</span></div>
+      <div class="solution-step"><span class="math">As x → −∞, f(x) → +∞</span><span class="reason">Left end goes UP</span></div>
+      <div class="solution-step"><span class="math">As x → +∞, f(x) → −∞</span><span class="reason">Right end goes DOWN</span></div>
+      <div class="answer-box">Degree: 3 (odd) &nbsp;|&nbsp; Leading coeff: −2<br>Domain: all real numbers &nbsp;|&nbsp; Range: all real numbers<br>End behavior: rises left (↑), falls right (↓)</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Identify Degree and Leading Coefficient</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">State the degree and leading coefficient of each polynomial. If not a polynomial, explain why.</div>
+      <div class="solution-step"><span class="math">a. 2x⁴ − 3x³ − 4x² − 5x + 6</span><span class="reason">degree: 4, leading coeff: 2</span></div>
+      <div class="solution-step"><span class="math">b. 7x³ − 2</span><span class="reason">degree: 3, leading coeff: 7</span></div>
+      <div class="solution-step"><span class="math">c. 4x² − 2xy + 8y²</span><span class="reason">NOT a polynomial in one variable (has y)</span></div>
+      <div class="solution-step"><span class="math">d. x⁵ + 12x⁴ − 3x³ + 2x² + 8x + 4</span><span class="reason">degree: 5, leading coeff: 1</span></div>
+      <div class="info-box"><strong>ℹ Key Rule:</strong> A polynomial in ONE variable must only have the variable x (or one single variable) with non-negative integer exponents. Terms like 1/x (x⁻¹) or √x (x^½) disqualify it.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Evaluate a Polynomial Function</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">The Sun's density is modeled by f(x) = 519x⁴ − 1630x³ + 1844x² − 889x + 155, where x is the percentage of radius (as a decimal). Find the core density at x = 0.6.</div>
+      <div class="solution-step"><span class="math">f(0.6) = 519(0.6)⁴ − 1630(0.6)³ + 1844(0.6)² − 889(0.6) + 155</span><span class="reason">Substitute x = 0.6</span></div>
+      <div class="solution-step"><span class="math">= 519(0.1296) − 1630(0.216) + 1844(0.36) − 533.4 + 155</span><span class="reason">Compute powers</span></div>
+      <div class="solution-step"><span class="math">= 67.2624 − 352.08 + 663.84 − 533.4 + 155</span><span class="reason">Multiply</span></div>
+      <div class="solution-step"><span class="math">= 0.6224 g/cm³</span><span class="reason">Add and subtract</span></div>
+      <div class="answer-box">f(0.6) ≈ 0.62 g/cm³ at 60% of the way to the surface</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Zeros from a Graph</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Use the graph to state the number of real zeros. The graph crosses the x-axis at x = −2, x = 1, and x = 4.</div>
+      <div class="solution-step"><span class="math">Zeros occur where graph crosses x-axis</span><span class="reason">Definition of zeros</span></div>
+      <div class="solution-step"><span class="math">Crossings at: x = −2,  x = 1,  x = 4</span><span class="reason">Read from graph</span></div>
+      <div class="solution-step"><span class="math">Count: 3 real zeros</span><span class="reason">Count intersections</span></div>
+      <div class="answer-box">3 real zeros at x = −2, x = 1, and x = 4</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">Compare Two Polynomial Functions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Compare f(x) = x³ + 2x² − 3x and g(x) from a graph. Find zeros, intercepts, end behavior, and relative extrema.</div>
+      <div class="solution-step"><span class="math">f(x) = x³ + 2x² − 3x = x(x² + 2x − 3) = x(x+3)(x−1)</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="math">Zeros of f(x): x = 0, −3, 1</span><span class="reason">Set each factor = 0</span></div>
+      <div class="solution-step"><span class="math">f has degree 3, leading coeff 1 (positive, odd)</span><span class="reason">Classify end behavior</span></div>
+      <div class="solution-step"><span class="math">f: as x→−∞, f→−∞;  as x→+∞, f→+∞</span><span class="reason">End behavior rule</span></div>
+      <div class="solution-step"><span class="math">f has a relative maximum near y = 6 and local min near y = −2</span><span class="reason">Analyze turning points</span></div>
+      <div class="answer-box">f zeros: x = −3, 0, 1 &nbsp;|&nbsp; y-intercept: (0, 0)<br>End behavior: falls left ↓, rises right ↑</div>
+    </div>
+  </div>
+</section>
+
+<!-- POLYNOMIAL GRAPHER -->
+<section id="grapher">
+  <h2>Polynomial Function Grapher</h2>
+  <div class="grapher-section">
+    <p style="margin-bottom:12px;font-size:14px;color:#64748b;">Enter coefficients for <strong>f(x) = ax⁵ + bx⁴ + cx³ + dx² + ex + f</strong>. Leave unused terms as 0.</p>
+    <div class="poly-inputs">
+      <span class="poly-label">f(x) =</span>
+      <div class="ctrl-group"><label>a (x⁵)</label><input type="number" id="c5" value="0" step="0.5"></div>
+      <div class="ctrl-group"><label>b (x⁴)</label><input type="number" id="c4" value="0" step="0.5"></div>
+      <div class="ctrl-group"><label>c (x³)</label><input type="number" id="c3" value="1" step="0.5"></div>
+      <div class="ctrl-group"><label>d (x²)</label><input type="number" id="c2" value="2" step="0.5"></div>
+      <div class="ctrl-group"><label>e (x)</label><input type="number" id="c1" value="-3" step="0.5"></div>
+      <div class="ctrl-group"><label>f (const)</label><input type="number" id="c0" value="0" step="0.5"></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+      <button class="btn btn-primary" onclick="drawPoly()">Graph</button>
+      <button class="btn btn-orange" onclick="presetPoly(1,0,0,0,0,0)">y = x</button>
+      <button class="btn btn-orange" onclick="presetPoly(0,1,0,0,0,0)">y = x²</button>
+      <button class="btn btn-orange" onclick="presetPoly(0,0,1,0,0,0)">y = x³</button>
+      <button class="btn btn-orange" onclick="presetPoly(0,0,0,1,0,0)">y = x⁴</button>
+      <button class="btn btn-orange" onclick="presetPoly(0,0,1,2,-3,0)">x³+2x²-3x</button>
+    </div>
+    <div class="graph-canvas-wrap">
+      <canvas id="polyCanvas" width="800" height="440"></canvas>
+    </div>
+    <div class="graph-info" id="polyInfo">Enter coefficients and click Graph.</div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>📝 Practice Quiz — 15 Questions</h2>
+    <p>Lesson 4-1: Polynomial Functions</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+
+// ── POLYNOMIAL GRAPHER ──
+const canvas=document.getElementById('polyCanvas');
+const ctx=canvas.getContext('2d');
+const W=800,H=440;
+
+function getCoeffs(){
+  return [
+    parseFloat(document.getElementById('c5').value)||0,
+    parseFloat(document.getElementById('c4').value)||0,
+    parseFloat(document.getElementById('c3').value)||0,
+    parseFloat(document.getElementById('c2').value)||0,
+    parseFloat(document.getElementById('c1').value)||0,
+    parseFloat(document.getElementById('c0').value)||0
+  ];
+}
+function presetPoly(a,b,c,d,e,f){
+  document.getElementById('c5').value=a;
+  document.getElementById('c4').value=b;
+  document.getElementById('c3').value=c;
+  document.getElementById('c2').value=d;
+  document.getElementById('c1').value=e;
+  document.getElementById('c0').value=f;
+  drawPoly();
+}
+function evalPoly(coeffs,x){
+  const [a,b,c,d,e,f]=coeffs;
+  return a*x**5+b*x**4+c*x**3+d*x**2+e*x+f;
+}
+function toX(x,xMin,xMax){return (x-xMin)/(xMax-xMin)*W;}
+function toY(y,yMin,yMax){return H-(y-yMin)/(yMax-yMin)*H;}
+
+function drawPoly(){
+  const coeffs=getCoeffs();
+  const xMin=-6,xMax=6;
+  // Sample y values to find range
+  let vals=[];
+  for(let x=xMin;x<=xMax;x+=0.1)vals.push(evalPoly(coeffs,x));
+  let yMin=Math.min(...vals)-2,yMax=Math.max(...vals)+2;
+  yMin=Math.max(yMin,-100);yMax=Math.min(yMax,100);
+
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#f8faff';ctx.fillRect(0,0,W,H);
+
+  // Grid
+  const xStep=Math.ceil((xMax-xMin)/12), yStep=Math.max(1,Math.ceil((yMax-yMin)/10));
+  ctx.strokeStyle='#e2e8f0';ctx.lineWidth=1;
+  for(let x=Math.ceil(xMin);x<=xMax;x++){const cx=toX(x,xMin,xMax);ctx.beginPath();ctx.moveTo(cx,0);ctx.lineTo(cx,H);ctx.stroke();}
+  for(let y=Math.round(yMin);y<=yMax;y++){if(y%yStep===0){const cy=toY(y,yMin,yMax);ctx.beginPath();ctx.moveTo(0,cy);ctx.lineTo(W,cy);ctx.stroke();}}
+
+  // Axes
+  const cy0=toY(0,yMin,yMax);const cx0=toX(0,xMin,xMax);
+  ctx.strokeStyle='#475569';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(0,cy0);ctx.lineTo(W,cy0);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx0,0);ctx.lineTo(cx0,H);ctx.stroke();
+  ctx.fillStyle='#64748b';ctx.font='11px system-ui';ctx.textAlign='center';
+  for(let x=Math.ceil(xMin);x<=xMax;x++){if(x!==0)ctx.fillText(x,toX(x,xMin,xMax),cy0+14);}
+  ctx.textAlign='right';
+  for(let y=Math.round(yMin);y<=yMax;y++){if(y!==0&&y%yStep===0)ctx.fillText(y,cx0-4,toY(y,yMin,yMax)+4);}
+
+  // Curve
+  ctx.strokeStyle='#1a4fa0';ctx.lineWidth=2.5;ctx.beginPath();
+  let started=false;
+  for(let px=0;px<=W;px++){
+    const x=xMin+(px/W)*(xMax-xMin);
+    const y=evalPoly(coeffs,x);
+    const cy=toY(y,yMin,yMax);
+    if(cy<-20||cy>H+20){started=false;continue;}
+    if(!started){ctx.moveTo(px,cy);started=true;}else ctx.lineTo(px,cy);
+  }
+  ctx.stroke();
+
+  // Find approximate zeros (sign changes)
+  let zeros=[];
+  let prev=evalPoly(coeffs,xMin);
+  for(let x=xMin+0.05;x<=xMax;x+=0.05){
+    const cur=evalPoly(coeffs,x);
+    if(prev*cur<0){
+      // refine with bisection
+      let lo=x-0.05,hi=x;
+      for(let i=0;i<20;i++){const mid=(lo+hi)/2;evalPoly(coeffs,mid)*evalPoly(coeffs,lo)<0?hi=mid:lo=mid;}
+      zeros.push((lo+hi)/2);
+    }
+    prev=cur;
+  }
+  zeros.forEach(z=>{
+    const cx=toX(z,xMin,xMax);
+    ctx.fillStyle='#16a34a';ctx.beginPath();ctx.arc(cx,cy0,5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#1e293b';ctx.font='bold 11px system-ui';ctx.textAlign='center';
+    ctx.fillText(z.toFixed(2),cx,cy0-10);
+  });
+
+  // Determine degree
+  const labels=['f','e','d','c','b','a'];
+  const degrees=[0,1,2,3,4,5];
+  let deg=0,lc=0;
+  for(let i=0;i<6;i++){if(coeffs[i]!==0){deg=degrees[i];lc=coeffs[i];}}
+  // Actually find highest non-zero term
+  for(let i=0;i<6;i++){if(coeffs[i]!==0){deg=5-i;lc=coeffs[i];break;}}
+
+  let endBeh='';
+  if(deg%2===0){endBeh=lc>0?'Both ends UP ↑↑':'Both ends DOWN ↓↓';}
+  else{endBeh=lc>0?'Falls left ↓, rises right ↑':'Rises left ↑, falls right ↓';}
+
+  const powers=['x⁵','x⁴','x³','x²','x',''];
+  let eqStr='';
+  coeffs.forEach((c,i)=>{
+    if(c===0) return;
+    const p=powers[i];
+    const mag=(Math.abs(c)===1&&p)?'':String(Math.abs(c));
+    if(eqStr===''){ eqStr=(c<0?'−':'')+mag+p; }
+    else { eqStr+=(c<0?' − ':' + ')+mag+p; }
+  });
+  if(eqStr==='') eqStr='0';
+  document.getElementById('polyInfo').innerHTML=
+    `<strong>f(x) = ${eqStr}</strong><br>`+
+    `Degree: ${deg} &nbsp;|&nbsp; Leading coefficient: ${lc}<br>`+
+    `End behavior: <strong>${endBeh}</strong><br>`+
+    `Approximate real zeros: <strong>${zeros.length>0?zeros.map(z=>z.toFixed(3)).join(', '):'none found in [−6, 6]'}</strong>`;
+}
+
+// Init
+ctx.fillStyle='#cbd5e1';ctx.font='15px system-ui';ctx.textAlign='center';
+ctx.fillText('Enter coefficients and click Graph',W/2,H/2);
+
+// ── QUIZ ──
+const questions=[
+  {q:"The degree of 4x⁵ − 3x³ + 7x is:",opts:["3","5","7","1"],ans:1,exp:"The highest exponent is 5, so the degree is 5."},
+  {q:"The leading coefficient of −2x⁴ + 5x³ − 1 is:",opts:["5","−2","−1","4"],ans:1,exp:"The leading coefficient is the coefficient of the highest-degree term: −2."},
+  {q:"f(x) = 3x⁴ has end behavior:",opts:["Both ends DOWN","Left up, right down","Both ends UP","Left down, right up"],ans:2,exp:"Even degree, positive leading coefficient → both ends go up."},
+  {q:"f(x) = −x³ has end behavior:",opts:["Both ends down","Left down, right up","Both ends up","Left up, right down"],ans:3,exp:"Odd degree, negative leading coefficient → rises left, falls right."},
+  {q:"Which is NOT a polynomial in one variable?",opts:["x³ − 5x + 2","3x² + 1","x + 1/x","7x⁴ − x"],ans:2,exp:"1/x = x⁻¹ has a negative exponent, so x + 1/x is NOT a polynomial."},
+  {q:"A quartic function has degree:",opts:["3","4","5","6"],ans:1,exp:"A quartic function is defined as a polynomial of degree 4."},
+  {q:"The zeros of a polynomial are the x-values where:",opts:["f(x) = 1","f(x) = 0","f(x) is maximum","the slope is 0"],ans:1,exp:"Zeros occur where f(x) = 0, i.e., where the graph crosses or touches the x-axis."},
+  {q:"A polynomial of degree 7 has at MOST how many real zeros?",opts:["6","7","8","infinite"],ans:1,exp:"A polynomial of degree n has at most n real zeros."},
+  {q:"f(x) = 5x⁶ − 2x has degree ____ and leading coefficient ____.",opts:["1, 5","6, −2","6, 5","2, 5"],ans:2,exp:"Highest power is 6 (degree = 6); its coefficient is 5 (leading coefficient = 5)."},
+  {q:"Odd-degree polynomial functions ALWAYS have:",opts:["Even number of zeros","At least one real zero","No real zeros","A maximum"],ans:1,exp:"Odd-degree polynomials always cross the x-axis at least once → at least one real zero."},
+  {q:"The standard form of a polynomial lists terms in:",opts:["Alphabetical order","Increasing degree","Decreasing degree","Random order"],ans:2,exp:"Standard form lists terms from greatest to least degree (decreasing)."},
+  {q:"If f(x) = x³ + 2x² − 3x = x(x+3)(x−1), the zeros are:",opts:["0, −3, 1","0, 3, −1","0, 3, 1","−3, 0, −1"],ans:0,exp:"Set each factor to zero: x = 0, x + 3 = 0 → x = −3, x − 1 = 0 → x = 1."},
+  {q:"Which function is a monomial function?",opts:["f(x) = x² + 1","f(x) = 3x⁴","f(x) = x + x³","f(x) = x² − x"],ans:1,exp:"A monomial function has only one term: f(x) = 3x⁴."},
+  {q:"g(x) = −4x⁵ has what end behavior?",opts:["Both ends up","Left down, right up","Both ends down","Left up, right down"],ans:3,exp:"Odd degree (5), negative leading coefficient (−4) → rises left, falls right."},
+  {q:"What is the degree of (2x − 1)(4x² + 3)?",opts:["2","3","4","1"],ans:1,exp:"The highest-degree term is 2x · 4x² = 8x³, so degree = 3."}
+];
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id=`q${i}`;
+    div.innerHTML=`<div class="q-num">Question ${i+1} of ${questions.length}</div><div class="q-text">${q.q}</div><div class="options">${q.opts.map((o,j)=>`<button class="option-btn" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div><div class="feedback" id="fb${i}"></div>`;
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById(`q${qi}`);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById(`fb${qi}`);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.textContent='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.textContent=`✗ Incorrect. Answer: ${String.fromCharCode(65+q.ans)}. ${q.exp}`;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=`${total}/${questions.length}`;
+  const msgs=[[0,'Keep reviewing end behavior!'],[60,'Good effort!'],[80,'Great work!'],[95,'Excellent! Polynomial functions mastered!']];
+  let msg=msgs[0][1];for(const[t,m]of msgs){if(pct>=t)msg=m;}
+  document.getElementById('scoreMsg').textContent=`${pct}% — ${msg}`;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+buildQuiz();
+
+window.toggleExample=toggleExample;window.drawPoly=drawPoly;window.presetPoly=presetPoly;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</body>
+</html>

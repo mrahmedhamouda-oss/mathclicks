@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3-5: Solving Quadratic Equations by Completing the Square</title>
+<style>
+  :root {
+    --navy: #0f2d6b;
+    --blue: #1a4fa0;
+    --orange: #e05c2a;
+    --green: #16a34a;
+    --light-blue: #e8f0fb;
+    --light-orange: #fff3ee;
+    --light-green: #f0fdf4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; background: #f5f7fb; color: #1e293b; }
+
+  /* HEADER */
+  .hero { background: linear-gradient(135deg, #0f2d6b 0%, #1a4fa0 60%, #2563eb 100%); color: white; padding: 48px 24px 32px; text-align: center; }
+  .module-badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 4px 16px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 36px); font-weight: 800; margin-bottom: 10px; }
+  .hero p { font-size: 16px; opacity: 0.85; max-width: 600px; margin: 0 auto; }
+
+  /* STICKY NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 2px solid #e2e8f0; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px; padding: 10px 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  nav a { text-decoration: none; color: var(--navy); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 20px; transition: all 0.2s; }
+  nav a:hover, nav a.active { background: var(--navy); color: white; }
+
+  /* MAIN */
+  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; }
+  section { margin-bottom: 48px; }
+  h2 { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 3px solid var(--orange); display: inline-block; }
+
+  /* CONCEPT CARDS */
+  .concept-card { background: white; border-left: 5px solid var(--blue); border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+  .concept-card h3 { color: var(--blue); font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .concept-card p, .concept-card li { font-size: 15px; line-height: 1.7; }
+  .concept-card ul, .concept-card ol { padding-left: 20px; margin-top: 8px; }
+  .concept-card li { margin-bottom: 6px; }
+  .formula-box { background: var(--light-blue); border: 1px solid #bfd3f5; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-family: 'Courier New', monospace; font-size: 15px; color: var(--navy); }
+  .vocab-term { display: inline-block; background: #fef3c7; border: 1px solid #f59e0b; border-radius: 4px; padding: 2px 8px; font-weight: 700; margin: 2px; }
+  .step-list { counter-reset: step-counter; padding-left: 0; list-style: none; }
+  .step-list li { counter-increment: step-counter; padding: 8px 0 8px 44px; position: relative; border-bottom: 1px solid #e2e8f0; }
+  .step-list li:last-child { border-bottom: none; }
+  .step-list li::before { content: "Step " counter(step-counter); position: absolute; left: 0; background: var(--blue); color: white; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+
+  /* EXAMPLES */
+  .example-card { background: white; border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.09); margin-bottom: 16px; overflow: hidden; }
+  .example-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; cursor: pointer; background: white; border: none; width: 100%; text-align: left; }
+  .example-header:hover { background: #f8faff; }
+  .example-label { font-size: 11px; font-weight: 700; color: white; background: var(--orange); padding: 3px 10px; border-radius: 12px; text-transform: uppercase; margin-right: 10px; flex-shrink: 0; }
+  .example-title { font-size: 15px; font-weight: 600; color: var(--navy); flex: 1; }
+  .toggle-icon { font-size: 20px; color: #94a3b8; transition: transform 0.3s; }
+  .example-header.open .toggle-icon { transform: rotate(45deg); }
+  .example-body { display: none; padding: 20px 24px; border-top: 1px solid #e2e8f0; }
+  .example-body.open { display: block; }
+  .problem-stmt { background: #f8faff; border-left: 4px solid var(--blue); border-radius: 4px; padding: 12px 16px; margin-bottom: 16px; font-weight: 600; font-size: 15px; }
+  .solution-step { display: flex; gap: 12px; margin-bottom: 10px; padding: 8px 12px; border-radius: 6px; background: #fafafa; }
+  .solution-step .math { font-family: 'Courier New', monospace; font-size: 14px; color: var(--navy); flex: 1; }
+  .solution-step .reason { font-size: 13px; color: var(--blue); font-style: italic; min-width: 160px; text-align: right; }
+  .verify-box { background: var(--light-green); border: 1px solid #86efac; border-radius: 6px; padding: 12px 16px; margin-top: 12px; }
+  .verify-box strong { color: var(--green); }
+  .warning-box { background: var(--light-orange); border: 1px solid #fdba74; border-radius: 6px; padding: 12px 16px; margin: 10px 0; }
+  .warning-box strong { color: var(--orange); }
+  .answer-box { background: #ecfdf5; border: 2px solid var(--green); border-radius: 8px; padding: 12px 18px; margin-top: 14px; font-family: 'Courier New', monospace; font-size: 15px; color: #065f46; font-weight: 700; text-align: center; }
+  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  @media (max-width: 600px) { .cases-grid { grid-template-columns: 1fr; } }
+  .case-box { background: #f8faff; border: 1px solid #bfd3f5; border-radius: 6px; padding: 12px; }
+  .case-box h4 { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+
+  /* GRAPHER */
+  .grapher-section { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.09); }
+  .grapher-controls { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; align-items: flex-end; }
+  .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+  .ctrl-group label { font-size: 12px; font-weight: 600; color: var(--navy); }
+  .ctrl-group input, .ctrl-group select { padding: 8px 10px; border: 2px solid #cbd5e1; border-radius: 6px; font-size: 14px; width: 90px; outline: none; transition: border-color 0.2s; }
+  .ctrl-group input:focus, .ctrl-group select:focus { border-color: var(--blue); }
+  .btn { padding: 9px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-primary { background: var(--navy); color: white; }
+  .btn-primary:hover { background: var(--blue); }
+  .btn-orange { background: var(--orange); color: white; }
+  .graph-canvas-wrap { position: relative; overflow: hidden; border-radius: 8px; border: 2px solid #e2e8f0; }
+  canvas { display: block; width: 100%; }
+  .graph-info { margin-top: 12px; background: var(--light-blue); border-radius: 6px; padding: 12px 16px; font-size: 14px; line-height: 1.7; font-family: 'Courier New', monospace; color: var(--navy); }
+  .mode-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
+  .mode-tab { padding: 7px 16px; border: 2px solid #cbd5e1; border-radius: 6px; background: white; cursor: pointer; font-size: 13px; font-weight: 600; color: #64748b; transition: all 0.2s; }
+  .mode-tab.active { border-color: var(--navy); background: var(--navy); color: white; }
+
+  /* QUIZ */
+  .quiz-header { background: linear-gradient(135deg, #e05c2a, #c2410c); color: white; border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; text-align: center; }
+  .quiz-header h2 { color: white; border: none; font-size: 20px; }
+  .quiz-header p { opacity: 0.9; font-size: 14px; margin-top: 6px; }
+  .q-card { background: white; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 1px 5px rgba(0,0,0,0.08); }
+  .q-num { font-size: 12px; font-weight: 700; color: var(--orange); text-transform: uppercase; margin-bottom: 8px; }
+  .q-text { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 14px; font-family: 'Courier New', monospace; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (max-width: 500px) { .options { grid-template-columns: 1fr; } }
+  .option-btn { padding: 10px 14px; border: 2px solid #cbd5e1; border-radius: 8px; background: white; font-size: 14px; cursor: pointer; text-align: left; transition: all 0.2s; font-family: 'Courier New', monospace; }
+  .option-btn:hover:not(:disabled) { border-color: var(--blue); background: var(--light-blue); }
+  .option-btn.correct { border-color: var(--green); background: var(--light-green); color: #065f46; }
+  .option-btn.wrong { border-color: #ef4444; background: #fef2f2; color: #7f1d1d; }
+  .option-btn:disabled { cursor: default; }
+  .feedback { margin-top: 10px; padding: 8px 14px; border-radius: 6px; font-size: 14px; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: var(--light-green); color: #065f46; border: 1px solid #86efac; }
+  .feedback.wrong { background: #fef2f2; color: #7f1d1d; border: 1px solid #fca5a5; }
+  .score-panel { display: none; background: white; border-radius: 12px; padding: 32px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin-top: 20px; }
+  .score-panel.show { display: block; }
+  .score-big { font-size: 56px; font-weight: 800; color: var(--navy); }
+  .score-msg { font-size: 18px; color: #64748b; margin: 8px 0 20px; }
+  .btn-retry { padding: 12px 32px; background: var(--orange); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 3 · Lesson 3-5</div>
+  <h1>Solving Quadratic Equations<br>by Completing the Square</h1>
+  <p>Master the Square Root Property, completing the square, vertex form, and projectile motion</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Examples</a>
+  <a href="#grapher">Graph It</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<!-- CONCEPTS -->
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>🔑 Square Root Property</h3>
+    <p>To solve a quadratic equation in the form <span class="vocab-term">x² = n</span>, take the square root of each side.</p>
+    <div class="formula-box">For any number n ≥ 0:  if x² = n,  then x = ±√n<br><br>Example: x² = 121  →  x = ±√121 = ±11</div>
+    <div class="warning-box"><strong>⚠ Watch Out!</strong> Always include the ± symbol before the radical. Both the positive and negative roots are solutions.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Completing the Square</h3>
+    <p>To complete the square for the expression <strong>x² + bx</strong>:</p>
+    <ol class="step-list">
+      <li>Find one half of b, the coefficient of x: compute <strong>b/2</strong></li>
+      <li>Square the result from Step 1: compute <strong>(b/2)²</strong></li>
+      <li>Add the result of Step 2 to x² + bx: <strong>x² + bx + (b/2)² = (x + b/2)²</strong></li>
+    </ol>
+    <div class="formula-box">x² + bx + (b/2)² = (x + b/2)²</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Vertex Form of a Quadratic Function</h3>
+    <p>Any quadratic in standard form can be rewritten in <span class="vocab-term">vertex form</span> by completing the square.</p>
+    <div class="cases-grid">
+      <div class="case-box">
+        <h4>Standard Form</h4>
+        <div class="formula-box">y = ax² + bx + c</div>
+      </div>
+      <div class="case-box">
+        <h4>Vertex Form</h4>
+        <div class="formula-box">y = a(x - h)² + k<br>Vertex: (h, k)</div>
+      </div>
+    </div>
+    <ul style="margin-top:8px">
+      <li>If a &gt; 0 → parabola opens <strong>up</strong>, vertex is a <strong>minimum</strong></li>
+      <li>If a &lt; 0 → parabola opens <strong>down</strong>, vertex is a <strong>maximum</strong></li>
+      <li>Axis of symmetry: x = h</li>
+    </ul>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Projectile Motion</h3>
+    <p>The height h(t) of an object at time t is modeled by:</p>
+    <div class="formula-box">h(t) = -½gt² + vt + h₀<br><br>g = 9.8 m/s² or 32 ft/s² (gravity)<br>v = initial velocity<br>h₀ = initial height</div>
+    <p style="margin-top:8px">The vertex gives the <strong>maximum height</strong> and the time it occurs.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Solving by Completing the Square (when a ≠ 1)</h3>
+    <ol class="step-list">
+      <li>Divide every term by a (the coefficient of x²)</li>
+      <li>Move the constant to the right side</li>
+      <li>Add (b/2)² to both sides</li>
+      <li>Factor the left side as a perfect square</li>
+      <li>Apply the Square Root Property</li>
+      <li>Solve for x</li>
+    </ol>
+  </div>
+</section>
+
+<!-- EXAMPLES -->
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Solve a Quadratic Equation with Rational Roots</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Solve x² − 4x + 4 = 25 using the Square Root Property.</div>
+      <div class="solution-step"><span class="math">x² − 4x + 4 = 25</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="math">(x − 2)² = 25</span><span class="reason">Factor left side</span></div>
+      <div class="solution-step"><span class="math">x − 2 = ±√25</span><span class="reason">Square Root Property</span></div>
+      <div class="solution-step"><span class="math">x − 2 = ±5</span><span class="reason">√25 = 5</span></div>
+      <div class="solution-step"><span class="math">x = 2 + 5 = 7  OR  x = 2 − 5 = −3</span><span class="reason">Add 2 to each side</span></div>
+      <div class="answer-box">Solution Set: {−3, 7}</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Solve with Irrational Roots</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve x² + 24x + 144 = 192 using the Square Root Property.</div>
+      <div class="solution-step"><span class="math">x² + 24x + 144 = 192</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="math">(x + 12)² = 192</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="math">x + 12 = ±√192</span><span class="reason">Square Root Property</span></div>
+      <div class="solution-step"><span class="math">x + 12 = ±8√3</span><span class="reason">√192 = 8√3</span></div>
+      <div class="solution-step"><span class="math">x = −12 ± 8√3</span><span class="reason">Subtract 12</span></div>
+      <div class="warning-box"><strong>⚠ Note:</strong> 192 is NOT a perfect square, so roots are irrational.</div>
+      <div class="answer-box">Exact: x = −12 − 8√3 ≈ −25.86 &nbsp;&nbsp; or &nbsp;&nbsp; x = −12 + 8√3 ≈ 1.86</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Solve with Complex Solutions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve 2x² − 92x + 1058 = −72 using the Square Root Property.</div>
+      <div class="solution-step"><span class="math">2x² − 92x + 1058 = −72</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="math">x² − 46x + 529 = −36</span><span class="reason">Divide each side by 2</span></div>
+      <div class="solution-step"><span class="math">(x − 23)² = −36</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="math">x − 23 = ±√(−36)</span><span class="reason">Square Root Property</span></div>
+      <div class="solution-step"><span class="math">x − 23 = ±6i</span><span class="reason">√(−36) = 6i</span></div>
+      <div class="solution-step"><span class="math">x = 23 ± 6i</span><span class="reason">Add 23 to each side</span></div>
+      <div class="warning-box"><strong>⚠ Complex Roots:</strong> When the right side is negative after applying the Square Root Property, roots are complex (involve i = √(−1)).</div>
+      <div class="answer-box">x = 23 + 6i  &nbsp; and &nbsp;  x = 23 − 6i</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Complete the Square to Find c</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find c so that x² − 7x + c is a perfect square trinomial. Write as a perfect square.</div>
+      <div class="solution-step"><span class="math">b = −7</span><span class="reason">Identify b</span></div>
+      <div class="solution-step"><span class="math">b/2 = −7/2 = −3.5</span><span class="reason">Step 1: Find half of b</span></div>
+      <div class="solution-step"><span class="math">(−3.5)² = 12.25</span><span class="reason">Step 2: Square it</span></div>
+      <div class="solution-step"><span class="math">c = 12.25</span><span class="reason">Step 3: That's the value of c</span></div>
+      <div class="answer-box">x² − 7x + 12.25 = (x − 3.5)²</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Solve by Completing the Square</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve x² + 18x − 4 = 0 by completing the square.</div>
+      <div class="solution-step"><span class="math">x² + 18x − 4 = 0</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="math">x² + 18x = 4</span><span class="reason">Add 4 to each side</span></div>
+      <div class="solution-step"><span class="math">b/2 = 9 &nbsp; → &nbsp; (b/2)² = 81</span><span class="reason">Complete the square</span></div>
+      <div class="solution-step"><span class="math">x² + 18x + 81 = 4 + 81 = 85</span><span class="reason">Add 81 to both sides</span></div>
+      <div class="solution-step"><span class="math">(x + 9)² = 85</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="math">x + 9 = ±√85</span><span class="reason">Square Root Property</span></div>
+      <div class="solution-step"><span class="math">x = −9 ± √85</span><span class="reason">Subtract 9</span></div>
+      <div class="answer-box">Solution Set: {−9 − √85, −9 + √85}</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 7</span>
+      <span class="example-title">Complete the Square when a ≠ 1</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve 4x² − 12x − 27 = 0 by completing the square.</div>
+      <div class="solution-step"><span class="math">4x² − 12x − 27 = 0</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="math">x² − 3x − 27/4 = 0</span><span class="reason">Divide each side by 4</span></div>
+      <div class="solution-step"><span class="math">x² − 3x = 27/4</span><span class="reason">Add 27/4 to each side</span></div>
+      <div class="solution-step"><span class="math">b/2 = −3/2 &nbsp; → &nbsp; (b/2)² = 9/4</span><span class="reason">Complete the square</span></div>
+      <div class="solution-step"><span class="math">x² − 3x + 9/4 = 27/4 + 9/4 = 36/4 = 9</span><span class="reason">Add 9/4 to both sides</span></div>
+      <div class="solution-step"><span class="math">(x − 3/2)² = 9</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="math">x − 3/2 = ±3</span><span class="reason">Square Root Property</span></div>
+      <div class="solution-step"><span class="math">x = 3/2 + 3 = 9/2 &nbsp;&nbsp; OR &nbsp;&nbsp; x = 3/2 − 3 = −3/2</span><span class="reason">Solve for x</span></div>
+      <div class="answer-box">Solution Set: {−3/2, 9/2}</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 8</span>
+      <span class="example-title">Solve with Imaginary Solutions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve 3x² − 72x + 465 = 0 by completing the square.</div>
+      <div class="solution-step"><span class="math">3x² − 72x + 465 = 0</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="math">x² − 24x + 155 = 0</span><span class="reason">Divide by 3</span></div>
+      <div class="solution-step"><span class="math">x² − 24x = −155</span><span class="reason">Subtract 155</span></div>
+      <div class="solution-step"><span class="math">x² − 24x + 144 = −155 + 144 = −11</span><span class="reason">Add (−24/2)² = 144</span></div>
+      <div class="solution-step"><span class="math">(x − 12)² = −11</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="math">x − 12 = ±√(−11) = ±i√11</span><span class="reason">Square Root Property</span></div>
+      <div class="solution-step"><span class="math">x = 12 ± i√11</span><span class="reason">Add 12</span></div>
+      <div class="answer-box">x = 12 + i√11 &nbsp; and &nbsp; x = 12 − i√11</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 9</span>
+      <span class="example-title">Write a Function in Vertex Form</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Write y = −x² − 12x − 9 in vertex form.</div>
+      <div class="solution-step"><span class="math">y = −x² − 12x − 9</span><span class="reason">Original function</span></div>
+      <div class="solution-step"><span class="math">y = −(x² + 12x) − 9</span><span class="reason">Factor out −1 from x terms</span></div>
+      <div class="solution-step"><span class="math">y = −(x² + 12x + 36) − 9 + 36</span><span class="reason">Add (12/2)² = 36 inside; compensate outside</span></div>
+      <div class="solution-step"><span class="math">y = −(x + 6)² + 27</span><span class="reason">Simplify</span></div>
+      <div class="warning-box"><strong>⚠ Key:</strong> When a ≠ 1, after factoring out a, balance the equation: adding (b/2)² inside the parentheses means adding a·(b/2)² outside.</div>
+      <div class="answer-box">Vertex Form: y = −(x + 6)² + 27 &nbsp;&nbsp; Vertex: (−6, 27) — maximum</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 10</span>
+      <span class="example-title">Find Vertex and Axis of Symmetry</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Consider y = 3x² − 12x + 5. Find vertex form, axis of symmetry, and classify vertex.</div>
+      <div class="solution-step"><span class="math">y = 3x² − 12x + 5</span><span class="reason">Original</span></div>
+      <div class="solution-step"><span class="math">y = 3(x² − 4x) + 5</span><span class="reason">Factor out 3</span></div>
+      <div class="solution-step"><span class="math">y = 3(x² − 4x + 4) + 5 − 12</span><span class="reason">Add (−4/2)² = 4 inside; subtract 3·4 = 12 outside</span></div>
+      <div class="solution-step"><span class="math">y = 3(x − 2)² − 7</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">Vertex Form: y = 3(x − 2)² − 7<br>Vertex: (2, −7) — minimum (a = 3 &gt; 0)<br>Axis of Symmetry: x = 2</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE GRAPHER -->
+<section id="grapher">
+  <h2>Interactive Grapher</h2>
+  <div class="grapher-section">
+    <div class="mode-tabs">
+      <button class="mode-tab active" onclick="setMode('standard', this)">Standard Form: y = ax² + bx + c</button>
+      <button class="mode-tab" onclick="setMode('vertex', this)">Vertex Form: y = a(x − h)² + k</button>
+    </div>
+
+    <div id="standard-controls" class="grapher-controls">
+      <div class="ctrl-group"><label>a =</label><input type="number" id="s_a" value="1" step="0.5"></div>
+      <div class="ctrl-group"><label>b =</label><input type="number" id="s_b" value="-4" step="1"></div>
+      <div class="ctrl-group"><label>c =</label><input type="number" id="s_c" value="-5" step="1"></div>
+      <button class="btn btn-primary" onclick="drawStandard()">Plot</button>
+      <button class="btn btn-orange" onclick="completeTheSquare()">Show Vertex Form</button>
+    </div>
+
+    <div id="vertex-controls" class="grapher-controls" style="display:none">
+      <div class="ctrl-group"><label>a =</label><input type="number" id="v_a" value="1" step="0.5"></div>
+      <div class="ctrl-group"><label>h =</label><input type="number" id="v_h" value="2" step="0.5"></div>
+      <div class="ctrl-group"><label>k =</label><input type="number" id="v_k" value="-9" step="1"></div>
+      <button class="btn btn-primary" onclick="drawVertex()">Plot</button>
+    </div>
+
+    <div class="graph-canvas-wrap">
+      <canvas id="graphCanvas" width="800" height="440"></canvas>
+    </div>
+    <div class="graph-info" id="graphInfo">Enter values and click Plot to see the parabola.</div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>📝 Practice Quiz — 15 Questions</h2>
+    <p>Lesson 3-5: Completing the Square &amp; Vertex Form</p>
+  </div>
+
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+// ── TOGGLE EXAMPLES ──
+function toggleExample(btn) {
+  btn.classList.toggle('open');
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// ── GRAPHER ──
+let graphMode = 'standard';
+function setMode(mode, tab) {
+  graphMode = mode;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById('standard-controls').style.display = mode === 'standard' ? 'flex' : 'none';
+  document.getElementById('vertex-controls').style.display = mode === 'vertex' ? 'flex' : 'none';
+}
+
+const canvas = document.getElementById('graphCanvas');
+const ctx = canvas.getContext('2d');
+const W = 800, H = 440;
+let xMin = -10, xMax = 10, yMin = -15, yMax = 15;
+
+function toCanvasX(x) { return (x - xMin) / (xMax - xMin) * W; }
+function toCanvasY(y) { return H - (y - yMin) / (yMax - yMin) * H; }
+
+function drawGrid() {
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8faff';
+  ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#e2e8f0';
+  ctx.lineWidth = 1;
+  for (let x = Math.ceil(xMin); x <= xMax; x++) {
+    const cx = toCanvasX(x);
+    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, H); ctx.stroke();
+  }
+  for (let y = Math.ceil(yMin); y <= yMax; y++) {
+    const cy = toCanvasY(y);
+    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(W, cy); ctx.stroke();
+  }
+  // Axes
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  const cx0 = toCanvasX(0), cy0 = toCanvasY(0);
+  ctx.beginPath(); ctx.moveTo(0, cy0); ctx.lineTo(W, cy0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx0, 0); ctx.lineTo(cx0, H); ctx.stroke();
+  // Labels
+  ctx.fillStyle = '#64748b'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+  for (let x = Math.ceil(xMin); x <= xMax; x++) {
+    if (x !== 0 && x % 2 === 0) ctx.fillText(x, toCanvasX(x), cy0 + 14);
+  }
+  ctx.textAlign = 'right';
+  for (let y = Math.ceil(yMin); y <= yMax; y++) {
+    if (y !== 0 && y % 5 === 0) ctx.fillText(y, cx0 - 4, toCanvasY(y) + 4);
+  }
+}
+
+function drawParabola(fn, color = '#1a4fa0') {
+  ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.beginPath();
+  let started = false;
+  for (let px = 0; px <= W; px++) {
+    const x = xMin + (px / W) * (xMax - xMin);
+    const y = fn(x);
+    if (isNaN(y) || !isFinite(y)) { started = false; continue; }
+    const cy = toCanvasY(y);
+    if (cy < -20 || cy > H + 20) { started = false; continue; }
+    if (!started) { ctx.moveTo(px, cy); started = true; }
+    else ctx.lineTo(px, cy);
+  }
+  ctx.stroke();
+}
+
+function markPoint(x, y, label, color = '#e05c2a') {
+  const cx = toCanvasX(x), cy = toCanvasY(y);
+  if (cx < 0 || cx > W || cy < 0 || cy > H) return;
+  ctx.fillStyle = color; ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#1e293b'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+  ctx.fillText(label, cx + 8, cy - 6);
+}
+
+function drawStandard() {
+  const a = parseFloat(document.getElementById('s_a').value) || 1;
+  const b = parseFloat(document.getElementById('s_b').value) || 0;
+  const c = parseFloat(document.getElementById('s_c').value) || 0;
+  const fn = x => a * x * x + b * x + c;
+  // auto-scale y
+  const h = -b / (2 * a), k = fn(h);
+  yMin = Math.min(-2, k - 5); yMax = Math.max(2, k + 10);
+  drawGrid();
+  drawParabola(fn);
+  // vertex
+  markPoint(h, k, `V(${h.toFixed(2)}, ${k.toFixed(2)})`);
+  // axis of symmetry
+  const ax = toCanvasX(h);
+  ctx.setLineDash([6, 4]); ctx.strokeStyle = '#e05c2a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(ax, 0); ctx.lineTo(ax, H); ctx.stroke();
+  ctx.setLineDash([]);
+  // discriminant & zeros
+  const disc = b * b - 4 * a * c;
+  let zerosText = '';
+  if (disc > 0) {
+    const x1 = (-b - Math.sqrt(disc)) / (2 * a);
+    const x2 = (-b + Math.sqrt(disc)) / (2 * a);
+    markPoint(x1, 0, `(${x1.toFixed(2)}, 0)`, '#16a34a');
+    markPoint(x2, 0, `(${x2.toFixed(2)}, 0)`, '#16a34a');
+    zerosText = `Zeros: x ≈ ${x1.toFixed(3)}, x ≈ ${x2.toFixed(3)}`;
+  } else if (disc === 0) {
+    const x1 = -b / (2 * a);
+    markPoint(x1, 0, `(${x1.toFixed(2)}, 0)`, '#16a34a');
+    zerosText = `Zero: x = ${x1.toFixed(3)} (one repeated root)`;
+  } else { zerosText = 'No real zeros (discriminant < 0)'; }
+  document.getElementById('graphInfo').innerHTML =
+    `<strong>f(x) = ${a}x² ${b >= 0 ? '+' : ''}${b}x ${c >= 0 ? '+' : ''}${c}</strong><br>` +
+    `Vertex: (${h.toFixed(3)}, ${k.toFixed(3)}) — ${a > 0 ? 'minimum' : 'maximum'}<br>` +
+    `Axis of Symmetry: x = ${h.toFixed(3)}<br>` +
+    `Discriminant: ${disc.toFixed(4)}<br>${zerosText}`;
+}
+
+function drawVertex() {
+  const a = parseFloat(document.getElementById('v_a').value) || 1;
+  const h = parseFloat(document.getElementById('v_h').value) || 0;
+  const k = parseFloat(document.getElementById('v_k').value) || 0;
+  const fn = x => a * (x - h) * (x - h) + k;
+  yMin = Math.min(-2, k - 5); yMax = Math.max(2, k + 10);
+  drawGrid();
+  drawParabola(fn);
+  markPoint(h, k, `V(${h}, ${k})`);
+  const ax = toCanvasX(h);
+  ctx.setLineDash([6, 4]); ctx.strokeStyle = '#e05c2a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(ax, 0); ctx.lineTo(ax, H); ctx.stroke();
+  ctx.setLineDash([]);
+  const disc = -4 * a * k;
+  let zerosText = '';
+  if (disc > 0) {
+    const x1 = h - Math.sqrt(-k / a), x2 = h + Math.sqrt(-k / a);
+    markPoint(x1, 0, `(${x1.toFixed(2)}, 0)`, '#16a34a');
+    markPoint(x2, 0, `(${x2.toFixed(2)}, 0)`, '#16a34a');
+    zerosText = `Zeros: x ≈ ${x1.toFixed(3)}, x ≈ ${x2.toFixed(3)}`;
+  } else if (disc === 0) { zerosText = `Zero: x = ${h} (vertex on x-axis)`;
+  } else { zerosText = 'No real zeros'; }
+  document.getElementById('graphInfo').innerHTML =
+    `<strong>f(x) = ${a}(x − ${h})² + ${k}</strong><br>` +
+    `Vertex: (${h}, ${k}) — ${a > 0 ? 'minimum' : 'maximum'}<br>` +
+    `Axis of Symmetry: x = ${h}<br>${zerosText}`;
+}
+
+function completeTheSquare() {
+  const a = parseFloat(document.getElementById('s_a').value) || 1;
+  const b = parseFloat(document.getElementById('s_b').value) || 0;
+  const c = parseFloat(document.getElementById('s_c').value) || 0;
+  const h = -b / (2 * a), k = c - b * b / (4 * a);
+  alert(`Completing the Square:\ny = ${a}x² + ${b}x + ${c}\n\n→ y = ${a}(x − ${h.toFixed(3)})² + ${k.toFixed(3)}\n\nVertex: (${h.toFixed(3)}, ${k.toFixed(3)})\nAxis of Symmetry: x = ${h.toFixed(3)}`);
+  drawStandard();
+}
+
+// Init
+drawGrid();
+ctx.fillStyle = '#94a3b8'; ctx.font = '16px system-ui'; ctx.textAlign = 'center';
+ctx.fillText('Click "Plot" to graph a parabola', W / 2, H / 2);
+
+// ── QUIZ ──
+const questions = [
+  { q: "Solve: x² = 81", opts: ["x = 9 only", "x = ±9", "x = ±81", "No real solution"], ans: 1, exp: "By the Square Root Property, x² = 81 → x = ±√81 = ±9." },
+  { q: "Solve: x² − 16 = 0", opts: ["x = 4 only", "x = −4 only", "x = ±4", "x = ±2"], ans: 2, exp: "x² = 16 → x = ±4." },
+  { q: "To complete the square for x² + 10x, what value is added?", opts: ["5", "10", "25", "100"], ans: 2, exp: "Half of 10 is 5; (5)² = 25." },
+  { q: "x² + 10x + 25 factors as:", opts: ["(x + 5)²", "(x − 5)²", "(x + 10)²", "(x + 5)(x − 5)"], ans: 0, exp: "x² + 10x + 25 = (x + 5)²." },
+  { q: "The vertex of y = 2(x − 3)² + 7 is:", opts: ["(3, 7)", "(−3, 7)", "(3, −7)", "(−3, −7)"], ans: 0, exp: "Vertex form y = a(x−h)²+k gives vertex (h, k) = (3, 7)." },
+  { q: "Solve: (x + 4)² = 49", opts: ["x = 3 or x = −11", "x = 3 only", "x = 11 or x = −3", "x = ±7"], ans: 0, exp: "x+4 = ±7 → x = 3 or x = −11." },
+  { q: "Which equation has NO real solutions?", opts: ["x² = 4", "(x−1)² = 9", "(x+2)² = −5", "x² − 3 = 0"], ans: 2, exp: "Square of a real number cannot be negative, so (x+2)² = −5 has no real solutions." },
+  { q: "Solve: x² − 6x − 7 = 0 by completing the square:", opts: ["x = 7 or x = −1", "x = −7 or x = 1", "x = ±7", "x = 3 ± √16"], ans: 0, exp: "(x−3)² = 16 → x−3 = ±4 → x = 7 or x = −1." },
+  { q: "The axis of symmetry for y = −3(x + 5)² − 2 is:", opts: ["x = 5", "x = −5", "x = −2", "x = 2"], ans: 1, exp: "Vertex is at (−5, −2), so axis of symmetry is x = −5." },
+  { q: "Solve: 2x² − 8x = 24 by completing the square:", opts: ["x = 6 or x = −2", "x = 2 or x = −6", "x = ±4", "x = 4 ± 2√2"], ans: 0, exp: "x²−4x = 12 → (x−2)² = 16 → x = 6 or x = −2." },
+  { q: "To complete the square for 3x² − 12x, first divide by 3 to get:", opts: ["x² − 4x", "x² − 12x", "3(x² − 4x)", "x² − 6x"], ans: 0, exp: "Dividing 3x² − 12x by 3 gives x² − 4x." },
+  { q: "What is the vertex form of y = x² + 8x + 10?", opts: ["y = (x+4)² − 6", "y = (x+4)² + 10", "y = (x−4)² − 6", "y = (x+8)² − 54"], ans: 0, exp: "Complete square: (x+4)² = x²+8x+16, so y = (x+4)² + 10 − 16 = (x+4)² − 6." },
+  { q: "Solve: x² + 2x + 5 = 0 (exact answer):", opts: ["x = −1 ± 2i", "x = 1 ± 2i", "x = −1 ± √6", "No real solutions only"], ans: 0, exp: "(x+1)² = −4 → x+1 = ±2i → x = −1 ± 2i." },
+  { q: "If f(x) = −2(x − 1)² + 8, the maximum value of f is:", opts: ["1", "8", "−2", "−8"], ans: 1, exp: "Since a = −2 < 0, the vertex (1, 8) is a maximum. Max value = 8." },
+  { q: "The solutions to x² − 4x − 21 = 0 by completing the square are:", opts: ["x = 7 or x = −3", "x = −7 or x = 3", "x = ±√25", "x = 2 ± 5"], ans: 0, exp: "(x−2)² = 25 → x−2 = ±5 → x = 7 or x = −3." }
+];
+
+let answered = [], total = 0;
+
+function buildQuiz() {
+  answered = new Array(questions.length).fill(false);
+  total = 0;
+  const c = document.getElementById('quiz-container');
+  c.innerHTML = '';
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'q-card';
+    div.id = `q${i}`;
+    div.innerHTML = `<div class="q-num">Question ${i + 1} of ${questions.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options">${q.opts.map((o, j) => `<button class="option-btn" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div>
+      <div class="feedback" id="fb${i}"></div>`;
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+
+function pick(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const q = questions[qi];
+  const card = document.getElementById(`q${qi}`);
+  const btns = card.querySelectorAll('.option-btn');
+  const fb = document.getElementById(`fb${qi}`);
+  btns.forEach(b => b.disabled = true);
+  if (oi === q.ans) {
+    btns[oi].classList.add('correct');
+    fb.textContent = '✓ Correct! ' + q.exp;
+    fb.className = 'feedback show correct';
+    total++;
+  } else {
+    btns[oi].classList.add('wrong');
+    btns[q.ans].classList.add('correct');
+    fb.textContent = `✗ Incorrect. The answer is ${String.fromCharCode(65+q.ans)}. ${q.exp}`;
+    fb.className = 'feedback show wrong';
+  }
+  if (answered.every(Boolean)) showScore();
+}
+
+function showScore() {
+  const pct = Math.round(total / questions.length * 100);
+  document.getElementById('scoreBig').textContent = `${total}/${questions.length}`;
+  const msgs = [[0,'Keep practicing — review the concepts above!'], [60,'Good effort! Review the examples you missed.'], [80,'Great work! Almost there.'], [95,'Excellent! You\'ve mastered this lesson!']];
+  let msg = msgs[0][1];
+  for (const [t, m] of msgs) { if (pct >= t) msg = m; }
+  document.getElementById('scoreMsg').textContent = `${pct}% — ${msg}`;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetQuiz() { buildQuiz(); window.scrollTo({ top: document.getElementById('quiz').offsetTop, behavior: 'smooth' }); }
+buildQuiz();
+
+window.toggleExample=toggleExample;window.setMode=setMode;window.drawStandard=drawStandard;window.drawVertex=drawVertex;window.completeTheSquare=completeTheSquare;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3-7: Quadratic Inequalities</title>
+<style>
+  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--purple:#7c3aed;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#7c3aed 60%,#2563eb 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);}
+  .step-list{counter-reset:step-counter;padding-left:0;list-style:none;}
+  .step-list li{counter-increment:step-counter;padding:8px 0 8px 52px;position:relative;border-bottom:1px solid #e2e8f0;}
+  .step-list li:last-child{border-bottom:none;}
+  .step-list li::before{content:"Step " counter(step-counter);position:absolute;left:0;background:var(--blue);color:white;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;}
+  .ineq-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
+  .ineq-table th{background:var(--navy);color:white;padding:10px 12px;text-align:left;}
+  .ineq-table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;}
+  .ineq-table tr:nth-child(even) td{background:var(--light-blue);}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--blue);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;}
+  .solution-step{display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:#fafafa;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;}
+  .solution-step .reason{font-size:13px;color:var(--blue);font-style:italic;min-width:170px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;}
+  .warning-box strong{color:var(--orange);}
+  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;}
+  .info-box strong{color:var(--blue);}
+
+  /* Grapher */
+  .grapher-section{background:white;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09);}
+  .grapher-controls{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;align-items:flex-end;}
+  .ctrl-group{display:flex;flex-direction:column;gap:4px;}
+  .ctrl-group label{font-size:12px;font-weight:600;color:var(--navy);}
+  .ctrl-group input,.ctrl-group select{padding:8px 10px;border:2px solid #cbd5e1;border-radius:6px;font-size:14px;width:80px;outline:none;transition:border-color .2s;}
+  .ctrl-group select{width:120px;}
+  .ctrl-group input:focus,.ctrl-group select:focus{border-color:var(--blue);}
+  .btn{padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
+  .btn-primary{background:var(--navy);color:white;}
+  .btn-primary:hover{background:var(--blue);}
+  .graph-canvas-wrap{position:relative;overflow:hidden;border-radius:8px;border:2px solid #e2e8f0;}
+  canvas{display:block;width:100%;}
+  .graph-info{margin-top:12px;background:var(--light-blue);border-radius:6px;padding:12px 16px;font-size:14px;line-height:1.7;font-family:'Courier New',monospace;color:var(--navy);}
+  .number-line-wrap{background:#f8faff;border-radius:8px;padding:16px;margin-top:12px;}
+
+  /* Quiz */
+  .quiz-header{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:500px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--purple);background:#f5f3ff;}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--purple);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 3 · Lesson 3-7</div>
+  <h1>Quadratic Inequalities</h1>
+  <p>Graph and solve quadratic inequalities in two variables — with interactive graphing and shading</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Examples</a>
+  <a href="#grapher">Graph It</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>🔑 Quadratic Inequalities in Two Variables</h3>
+    <p>A <strong>quadratic inequality</strong> is any inequality of the form:</p>
+    <div class="formula-box">y &gt; ax² + bx + c<br>y ≥ ax² + bx + c<br>y &lt; ax² + bx + c<br>y ≤ ax² + bx + c</div>
+    <div class="info-box"><strong>ℹ Solid vs Dashed Parabola:</strong><br>
+      • &lt; or &gt; → <strong>dashed</strong> parabola (boundary not included)<br>
+      • ≤ or ≥ → <strong>solid</strong> parabola (boundary included)
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Steps to Graph a Quadratic Inequality</h3>
+    <ol class="step-list">
+      <li>Graph the related function y = ax² + bx + c (solid if ≤/≥, dashed if &lt;/&gt;)</li>
+      <li>Test a point NOT on the parabola — (0, 0) is easiest if it's not on the curve</li>
+      <li>Shade the region that contains the point (if test is TRUE); shade the other region (if FALSE)</li>
+    </ol>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Solving Quadratic Inequalities (1 Variable) — Summary</h3>
+    <table class="ineq-table">
+      <tr><th>Inequality</th><th>a &gt; 0 (opens up)</th><th>a &lt; 0 (opens down)</th></tr>
+      <tr><td>ax² + bx + c &lt; 0</td><td>{x | x₁ &lt; x &lt; x₂}</td><td>{x | x &lt; x₁ or x &gt; x₂}</td></tr>
+      <tr><td>ax² + bx + c &gt; 0</td><td>{x | x &lt; x₁ or x &gt; x₂}</td><td>{x | x₁ &lt; x &lt; x₂}</td></tr>
+      <tr><td>ax² + bx + c ≤ 0</td><td>{x | x₁ ≤ x ≤ x₂}</td><td>{x | x ≤ x₁ or x ≥ x₂}</td></tr>
+      <tr><td>ax² + bx + c ≥ 0</td><td>{x | x ≤ x₁ or x ≥ x₂}</td><td>{x | x₁ ≤ x ≤ x₂}</td></tr>
+    </table>
+    <p style="margin-top:8px;font-size:14px;color:#64748b;">Where x₁ and x₂ are the zeros (roots) of the related equation.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Algebraic Method (Number Line)</h3>
+    <ol class="step-list">
+      <li>Write inequality in standard form: ax² + bx + c ≤ 0 (or similar)</li>
+      <li>Solve the related equation ax² + bx + c = 0 to find the zeros</li>
+      <li>Plot the zeros on a number line</li>
+      <li>Test a value from each interval on the number line</li>
+      <li>Write the solution set including intervals where the inequality is satisfied</li>
+    </ol>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Graph y ≤ x² − 2x + 8 (≤ means solid + shade below)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Graph y ≤ x² − 2x + 8.</div>
+      <div class="solution-step"><span class="math">a = 1, b = −2, c = 8</span><span class="reason">Identify a, b, c</span></div>
+      <div class="solution-step"><span class="math">Parabola is SOLID (≤ includes boundary)</span><span class="reason">Step 1: Graph type</span></div>
+      <div class="solution-step"><span class="math">Test (0, 0): 0 ≤ (0)² − 2(0) + 8 → 0 ≤ 8 ✓ TRUE</span><span class="reason">Step 2: Test a point</span></div>
+      <div class="solution-step"><span class="math">Shade the region CONTAINING (0, 0)</span><span class="reason">Step 3: Shade</span></div>
+      <div class="info-box"><strong>ℹ Result:</strong> Shade the region INSIDE (below/on) the parabola. The vertex is at (1, 7).</div>
+      <div class="answer-box">Solid parabola opening up; shade the region that CONTAINS (0,0) — below the curve.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Graph y > −5x² + 10x (> means dashed + shade above)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Graph y > −5x² + 10x.</div>
+      <div class="solution-step"><span class="math">a = −5, b = 10, c = 0</span><span class="reason">Identify a, b, c</span></div>
+      <div class="solution-step"><span class="math">Parabola is DASHED (> does not include boundary)</span><span class="reason">Step 1: Graph type</span></div>
+      <div class="solution-step"><span class="math">(0, 0) IS on parabola, so test (1, 0)</span><span class="reason">Step 2: (0,0) is on curve</span></div>
+      <div class="solution-step"><span class="math">0 > −5(1)² + 10(1) = 5? → 0 > 5? FALSE</span><span class="reason">Test (1, 0)</span></div>
+      <div class="solution-step"><span class="math">Shade the region NOT containing (1, 0)</span><span class="reason">Step 3: Shade OUTSIDE</span></div>
+      <div class="warning-box"><strong>⚠ Note:</strong> When (0, 0) lies ON the parabola, choose a different test point.</div>
+      <div class="answer-box">Dashed parabola; shade the region OUTSIDE the parabola (not containing the test point).</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Solve x² + x − 6 &lt; 0 by Graphing</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve x² + x − 6 &lt; 0 by graphing. Find where the parabola lies below the x-axis.</div>
+      <div class="solution-step"><span class="math">x² + x − 6 = 0 → (x + 3)(x − 2) = 0</span><span class="reason">Find zeros of related eq.</span></div>
+      <div class="solution-step"><span class="math">Zeros: x = −3  or  x = 2</span><span class="reason">Zero Product Property</span></div>
+      <div class="solution-step"><span class="math">a = 1 > 0, so parabola opens UP</span><span class="reason">Identify direction</span></div>
+      <div class="solution-step"><span class="math">Parabola lies BELOW x-axis between −3 and 2</span><span class="reason">For &lt; 0, find below x-axis</span></div>
+      <div class="answer-box">Solution: {x | −3 &lt; x &lt; 2}  or  (−3, 2)</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Solve x² − 3x − 4 ≥ 0 by Graphing</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve x² − 3x − 4 ≥ 0 by graphing.</div>
+      <div class="solution-step"><span class="math">x² − 3x − 4 = 0 → (x − 4)(x + 1) = 0</span><span class="reason">Find zeros</span></div>
+      <div class="solution-step"><span class="math">Zeros: x = 4  or  x = −1</span><span class="reason">Zero Product Property</span></div>
+      <div class="solution-step"><span class="math">a = 1 > 0 → parabola opens UP</span><span class="reason">Direction</span></div>
+      <div class="solution-step"><span class="math">For ≥ 0: parabola ON or ABOVE x-axis when x ≤ −1 or x ≥ 4</span><span class="reason">Identify intervals</span></div>
+      <div class="answer-box">Solution: {x | x ≤ −1 or x ≥ 4}  or  (−∞, −1] ∪ [4, +∞)</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Solve Algebraically Using a Number Line</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Marcus wants a garden covering at most 104 ft². Original is x by 10 ft; he extends each side by x. Set up and solve x² + 15x + 50 ≤ 104.</div>
+      <div class="solution-step"><span class="math">Area = (x + 10)(x + 5) = x² + 15x + 50</span><span class="reason">Write the function</span></div>
+      <div class="solution-step"><span class="math">x² + 15x + 50 ≤ 104</span><span class="reason">Set up inequality</span></div>
+      <div class="solution-step"><span class="math">x² + 15x − 54 ≤ 0</span><span class="reason">Subtract 104</span></div>
+      <div class="solution-step"><span class="math">x² + 15x − 54 = 0 → (x + 18)(x − 3) = 0</span><span class="reason">Solve related eq.</span></div>
+      <div class="solution-step"><span class="math">x = −18  or  x = 3</span><span class="reason">Zeros</span></div>
+      <div class="solution-step"><span class="math">Test x = −20 (≤−18): (−20)²+15(−20)−54 = 400−300−54 = 46 > 0 ✗</span><span class="reason">Test interval 1</span></div>
+      <div class="solution-step"><span class="math">Test x = 0 (−18&lt;x&lt;3): 0+0−54 = −54 ≤ 0 ✓</span><span class="reason">Test interval 2</span></div>
+      <div class="solution-step"><span class="math">Test x = 5 (≥3): 25+75−54 = 46 > 0 ✗</span><span class="reason">Test interval 3</span></div>
+      <div class="warning-box"><strong>⚠ Context:</strong> Since x represents an increase in dimension, x must be positive. The interval x ≤ −18 is irrelevant.</div>
+      <div class="answer-box">Solution: 0 &lt; x ≤ 3. Marcus can increase each dimension by at most 3 feet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE GRAPHER -->
+<section id="grapher">
+  <h2>Interactive Inequality Grapher</h2>
+  <div class="grapher-section">
+    <p style="margin-bottom:14px;font-size:14px;color:#64748b;">Enter a, b, c for <strong>y [ineq] ax² + bx + c</strong>. The grapher shades the solution region and shows any 1-variable solution on a number line.</p>
+    <div class="grapher-controls">
+      <div class="ctrl-group"><label>a =</label><input type="number" id="g_a" value="1" step="0.5"></div>
+      <div class="ctrl-group"><label>b =</label><input type="number" id="g_b" value="-1" step="1"></div>
+      <div class="ctrl-group"><label>c =</label><input type="number" id="g_c" value="-6" step="1"></div>
+      <div class="ctrl-group"><label>Inequality</label><select id="g_ineq"><option value="lt">&lt;  (less than)</option><option value="le">≤  (less or equal)</option><option value="gt">&gt;  (greater than)</option><option value="ge">≥  (greater or equal)</option></select></div>
+      <div class="ctrl-group"><label>Mode</label><select id="g_mode"><option value="2d">2-Variable (y vs x)</option><option value="1d">1-Variable (f(x) vs 0)</option></select></div>
+      <button class="btn btn-primary" onclick="drawInequality()">Graph</button>
+    </div>
+    <div class="graph-canvas-wrap">
+      <canvas id="ineqCanvas" width="800" height="460"></canvas>
+    </div>
+    <div class="number-line-wrap" id="nlWrap" style="display:none">
+      <canvas id="nlCanvas" width="800" height="80"></canvas>
+    </div>
+    <div class="graph-info" id="ineqInfo">Enter values and click Graph.</div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>📝 Practice Quiz — 15 Questions</h2>
+    <p>Lesson 3-7: Quadratic Inequalities</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+
+// ── INEQUALITY GRAPHER ──
+const mainCanvas = document.getElementById('ineqCanvas');
+const mc = mainCanvas.getContext('2d');
+const W = 800, H = 460;
+const nlCanvas = document.getElementById('nlCanvas');
+const nc = nlCanvas.getContext('2d');
+const NW = 800, NH = 80;
+
+function toX2(x, xMin, xMax){ return (x-xMin)/(xMax-xMin)*W; }
+function toY2(y, yMin, yMax){ return H-(y-yMin)/(yMax-yMin)*H; }
+
+function drawInequality(){
+  const a = parseFloat(document.getElementById('g_a').value)||1;
+  const b = parseFloat(document.getElementById('g_b').value)||0;
+  const c = parseFloat(document.getElementById('g_c').value)||0;
+  const ineq = document.getElementById('g_ineq').value;
+  const mode = document.getElementById('g_mode').value;
+  const fn = x => a*x*x + b*x + c;
+  const h = -b/(2*a), k = fn(h);
+  const xMin=-8, xMax=8;
+  const yMin=Math.min(-10,k-5), yMax=Math.max(10,k+8);
+  const solid = ineq==='le'||ineq==='ge';
+  const above = ineq==='gt'||ineq==='ge';
+
+  mc.clearRect(0,0,W,H);
+  mc.fillStyle='#f8faff'; mc.fillRect(0,0,W,H);
+
+  // Grid
+  mc.strokeStyle='#e2e8f0'; mc.lineWidth=1;
+  for(let x=Math.ceil(xMin);x<=xMax;x++){const cx=toX2(x,xMin,xMax);mc.beginPath();mc.moveTo(cx,0);mc.lineTo(cx,H);mc.stroke();}
+  for(let y=Math.ceil(yMin);y<=yMax;y++){const cy=toY2(y,yMin,yMax);mc.beginPath();mc.moveTo(0,cy);mc.lineTo(W,cy);mc.stroke();}
+
+  // Shading
+  if(mode==='2d'){
+    mc.fillStyle = above ? 'rgba(99,102,241,0.18)' : 'rgba(34,197,94,0.18)';
+    if(above){
+      mc.beginPath();
+      for(let px=0;px<=W;px++){
+        const x=xMin+(px/W)*(xMax-xMin);
+        const y=fn(x);
+        const cy=toY2(y,yMin,yMax);
+        if(px===0) mc.moveTo(px,0); else mc.lineTo(px,0);
+      }
+      for(let px=W;px>=0;px--){
+        const x=xMin+(px/W)*(xMax-xMin);
+        const y=fn(x);
+        const cy=toY2(y,yMin,yMax);
+        mc.lineTo(px,Math.max(0,cy));
+      }
+      mc.closePath(); mc.fill();
+    } else {
+      mc.beginPath();
+      for(let px=0;px<=W;px++){
+        const x=xMin+(px/W)*(xMax-xMin);
+        const y=fn(x);
+        const cy=toY2(y,yMin,yMax);
+        if(px===0) mc.moveTo(px,H); else mc.lineTo(px,H);
+      }
+      for(let px=W;px>=0;px--){
+        const x=xMin+(px/W)*(xMax-xMin);
+        const y=fn(x);
+        const cy=toY2(y,yMin,yMax);
+        mc.lineTo(px,Math.min(H,cy));
+      }
+      mc.closePath(); mc.fill();
+    }
+  } else {
+    // 1D mode: shade above or below x-axis
+    const disc = b*b - 4*a*c;
+    if(disc>=0){
+      const x1=(-b-Math.sqrt(Math.max(0,disc)))/(2*a);
+      const x2=(-b+Math.sqrt(Math.max(0,disc)))/(2*a);
+      const z1=Math.min(x1,x2), z2=Math.max(x1,x2);
+      const shade_inside = (a>0&&!above)||(a<0&&above);
+      mc.fillStyle = shade_inside ? 'rgba(34,197,94,0.25)' : 'rgba(99,102,241,0.25)';
+      if(shade_inside){
+        const cx1=toX2(z1,xMin,xMax), cx2=toX2(z2,xMin,xMax);
+        mc.fillRect(cx1,0,cx2-cx1,H);
+      } else {
+        mc.fillRect(0,0,toX2(z1,xMin,xMax),H);
+        mc.fillRect(toX2(z2,xMin,xMax),0,W-toX2(z2,xMin,xMax),H);
+      }
+    }
+  }
+
+  // Axes
+  mc.strokeStyle='#475569'; mc.lineWidth=2;
+  const cy0=toY2(0,yMin,yMax);
+  mc.beginPath();mc.moveTo(0,cy0);mc.lineTo(W,cy0);mc.stroke();
+  mc.beginPath();mc.moveTo(toX2(0,xMin,xMax),0);mc.lineTo(toX2(0,xMin,xMax),H);mc.stroke();
+
+  // Labels
+  mc.fillStyle='#64748b';mc.font='11px system-ui';mc.textAlign='center';
+  for(let x=Math.ceil(xMin);x<=xMax;x++){if(x!==0&&x%2===0)mc.fillText(x,toX2(x,xMin,xMax),cy0+14);}
+  mc.textAlign='right';
+  for(let y=Math.ceil(yMin);y<=yMax;y++){if(y!==0&&y%5===0)mc.fillText(y,toX2(0,xMin,xMax)-4,toY2(y,yMin,yMax)+4);}
+
+  // Parabola
+  mc.strokeStyle = solid ? '#1a4fa0' : '#7c3aed';
+  mc.lineWidth = 2.5;
+  if(!solid){mc.setLineDash([8,5]);}
+  mc.beginPath();
+  let started=false;
+  for(let px=0;px<=W;px++){
+    const x=xMin+(px/W)*(xMax-xMin), y=fn(x);
+    const cy=toY2(y,yMin,yMax);
+    if(cy<-20||cy>H+20){started=false;continue;}
+    if(!started){mc.moveTo(px,cy);started=true;}else mc.lineTo(px,cy);
+  }
+  mc.stroke(); mc.setLineDash([]);
+
+  // Zeros
+  const disc = b*b-4*a*c;
+  let solution='';
+  if(disc>0){
+    const x1=(-b-Math.sqrt(disc))/(2*a), x2=(-b+Math.sqrt(disc))/(2*a);
+    const z1=Math.min(x1,x2), z2=Math.max(x1,x2);
+    [z1,z2].forEach(z=>{
+      const cx=toX2(z,xMin,xMax);
+      mc.fillStyle=solid?'#16a34a':'white';
+      mc.strokeStyle='#16a34a'; mc.lineWidth=2.5;
+      mc.beginPath();mc.arc(cx,cy0,6,0,Math.PI*2);mc.fill();mc.stroke();
+      mc.fillStyle='#1e293b';mc.font='bold 12px system-ui';mc.textAlign='left';
+      mc.fillText(`(${z.toFixed(2)}, 0)`,cx+8,cy0-8);
+    });
+    const ineqSym = ineq==='lt'?'<':ineq==='le'?'≤':ineq==='gt'?'>':'≥';
+    if(ineq==='lt'||ineq==='le'){
+      if(a>0) solution=`{x | ${z1.toFixed(2)} ${ineq==='le'?'≤':'<'} x ${ineq==='le'?'≤':'<'} ${z2.toFixed(2)}}`;
+      else solution=`{x | x ${ineq==='le'?'≤':'<'} ${z1.toFixed(2)} or x ${ineq==='le'?'≥':'>'}  ${z2.toFixed(2)}}`;
+    } else {
+      if(a>0) solution=`{x | x ${ineq==='ge'?'≤':'<'} ${z1.toFixed(2)} or x ${ineq==='ge'?'≥':'>'} ${z2.toFixed(2)}}`;
+      else solution=`{x | ${z1.toFixed(2)} ${ineq==='ge'?'≤':'<'} x ${ineq==='ge'?'≤':'<'} ${z2.toFixed(2)}}`;
+    }
+    // Number line
+    if(mode==='1d') drawNumberLine(z1,z2,ineq,a);
+  } else if(disc===0){
+    const z=-b/(2*a);
+    solution=`One zero at x = ${z.toFixed(3)}`;
+    if(mode==='1d') drawNumberLine(z,z,ineq,a);
+  } else {
+    solution = above ? 'All real numbers (parabola always above x-axis)' : 'No real solution (parabola always above or below)';
+    document.getElementById('nlWrap').style.display='none';
+  }
+
+  // Vertex dot
+  const vx=toX2(h,xMin,xMax), vy=toY2(k,yMin,yMax);
+  if(vx>0&&vx<W&&vy>0&&vy<H){
+    mc.fillStyle='#e05c2a';mc.beginPath();mc.arc(vx,vy,5,0,Math.PI*2);mc.fill();
+    mc.fillStyle='#1e293b';mc.font='bold 12px system-ui';mc.textAlign='left';
+    mc.fillText(`V(${h.toFixed(1)},${k.toFixed(1)})`,vx+8,vy-8);
+  }
+
+  const ineqSym=ineq==='lt'?'<':ineq==='le'?'≤':ineq==='gt'?'>':'≥';
+  document.getElementById('ineqInfo').innerHTML=
+    `<strong>y ${ineqSym} ${a}x² ${b>=0?'+':''}${b}x ${c>=0?'+':''}${c}</strong><br>`+
+    `Parabola: ${solid?'Solid (boundary included)':'Dashed (boundary excluded)'}<br>`+
+    `Shading: ${above?'Above (outside) parabola':'Below (inside) parabola'}<br>`+
+    (solution?`1-Variable Solution: <strong>${solution}</strong>`:'');
+}
+
+function drawNumberLine(z1,z2,ineq,a){
+  document.getElementById('nlWrap').style.display='block';
+  const margin=80, lineY=40;
+  nc.clearRect(0,0,NW,NH);
+  nc.fillStyle='#f8faff';nc.fillRect(0,0,NW,NH);
+  const range=Math.max(Math.abs(z1),Math.abs(z2))+4;
+  const nlMin=-range, nlMax=range;
+  function toNX(x){return margin+(x-nlMin)/(nlMax-nlMin)*(NW-2*margin);}
+  // Axes line
+  nc.strokeStyle='#475569';nc.lineWidth=2;
+  nc.beginPath();nc.moveTo(margin,lineY);nc.lineTo(NW-margin,lineY);nc.stroke();
+  // Ticks
+  for(let x=Math.ceil(nlMin);x<=nlMax;x++){
+    const cx=toNX(x);
+    nc.strokeStyle='#94a3b8';nc.lineWidth=1;
+    nc.beginPath();nc.moveTo(cx,lineY-6);nc.lineTo(cx,lineY+6);nc.stroke();
+    nc.fillStyle='#64748b';nc.font='11px system-ui';nc.textAlign='center';
+    if(x%2===0)nc.fillText(x,cx,lineY+20);
+  }
+  // Shade solution
+  const solid=ineq==='le'||ineq==='ge';
+  const shade_inside=(a>0&&(ineq==='lt'||ineq==='le'))||(a<0&&(ineq==='gt'||ineq==='ge'));
+  if(Math.abs(z1-z2)<0.001){
+    const cx=toNX(z1);
+    nc.strokeStyle='#16a34a';nc.lineWidth=2;
+    nc.fillStyle=solid?'#16a34a':'white';
+    nc.beginPath();nc.arc(cx,lineY,8,0,Math.PI*2);nc.fill();nc.stroke();
+  } else {
+    const cx1=toNX(z1),cx2=toNX(z2);
+    if(shade_inside){
+      nc.fillStyle='rgba(34,197,94,0.3)';nc.fillRect(cx1,lineY-8,cx2-cx1,16);
+    } else {
+      nc.fillStyle='rgba(99,102,241,0.3)';nc.fillRect(margin,lineY-8,cx1-margin,16);
+      nc.fillRect(cx2,lineY-8,NW-margin-cx2,16);
+    }
+    [z1,z2].forEach(z=>{
+      const cx=toNX(z);
+      nc.strokeStyle='#16a34a';nc.lineWidth=2;
+      nc.fillStyle=solid?'#16a34a':'white';
+      nc.beginPath();nc.arc(cx,lineY,7,0,Math.PI*2);nc.fill();nc.stroke();
+      nc.fillStyle='#1e293b';nc.font='bold 11px system-ui';nc.textAlign='center';
+      nc.fillText(z.toFixed(1),cx,lineY-12);
+    });
+  }
+}
+
+// Init
+mc.fillStyle='#cbd5e1';mc.font='15px system-ui';mc.textAlign='center';
+mc.fillText('Enter a, b, c and click Graph',W/2,H/2);
+
+// ── QUIZ ──
+const questions=[
+  {q:"The solution to x² − x − 6 < 0 is:",opts:["{x | −2 < x < 3}","x < −2 or x > 3","{x | x ≤ −2 or x ≥ 3}","All real numbers"],ans:0,exp:"x² − x − 6 = (x−3)(x+2). Since a>0, parabola below x-axis between zeros −2 and 3."},
+  {q:"Graph y > x² has a _____ parabola.",opts:["Solid; shade inside","Dashed; shade inside","Solid; shade outside","Dashed; shade outside"],ans:3,exp:"'>' means dashed boundary; y > x² shades outside/above the parabola."},
+  {q:"Solve x² − 5x + 6 ≥ 0:",opts:["−∞ < x < ∞","x ≤ 2 or x ≥ 3","2 ≤ x ≤ 3","No solution"],ans:1,exp:"Zeros are 2 and 3. Since a>0, parabola is ≥ 0 outside the zeros: x ≤ 2 or x ≥ 3."},
+  {q:"Test point (0,0): substitute into y ≤ x² + 1. Is (0,0) in the solution?",opts:["Yes, because 0 ≤ 1","No, because 0 > 1","Cannot determine","Yes, always use (0,0)"],ans:0,exp:"0 ≤ (0)² + 1 = 1 is TRUE, so (0,0) is in the solution region."},
+  {q:"x² + 4x + 4 > 0 is satisfied by:",opts:["All real x","x ≠ −2","x > 0 only","No real x"],ans:1,exp:"x² + 4x + 4 = (x+2)². This is 0 at x = −2 and positive everywhere else. So solution: x ≠ −2."},
+  {q:"Which inequality has solution x < −3 or x > 5?",opts:["(x+3)(x−5) < 0","(x+3)(x−5) > 0","x² − 2x − 15 < 0","x² + 2x ≤ 0"],ans:1,exp:"(x+3)(x−5) > 0 means the product is positive: both factors same sign → x < −3 or x > 5."},
+  {q:"Graph y ≥ −x² + 4. The parabola opens ____ and is ____.",opts:["Up; dashed","Down; solid","Up; solid","Down; dashed"],ans:1,exp:"a = −1 < 0 opens down. '≥' means solid boundary."},
+  {q:"Solve −x² + 4 > 0:",opts:["−2 < x < 2","x < −2 or x > 2","x > 2 only","All real numbers"],ans:0,exp:"−x²+4>0 → x²<4 → −2 < x < 2. (a<0, below x-axis between zeros means outside for − parabola)"},
+  {q:"The boundary parabola is DASHED when the inequality is:",opts:["≤","≥","<","Both ≤ and ≥"],ans:2,exp:"A strict inequality (< or >) gives a dashed boundary. ≤ or ≥ gives solid."},
+  {q:"x² − 9 ≤ 0 has solution:",opts:["{x | x ≤ −3 or x ≥ 3}","{x | −3 ≤ x ≤ 3}","x < −3","All real numbers"],ans:1,exp:"x² ≤ 9 → |x| ≤ 3 → −3 ≤ x ≤ 3."},
+  {q:"2x² + x − 3 < 0. Zeros of 2x²+x−3=0 are x=1 and x=−3/2. Solution:",opts:["x < −3/2 or x > 1","−3/2 < x < 1","x ≤ −3/2 or x ≥ 1","All real numbers"],ans:1,exp:"a=2>0, parabola opens up. Below x-axis between zeros: −3/2 < x < 1."},
+  {q:"To graph y < −2x² + 3x, which test point would be easiest if (0,0) is on the parabola?",opts:["(0,0)","(1,0)","(−1,0)","(0,1)"],ans:1,exp:"If (0,0) is on the curve, choose a different point. (1,0) is a good alternative."},
+  {q:"Solve x² + 6x + 9 ≤ 0:",opts:["{x = −3}","x ≤ −3","All real numbers","No solution"],ans:0,exp:"x²+6x+9=(x+3)²≥0, equals 0 only at x=−3. So (x+3)² ≤ 0 only when x = −3."},
+  {q:"Solution set {x | x ≤ 1 or x ≥ 4} comes from which inequality type?",opts:["ax²+bx+c < 0 with a > 0","ax²+bx+c > 0 with a < 0","ax²+bx+c ≥ 0 with a > 0","ax²+bx+c ≤ 0 with a > 0"],ans:2,exp:"For a>0, parabola ≥ 0 outside the zeros → {x | x ≤ x₁ or x ≥ x₂}."},
+  {q:"Solve x² − 4x > 5:",opts:["−1 < x < 5","x < −1 or x > 5","x > 5 only","x ≤ −1 or x ≥ 5"],ans:1,exp:"x²−4x−5>0 → (x−5)(x+1)>0. Parabola opens up, above x-axis outside zeros: x < −1 or x > 5."}
+];
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id=`q${i}`;
+    div.innerHTML=`<div class="q-num">Question ${i+1} of ${questions.length}</div><div class="q-text">${q.q}</div><div class="options">${q.opts.map((o,j)=>`<button class="option-btn" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div><div class="feedback" id="fb${i}"></div>`;
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById(`q${qi}`);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById(`fb${qi}`);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.textContent='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.textContent=`✗ Incorrect. Answer: ${String.fromCharCode(65+q.ans)}. ${q.exp}`;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=`${total}/${questions.length}`;
+  const msgs=[[0,'Keep going — study the inequality table!'],[60,'Nice effort! Review the examples.'],[80,'Great job!'],[95,'Excellent! Quadratic inequalities mastered!']];
+  let msg=msgs[0][1];for(const[t,m]of msgs){if(pct>=t)msg=m;}
+  document.getElementById('scoreMsg').textContent=`${pct}% — ${msg}`;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+buildQuiz();
+
+window.toggleExample=toggleExample;window.drawInequality=drawInequality;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</body>
+</html>

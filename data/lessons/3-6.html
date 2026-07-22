@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3-6: Using the Quadratic Formula and the Discriminant</title>
+<style>
+  :root { --navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#1a4fa0 60%,#7c3aed 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(20px,4vw,34px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:14px 18px;margin:12px 0;font-family:'Courier New',monospace;font-size:16px;color:var(--navy);text-align:center;}
+  .disc-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  .disc-table th{background:var(--navy);color:white;padding:10px 12px;text-align:left;}
+  .disc-table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;}
+  .disc-table tr:nth-child(even) td{background:var(--light-blue);}
+  .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;margin-left:6px;}
+  .tag-r{background:#dcfce7;color:#166534;}
+  .tag-c{background:#fce7f3;color:#9d174d;}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--blue);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;}
+  .solution-step{display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:#fafafa;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;}
+  .solution-step .reason{font-size:13px;color:var(--blue);font-style:italic;min-width:180px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;}
+  .warning-box strong{color:var(--orange);}
+
+  /* Discriminant Visualizer */
+  .vis-section{background:white;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09);}
+  .vis-controls{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px;align-items:flex-end;}
+  .ctrl-group{display:flex;flex-direction:column;gap:4px;}
+  .ctrl-group label{font-size:12px;font-weight:600;color:var(--navy);}
+  .ctrl-group input{padding:8px 10px;border:2px solid #cbd5e1;border-radius:6px;font-size:14px;width:90px;outline:none;transition:border-color .2s;}
+  .ctrl-group input:focus{border-color:var(--blue);}
+  .btn{padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
+  .btn-primary{background:var(--navy);color:white;}
+  .btn-primary:hover{background:var(--blue);}
+  .graph-canvas-wrap{position:relative;overflow:hidden;border-radius:8px;border:2px solid #e2e8f0;}
+  canvas{display:block;width:100%;}
+  .disc-result{margin-top:14px;padding:16px;border-radius:8px;font-size:15px;line-height:1.8;font-family:'Courier New',monospace;}
+  .disc-pos-perf{background:#dcfce7;border:2px solid #86efac;color:#14532d;}
+  .disc-pos{background:#dbeafe;border:2px solid #93c5fd;color:#1e3a8a;}
+  .disc-zero{background:#fef9c3;border:2px solid #fde047;color:#713f12;}
+  .disc-neg{background:#fce7f3;border:2px solid #f9a8d4;color:#831843;}
+
+  /* Quiz */
+  .quiz-header{background:linear-gradient(135deg,#e05c2a,#c2410c);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:500px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--blue);background:var(--light-blue);}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 3 · Lesson 3-6</div>
+  <h1>Using the Quadratic Formula<br>and the Discriminant</h1>
+  <p>Solve any quadratic and determine the number and type of roots using the discriminant</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Examples</a>
+  <a href="#visualizer">Discriminant Visualizer</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>🔑 The Quadratic Formula</h3>
+    <p>For any quadratic equation <strong>ax² + bx + c = 0</strong> where a ≠ 0:</p>
+    <div class="formula-box" style="font-size:20px;">x = (−b ± √(b² − 4ac)) / (2a)</div>
+    <p>This formula always works — even when factoring or completing the square would be difficult.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 The Discriminant</h3>
+    <p>The expression under the radical, <strong>b² − 4ac</strong>, is called the <strong>discriminant</strong>. It tells you the number and type of roots <em>without solving the equation</em>.</p>
+    <table class="disc-table">
+      <tr><th>Discriminant Value</th><th>Number &amp; Type of Roots</th><th>Graph Behavior</th></tr>
+      <tr><td>b²−4ac &gt; 0 (perfect square)</td><td>2 real, rational roots <span class="tag tag-r">REAL</span></td><td>Parabola crosses x-axis at 2 points</td></tr>
+      <tr><td>b²−4ac &gt; 0 (not perfect square)</td><td>2 real, irrational roots <span class="tag tag-r">REAL</span></td><td>Parabola crosses x-axis at 2 points</td></tr>
+      <tr><td>b²−4ac = 0</td><td>1 real, rational root (double) <span class="tag tag-r">REAL</span></td><td>Parabola touches x-axis at vertex</td></tr>
+      <tr><td>b²−4ac &lt; 0</td><td>2 complex roots <span class="tag tag-c">COMPLEX</span></td><td>Parabola does NOT cross x-axis</td></tr>
+    </table>
+  </div>
+
+  <div class="concept-card">
+    <h3>🔑 Steps for Using the Quadratic Formula</h3>
+    <ol style="padding-left:20px;margin-top:8px;">
+      <li style="margin-bottom:6px">Write the equation in standard form: ax² + bx + c = 0</li>
+      <li style="margin-bottom:6px">Identify a, b, and c</li>
+      <li style="margin-bottom:6px">Substitute into the formula: x = (−b ± √(b²−4ac)) / 2a</li>
+      <li style="margin-bottom:6px">Simplify the discriminant under the radical</li>
+      <li style="margin-bottom:6px">Simplify to get exact or approximate solutions</li>
+    </ol>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Real Roots — c Is Positive (Projectile)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">A pumpkin's path is modeled by h = −16t² + 124.4t + 42. Use the Quadratic Formula to find when h = 0 (when the pumpkin lands).</div>
+      <div class="solution-step"><span class="math">0 = −16t² + 124.4t + 42</span><span class="reason">Set h = 0</span></div>
+      <div class="solution-step"><span class="math">a = −16,  b = 124.4,  c = 42</span><span class="reason">Identify a, b, c</span></div>
+      <div class="solution-step"><span class="math">t = (−124.4 ± √(124.4² − 4(−16)(42))) / (2·(−16))</span><span class="reason">Quadratic Formula</span></div>
+      <div class="solution-step"><span class="math">= (−124.4 ± √(15,475.36 + 2688)) / (−32)</span><span class="reason">Square and multiply</span></div>
+      <div class="solution-step"><span class="math">= (−124.4 ± √18,163.36) / (−32)</span><span class="reason">Add under radical</span></div>
+      <div class="solution-step"><span class="math">≈ (−124.4 ± 134.77) / (−32)</span><span class="reason">√18163.36 ≈ 134.77</span></div>
+      <div class="solution-step"><span class="math">t ≈ 8.1 seconds  or  t ≈ −0.33 seconds</span><span class="reason">Solve both values</span></div>
+      <div class="warning-box"><strong>⚠ Interpret:</strong> The negative root (−0.33) doesn't make sense in context. The pumpkin lands after approximately <strong>8.1 seconds</strong>.</div>
+      <div class="answer-box">The pumpkin lands after ≈ 8.1 seconds.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Real Roots — c Is Negative</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve x² + 4x − 17 = 0 using the Quadratic Formula.</div>
+      <div class="solution-step"><span class="math">a = 1,  b = 4,  c = −17</span><span class="reason">Identify a, b, c</span></div>
+      <div class="solution-step"><span class="math">x = (−4 ± √(16 − 4(1)(−17))) / 2</span><span class="reason">Quadratic Formula</span></div>
+      <div class="solution-step"><span class="math">= (−4 ± √(16 + 68)) / 2</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="math">= (−4 ± √84) / 2</span><span class="reason">Add</span></div>
+      <div class="solution-step"><span class="math">= (−4 ± 2√21) / 2</span><span class="reason">√84 = √(4·21) = 2√21</span></div>
+      <div class="solution-step"><span class="math">= −2 ± √21</span><span class="reason">Divide numerator by 2</span></div>
+      <div class="answer-box">x = −2 + √21 ≈ 2.58  or  x = −2 − √21 ≈ −6.58</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Complex Roots</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve 5x² + 8x + 11 = 0 using the Quadratic Formula.</div>
+      <div class="solution-step"><span class="math">a = 5,  b = 8,  c = 11</span><span class="reason">Identify a, b, c</span></div>
+      <div class="solution-step"><span class="math">x = (−8 ± √(64 − 4(5)(11))) / 10</span><span class="reason">Quadratic Formula</span></div>
+      <div class="solution-step"><span class="math">= (−8 ± √(64 − 220)) / 10</span><span class="reason">Multiply</span></div>
+      <div class="solution-step"><span class="math">= (−8 ± √(−156)) / 10</span><span class="reason">Subtract</span></div>
+      <div class="solution-step"><span class="math">= (−8 ± √(−1 · 4 · 39)) / 10</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="math">= (−8 ± 2i√39) / 10</span><span class="reason">√(−1) = i, √4 = 2</span></div>
+      <div class="solution-step"><span class="math">= (−4 ± i√39) / 5</span><span class="reason">Divide by 2</span></div>
+      <div class="warning-box"><strong>⚠ Complex:</strong> The discriminant (−156) is negative, confirming 2 complex roots. The parabola does NOT cross the x-axis.</div>
+      <div class="answer-box">x = (−4 + i√39) / 5  and  x = (−4 − i√39) / 5</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Using the Discriminant — Real Roots</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Examine 2x² − 10x + 7 = 0. Find the discriminant and describe the number and type of roots.</div>
+      <div class="solution-step"><span class="math">a = 2,  b = −10,  c = 7</span><span class="reason">Identify a, b, c</span></div>
+      <div class="solution-step"><span class="math">b² − 4ac = (−10)² − 4(2)(7)</span><span class="reason">Discriminant formula</span></div>
+      <div class="solution-step"><span class="math">= 100 − 56 = 44</span><span class="reason">Calculate</span></div>
+      <div class="answer-box">Discriminant = 44 &gt; 0, not a perfect square<br>→ 2 real, irrational roots</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Using the Discriminant — Complex Roots</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Examine −5x² + 10x − 15 = 0. Find the discriminant and describe the roots.</div>
+      <div class="solution-step"><span class="math">a = −5,  b = 10,  c = −15</span><span class="reason">Identify a, b, c</span></div>
+      <div class="solution-step"><span class="math">b² − 4ac = (10)² − 4(−5)(−15)</span><span class="reason">Discriminant formula</span></div>
+      <div class="solution-step"><span class="math">= 100 − 300 = −200</span><span class="reason">Calculate</span></div>
+      <div class="answer-box">Discriminant = −200 &lt; 0<br>→ 2 complex roots (no real solutions)</div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCRIMINANT VISUALIZER -->
+<section id="visualizer">
+  <h2>Discriminant Visualizer</h2>
+  <div class="vis-section">
+    <p style="margin-bottom:14px;font-size:14px;color:#64748b;">Enter a, b, c for ax² + bx + c = 0. See the discriminant, root classification, and graph instantly.</p>
+    <div class="vis-controls">
+      <div class="ctrl-group"><label>a =</label><input type="number" id="v_a" value="1" step="0.5"></div>
+      <div class="ctrl-group"><label>b =</label><input type="number" id="v_b" value="-3" step="1"></div>
+      <div class="ctrl-group"><label>c =</label><input type="number" id="v_c" value="-4" step="1"></div>
+      <button class="btn btn-primary" onclick="analyze()">Analyze</button>
+    </div>
+    <div class="graph-canvas-wrap">
+      <canvas id="discCanvas" width="800" height="400"></canvas>
+    </div>
+    <div id="discResult" class="disc-result" style="display:none"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>📝 Practice Quiz — 15 Questions</h2>
+    <p>Lesson 3-6: Quadratic Formula &amp; Discriminant</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+function toggleExample(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+// ── DISCRIMINANT VISUALIZER ──
+const canvas = document.getElementById('discCanvas');
+const ctx = canvas.getContext('2d');
+const W = 800, H = 400;
+let xMin = -8, xMax = 8;
+
+function toX(x, ym, yM) { return (x - xMin) / (xMax - xMin) * W; }
+function toY(y, ym, yM) { return H - (y - ym) / (yM - ym) * H; }
+
+function analyze() {
+  const a = parseFloat(document.getElementById('v_a').value) || 1;
+  const b = parseFloat(document.getElementById('v_b').value) || 0;
+  const c = parseFloat(document.getElementById('v_c').value) || 0;
+  const disc = b * b - 4 * a * c;
+  const h = -b / (2 * a);
+  const k = a * h * h + b * h + c;
+
+  // Determine y range
+  let yMin = Math.min(-5, k - 3), yMax = Math.max(5, k + 8);
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8faff';
+  ctx.fillRect(0, 0, W, H);
+
+  // Grid
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  for (let x = Math.ceil(xMin); x <= xMax; x++) {
+    const cx = toX(x, yMin, yMax);
+    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, H); ctx.stroke();
+  }
+  for (let y = Math.ceil(yMin); y <= yMax; y++) {
+    const cy = toY(y, yMin, yMax);
+    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(W, cy); ctx.stroke();
+  }
+
+  // Axes
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  const cx0 = toX(0, yMin, yMax), cy0 = toY(0, yMin, yMax);
+  ctx.beginPath(); ctx.moveTo(0, cy0); ctx.lineTo(W, cy0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx0, 0); ctx.lineTo(cx0, H); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('x', W - 10, cy0 - 6);
+  ctx.textAlign = 'right';
+  ctx.fillText('y', cx0 - 4, 14);
+
+  // Labels
+  ctx.fillStyle = '#64748b'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+  for (let x = Math.ceil(xMin); x <= xMax; x++) {
+    if (x !== 0 && x % 2 === 0) ctx.fillText(x, toX(x, yMin, yMax), cy0 + 14);
+  }
+
+  // Parabola
+  let color = disc > 0 ? '#1a4fa0' : (disc === 0 ? '#d97706' : '#7c3aed');
+  ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.beginPath();
+  let started = false;
+  for (let px = 0; px <= W; px++) {
+    const x = xMin + (px / W) * (xMax - xMin);
+    const y = a * x * x + b * x + c;
+    const cy = toY(y, yMin, yMax);
+    if (cy < -20 || cy > H + 20) { started = false; continue; }
+    if (!started) { ctx.moveTo(px, cy); started = true; }
+    else ctx.lineTo(px, cy);
+  }
+  ctx.stroke();
+
+  // Mark zeros and vertex
+  function dot(x, y, col, label) {
+    const cx = toX(x, yMin, yMax), cy = toY(y, yMin, yMax);
+    if (cx < 0 || cx > W || cy < 0 || cy > H) return;
+    ctx.fillStyle = col; ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#1e293b'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+    ctx.fillText(label, cx + 7, cy - 6);
+  }
+
+  dot(h, k, '#e05c2a', `V(${h.toFixed(2)}, ${k.toFixed(2)})`);
+
+  let rootsText = '';
+  if (disc > 0) {
+    const x1 = (-b - Math.sqrt(disc)) / (2 * a);
+    const x2 = (-b + Math.sqrt(disc)) / (2 * a);
+    dot(x1, 0, '#16a34a', `(${x1.toFixed(2)}, 0)`);
+    dot(x2, 0, '#16a34a', `(${x2.toFixed(2)}, 0)`);
+    const isPerfect = Math.sqrt(disc) === Math.floor(Math.sqrt(disc));
+    rootsText = `x₁ = ${x1.toFixed(4)},  x₂ = ${x2.toFixed(4)}<br>Roots are ${isPerfect ? '<strong>2 real, rational</strong>' : '<strong>2 real, irrational</strong>'}`;
+  } else if (disc === 0) {
+    dot(-b / (2 * a), 0, '#d97706', `(${(-b/(2*a)).toFixed(2)}, 0)`);
+    rootsText = `x = ${(-b/(2*a)).toFixed(4)} (1 real rational root — double root)`;
+  } else {
+    const re = -b / (2 * a), im = Math.sqrt(-disc) / (2 * Math.abs(a));
+    rootsText = `x = ${re.toFixed(4)} ± ${im.toFixed(4)}i<br>Roots are <strong>2 complex</strong> — no x-intercepts`;
+  }
+
+  const discClass = disc > 0 ? (Math.sqrt(disc) % 1 === 0 ? 'disc-pos-perf' : 'disc-pos') : (disc === 0 ? 'disc-zero' : 'disc-neg');
+  const el = document.getElementById('discResult');
+  el.style.display = 'block';
+  el.className = 'disc-result ' + discClass;
+  el.innerHTML = `<strong>f(x) = ${a}x² + ${b}x + ${c}</strong><br>` +
+    `Discriminant: b² − 4ac = ${b}² − 4(${a})(${c}) = <strong>${disc.toFixed(4)}</strong><br>` +
+    `${rootsText}`;
+}
+
+// Init graph
+ctx.fillStyle = '#cbd5e1'; ctx.font = '15px system-ui'; ctx.textAlign = 'center';
+ctx.fillText('Enter a, b, c above and click Analyze', W/2, H/2);
+
+// ── QUIZ ──
+const questions = [
+  { q: "Solve x² + 5x + 6 = 0 using the Quadratic Formula.", opts: ["x = −2, −3", "x = 2, 3", "x = −1, −6", "x = 1, 6"], ans: 0, exp: "Discriminant = 1. x = (−5 ± 1)/2, so x = −2 or −3." },
+  { q: "In the Quadratic Formula, the discriminant is:", opts: ["b² + 4ac", "b² − 4ac", "−b/2a", "√(b² − 4ac)"], ans: 1, exp: "The discriminant is b² − 4ac, the expression under the radical." },
+  { q: "If b² − 4ac = 0, the equation has:", opts: ["2 real irrational roots", "2 complex roots", "1 real rational root", "No solution"], ans: 2, exp: "Discriminant = 0 means exactly one real rational root (double root)." },
+  { q: "For x² − 6x + 9 = 0, the discriminant is:", opts: ["0", "−36", "72", "36"], ans: 0, exp: "b² − 4ac = 36 − 4(1)(9) = 36 − 36 = 0." },
+  { q: "Which equation has 2 complex roots?", opts: ["x² − x − 6 = 0", "x² + 4x + 8 = 0", "x² − 4 = 0", "2x² − 3x − 2 = 0"], ans: 1, exp: "Discriminant = 16 − 32 = −16 < 0, so 2 complex roots." },
+  { q: "Solve 2x² − 3x − 2 = 0 using the Quadratic Formula:", opts: ["x = 2, −0.5", "x = −2, 0.5", "x = 1, −2", "x = ±√(2)"], ans: 0, exp: "Disc = 9 + 16 = 25. x = (3 ± 5)/4 → x = 2 or x = −0.5." },
+  { q: "The equation x² + 2x + 5 = 0 has:", opts: ["2 real rational roots", "2 real irrational roots", "2 complex roots", "1 real root"], ans: 2, exp: "Discriminant = 4 − 20 = −16 < 0 → 2 complex roots." },
+  { q: "For 3x² + 5x − 2 = 0, what is a in the Quadratic Formula?", opts: ["5", "−2", "3", "1"], ans: 2, exp: "a is the coefficient of x², so a = 3." },
+  { q: "Solve x² − 7x + 12 = 0 using the Quadratic Formula:", opts: ["x = 3, 4", "x = −3, −4", "x = 6, 2", "x = 7, 0"], ans: 0, exp: "Disc = 49 − 48 = 1. x = (7 ± 1)/2 = 4 or 3." },
+  { q: "If b² − 4ac = 16 and 16 is a perfect square, roots are:", opts: ["2 real irrational", "2 complex", "2 real rational", "1 real root"], ans: 2, exp: "Positive perfect square discriminant → 2 real, rational roots." },
+  { q: "For x² + x + 1 = 0, the discriminant is:", opts: ["3", "−3", "5", "0"], ans: 1, exp: "b² − 4ac = 1 − 4 = −3." },
+  { q: "Solve 4x² − 4x + 1 = 0:", opts: ["x = 1/2", "x = ±1/2", "x = 1", "x = 1/4"], ans: 0, exp: "Disc = 16 − 16 = 0, so x = 4/8 = 1/2 (one repeated root)." },
+  { q: "Which gives 2 real irrational roots?", opts: ["x² + 4 = 0", "x² − 4x + 4 = 0", "x² − 3 = 0", "x² + x + 1 = 0"], ans: 2, exp: "x² − 3 = 0 → disc = 12, not a perfect square → 2 real irrational roots." },
+  { q: "In x = (−b ± √(b²−4ac)) / 2a, when the ± gives two different values, the equation has:", opts: ["1 solution", "2 solutions", "no solution", "infinite solutions"], ans: 1, exp: "The ± produces two separate values, giving 2 solutions." },
+  { q: "Solve x² − 4x − 1 = 0 (exact):", opts: ["x = 2 ± √5", "x = −2 ± √5", "x = 4 ± √5", "x = ±√5"], ans: 0, exp: "Disc = 16 + 4 = 20. x = (4 ± √20)/2 = (4 ± 2√5)/2 = 2 ± √5." }
+];
+let answered = [], total = 0;
+function buildQuiz() {
+  answered = new Array(questions.length).fill(false); total = 0;
+  const c = document.getElementById('quiz-container'); c.innerHTML = '';
+  questions.forEach((q,i) => {
+    const div = document.createElement('div'); div.className='q-card'; div.id=`q${i}`;
+    div.innerHTML=`<div class="q-num">Question ${i+1} of ${questions.length}</div><div class="q-text">${q.q}</div><div class="options">${q.opts.map((o,j)=>`<button class="option-btn" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div><div class="feedback" id="fb${i}"></div>`;
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return; answered[qi]=true;
+  const q=questions[qi]; const card=document.getElementById(`q${qi}`);
+  const btns=card.querySelectorAll('.option-btn'); const fb=document.getElementById(`fb${qi}`);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.textContent='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.textContent=`✗ Incorrect. Answer is ${String.fromCharCode(65+q.ans)}. ${q.exp}`;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=`${total}/${questions.length}`;
+  const msgs=[[0,'Keep studying — review the discriminant table!'],[60,'Good effort! Check the examples you missed.'],[80,'Great work!'],[95,'Outstanding! You master the Quadratic Formula!']];
+  let msg=msgs[0][1]; for(const[t,m] of msgs){if(pct>=t)msg=m;}
+  document.getElementById('scoreMsg').textContent=`${pct}% — ${msg}`;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+buildQuiz();
+
+window.toggleExample=toggleExample;window.analyze=analyze;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</body>
+</html>
