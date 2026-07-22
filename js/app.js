@@ -24,8 +24,16 @@ const DOMAIN_ICONS = {
   "Advanced Math": "🧮",
   "Problem-Solving and Data Analysis": "📊",
   "Geometry and Trigonometry": "📐",
+  // IGCSE strands
+  "Coordinate Geometry": "📐",
+  "Graphs & Functions": "📈",
 };
 const MODULE_ICON = "📘";
+
+// Track helpers: existing SAT/American-Pathway lessons have no `track` field.
+const trackOf = (t) => t.track || "ap";
+const apTopics = () => TOPICS.filter((t) => trackOf(t) === "ap");
+const igcseTopics = () => TOPICS.filter((t) => trackOf(t) === "igcse");
 
 async function boot() {
   const manifest = await (await fetch("data/manifest.json" + BUST)).json();
@@ -54,9 +62,9 @@ boot().catch((err) => {
 });
 
 // Modules in curriculum order (first appearance wins)
-function moduleList() {
+function moduleList(list = TOPICS) {
   const seen = new Map();
-  for (const t of TOPICS) {
+  for (const t of list) {
     if (!seen.has(t.curriculumModule)) seen.set(t.curriculumModule, []);
     seen.get(t.curriculumModule).push(t);
   }
@@ -68,6 +76,8 @@ const moduleSlug = (name) =>
 const domainSlug = moduleSlug;
 
 const qCount = (t) => t.questions.length;
+const pastPaperCount = (t) =>
+  (t.pastPapers || []).reduce((s, p) => s + (p.items ? p.items.length : 0), 0);
 const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
 const domClass = (domain) => "dom-" + domainSlug(domain);
 
@@ -261,14 +271,22 @@ function closeModal() {
 
 // ---------- Stats + badges ----------
 
+function ppVideoCount(t) {
+  return (t.pastPapers || []).reduce(
+    (s, p) => s + (p.items || []).filter((it) => it.video && it.video.trim()).length, 0);
+}
+
 function statsStrip(topics) {
   const totalQ = topics.reduce((s, t) => s + qCount(t), 0);
-  const totalV = topics.reduce((s, t) => s + (t.videos ? t.videos.length : 0), 0);
+  const totalPP = topics.reduce((s, t) => s + pastPaperCount(t), 0);
+  const totalV = topics.reduce(
+    (s, t) => s + (t.videos ? t.videos.length : 0) + ppVideoCount(t), 0);
   const done = topics.filter((t) => isDone(t.id)).length;
   const strip = el("div", "stats");
   const chip = (label) => strip.appendChild(el("span", "stat-chip", label));
   chip(`📚 ${plural(topics.length, "lesson")}`);
-  chip(`📝 ${plural(totalQ, "question")}`);
+  if (totalQ) chip(`📝 ${plural(totalQ, "question")}`);
+  if (totalPP) chip(`📄 ${plural(totalPP, "past-paper Q")}`);
   chip(`🎬 ${plural(totalV, "video")}`);
   if (done) chip(`⭐ ${done} completed`);
   return strip;
@@ -280,7 +298,10 @@ function countBadge(t) {
   if (best && best.total === n && n > 0) {
     return el("span", "badge score", `⭐ ${best.correct}/${best.total}`);
   }
-  return el("span", "badge" + (n ? "" : " soon"), n ? plural(n, "question") : "coming soon");
+  if (n) return el("span", "badge", plural(n, "question"));
+  const pp = pastPaperCount(t);
+  if (pp) return el("span", "badge", `${pp} past-paper Qs`);
+  return el("span", "badge soon", "coming soon");
 }
 
 function moduleCard(m) {
@@ -313,8 +334,9 @@ function lessonCard(t, i) {
   const title = el("div", "card-title", t.title);
   title.appendChild(countBadge(t));
   body.appendChild(title);
-  const extras = [t.lessonCode, `${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`];
-  if (t.videos && t.videos.length) extras.push(`🎬 ${plural(t.videos.length, "video")}`);
+  const extras = [`${DOMAIN_ICONS[t.satDomain] || ""} ${t.satDomain}`];
+  const vids = (t.videos ? t.videos.length : 0) + ppVideoCount(t);
+  if (vids) extras.push(`🎬 ${plural(vids, "video")}`);
   if (!done && lessonStatus(t.id) === "progress") extras.push("🕐 in progress");
   body.appendChild(el("div", "card-sub", extras.join(" · ")));
   a.appendChild(body);
@@ -324,7 +346,9 @@ function lessonCard(t, i) {
 
 function subLine(topics) {
   const total = topics.reduce((s, t) => s + qCount(t), 0);
-  return `${plural(topics.length, "lesson")} · ${total ? plural(total, "question") : "questions coming soon"}`;
+  if (total) return `${plural(topics.length, "lesson")} · ${plural(total, "question")}`;
+  const pp = topics.reduce((s, t) => s + pastPaperCount(t), 0);
+  return `${plural(topics.length, "lesson")} · ${pp ? plural(pp, "past-paper Q") : "questions coming soon"}`;
 }
 
 // ---------- Home ----------
@@ -406,15 +430,22 @@ function subjectsSection() {
   sec.appendChild(head);
 
   const grid = el("div", "subject-grid");
-  const totalQ = TOPICS.reduce((s, t) => s + qCount(t), 0);
-  const done = TOPICS.filter((t) => isDone(t.id)).length;
-  const apChips = [`📚 ${plural(TOPICS.length, "lesson")}`, `📝 ${plural(totalQ, "question")}`];
+  const ap = apTopics();
+  const totalQ = ap.reduce((s, t) => s + qCount(t), 0);
+  const done = ap.filter((t) => isDone(t.id)).length;
+  const apChips = [`📚 ${plural(ap.length, "lesson")}`, `📝 ${plural(totalQ, "question")}`];
   if (done) apChips.push(`⭐ ${done} completed`);
+
+  const ig = igcseTopics();
+  const igPapers = ig.reduce((s, t) => s + pastPaperCount(t), 0);
+  const igChips = ig.length
+    ? [`📚 ${plural(ig.length, "lesson")}`, `📝 ${plural(igPapers, "past-paper Q")}`]
+    : [];
 
   grid.appendChild(subjectCard({
     cls: "igcse", href: "#/igcse", glyph: "∠", title: "IGCSE Math",
-    desc: "Number, algebra, geometry, statistics — every topic on the syllabus, explained step by step.",
-    chips: [], cta: "View IGCSE topics →", soon: true,
+    desc: "Cambridge IGCSE 0580 — clear notes with worked examples, then real past-paper questions with mark schemes and video walkthroughs.",
+    chips: igChips, cta: "View IGCSE topics →", soon: !ig.length,
   }));
   grid.appendChild(subjectCard({
     cls: "ap", href: "#/modules", glyph: "Σ", title: "American Pathway",
@@ -542,15 +573,22 @@ function renderIgcse() {
   main.replaceChildren();
   main.appendChild(backLink("#/", "← Home"));
   main.appendChild(el("h2", "page-title", "IGCSE Math"));
-  const box = el("div", "empty-note big");
-  box.appendChild(el("div", "empty-emoji", "🚧"));
-  box.appendChild(el("div", "empty-title", "Coming soon!"));
-  box.appendChild(el("p", null,
-    "IGCSE lessons are being prepared. In the meantime, SAT Prep is ready for you."));
-  const b = el("a", "btn btn-cta", "Browse SAT Topics");
-  b.href = "#/modules";
-  box.appendChild(b);
-  main.appendChild(box);
+  main.appendChild(el("p", "page-sub", "Cambridge IGCSE 0580 (Extended) — pick a module to begin."));
+  const ig = igcseTopics();
+  if (!ig.length) {
+    const box = el("div", "empty-note big");
+    box.appendChild(el("div", "empty-emoji", "🚧"));
+    box.appendChild(el("div", "empty-title", "Coming soon!"));
+    box.appendChild(el("p", null,
+      "IGCSE lessons are being prepared. In the meantime, SAT Prep is ready for you."));
+    const b = el("a", "btn btn-cta", "Browse SAT Topics");
+    b.href = "#/modules";
+    box.appendChild(b);
+    main.appendChild(box);
+    return;
+  }
+  main.appendChild(statsStrip(ig));
+  for (const m of moduleList(ig)) main.appendChild(moduleCard(m));
 }
 
 function renderModules() {
@@ -558,19 +596,23 @@ function renderModules() {
   main.appendChild(backLink("#/", "← Home"));
   main.appendChild(el("h2", "page-title", "American Pathway"));
   main.appendChild(el("p", "page-sub", "Algebra 2 & Geometry — pick a module to begin."));
-  if (!TOPICS.length) {
+  const ap = apTopics();
+  if (!ap.length) {
     main.appendChild(el("div", "empty-note", "Lessons will appear here as we cover them in class — check back soon!"));
     return;
   }
-  main.appendChild(statsStrip(TOPICS));
-  for (const m of moduleList()) main.appendChild(moduleCard(m));
+  main.appendChild(statsStrip(ap));
+  for (const m of moduleList(ap)) main.appendChild(moduleCard(m));
 }
 
 function renderModule(slug) {
   const m = moduleList().find((m) => moduleSlug(m.name) === slug);
   if (!m) return renderModules();
+  const igcse = trackOf(m.topics[0]) === "igcse";
   main.replaceChildren();
-  main.appendChild(backLink("#/modules", "← All modules"));
+  main.appendChild(igcse
+    ? backLink("#/igcse", "← All IGCSE modules")
+    : backLink("#/modules", "← All modules"));
   main.appendChild(el("h2", "page-title", m.name));
   m.topics.forEach((t, i) => main.appendChild(lessonCard(t, i)));
 }
@@ -1040,15 +1082,103 @@ function renderTopic(id) {
       });
   }
 
-  main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
-  if (!t.questions.length) {
-    main.appendChild(el("div", "empty-note", "Quiz questions coming soon."));
-    return;
+  if (t.pastPapers && t.pastPapers.length) {
+    renderPastPapers(t);
   }
-  const quiz = { topic: t, i: 0, correct: 0 };
-  const holder = el("div");
-  main.appendChild(holder);
-  showQuestion(quiz, holder);
+
+  if (t.questions.length) {
+    main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
+    const quiz = { topic: t, i: 0, correct: 0 };
+    const holder = el("div");
+    main.appendChild(holder);
+    showQuestion(quiz, holder);
+  } else if (!t.pastPapers || !t.pastPapers.length) {
+    main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
+    main.appendChild(el("div", "empty-note", "Quiz questions coming soon."));
+  }
+}
+
+// ---------- Past-paper practice (image question + hidden mark scheme + video slot) ----------
+
+function renderPastPapers(t) {
+  main.appendChild(el("h3", "section-title", "📄 Past-paper practice"));
+  main.appendChild(el("p", "page-sub",
+    "Real Cambridge questions. Try each one first, then reveal the mark scheme and watch the walkthrough."));
+
+  for (const paper of t.pastPapers) {
+    const items = paper.items || [];
+    const banner = el("div", "pp-banner");
+    const bl = el("div");
+    bl.appendChild(el("strong", null, paper.paper));
+    if (paper.blurb) bl.appendChild(el("div", "pp-banner-sub", paper.blurb));
+    banner.appendChild(bl);
+    banner.appendChild(el("span", "pp-banner-count", plural(items.length, "question")));
+    main.appendChild(banner);
+
+    items.forEach((it, i) => main.appendChild(pastPaperCard(paper, it, i)));
+  }
+}
+
+function pastPaperCard(paper, it, i) {
+  const card = el("div", "pp-card");
+
+  const head = el("div", "pp-head");
+  head.appendChild(el("span", "pp-num", `${paper.paper.replace("Paper ", "P")} · ${it.n}`));
+  if (it.code) head.appendChild(el("span", "pp-code", it.code));
+  if (it.tag) head.appendChild(el("span", "pp-tag", it.tag));
+  card.appendChild(head);
+
+  if (it.q) {
+    const img = el("img", "pp-img");
+    img.src = it.q;
+    img.loading = "lazy";
+    img.alt = `${it.code || it.n} question`;
+    card.appendChild(img);
+  }
+
+  // Action row: mark-scheme toggle + video toggle
+  const actions = el("div", "pp-actions");
+  const hasVideo = it.video && it.video.trim();
+
+  let msWrap = null;
+  if (it.ms) {
+    const msBtn = el("button", "pp-btn", "Show mark scheme ▾");
+    msBtn.type = "button";
+    msWrap = el("div", "pp-panel");
+    const msImg = el("img", "pp-ms-img");
+    msImg.loading = "lazy";
+    msImg.alt = `${it.code || it.n} mark scheme`;
+    let loaded = false;
+    msBtn.addEventListener("click", () => {
+      const open = msWrap.classList.toggle("open");
+      if (open && !loaded) { msImg.src = it.ms; msWrap.appendChild(msImg); loaded = true; }
+      msBtn.textContent = open ? "Hide mark scheme ▴" : "Show mark scheme ▾";
+    });
+    actions.appendChild(msBtn);
+  }
+
+  let vidWrap = null;
+  const vidBtn = el("button", "pp-btn pp-btn--video" + (hasVideo ? "" : " is-soon"),
+    hasVideo ? "🎬 Watch explanation ▾" : "🎬 Video — coming soon");
+  vidBtn.type = "button";
+  vidWrap = el("div", "pp-panel");
+  if (hasVideo) {
+    let built = false;
+    vidBtn.addEventListener("click", () => {
+      const open = vidWrap.classList.toggle("open");
+      if (open && !built) { vidWrap.appendChild(videoCard({ url: it.video })); built = true; }
+      vidBtn.textContent = open ? "🎬 Hide explanation ▴" : "🎬 Watch explanation ▾";
+    });
+  } else {
+    vidBtn.disabled = true;
+    vidBtn.title = "A video walkthrough will be added here soon.";
+  }
+  actions.appendChild(vidBtn);
+  card.appendChild(actions);
+
+  if (msWrap) card.appendChild(msWrap);
+  card.appendChild(vidWrap);
+  return card;
 }
 
 function markDoneButton(t) {

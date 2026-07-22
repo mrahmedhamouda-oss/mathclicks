@@ -1,0 +1,145 @@
+<div class="ig-lesson">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#7048E8)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+</style>
+
+<p class="ig-intro">Everything for non-linear graphs — quadratic and reciprocal curves, roots and turning points, solving equations graphically, tangents, simultaneous equations, travel graphs and feasible regions. Read the notes, then test yourself on the real Paper 2 &amp; Paper 4 questions below.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Recognising non-linear graphs</h4>
+  <div class="ig-two">
+    <div class="ig-mini"><b>Quadratic</b> $y=ax^2+bx+c$ — a <b>U-shaped parabola</b>. Opens up if $a>0$, down if $a<0$. One line of symmetry.</div>
+    <div class="ig-mini"><b>Cubic</b> $y=ax^3+\dots$ — an <b>S-shaped</b> curve. Rises left-to-right if $a>0$. Up to two turning points.</div>
+    <div class="ig-mini"><b>Reciprocal</b> $y=\dfrac{a}{x}$ — two branches (a hyperbola) that never touch the axes. The axes are <b>asymptotes</b>.</div>
+    <div class="ig-mini"><b>Exponential</b> $y=a^{x}$ — grows or decays faster and faster; passes through $(0,1)$.</div>
+  </div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Count the highest power.</b> Power 1 → straight line · power 2 → parabola · power 3 → cubic · $x$ on the bottom → reciprocal.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Roots, intercepts, turning points &amp; asymptotes</h4>
+  <ul class="ig-list">
+    <li><b>y-intercept</b> — where the curve crosses the y-axis. Put $x=0$ into the equation.</li>
+    <li><b>x-intercepts / roots</b> — where the curve crosses the x-axis. These are the solutions of $y=0$.</li>
+    <li><b>Turning point (vertex)</b> — the maximum or minimum where the curve changes direction.</li>
+    <li><b>Line of symmetry</b> — a vertical line through the turning point of a parabola.</li>
+    <li><b>Asymptote</b> — a line the curve gets ever closer to but never reaches.</li>
+  </ul>
+  <div class="ig-eg"><div class="ig-lbl">Worked example — $y=x^2-2x-3$</div>
+    y-intercept: $x=0\Rightarrow y=-3$, so $(0,-3)$.<br>
+    Roots: $x^2-2x-3=(x-3)(x+1)=0\Rightarrow x=3$ or $x=-1$.<br>
+    Line of symmetry halfway between the roots: $x=\dfrac{3+(-1)}{2}=1$.<br>
+    Turning point: $x=1\Rightarrow y=1-2-3=-4$, a <b>minimum</b> at $(1,-4)$.
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Plotting curves &amp; reading a graph</h4>
+  <ul class="ig-list">
+    <li>Complete the <b>table of values</b> — substitute each x carefully (watch signs when squaring/cubing negatives).</li>
+    <li>Plot every point; join them with a <b>smooth freehand curve</b>, not straight ruler segments.</li>
+    <li>A common lost mark: drawing a flat bottom on a parabola instead of a single lowest point.</li>
+  </ul>
+  <div class="ig-eg"><div class="ig-lbl">Worked example — complete the table for $y=x^2-3$</div>
+    <table class="ig-table">
+      <tr><th>x</th><td>−3</td><td>−2</td><td>−1</td><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+      <tr><th>y</th><td>6</td><td>1</td><td>−2</td><td>−3</td><td>−2</td><td>1</td><td>6</td></tr>
+    </table>
+    The y-values are <b>symmetric</b> — a quick check you have substituted correctly.
+  </div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Reading values:</b> to find $y$ for a given $x$, go up to the curve then across. To solve for $x$, go across from the y-value to the curve then down.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Solving equations graphically</h4>
+  <p>The solutions of $f(x)=0$ are the <b>x-coordinates where the curve crosses the x-axis</b>. The solutions of $f(x)=g(x)$ are where the two graphs <b>intersect</b>.</p>
+  <div class="ig-formula">To solve $f(x)=k$: draw the horizontal line $y=k$ and read off the x-values where it cuts the curve.</div>
+  <p>If a question gives a drawn curve and asks you to solve a different equation, <b>rearrange</b> so one side is exactly the drawn curve. Whatever is left over is the straight line you must draw.</p>
+  <div class="ig-eg"><div class="ig-lbl">Worked example</div>
+    Graph drawn: $y=x^3-2x$. Solve $x^3-2x-1=0$.<br>
+    Rearrange: $x^3-2x=1$. So draw the line $\mathbf{y=1}$ and read the x-values where it meets the curve.<br>
+    Harder — solve $x^3-4x+2=0$: rearrange to $x^3-2x=2x-2$, so draw $\mathbf{y=2x-2}$.
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Gradient of a curve — tangents &amp; rates</h4>
+  <ul class="ig-list">
+    <li>Draw a <b>tangent</b> — a straight line just touching the curve at the required point.</li>
+    <li>Pick two clear points on the tangent, as far apart as possible for accuracy.</li>
+    <li>Find its gradient with $\dfrac{\text{change in }y}{\text{change in }x}$.</li>
+  </ul>
+  <div class="ig-formula">Gradient at a point $=\dfrac{y_2-y_1}{x_2-x_1}$ measured along the tangent</div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div>The gradient of a curve is a <b>rate of change</b> — on a distance–time graph it is speed; on a speed–time graph it is acceleration.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">6</span> Simultaneous linear &amp; non-linear equations</h4>
+  <p>The solution of a linear and a non-linear equation together is the set of <b>points where their graphs cross</b>. A line can cut a curve at two points, one point (a tangent), or not at all.</p>
+  <div class="ig-eg"><div class="ig-lbl">Worked example — solve $y=x^2$ and $y=x+2$</div>
+    Set equal: $x^2=x+2\Rightarrow x^2-x-2=0\Rightarrow (x-2)(x+1)=0$.<br>
+    So $x=2$ (then $y=4$) or $x=-1$ (then $y=1$).<br>
+    Intersection points: $(2,4)$ and $(-1,1)$.
+  </div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Method:</b> substitute the linear equation into the curve, collect everything on one side to get a quadratic $=0$, then solve. Always find <b>both</b> x and y for each point.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">7</span> Travel graphs — distance–time &amp; speed–time</h4>
+  <div class="ig-two">
+    <div>
+      <p><b>Distance–time graphs</b></p>
+      <ul class="ig-list">
+        <li><b>Gradient = speed.</b> Steeper means faster.</li>
+        <li>A <b>horizontal line</b> means stationary.</li>
+        <li>A curve means the speed is changing.</li>
+      </ul>
+    </div>
+    <div>
+      <p><b>Speed–time graphs</b></p>
+      <ul class="ig-list">
+        <li><b>Gradient = acceleration.</b> Negative gradient is deceleration.</li>
+        <li><b>Area under the graph = distance travelled.</b></li>
+        <li>A horizontal line means constant speed.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ig-formula">acceleration $=\dfrac{\text{change in speed}}{\text{time}}\qquad$ distance $=$ area under a speed–time graph</div>
+  <div class="ig-eg"><div class="ig-lbl">Worked example — area of a trapezium</div>
+    A car speeds up from 0 to 12 m/s in 30 s, then holds 12 m/s for 60 s.<br>
+    Distance = triangle + rectangle $=\tfrac12(30)(12)+(60)(12)=180+720=900$ m.
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">8</span> Feasible regions — linear inequalities</h4>
+  <ul class="ig-list">
+    <li>For each inequality, draw the <b>boundary line</b> (replace the inequality sign with $=$).</li>
+    <li><b>Solid line</b> for $\le$ or $\ge$; <b>dashed line</b> for $<$ or $>$.</li>
+    <li>Decide which side to keep by <b>testing a point</b> such as $(0,0)$.</li>
+    <li>The <b>feasible region</b> $R$ is where <b>all</b> the required sides overlap.</li>
+  </ul>
+  <div class="ig-formula">$y > mx+c$ → <b>above</b> the line &nbsp;•&nbsp; $y < mx+c$ → <b>below</b> &nbsp;•&nbsp; $x>a$ → <b>right</b> of a vertical line</div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Exam tip:</b> Cambridge usually asks you to <b>label the region $R$</b>. Many candidates shade the unwanted side — always test a point to be sure.</div></div>
+</div>
+</div>
