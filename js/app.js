@@ -48,6 +48,7 @@ async function boot() {
   initFormulaPanel();
   initModal();
   initChat();
+  initDraggableFabs();
   route();
 }
 
@@ -1478,6 +1479,116 @@ const FORMULA_GROUPS = [
     ],
   },
 ];
+
+// ---------- Draggable floating buttons ----------
+// Both FABs can be dragged anywhere on screen; where a student parks one is
+// remembered. A tap still opens the panel — only a real drag moves it.
+
+const fabPosKey = (id) => "mathclicks.fabPos." + id;
+
+function initDraggableFabs() {
+  const fabs = [...document.querySelectorAll(".fab")];
+  for (const fab of fabs) {
+    fab.style.touchAction = "none";     // so a drag doesn't scroll the page
+    fab.style.cursor = "grab";
+    fab.title = "Tip: drag me anywhere";
+    restoreFabPos(fab);
+    makeFabDraggable(fab);
+  }
+  // Keep a parked button reachable when the window or phone rotates
+  window.addEventListener("resize", () => {
+    for (const fab of fabs) if (fab.dataset.free === "1") clampFab(fab);
+  });
+}
+
+// Lift a button out of the bottom-right stack, keeping it exactly where it is
+function detachFab(fab) {
+  if (fab.dataset.free === "1") return;
+  const r = fab.getBoundingClientRect();
+  fab.dataset.free = "1";
+  Object.assign(fab.style, {
+    position: "fixed",
+    left: r.left + "px",
+    top: r.top + "px",
+    right: "auto",
+    bottom: "auto",
+    margin: "0",
+    zIndex: "90",                       // stays under the panels (94–96)
+  });
+}
+
+function clampFab(fab) {
+  const r = fab.getBoundingClientRect();
+  const maxX = Math.max(6, window.innerWidth - r.width - 6);
+  const maxY = Math.max(6, window.innerHeight - r.height - 6);
+  fab.style.left = Math.min(Math.max(6, parseFloat(fab.style.left) || 0), maxX) + "px";
+  fab.style.top = Math.min(Math.max(6, parseFloat(fab.style.top) || 0), maxY) + "px";
+}
+
+function restoreFabPos(fab) {
+  let p = null;
+  try { p = JSON.parse(localStorage.getItem(fabPosKey(fab.id))); } catch {}
+  if (!p || typeof p.x !== "number" || typeof p.y !== "number") return;
+  detachFab(fab);
+  fab.style.left = p.x + "px";
+  fab.style.top = p.y + "px";
+  clampFab(fab);
+}
+
+function makeFabDraggable(fab) {
+  let startX = 0, startY = 0, originX = 0, originY = 0;
+  let down = false, moved = false, quietUntil = 0;
+
+  // Runs before the button's own click handler, so a drag never opens the panel
+  fab.addEventListener("click", (e) => {
+    if (Date.now() < quietUntil) { e.stopPropagation(); e.preventDefault(); }
+  }, true);
+
+  fab.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    down = true;
+    moved = false;
+    startX = e.clientX;
+    startY = e.clientY;
+    const r = fab.getBoundingClientRect();
+    originX = r.left;
+    originY = r.top;
+    try { fab.setPointerCapture(e.pointerId); } catch {}
+  });
+
+  fab.addEventListener("pointermove", (e) => {
+    if (!down) return;
+    const dx = e.clientX - startX, dy = e.clientY - startY;
+    if (!moved && Math.hypot(dx, dy) < 6) return;   // tolerance, so taps still work
+    if (!moved) {
+      moved = true;
+      detachFab(fab);
+      fab.style.cursor = "grabbing";
+      fab.style.transition = "none";                // don't fight the hover lift
+    }
+    fab.style.left = originX + dx + "px";
+    fab.style.top = originY + dy + "px";
+    e.preventDefault();
+  });
+
+  const finish = (e) => {
+    if (!down) return;
+    down = false;
+    fab.style.cursor = "grab";
+    fab.style.transition = "";
+    try { fab.releasePointerCapture(e.pointerId); } catch {}
+    if (!moved) return;
+    clampFab(fab);
+    quietUntil = Date.now() + 350;
+    try {
+      localStorage.setItem(fabPosKey(fab.id), JSON.stringify({
+        x: parseFloat(fab.style.left), y: parseFloat(fab.style.top),
+      }));
+    } catch {}
+  };
+  fab.addEventListener("pointerup", finish);
+  fab.addEventListener("pointercancel", finish);
+}
 
 const fpanel = document.getElementById("fpanel");
 let formulasBuilt = false;
