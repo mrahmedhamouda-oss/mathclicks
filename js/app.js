@@ -123,11 +123,14 @@ function route() {
   const parts = (location.hash || "#/").slice(2).split("/");
   const view = parts[0] || "home";
   window.scrollTo(0, 0);
+  // Leaving the game? Kill its timers before the DOM goes away.
+  if (window.MathClicksGame) window.MathClicksGame.stop();
   main.dataset.view = view === "about" ? "home" : view;
   if (view === "module") renderModule(decodeURIComponent(parts[1] || ""));
   else if (view === "topic") renderTopic(decodeURIComponent(parts[1] || ""));
   else if (view === "modules") renderModules();
   else if (view === "igcse") renderIgcse();
+  else if (view === "game") renderGame();
   else renderHome();
   setActiveNav(view);
   typeset(main);
@@ -145,6 +148,7 @@ function setActiveNav(view) {
     let active;
     if (nav === "topics") active = topicViews.has(view);
     else if (nav === "about") active = view === "about";
+    else if (nav === "game") active = view === "game";
     else active = view === "home";
     a.classList.toggle("active", active);
   });
@@ -591,6 +595,34 @@ function renderIgcse() {
   for (const m of moduleList(ig)) main.appendChild(moduleCard(m));
 }
 
+// ---------- Mental Math Arena (js/game.js) ----------
+
+function renderGame() {
+  main.replaceChildren();
+  main.appendChild(backLink("#/", "← Home"));
+  if (!window.MathClicksGame) {
+    main.appendChild(el("div", "empty-note", "The game didn't load — please refresh the page."));
+    return;
+  }
+  window.MathClicksGame.mount(main);
+}
+
+// Entry card shown on the home page, above the Quick Wins tricks
+function gamePromoCard() {
+  const a = el("a", "mm-promo");
+  a.href = "#/game";
+  a.appendChild(el("span", "mm-promo-icon", "🎮"));
+  const body = el("div", "mm-promo-body");
+  const title = el("div", "mm-promo-title", "Mental Math ");
+  title.appendChild(el("span", null, "Arena"));
+  body.appendChild(title);
+  body.appendChild(el("div", "mm-promo-sub",
+    "60-second sprints and survival mode. Beat the clock, climb the levels, and land your initials on this week's top 3."));
+  a.appendChild(body);
+  a.appendChild(el("span", "mm-promo-go", "Play now →"));
+  return a;
+}
+
 function renderModules() {
   main.replaceChildren();
   main.appendChild(backLink("#/", "← Home"));
@@ -640,6 +672,7 @@ function quickWinsSection() {
   const sec = el("section", "qw-section");
   sec.appendChild(el("h2", "home-sec-title", "⚡ Quick Wins & Mental Math"));
   sec.appendChild(el("p", "home-sec-sub", "Two-minute tricks that make you faster on test day."));
+  sec.appendChild(gamePromoCard());
 
   const wrap = el("div", "qw-wrap");
   const row = el("div", "qw-row");
