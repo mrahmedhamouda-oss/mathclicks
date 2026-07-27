@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6-2: Inverse Relations and Functions</title>
+<style>
+  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#1a4fa0 55%,#e05c2a 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .concept-card ul{margin:8px 0 0 20px;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);line-height:1.9;}
+  .vocab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+  @media(max-width:600px){.vocab{grid-template-columns:1fr;}}
+  .vocab-item{background:#fafafa;border:1px solid #e2e8f0;border-radius:6px;padding:10px 14px;font-size:14px;line-height:1.6;}
+  .vocab-item b{color:var(--orange);}
+  .steps-list{counter-reset:s;margin:10px 0;}
+  .steps-list .s{position:relative;padding:10px 12px 10px 44px;margin-bottom:8px;background:#fafafa;border-radius:6px;font-size:14px;line-height:1.6;}
+  .steps-list .s:before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  table.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
+  table.tbl th{background:var(--navy);color:white;padding:9px 12px;text-align:left;font-weight:600;}
+  table.tbl td{padding:9px 12px;border-bottom:1px solid #e2e8f0;}
+  table.tbl tr:nth-child(even) td{background:#f8faff;}
+  table.tbl code{font-family:'Courier New',monospace;color:var(--navy);}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--orange);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;font-family:'Courier New',monospace;}
+  .solution-step{display:flex;gap:12px;margin-bottom:8px;padding:9px 12px;border-radius:6px;background:#fafafa;align-items:baseline;flex-wrap:wrap;}
+  .solution-step .num{width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;min-width:180px;}
+  .solution-step .reason{font-size:13px;color:var(--orange);font-style:italic;min-width:160px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .check-box{background:var(--light-green);border:1px solid #86efac;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .check-box strong{color:#15803d;}
+  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .warning-box strong{color:var(--orange);}
+  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .info-box strong{color:var(--blue);}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+  @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
+  .case-box{background:#fafafa;border:1px solid #e2e8f0;border-radius:8px;padding:14px;}
+  .case-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+  .case-box .math{font-family:'Courier New',monospace;font-size:13px;line-height:1.9;}
+  .quiz-header{background:linear-gradient(135deg,#e05c2a,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:560px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--orange);background:#fff7f3;}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;line-height:1.6;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 6 &middot; Lesson 6-2</div>
+  <h1>Inverse Relations and Functions</h1>
+  <p>Find inverses of relations and functions, restrict domains, and verify inverses using compositions</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Step-by-Step Examples</a>
+  <a href="#summary">Summary</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>&#128273; Today's Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>inverse relations</b> &mdash; two relations are inverse relations if one contains the element (a, b) whenever the other contains (b, a).</div>
+      <div class="vocab-item"><b>inverse functions</b> &mdash; two functions f and g are inverse functions if and only if <em>both</em> of their compositions are the identity function.</div>
+    </div>
+    <div class="warning-box"><strong>&#9888; Notation:</strong> f&#8315;&sup1; is read "f inverse" or "the inverse of f". The &minus;1 is <strong>not</strong> an exponent &mdash; f&#8315;&sup1;(x) does not mean 1/f(x).</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Key Concept &mdash; Inverse Functions</h3>
+    <div class="formula-box">If f and f&#8315;&sup1; are inverses, then f(a) = b &nbsp;if and only if&nbsp; f&#8315;&sup1;(b) = a.</div>
+    <p>Example: let f(x) = x &minus; 5 and represent its inverse as f&#8315;&sup1;(x) = x + 5.</p>
+    <div class="case-grid">
+      <div class="case-box"><h4>Evaluate f(7)</h4><div class="math">f(x) = x &minus; 5<br>f(7) = 7 &minus; 5 = 2</div></div>
+      <div class="case-box"><h4>Evaluate f&#8315;&sup1;(2)</h4><div class="math">f&#8315;&sup1;(x) = x + 5<br>f&#8315;&sup1;(2) = 2 + 5 = 7</div></div>
+    </div>
+    <div class="info-box"><strong>&#8505; Graphically:</strong> the graph of f&#8315;&sup1;(x) is the reflection of the graph of f(x) across the line <strong>y = x</strong>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; How to Find an Inverse Function</h3>
+    <div class="steps-list">
+      <div class="s"><strong>Rewrite</strong> the function as an equation relating x and y: replace f(x) with y.</div>
+      <div class="s"><strong>Exchange</strong> x and y in the equation.</div>
+      <div class="s"><strong>Solve</strong> the new equation for y.</div>
+      <div class="s"><strong>Replace</strong> y with f&#8315;&sup1;(x), and restrict the domain if necessary.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; When Is the Inverse a Function?</h3>
+    <p>Not all functions have an inverse <em>function</em>. If a function fails the <strong>horizontal line test</strong>, its inverse is a relation but not a function.</p>
+    <div class="formula-box">Horizontal line test:&nbsp; if any horizontal line crosses the graph more than once,<br>the function is NOT one-to-one and its inverse is NOT a function.</div>
+    <p>You can <strong>restrict the domain</strong> of the original function to a portion on which it is one-to-one. There may be more than one possible restricted domain, and each gives a different branch of the inverse.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Key Concept &mdash; Verifying Inverse Functions</h3>
+    <p><strong>Words:</strong> Two functions f and g are inverse functions if and only if both of their compositions are the identity function.</p>
+    <div class="formula-box">f(x) and g(x) are inverses &nbsp;if and only if&nbsp; [f &#8728; g](x) = x &nbsp;AND&nbsp; [g &#8728; f](x) = x</div>
+    <div class="warning-box"><strong>&#9888; Check BOTH compositions.</strong> By definition both must simplify to the identity function x. Checking only one is not enough.</div>
+  </div>
+
+</section>
+
+<section id="examples">
+  <h2>Step-by-Step Worked Examples</h2>
+  <p style="font-size:14px;color:#64748b;margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Find an Inverse Relation</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">GEOMETRY: The vertices of triangle ABC are the relation {(2, 4), (&minus;3, 2), (4, 1)}. Find the inverse of the relation.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">Original relation: {(2, 4), (&minus;3, 2), (4, 1)}</span><span class="reason">Graph the ordered pairs to form the triangle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Exchange the coordinates of each ordered pair</span><span class="reason">(a, b) becomes (b, a)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">(2, 4) &rarr; (4, 2)</span><span class="reason">Swap</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">(&minus;3, 2) &rarr; (2, &minus;3)</span><span class="reason">Swap</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">(4, 1) &rarr; (1, 4)</span><span class="reason">Swap</span></div>
+    <div class="answer-box">Inverse relation = {(4, 2), (2, &minus;3), (1, 4)}</div>
+    <div class="info-box"><strong>&#8505; On the graph:</strong> The inverse triangle is the mirror image of the original across the line y = x.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Find the Inverse of a Linear Function</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Find the inverse of f(x) = 3x + 2. Then graph the function and its inverse.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">f(x) = 3x + 2</span><span class="reason">Original function</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">y = 3x + 2</span><span class="reason">Step 1: rewrite, replacing f(x) with y</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = 3y + 2</span><span class="reason">Step 2: exchange x and y</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x &minus; 2 = 3y</span><span class="reason">Step 3: subtract 2 from each side</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">(x &minus; 2)/3 = y</span><span class="reason">Divide each side by 3</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">f&#8315;&sup1;(x) = (x &minus; 2)/3</span><span class="reason">Step 4: replace y with f&#8315;&sup1;(x)</span></div>
+    <div class="answer-box">f&#8315;&sup1;(x) = (x &minus; 2)/3</div>
+    <div class="info-box"><strong>&#8505; Step 5 &mdash; graph:</strong> Plot f(x) = 3x + 2 and f&#8315;&sup1;(x) = (x &minus; 2)/3. They are reflections of each other in the line y = x, and their slopes are reciprocals (3 and 1/3).</div>
+    <div class="check-box"><strong>&#10003; Check:</strong> Find the inverse of f(x) = &minus;&frac12;x + 1. &nbsp;y = &minus;&frac12;x + 1 &rarr; x = &minus;&frac12;y + 1 &rarr; x &minus; 1 = &minus;&frac12;y &rarr; <strong>f&#8315;&sup1;(x) = &minus;2x + 2</strong>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Inverses with Restricted Domains</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Examine f(x) = x&sup2; + 2x + 4. Part A: find the inverse. Part B: restrict the domain so the inverse is a function.</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part A: find the inverse</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">f(x) = x&sup2; + 2x + 4</span><span class="reason">Original function</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">y = x&sup2; + 2x + 4</span><span class="reason">Replace f(x) with y</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = y&sup2; + 2y + 4</span><span class="reason">Exchange x and y</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x &minus; 4 = y&sup2; + 2y</span><span class="reason">Subtract 4 from each side</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">x &minus; 4 + 1 = y&sup2; + 2y + 1</span><span class="reason">Complete the square (add 1 to each side)</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">x &minus; 3 = (y + 1)&sup2;</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">&plusmn;&radic;(x &minus; 3) = y + 1</span><span class="reason">Take the square root of each side</span></div>
+      <div class="solution-step"><span class="num">8</span><span class="math">&minus;1 &plusmn; &radic;(x &minus; 3) = y</span><span class="reason">Subtract 1 from each side</span></div>
+      <div class="solution-step"><span class="num">9</span><span class="math">f&#8315;&sup1;(x) = &minus;1 &plusmn; &radic;(x &minus; 3)</span><span class="reason">Replace y with f&#8315;&sup1;(x)</span></div>
+    <div class="answer-box">f&#8315;&sup1;(x) = &minus;1 &plusmn; &radic;(x &minus; 3)</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part B: restrict the domain</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">f(x) fails the horizontal line test</span><span class="reason">It is a parabola with vertex at (&minus;1, 3)</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">So f&#8315;&sup1;(x) is not a function as written</span><span class="reason">The &plusmn; produces two outputs for one input</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">Restrict f(x) to a one-to-one portion</span><span class="reason">Split the parabola at its vertex, x = &minus;1</span></div>
+    <div class="case-grid"><div class="case-box"><h4>If the domain of f is [&minus;1, &infin;)</h4><div class="math">f&#8315;&sup1;(x) = &minus;1 + &radic;(x &minus; 3)<br>(the upper branch)</div></div><div class="case-box"><h4>If the domain of f is (&minus;&infin;, &minus;1]</h4><div class="math">f&#8315;&sup1;(x) = &minus;1 &minus; &radic;(x &minus; 3)<br>(the lower branch)</div></div></div>
+    <div class="warning-box"><strong>&#9888; There is more than one correct restriction.</strong> Any interval on which f is one-to-one works. The vertex is the natural splitting point for a parabola.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Interpret an Inverse Function</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">TEMPERATURE: A formula for converting degrees Fahrenheit to degrees Celsius is T(x) = (5/9)(x &minus; 32). Find the inverse of T(x) and describe its meaning.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">T(x) = (5/9)(x &minus; 32)</span><span class="reason">Original function</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">y = (5/9)(x &minus; 32)</span><span class="reason">Replace T(x) with y</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = (5/9)(y &minus; 32)</span><span class="reason">Exchange x and y</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">(9/5)x = y &minus; 32</span><span class="reason">Multiply each side by 9/5</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">(9/5)x + 32 = y</span><span class="reason">Add 32 to each side</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">T&#8315;&sup1;(x) = (9/5)x + 32</span><span class="reason">Replace y with T&#8315;&sup1;(x)</span></div>
+    <div class="answer-box">T&#8315;&sup1;(x) = (9/5)x + 32</div>
+    <div class="info-box"><strong>&#8505; Meaning:</strong> T&#8315;&sup1;(x) converts a temperature in degrees Celsius to degrees Fahrenheit &mdash; exactly the reverse of what T(x) does.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 5</span>
+    <span class="example-title">Use Compositions to Verify Inverses</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Determine whether h(x) = &radic;(x + 13) and k(x) = (x &minus; 13)&sup2; are inverse functions.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">[h &#8728; k](x) = h[k(x)]</span><span class="reason">Composition of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= h[(x &minus; 13)&sup2;]</span><span class="reason">Substitute k(x)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &radic;((x &minus; 13)&sup2; + 13)</span><span class="reason">Substitute again into h</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= &radic;(x&sup2; &minus; 26x + 169 + 13)</span><span class="reason">Distribute / expand the square</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= &radic;(x&sup2; &minus; 26x + 182)</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">&radic;(x&sup2; &minus; 26x + 182) &ne; x</span><span class="reason">The composition is NOT the identity function</span></div>
+    <div class="answer-box">h(x) and k(x) are NOT inverse functions</div>
+    <div class="warning-box"><strong>&#9888; One failed composition is enough.</strong> Because [h &#8728; k](x) &ne; x, the pair fails the definition immediately &mdash; there is no need to compute [k &#8728; h](x).</div>
+    <div class="check-box"><strong>&#10003; Check:</strong> Determine whether f(x) = x/9 + 4/3 and g(x) = 9x + 12 are inverses. &nbsp;[f &#8728; g](x) = (9x + 12)/9 + 4/3 = x + 4/3 + 4/3 = x + 8/3 &ne; x, so they are <strong>not inverses</strong>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 6</span>
+    <span class="example-title">Verify Inverse Functions (Geometry)</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">GEOMETRY: The volume of a cylinder with a height of 5 inches is V = 5&pi;r&sup2;. Determine whether r = &radic;(V/(5&pi;)) is the inverse of the original function.</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Find V &#8728; r</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">V = 5&pi;r&sup2;</span><span class="reason">Original function</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 5&pi;(&radic;(V/(5&pi;)))&sup2;</span><span class="reason">Substitute r = &radic;(V/(5&pi;))</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 5&pi;(V/(5&pi;))</span><span class="reason">Squaring undoes the square root</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= V</span><span class="reason">Simplify &mdash; identity function</span></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Find r &#8728; V</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">r = &radic;(V/(5&pi;))</span><span class="reason">Original inverse candidate</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= &radic;(5&pi;r&sup2;/(5&pi;))</span><span class="reason">Substitute V = 5&pi;r&sup2;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &radic;(r&sup2;)</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= r</span><span class="reason">For r &ge; 0 &mdash; identity function</span></div>
+    <div class="answer-box">Both compositions give the identity, so r = &radic;(V/(5&pi;)) IS the inverse of V = 5&pi;r&sup2;</div>
+    <div class="info-box"><strong>&#8505; Why the domain matters:</strong> &radic;(r&sup2;) = |r|, which equals r only when r &ge; 0. A radius is never negative, so the restriction is automatic in this context.</div>
+  </div>
+</div>
+</section>
+
+<section id="summary">
+  <h2>Summary &amp; Common Mistakes</h2>
+
+  <div class="concept-card">
+    <h3>&#128221; Quick Reference</h3>
+    <table class="tbl">
+      <tr><th>Situation</th><th>What to do</th><th>Expected result</th></tr>
+      <tr><td>Relation given as ordered pairs</td><td>Swap each (a, b) to (b, a)</td><td>The inverse relation</td></tr>
+      <tr><td>Linear function f(x) = mx + b</td><td>y &rarr; swap &rarr; solve for y</td><td>f&#8315;&sup1;(x) = (x &minus; b)/m</td></tr>
+      <tr><td>Quadratic function</td><td>Swap, complete the square, take &radic; of both sides</td><td>&plusmn; appears &mdash; not a function yet</td></tr>
+      <tr><td>Inverse contains &plusmn;</td><td>Restrict the domain of f at the vertex</td><td>One branch, now a function</td></tr>
+      <tr><td>Asked "are these inverses?"</td><td>Compute [f &#8728; g](x) and [g &#8728; f](x)</td><td>Both must equal x</td></tr>
+      <tr><td>Given f(a) = b</td><td>Apply the inverse property</td><td>f&#8315;&sup1;(b) = a</td></tr>
+      <tr><td>Graphing f and f&#8315;&sup1;</td><td>Reflect across y = x</td><td>Mirror-image graphs</td></tr>
+    </table>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#9888; Common Mistakes to Avoid</h3>
+    <div class="warning-box"><strong>&#9888; Reading f&#8315;&sup1;(x) as a reciprocal.</strong> f&#8315;&sup1;(x) is the inverse function, not 1/f(x). The &minus;1 is notation, not an exponent.</div>
+    <div class="warning-box"><strong>&#9888; Forgetting to swap x and y.</strong> Solving the original equation for x without exchanging the variables gives the same function back, not the inverse.</div>
+    <div class="warning-box"><strong>&#9888; Dropping the &plusmn; sign.</strong> Taking the square root of both sides always produces &plusmn;. Keep it, then decide which branch the restricted domain selects.</div>
+    <div class="warning-box"><strong>&#9888; Checking only one composition.</strong> The definition requires both [f &#8728; g](x) = x and [g &#8728; f](x) = x.</div>
+    <div class="warning-box"><strong>&#9888; Assuming every function has an inverse function.</strong> If the graph fails the horizontal line test, restrict the domain first.</div>
+  </div>
+
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+const questions=[
+  {q:"Find the inverse of the relation {(2, 4), (&minus;3, 2), (4, 1)}.",opts:["{(4, 2), (2, &minus;3), (1, 4)}","{(&minus;2, &minus;4), (3, &minus;2), (&minus;4, &minus;1)}","{(2, 4), (&minus;3, 2), (4, 1)}","{(4, 2), (&minus;3, 2), (1, 4)}"],ans:0,exp:"Exchange the coordinates of every ordered pair: (a, b) becomes (b, a)."},
+  {q:"If f(x) = 3x + 2, then f&#8315;&sup1;(x) =",opts:["3x &minus; 2","(x + 2)/3","(x &minus; 2)/3","1/(3x + 2)"],ans:2,exp:"y = 3x + 2 &rarr; x = 3y + 2 &rarr; x &minus; 2 = 3y &rarr; y = (x &minus; 2)/3."},
+  {q:"If f(x) = x &minus; 5, then f&#8315;&sup1;(x) =",opts:["x + 5","5 &minus; x","1/(x &minus; 5)","&minus;x + 5"],ans:0,exp:"y = x &minus; 5 &rarr; x = y &minus; 5 &rarr; y = x + 5."},
+  {q:"The graph of f&#8315;&sup1;(x) is the reflection of the graph of f(x) across which line?",opts:["the x-axis","the y-axis","y = x","y = &minus;x"],ans:2,exp:"Exchanging x and y reflects every point (a, b) to (b, a), which is a reflection in the line y = x."},
+  {q:"If f(x) = &minus;&frac12;x + 1, then f&#8315;&sup1;(x) =",opts:["&minus;2x + 2","&minus;&frac12;x &minus; 1","2x &minus; 2","&minus;2x &minus; 2"],ans:0,exp:"x = &minus;&frac12;y + 1 &rarr; x &minus; 1 = &minus;&frac12;y &rarr; y = &minus;2(x &minus; 1) = &minus;2x + 2."},
+  {q:"Which test determines whether the inverse of f is also a function?",opts:["the vertical line test","the horizontal line test","the zero product test","the discriminant test"],ans:1,exp:"If a horizontal line meets the graph of f more than once, f is not one-to-one and its inverse is not a function."},
+  {q:"Functions f and g are inverses if and only if:",opts:["[f &#8728; g](x) = x only","[g &#8728; f](x) = x only","[f &#8728; g](x) = x and [g &#8728; f](x) = x","f(x) &middot; g(x) = 1"],ans:2,exp:"By definition BOTH compositions must be the identity function."},
+  {q:"Are f(x) = 4x and g(x) = x/4 inverse functions?",opts:["Yes","No","Only for x &gt; 0","Cannot be determined"],ans:0,exp:"[f &#8728; g](x) = 4(x/4) = x and [g &#8728; f](x) = (4x)/4 = x. Both compositions give the identity."},
+  {q:"Without restricting the domain, is the inverse of f(x) = x&sup2; a function?",opts:["Yes, always","No, it fails the horizontal line test","Yes, but only for x = 0","Only if x is an integer"],ans:1,exp:"f(x) = x&sup2; is not one-to-one, so its inverse assigns two outputs (&plusmn;&radic;x) to each positive input."},
+  {q:"If f(x) = x&sup2; + 2x + 4, then f&#8315;&sup1;(x) =",opts:["&minus;1 &plusmn; &radic;(x &minus; 3)","1 &plusmn; &radic;(x &minus; 3)","&minus;1 &plusmn; &radic;(x + 3)","&minus;2 &plusmn; &radic;(x &minus; 4)"],ans:0,exp:"x &minus; 4 = y&sup2; + 2y &rarr; x &minus; 3 = (y + 1)&sup2; &rarr; y = &minus;1 &plusmn; &radic;(x &minus; 3)."},
+  {q:"If the domain of f(x) = x&sup2; + 2x + 4 is restricted to [&minus;1, &infin;), the inverse is:",opts:["f&#8315;&sup1;(x) = &minus;1 &minus; &radic;(x &minus; 3)","f&#8315;&sup1;(x) = &minus;1 + &radic;(x &minus; 3)","f&#8315;&sup1;(x) = 1 + &radic;(x &minus; 3)","f&#8315;&sup1;(x) = &minus;1 &plusmn; &radic;(x &minus; 3)"],ans:1,exp:"Restricting to the right branch (x &ge; &minus;1) selects the + sign of the radical."},
+  {q:"If f(3) = 7, then f&#8315;&sup1;(7) =",opts:["1/7","7","3","&minus;3"],ans:2,exp:"By the inverse property, f(a) = b if and only if f&#8315;&sup1;(b) = a."},
+  {q:"If h(x) = &radic;(x + 13) and k(x) = (x &minus; 13)&sup2;, then [h &#8728; k](x) =",opts:["x","&radic;(x&sup2; &minus; 26x + 182)","x&sup2; &minus; 26x + 182","&radic;(x&sup2; + 26x + 182)"],ans:1,exp:"h[k(x)] = &radic;((x &minus; 13)&sup2; + 13) = &radic;(x&sup2; &minus; 26x + 169 + 13) = &radic;(x&sup2; &minus; 26x + 182)."},
+  {q:"Are f(x) = x/9 + 4/3 and g(x) = 9x + 12 inverses?",opts:["Yes, both compositions give x","No, [f &#8728; g](x) = x + 8/3","No, [f &#8728; g](x) = 9x","Cannot be determined"],ans:1,exp:"(9x + 12)/9 + 4/3 = x + 4/3 + 4/3 = x + 8/3, which is not the identity function."},
+  {q:"If f(x) = 2x + 3, then f&#8315;&sup1;(x) =",opts:["(x &minus; 3)/2","(x + 3)/2","2x &minus; 3","1/(2x + 3)"],ans:0,exp:"x = 2y + 3 &rarr; x &minus; 3 = 2y &rarr; y = (x &minus; 3)/2."}
+];
+
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div><div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='\u2713 Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='\u2717 Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start \u2014 keep practicing.'],[80,'Great job!'],[95,'Excellent \u2014 you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% \u2014 '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+buildQuiz();
+})();
+</script>
+</body>
+</html>

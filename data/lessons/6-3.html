@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6-3: nth Roots and Rational Exponents</title>
+<style>
+  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#1a4fa0 55%,#e05c2a 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .concept-card ul{margin:8px 0 0 20px;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);line-height:1.9;}
+  .vocab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+  @media(max-width:600px){.vocab{grid-template-columns:1fr;}}
+  .vocab-item{background:#fafafa;border:1px solid #e2e8f0;border-radius:6px;padding:10px 14px;font-size:14px;line-height:1.6;}
+  .vocab-item b{color:var(--orange);}
+  .steps-list{counter-reset:s;margin:10px 0;}
+  .steps-list .s{position:relative;padding:10px 12px 10px 44px;margin-bottom:8px;background:#fafafa;border-radius:6px;font-size:14px;line-height:1.6;}
+  .steps-list .s:before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  table.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
+  table.tbl th{background:var(--navy);color:white;padding:9px 12px;text-align:left;font-weight:600;}
+  table.tbl td{padding:9px 12px;border-bottom:1px solid #e2e8f0;}
+  table.tbl tr:nth-child(even) td{background:#f8faff;}
+  table.tbl code{font-family:'Courier New',monospace;color:var(--navy);}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--orange);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;font-family:'Courier New',monospace;}
+  .solution-step{display:flex;gap:12px;margin-bottom:8px;padding:9px 12px;border-radius:6px;background:#fafafa;align-items:baseline;flex-wrap:wrap;}
+  .solution-step .num{width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;min-width:180px;}
+  .solution-step .reason{font-size:13px;color:var(--orange);font-style:italic;min-width:160px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .check-box{background:var(--light-green);border:1px solid #86efac;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .check-box strong{color:#15803d;}
+  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .warning-box strong{color:var(--orange);}
+  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .info-box strong{color:var(--blue);}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+  @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
+  .case-box{background:#fafafa;border:1px solid #e2e8f0;border-radius:8px;padding:14px;}
+  .case-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+  .case-box .math{font-family:'Courier New',monospace;font-size:13px;line-height:1.9;}
+  .quiz-header{background:linear-gradient(135deg,#e05c2a,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:560px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--orange);background:#fff7f3;}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;line-height:1.6;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 6 &middot; Lesson 6-3</div>
+  <h1>nth Roots and Rational Exponents</h1>
+  <p>Simplify radicals, use absolute value correctly, and convert between radical and exponential form</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Step-by-Step Examples</a>
+  <a href="#summary">Summary</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>&#128273; Today's Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>nth root</b> &mdash; for real numbers a and b and positive integer n, if a&#8319; = b then a is an nth root of b.</div>
+      <div class="vocab-item"><b>index</b> &mdash; the small number n written in the crook of the radical symbol, telling you which root to take.</div>
+      <div class="vocab-item"><b>radicand</b> &mdash; the expression written underneath the radical symbol.</div>
+      <div class="vocab-item"><b>principal root</b> &mdash; when there is more than one real root and n is even, the nonnegative root.</div>
+      <div class="vocab-item"><b>rational exponent</b> &mdash; an exponent that is a fraction, such as the 1/n in b<sup>1/n</sup>.</div>
+    </div>
+    <div class="formula-box">In &#8731;36:&nbsp;&nbsp; index = 3 &nbsp;&middot;&nbsp; radical symbol = &radic; &nbsp;&middot;&nbsp; radicand = 36</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Key Concept &mdash; Real nth Roots</h3>
+    <p>Suppose n is an integer greater than 1, b is a real number, and a is an nth root of b.</p>
+    <table class="tbl">
+      <tr><th>b</th><th>n is EVEN</th><th>n is ODD</th></tr>
+      <tr><td>b &gt; 0</td><td>1 unique positive and 1 unique negative real root: <code>&plusmn;&#8319;&radic;b</code></td><td>1 unique positive and 0 negative real roots: <code>&#8319;&radic;b</code></td></tr>
+      <tr><td>b &lt; 0</td><td><code>0 real roots</code> (they are imaginary)</td><td>0 positive and 1 negative real root: <code>&#8319;&radic;b</code></td></tr>
+      <tr><td>b = 0</td><td>1 real root: <code>&#8319;&radic;0 = 0</code></td><td>1 real root: <code>&#8319;&radic;0 = 0</code></td></tr>
+    </table>
+    <div class="warning-box"><strong>&#9888; Principal roots:</strong> Because 5&sup2; = 25, the number 25 has two square roots, 5 and &minus;5. However &radic;25 is <strong>5 only</strong>. To indicate both square roots you must write &plusmn;&radic;25.</div>
+    <p style="margin-top:8px">A radical expression is simplified when the radicand contains no fractions and no radicals appear in the denominator.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Absolute Value in Radicals</h3>
+    <p>When you take an <strong>even</strong> root of an <strong>even</strong> power and the result is an <strong>odd</strong> power, you must use absolute value bars so the answer is nonnegative.</p>
+    <div class="formula-box">&#8308;&radic;(81x&#8308;) = &#8308;&radic;((3x)&#8308;) = 3|x|&nbsp;&nbsp;&nbsp;&nbsp;(x could be negative)<br>&radic;(25x&#8308;) = 5x&sup2;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x&sup2; is already nonnegative &mdash; no bars needed)</div>
+    <div class="info-box"><strong>&#8505; Quick test:</strong> even index + even exponent inside + odd exponent outside &rarr; use absolute value.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Key Concept &mdash; Rational Exponents</h3>
+    <p>An expression is in <strong>exponential form</strong> if it has the form x&#8319;. It is in <strong>radical form</strong> if it contains a radical symbol.</p>
+    <div class="formula-box">b<sup>1/n</sup> = &#8319;&radic;b&nbsp;&nbsp;&nbsp;&nbsp;(except where b &lt; 0 and n is even)<br>b<sup>x/y</sup> = <sup>y</sup>&radic;(b<sup>x</sup>) = (<sup>y</sup>&radic;b)<sup>x</sup>&nbsp;&nbsp;&nbsp;&nbsp;for y &gt; 1<br>b<sup>&minus;n</sup> = 1 / b<sup>n</sup></div>
+    <div class="case-grid">
+      <div class="case-box"><h4>Examples</h4><div class="math">125<sup>1/3</sup> = &#8731;125 = 5<br>125<sup>2/3</sup> = (&#8731;125)&sup2; = 5&sup2; = 25</div></div>
+      <div class="case-box"><h4>Complex cases</h4><div class="math">(&minus;49)<sup>1/2</sup> = &radic;(&minus;49) = 7i<br>(&minus;49)<sup>3/2</sup> = (7i)&sup3; = &minus;343i</div></div>
+    </div>
+    <div class="info-box"><strong>&#8505; Simplest form</strong> for an expression with rational exponents requires all four: no negative exponents; no non-integer exponents in the denominator; not a complex fraction; the index of any remaining radical is as small as possible.</div>
+  </div>
+
+</section>
+
+<section id="examples">
+  <h2>Step-by-Step Worked Examples</h2>
+  <p style="font-size:14px;color:#64748b;margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Find Roots</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">Simplify.&nbsp; a. &plusmn;&radic;(25x&#8308;)&nbsp;&nbsp; b. &minus;&radic;((y&sup2; + 7)&sup1;&sup2;)&nbsp;&nbsp; c. &#8731;(343a&sup1;&#8312;b&#8310;)&nbsp;&nbsp; d. &radic;(&minus;289c&#8312;d&#8308;)</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: &plusmn;&radic;(25x&#8308;)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">&plusmn;&radic;(25x&#8308;) = &plusmn;&radic;((5x&sup2;)&sup2;)</span><span class="reason">Write the radicand as a perfect square</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= &plusmn;5x&sup2;</span><span class="reason">Take the square root</span></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: &minus;&radic;((y&sup2; + 7)&sup1;&sup2;)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">&minus;&radic;((y&sup2; + 7)&sup1;&sup2;) = &minus;&radic;([(y&sup2; + 7)&#8310;]&sup2;)</span><span class="reason">(y&sup2; + 7)&sup1;&sup2; = [(y&sup2; + 7)&#8310;]&sup2;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= &minus;(y&sup2; + 7)&#8310;</span><span class="reason">The negative sign in front stays</span></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part c: &#8731;(343a&sup1;&#8312;b&#8310;)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">&#8731;(343a&sup1;&#8312;b&#8310;) = &#8731;((7a&#8310;b&sup2;)&sup3;)</span><span class="reason">7&sup3; = 343; (a&#8310;)&sup3; = a&sup1;&#8312;; (b&sup2;)&sup3; = b&#8310;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 7a&#8310;b&sup2;</span><span class="reason">Odd index &mdash; no absolute value needed</span></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part d: &radic;(&minus;289c&#8312;d&#8308;)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">There are no real roots of &radic;(&minus;289)</span><span class="reason">Even index with a negative radicand</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&radic;(&minus;289c&#8312;d&#8308;) = &radic;(&minus;1) &middot; &radic;(289c&#8312;d&#8308;)</span><span class="reason">Separate the factor of &minus;1</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= i &middot; 17c&#8308;d&sup2;</span><span class="reason">&radic;(&minus;1) = i; use the principal root 17i</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 17ic&#8308;d&sup2;</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">a. &plusmn;5x&sup2; &nbsp;&middot;&nbsp; b. &minus;(y&sup2; + 7)&#8310; &nbsp;&middot;&nbsp; c. 7a&#8310;b&sup2; &nbsp;&middot;&nbsp; d. 17ic&#8308;d&sup2;</div>
+    <div class="check-box"><strong>&#10003; Check:</strong> a. &plusmn;&radic;(196x&#8308;) = <strong>&plusmn;14x&sup2;</strong> &nbsp;&middot;&nbsp; b. &minus;&radic;(196x&#8308;) = <strong>&minus;14x&sup2;</strong> &nbsp;&middot;&nbsp; c. &radic;(&minus;196x&#8308;) = <strong>14ix&sup2;</strong></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Simplify Using Absolute Value</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Simplify.&nbsp; a. &#8308;&radic;(81x&#8308;)&nbsp;&nbsp; b. &#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;)</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: &#8308;&radic;(81x&#8308;)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">&#8308;&radic;(81x&#8308;) = &#8308;&radic;((3x)&#8308;)</span><span class="reason">81x&#8308; = (3x)&#8308;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 3|x|</span><span class="reason">x could be negative, so bars ensure a nonnegative principal root</span></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: &#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">&#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;) = &#8312;&radic;256 &middot; &#8312;&radic;((y&sup2; &minus; 2)&sup2;&#8308;)</span><span class="reason">Separate the numeric and variable factors</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&#8312;&radic;256 = 2</span><span class="reason">2&#8312; = 256</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&#8312;&radic;((y&sup2; &minus; 2)&sup2;&#8308;) = |(y&sup2; &minus; 2)&sup3;|</span><span class="reason">24 &divide; 8 = 3; even index, odd result &rarr; absolute value</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 2|(y&sup2; &minus; 2)&sup3;|</span><span class="reason">Combine</span></div>
+    <div class="answer-box">a. 3|x| &nbsp;&middot;&nbsp; b. 2|(y&sup2; &minus; 2)&sup3;|</div>
+    <div class="warning-box"><strong>&#9888; When do you need the bars?</strong> Only when the index is even AND the simplified exponent is odd. In Example 1c the index was 3 (odd), so no bars were required.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Radical and Exponential Forms</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">a. Write x<sup>4/3</sup> in radical form.&nbsp;&nbsp; b. Write &#8309;&radic;(x&sup2;) in exponential form.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">x<sup>4/3</sup></span><span class="reason">Original expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">The denominator becomes the index</span><span class="reason">Denominator 3 &rarr; index 3</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">The numerator becomes the power</span><span class="reason">Numerator 4 &rarr; the radicand is x&#8308;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x<sup>4/3</sup> = &#8731;(x&#8308;)</span><span class="reason">Radical form</span></div>
+    <div class="solution-step"><span class="num">1</span><span class="math">&#8309;&radic;(x&sup2;)</span><span class="reason">Original expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Index 5 becomes the denominator</span><span class="reason">Power 2 becomes the numerator</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&#8309;&radic;(x&sup2;) = x<sup>2/5</sup></span><span class="reason">Exponential form</span></div>
+    <div class="answer-box">a. x<sup>4/3</sup> = &#8731;(x&#8308;) &nbsp;&middot;&nbsp; b. &#8309;&radic;(x&sup2;) = x<sup>2/5</sup></div>
+    <div class="info-box"><strong>&#8505; Remember:</strong> In b<sup>x/y</sup>, the numerator x is the <strong>power</strong> and the denominator y is the <strong>root</strong>. "Power over root."</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Use Rational Exponents (Application)</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">FINANCIAL LITERACY: c(1 + r)<sup>t</sup> estimates the future cost of an item due to inflation. Write the expression in radical form for the cost 3 months from now if the annual inflation rate is 4.7%.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">c(1 + r)<sup>t</sup></span><span class="reason">Original expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">r = 0.047, t = 1/4</span><span class="reason">3 months is one quarter of a year</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= c(1 + 0.047)<sup>1/4</sup></span><span class="reason">Substitute</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= c(1.047)<sup>1/4</sup></span><span class="reason">Add</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= c &middot; &#8308;&radic;1.047</span><span class="reason">b<sup>1/n</sup> = &#8319;&radic;b</span></div>
+    <div class="answer-box">c &#8308;&radic;1.047</div>
+    <div class="info-box"><strong>&#8505; Why a fractional exponent?</strong> A time that is a fraction of a compounding period becomes a fractional exponent, which converts directly into a root.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 5</span>
+    <span class="example-title">Evaluate Expressions with Rational Exponents</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Evaluate 32<sup>&minus;2/5</sup>.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">32<sup>&minus;2/5</sup> = 1 / 32<sup>2/5</sup></span><span class="reason">b<sup>&minus;n</sup> = 1/b<sup>n</sup></span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 1 / (2&#8309;)<sup>2/5</sup></span><span class="reason">32 = 2&#8309;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 1 / 2<sup>5 &middot; 2/5</sup></span><span class="reason">Power of a Power</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 1 / 2&sup2;</span><span class="reason">Multiply the exponents</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 1/4</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">32<sup>&minus;2/5</sup> = 1/4</div>
+    <div class="warning-box"><strong>&#9888; A negative exponent is not a negative answer.</strong> 32<sup>&minus;2/5</sup> = 1/4, not &minus;4. The negative sign moves the power to the denominator.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 6</span>
+    <span class="example-title">Simplify Expressions with Rational Exponents</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Simplify each expression.&nbsp; a. x<sup>2/3</sup> &middot; x<sup>1/6</sup>&nbsp;&nbsp; b. y<sup>&minus;2/3</sup>&nbsp;&nbsp; c. z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: x<sup>2/3</sup> &middot; x<sup>1/6</sup></p>
+    <div class="solution-step"><span class="num">1</span><span class="math">x<sup>2/3</sup> &middot; x<sup>1/6</sup> = x<sup>2/3 + 1/6</sup></span><span class="reason">Add powers when multiplying like bases</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">2/3 = 4/6</span><span class="reason">Find a common denominator</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= x<sup>4/6 + 1/6</sup> = x<sup>5/6</sup></span><span class="reason">Add the exponents</span></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: y<sup>&minus;2/3</sup></p>
+    <div class="solution-step"><span class="num">1</span><span class="math">y<sup>&minus;2/3</sup> = 1 / y<sup>2/3</sup></span><span class="reason">b<sup>&minus;n</sup> = 1/b<sup>n</sup></span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (1 / y<sup>2/3</sup>) &middot; (y<sup>1/3</sup> / y<sup>1/3</sup>)</span><span class="reason">Multiply by a form of 1 to rationalise</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= y<sup>1/3</sup> / y<sup>2/3 + 1/3</sup></span><span class="reason">2/3 + 1/3 = 1</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= y<sup>1/3</sup> / y &nbsp;or&nbsp; &#8731;y / y</span><span class="reason">Simplest form &mdash; no negative exponents</span></div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part c: z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup></p>
+    <div class="solution-step"><span class="num">1</span><span class="math">z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup> = z<sup>&minus;1/3 + 3/4</sup></span><span class="reason">Add powers</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&minus;1/3 = &minus;4/12 &nbsp;and&nbsp; 3/4 = 9/12</span><span class="reason">Common denominator of 12</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= z<sup>&minus;4/12 + 9/12</sup> = z<sup>5/12</sup></span><span class="reason">Add the exponents</span></div>
+    <div class="answer-box">a. x<sup>5/6</sup> &nbsp;&middot;&nbsp; b. &#8731;y / y &nbsp;&middot;&nbsp; c. z<sup>5/12</sup></div>
+    <div class="warning-box"><strong>&#9888; Add exponents, do not multiply them.</strong> When multiplying powers of the same base you ADD exponents; you multiply exponents only when raising a power to a power.</div>
+  </div>
+</div>
+</section>
+
+<section id="summary">
+  <h2>Summary &amp; Common Mistakes</h2>
+
+  <div class="concept-card">
+    <h3>&#128221; Quick Reference</h3>
+    <table class="tbl">
+      <tr><th>Situation</th><th>What to do</th><th>Expected result</th></tr>
+      <tr><td>Even index, negative radicand</td><td>Factor out &radic;(&minus;1) = i</td><td>An imaginary result such as 17i</td></tr>
+      <tr><td>Odd index, negative radicand</td><td>Take the root directly</td><td>One negative real root</td></tr>
+      <tr><td>Even index, even exponent, odd result</td><td>Use absolute value bars</td><td>3|x|, 2|(y&sup2; &minus; 2)&sup3;|</td></tr>
+      <tr><td>&plusmn; in front of a radical</td><td>Report both roots</td><td>&plusmn;5x&sup2;</td></tr>
+      <tr><td>b<sup>x/y</sup> to radical form</td><td>Denominator = index, numerator = power</td><td><sup>y</sup>&radic;(b<sup>x</sup>)</td></tr>
+      <tr><td>Radical to exponential form</td><td>Index = denominator of the exponent</td><td>&#8309;&radic;(x&sup2;) = x<sup>2/5</sup></td></tr>
+      <tr><td>Negative rational exponent</td><td>Move the power to the denominator</td><td>32<sup>&minus;2/5</sup> = 1/4</td></tr>
+      <tr><td>Multiplying like bases</td><td>Add the exponents (common denominator first)</td><td>x<sup>2/3</sup> &middot; x<sup>1/6</sup> = x<sup>5/6</sup></td></tr>
+    </table>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#9888; Common Mistakes to Avoid</h3>
+    <div class="warning-box"><strong>&#9888; Writing &radic;25 = &plusmn;5.</strong> The radical symbol alone means the <em>principal</em> (nonnegative) root. Use &plusmn;&radic;25 when you want both.</div>
+    <div class="warning-box"><strong>&#9888; Dropping absolute value bars.</strong> &#8308;&radic;(81x&#8308;) = 3|x|, not 3x. Without the bars the expression could be negative, which a principal even root never is.</div>
+    <div class="warning-box"><strong>&#9888; Flipping numerator and denominator.</strong> In b<sup>x/y</sup> the numerator is the power and the denominator is the root &mdash; x<sup>4/3</sup> = &#8731;(x&#8308;), not &#8308;&radic;(x&sup3;).</div>
+    <div class="warning-box"><strong>&#9888; Treating a negative exponent as a negative value.</strong> 32<sup>&minus;2/5</sup> = 1/4, a positive number.</div>
+    <div class="warning-box"><strong>&#9888; Multiplying exponents when you should add.</strong> x<sup>2/3</sup> &middot; x<sup>1/6</sup> = x<sup>5/6</sup>, not x<sup>2/18</sup>.</div>
+  </div>
+
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+const questions=[
+  {q:"In the expression &#8319;&radic;36, the value n is called the:",opts:["radicand","index","principal root","coefficient"],ans:1,exp:"The index is the small number in the crook of the radical that tells you which root to take. 36 is the radicand."},
+  {q:"Simplify &#8731;(343a&sup1;&#8312;b&#8310;).",opts:["7a&#8310;b&sup2;","7a&#8309;b&sup3;","49a&#8310;b&sup2;","7|a&#8310;b&sup2;|"],ans:0,exp:"343a&sup1;&#8312;b&#8310; = (7a&#8310;b&sup2;)&sup3;. The index is odd, so no absolute value is needed."},
+  {q:"Simplify &plusmn;&radic;(25x&#8308;).",opts:["5x&sup2;","&plusmn;5x&sup2;","&plusmn;5|x|&sup2;","&plusmn;25x&sup2;"],ans:1,exp:"25x&#8308; = (5x&sup2;)&sup2;, and the &plusmn; in front indicates both square roots."},
+  {q:"Simplify &#8308;&radic;(81x&#8308;).",opts:["3x","3|x|","9|x|","&plusmn;3x"],ans:1,exp:"81x&#8308; = (3x)&#8308;. Even index with an odd resulting power requires absolute value bars: 3|x|."},
+  {q:"Simplify &radic;(&minus;289c&#8312;d&#8308;).",opts:["17c&#8308;d&sup2;","&minus;17c&#8308;d&sup2;","17ic&#8308;d&sup2;","no real or imaginary root"],ans:2,exp:"&radic;(&minus;1) &middot; &radic;(289c&#8312;d&#8308;) = i &middot; 17c&#8308;d&sup2; = 17ic&#8308;d&sup2;."},
+  {q:"Write x<sup>4/3</sup> in radical form.",opts:["&#8308;&radic;(x&sup3;)","&#8731;(x&#8308;)","(&#8308;&radic;x)&sup3;","&#8731;x &middot; 4"],ans:1,exp:"The denominator 3 is the index and the numerator 4 is the power: x<sup>4/3</sup> = &#8731;(x&#8308;)."},
+  {q:"Write &#8309;&radic;(x&sup2;) in exponential form.",opts:["x<sup>5/2</sup>","x<sup>2/5</sup>","x<sup>10</sup>","x<sup>&minus;2/5</sup>"],ans:1,exp:"The index 5 becomes the denominator and the power 2 becomes the numerator."},
+  {q:"Evaluate 32<sup>&minus;2/5</sup>.",opts:["&minus;4","4","1/4","1/2"],ans:2,exp:"32<sup>&minus;2/5</sup> = 1/32<sup>2/5</sup> = 1/(2&#8309;)<sup>2/5</sup> = 1/2&sup2; = 1/4."},
+  {q:"Simplify x<sup>2/3</sup> &middot; x<sup>1/6</sup>.",opts:["x<sup>5/6</sup>","x<sup>1/2</sup>","x<sup>2/18</sup>","x<sup>3/9</sup>"],ans:0,exp:"Add the exponents: 2/3 + 1/6 = 4/6 + 1/6 = 5/6."},
+  {q:"Simplify z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup>.",opts:["z<sup>&minus;1/4</sup>","z<sup>5/12</sup>","z<sup>13/12</sup>","z<sup>2/7</sup>"],ans:1,exp:"&minus;1/3 + 3/4 = &minus;4/12 + 9/12 = 5/12."},
+  {q:"How many real nth roots does b have when b &lt; 0 and n is even?",opts:["0","1","2","infinitely many"],ans:0,exp:"An even power of a real number is never negative, so there are no real roots &mdash; the roots are imaginary."},
+  {q:"Evaluate 125<sup>1/3</sup>.",opts:["5","25","15","1/125"],ans:0,exp:"125<sup>1/3</sup> = &#8731;125 = 5, since 5&sup3; = 125."},
+  {q:"Evaluate 125<sup>2/3</sup>.",opts:["5","10","25","250"],ans:2,exp:"125<sup>2/3</sup> = (&#8731;125)&sup2; = 5&sup2; = 25."},
+  {q:"Simplify &#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;).",opts:["2(y&sup2; &minus; 2)&sup3;","2|(y&sup2; &minus; 2)&sup3;|","32|(y&sup2; &minus; 2)&sup3;|","2|(y&sup2; &minus; 2)|&sup3;&#8304;"],ans:1,exp:"&#8312;&radic;256 = 2 and 24 &divide; 8 = 3. Even index with an odd result requires absolute value bars."},
+  {q:"Simplify &minus;&radic;((y&sup2; + 7)&sup1;&sup2;).",opts:["(y&sup2; + 7)&#8310;","&minus;(y&sup2; + 7)&#8310;","&minus;(y&sup2; + 7)&#8310;i","&plusmn;(y&sup2; + 7)&#8310;"],ans:1,exp:"(y&sup2; + 7)&sup1;&sup2; = [(y&sup2; + 7)&#8310;]&sup2;, so the principal root is (y&sup2; + 7)&#8310; and the leading minus sign stays."}
+];
+
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div><div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='\u2713 Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='\u2717 Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start \u2014 keep practicing.'],[80,'Great job!'],[95,'Excellent \u2014 you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% \u2014 '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+buildQuiz();
+})();
+</script>
+</body>
+</html>

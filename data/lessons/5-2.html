@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 5-2: Solving Polynomial Equations Algebraically</title>
+<style>
+  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#1a4fa0 55%,#e05c2a 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .concept-card ul{margin:8px 0 0 20px;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);line-height:1.9;}
+  .vocab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+  @media(max-width:600px){.vocab{grid-template-columns:1fr;}}
+  .vocab-item{background:#fafafa;border:1px solid #e2e8f0;border-radius:6px;padding:10px 14px;font-size:14px;line-height:1.6;}
+  .vocab-item b{color:var(--orange);}
+  .steps-list{counter-reset:s;margin:10px 0;}
+  .steps-list .s{position:relative;padding:10px 12px 10px 44px;margin-bottom:8px;background:#fafafa;border-radius:6px;font-size:14px;line-height:1.6;}
+  .steps-list .s:before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  table.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
+  table.tbl th{background:var(--navy);color:white;padding:9px 12px;text-align:left;font-weight:600;}
+  table.tbl td{padding:9px 12px;border-bottom:1px solid #e2e8f0;}
+  table.tbl tr:nth-child(even) td{background:#f8faff;}
+  table.tbl code{font-family:'Courier New',monospace;color:var(--navy);}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--orange);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;font-family:'Courier New',monospace;}
+  .solution-step{display:flex;gap:12px;margin-bottom:8px;padding:9px 12px;border-radius:6px;background:#fafafa;align-items:baseline;flex-wrap:wrap;}
+  .solution-step .num{width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;min-width:180px;}
+  .solution-step .reason{font-size:13px;color:var(--orange);font-style:italic;min-width:160px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .check-box{background:var(--light-green);border:1px solid #86efac;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .check-box strong{color:#15803d;}
+  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .warning-box strong{color:var(--orange);}
+  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .info-box strong{color:var(--blue);}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+  @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
+  .case-box{background:#fafafa;border:1px solid #e2e8f0;border-radius:8px;padding:14px;}
+  .case-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+  .case-box .math{font-family:'Courier New',monospace;font-size:13px;line-height:1.9;}
+  .quiz-header{background:linear-gradient(135deg,#e05c2a,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:560px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--orange);background:#fff7f3;}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;line-height:1.6;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 5 &middot; Lesson 5-2</div>
+  <h1>Solving Polynomial Equations Algebraically</h1>
+  <p>Factor higher-degree polynomials, solve polynomial equations by factoring, and use quadratic form</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Step-by-Step Examples</a>
+  <a href="#summary">Summary</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>&#128273; Today's Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>prime polynomial</b> &mdash; a polynomial that cannot be written as a product of two polynomials with integral coefficients. Its only factors are 1 and itself.</div>
+      <div class="vocab-item"><b>quadratic form</b> &mdash; an expression written as au&sup2; + bu + c, where u is some expression in x and a &ne; 0.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Sum and Difference of Two Cubes</h3>
+    <p>Like quadratics, some cubic polynomials can be factored using polynomial identities.</p>
+    <div class="formula-box">Sum of Two Cubes:&nbsp;&nbsp;&nbsp;&nbsp;a&sup3; + b&sup3; = (a + b)(a&sup2; &minus; ab + b&sup2;)<br>Difference of Two Cubes:&nbsp;&nbsp;a&sup3; &minus; b&sup3; = (a &minus; b)(a&sup2; + ab + b&sup2;)</div>
+    <div class="info-box"><strong>&#8505; Memory aid (SOAP):</strong> <b>S</b>ame sign, <b>O</b>pposite sign, <b>A</b>lways <b>P</b>ositive. The binomial takes the same sign as the original, the middle term of the trinomial takes the opposite sign, and the last term is always positive.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Factoring Techniques &mdash; Choose by Number of Terms</h3>
+    <p>Always look for a <strong>common factor first</strong> to simplify the expression. Then decide whether the remaining polynomial factors using one or more methods.</p>
+    <table class="tbl">
+      <tr><th>Terms</th><th>Technique</th><th>General Case</th></tr>
+      <tr><td>any number</td><td>Greatest Common Factor (GCF)</td><td><code>2a&#8308;b&sup3; + 6ab = 2ab(a&sup3;b&sup2; + 3)</code></td></tr>
+      <tr><td>two</td><td>Difference of Two Squares</td><td><code>a&sup2; &minus; b&sup2; = (a + b)(a &minus; b)</code></td></tr>
+      <tr><td>two</td><td>Sum of Two Cubes</td><td><code>a&sup3; + b&sup3; = (a + b)(a&sup2; &minus; ab + b&sup2;)</code></td></tr>
+      <tr><td>two</td><td>Difference of Two Cubes</td><td><code>a&sup3; &minus; b&sup3; = (a &minus; b)(a&sup2; + ab + b&sup2;)</code></td></tr>
+      <tr><td>three</td><td>Perfect Square Trinomials</td><td><code>a&sup2; &plusmn; 2ab + b&sup2; = (a &plusmn; b)&sup2;</code></td></tr>
+      <tr><td>three</td><td>General Trinomials</td><td><code>acx&sup2; + (ad + bc)x + bd = (ax + b)(cx + d)</code></td></tr>
+      <tr><td>four or more</td><td>Grouping</td><td><code>ax + bx + ay + by = x(a + b) + y(a + b) = (a + b)(x + y)</code></td></tr>
+    </table>
+    <div class="warning-box"><strong>&#9888; Order matters:</strong> When an expression is both a difference of squares and a difference of cubes (like 64x&#8310; &minus; y&#8310;), always do the <strong>difference of squares first</strong> &mdash; it factors more completely.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Solving Polynomial Equations by Factoring</h3>
+    <div class="steps-list">
+      <div class="s">Write the equation so that one side equals <strong>0</strong>.</div>
+      <div class="s">Factor the polynomial <strong>completely</strong> (GCF first, then a technique from the table).</div>
+      <div class="s">Apply the <strong>Zero Product Property</strong>: if AB = 0 then A = 0 or B = 0. Set each factor equal to 0.</div>
+      <div class="s">Solve each resulting equation and check your solutions in the original equation.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Quadratic Form</h3>
+    <p>An expression in x can be written in <strong>quadratic form</strong> as <code>au&sup2; + bu + c</code>, where u is some expression in x and a &ne; 0.</p>
+    <div class="formula-box">Works when:&nbsp;&nbsp;(highest exponent) = 2 &times; (middle exponent)<br><br>4x&sup2;&#8304; + 6x&sup1;&#8304; + 15 &nbsp;&rarr;&nbsp; u = 2x&sup1;&#8304; &nbsp;&nbsp;(since 20 = 2 &times; 10)&nbsp; &#10003;<br>9x&#8310; &minus; 4x&sup2; &minus; 12 &nbsp;&rarr;&nbsp; 6 &ne; 2 &times; 2 &nbsp;&nbsp;<b>cannot</b> be written in quadratic form&nbsp; &#10007;</div>
+    <div class="info-box"><strong>&#8505; Why it helps:</strong> Once in quadratic form you factor a familiar quadratic in u, solve for u, then substitute back to solve for x. Remember to finish by solving for x &mdash; not u.</div>
+  </div>
+
+</section>
+
+<section id="examples">
+  <h2>Step-by-Step Worked Examples</h2>
+  <p style="font-size:14px;color:#64748b;margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Factor Sums and Differences of Cubes</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">Factor each polynomial. If the polynomial cannot be factored, write prime.<br>a. 8x&sup3; + 125y&sup1;&sup2;&nbsp;&nbsp;&nbsp;&nbsp;b. 54x&#8309; &minus; 128x&sup2;y&sup3;</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: 8x&sup3; + 125y&sup1;&sup2;</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">8x&sup3; + 125y&sup1;&sup2;</span><span class="reason">Original expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">GCF of the terms is 1</span><span class="reason">Both terms are perfect cubes</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (2x)&sup3; + (5y&#8308;)&sup3;</span><span class="reason">(2x)&sup3; = 8x&sup3;; (5y&#8308;)&sup3; = 125y&sup1;&sup2;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (2x + 5y&#8308;)[(2x)&sup2; &minus; (2x)(5y&#8308;) + (5y&#8308;)&sup2;]</span><span class="reason">Sum of two cubes</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (2x + 5y&#8308;)(4x&sup2; &minus; 10xy&#8308; + 25y&#8312;)</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">8x&sup3; + 125y&sup1;&sup2; = (2x + 5y&#8308;)(4x&sup2; &minus; 10xy&#8308; + 25y&#8312;)</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: 54x&#8309; &minus; 128x&sup2;y&sup3;</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">54x&#8309; &minus; 128x&sup2;y&sup3;</span><span class="reason">Original expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 2x&sup2;(27x&sup3; &minus; 64y&sup3;)</span><span class="reason">Factor out the GCF, 2x&sup2;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 2x&sup2;[(3x)&sup3; &minus; (4y)&sup3;]</span><span class="reason">(3x)&sup3; = 27x&sup3;; (4y)&sup3; = 64y&sup3;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 2x&sup2;(3x &minus; 4y)[(3x)&sup2; + (3x)(4y) + (4y)&sup2;]</span><span class="reason">Difference of two cubes</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 2x&sup2;(3x &minus; 4y)(9x&sup2; + 12xy + 16y&sup2;)</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">54x&#8309; &minus; 128x&sup2;y&sup3; = 2x&sup2;(3x &minus; 4y)(9x&sup2; + 12xy + 16y&sup2;)</div>
+    <div class="warning-box"><strong>&#9888; Always take out the GCF first.</strong> If you skip the 2x&sup2; in part b, neither term is a perfect cube and you will not see the difference-of-cubes pattern.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Factor by Grouping</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Factor 14ax&sup2; &minus; 16by + 20cy + 28bx&sup2; &minus; 35cx&sup2; &minus; 8ay. If the polynomial cannot be factored, write prime.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">14ax&sup2; &minus; 16by + 20cy + 28bx&sup2; &minus; 35cx&sup2; &minus; 8ay</span><span class="reason">Original expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (14ax&sup2; + 28bx&sup2; &minus; 35cx&sup2;) + (&minus;8ay &minus; 16by + 20cy)</span><span class="reason">Group terms that share the most common values</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 7x&sup2;(2a + 4b &minus; 5c) &minus; 4y(2a + 4b &minus; 5c)</span><span class="reason">Factor out the GCF of each group</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (7x&sup2; &minus; 4y)(2a + 4b &minus; 5c)</span><span class="reason">Distributive Property</span></div>
+    <div class="answer-box">(7x&sup2; &minus; 4y)(2a + 4b &minus; 5c)</div>
+    <div class="info-box"><strong>&#8505; Study Tip &mdash; Grouping:</strong> When grouping 6 or more terms, group the terms that have the <em>most</em> common values. Both groups must produce the <strong>same</strong> parenthesised expression, or the grouping will not work.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Combine Cubes and Squares</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Factor 64x&#8310; &minus; y&#8310;. If the polynomial cannot be factored, write prime.</div>
+    <div class="info-box"><strong>&#8505; Strategy:</strong> This polynomial is both a difference of two squares and a difference of two cubes. The difference of two squares should always be done <strong>before</strong> the difference of two cubes for easier, more complete factoring.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">64x&#8310; &minus; y&#8310;</span><span class="reason">Original expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (8x&sup3;)&sup2; &minus; (y&sup3;)&sup2;</span><span class="reason">(8x&sup3;)&sup2; = 64x&#8310;; (y&sup3;)&sup2; = y&#8310;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (8x&sup3; + y&sup3;)(8x&sup3; &minus; y&sup3;)</span><span class="reason">Difference of squares</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= [(2x)&sup3; + y&sup3;][(2x)&sup3; &minus; y&sup3;]</span><span class="reason">(2x)&sup3; = 8x&sup3;</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (2x + y)(4x&sup2; &minus; 2xy + y&sup2;)(2x &minus; y)(4x&sup2; + 2xy + y&sup2;)</span><span class="reason">Sum and difference of cubes</span></div>
+    <div class="answer-box">(2x + y)(4x&sup2; &minus; 2xy + y&sup2;)(2x &minus; y)(4x&sup2; + 2xy + y&sup2;)</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Solve a Polynomial Equation by Factoring</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Solve 4x&sup3; + 12x&sup2; &minus; 9x &minus; 27 = 0.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">4x&sup3; + 12x&sup2; &minus; 9x &minus; 27 = 0</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">(4x&sup3; + 12x&sup2;) + (&minus;9x &minus; 27) = 0</span><span class="reason">Group to find a GCF</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">4x&sup2;(x + 3) &minus; 9(x + 3) = 0</span><span class="reason">Factor out the GCFs</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">(4x&sup2; &minus; 9)(x + 3) = 0</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">(2x + 3)(2x &minus; 3)(x + 3) = 0</span><span class="reason">Difference of squares</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">2x + 3 = 0 &nbsp;or&nbsp; 2x &minus; 3 = 0 &nbsp;or&nbsp; x + 3 = 0</span><span class="reason">Zero Product Property</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">x = &minus;3/2, &nbsp; x = 3/2, &nbsp; x = &minus;3</span><span class="reason">Solve each equation</span></div>
+    <div class="answer-box">x = &minus;3/2, &nbsp;3/2, &nbsp;&minus;3</div>
+    <div class="check-box"><strong>&#10003; Check:</strong> Solve x&sup3; + 4x&sup2; &minus; 25x &minus; 100 = 0. &nbsp;Group: x&sup2;(x + 4) &minus; 25(x + 4) = 0 &rarr; (x&sup2; &minus; 25)(x + 4) = 0 &rarr; (x + 5)(x &minus; 5)(x + 4) = 0, so <strong>x = &minus;5, 5, &minus;4</strong>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 5</span>
+    <span class="example-title">Write and Solve a Polynomial Equation by Factoring</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">GEOMETRY: The small cube is one fourth the length of the larger cube. The volume of the figure (larger cube with the small cube removed) is 1701 cubic centimetres. What are the dimensions of the cubes?</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">(4x)&sup3; &minus; x&sup3; = 1701</span><span class="reason">Volume of the figure; small cube has side x, large cube 4x</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">64x&sup3; &minus; x&sup3; = 1701</span><span class="reason">(4x)&sup3; = 64x&sup3;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">63x&sup3; = 1701</span><span class="reason">Subtract</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x&sup3; = 27</span><span class="reason">Divide each side by 63</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">x&sup3; &minus; 27 = 0</span><span class="reason">Subtract 27 from each side</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">(x &minus; 3)(x&sup2; + 3x + 9) = 0</span><span class="reason">Difference of cubes</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">x = 3 &nbsp;or&nbsp; x = (&minus;3 &plusmn; 3i&radic;3)/2</span><span class="reason">Solve; only x = 3 is real</span></div>
+    <div class="answer-box">Small cube: 3 cm &nbsp;&middot;&nbsp; Large cube: 4(3) = 12 cm</div>
+    <div class="warning-box"><strong>&#9888; Reject non-real and negative answers.</strong> A length must be a positive real number, so the two complex solutions are discarded in a geometry context.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 6</span>
+    <span class="example-title">Write Expressions in Quadratic Form</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Write each expression in quadratic form, if possible.<br>a. 4x&sup2;&#8304; + 6x&sup1;&#8304; + 15&nbsp;&nbsp;&nbsp;&nbsp;b. 18x&#8308; + 180x&#8312; &minus; 28&nbsp;&nbsp;&nbsp;&nbsp;c. 9x&#8310; &minus; 4x&sup2; &minus; 12</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: 4x&sup2;&#8304; + 6x&sup1;&#8304; + 15</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">Examine the variable exponents: 20 and 10</span><span class="reason">20 = 2 &times; 10, so quadratic form is possible</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">(2x&sup1;&#8304;)&sup2; = 4x&sup2;&#8304;</span><span class="reason">Choose u = 2x&sup1;&#8304;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">4x&sup2;&#8304; + 6x&sup1;&#8304; + 15 = (2x&sup1;&#8304;)&sup2; + 3(2x&sup1;&#8304;) + 15</span><span class="reason">Rewrite each term using u</span></div>
+    <div class="answer-box">(2x&sup1;&#8304;)&sup2; + 3(2x&sup1;&#8304;) + 15&nbsp;&nbsp;&nbsp;[u = 2x&sup1;&#8304;]</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: 18x&#8308; + 180x&#8312; &minus; 28</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">18x&#8308; + 180x&#8312; &minus; 28 = 180x&#8312; + 18x&#8308; &minus; 28</span><span class="reason">Write in standard form of a polynomial first</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">(6x&#8308;)&sup2; = 36x&#8312;</span><span class="reason">Choose u = 6x&#8308;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 5(6x&#8308;)&sup2; + 3(6x&#8308;) &minus; 28</span><span class="reason">5(36x&#8312;) = 180x&#8312;; 3(6x&#8308;) = 18x&#8308;</span></div>
+    <div class="answer-box">5(6x&#8308;)&sup2; + 3(6x&#8308;) &minus; 28&nbsp;&nbsp;&nbsp;[u = 6x&#8308;]</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part c: 9x&#8310; &minus; 4x&sup2; &minus; 12</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">Compare exponents: 6 and 2</span><span class="reason">Is 6 = 2 &times; 2? No &mdash; x&#8310; &ne; (x&sup2;)&sup2;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x&#8310; &ne; (x&sup2;)&sup2;</span><span class="reason">(x&sup2;)&sup2; = x&#8308;, not x&#8310;</span></div>
+    <div class="answer-box">9x&#8310; &minus; 4x&sup2; &minus; 12 CANNOT be written in quadratic form</div>
+    <div class="check-box"><strong>&#10003; Check:</strong> What is the quadratic form of 10x&#8308; + 100x&#8312; &minus; 9? &nbsp;Standard form: 100x&#8312; + 10x&#8308; &minus; 9 = <strong>(10x&#8308;)&sup2; + (10x&#8308;) &minus; 9</strong>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 7</span>
+    <span class="example-title">Solve Equations in Quadratic Form</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Solve 8x&#8308; + 10x&sup2; &minus; 12 = 0.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">8x&#8308; + 10x&sup2; &minus; 12 = 0</span><span class="reason">Original equation</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">2(2x&sup2;)&sup2; + 5(2x&sup2;) &minus; 12 = 0</span><span class="reason">2(2x&sup2;)&sup2; = 2(4x&#8308;) = 8x&#8308;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">2u&sup2; + 5u &minus; 12 = 0</span><span class="reason">Let u = 2x&sup2;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">(2u &minus; 3)(u + 4) = 0</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">u = 3/2 &nbsp;or&nbsp; u = &minus;4</span><span class="reason">Zero Product Property</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">2x&sup2; = 3/2 &nbsp;&nbsp;&nbsp; 2x&sup2; = &minus;4</span><span class="reason">Replace u with 2x&sup2;</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">x&sup2; = 3/4 &nbsp;&nbsp;&nbsp;&nbsp; x&sup2; = &minus;2</span><span class="reason">Divide each side by 2</span></div>
+      <div class="solution-step"><span class="num">8</span><span class="math">x = &plusmn;&radic;3/2 &nbsp;&nbsp; x = &plusmn;i&radic;2</span><span class="reason">Take the square root of each side</span></div>
+    <div class="answer-box">x = &radic;3/2, &nbsp;&minus;&radic;3/2, &nbsp;i&radic;2, &nbsp;&minus;i&radic;2</div>
+    <div class="warning-box"><strong>&#9888; Do not stop at u.</strong> Solving 2u&sup2; + 5u &minus; 12 = 0 gives u, not x. You must substitute u = 2x&sup2; back and solve again.</div>
+    <div class="check-box"><strong>&#10003; Check:</strong> Solve 16x&#8308; + 24x&sup2; &minus; 40 = 0. &nbsp;Divide by 8: 2x&#8308; + 3x&sup2; &minus; 5 = 0 &rarr; (2x&sup2; + 5)(x&sup2; &minus; 1) = 0 &rarr; x&sup2; = 1 or x&sup2; = &minus;5/2, so <strong>x = &plusmn;1, &plusmn;(i&radic;10)/2</strong>.</div>
+  </div>
+</div>
+</section>
+
+<section id="summary">
+  <h2>Summary &amp; Common Mistakes</h2>
+
+  <div class="concept-card">
+    <h3>&#128221; Which Method Should I Use?</h3>
+    <table class="tbl">
+      <tr><th>What you see</th><th>What to do</th><th>Result</th></tr>
+      <tr><td>Every term shares a factor</td><td>Factor out the GCF first, always</td><td>A simpler polynomial inside parentheses</td></tr>
+      <tr><td>Two terms, both perfect squares, subtraction</td><td>Difference of squares</td><td><code>(a + b)(a &minus; b)</code></td></tr>
+      <tr><td>Two terms, both perfect cubes</td><td>Sum or difference of cubes</td><td>Binomial &times; trinomial</td></tr>
+      <tr><td>Both squares and cubes (x&#8310; terms)</td><td>Squares FIRST, then cubes</td><td>Four factors</td></tr>
+      <tr><td>Four or more terms</td><td>Grouping &mdash; look for a shared binomial</td><td>Product of two factors</td></tr>
+      <tr><td>Exponents where highest = 2 &times; middle</td><td>Rewrite in quadratic form, let u = ...</td><td>Solve a quadratic, then back-substitute</td></tr>
+      <tr><td>Equation set to 0 and fully factored</td><td>Zero Product Property</td><td>One equation per factor</td></tr>
+    </table>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#9888; Common Mistakes to Avoid</h3>
+    <div class="warning-box"><strong>&#9888; Forgetting the GCF.</strong> 54x&#8309; &minus; 128x&sup2;y&sup3; looks unfactorable until you pull out 2x&sup2;. Check for a common factor before anything else.</div>
+    <div class="warning-box"><strong>&#9888; Wrong sign in the cube identity.</strong> a&sup3; + b&sup3; = (a + b)(a&sup2; <em>&minus;</em> ab + b&sup2;). The middle sign of the trinomial is the <em>opposite</em> of the binomial sign, and the last term is always <em>positive</em>.</div>
+    <div class="warning-box"><strong>&#9888; Cubes before squares.</strong> Factoring 64x&#8310; &minus; y&#8310; as a difference of cubes first gives an incomplete factorisation. Do the difference of squares first.</div>
+    <div class="warning-box"><strong>&#9888; Solving for u and stopping.</strong> In quadratic form, u is a substitution. Replace u and solve for x, and remember that x&sup2; = negative gives imaginary solutions.</div>
+    <div class="warning-box"><strong>&#9888; Assuming everything factors.</strong> If no technique applies and the coefficients are integral, the polynomial is <em>prime</em> &mdash; that is a valid answer.</div>
+  </div>
+
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+const questions=[
+  {q:"Factor x&sup3; + 8 completely.",opts:["(x + 2)(x&sup2; &minus; 2x + 4)","(x + 2)(x&sup2; + 2x + 4)","(x &minus; 2)(x&sup2; + 2x + 4)","(x + 2)&sup3;"],ans:0,exp:"Sum of two cubes with a = x, b = 2: a&sup3; + b&sup3; = (a + b)(a&sup2; &minus; ab + b&sup2;)."},
+  {q:"Factor 27x&sup3; &minus; 64 completely.",opts:["(3x &minus; 4)(9x&sup2; &minus; 12x + 16)","(3x &minus; 4)(9x&sup2; + 12x + 16)","(3x + 4)(9x&sup2; &minus; 12x + 16)","(3x &minus; 4)&sup3;"],ans:1,exp:"a = 3x, b = 4. a&sup3; &minus; b&sup3; = (a &minus; b)(a&sup2; + ab + b&sup2;) = (3x &minus; 4)(9x&sup2; + 12x + 16)."},
+  {q:"Which identity is correct?",opts:["a&sup3; &minus; b&sup3; = (a &minus; b)(a&sup2; &minus; ab &minus; b&sup2;)","a&sup3; &minus; b&sup3; = (a + b)(a&sup2; + ab + b&sup2;)","a&sup3; &minus; b&sup3; = (a &minus; b)(a&sup2; + ab + b&sup2;)","a&sup3; &minus; b&sup3; = (a &minus; b)&sup3;"],ans:2,exp:"Difference of cubes: the binomial keeps the minus sign, the trinomial middle term is +ab, and b&sup2; is always positive."},
+  {q:"What is the FIRST step in factoring 54x&#8309; &minus; 128x&sup2;y&sup3;?",opts:["Apply the difference of squares","Factor out the GCF, 2x&sup2;","Apply the difference of cubes","Group the terms"],ans:1,exp:"Always look for a common factor first. 54x&#8309; &minus; 128x&sup2;y&sup3; = 2x&sup2;(27x&sup3; &minus; 64y&sup3;)."},
+  {q:"Factor 8c&sup3; &minus; 27d&sup3; completely.",opts:["(2c &minus; 3d)(4c&sup2; + 6cd + 9d&sup2;)","(2c &minus; 3d)(4c&sup2; &minus; 6cd + 9d&sup2;)","(2c + 3d)(4c&sup2; &minus; 6cd + 9d&sup2;)","(2c &minus; 3d)(2c&sup2; + 6cd + 3d&sup2;)"],ans:0,exp:"a = 2c, b = 3d: (2c &minus; 3d)[(2c)&sup2; + (2c)(3d) + (3d)&sup2;] = (2c &minus; 3d)(4c&sup2; + 6cd + 9d&sup2;)."},
+  {q:"Factor ax + bx + ay + by by grouping.",opts:["(a + b)(x + y)","(a + x)(b + y)","(a &minus; b)(x + y)","(ab)(xy)"],ans:0,exp:"x(a + b) + y(a + b) = (a + b)(x + y)."},
+  {q:"Solve 4x&sup3; + 12x&sup2; &minus; 9x &minus; 27 = 0.",opts:["x = 3/2, &minus;3/2, 3","x = &minus;3/2, 3/2, &minus;3","x = 3, &minus;3, 0","x = 9/4, &minus;9/4, &minus;3"],ans:1,exp:"Group: 4x&sup2;(x + 3) &minus; 9(x + 3) = 0 &rarr; (2x + 3)(2x &minus; 3)(x + 3) = 0."},
+  {q:"Which polynomial is PRIME over the integers?",opts:["x&sup2; &minus; 4","x&sup2; + 4","x&sup3; &minus; 8","x&sup2; &minus; 9"],ans:1,exp:"x&sup2; + 4 is a SUM of two squares, which has no integral factorisation. The others are a difference of squares or a difference of cubes."},
+  {q:"To write 4x&sup2;&#8304; + 6x&sup1;&#8304; + 15 in quadratic form, u = ?",opts:["u = x&sup1;&#8304;","u = 4x&sup1;&#8304;","u = 2x&sup1;&#8304;","u = 2x&sup2;&#8304;"],ans:2,exp:"(2x&sup1;&#8304;)&sup2; = 4x&sup2;&#8304;, so the expression becomes (2x&sup1;&#8304;)&sup2; + 3(2x&sup1;&#8304;) + 15."},
+  {q:"Which expression CANNOT be written in quadratic form?",opts:["x&#8308; + 5x&sup2; &minus; 6","9x&#8310; &minus; 4x&sup2; &minus; 12","x&#8310; + 7x&sup3; &minus; 8","16x&sup1;&#8304; + 2x&#8309; + 6"],ans:1,exp:"Quadratic form needs (highest exponent) = 2 &times; (middle exponent). Here 6 &ne; 2 &times; 2, so x&#8310; &ne; (x&sup2;)&sup2;."},
+  {q:"In 8x&#8308; + 10x&sup2; &minus; 12 = 0, letting u = 2x&sup2; gives which equation?",opts:["u&sup2; + 5u &minus; 12 = 0","2u&sup2; + 5u &minus; 12 = 0","2u&sup2; + 10u &minus; 12 = 0","8u&sup2; + 10u &minus; 12 = 0"],ans:1,exp:"2(2x&sup2;)&sup2; = 2(4x&#8308;) = 8x&#8308; and 5(2x&sup2;) = 10x&sup2;, so 2u&sup2; + 5u &minus; 12 = 0."},
+  {q:"Solve x&#8308; &minus; 5x&sup2; + 4 = 0.",opts:["x = &plusmn;1, &plusmn;2","x = 1, 4","x = &plusmn;2 only","x = &plusmn;1, &plusmn;4"],ans:0,exp:"Let u = x&sup2;: u&sup2; &minus; 5u + 4 = 0 &rarr; (u &minus; 1)(u &minus; 4) = 0 &rarr; x&sup2; = 1 or 4 &rarr; x = &plusmn;1, &plusmn;2."},
+  {q:"What should you do FIRST when factoring 64x&#8310; &minus; y&#8310;?",opts:["Difference of two cubes","Difference of two squares","Grouping","Perfect square trinomial"],ans:1,exp:"64x&#8310; &minus; y&#8310; = (8x&sup3;)&sup2; &minus; (y&sup3;)&sup2;. Doing the squares first leads to a complete factorisation into four factors."},
+  {q:"What is the only REAL solution of x&sup3; &minus; 27 = 0?",opts:["x = &minus;3","x = 3","x = 9","x = &plusmn;3"],ans:1,exp:"(x &minus; 3)(x&sup2; + 3x + 9) = 0. The trinomial has a negative discriminant, so x = 3 is the only real solution."},
+  {q:"Factor x&#8308; &minus; 16 completely.",opts:["(x&sup2; &minus; 4)(x&sup2; + 4)","(x&sup2; + 4)(x + 2)(x &minus; 2)","(x &minus; 2)&#8308;","(x&sup2; &minus; 4)&sup2;"],ans:1,exp:"x&#8308; &minus; 16 = (x&sup2; + 4)(x&sup2; &minus; 4), and x&sup2; &minus; 4 factors further into (x + 2)(x &minus; 2)."}
+];
+
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div><div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='\u2713 Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='\u2717 Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start \u2014 keep practicing.'],[80,'Great job!'],[95,'Excellent \u2014 you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% \u2014 '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+buildQuiz();
+})();
+</script>
+</body>
+</html>

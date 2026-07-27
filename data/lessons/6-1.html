@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6-1: Operations on Functions</title>
+<style>
+  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
+  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#1a4fa0 55%,#e05c2a 100%);color:white;padding:48px 24px 32px;text-align:center;}
+  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+  .hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;}
+  .hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto;}
+  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:var(--navy);color:white;}
+  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+  section{margin-bottom:48px;}
+  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
+  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
+  .concept-card ul{margin:8px 0 0 20px;}
+  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);line-height:1.9;}
+  .vocab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+  @media(max-width:600px){.vocab{grid-template-columns:1fr;}}
+  .vocab-item{background:#fafafa;border:1px solid #e2e8f0;border-radius:6px;padding:10px 14px;font-size:14px;line-height:1.6;}
+  .vocab-item b{color:var(--orange);}
+  .steps-list{counter-reset:s;margin:10px 0;}
+  .steps-list .s{position:relative;padding:10px 12px 10px 44px;margin-bottom:8px;background:#fafafa;border-radius:6px;font-size:14px;line-height:1.6;}
+  .steps-list .s:before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  table.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
+  table.tbl th{background:var(--navy);color:white;padding:9px 12px;text-align:left;font-weight:600;}
+  table.tbl td{padding:9px 12px;border-bottom:1px solid #e2e8f0;}
+  table.tbl tr:nth-child(even) td{background:#f8faff;}
+  table.tbl code{font-family:'Courier New',monospace;color:var(--navy);}
+  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
+  .example-header{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
+  .example-header:hover{background:#f8faff;}
+  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;flex-shrink:0;}
+  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
+  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
+  .example-header.open .toggle-icon{transform:rotate(45deg);}
+  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
+  .example-body.open{display:block;}
+  .problem-stmt{background:#f8faff;border-left:4px solid var(--orange);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;font-family:'Courier New',monospace;}
+  .solution-step{display:flex;gap:12px;margin-bottom:8px;padding:9px 12px;border-radius:6px;background:#fafafa;align-items:baseline;flex-wrap:wrap;}
+  .solution-step .num{width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;min-width:180px;}
+  .solution-step .reason{font-size:13px;color:var(--orange);font-style:italic;min-width:160px;text-align:right;}
+  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
+  .check-box{background:var(--light-green);border:1px solid #86efac;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .check-box strong{color:#15803d;}
+  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .warning-box strong{color:var(--orange);}
+  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
+  .info-box strong{color:var(--blue);}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+  @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
+  .case-box{background:#fafafa;border:1px solid #e2e8f0;border-radius:8px;padding:14px;}
+  .case-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+  .case-box .math{font-family:'Courier New',monospace;font-size:13px;line-height:1.9;}
+  .quiz-header{background:linear-gradient(135deg,#e05c2a,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
+  .quiz-header h2{color:white;border:none;font-size:20px;}
+  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
+  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  .q-num{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
+  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media(max-width:560px){.options{grid-template-columns:1fr;}}
+  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
+  .option-btn:hover:not(:disabled){border-color:var(--orange);background:#fff7f3;}
+  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
+  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+  .option-btn:disabled{cursor:default;}
+  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;line-height:1.6;}
+  .feedback.show{display:block;}
+  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
+  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
+  .score-panel.show{display:block;}
+  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
+  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
+  .btn-retry{padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="module-badge">Module 6 &middot; Lesson 6-1</div>
+  <h1>Operations on Functions</h1>
+  <p>Add, subtract, multiply and divide functions, and build composite functions f&#8728;g</p>
+</div>
+
+<nav>
+  <a href="#concepts">Concepts</a>
+  <a href="#examples">Step-by-Step Examples</a>
+  <a href="#summary">Summary</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+
+<main>
+
+<section id="concepts">
+  <h2>Key Concepts</h2>
+
+  <div class="concept-card">
+    <h3>&#128273; Today's Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>composition of functions</b> &mdash; an operation in which the output of one function becomes the input of another: [f &#8728; g](x) = f[g(x)].</div>
+      <div class="vocab-item"><b>domain / range</b> &mdash; for a composed function the domain is the set of x-values that survive both functions; the range is the set of resulting outputs.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; The Four Operations on Functions</h3>
+    <p>Let f(x) = 3x and g(x) = 2x &minus; 4 for each example below.</p>
+    <table class="tbl">
+      <tr><th>Operation</th><th>Definition</th><th>Example</th></tr>
+      <tr><td>Addition</td><td><code>(f + g)(x) = f(x) + g(x)</code></td><td><code>3x + (2x &minus; 4) = 5x &minus; 4</code></td></tr>
+      <tr><td>Subtraction</td><td><code>(f &minus; g)(x) = f(x) &minus; g(x)</code></td><td><code>3x &minus; (2x &minus; 4) = x + 4</code></td></tr>
+      <tr><td>Multiplication</td><td><code>(f &middot; g)(x) = f(x) &middot; g(x)</code></td><td><code>3x(2x &minus; 4) = 6x&sup2; &minus; 12x</code></td></tr>
+      <tr><td>Division</td><td><code>(f/g)(x) = f(x)/g(x), g(x) &ne; 0</code></td><td><code>3x/(2x &minus; 4), x &ne; 2</code></td></tr>
+    </table>
+    <div class="warning-box"><strong>&#9888; Division restriction:</strong> Whenever you divide functions you must exclude every x that makes the <em>denominator</em> zero &mdash; even if that value cancels.</div>
+    <div class="info-box"><strong>&#8505; Degree tip:</strong> If the degree of f(x) is m and the degree of g(x) is n, then the degrees of (f + g)(x) and (f &minus; g)(x) can be at most m or n, whichever is greater.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#128273; Composition of Functions</h3>
+    <p>Suppose f and g are functions such that the range of g is a subset of the domain of f. Then the composition function f &#8728; g can be described by:</p>
+    <div class="formula-box">[f &#8728; g](x) = f[g(x)]&nbsp;&nbsp;&nbsp;&nbsp;&mdash; "f of g of x"<br><br>x &nbsp;&rarr;&nbsp; g(x) &nbsp;&rarr;&nbsp; f[g(x)]</div>
+    <div class="steps-list">
+      <div class="s">Work from the <strong>inside out</strong>. Evaluate the inner function first.</div>
+      <div class="s">Substitute that entire output into the outer function wherever x appears.</div>
+      <div class="s">Simplify, using parentheses carefully when the inner function is a polynomial.</div>
+      <div class="s">State the domain: values excluded from g, plus values whose g-output is excluded from f.</div>
+    </div>
+    <div class="warning-box"><strong>&#9888; Order matters:</strong> [f &#8728; g](x) is <em>not</em> always equal to [g &#8728; f](x). Composition is not commutative.</div>
+  </div>
+
+</section>
+
+<section id="examples">
+  <h2>Step-by-Step Worked Examples</h2>
+  <p style="font-size:14px;color:#64748b;margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Add and Subtract Functions</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">Given f(x) = &minus;x&sup2; + 3x + 1 and g(x) = 2x&sup2; &minus; 5, find (f + g)(x) and (f &minus; g)(x).</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: (f + g)(x)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">(f + g)(x) = f(x) + g(x)</span><span class="reason">Addition of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (&minus;x&sup2; + 3x + 1) + (2x&sup2; &minus; 5)</span><span class="reason">Substitute f(x) and g(x)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &minus;x&sup2; + 3x + 1 + 2x&sup2; &minus; 5</span><span class="reason">Remove parentheses</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= x&sup2; + 3x &minus; 4</span><span class="reason">Combine like terms</span></div>
+    <div class="answer-box">(f + g)(x) = x&sup2; + 3x &minus; 4</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: (f &minus; g)(x)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">(f &minus; g)(x) = f(x) &minus; g(x)</span><span class="reason">Subtraction of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (&minus;x&sup2; + 3x + 1) &minus; (2x&sup2; &minus; 5)</span><span class="reason">Substitute f(x) and g(x)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &minus;x&sup2; + 3x + 1 &minus; 2x&sup2; + 5</span><span class="reason">Distribute the negative to BOTH terms</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= &minus;3x&sup2; + 3x + 6</span><span class="reason">Combine like terms</span></div>
+    <div class="answer-box">(f &minus; g)(x) = &minus;3x&sup2; + 3x + 6</div>
+    <div class="warning-box"><strong>&#9888; Distribute the minus sign.</strong> In part b, &minus;(2x&sup2; &minus; 5) becomes &minus;2x&sup2; <em>+</em> 5. Forgetting the second sign change is the most common error in this lesson.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Multiply and Divide Functions</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Given f(x) = 4x&sup2; &minus; 2x + 3 and g(x) = &minus;x + 5, find (f &middot; g)(x) and (f/g)(x).</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: (f &middot; g)(x)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">(f &middot; g)(x) = f(x) &middot; g(x)</span><span class="reason">Multiplication of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (4x&sup2; &minus; 2x + 3)(&minus;x + 5)</span><span class="reason">Substitute f(x) and g(x)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &minus;4x&sup3; + 20x&sup2; + 2x&sup2; &minus; 10x &minus; 3x + 15</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= &minus;4x&sup3; + 22x&sup2; &minus; 13x + 15</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">(f &middot; g)(x) = &minus;4x&sup3; + 22x&sup2; &minus; 13x + 15</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: (f/g)(x)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">(f/g)(x) = f(x)/g(x)</span><span class="reason">Division of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (4x&sup2; &minus; 2x + 3)/(&minus;x + 5)</span><span class="reason">Substitute f(x) and g(x)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&minus;x + 5 = 0 &rarr; x = 5</span><span class="reason">Find the excluded value</span></div>
+    <div class="answer-box">(f/g)(x) = (4x&sup2; &minus; 2x + 3)/(&minus;x + 5), &nbsp;x &ne; 5</div>
+    <div class="check-box"><strong>&#10003; Check:</strong> Given f(x) = &minus;x&sup2; + 1 and g(x) = x + 1: &nbsp;(f &middot; g)(x) = (&minus;x&sup2; + 1)(x + 1) = <strong>&minus;x&sup3; &minus; x&sup2; + x + 1</strong>; &nbsp;(f/g)(x) = &minus;(x &minus; 1)(x + 1)/(x + 1) = <strong>1 &minus; x, x &ne; &minus;1</strong>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Combine Functions in Context</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">When two quantities are modelled by separate functions, a new function can be built with +, &minus;, &times; or &divide;. For example, if a(x) models money coming in and b(x) models money going out, the balance function is (a &minus; b)(x) = a(x) &minus; b(x).</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">a(x) = 1750 + 925x</span><span class="reason">Money in: initial balance plus monthly deposit</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b(x) = 840x</span><span class="reason">Money out: fixed bills each month</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">(a &minus; b)(x) = a(x) &minus; b(x)</span><span class="reason">Subtraction of functions</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (1750 + 925x) &minus; 840x</span><span class="reason">Substitute</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 1750 + 85x</span><span class="reason">Combine like terms</span></div>
+    <div class="answer-box">(a &minus; b)(x) = 85x + 1750</div>
+    <div class="info-box"><strong>&#8505; Reading the result:</strong> The slope 85 is the net gain per month and 1750 is the starting value &mdash; combining functions before graphing is usually faster than graphing both and subtracting point by point.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Compose Functions by Using Ordered Pairs</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Given f = {(1, 12), (10, 11), (0, 13), (9, 7)} and g = {(4, 1), (5, 0), (13, 9), (12, 10)}, find [f &#8728; g](x) and [g &#8728; f](x). State the domain and range of each.</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part A: find [f &#8728; g](x) &mdash; evaluate g first, then use its output in f</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">f[g(4)] = f(1) = 12</span><span class="reason">g(4) = 1, and f(1) = 12</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">f[g(5)] = f(0) = 13</span><span class="reason">g(5) = 0, and f(0) = 13</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">f[g(13)] = f(9) = 7</span><span class="reason">g(13) = 9, and f(9) = 7</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">f[g(12)] = f(10) = 11</span><span class="reason">g(12) = 10, and f(10) = 11</span></div>
+    <div class="answer-box">f &#8728; g = {(4, 12), (5, 13), (13, 7), (12, 11)}</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part A continued: find [g &#8728; f](x) &mdash; evaluate f first, then use its output in g</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">g[f(1)] = g(12) = 10</span><span class="reason">f(1) = 12, and g(12) = 10</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">g[f(10)] = g(11) = undefined</span><span class="reason">11 is NOT in the domain of g</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">g[f(0)] = g(13) = 9</span><span class="reason">f(0) = 13, and g(13) = 9</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">g[f(9)] = g(7) = undefined</span><span class="reason">7 is NOT in the domain of g</span></div>
+    <div class="answer-box">g &#8728; f = {(1, 10), (0, 9)}</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part B: state the domain and range</p>
+    <div class="case-grid"><div class="case-box"><h4>[f &#8728; g](x)</h4><div class="math">D = {4, 5, 12, 13}<br>R = {7, 11, 12, 13}</div></div><div class="case-box"><h4>[g &#8728; f](x)</h4><div class="math">D = {0, 1}<br>R = {9, 10}</div></div></div>
+    <div class="warning-box"><strong>&#9888; A composition can shrink the domain.</strong> Because 11 and 7 are not in the domain of g, g &#8728; f is undefined for x = 10 and x = 9. Those pairs are dropped entirely.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 5</span>
+    <span class="example-title">Compose Functions Given by Equations</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Given f(x) = 2x &minus; 5 and g(x) = 3x, find [f &#8728; g](x) and [g &#8728; f](x). State the domain and range for each.</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part A: [f &#8728; g](x)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">[f &#8728; g](x) = f[g(x)]</span><span class="reason">Composition of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= f(3x)</span><span class="reason">Substitute g(x) = 3x</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 2(3x) &minus; 5</span><span class="reason">Substitute into f(x) = 2x &minus; 5</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 6x &minus; 5</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">[f &#8728; g](x) = 6x &minus; 5</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part A continued: [g &#8728; f](x)</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">[g &#8728; f](x) = g[f(x)]</span><span class="reason">Composition of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= g(2x &minus; 5)</span><span class="reason">Substitute f(x) = 2x &minus; 5</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 3(2x &minus; 5)</span><span class="reason">Substitute into g(x) = 3x</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 6x &minus; 15</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">[g &#8728; f](x) = 6x &minus; 15</div>
+    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part B: domain and range</p>
+    <div class="info-box"><strong>&#8505; Both results are linear with nonzero slope,</strong> so D = {all real numbers} and R = {all real numbers} for both compositions.</div>
+    <div class="warning-box"><strong>&#9888; 6x &minus; 5 &ne; 6x &minus; 15.</strong> This is direct evidence that f &#8728; g and g &#8728; f are generally different functions.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 6</span>
+    <span class="example-title">Use Composition of Functions (Application)</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">BOX OFFICE: A theatre charges $8.50 for each of the x tickets sold. The studios take 75% of the money earned on ticket sales t(x), so the theatre keeps 25%. If the amount kept is k(x), which composition represents the total amount the theatre keeps?</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">t(x) = 8.50x</span><span class="reason">Total money earned on ticket sales</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">k(x) = 0.25x</span><span class="reason">The theatre keeps 25% of an amount x</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">Total sales happen first, then the split</span><span class="reason">The output of t becomes the input of k</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">[k &#8728; t](x) = k[t(x)]</span><span class="reason">Composition of functions</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= k(8.50x) = 0.25(8.50x)</span><span class="reason">Substitute</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= 2.125x</span><span class="reason">Simplify</span></div>
+    <div class="answer-box">[k &#8728; t](x) = 2.125x &nbsp;&mdash; the theatre keeps $2.125 per ticket</div>
+    <div class="warning-box"><strong>&#9888; Watch the order.</strong> [t &#8728; k](x) = 8.50(0.25x) = 2.125x gives the same number here only because both functions are simple multipliers. In general, choose the order that matches the real sequence of events.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 7</span>
+    <span class="example-title">Find the Error &mdash; Composing Carefully</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Chris and Tobias are finding (f &#8728; g)(x) where f(x) = x&sup2; + 2x &minus; 8 and g(x) = x&sup2; + 8. Who is correct?</div>
+    <div class="case-grid"><div class="case-box"><h4>Chris (incorrect)</h4><div class="math">(f &#8728; g)(x) = (x&sup2; + 8)&sup2; + 2x &minus; 8<br>= x&#8308; + 16x&sup2; + 64 + 2x &minus; 8<br>= x&#8308; + 16x&sup2; + 2x + 56</div></div><div class="case-box"><h4>Tobias (correct)</h4><div class="math">(f &#8728; g)(x) = (x&sup2; + 8)&sup2; + 2(x&sup2; + 8) &minus; 8<br>= x&#8308; + 16x&sup2; + 64 + 2x&sup2; + 16 &minus; 8<br>= x&#8308; + 18x&sup2; + 72</div></div></div>
+    <div class="solution-step"><span class="num">1</span><span class="math">[f &#8728; g](x) = f[g(x)]</span><span class="reason">Composition of functions</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Replace EVERY x in f with g(x)</span><span class="reason">Both the x&sup2; term and the 2x term</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (x&sup2; + 8)&sup2; + 2(x&sup2; + 8) &minus; 8</span><span class="reason">Substitute</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= x&#8308; + 16x&sup2; + 64 + 2x&sup2; + 16 &minus; 8</span><span class="reason">Expand</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= x&#8308; + 18x&sup2; + 72</span><span class="reason">Combine like terms</span></div>
+    <div class="answer-box">Tobias is correct: (f &#8728; g)(x) = x&#8308; + 18x&sup2; + 72</div>
+    <div class="warning-box"><strong>&#9888; Substitute into every x.</strong> Chris replaced only the squared term and left 2x untouched. In a composition, every occurrence of x in the outer function must be replaced.</div>
+  </div>
+</div>
+</section>
+
+<section id="summary">
+  <h2>Summary &amp; Common Mistakes</h2>
+
+  <div class="concept-card">
+    <h3>&#128221; Quick Reference</h3>
+    <table class="tbl">
+      <tr><th>You are asked for</th><th>What to do</th><th>Watch for</th></tr>
+      <tr><td>(f + g)(x)</td><td>Add and combine like terms</td><td>Line up matching powers</td></tr>
+      <tr><td>(f &minus; g)(x)</td><td>Distribute the negative to every term of g</td><td>Sign errors on the second and later terms</td></tr>
+      <tr><td>(f &middot; g)(x)</td><td>Distribute each term of f across each term of g</td><td>Missing cross terms</td></tr>
+      <tr><td>(f/g)(x)</td><td>Write as a quotient</td><td>Exclude x-values where g(x) = 0</td></tr>
+      <tr><td>[f &#8728; g](x)</td><td>Evaluate g first, substitute into f</td><td>Replace EVERY x in f</td></tr>
+      <tr><td>[g &#8728; f](x)</td><td>Evaluate f first, substitute into g</td><td>Usually different from f &#8728; g</td></tr>
+      <tr><td>Domain of a composition</td><td>Start with the domain of the inner function</td><td>Remove x whose output leaves the outer domain</td></tr>
+    </table>
+  </div>
+
+  <div class="concept-card">
+    <h3>&#9888; Common Mistakes to Avoid</h3>
+    <div class="warning-box"><strong>&#9888; Forgetting to distribute the minus sign.</strong> (f &minus; g)(x) requires subtracting <em>all</em> of g(x), not just its first term.</div>
+    <div class="warning-box"><strong>&#9888; Assuming f &#8728; g = g &#8728; f.</strong> With f(x) = 2x &minus; 5 and g(x) = 3x you get 6x &minus; 5 versus 6x &minus; 15. Order changes the answer.</div>
+    <div class="warning-box"><strong>&#9888; Substituting into only one x.</strong> If f(x) = x&sup2; + 2x &minus; 8, then f[g(x)] replaces both the x&sup2; and the 2x.</div>
+    <div class="warning-box"><strong>&#9888; Losing the division restriction.</strong> Even if a factor cancels, the original zero of the denominator stays excluded.</div>
+    <div class="warning-box"><strong>&#9888; Keeping pairs that are undefined.</strong> With ordered pairs, if an output of the inner function is not in the domain of the outer function, that x is simply not in the composition.</div>
+  </div>
+
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+(function(){
+const questions=[
+  {q:"If f(x) = 3x and g(x) = x &minus; 4, find (f + g)(x).",opts:["4x &minus; 4","3x &minus; 4","4x + 4","2x &minus; 4"],ans:0,exp:"3x + (x &minus; 4) = 4x &minus; 4."},
+  {q:"If f(x) = x&sup2; + 1 and g(x) = 2x, find (f &minus; g)(x).",opts:["x&sup2; + 2x + 1","x&sup2; &minus; 2x + 1","x&sup2; &minus; 2x &minus; 1","&minus;x&sup2; + 2x &minus; 1"],ans:1,exp:"(x&sup2; + 1) &minus; 2x = x&sup2; &minus; 2x + 1."},
+  {q:"If f(x) = x + 2 and g(x) = x &minus; 2, find (f &middot; g)(x).",opts:["x&sup2; &minus; 4","x&sup2; + 4","2x","x&sup2; &minus; 4x + 4"],ans:0,exp:"(x + 2)(x &minus; 2) = x&sup2; &minus; 4, the difference of squares."},
+  {q:"If f(x) = x&sup2; &minus; 9 and g(x) = x + 3, find (f/g)(x).",opts:["x &minus; 3, x &ne; 3","x + 3, x &ne; &minus;3","x &minus; 3, x &ne; &minus;3","x &minus; 3, no restriction"],ans:2,exp:"(x&sup2; &minus; 9)/(x + 3) = (x + 3)(x &minus; 3)/(x + 3) = x &minus; 3. The value x = &minus;3 stays excluded even though the factor cancels."},
+  {q:"The notation [f &#8728; g](x) means:",opts:["g[f(x)]","f(x) &middot; g(x)","f[g(x)]","f(x) + g(x)"],ans:2,exp:"[f &#8728; g](x) = f[g(x)]: evaluate g first, then use that output as the input of f."},
+  {q:"If f(x) = 2x and g(x) = x + 5, find [f &#8728; g](x).",opts:["2x + 10","2x + 5","x + 10","2x&sup2; + 10x"],ans:0,exp:"f[g(x)] = f(x + 5) = 2(x + 5) = 2x + 10."},
+  {q:"If f(x) = 2x and g(x) = x + 5, find [g &#8728; f](x).",opts:["2x + 10","2x + 5","x + 10","2x &minus; 5"],ans:1,exp:"g[f(x)] = g(2x) = 2x + 5. Note this differs from [f &#8728; g](x) = 2x + 10."},
+  {q:"If f(x) = x&sup2; and g(x) = x &minus; 1, find [f &#8728; g](x).",opts:["x&sup2; &minus; 1","x&sup2; &minus; 2x + 1","x&sup2; + 2x + 1","x&sup2; &minus; 2x &minus; 1"],ans:1,exp:"f[g(x)] = (x &minus; 1)&sup2; = x&sup2; &minus; 2x + 1."},
+  {q:"If f(x) = x + 3 and g(x) = x&sup2;, find [g &#8728; f](x).",opts:["x&sup2; + 3","x&sup2; + 9","x&sup2; + 6x + 9","x&sup2; + 3x"],ans:2,exp:"g[f(x)] = (x + 3)&sup2; = x&sup2; + 6x + 9."},
+  {q:"Is [f &#8728; g](x) always equal to [g &#8728; f](x)?",opts:["Yes, composition is commutative","No, the order changes the result in general","Only when both are quadratic","Only when both have the same domain"],ans:1,exp:"Composition is not commutative. It is equal only in special cases, such as when f and g are inverses."},
+  {q:"For f(x) = 4x&sup2; &minus; 2x + 3 and g(x) = &minus;x + 5, which value must be excluded from (f/g)(x)?",opts:["x = &minus;5","x = 0","x = 5","x = 3"],ans:2,exp:"Set the denominator to zero: &minus;x + 5 = 0 gives x = 5."},
+  {q:"If f(x) = &minus;x&sup2; + 3x + 1 and g(x) = 2x&sup2; &minus; 5, find (f + g)(x).",opts:["x&sup2; + 3x &minus; 4","&minus;3x&sup2; + 3x + 6","x&sup2; + 3x + 6","3x&sup2; + 3x &minus; 4"],ans:0,exp:"(&minus;x&sup2; + 2x&sup2;) + 3x + (1 &minus; 5) = x&sup2; + 3x &minus; 4."},
+  {q:"If f(x) = &minus;x&sup2; + 3x + 1 and g(x) = 2x&sup2; &minus; 5, find (f &minus; g)(x).",opts:["x&sup2; + 3x &minus; 4","&minus;3x&sup2; + 3x + 6","&minus;3x&sup2; + 3x &minus; 4","&minus;x&sup2; + 3x + 6"],ans:1,exp:"&minus;x&sup2; + 3x + 1 &minus; 2x&sup2; + 5 = &minus;3x&sup2; + 3x + 6. The &minus;5 becomes +5."},
+  {q:"Given f = {(1, 5), (2, 7)} and g = {(0, 1), (3, 2)}, find [f &#8728; g](0).",opts:["1","5","7","undefined"],ans:1,exp:"g(0) = 1, then f(1) = 5."},
+  {q:"If f(x) = x&sup2; + 2x &minus; 8 and g(x) = x&sup2; + 8, find (f &#8728; g)(x).",opts:["x&#8308; + 16x&sup2; + 2x + 56","x&#8308; + 18x&sup2; + 72","x&#8308; + 16x&sup2; + 56","x&#8308; + 18x&sup2; + 56"],ans:1,exp:"(x&sup2; + 8)&sup2; + 2(x&sup2; + 8) &minus; 8 = x&#8308; + 16x&sup2; + 64 + 2x&sup2; + 16 &minus; 8 = x&#8308; + 18x&sup2; + 72."}
+];
+
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div><div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='\u2713 Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='\u2717 Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start \u2014 keep practicing.'],[80,'Great job!'],[95,'Excellent \u2014 you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% \u2014 '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+buildQuiz();
+})();
+</script>
+</body>
+</html>
