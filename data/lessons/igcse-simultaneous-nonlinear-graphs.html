@@ -1,0 +1,343 @@
+<div class="ig-lesson" id="iglab-simul">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#7048E8)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+
+<p class="ig-intro">Where two graphs cross is where two equations are true at once. This lesson turns that one idea into a full method — solving simultaneous equations from a graph, spotting tangents, sketching the four standard non-linear shapes, and reading domain and range. Six labs let you <b>move the line yourself</b> and watch the number of solutions change.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Solve simultaneous linear and non-linear equations graphically.</li>
+    <li>Interpret points of intersection — and know when there are 2, 1 or 0 of them.</li>
+    <li>Sketch and label the four standard non-linear curves.</li>
+    <li>Identify domains, ranges and key graph features.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Solving simultaneous equations graphically <span class="ig-try">Interactive</span></h4>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Key rule.</b> A point lies on a graph only if its coordinates satisfy that equation. So a point lying on <b>both</b> graphs satisfies <b>both</b> equations — and that is exactly what a simultaneous solution is.</div></div>
+  <div class="ig-formula">Solutions $=$ the coordinates of the points of intersection</div>
+  <p>Each intersection gives a <b>pair</b> of values: an $x$ and its matching $y$. A curve and a line usually meet twice, so you normally get <b>two pairs</b>.</p>
+
+  <h5>The method</h5>
+  <ul class="ig-list">
+    <li>Draw the non-linear graph accurately, usually from a table of values.</li>
+    <li>Draw the straight line on the <b>same axes</b> — plot two or three points and join with a ruler.</li>
+    <li>Mark <b>every</b> point where the two graphs cross.</li>
+    <li>Read off the $x$- and $y$-coordinate of each crossing and write the answers as pairs.</li>
+    <li>Check by substituting into <i>both</i> original equations.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> Answers go in pairs — $x=2,\ y=4$ belong together and $x=-1,\ y=1$ belong together. Never mix an $x$ from one point with a $y$ from the other.</div></div>
+
+  <h5>Lab 1 — the intersection explorer</h5>
+  <p>Pick a curve, then move the line with the $m$ and $c$ sliders. The panel reports how many solutions there are and the coordinate pairs. Try to find, for each curve, a line that gives <b>2</b> solutions, one that gives <b>1</b>, and one that gives <b>none</b>.</p>
+  <div data-lab="interlab"></div>
+
+  <h5>Algebraic check (substitution)</h5>
+  <ul class="ig-list">
+    <li>Substitute the linear equation into the non-linear one to remove $y$.</li>
+    <li>Rearrange to the form $ax^{2}+bx+c=0$.</li>
+    <li>Solve by factorising or with the quadratic formula.</li>
+    <li>Put each $x$ back into the <b>linear</b> equation (it is easier) to find the matching $y$.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Interpreting points of intersection <span class="ig-try">Interactive</span></h4>
+  <table class="ig-table">
+    <tr><th>What you see</th><th>Number of solutions</th><th>Meaning</th></tr>
+    <tr><td>Line cuts the curve at two points</td><td>2 solution pairs</td><td>The quadratic has two distinct roots</td></tr>
+    <tr><td>Line just touches the curve</td><td>1 repeated solution</td><td>The line is a <b>tangent</b> to the curve</td></tr>
+    <tr><td>Line never meets the curve</td><td>No real solutions</td><td>The quadratic has no real roots</td></tr>
+  </table>
+  <ul class="ig-list">
+    <li>The $x$-coordinate is the value that makes the two expressions equal.</li>
+    <li>The $y$-coordinate is the common value of both expressions at that point.</li>
+    <li>Either side of an intersection, one graph is above the other — that tells you which expression is <b>greater</b> in that region (useful for inequalities).</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div>If a question says <b>solve $f(x)=g(x)$</b> and both graphs are drawn, you only need the $x$-coordinates. If it says <b>solve the simultaneous equations</b>, you must give both $x$ and $y$.</div></div>
+
+  <h5>Lab 2 — the tangent challenge</h5>
+  <p>Slide the horizontal line until it <b>just touches</b> the curve. The meter and the discriminant tell you exactly how close you are — and show you why "tangent" and "$D=0$" are the same statement.</p>
+  <div data-lab="tangentlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Sketching non-linear graphs <span class="ig-try">Interactive</span></h4>
+  <p>A sketch is not a plot — it needs the correct <b>shape</b> and the key points labelled, not accurate scales.</p>
+  <div class="ig-two">
+    <div class="ig-mini"><b>Quadratic</b> $y=ax^{2}+bx+c$ — parabola. $a>0$ → ∪ with a minimum; $a<0$ → ∩ with a maximum. Symmetrical about $x=\frac{-b}{2a}$.</div>
+    <div class="ig-mini"><b>Cubic</b> $y=ax^{3}+\dots$ — S-shaped. For $a>0$ it rises from bottom-left to top-right. Up to two turning points and up to three roots.</div>
+    <div class="ig-mini"><b>Reciprocal</b> $y=\frac{a}{x}$ — two branches with asymptotes $x=0$ and $y=0$. Never crosses either axis.</div>
+    <div class="ig-mini"><b>Exponential</b> $y=a^{x}$ — always positive, passes through $(0,1)$, asymptote $y=0$. Grows for $a>1$, decays for $0<a<1$.</div>
+  </div>
+
+  <h5>Lab 3 — the curve family</h5>
+  <p>Tap a name to show or hide that curve. Put all four on the same axes and compare how fast each one climbs.</p>
+  <div data-lab="familylab"></div>
+
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Checklist for a good sketch:</b> correct overall shape and direction · axis intercepts marked · turning points shown (approximate is fine) · asymptotes dashed and labelled with their equations · the curve labelled with its equation.</div></div>
+
+  <h5>Lab 4 — match the equation to its graph</h5>
+  <p>Click an equation, then click the graph it belongs to. The clue is always the same: <b>count the highest power of $x$</b>, then look at what happens at the two ends.</p>
+  <div data-lab="matchlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Domain and range <span class="ig-try">Interactive</span></h4>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Domain</b> — the set of $x$-values the function is allowed to take (read left to right).<br><b>Range</b> — the set of $y$-values the function actually produces (read bottom to top).</div></div>
+  <table class="ig-table">
+    <tr><th>Function</th><th>Domain</th><th>Range</th><th>Why</th></tr>
+    <tr><td>$y=3x-1$</td><td>all real $x$</td><td>all real $y$</td><td>A line keeps going both ways</td></tr>
+    <tr><td>$y=x^{2}$</td><td>all real $x$</td><td>$y\ge 0$</td><td>A square is never negative; minimum at $(0,0)$</td></tr>
+    <tr><td>$y=x^{2}-4x+5$</td><td>all real $x$</td><td>$y\ge 1$</td><td>The vertex $(2,1)$ is the minimum</td></tr>
+    <tr><td>$y=\frac{4}{x}$</td><td>$x\neq 0$</td><td>$y\neq 0$</td><td>Cannot divide by 0; never reaches $y=0$</td></tr>
+    <tr><td>$y=2^{x}$</td><td>all real $x$</td><td>$y>0$</td><td>Always above its asymptote $y=0$</td></tr>
+    <tr><td>$y=\sqrt{x}$</td><td>$x\ge 0$</td><td>$y\ge 0$</td><td>No real square root of a negative</td></tr>
+  </table>
+
+  <h5>Lab 5 — domain &amp; range explorer</h5>
+  <p>Pick a function, then drag the two domain sliders. The <b>blue band</b> is the domain you chose and the <b>green band</b> is the range it produces. Set $y=x^{2}$ with a domain from $-1$ to $3$ and watch what the vertex does to the range.</p>
+  <div data-lab="domlab"></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> With a restricted domain such as $y=x^{2}$ for $-1\le x\le 3$, the range comes from that piece only: the lowest value is $0$ (at the vertex) and the highest is $9$, so the range is $0\le y\le 9$ — <b>not</b> $1\le y\le 9$. Never just test the endpoints.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Key graph features — summary <span class="ig-try">Interactive</span></h4>
+  <table class="ig-table">
+    <tr><th>Feature</th><th>How to find it</th></tr>
+    <tr><td>Roots / zeros</td><td>Where the curve meets the x-axis; set $y=0$</td></tr>
+    <tr><td>y-intercept</td><td>Set $x=0$</td></tr>
+    <tr><td>Turning points</td><td>Local maximum or minimum; for a quadratic use $x=\frac{-b}{2a}$</td></tr>
+    <tr><td>Asymptotes</td><td>Lines the curve approaches but never meets (reciprocal, exponential)</td></tr>
+    <tr><td>Symmetry</td><td>Quadratic: vertical line of symmetry. Reciprocal: rotational symmetry of order 2</td></tr>
+    <tr><td>Intersections</td><td>Common points of two graphs = simultaneous solutions</td></tr>
+    <tr><td>Increasing / decreasing</td><td>Sections where the curve rises or falls as $x$ increases</td></tr>
+  </table>
+
+  <h5>Lab 6 — how many solutions for each $k$?</h5>
+  <p>The curve is $y=x^{2}-2$. Use the presets or the sliders to move the line $y=k$ up and down, and count the crossings. Where exactly does the answer change from 2 to 1 to 0?</p>
+  <div data-lab="solvelab" data-curve="q2"></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Curve meets line — two solutions</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Solve graphically the simultaneous equations $y=x^{2}$ and $y=x+2$ for $-3\le x\le 3$.</p>
+    <table class="ig-table">
+      <tr><th>x</th><th>−3</th><th>−2</th><th>−1</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+      <tr><td>$y=x^2$</td><td>9</td><td>4</td><td>1</td><td>0</td><td>1</td><td>4</td><td>9</td></tr>
+    </table>
+    <p>For the line $y=x+2$, plot $(-2,0)$, $(0,2)$ and $(3,5)$ and join with a ruler. Mark the two crossings and read their coordinates: $(-1,1)$ and $(2,4)$. Set $m=1$, $c=2$ on the $y=x^{2}$ curve in <b>Lab 1</b> to see it.</p>
+    <div class="solution-display"><strong>Check.</strong> $x^{2}=x+2\Rightarrow x^{2}-x-2=0\Rightarrow(x-2)(x+1)=0$, so $x=2$ or $x=-1$. Then $y=x+2$ gives $4$ and $1$. ✔<br><strong>Answer.</strong> $x=2,\ y=4$ &nbsp;or&nbsp; $x=-1,\ y=1$.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>A tangent — one repeated solution</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Solve graphically $y=x^{2}-4x+5$ and $y=1$, and comment on the number of solutions.</p>
+    <table class="ig-table">
+      <tr><th>x</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>y</td><td>5</td><td>2</td><td>1</td><td>2</td><td>5</td></tr>
+    </table>
+    <p>The horizontal line $y=1$ just <b>touches</b> the curve at its lowest point. The minimum is at $x=\frac{-b}{2a}=\frac{4}{2}=2$, giving $y=4-8+5=1$. Set $c=1$ in <b>Lab 2</b> to reach $D=0$.</p>
+    <div class="solution-display"><strong>Answer.</strong> One solution only: $x=2,\ y=1$; the line is a <b>tangent</b>.<br><strong>Check.</strong> $x^{2}-4x+5=1\Rightarrow x^{2}-4x+4=0\Rightarrow(x-2)^{2}=0$ — a repeated root. ✔</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Reciprocal curve meets a line</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Solve graphically $y=\dfrac{4}{x}$ and $y=x+3$.</p>
+    <table class="ig-table">
+      <tr><th>x</th><th>−4</th><th>−2</th><th>−1</th><th>1</th><th>2</th><th>4</th></tr>
+      <tr><td>y</td><td>−1</td><td>−2</td><td>−4</td><td>4</td><td>2</td><td>1</td></tr>
+    </table>
+    <p>Draw both branches, leaving a gap at $x=0$, then draw the line through $(0,3)$ and $(-3,0)$. The line meets <b>each</b> branch once — select $y=4/x$ in <b>Lab 1</b> and set $m=1$, $c=3$.</p>
+    <div class="solution-display"><strong>Check.</strong> $\frac{4}{x}=x+3$; multiply by $x$ (valid because $x\neq 0$): $4=x^{2}+3x\Rightarrow x^{2}+3x-4=0\Rightarrow(x+4)(x-1)=0$. ✔<br><strong>Answer.</strong> $x=1,\ y=4$ &nbsp;or&nbsp; $x=-4,\ y=-1$.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Sketching a cubic</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Sketch $y=x^{3}-4x$, showing the roots and describing the shape.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Factorise: $x^{3}-4x=x(x^{2}-4)=x(x-2)(x+2)$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Set each factor to zero: $x=0$, $x=2$, $x=-2$ — three roots.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>y-intercept: $x=0\Rightarrow y=0$, so it passes through the origin.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>The coefficient of $x^{3}$ is positive, so the curve comes up from the bottom-left and heads to the top-right.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p>Between the roots there is a local maximum (between $-2$ and $0$) and a local minimum (between $0$ and $2$).</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> An S-shaped cubic crossing the x-axis at $-2,\ 0$ and $2$, with a local maximum near $(-1.15,\ 3.1)$ and a local minimum near $(1.15,\ -3.1)$. Domain: all real $x$. Range: all real $y$. Select $y=x^{3}-4x$ in <b>Lab 1</b> to compare with your sketch.</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Domain and range</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>State the domain and range of <b>(a)</b> $y=x^{2}$ for $-1\le x\le 3$, <b>(b)</b> $y=\dfrac{4}{x}$, <b>(c)</b> $y=2^{x}$.</p>
+    <p><b>(a)</b> The domain is given. Over that stretch the smallest value is at the vertex $x=0$, giving $y=0$; the largest is at $x=3$, giving $y=9$.</p>
+    <div class="ig-formula">Domain: $-1\le x\le 3$ &nbsp;·&nbsp; Range: $0\le y\le 9$</div>
+    <p><b>(b)</b> Division by zero is not allowed, and the curve never reaches the x-axis.</p>
+    <div class="ig-formula">Domain: $x\neq 0$ &nbsp;·&nbsp; Range: $y\neq 0$</div>
+    <p><b>(c)</b> Any power of 2 is positive; the curve sits entirely above its asymptote $y=0$ and passes through $(0,1)$.</p>
+    <div class="ig-formula">Domain: all real $x$ &nbsp;·&nbsp; Range: $y>0$</div>
+    <div class="solution-display"><strong>Watch out.</strong> Don't just test the endpoints — the vertex sits inside the domain in part (a) and produces the minimum. Check all three in <b>Lab 5</b>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Using a graph to count solutions</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The curve $y=x^{2}-2$ is drawn. For what values of $k$ does $x^{2}-2=k$ have two solutions, one solution, or none?</p>
+    <p>Solving $x^{2}-2=k$ means finding where the horizontal line $y=k$ crosses the curve. The curve has a minimum at $(0,-2)$, so its lowest $y$-value is $-2$. Slide the line in <b>Lab 6</b> and count.</p>
+    <table class="ig-table">
+      <tr><th>Value of k</th><th>Line vs curve</th><th>Solutions</th></tr>
+      <tr><td>$k>-2$</td><td>Cuts the curve twice</td><td>2 solutions</td></tr>
+      <tr><td>$k=-2$</td><td>Touches at the minimum</td><td>1 repeated solution ($x=0$)</td></tr>
+      <tr><td>$k<-2$</td><td>Passes below the curve</td><td>No real solutions</td></tr>
+    </table>
+    <div class="solution-display"><strong>Answer.</strong> Two solutions when $k>-2$; one when $k=-2$; none when $k<-2$.</div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Giving only the x-values.</b> Simultaneous equations need <i>both</i> coordinates, paired correctly.</li>
+    <li><b>Stopping after one intersection.</b> A line and a curve usually meet twice — check the whole grid, including the second branch of a reciprocal graph.</li>
+    <li><b>Confusing domain and range.</b> Domain is horizontal ($x$), range is vertical ($y$).</li>
+    <li><b>Using only endpoints for the range.</b> If a turning point lies inside the domain, it gives the maximum or minimum.</li>
+    <li><b>Drawing a curve through an asymptote.</b> The curve approaches it but never touches or crosses it.</li>
+    <li><b>Sketching a cubic as a parabola.</b> A cubic is S-shaped, with the two ends going in opposite directions.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <div class="gl-q" data-answer="C" data-why="A simultaneous solution is a point on BOTH graphs, so it is a point of intersection — and you must give both coordinates.">
+    <p>1. Two graphs are drawn on the same axes. The solutions of the simultaneous equations are:</p>
+    <ul>
+      <li data-k="A">The x-intercepts of both graphs</li>
+      <li data-k="B">Only the x-coordinates where they cross</li>
+      <li data-k="C">The coordinates of every point of intersection</li>
+      <li data-k="D">The y-intercepts of both graphs</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="One point of contact means a repeated root — the line is a tangent and the resulting quadratic has discriminant 0.">
+    <p>2. A line touches a curve at exactly one point. This means:</p>
+    <ul>
+      <li data-k="A">There are no solutions</li>
+      <li data-k="B">There is one repeated solution and the line is a tangent</li>
+      <li data-k="C">There are two solutions very close together</li>
+      <li data-k="D">The line is parallel to the curve</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="Substituting gives x² = 2x + 3, i.e. x² − 2x − 3 = 0, which factorises to (x − 3)(x + 1) = 0.">
+    <p>3. Solving $y=x^{2}$ with $y=2x+3$ leads to which quadratic?</p>
+    <ul>
+      <li data-k="A">$x^{2}-2x-3=0$</li>
+      <li data-k="B">$x^{2}+2x+3=0$</li>
+      <li data-k="C">$x^{2}-2x+3=0$</li>
+      <li data-k="D">$2x^{2}-3=0$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="The vertex x = 0 lies inside −2 ≤ x ≤ 1, so the minimum is y = 0; the largest value comes from x = −2, giving y = 4.">
+    <p>4. What is the range of $y=x^{2}$ for the domain $-2\le x\le 1$?</p>
+    <ul>
+      <li data-k="A">$1\le y\le 4$</li>
+      <li data-k="B">$-2\le y\le 1$</li>
+      <li data-k="C">$0\le y\le 1$</li>
+      <li data-k="D">$0\le y\le 4$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="An exponential curve is always positive and passes through (0, 1); it never reaches its asymptote y = 0.">
+    <p>5. Which statement about $y=2^{x}$ is true?</p>
+    <ul>
+      <li data-k="A">It crosses the x-axis at $x=0$</li>
+      <li data-k="B">It has a turning point at $(0,1)$</li>
+      <li data-k="C">Its range is $y>0$ and it passes through $(0,1)$</li>
+      <li data-k="D">It has two branches like a reciprocal graph</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="A cubic is S-shaped: with a positive x³ coefficient it comes up from the bottom-left and leaves at the top-right, and it can have up to three roots.">
+    <p>6. Which sketch is right for $y=x^{3}-x$?</p>
+    <ul>
+      <li data-k="A">A ∪-shaped parabola with one turning point</li>
+      <li data-k="B">An S-shaped curve from bottom-left to top-right, crossing the x-axis three times</li>
+      <li data-k="C">Two branches that never touch the axes</li>
+      <li data-k="D">A straight line through the origin</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-simul";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=8";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

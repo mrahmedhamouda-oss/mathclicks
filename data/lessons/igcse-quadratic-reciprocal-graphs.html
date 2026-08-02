@@ -1,0 +1,337 @@
+<div class="ig-lesson" id="iglab-quad">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#7048E8)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+
+<p class="ig-intro">Parabolas and hyperbolas, from first principles to full exam technique. Every section has a <b>lab you can play with</b> — drag the sliders, fill in the tables, click on the curve — so the shapes stop being something you memorise and start being something you can predict.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Draw and interpret quadratic graphs from a table of values.</li>
+    <li>Sketch reciprocal graphs and state their asymptotes.</li>
+    <li>Identify roots, intercepts, turning points and lines of symmetry.</li>
+    <li>Solve quadratic equations graphically — including when the equation doesn't match the drawn curve.</li>
+    <li>Tell linear and non-linear relationships apart from a table of values.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Quadratic graphs <span class="ig-try">Interactive</span></h4>
+  <p>Every quadratic gives a smooth, symmetrical curve called a <b>parabola</b>.</p>
+  <div class="ig-formula">$y=ax^{2}+bx+c\qquad (a\neq 0)$</div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Key rule.</b> The sign of $a$ decides which way the curve opens. $a>0$ → opens upwards (∪), the turning point is a <b>minimum</b>. $a<0$ → opens downwards (∩), the turning point is a <b>maximum</b>. The size of $|a|$ controls how narrow it is.</div></div>
+
+  <h5>Lab 1 — the parabola explorer</h5>
+  <p>Move $a$, $b$ and $c$ and watch every feature update at once. Try to answer these as you go: <i>which slider slides the curve up and down? which one moves the line of symmetry? what happens the moment the discriminant goes negative?</i></p>
+  <div data-lab="quadlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Drawing a quadratic from a table <span class="ig-try">Interactive</span></h4>
+  <ul class="ig-list">
+    <li><b>Build the table.</b> Substitute each $x$ value — work out $x^{2}$, then the $x$ term, then the constant, in separate rows.</li>
+    <li><b>Plot the points</b> accurately, using the scales printed on the axes.</li>
+    <li><b>Join them with a smooth curve</b> — freehand, never with a ruler, never as straight segments.</li>
+    <li><b>Extend</b> the curve to the edges of the grid and label it with its equation.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> Squaring a negative gives a positive: $(-3)^{2}=9$, not $-9$. This is the single most common table error. Also the vertex often sits <i>between</i> two whole-number $x$-values, so the lowest plotted point may not be the true turning point.</div></div>
+
+  <h5>Lab 2 — table trainer</h5>
+  <p>Fill in every $y$-value, press <b>Check</b>, then press <b>Plot my points</b> to see which of your points really sit on the curve.</p>
+  <div data-lab="tablelab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Roots, intercepts &amp; turning points</h4>
+  <div class="ig-two">
+    <div class="ig-mini"><b>y-intercept</b> — where the curve crosses the $y$-axis. Put $x=0$, so it is always $(0,\,c)$: just read off the constant.</div>
+    <div class="ig-mini"><b>Roots (x-intercepts)</b> — where $y=0$. These are the <b>solutions</b> of $ax^{2}+bx+c=0$. There can be 2, 1 (repeated) or none.</div>
+    <div class="ig-mini"><b>Line of symmetry</b> — the vertical line $x=\dfrac{-b}{2a}$. If you know the two roots, it is exactly halfway between them.</div>
+    <div class="ig-mini"><b>Turning point (vertex)</b> — substitute the line-of-symmetry $x$ back in to get $y$. Or complete the square: $y=a(x-h)^{2}+k$ has vertex $(h,k)$.</div>
+  </div>
+
+  <h5>Lab 3 — click the feature</h5>
+  <p>The curve below is $y=x^{2}-2x-3$. Read each instruction and <b>click the right spot on the graph</b>. Get it wrong and you'll be told where you actually clicked — which is exactly the skill of reading coordinates off a grid.</p>
+  <div data-lab="featurelab"></div>
+
+  <table class="ig-table">
+    <tr><th>Feature</th><th>What it means on the graph</th><th>How to find it</th></tr>
+    <tr><td>Roots / zeros</td><td>Curve meets the x-axis</td><td>Set $y=0$; factorise or read off</td></tr>
+    <tr><td>y-intercept</td><td>Curve meets the y-axis</td><td>Set $x=0$ → $y=c$</td></tr>
+    <tr><td>Turning point</td><td>Highest or lowest point</td><td>$x=\frac{-b}{2a}$, then find $y$</td></tr>
+    <tr><td>Line of symmetry</td><td>Mirror line of the parabola</td><td>Vertical line through the turning point</td></tr>
+  </table>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Reciprocal graphs <span class="ig-try">Interactive</span></h4>
+  <p>Curves of the form $y=\dfrac{a}{x}$ have two separate branches and are called a <b>hyperbola</b>.</p>
+  <ul class="ig-list">
+    <li>$a>0$ → branches in the <b>1st and 3rd</b> quadrants (top-right and bottom-left).</li>
+    <li>$a<0$ → branches in the <b>2nd and 4th</b> quadrants (top-left and bottom-right).</li>
+    <li>The curve <b>never touches either axis</b> and never crosses from one branch to the other.</li>
+    <li>It has rotational symmetry of order 2 about the origin.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Asymptote.</b> A line the curve approaches ever more closely but never actually reaches. For $y=\dfrac{a}{x}$ they are $x=0$ (the y-axis) and $y=0$ (the x-axis). For $y=\dfrac{a}{x}+k$ the whole curve slides up by $k$, so the horizontal asymptote becomes $y=k$.</div></div>
+
+  <h5>Lab 4 — reciprocal explorer</h5>
+  <p>Change $a$ to flip the branches between quadrants, and change $k$ to slide the curve — watch the horizontal asymptote and the table of values move with it. Look at what happens to $y$ as $x$ gets close to $0$.</p>
+  <div data-lab="reciplab"></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> Never join the two branches through $x=0$. The function is <b>undefined</b> there — leave a clear gap.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Solving quadratics from a graph <span class="ig-try">Interactive</span></h4>
+  <p>The solutions are always the <b>$x$-coordinates of intersection points</b>.</p>
+  <ul class="ig-list">
+    <li><b>Case A — $ax^{2}+bx+c=0$.</b> Read off where the curve cuts the x-axis.</li>
+    <li><b>Case B — $ax^{2}+bx+c=k$.</b> Draw the horizontal line $y=k$ and read the $x$-coordinates of the crossings.</li>
+    <li><b>Case C — the equation doesn't match your curve.</b> Rearrange so that one side is exactly the equation of your drawn curve. Whatever is left on the other side is the line you must draw.</li>
+  </ul>
+  <div class="ig-eg"><div class="ig-lbl">Case C worked</div>
+    You drew $y=x^{2}-2x-3$ and must solve $x^{2}-3x-1=0$.<br>
+    Add $x$ and add $2$ to both sides: $x^{2}-2x-3=x+2$.<br>
+    So draw the line $\mathbf{y=x+2}$ and read the x-coordinates of the intersections.
+  </div>
+
+  <h5>Lab 5 — slide the line</h5>
+  <p>The curve is fixed at $y=x^{2}-2x-3$. Move the line and watch the solution count change from 2 → 1 (tangent) → 0. Use the presets to see Case A, Case B and Case C.</p>
+  <div data-lab="solvelab" data-curve="q1"></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> The answer is the <b>$x$</b>-coordinate of the intersection — not the $y$-coordinate, and not the coordinate pair. Give graph readings to 1 d.p. unless told otherwise, and always give <i>both</i> solutions.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">6</span> Linear vs non-linear <span class="ig-try">Interactive</span></h4>
+  <table class="ig-table">
+    <tr><th>&nbsp;</th><th>Linear</th><th>Non-linear</th></tr>
+    <tr><td><b>Equation</b></td><td>$y=mx+c$</td><td>$y=ax^{2}+bx+c$, $y=\frac{a}{x}$, $y=x^{3}$, …</td></tr>
+    <tr><td><b>Shape</b></td><td>Straight line</td><td>Curve (parabola, hyperbola, cubic)</td></tr>
+    <tr><td><b>Gradient</b></td><td>Constant everywhere</td><td>Changes from point to point</td></tr>
+    <tr><td><b>Highest power of x</b></td><td>1</td><td>2 or more, or $x$ in a denominator</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>The difference test.</b> With equally spaced $x$ values: constant <b>first</b> differences → linear. Constant <b>second</b> differences → quadratic. Neither → some other non-linear relationship (check whether $x\times y$ is constant — that means reciprocal).</div></div>
+
+  <h5>Lab 6 — the difference machine</h5>
+  <p>Type any five $y$-values, or load one of the four sets, and the machine works out both rows of differences and classifies the relationship for you.</p>
+  <div data-lab="difflab"></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Draw and interpret a quadratic</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Complete a table of values for $y=x^{2}-2x-3$ for $-2\le x\le 4$, draw the graph, and state the roots, the y-intercept, the line of symmetry and the turning point.</p>
+    <table class="ig-table">
+      <tr><th>x</th><th>−2</th><th>−1</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>$x^2$</td><td>4</td><td>1</td><td>0</td><td>1</td><td>4</td><td>9</td><td>16</td></tr>
+      <tr><td>$-2x$</td><td>4</td><td>2</td><td>0</td><td>−2</td><td>−4</td><td>−6</td><td>−8</td></tr>
+      <tr><td>$-3$</td><td>−3</td><td>−3</td><td>−3</td><td>−3</td><td>−3</td><td>−3</td><td>−3</td></tr>
+      <tr><td><b>y</b></td><td><b>5</b></td><td><b>0</b></td><td><b>−3</b></td><td><b>−4</b></td><td><b>−3</b></td><td><b>0</b></td><td><b>5</b></td></tr>
+    </table>
+    <p><b>Roots:</b> the curve meets the x-axis at $x=-1$ and $x=3$. Check by factorising: $x^{2}-2x-3=(x+1)(x-3)=0$. ✔</p>
+    <p><b>y-intercept:</b> the constant term, so $(0,-3)$.</p>
+    <p><b>Line of symmetry:</b> $x=\dfrac{-b}{2a}=\dfrac{2}{2}=1$ — also the midpoint of $-1$ and $3$.</p>
+    <p><b>Turning point:</b> put $x=1$ in: $y=1-2-3=-4$.</p>
+    <div class="solution-display"><strong>Answer.</strong> Roots $x=-1,\ x=3$ · y-intercept $(0,-3)$ · line of symmetry $x=1$ · minimum turning point $(1,-4)$.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Turning point by completing the square</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Find the coordinates of the turning point of $y=x^{2}-6x+5$ and say whether it is a maximum or a minimum.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Halve the coefficient of $x$: $-6\div 2=-3$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$(x-3)^{2}$ expands to $x^{2}-6x+9$ — that is $9$ too much, so subtract $9$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$y=(x-3)^{2}-9+5=(x-3)^{2}-4$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Compare with $y=a(x-h)^{2}+k$: here $h=3$, $k=-4$. Since $a=1>0$ the parabola opens upwards.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Minimum turning point at $(3,-4)$. Check: $x=\frac{-b}{2a}=\frac{6}{2}=3$, then $y=9-18+5=-4$. ✔</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>The bracket is $(x-3)^{2}$ but the x-coordinate is $+3$ — the sign flips.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Sketching a reciprocal graph</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Sketch $y=\dfrac{8}{x}$ for $-8\le x\le 8$, $x\neq 0$, and state the equations of the asymptotes.</p>
+    <p>Since $a=8>0$, the branches lie in the 1st and 3rd quadrants. A few points on each branch:</p>
+    <table class="ig-table">
+      <tr><th>x</th><th>−8</th><th>−4</th><th>−2</th><th>−1</th><th>1</th><th>2</th><th>4</th><th>8</th></tr>
+      <tr><td>y</td><td>−1</td><td>−2</td><td>−4</td><td>−8</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+    </table>
+    <p>Draw each branch as a smooth curve bending towards but never touching the axes, with a clear break at $x=0$. Set $a=8$ and $k=0$ in <b>Lab 4</b> above to check your sketch against the real curve.</p>
+    <div class="solution-display"><strong>Answer.</strong> Asymptotes $x=0$ and $y=0$. Two branches in the 1st and 3rd quadrants, with rotational symmetry of order 2 about the origin.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Solving a quadratic from a graph</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Using the graph of $y=x^{2}-2x-3$, solve <b>(a)</b> $x^{2}-2x-3=0$ and <b>(b)</b> $x^{2}-2x-3=2$.</p>
+    <p><b>(a)</b> Read where the curve meets the x-axis (the line $y=0$): $x=-1$ or $x=3$.</p>
+    <p><b>(b)</b> Draw the horizontal line $y=2$ and read the x-coordinates of the two crossings: $x\approx-1.4$ or $x\approx3.4$. Set the preset <b>y = 2</b> in Lab 5 to see it.</p>
+    <div class="solution-display"><strong>Check.</strong> Algebraically $x^{2}-2x-5=0$, so $x=\dfrac{2\pm\sqrt{24}}{2}=1\pm\sqrt{6}$, i.e. $x=3.449\ldots$ or $-1.449\ldots$ ✔ — the 1 d.p. graph readings agree.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Which extra line should you draw?</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The curve $y=x^{2}-2x-3$ is drawn. Which straight line should be drawn to solve $x^{2}-3x-1=0$?</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Write the equation to solve: $x^{2}-3x-1=0$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Make the left-hand side match the drawn curve — add $x$ and add $2$ to both sides: $x^{2}-2x-3=x+2$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>The left side is the curve; the right side is the line to draw.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Draw $y=x+2$ (preset 3 in Lab 5). Exact solutions $x=\dfrac{3\pm\sqrt{13}}{2}$, i.e. $x\approx3.30$ or $x\approx-0.30$.</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Linear, quadratic or neither?</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Classify each set: <b>A</b> $(1,5)(2,8)(3,11)(4,14)$ · <b>B</b> $(1,2)(2,5)(3,10)(4,17)$ · <b>C</b> $(1,12)(2,6)(3,4)(4,3)$.</p>
+    <p><b>A:</b> first differences $+3,+3,+3$ → constant → <b>linear</b>, $y=3x+2$.</p>
+    <p><b>B:</b> first differences $+3,+5,+7$; second differences $+2,+2$ → constant → <b>quadratic</b>, $y=x^{2}+1$.</p>
+    <p><b>C:</b> neither set of differences is constant, but $x\times y=12$ every time → <b>reciprocal</b>, $y=\dfrac{12}{x}$.</p>
+    <div class="solution-display"><strong>Answer.</strong> A linear · B quadratic · C reciprocal. Type each set into <b>Lab 6</b> to see the differences appear.</div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Joining points with straight lines.</b> Curves are drawn freehand and smooth — no rulers, no sharp corner at the vertex.</li>
+    <li><b>Sign errors when squaring negatives.</b> $(-4)^{2}=16$. Set the table out in separate rows.</li>
+    <li><b>Joining the two branches of a reciprocal graph.</b> There is no point at $x=0$ — leave the gap.</li>
+    <li><b>Letting a curve touch its asymptote.</b> It gets closer and closer, but never meets it.</li>
+    <li><b>Giving the y-coordinate as the solution.</b> Solutions of an equation are always $x$-values.</li>
+    <li><b>Assuming the lowest table value is the turning point.</b> The vertex often lies between two plotted x-values — use $x=\frac{-b}{2a}$.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <div class="gl-q" data-answer="B" data-why="a is negative, so the parabola opens downwards and its turning point is the highest point — a maximum.">
+    <p>1. The curve $y=-2x^{2}+4x+1$ has a turning point. Is it a maximum or a minimum?</p>
+    <ul>
+      <li data-k="A">A minimum, because $c=1$ is positive</li>
+      <li data-k="B">A maximum, because $a=-2$ is negative</li>
+      <li data-k="C">A minimum, because $b=4$ is positive</li>
+      <li data-k="D">You cannot tell without drawing it</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="The y-intercept is found by putting x = 0, which always leaves the constant term c.">
+    <p>2. What is the y-intercept of $y=x^{2}-5x+6$?</p>
+    <ul>
+      <li data-k="A">$(0,-5)$</li>
+      <li data-k="B">$(2,0)$ and $(3,0)$</li>
+      <li data-k="C">$(0,6)$</li>
+      <li data-k="D">$(0,1)$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="The line of symmetry is x = −b/(2a) = −(−6)/(2×1) = 3, and it passes through the turning point.">
+    <p>3. The line of symmetry of $y=x^{2}-6x+8$ is:</p>
+    <ul>
+      <li data-k="A">$x=3$</li>
+      <li data-k="B">$x=-3$</li>
+      <li data-k="C">$y=3$</li>
+      <li data-k="D">$x=6$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="a is negative, so the branches sit in the 2nd and 4th quadrants; the asymptotes are still the two axes.">
+    <p>4. Where do the branches of $y=\dfrac{-5}{x}$ lie?</p>
+    <ul>
+      <li data-k="A">1st and 3rd quadrants</li>
+      <li data-k="B">Only the 4th quadrant</li>
+      <li data-k="C">Along the axes</li>
+      <li data-k="D">2nd and 4th quadrants</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="Rearrange so the left side is exactly the curve you drew: x² − x − 4 = 0 → x² − 2x − 3 = −x + 1, so the line is y = −x + 1.">
+    <p>5. You have drawn $y=x^{2}-2x-3$. Which line solves $x^{2}-x-4=0$?</p>
+    <ul>
+      <li data-k="A">$y=x-4$</li>
+      <li data-k="B">$y=-x+1$</li>
+      <li data-k="C">$y=x+1$</li>
+      <li data-k="D">$y=-4$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="First differences +4, +8, +12 are not constant, but the second differences are +4, +4 — that is the signature of a quadratic.">
+    <p>6. A table with equally spaced $x$ gives $y = 3,\ 7,\ 15,\ 27$. The relationship is:</p>
+    <ul>
+      <li data-k="A">Linear</li>
+      <li data-k="B">Reciprocal</li>
+      <li data-k="C">Quadratic</li>
+      <li data-k="D">Exponential</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-quad";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=8";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

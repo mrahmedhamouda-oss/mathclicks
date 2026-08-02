@@ -1,0 +1,359 @@
+<div class="ig-lesson" id="iglab-bearings">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#1098AD)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+<p class="ig-intro">A scale drawing shrinks the real world onto paper; a bearing says which way to go once you are there. Together they answer every navigation question on the syllabus. Spin the compass dial below until three-figure bearings feel automatic, then chain two legs of a journey together and let the working appear.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Read a scale written as a ratio or as a statement, and convert between the two.</li>
+    <li>Turn a map length into a real distance, and a real distance into a plan length.</li>
+    <li>Scale areas correctly — by the <em>square</em> of the length factor.</li>
+    <li>Measure, draw and write three-figure bearings.</li>
+    <li>Find a back bearing, and know when to add $180°$ and when to subtract it.</li>
+    <li>Solve navigation problems by scale drawing and by calculation.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Scales on maps and plans</h4>
+  <table class="ig-table">
+    <tr><th>Form</th><th>Example</th><th>Meaning</th></tr>
+    <tr><td><b>Ratio</b> (no units)</td><td>$1:50\,000$</td><td>1 unit on the map = 50 000 of the <em>same</em> units in real life</td></tr>
+    <tr><td><b>Statement</b> (with units)</td><td>1 cm represents 5 km</td><td>Every centimetre drawn stands for 5 kilometres</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Key rule.</b> In a ratio scale the units must be the <b>same on both sides</b>. $1:50\,000$ means 1 cm to 50 000 cm — you then convert 50 000 cm into a sensible unit.</div></div>
+
+  <h5>The conversions you need</h5>
+  <div class="ig-formula">$1\text{ m}=100\text{ cm}\qquad 1\text{ km}=1000\text{ m}\qquad 1\text{ km}=100\,000\text{ cm}$</div>
+  <p>So $1:50\,000$ is the same as "1 cm represents 0.5 km", because $50\,000\div100\,000=0.5$.</p>
+
+  <table class="ig-table">
+    <tr><th>Statement</th><th>Ratio</th><th>Working</th></tr>
+    <tr><td>1 cm : 2 m</td><td>$1:200$</td><td>2 m = 200 cm</td></tr>
+    <tr><td>1 cm : 250 m</td><td>$1:25\,000$</td><td>250 m = 25 000 cm</td></tr>
+    <tr><td>1 cm : 5 km</td><td>$1:500\,000$</td><td>5 km = 500 000 cm</td></tr>
+  </table>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Actual distances and areas <span class="ig-try">Interactive</span></h4>
+  <div class="ig-formula">actual $=$ drawing $\times$ scale factor &nbsp;·&nbsp; drawing $=$ actual $\div$ scale factor</div>
+  <ul class="ig-list">
+    <li>Decide the direction: map → real (<b>multiply</b>) or real → map (<b>divide</b>).</li>
+    <li>Get both quantities into the <b>same unit</b> before you multiply or divide.</li>
+    <li>Do the calculation.</li>
+    <li>Convert the answer to a sensible unit and state that unit.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div>Real distances are always <b>bigger</b> than map distances, and plan lengths are always <b>smaller</b> than the real object. If your answer goes the wrong way you have multiplied where you should have divided.</div></div>
+
+  <h5>Lab 1 — the scale converter</h5>
+  <p>Type any scale and switch direction. The steps below show the unit conversion that most answers lose marks on. The third tab handles areas.</p>
+  <div data-lab="scalelab"></div>
+
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Areas.</b> If lengths are scaled by $n$, areas are scaled by $n^{2}$. With a scale of 1 cm : 5 km, an area of $1\text{ cm}^{2}$ on the map represents $5^{2}=25\text{ km}^{2}$.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Three-figure bearings <span class="ig-try">Interactive</span></h4>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>The three rules of a bearing.</b><br>1 · Measured from <b>North</b>. &nbsp; 2 · Measured <b>clockwise</b>. &nbsp; 3 · Always written with <b>three figures</b> — $045°$, never $45°$.</div></div>
+
+  <h5>Lab 2 — the bearing dial</h5>
+  <p>Drag the slider and watch the clockwise arc grow from the North line. The panel gives the three-figure form, the nearest compass point, and the back bearing with the reason for adding or subtracting.</p>
+  <div data-lab="bearinglab"></div>
+
+  <table class="ig-table">
+    <tr><th>Direction</th><th>N</th><th>NE</th><th>E</th><th>SE</th><th>S</th><th>SW</th><th>W</th><th>NW</th></tr>
+    <tr><td>Bearing</td><td>$000°$</td><td>$045°$</td><td>$090°$</td><td>$135°$</td><td>$180°$</td><td>$225°$</td><td>$270°$</td><td>$315°$</td></tr>
+  </table>
+  <p>Bearings run from $000°$ up to $360°$, so any value outside that range must be adjusted by adding or subtracting $360$.</p>
+
+  <h5>Drawing a bearing</h5>
+  <ul class="ig-list">
+    <li>Mark the starting point and draw a <b>North line</b> vertically upwards from it.</li>
+    <li>Put the centre of the protractor on that point, with $0°$ along the North line.</li>
+    <li>Measure the angle <b>clockwise</b> from North and mark it.</li>
+    <li>Draw the line, then measure the required distance along it using the scale.</li>
+    <li>Label the point and the angle.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div>"The bearing of B <b>from</b> A" means the North line is drawn at <b>A</b>. The point after the word "from" is always where you are standing.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Back bearings</h4>
+  <p>The <b>back bearing</b> is the reverse journey: the bearing of A from B, when you know the bearing of B from A.</p>
+  <div class="ig-formula">Under $180°$ → <b>add</b> $180°$ &nbsp;·&nbsp; $180°$ or more → <b>subtract</b> $180°$</div>
+  <p>It works because the two North lines are <b>parallel</b>, so the angles at A and B are co-interior and add to $180°$.</p>
+  <table class="ig-table">
+    <tr><th>Bearing of B from A</th><th>Bearing of A from B</th></tr>
+    <tr><td>$040°$</td><td>$220°$</td></tr>
+    <tr><td>$130°$</td><td>$310°$</td></tr>
+    <tr><td>$215°$</td><td>$035°$</td></tr>
+    <tr><td>$300°$</td><td>$120°$</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div>Adding $180$ to a bearing of $250°$ gives $430°$, which is not a valid bearing. Subtract instead — the answer must lie between $000°$ and $360°$. Slide past $180°$ in <b>Lab 2</b> and watch the rule flip.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Solving navigation problems <span class="ig-try">Interactive</span></h4>
+
+  <h5>By accurate scale drawing</h5>
+  <ul class="ig-list">
+    <li>Write down the scale you are using.</li>
+    <li>Mark the starting point and draw its North line.</li>
+    <li>Measure each bearing with a protractor, drawing each leg to the correct scaled length.</li>
+    <li>Join the final point back to the start.</li>
+    <li>Measure that line and convert with the scale; measure its bearing from the appropriate North line.</li>
+  </ul>
+
+  <h5>By calculation</h5>
+  <p>When the legs meet at a right angle, use <b>Pythagoras</b> and <b>trigonometry</b>. Otherwise use the sine or cosine rule.</p>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Useful angle facts.</b> All North lines are <b>parallel</b>, so you can use: alternate angles (Z-shape) are equal · co-interior angles (C-shape) add to $180°$ · angles around a point add to $360°$.</div></div>
+
+  <h5>Lab 3 — the two-leg journey</h5>
+  <p>Set a distance and bearing for each leg. The sketch draws the path and the return line, and the working finds the interior angle at $Q$, the distance $PR$, and the bearing of $R$ from $P$. Try $8$ km on $060°$ then $6$ km on $150°$ for the classic right-angled case.</p>
+  <div data-lab="navlab"></div>
+
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> Trigonometry gives you an <em>angle inside a triangle</em>, not a bearing. You almost always have to add it to, or subtract it from, another bearing to get the final answer.</div></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Map distance to actual distance</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A map has a scale of $1:50\,000$. Two towns are $6$ cm apart on the map. Find the actual distance in kilometres.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The scale means 1 cm on the map represents 50 000 cm in reality.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Multiply: $6\times50\,000=300\,000$ cm.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Convert to km: $300\,000\div100\,000=3$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $3$ km</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Faster route.</b> Convert the scale once: $1:50\,000$ means 1 cm : 0.5 km. Then $6\times0.5=3$ km.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Actual distance to plan length</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A plan uses the scale "1 cm represents 250 m". A road is $1.75$ km long. How long is it on the plan?</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Make the units match: $1.75$ km $=1750$ m.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Going from real to plan, so divide: $1750\div250=7$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $7$ cm on the plan</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Converting $1.75$ km to metres first is essential — dividing $1.75$ by $250$ gives $0.007$ cm, which is clearly wrong.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Converting a scale and finding an area</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A map has a scale of $1:25\,000$. <b>(a)</b> Write this as "1 cm represents … km". <b>(b)</b> A forest covers $8\text{ cm}^{2}$ on the map. Find its real area in $\text{km}^{2}$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>(a)</b> $25\,000$ cm $=250$ m $=0.25$ km, so <b>1 cm represents 0.25 km</b>.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>(b)</b> Lengths scale by $0.25$, so areas scale by $0.25^{2}=0.0625$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$1\text{ cm}^{2}$ represents $0.0625\text{ km}^{2}$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$8\times0.0625=0.5$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> (a) 1 cm : 0.25 km · (b) $0.5\text{ km}^{2}$</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Back bearings</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The bearing of B from A is $070°$. The bearing of D from C is $215°$. Find the bearing of A from B and the bearing of C from D.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$070°$ is less than $180°$, so add: $70+180=250$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$215°$ is more than $180°$, so subtract: $215-180=35$, written as $035°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Bearing of A from B $=250°$ · bearing of C from D $=035°$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>The three-figure rule still applies to the answer — write $035°$, not $35°$.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Navigation with Pythagoras and trigonometry</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A ship sails $8$ km from P on a bearing of $060°$ to Q, then $6$ km from Q on a bearing of $150°$ to R. Find <b>(a)</b> the distance PR, <b>(b)</b> the bearing of R from P.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Show the angle at Q is $90°$.</b> The bearing turns from $060°$ to $150°$, a change of $150-60=90°$. So triangle PQR is right-angled at Q.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>(a) Pythagoras:</b> $PR^{2}=8^{2}+6^{2}=64+36=100$, so $PR=10$ km.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>(b)</b> Find the angle $QPR$ inside the triangle, opposite $6$ and adjacent $8$: $\tan(\angle QPR)=\dfrac{6}{8}=0.75$, giving $36.87°$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Add it to the first bearing, because R lies further clockwise from P than Q does: $060°+36.87°=96.87°\approx097°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> (a) $10$ km · (b) $097°$ (to the nearest degree)</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Don't stop at $36.9°$ — that is the angle <em>inside the triangle</em>, not the bearing. The bearing is always measured from the North line at P. Reproduce the whole thing in <b>Lab 3</b>.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Scale drawing to solve a journey</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A walker leaves camp C and walks $4$ km on a bearing of $125°$ to a hut H. Describe how to find, by scale drawing, the distance and bearing of C from H. Use a scale of 1 cm : 1 km.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Mark C and draw a North line vertically upwards from it.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Measure $125°$ clockwise from that North line with a protractor.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Draw a line $4$ cm long along that direction (since 1 cm : 1 km) and label the end H.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Draw a second North line at H, parallel to the first.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p>Measure the angle clockwise from H's North line round to the line HC.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> The distance is $4$ km (the same journey in reverse). The bearing of C from H is the back bearing: $125°+180°=305°$ — and the scale drawing should confirm that measurement.</div>
+    </div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Writing bearings with fewer than three figures.</b> It is $045°$, never $45°$.</li>
+    <li><b>Measuring anticlockwise, or from another direction.</b> Bearings are always clockwise from North.</li>
+    <li><b>Drawing the North line at the wrong point.</b> "The bearing of B from A" needs the North line at A.</li>
+    <li><b>Giving a back bearing outside $000°$–$360°$.</b> Subtract $180$ instead of adding when the bearing is $180°$ or more.</li>
+    <li><b>Mixing units in a scale calculation.</b> Convert to a common unit before multiplying or dividing.</li>
+    <li><b>Scaling areas by the length factor.</b> Areas scale by the <em>square</em> of it.</li>
+    <li><b>Giving a triangle angle as the final bearing.</b> Combine it with the North line before answering.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <div class="gl-q" data-answer="B" data-why="1 : 20 000 means 1 cm represents 20 000 cm. Since 1 km = 100 000 cm, that is 20 000 ÷ 100 000 = 0.2 km.">
+    <p>1. A map has scale $1:20\,000$. What does 1 cm represent?</p>
+    <ul>
+      <li data-k="A">$2$ km</li>
+      <li data-k="B">$0.2$ km</li>
+      <li data-k="C">$20$ km</li>
+      <li data-k="D">$0.02$ km</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="Real → map means divide, after converting units: 3 km = 300 000 cm, and 300 000 ÷ 50 000 = 6 cm.">
+    <p>2. On a $1:50\,000$ map, how long is a real distance of $3$ km?</p>
+    <ul>
+      <li data-k="A">$0.6$ cm</li>
+      <li data-k="B">$15$ cm</li>
+      <li data-k="C">$6$ cm</li>
+      <li data-k="D">$60$ cm</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="Lengths scale by 3, so areas scale by 3² = 9. Then 4 × 9 = 36 m².">
+    <p>3. A plan uses 1 cm : 3 m. A room covers $4\text{ cm}^{2}$ on the plan. What is its real area?</p>
+    <ul>
+      <li data-k="A">$36\text{ m}^{2}$</li>
+      <li data-k="B">$12\text{ m}^{2}$</li>
+      <li data-k="C">$144\text{ m}^{2}$</li>
+      <li data-k="D">$9\text{ m}^{2}$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="A bearing is measured clockwise from North and always written with three figures, so 45° must be written 045°.">
+    <p>4. Which of these is written correctly as a bearing?</p>
+    <ul>
+      <li data-k="A">$45°$</li>
+      <li data-k="B">N $45°$ E</li>
+      <li data-k="C">$45$ degrees clockwise</li>
+      <li data-k="D">$045°$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="290° is more than 180°, so subtract: 290 − 180 = 110, written 110°. Adding would give 470°, which is not a valid bearing.">
+    <p>5. The bearing of Q from P is $290°$. What is the bearing of P from Q?</p>
+    <ul>
+      <li data-k="A">$470°$</li>
+      <li data-k="B">$110°$</li>
+      <li data-k="C">$070°$</li>
+      <li data-k="D">$250°$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="The point after the word 'from' is where you stand, so the North line is drawn at A.">
+    <p>6. For "the bearing of B from A", where do you draw the North line?</p>
+    <ul>
+      <li data-k="A">At B</li>
+      <li data-k="B">At the midpoint of AB</li>
+      <li data-k="C">At A</li>
+      <li data-k="D">At both, then average them</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="The turn is 200° − 110° = 90°, so the two legs meet at a right angle and Pythagoras applies directly.">
+    <p>7. A ship sails on $110°$, then turns onto $200°$. What is the angle between the two legs?</p>
+    <ul>
+      <li data-k="A">$90°$ — a right angle</li>
+      <li data-k="B">$310°$</li>
+      <li data-k="C">$70°$</li>
+      <li data-k="D">$180°$ — it doubles back</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="Trigonometry returns an angle inside the triangle. To turn it into a bearing you must measure from a North line, adding it to or subtracting it from a known bearing.">
+    <p>8. Trigonometry gives you an angle of $34°$ inside a navigation triangle. Can you write $034°$ as the bearing?</p>
+    <ul>
+      <li data-k="A">Yes, any angle in the diagram is a bearing</li>
+      <li data-k="B">Yes, provided it has three figures</li>
+      <li data-k="C">Only if the triangle is right-angled</li>
+      <li data-k="D">No — combine it with a North line first</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-bearings";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=8";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

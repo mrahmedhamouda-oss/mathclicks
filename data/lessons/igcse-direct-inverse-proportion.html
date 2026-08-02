@@ -1,0 +1,332 @@
+<div class="ig-lesson" id="iglab-prop">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#7048E8)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+<p class="ig-intro">Proportion questions look wordy, but every single one — direct or inverse, any power — is solved by the same four steps. This lesson drills those steps, and the labs let you watch what actually happens to $y$ when $x$ doubles, for every form of proportion on the syllabus.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Tell direct and inverse proportion apart.</li>
+    <li>Solve proportion problems algebraically with the four-step method.</li>
+    <li>Translate word problems into proportion equations.</li>
+    <li>Identify the relationship from a table of data.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Direct proportion</h4>
+  <p>As one quantity increases, the other increases <em>in the same ratio</em>.</p>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Definition.</b> $y$ is <b>directly proportional</b> to $x$ means $y\div x$ is always the same number.</div></div>
+  <div class="ig-formula">$y\propto x\ \longrightarrow\ y=kx\ \longrightarrow\ k=\dfrac{y}{x}$</div>
+  <p>The symbol $\propto$ means "is proportional to". The number $k$ is the <b>constant of proportionality</b> — it never changes within a problem.</p>
+  <table class="ig-table">
+    <tr><th>Statement</th><th>Equation</th><th>Constant test</th><th>Graph shape</th></tr>
+    <tr><td>$y\propto x$</td><td>$y=kx$</td><td>$y/x$</td><td>Straight line through the origin</td></tr>
+    <tr><td>$y\propto x^{2}$</td><td>$y=kx^{2}$</td><td>$y/x^{2}$</td><td>Parabola arm from the origin</td></tr>
+    <tr><td>$y\propto x^{3}$</td><td>$y=kx^{3}$</td><td>$y/x^{3}$</td><td>Cubic curve from the origin</td></tr>
+    <tr><td>$y\propto \sqrt{x}$</td><td>$y=k\sqrt{x}$</td><td>$y/\sqrt{x}$</td><td>Rising curve, flattening out</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Every direct proportion graph passes through $(0,0)$.</b> When $x=0$, $y=0$. If a graph misses the origin, it is not proportional.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Inverse proportion</h4>
+  <p>As one quantity increases, the other decreases <em>in the same ratio</em>.</p>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Definition.</b> $y$ is <b>inversely proportional</b> to $x$ means $y\times x$ is always the same number.</div></div>
+  <div class="ig-formula">$y\propto \dfrac{1}{x}\ \longrightarrow\ y=\dfrac{k}{x}\ \longrightarrow\ k=xy$</div>
+  <table class="ig-table">
+    <tr><th>Statement</th><th>Equation</th><th>Constant test</th><th>Graph shape</th></tr>
+    <tr><td>$y\propto \frac{1}{x}$</td><td>$y=\frac{k}{x}$</td><td>$xy$</td><td>Hyperbola, asymptotes on both axes</td></tr>
+    <tr><td>$y\propto \frac{1}{x^{2}}$</td><td>$y=\frac{k}{x^{2}}$</td><td>$x^{2}y$</td><td>Falls away much more steeply</td></tr>
+    <tr><td>$y\propto \frac{1}{\sqrt{x}}$</td><td>$y=\frac{k}{\sqrt{x}}$</td><td>$\sqrt{x}\cdot y$</td><td>Falls away more gently</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> "Inversely proportional" never means "subtract". $y=k-x$ is <b>not</b> inverse proportion. Inverse proportion always puts $x$ in the <b>denominator</b>.</div></div>
+
+  <h5>Lab 1 — the proportion explorer</h5>
+  <p>Pick any form of proportion and change $k$. The panel shows the equation, the quantity that stays constant, and exactly what happens to $y$ when $x$ doubles — plus a table where you can check the constant for yourself.</p>
+  <div data-lab="proportionlab"></div>
+
+  <div class="ig-two">
+    <div class="ig-mini"><b>Direct.</b> $y=kx$ · $y\div x$ constant · $x$ doubles → $y$ doubles · straight line through the origin.</div>
+    <div class="ig-mini"><b>Inverse.</b> $y=k/x$ · $x\times y$ constant · $x$ doubles → $y$ halves · curve that never touches either axis.</div>
+  </div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Powers change the scale factor.</b> If $y\propto x^{2}$ and $x$ doubles, $y$ is multiplied by $2^{2}=4$. If $y\propto 1/x^{2}$ and $x$ doubles, $y$ is <em>divided</em> by 4.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> The four-step method <span class="ig-try">Interactive</span></h4>
+  <p>Every proportion question — direct or inverse, any power — is solved the same way.</p>
+  <ul class="ig-list">
+    <li><b>Step 1.</b> Write the equation with $k$: e.g. $y=kx^{2}$ or $y=k/x$.</li>
+    <li><b>Step 2.</b> Substitute the given pair of values to find $k$.</li>
+    <li><b>Step 3.</b> Write the complete formula with the value of $k$ in place.</li>
+    <li><b>Step 4.</b> Use the formula — substitute the new value and solve.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Never skip step 3.</b> Writing the full formula earns marks on its own and prevents mistakes later in the question.</div></div>
+
+  <h5>Lab 2 — the four-step solver</h5>
+  <p>Choose the type of proportion, type the known pair, and say what you want to find. Every step is worked out in full, exactly as it should appear in your answer — including the sense check at the end.</p>
+  <div data-lab="steplab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Spotting the type from data <span class="ig-try">Interactive</span></h4>
+  <ul class="ig-list">
+    <li>Work out $y\div x$ for each pair. Constant → <b>direct</b>, $y=kx$.</li>
+    <li>If not, work out $x\times y$. Constant → <b>inverse</b>, $y=k/x$.</li>
+    <li>If neither, try $y\div x^{2}$ (direct with the square), then $x^{2}\times y$ (inverse square).</li>
+  </ul>
+  <table class="ig-table">
+    <tr><th>x</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Test</th><th>Conclusion</th></tr>
+    <tr><td>y</td><td>6</td><td>12</td><td>18</td><td>24</td><td>$y/x=6$</td><td>Direct: $y=6x$</td></tr>
+    <tr><td>y</td><td>24</td><td>12</td><td>8</td><td>6</td><td>$xy=24$</td><td>Inverse: $y=24/x$</td></tr>
+    <tr><td>y</td><td>5</td><td>20</td><td>45</td><td>80</td><td>$y/x^{2}=5$</td><td>Direct square: $y=5x^{2}$</td></tr>
+  </table>
+
+  <h5>Lab 3 — which relationship is it?</h5>
+  <p>Every one of the four tests is computed for you as soon as you load a data set — the row that comes out constant tells you the answer. Make your guess first, then check.</p>
+  <div data-lab="spotlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Translating word problems</h4>
+  <table class="ig-table">
+    <tr><th>Wording in the question</th><th>Write</th></tr>
+    <tr><td>"…is proportional to…", "…varies directly as…"</td><td>$y=kx$</td></tr>
+    <tr><td>"…is proportional to the square of…"</td><td>$y=kx^{2}$</td></tr>
+    <tr><td>"…is proportional to the square root of…"</td><td>$y=k\sqrt{x}$</td></tr>
+    <tr><td>"…is inversely proportional to…", "…varies inversely as…"</td><td>$y=\frac{k}{x}$</td></tr>
+    <tr><td>"…is inversely proportional to the square of…"</td><td>$y=\frac{k}{x^{2}}$</td></tr>
+    <tr><td>"…is inversely proportional to the cube of…"</td><td>$y=\frac{k}{x^{3}}$</td></tr>
+  </table>
+  <ul class="ig-list">
+    <li>Name the two quantities and give each a sensible letter ($C$ for cost, $t$ for time).</li>
+    <li>Decide which quantity depends on which — the one being predicted goes on the left.</li>
+    <li>Read the wording carefully: direct or inverse, and is there a power?</li>
+    <li>Write the equation, then follow the four-step method.</li>
+    <li>Answer in words, with the correct units.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Sense check.</b> In an <b>inverse</b> problem a larger input must give a smaller output. If your answer went the wrong way, you have probably used the wrong type. Classic inverse contexts: more workers → less time; higher speed → less journey time; further away → weaker force.</div></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Simple direct proportion</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$y$ is directly proportional to $x$. When $x=3$, $y=12$. Find $y$ when $x=7$, and find $x$ when $y=30$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Write the equation: $y=kx$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Substitute $x=3$, $y=12$: $12=3k$, so $k=4$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Full formula: $y=4x$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>When $x=7$: $y=4\times7=28$. When $y=30$: $30=4x$, so $x=7.5$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $y=28$ · $x=7.5$. Reproduce it in <b>Lab 2</b> with known pair $(3,12)$.</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Direct proportion to a square</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$y$ is proportional to $x^{2}$. When $x=3$, $y=18$. Find $y$ when $x=4$, and the positive value of $x$ when $y=50$.</p>
+    <p>$y=kx^{2}$ → $18=k\times3^{2}=9k$ → $k=2$ → $y=2x^{2}$.</p>
+    <p>When $x=4$: $y=2\times16=32$. When $y=50$: $50=2x^{2}$ → $x^{2}=25$ → $x=5$.</p>
+    <div class="ig-warn"><span class="ig-i">!</span><div>$k\times3^{2}$ means $k\times9$, not $(3k)^{2}=9k^{2}$. Square the number first, then multiply by $k$.</div></div>
+    <div class="solution-display"><strong>Answer.</strong> $y=32$ · $x=5$.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Simple inverse proportion</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$y$ is inversely proportional to $x$. When $x=5$, $y=8$. Find $y$ when $x=2$, and $x$ when $y=10$.</p>
+    <p>$y=\dfrac{k}{x}$ → $8=\dfrac{k}{5}$ → $k=40$ → $y=\dfrac{40}{x}$.</p>
+    <p>When $x=2$: $y=40\div2=20$. When $y=10$: $10=\dfrac{40}{x}$ → $x=4$.</p>
+    <div class="solution-display"><strong>Sense check.</strong> $x$ fell from 5 to 2, so $y$ should rise — and it did, from 8 to 20. ✔</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Inverse proportion to a square</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$y$ is inversely proportional to $x^{2}$. When $x=3$, $y=4$. Find $y$ when $x=6$.</p>
+    <p>$y=\dfrac{k}{x^{2}}$ → $4=\dfrac{k}{9}$ → $k=36$ → $y=\dfrac{36}{x^{2}}$. When $x=6$: $y=\dfrac{36}{36}=1$.</p>
+    <div class="solution-display"><strong>Shortcut.</strong> $x$ doubled (3 → 6), so for an inverse square $y$ is divided by $2^{2}=4$: $4\div4=1$ ✔ — the same rule <b>Lab 1</b> shows in the "scale-factor rule" row.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Contextual problem — inverse square</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The force $F$ newtons between two magnets is inversely proportional to the square of the distance $d$ cm between them. When $d=3$, $F=20$. <b>(a)</b> Find $F$ when $d=5$. <b>(b)</b> Find $d$ when $F=45$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Translate the wording: $F=\dfrac{k}{d^{2}}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Substitute $d=3$, $F=20$: $20=\dfrac{k}{9}$, so $k=180$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$F=\dfrac{180}{d^{2}}$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>(a)</b> $d=5$: $F=\dfrac{180}{25}=7.2$ N.<br><b>(b)</b> $45=\dfrac{180}{d^{2}}$ → $d^{2}=4$ → $d=2$ cm (a distance must be positive).</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> (a) 7.2 N · (b) 2 cm. Both make sense: further apart → weaker force; stronger force → closer together.</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Word problem — workers and time</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>It takes 6 workers 10 days to build a wall. Assuming the time is inversely proportional to the number of workers, how long would 4 workers take? How many workers are needed to finish in 5 days?</p>
+    <p>Let $t$ = time in days and $n$ = number of workers. More workers means less time, so $t=\dfrac{k}{n}$.</p>
+    <p>$10=\dfrac{k}{6}$ → $k=60$ (the total "worker-days" of effort) → $t=\dfrac{60}{n}$.</p>
+    <p>With $n=4$: $t=15$ days. For $t=5$: $5=\dfrac{60}{n}$ → $n=12$ workers.</p>
+    <div class="solution-display"><strong>Answer.</strong> 4 workers take 15 days; 12 workers are needed to finish in 5 days.</div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Answers must be sensible in context — you cannot have 11.4 workers, so round <em>up</em> to a whole number of people if the numbers are not exact.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>Identifying the relationship from a table</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Find the relationship connecting $x$ and $y$: $(2,40)\ (4,10)\ (5,6.4)\ (8,2.5)$.</p>
+    <p>Try $y\div x$: $20,\ 2.5,\ 1.28,\ 0.3125$ — not constant, so not direct.</p>
+    <p>Try $x\times y$: $80,\ 40,\ 32,\ 20$ — not constant, so not simple inverse.</p>
+    <p>Try $x^{2}\times y$: $4\times40=160$, $16\times10=160$, $25\times6.4=160$, $64\times2.5=160$ — constant.</p>
+    <div class="solution-display"><strong>Answer.</strong> $y$ is inversely proportional to $x^{2}$, with $y=\dfrac{160}{x^{2}}$. This exact set is loaded in <b>Lab 3</b>.</div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Using $y=kx$ for an inverse problem.</b> "Inversely" always puts $x$ on the bottom.</li>
+    <li><b>Leaving out $k$.</b> $y\propto x$ is a statement, not an equation — you cannot calculate with it until it becomes $y=kx$.</li>
+    <li><b>Squaring $k$ by mistake.</b> In $y=kx^{2}$, only $x$ is squared.</li>
+    <li><b>Doubling $y$ when $x$ doubles in a squared relationship.</b> For $y\propto x^{2}$ the factor is $2^{2}=4$.</li>
+    <li><b>Forgetting the negative root — or keeping it.</b> $x^{2}=25$ gives $x=\pm5$, but a length, mass or distance must be positive.</li>
+    <li><b>Not sense-checking the direction.</b> In an inverse problem a bigger input must give a smaller output.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <div class="gl-q" data-answer="C" data-why="&quot;Inversely proportional to the square&quot; puts x² in the denominator: y = k/x².">
+    <p>1. "$y$ is inversely proportional to the square of $x$" is written as:</p>
+    <ul>
+      <li data-k="A">$y=kx^{2}$</li>
+      <li data-k="B">$y=\frac{k}{x}$</li>
+      <li data-k="C">$y=\frac{k}{x^{2}}$</li>
+      <li data-k="D">$y=k-x^{2}$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="For y ∝ x², the factor is 3² = 9, so y becomes 9 times bigger.">
+    <p>2. $y\propto x^{2}$. If $x$ is multiplied by 3, then $y$ is:</p>
+    <ul>
+      <li data-k="A">multiplied by 3</li>
+      <li data-k="B">multiplied by 9</li>
+      <li data-k="C">divided by 9</li>
+      <li data-k="D">unchanged</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="y = k/x with x = 4, y = 5 gives k = 20, so when x = 10, y = 20/10 = 2.">
+    <p>3. $y$ is inversely proportional to $x$, and $y=5$ when $x=4$. Find $y$ when $x=10$.</p>
+    <ul>
+      <li data-k="A">$y=2$</li>
+      <li data-k="B">$y=12.5$</li>
+      <li data-k="C">$y=50$</li>
+      <li data-k="D">$y=0.5$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="For direct proportion, x × y is NOT the constant — y ÷ x is. The other three are all true.">
+    <p>4. Which statement about direct proportion is <b>false</b>?</p>
+    <ul>
+      <li data-k="A">The graph is a straight line through the origin</li>
+      <li data-k="B">$y\div x$ is the same for every pair</li>
+      <li data-k="C">Doubling $x$ doubles $y$</li>
+      <li data-k="D">$x\times y$ is the same for every pair</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="Test x × y: 2×18 = 36, 3×12 = 36, 6×6 = 36 — constant, so it is inverse proportion with k = 36.">
+    <p>5. A table gives $(2,18)\ (3,12)\ (6,6)$. The relationship is:</p>
+    <ul>
+      <li data-k="A">$y=9x$</li>
+      <li data-k="B">$y=\frac{36}{x}$</li>
+      <li data-k="C">$y=36x$</li>
+      <li data-k="D">$y=\frac{x}{36}$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="More workers means less time, so time is inversely proportional to the number of workers: t = k/n.">
+    <p>6. "It takes 8 people 6 hours; how long for 12 people?" is modelled by:</p>
+    <ul>
+      <li data-k="A">$t=kn$</li>
+      <li data-k="B">$t=k-n$</li>
+      <li data-k="C">$t=\frac{k}{n}$</li>
+      <li data-k="D">$t=kn^{2}$</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-prop";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=8";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

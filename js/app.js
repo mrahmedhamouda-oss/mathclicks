@@ -27,6 +27,11 @@ const DOMAIN_ICONS = {
   // IGCSE strands
   "Coordinate Geometry": "📐",
   "Graphs & Functions": "📈",
+  "Proportion": "⚖️",
+  "Functions": "🔤",
+  "Differentiation": "📉",
+  "Trigonometry": "🔺",
+  "Bearings & Scale": "🧭",
 };
 const MODULE_ICON = "📘";
 
@@ -306,6 +311,7 @@ function countBadge(t) {
   if (n) return el("span", "badge", plural(n, "question"));
   const pp = pastPaperCount(t);
   if (pp) return el("span", "badge", `${pp} past-paper Qs`);
+  if (t.lessonHtml) return el("span", "badge", "interactive lesson");
   return el("span", "badge soon", "coming soon");
 }
 
@@ -1128,7 +1134,9 @@ function renderTopic(id) {
     showQuestion(quiz, holder);
   } else if (!t.pastPapers || !t.pastPapers.length) {
     main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
-    main.appendChild(el("div", "empty-note", "Quiz questions coming soon."));
+    main.appendChild(el("div", "empty-note", t.lessonHtml
+      ? "Past-paper practice is coming soon — for now, use the self-check quiz at the end of the lesson."
+      : "Quiz questions coming soon."));
   }
 }
 

@@ -1,0 +1,371 @@
+<div class="ig-lesson" id="iglab-trig3d">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#5F3DC4)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+<p class="ig-intro">There is no new mathematics in this lesson. Every 3D question is solved by finding a <b>right-angled triangle hidden inside the solid</b>, redrawing it flat, and using Pythagoras or SOH CAH TOA on it. The hard part is spotting the triangle — so build the solids below, rotate the ideas around, and watch which triangle each question needs.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Find lengths inside cuboids, pyramids, prisms and cones.</li>
+    <li>Find the angle between a line and a plane, and between two planes.</li>
+    <li>Tell the slant <em>edge</em> from the slant <em>height</em> — and half a side from half a diagonal.</li>
+    <li>Chain two or more triangles together in a multi-step problem.</li>
+    <li>Carry full accuracy through the working and round only at the end.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> The core strategy</h4>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>The one big idea.</b> Every 3D problem is solved by finding a <b>right-angled triangle</b> inside the shape, redrawing it flat on its own, and working on it in 2D.</div></div>
+  <ul class="ig-list">
+    <li><b>Sketch the solid</b> and mark every length you are given.</li>
+    <li><b>Identify the triangle</b> containing what you want. It usually needs a vertical edge, a horizontal edge and a sloping line.</li>
+    <li><b>Redraw that triangle separately</b> — flat, large, all lengths labelled. This step alone prevents most errors.</li>
+    <li><b>Check it is right-angled</b> and say <em>where</em>. Vertical edges always meet the horizontal base at $90°$.</li>
+    <li><b>Apply Pythagoras or a trig ratio.</b></li>
+    <li><b>Repeat if necessary</b> — many questions need a length from one triangle before a second triangle can be solved.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Never round an intermediate length.</b> Store it in the calculator and use the full value in the next stage, or the final angle can be out by a whole degree. Better still, keep surds exact — write $\sqrt{125}$, not $11.18$.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Cuboids and the space diagonal <span class="ig-try">Interactive</span></h4>
+  <p>The longest straight line that fits inside a cuboid runs corner to opposite corner. It is found in <b>two stages</b>: first the diagonal across the base, then the diagonal through the solid.</p>
+
+  <h5>Lab 1 — the cuboid explorer</h5>
+  <p>Set the three edges, then click through the four stages. Watch how the base diagonal $AF$ becomes one side of the second triangle $AFG$.</p>
+  <div data-lab="cuboidlab"></div>
+
+  <div class="ig-formula">Stage 1: $AF^{2}=AB^{2}+BF^{2}$ &nbsp;·&nbsp; Stage 2: $AG^{2}=AF^{2}+FG^{2}$</div>
+  <p>For a cuboid $8\times6\times5$: $AF^{2}=8^{2}+6^{2}=100$, so $AF=10$; then $AG^{2}=10^{2}+5^{2}=125$, so $AG=\sqrt{125}=11.2$ cm.</p>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>The shortcut.</b> Combining both stages, for a cuboid with edges $l$, $w$, $h$: $$\text{space diagonal}=\sqrt{l^{2}+w^{2}+h^{2}}$$ Here $\sqrt{64+36+25}=\sqrt{125}=11.2$ cm — the same answer in one line.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div>Use the shortcut only for a <b>cuboid</b>. In any other solid you must work through the triangles one at a time.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Angles in three dimensions</h4>
+
+  <h5>Angle between a line and a plane</h5>
+  <p>Drop a perpendicular from the end of the line down onto the plane, then join the foot of that perpendicular back to the start of the line. The angle you want lies between the original line and this <b>projection</b>.</p>
+  <div class="ig-formula">For the cuboid above: $\tan(\angle GAF)=\dfrac{FG}{AF}=\dfrac{5}{10}=0.5\Rightarrow 26.6°$</div>
+  <div class="ig-warn"><span class="ig-i">!</span><div>The angle between a line and a plane is always the <b>smallest</b> such angle, so it lies between $0°$ and $90°$. An answer above $90°$ means you used the wrong triangle.</div></div>
+
+  <h5>Angle between two planes</h5>
+  <p>Find the line where the two planes meet. From a point on that line, draw a line in <em>each</em> plane at right angles to it. The angle between those two lines is the angle between the planes.</p>
+  <p>For a pyramid, the angle between a triangular face and the base is measured using the <b>slant height</b> — the perpendicular from the apex to the <em>midpoint of a base edge</em>.</p>
+
+  <h5>Angle between two lines</h5>
+  <p>Two lines only form an angle if they meet, or can be made to meet. Redraw the triangle containing both; if it has no right angle, use the cosine rule.</p>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Pyramids and cones <span class="ig-try">Interactive</span></h4>
+  <p>In a square-based pyramid the apex $V$ sits directly above the centre $M$ of the base. Almost every question comes down to choosing between two lengths:</p>
+  <ul class="ig-list">
+    <li>$MN=\dfrac{s}{2}$ — half a <b>side</b>, used for anything involving a <b>face</b>.</li>
+    <li>$MA=\dfrac{s\sqrt2}{2}$ — half the <b>diagonal</b>, used for anything involving an <b>edge</b>.</li>
+  </ul>
+
+  <h5>Lab 2 — the pyramid explorer</h5>
+  <p>Set the base and the height, then switch between the four questions. Look at how the same pyramid gives two <em>different</em> angles depending on whether you go to a corner or to the midpoint of a side.</p>
+  <div data-lab="pyramidlab"></div>
+
+  <table class="ig-table">
+    <tr><th>You want…</th><th>Use the triangle…</th><th>Because</th></tr>
+    <tr><td>Slant edge $VA$</td><td>$VMA$</td><td>$MA$ is half the base diagonal; $VM$ is vertical</td></tr>
+    <tr><td>Slant height $VN$</td><td>$VMN$</td><td>$MN$ is half a base side; $VM$ is vertical</td></tr>
+    <tr><td>Angle between edge $VA$ and the base</td><td>$VMA$</td><td>$\tan=\dfrac{VM}{MA}$</td></tr>
+    <tr><td>Angle between face $VAB$ and the base</td><td>$VMN$</td><td>$\tan=\dfrac{VM}{MN}$</td></tr>
+    <tr><td>Angle at the apex, e.g. $\angle AVB$</td><td>$AVB$</td><td>Isosceles — split it in half at $N$</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Slant edge and slant height are different lengths.</b> The edge runs to a <em>corner</em>; the height runs to the <em>midpoint of a side</em>. Mixing them up is the classic pyramid error — and it changes the answer by several degrees.</div></div>
+
+  <h5>Cones</h5>
+  <p>A cone works the same way, with a single right-angled triangle made from the radius $r$, the vertical height $h$ and the slant height $l$:</p>
+  <div class="ig-formula">$l^{2}=r^{2}+h^{2}$</div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Multi-step reasoning</h4>
+  <p>Long 3D questions are just short ones chained together. Work <b>backwards</b> from what is asked.</p>
+  <ul class="ig-list">
+    <li>Write down exactly what the question wants.</li>
+    <li>Name the triangle that contains it, and list that triangle's three sides.</li>
+    <li>Mark which of them you already know. Any you don't becomes a mini-question of its own.</li>
+    <li>Solve the mini-questions first, then come back to the main triangle.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>An example of the chain.</b> "Find the angle between $VC$ and the base" → need triangle $VMC$ → need $MC$ → $MC$ is half the base diagonal → find the diagonal with Pythagoras on the base → work back up.</div></div>
+
+  <h5>Accuracy discipline</h5>
+  <ul class="ig-list">
+    <li>Keep every intermediate result at full calculator accuracy, or in surd form.</li>
+    <li>Round only at the very end — lengths to 3 s.f., angles to 1 d.p.</li>
+    <li>Put units on every length and the degree symbol on every angle.</li>
+    <li>Sense-check: the space diagonal must be the longest line in a cuboid, and an angle with the base must be under $90°$.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Space diagonal of a cuboid</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A cuboid measures $8$ cm by $6$ cm by $5$ cm. Find the length of the longest straight line that fits inside it.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The longest line is the space diagonal, corner to opposite corner.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Base diagonal first</b> — right-angled triangle on the base: $AF^{2}=8^{2}+6^{2}=64+36=100$, so $AF=10$ cm.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Then the space diagonal</b> — the vertical edge is perpendicular to the base: $AG^{2}=10^{2}+5^{2}=125$, so $AG=\sqrt{125}$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$\sqrt{125}=11.180\ldots$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $11.2$ cm (3 s.f.)</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>One-line check.</b> $\sqrt{8^{2}+6^{2}+5^{2}}=\sqrt{125}=11.18$ ✔</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Angle between a diagonal and the base</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>For the same $8\times6\times5$ cuboid, find the angle between the space diagonal $AG$ and the base.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The projection of $AG$ onto the base is $AF$, so the required angle is $\angle GAF$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Redraw triangle $AFG$ flat: $AF=10$ (horizontal), $FG=5$ (vertical), right angle at $F$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Opposite and adjacent are known → use tan: $\tan(\angle GAF)=\dfrac{5}{10}=0.5$</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$\angle GAF=\tan^{-1}(0.5)=26.565\ldots°$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $26.6°$ (1 d.p.)</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Use the exact base diagonal of $10$, not a rounded value — and be sure the angle is at $A$, not at $G$.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Slant edge of a pyramid</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A pyramid has a square base of side $6$ cm and a vertical height of $8$ cm. Find the length of a slant edge $VA$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The apex sits directly above the centre $M$ of the square base.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Base diagonal: $AC=\sqrt{6^{2}+6^{2}}=\sqrt{72}=6\sqrt2\approx8.485$ cm.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Half of it: $MA=3\sqrt2\approx4.2426$ cm.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Triangle $VMA$ is right-angled at $M$: $VA^{2}=VM^{2}+MA^{2}=8^{2}+(3\sqrt2)^{2}=64+18=82$</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p>$VA=\sqrt{82}=9.055\ldots$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $9.06$ cm (3 s.f.)</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Neat trick.</b> $(3\sqrt2)^{2}=9\times2=18$ exactly — keeping the surd avoids any rounding error.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Angle between a slant edge and the base</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>For the same pyramid (base $6$ cm, height $8$ cm), find the angle between the edge $VA$ and the base.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The projection of $VA$ onto the base is $MA$, so the angle wanted is $\angle VAM$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>In triangle $VMA$: opposite $VM=8$, adjacent $MA=3\sqrt2=4.2426$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$\tan(\angle VAM)=\dfrac{8}{4.2426}=1.8856$</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$\angle VAM=\tan^{-1}(1.8856)=62.06\ldots°$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $62.1°$ (1 d.p.)</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Angle between a face and the base</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>For the same pyramid, find the angle between the triangular face $VAB$ and the base.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The two planes meet along the edge $AB$. Let $N$ be the <b>midpoint</b> of $AB$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$VN\perp AB$ (the face is isosceles) and $MN\perp AB$ in the base, so the required angle is $\angle VNM$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$MN$ is half the side of the square: $MN=3$ cm.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Triangle $VMN$ is right-angled at $M$: $\tan(\angle VNM)=\dfrac{VM}{MN}=\dfrac{8}{3}=2.6667$</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p>$\angle VNM=\tan^{-1}(2.6667)=69.44\ldots°$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $69.4°$ (1 d.p.)</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>This uses $MN=3$ (half a <em>side</em>), while Example 4 used $MA=4.24$ (half a <em>diagonal</em>). Choosing the wrong one is the most frequent mistake in pyramid questions — it gives $62.1°$ instead of $69.4°$. Compare them side by side in <b>Lab 2</b>.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Slant height of a cone</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A cone has radius $5$ cm and vertical height $12$ cm. Find the slant height and the angle the slant makes with the base.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The radius, the vertical height and the slant height form a right-angled triangle.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$l^{2}=r^{2}+h^{2}=5^{2}+12^{2}=25+144=169$, so $l=13$ cm.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>For the angle at the base edge: opposite $12$, adjacent $5$, so $\tan\theta=\dfrac{12}{5}=2.4$</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$\theta=67.38\ldots°$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Slant height $13$ cm (an exact 5–12–13 triangle) · angle $67.4°$ (1 d.p.)</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>A multi-step problem</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A vertical mast $VM$ stands at the corner $M$ of a rectangular field $MNPQ$, where $MN=40$ m and $NP=30$ m. The angle of elevation of the top $V$ from $P$ is $22°$. Find the height of the mast and the angle of elevation of $V$ from $N$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Find $MP$</b>, the diagonal of the field, using Pythagoras on the horizontal rectangle: $MP^{2}=40^{2}+30^{2}=2500$, so $MP=50$ m.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Find the height</b> in right-angled triangle $VMP$, where the elevation from $P$ is $22°$: $\tan 22°=\dfrac{VM}{50}$, so $VM=50\tan 22°=20.20\ldots$ m.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Elevation from $N$</b> — a different triangle, $VMN$, with $MN=40$ m: $\tan(\text{angle})=\dfrac{20.20}{40}=0.5051$, giving $26.79\ldots°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Height $20.2$ m (3 s.f.) · elevation from $N$ is $26.8°$ (1 d.p.)</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Sense check.</b> $N$ is closer to the mast than $P$ is ($40$ m against $50$ m), so the mast should look steeper from $N$ — and $26.8°>22°$ ✔</div></div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Use the unrounded $20.2033\ldots$ in the final step. Here rounding early still gives $26.8°$, but on other questions it changes the answer.</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Working on the 3D picture directly.</b> Redraw the triangle flat first — angles in a 3D sketch are distorted and cannot be trusted.</li>
+    <li><b>Confusing half a side with half a diagonal.</b> Face angles use half a <em>side</em>; edge angles use half a <em>diagonal</em>.</li>
+    <li><b>Confusing slant edge with slant height.</b> The edge goes to a corner, the height to a midpoint.</li>
+    <li><b>Rounding partway through.</b> Carry full accuracy, or keep surds exact, until the final line.</li>
+    <li><b>Assuming a triangle is right-angled.</b> Justify it — vertical edges meet the horizontal base at $90°$. If there is no right angle, use the sine or cosine rule.</li>
+    <li><b>Measuring the angle at the wrong vertex.</b> The angle between a line and a plane sits where the line meets the plane.</li>
+    <li><b>Forgetting units and the degree symbol.</b> Lengths in cm or m, angles in degrees.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <div class="gl-q" data-answer="B" data-why="For a cuboid the space diagonal is √(l² + w² + h²) = √(9 + 16 + 144) = √169 = 13 cm.">
+    <p>1. A cuboid measures $3$ cm by $4$ cm by $12$ cm. How long is its space diagonal?</p>
+    <ul>
+      <li data-k="A">$19$ cm</li>
+      <li data-k="B">$13$ cm</li>
+      <li data-k="C">$5$ cm</li>
+      <li data-k="D">$12.6$ cm</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="The projection of the line onto the plane is what you measure to, so the angle is between the line and its projection — and it is always the smallest such angle.">
+    <p>2. To find the angle between a line and a plane, you measure the angle between the line and…</p>
+    <ul>
+      <li data-k="A">the vertical</li>
+      <li data-k="B">the nearest edge of the plane</li>
+      <li data-k="C">its projection on the plane</li>
+      <li data-k="D">the normal to the plane</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="A face angle is measured to the midpoint of a base edge, so it uses half a side: MN = 10 ÷ 2 = 5 cm.">
+    <p>3. A square-based pyramid has base side $10$ cm. Which length do you use for the angle between a <b>face</b> and the base?</p>
+    <ul>
+      <li data-k="A">$5$ cm (half a side)</li>
+      <li data-k="B">$7.07$ cm (half a diagonal)</li>
+      <li data-k="C">$10$ cm (a full side)</li>
+      <li data-k="D">$14.1$ cm (a full diagonal)</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="The slant edge runs to a CORNER, so it uses half the diagonal MA; the slant height runs to the MIDPOINT of a side, so it uses half a side MN.">
+    <p>4. What is the difference between the slant edge and the slant height of a pyramid?</p>
+    <ul>
+      <li data-k="A">They are two names for the same length</li>
+      <li data-k="B">The height is always longer</li>
+      <li data-k="C">The edge is vertical, the height is sloping</li>
+      <li data-k="D">The edge runs to a corner, the height to the midpoint of a side</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="tan θ = height ÷ base diagonal = 6 ÷ 8 = 0.75, so θ = tan⁻¹(0.75) = 36.9°.">
+    <p>5. A base diagonal is $8$ cm and the vertical height above one end is $6$ cm. What angle does the sloping line make with the base?</p>
+    <ul>
+      <li data-k="A">$53.1°$</li>
+      <li data-k="B">$36.9°$</li>
+      <li data-k="C">$48.6°$</li>
+      <li data-k="D">$41.4°$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="For a cone, l² = r² + h² = 9² + 12² = 81 + 144 = 225, so l = 15 cm.">
+    <p>6. A cone has radius $9$ cm and vertical height $12$ cm. Find its slant height.</p>
+    <ul>
+      <li data-k="A">$21$ cm</li>
+      <li data-k="B">$7.94$ cm</li>
+      <li data-k="C">$15$ cm</li>
+      <li data-k="D">$10.5$ cm</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="A vertical edge is perpendicular to the horizontal base, so any triangle formed by a vertical edge and a line in the base is right-angled where they meet.">
+    <p>7. Why is triangle $AFG$ right-angled at $F$ in a cuboid?</p>
+    <ul>
+      <li data-k="A">$FG$ is vertical and $AF$ lies in the horizontal base</li>
+      <li data-k="B">All triangles inside a cuboid are right-angled</li>
+      <li data-k="C">$AF$ and $FG$ are equal in length</li>
+      <li data-k="D">$AG$ is the longest side</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="Rounding an intermediate value and feeding it into the next stage compounds the error — angles in particular can shift by a whole degree.">
+    <p>8. Why should you never round an intermediate length in a multi-step 3D problem?</p>
+    <ul>
+      <li data-k="A">Because surds are always required</li>
+      <li data-k="B">Because the answer must be an integer</li>
+      <li data-k="C">Because calculators cannot store decimals</li>
+      <li data-k="D">Because the rounding error compounds and can shift the final angle by a whole degree</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-trig3d";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=8";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

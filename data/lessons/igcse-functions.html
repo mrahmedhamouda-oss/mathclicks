@@ -1,0 +1,356 @@
+<div class="ig-lesson" id="iglab-fn">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#7048E8)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+<p class="ig-intro">Function notation is the language the rest of the syllabus is written in. Once $f(x)$ stops looking like a multiplication and starts looking like a machine, evaluating, solving, domain, range, composites and inverses all follow. Feed numbers into the machine below and watch what comes out.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Read and use function notation.</li>
+    <li>Evaluate functions for numbers and for expressions.</li>
+    <li>Solve $f(x)=k$ — and know how that differs from finding $f(k)$.</li>
+    <li>Determine domain and range, from a formula or from a graph.</li>
+    <li>Work with composite and inverse functions.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Function notation <span class="ig-try">Interactive</span></h4>
+  <p>A function is a rule that turns each input into <b>exactly one</b> output.</p>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Reading the notation.</b> $f(x)$ is read "f of x" — the output of the function $f$ when the input is $x$. It does <b>not</b> mean $f$ multiplied by $x$.</div></div>
+  <table class="ig-table">
+    <tr><th>Notation</th><th>Meaning</th></tr>
+    <tr><td>$f(x)=3x-5$</td><td>The rule of the function</td></tr>
+    <tr><td>$f:x\mapsto 3x-5$</td><td>The same thing — "f maps x to 3x − 5"</td></tr>
+    <tr><td>$f(4)$</td><td>The output when the input is 4</td></tr>
+    <tr><td>$f(x)=10$</td><td>An equation to solve — which input gives an output of 10?</td></tr>
+    <tr><td>$y=f(x)$</td><td>The graph of the function; $y$ is the output axis</td></tr>
+  </table>
+
+  <h5>Lab 1 — the function machine</h5>
+  <p>Put a value in and watch it come out the other side. Then switch to <b>backwards</b> mode: now you are told the output and must find the input — that is what "solve $f(x)=k$" means.</p>
+  <div data-lab="machinelab"></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> Different letters are used for different functions in the same question — $f$, $g$, $h$. Keep them apart and always check which rule you are being asked to use.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> What makes a rule a function? <span class="ig-try">Interactive</span></h4>
+  <p>Each input must give <b>exactly one</b> output. One input producing two outputs is not a function.</p>
+  <div class="ig-formula">The vertical line test — if any vertical line crosses the graph more than once, it is <b>not</b> a function</div>
+
+  <h5>Lab 2 — the vertical line test</h5>
+  <p>Slide the vertical line across each relation and count how many times it meets the graph. One (or none) everywhere → function. Two anywhere → not a function.</p>
+  <div data-lab="vltlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Evaluating functions <span class="ig-try">Interactive</span></h4>
+  <ul class="ig-list">
+    <li>Write out the rule.</li>
+    <li>Replace <b>every</b> $x$ with the given input — <b>in brackets</b>.</li>
+    <li>Work out the arithmetic in the right order.</li>
+  </ul>
+  <p>For $f(x)=x^{2}-4x+1$:</p>
+  <table class="ig-table">
+    <tr><th>Required</th><th>Substitution</th><th>Result</th></tr>
+    <tr><td>$f(3)$</td><td>$(3)^{2}-4(3)+1=9-12+1$</td><td>$-2$</td></tr>
+    <tr><td>$f(0)$</td><td>$0-0+1$</td><td>$1$</td></tr>
+    <tr><td>$f(-2)$</td><td>$(-2)^{2}-4(-2)+1=4+8+1$</td><td>$13$</td></tr>
+    <tr><td>$f(a)$</td><td>$a^{2}-4a+1$</td><td>$a^{2}-4a+1$</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> Brackets are essential with negatives: $-4\times(-2)=+8$ and $(-2)^{2}=+4$. Dropping the brackets is the single biggest source of lost marks here.</div></div>
+
+  <h5>Lab 3 — evaluation trainer</h5>
+  <p>Eight questions, instant marking, and the working shown whenever you slip. Aim for a clean run of six.</p>
+  <div data-lab="evallab"></div>
+
+  <h5>Substituting an expression</h5>
+  <p>The input does not have to be a number. For $f(x)=2x+1$:</p>
+  <div class="ig-formula">$f(a+3)=2(a+3)+1=2a+6+1=2a+7$</div>
+  <p>Replace <em>every</em> $x$ with the whole expression, keeping it in brackets, then expand.</p>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Solving $f(x)=k$</h4>
+  <p>This reverses the process: you are given the output and must find the input.</p>
+  <ul class="ig-list">
+    <li>Write the rule equal to the given value.</li>
+    <li>Solve the resulting equation for $x$.</li>
+    <li>If it is quadratic, rearrange to $=0$ and factorise — expect two answers.</li>
+    <li>Check by substituting back into the function.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Example.</b> $f(x)=3x-5$. Solve $f(x)=10$: $3x-5=10$ → $3x=15$ → $x=5$.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> Don't confuse $f(10)$ with $f(x)=10$. The first is "put 10 in and see what comes out"; the second is "what must go in to get 10 out?" Switch <b>Lab 1</b> to backwards mode to feel the difference.</div></div>
+
+  <h5>Lab 4 — solving from the graph</h5>
+  <p>The curve is $f(x)=x^{2}-2x-3$. Use the presets to solve $f(x)=0$ and $f(x)=2$, and to see the case where the line just touches.</p>
+  <div data-lab="solvelab" data-curve="q1"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Domain and range <span class="ig-try">Interactive</span></h4>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Domain</b> — the set of allowed <b>inputs</b> ($x$-values); read the graph left to right.<br><b>Range</b> — the set of resulting <b>outputs</b> ($y$-values); read the graph bottom to top.</div></div>
+  <table class="ig-table">
+    <tr><th>Situation</th><th>Restriction</th><th>Example</th></tr>
+    <tr><td>Denominator becomes zero</td><td>Exclude that $x$-value</td><td>$f(x)=\frac{1}{x-2}\Rightarrow x\neq2$</td></tr>
+    <tr><td>Square root of a negative</td><td>Inside must be $\ge 0$</td><td>$f(x)=\sqrt{x-3}\Rightarrow x\ge3$</td></tr>
+    <tr><td>Domain stated in the question</td><td>Use only that interval</td><td>$f(x)=x^{2}$ for $-1\le x\le4$</td></tr>
+    <tr><td>Real-life context</td><td>Only sensible values</td><td>A length cannot be negative</td></tr>
+  </table>
+  <table class="ig-table">
+    <tr><th>$f(x)$</th><th>Domain</th><th>Range</th><th>Reason</th></tr>
+    <tr><td>$2x+1$</td><td>all real $x$</td><td>all real $f(x)$</td><td>A line continues forever both ways</td></tr>
+    <tr><td>$x^{2}+1$</td><td>all real $x$</td><td>$f(x)\ge1$</td><td>Minimum at the vertex $(0,1)$</td></tr>
+    <tr><td>$-x^{2}+4$</td><td>all real $x$</td><td>$f(x)\le4$</td><td>Maximum at the vertex $(0,4)$</td></tr>
+    <tr><td>$\frac{1}{x-2}$</td><td>$x\neq2$</td><td>$f(x)\neq0$</td><td>Asymptotes $x=2$ and $y=0$</td></tr>
+    <tr><td>$\sqrt{x-3}$</td><td>$x\ge3$</td><td>$f(x)\ge0$</td><td>Square roots give non-negative values</td></tr>
+    <tr><td>$3^{x}$</td><td>all real $x$</td><td>$f(x)>0$</td><td>Exponentials stay above the asymptote $y=0$</td></tr>
+  </table>
+
+  <h5>Lab 5 — domain &amp; range explorer</h5>
+  <p>Drag the two domain sliders and read the range straight off the green band. Put the vertex of $y=x^{2}$ inside the domain and watch what it does to the minimum.</p>
+  <div data-lab="domlab"></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> With a restricted domain, don't just test the two endpoints. If a turning point lies inside the domain, it supplies the maximum or minimum of the range.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">6</span> Composite and inverse functions <span class="ig-try">Interactive</span></h4>
+  <div class="ig-two">
+    <div class="ig-mini"><b>Composite $fg(x)$</b> — apply the <b>inner</b> function first, then feed its output into the outer one: $fg(x)=f(g(x))$. Work right to left, from the function nearest the $x$.</div>
+    <div class="ig-mini"><b>Inverse $f^{-1}(x)$</b> — the function that undoes $f$. Write $y=f(x)$, swap $x$ and $y$, rearrange to make $y$ the subject, rewrite as $f^{-1}(x)$.</div>
+  </div>
+  <div class="ig-formula">$f(x)=2x+1$ → $x=2y+1$ → $y=\dfrac{x-1}{2}$, so $f^{-1}(x)=\dfrac{x-1}{2}$</div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div>$f^{-1}$ means "inverse", <b>not</b> "one over $f$". The domain of $f^{-1}$ is the range of $f$.</div></div>
+
+  <h5>Lab 6 — composite and inverse calculator</h5>
+  <p>Choose $f$ and $g$, put a value in, and see $fg(x)$ and $gf(x)$ worked out side by side — they are almost never equal. The inverse of $f$ is built and then checked by putting the answer back through $f$.</p>
+  <div data-lab="compinvlab"></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Evaluating a linear function</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$f(x)=3x-5$. Find $f(4)$, $f(0)$ and $f(-2)$.</p>
+    <p>$f(4)=3(4)-5=12-5=7$</p>
+    <p>$f(0)=3(0)-5=0-5=-5$</p>
+    <p>$f(-2)=3(-2)-5=-6-5=-11$</p>
+    <div class="solution-display"><strong>Answer.</strong> $f(4)=7$ · $f(0)=-5$ · $f(-2)=-11$.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Evaluating a quadratic — including an expression</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$f(x)=x^{2}-2x$. Find $f(3)$, $f(-1)$ and $f(a+1)$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$f(3)=(3)^{2}-2(3)=9-6=3$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$f(-1)=(-1)^{2}-2(-1)=1+2=3$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$f(a+1)=(a+1)^{2}-2(a+1)$. Expand: $(a^{2}+2a+1)-(2a+2)$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Simplify: $a^{2}+2a+1-2a-2=a^{2}-1$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $f(3)=3$ · $f(-1)=3$ · $f(a+1)=a^{2}-1$.</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Subtracting the whole bracket $(2a+2)$ changes both signs inside it.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Solving $f(x)=k$</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$f(x)=x^{2}-2x-3$. Solve <b>(a)</b> $f(x)=0$ and <b>(b)</b> $f(x)=5$.</p>
+    <p><b>(a)</b> $x^{2}-2x-3=0$ → $(x+1)(x-3)=0$ → $x=-1$ or $x=3$.</p>
+    <p><b>(b)</b> $x^{2}-2x-3=5$ → rearrange to zero: $x^{2}-2x-8=0$ → $(x-4)(x+2)=0$ → $x=4$ or $x=-2$.</p>
+    <div class="solution-display"><strong>Check.</strong> $f(4)=16-8-3=5$ ✔ and $f(-2)=4+4-3=5$ ✔</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Domain and range from a formula</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>State the domain and range of <b>(a)</b> $f(x)=x^{2}+1$, <b>(b)</b> $g(x)=\dfrac{1}{x-2}$, <b>(c)</b> $h(x)=\sqrt{x-3}$.</p>
+    <p><b>(a)</b> Any number can be squared, and the smallest value of $x^{2}$ is 0, giving a minimum output of 1.</p>
+    <div class="ig-formula">Domain: all real $x$ &nbsp;·&nbsp; Range: $f(x)\ge1$</div>
+    <p><b>(b)</b> The denominator is zero when $x=2$, which must be excluded. The fraction gets very close to zero but never equals it.</p>
+    <div class="ig-formula">Domain: $x\neq2$ &nbsp;·&nbsp; Range: $g(x)\neq0$</div>
+    <p><b>(c)</b> Need $x-3\ge0$, so $x\ge3$. The square root sign gives the non-negative root only.</p>
+    <div class="ig-formula">Domain: $x\ge3$ &nbsp;·&nbsp; Range: $h(x)\ge0$</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Range from a restricted domain</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$f(x)=x^{2}-4x+3$ for $0\le x\le5$. Find the range.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Find the turning point: $x=\frac{-b}{2a}=\frac{4}{2}=2$. It lies inside the domain, so it matters.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Value there: $f(2)=4-8+3=-1$ — the minimum, since $a>0$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Endpoints: $f(0)=3$ and $f(5)=25-20+3=8$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Largest output 8, smallest $-1$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Range: $-1\le f(x)\le 8$.</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Using only $f(0)$ and $f(5)$ would have given $3\le f(x)\le8$ — wrong, because the turning point dips below both endpoints.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Reading a function from its graph</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Using the graph of $f(x)=x^{2}-2x-3$ in Lab 4, find $f(2)$, solve $f(x)=0$, and state the range.</p>
+    <p><b>$f(2)$:</b> go up from $x=2$ to the curve, then across — the value is $-3$. Check: $4-4-3=-3$ ✔</p>
+    <p><b>$f(x)=0$:</b> the curve meets the x-axis at $x=-1$ and $x=3$.</p>
+    <p><b>Range:</b> the lowest point is the turning point $(1,-4)$, and the curve rises indefinitely from there.</p>
+    <div class="solution-display"><strong>Answer.</strong> $f(2)=-3$ · $x=-1$ or $x=3$ · Range $f(x)\ge-4$.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>Composite and inverse</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$f(x)=2x+1$ and $g(x)=x^{2}$. Find $fg(3)$, $gf(3)$ and $f^{-1}(x)$.</p>
+    <p><b>$fg(3)$:</b> do $g$ first. $g(3)=9$, then $f(9)=2(9)+1=19$.</p>
+    <p><b>$gf(3)$:</b> do $f$ first. $f(3)=7$, then $g(7)=49$.</p>
+    <p><b>$f^{-1}$:</b> write $y=2x+1$, swap to get $x=2y+1$, rearrange: $y=\dfrac{x-1}{2}$.</p>
+    <div class="solution-display"><strong>Answer.</strong> $fg(3)=19$ · $gf(3)=49$ · $f^{-1}(x)=\dfrac{x-1}{2}$.<br><strong>Check the inverse.</strong> $f(5)=11$ and $f^{-1}(11)=\frac{11-1}{2}=5$ ✔ — set $f=2x+1$, $g=x^{2}$, $x=3$ in <b>Lab 6</b> to see all of this at once.</div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Treating $f(x)$ as multiplication.</b> It is notation for an output, not $f\times x$.</li>
+    <li><b>Dropping brackets when substituting negatives.</b> $f(-2)$ with $x^{2}$ gives $(-2)^{2}=4$, not $-4$.</li>
+    <li><b>Confusing $f(5)$ with $f(x)=5$.</b> One is an evaluation, the other an equation to solve.</li>
+    <li><b>Swapping domain and range.</b> Domain is the inputs ($x$), range the outputs ($y$).</li>
+    <li><b>Forgetting to exclude values.</b> Check every denominator and every square root before writing a domain.</li>
+    <li><b>Doing $fg(x)$ in the wrong order.</b> The function nearest the $x$ goes first.</li>
+    <li><b>Reading $f^{-1}(x)$ as $1/f(x)$.</b> It means the inverse function.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <div class="gl-q" data-answer="B" data-why="f(−3) = 2(−3)² + 1 = 2(9) + 1 = 19. The brackets keep (−3)² positive.">
+    <p>1. $f(x)=2x^{2}+1$. What is $f(-3)$?</p>
+    <ul>
+      <li data-k="A">$-17$</li>
+      <li data-k="B">$19$</li>
+      <li data-k="C">$37$</li>
+      <li data-k="D">$-35$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="f(x) = 7 is an equation: 4x − 1 = 7 → 4x = 8 → x = 2.">
+    <p>2. $f(x)=4x-1$. Solve $f(x)=7$.</p>
+    <ul>
+      <li data-k="A">$x=27$</li>
+      <li data-k="B">$x=7$</li>
+      <li data-k="C">$x=2$</li>
+      <li data-k="D">$x=1.5$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="A vertical line through a circle meets it twice, so one input gives two outputs — it fails the vertical line test.">
+    <p>3. Which of these is <b>not</b> a function?</p>
+    <ul>
+      <li data-k="A">$x^{2}+y^{2}=25$</li>
+      <li data-k="B">$y=x^{3}$</li>
+      <li data-k="C">$y=\frac{1}{x}$</li>
+      <li data-k="D">$y=5-2x$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="The denominator must not be zero, so x + 3 ≠ 0, giving x ≠ −3.">
+    <p>4. The domain of $f(x)=\dfrac{2}{x+3}$ is:</p>
+    <ul>
+      <li data-k="A">all real $x$</li>
+      <li data-k="B">$x\ge3$</li>
+      <li data-k="C">$x\neq3$</li>
+      <li data-k="D">$x\neq-3$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="Do the inner function first: g(2) = 2² = 4, then f(4) = 3(4) = 12.">
+    <p>5. $f(x)=3x$ and $g(x)=x^{2}$. What is $fg(2)$?</p>
+    <ul>
+      <li data-k="A">$36$</li>
+      <li data-k="B">$12$</li>
+      <li data-k="C">$6$</li>
+      <li data-k="D">$9$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="y = 5x − 2 → swap: x = 5y − 2 → y = (x + 2)/5.">
+    <p>6. If $f(x)=5x-2$, then $f^{-1}(x)$ is:</p>
+    <ul>
+      <li data-k="A">$\dfrac{x+2}{5}$</li>
+      <li data-k="B">$\dfrac{1}{5x-2}$</li>
+      <li data-k="C">$\dfrac{x-2}{5}$</li>
+      <li data-k="D">$5x+2$</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-fn";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=8";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

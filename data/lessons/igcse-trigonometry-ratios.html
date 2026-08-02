@@ -1,0 +1,443 @@
+<div class="ig-lesson" id="iglab-trig">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#0B7285)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+<p class="ig-intro">Trigonometry connects the <b>angles</b> of a triangle to the <b>lengths</b> of its sides. Three ratios do all the work in a right-angled triangle; two rules extend them to every other triangle; and the sine and cosine curves let angles run past 90°. Build the triangles below and watch which ratio the question is really asking for.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Name the hypotenuse, opposite and adjacent sides against a chosen angle.</li>
+    <li>Use sine, cosine and tangent to find a missing side or a missing angle.</li>
+    <li>Work with angles of elevation and depression.</li>
+    <li>Recall and apply the exact values of sin, cos and tan at $0°$, $30°$, $45°$, $60°$ and $90°$.</li>
+    <li>Solve trigonometric equations for angles beyond $90°$, giving <em>every</em> solution in the range.</li>
+    <li>Use the sine rule and the cosine rule — and spot the ambiguous case.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> The three ratios</h4>
+  <p>In a right-angled triangle the three sides get names, and those names depend on <b>which angle you are standing at</b>.</p>
+  <ul class="ig-list">
+    <li>The <b>hypotenuse</b> is always opposite the right angle. It never changes and it is always the longest side.</li>
+    <li>The <b>opposite</b> is the side facing your angle $\theta$.</li>
+    <li>The <b>adjacent</b> is the remaining side, next to $\theta$.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Opposite and adjacent swap over</b> if you switch to the other acute angle. Only the hypotenuse stays put — so always mark the angle first, then label.</div></div>
+
+  <div class="ig-formula">$\sin\theta=\dfrac{\text{O}}{\text{H}}\qquad \cos\theta=\dfrac{\text{A}}{\text{H}}\qquad \tan\theta=\dfrac{\text{O}}{\text{A}}$</div>
+
+  <table class="ig-table">
+    <tr><th>Memory word</th><th>Ratio</th><th>Use it when you know / want</th></tr>
+    <tr><td><b>SOH</b></td><td>$\sin\theta=\text{O}\div\text{H}$</td><td>opposite and hypotenuse</td></tr>
+    <tr><td><b>CAH</b></td><td>$\cos\theta=\text{A}\div\text{H}$</td><td>adjacent and hypotenuse</td></tr>
+    <tr><td><b>TOA</b></td><td>$\tan\theta=\text{O}\div\text{A}$</td><td>opposite and adjacent</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Choosing the ratio.</b> Label H, O and A, then tick the two sides in play — the one you know and the one you want. The pair you ticked names the ratio. You never need the third side.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div>These three ratios only work in a <b>right-angled</b> triangle. Any other triangle needs the sine rule or the cosine rule (section 6).</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Finding sides and angles <span class="ig-try">Interactive</span></h4>
+  <div class="ig-two">
+    <div class="ig-mini">
+      <b>Finding a side</b>
+      <ul class="ig-list">
+        <li>Label H, O, A against the given angle.</li>
+        <li>Pick the ratio joining the known side to the wanted one.</li>
+        <li>Substitute, then rearrange.</li>
+        <li>Unknown <b>on top</b> → multiply. Unknown <b>on the bottom</b> → divide.</li>
+      </ul>
+      <div class="ig-formula">$x=12\sin 35°\qquad$ or $\qquad x=\dfrac{12}{\sin 35°}$</div>
+    </div>
+    <div class="ig-mini">
+      <b>Finding an angle</b>
+      <ul class="ig-list">
+        <li>Label H, O, A.</li>
+        <li>Write the ratio of the two sides you know.</li>
+        <li>Turn it into a decimal.</li>
+        <li>Use the inverse: $\sin^{-1}$, $\cos^{-1}$ or $\tan^{-1}$.</li>
+      </ul>
+      <div class="ig-formula">$\tan\theta=\tfrac{5}{8}\Rightarrow\theta=\tan^{-1}(0.625)=32.0°$</div>
+    </div>
+  </div>
+
+  <h5>Lab 1 — the triangle solver</h5>
+  <p>Tell it what the question gives you and what it asks for. It labels the sides, chooses the ratio, and shows every line of working. Switch to <b>Find an angle</b> and feed it two sides instead.</p>
+  <div data-lab="trilab"></div>
+
+  <h5>Accuracy</h5>
+  <ul class="ig-list">
+    <li>Angles to <b>1 decimal place</b>, lengths to <b>3 significant figures</b>, unless told otherwise.</li>
+    <li>Never round part-way through — store the full value and use it in the next line.</li>
+    <li>Check the calculator says <b>DEG</b>, not RAD or GRAD.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Sense check.</b> The hypotenuse must be the longest side, and the longer of the other two sides must face the larger acute angle. If your answer breaks either rule, look again.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Angles of elevation and depression</h4>
+  <p>Both are measured from a <b>horizontal</b> line — never from a vertical one.</p>
+  <ul class="ig-list">
+    <li><b>Elevation</b> — you look <em>up</em> from the horizontal to the object.</li>
+    <li><b>Depression</b> — you look <em>down</em> from the horizontal to the object.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div>The two horizontal lines (yours and the object's) are <b>parallel</b>, so the angle of elevation from the bottom equals the angle of depression from the top — alternate angles.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> The angle of depression is <em>not</em> the angle inside the triangle at the top of the building. That interior angle is $90°-\text{depression}$.</div></div>
+  <p>Once the sketch is drawn, an elevation problem is an ordinary SOH CAH TOA problem — feed it into <b>Lab 1</b> as "angle + adjacent, find the opposite".</p>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Exact trigonometric values <span class="ig-try">Interactive</span></h4>
+  <p>These five angles must be known <b>without a calculator</b>.</p>
+  <table class="ig-table">
+    <tr><th>$\theta$</th><th>$0°$</th><th>$30°$</th><th>$45°$</th><th>$60°$</th><th>$90°$</th></tr>
+    <tr><td><b>$\sin\theta$</b></td><td>$0$</td><td>$\tfrac12$</td><td>$\tfrac{\sqrt2}{2}$</td><td>$\tfrac{\sqrt3}{2}$</td><td>$1$</td></tr>
+    <tr><td><b>$\cos\theta$</b></td><td>$1$</td><td>$\tfrac{\sqrt3}{2}$</td><td>$\tfrac{\sqrt2}{2}$</td><td>$\tfrac12$</td><td>$0$</td></tr>
+    <tr><td><b>$\tan\theta$</b></td><td>$0$</td><td>$\tfrac{\sqrt3}{3}$</td><td>$1$</td><td>$\sqrt3$</td><td>undefined</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Memory aid.</b> Write the sines as $\tfrac{\sqrt0}{2},\tfrac{\sqrt1}{2},\tfrac{\sqrt2}{2},\tfrac{\sqrt3}{2},\tfrac{\sqrt4}{2}$ — that is $0,\tfrac12,\tfrac{\sqrt2}{2},\tfrac{\sqrt3}{2},1$. The cosines are the same list <em>backwards</em>. Then $\tan=\sin\div\cos$.</div></div>
+
+  <h5>Lab 2 — where the exact values come from</h5>
+  <p>Two special triangles generate the whole table. Click an angle to see which triangle it lives in, and compare the exact form with the decimal your calculator gives.</p>
+  <div data-lab="exactlab"></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div>$\tfrac{\sqrt2}{2}$ and $\tfrac{1}{\sqrt2}$ are the same number, and so are $\tfrac{\sqrt3}{3}$ and $\tfrac{1}{\sqrt3}$. Either is accepted, but a rationalised denominator is tidier.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Angles greater than 90° <span class="ig-try">Interactive</span></h4>
+  <p>Sine, cosine and tangent are defined for <em>every</em> angle, not just those that fit inside a right-angled triangle. Their graphs show why an equation has more than one answer.</p>
+
+  <div class="ig-two">
+    <div class="ig-mini">
+      <b>The sine curve</b>
+      <ul class="ig-list">
+        <li>Maximum $1$ at $90°$, minimum $-1$ at $270°$.</li>
+        <li>Zeros at $0°,180°,360°$.</li>
+        <li>Symmetrical about $x=90°$, so $\sin\theta=\sin(180°-\theta)$.</li>
+        <li>Positive on $0°$–$180°$, negative on $180°$–$360°$.</li>
+      </ul>
+    </div>
+    <div class="ig-mini">
+      <b>The cosine curve</b>
+      <ul class="ig-list">
+        <li>Starts at $1$, minimum $-1$ at $180°$.</li>
+        <li>Zeros at $90°$ and $270°$.</li>
+        <li>Symmetrical about $x=180°$, so $\cos\theta=\cos(360°-\theta)$.</li>
+        <li>Positive on $0°$–$90°$ and $270°$–$360°$, negative in between.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h5>Lab 3 — every solution in $0°\le x\le 360°$</h5>
+  <p>Choose a curve, drag the line $y=k$, and read off <em>all</em> the crossings. The working underneath shows the calculator's principal value and the symmetry rule that produces the rest.</p>
+  <div data-lab="wavelab"></div>
+
+  <h5>Signs in each quadrant</h5>
+  <table class="ig-table">
+    <tr><th>Range of $\theta$</th><th>$\sin$</th><th>$\cos$</th><th>$\tan$</th></tr>
+    <tr><td>$0°$ – $90°$</td><td>+</td><td>+</td><td>+</td></tr>
+    <tr><td>$90°$ – $180°$</td><td>+</td><td>−</td><td>−</td></tr>
+    <tr><td>$180°$ – $270°$</td><td>−</td><td>−</td><td>+</td></tr>
+    <tr><td>$270°$ – $360°$</td><td>−</td><td>+</td><td>−</td></tr>
+  </table>
+  <div class="ig-formula">Second solution — $\sin:\;180°-x\qquad \cos:\;360°-x\qquad \tan:\;180°+x$</div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Watch out.</b> A calculator only ever returns <b>one</b> answer. For $\cos x=-0.5$ it gives $120°$, but $240°$ is just as valid. Always check the curve or the quadrant signs before you write the final line.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">6</span> The sine rule and the cosine rule <span class="ig-try">Interactive</span></h4>
+  <p>For triangles with no right angle — and where obtuse angles turn up most often.</p>
+  <div class="ig-two">
+    <div class="ig-mini">
+      <b>Sine rule</b>
+      <div class="ig-formula">$\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}$</div>
+      <p>Use it when you have a matching side-and-angle <b>pair</b>. Turn it upside down when the unknown is an angle:</p>
+      <div class="ig-formula">$\dfrac{\sin A}{a}=\dfrac{\sin B}{b}$</div>
+    </div>
+    <div class="ig-mini">
+      <b>Cosine rule</b>
+      <div class="ig-formula">$a^{2}=b^{2}+c^{2}-2bc\cos A$</div>
+      <p>Use it for two sides and the <b>included</b> angle, or for all three sides. Rearranged for an angle:</p>
+      <div class="ig-formula">$\cos A=\dfrac{b^{2}+c^{2}-a^{2}}{2bc}$</div>
+    </div>
+  </div>
+
+  <h5>Lab 4 — the rule chooser</h5>
+  <p>Pick which rule and which unknown, type the numbers, and read the working. Try <b>Sine rule — find an angle</b> with $A=40°$, $a=8$, $b=11$ to meet the ambiguous case.</p>
+  <div data-lab="rulelab"></div>
+
+  <h5>Obtuse angles from the rules</h5>
+  <ul class="ig-list">
+    <li><b>Cosine rule.</b> If $\cos A$ comes out <b>negative</b>, the angle is obtuse — the calculator returns it correctly between $90°$ and $180°$, so no extra work is needed.</li>
+    <li><b>Sine rule — the ambiguous case.</b> Because $\sin\theta=\sin(180°-\theta)$ there may be <b>two</b> possible triangles. Always test whether $180°-\theta$ also fits, by checking the three angles still total less than $180°$.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Area of any triangle:</b> $\text{Area}=\tfrac12ab\sin C$. This works for an obtuse $C$ too, because $\sin C$ stays positive all the way to $180°$.</div></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Finding a side</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The hypotenuse of a right-angled triangle is $12$ cm and one angle is $35°$. Find the side opposite that angle.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Known: hypotenuse. Wanted: opposite. That pair is <b>SOH</b>.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$\sin 35°=\dfrac{x}{12}$</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>The unknown is on top, so multiply: $x=12\sin 35°$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$x=12\times0.5736=6.8829\ldots$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $6.88$ cm (3 s.f.)</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Sense check.</b> The answer must be shorter than the hypotenuse of $12$ cm. ✔</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Finding an angle</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A right-angled triangle has an opposite side of $5$ cm and an adjacent side of $8$ cm. Find the angle $\theta$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Opposite and adjacent are known, so use <b>TOA</b>.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$\tan\theta=\dfrac{5}{8}=0.625$</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$\theta=\tan^{-1}(0.625)=32.005\ldots°$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\theta=32.0°$ (1 d.p.)</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Use $\tan^{-1}$, not $\tan$. Pressing $\tan(0.625)$ gives a meaningless answer.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Angle of elevation</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>From a point $40$ m from the base of a tower, the angle of elevation of the top is $28°$. Find the height of the tower.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Sketch it: the tower is the opposite side, the $40$ m is the adjacent side.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Opposite and adjacent → <b>TOA</b>.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$\tan 28°=\dfrac{h}{40}\Rightarrow h=40\tan 28°$</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$h=40\times0.5317=21.27\ldots$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> The tower is $21.3$ m tall (3 s.f.)</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Using exact values</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p><b>(a)</b> A right-angled triangle has hypotenuse $12$ cm and an angle of $30°$. Find the opposite side exactly.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$\sin 30°=\dfrac{x}{12}$, and $\sin 30°=\tfrac12$ exactly.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$x=12\times\tfrac12=6$ cm — exact, no rounding.</p></div></div>
+    </div>
+    <p><b>(b)</b> Evaluate $\sin 60°\cos 30°+\cos 60°\sin 30°$ exactly.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Substitute exact values: $\left(\tfrac{\sqrt3}{2}\right)\left(\tfrac{\sqrt3}{2}\right)+\left(\tfrac12\right)\left(\tfrac12\right)$</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>First term $\tfrac34$, second term $\tfrac14$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$\tfrac34+\tfrac14=1$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> (a) exactly $6$ cm · (b) $1$ — which is $\sin 90°$, since the expression is the sine addition formula for $60°+30°$.</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Solving trigonometric equations</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Solve for $0°\le x\le 360°$: (a) $\sin x=0.5$, (b) $\cos x=-0.5$, (c) $\tan x=1$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>(a)</b> $x=\sin^{-1}(0.5)=30°$. Sine is positive in the first two quadrants, so also $180°-30°=150°$.<br>$x=30°$ or $150°$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>(b)</b> $x=\cos^{-1}(-0.5)=120°$. Cosine is symmetrical about $180°$, so also $360°-120°=240°$.<br>$x=120°$ or $240°$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>(c)</b> $x=\tan^{-1}(1)=45°$. Tangent repeats every $180°$, so also $45°+180°=225°$.<br>$x=45°$ or $225°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> (a) $30°,150°$ · (b) $120°,240°$ · (c) $45°,225°$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Each of these has <b>two</b> answers in the range. Losing the second one loses marks — check each against <b>Lab 3</b>.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Sine rule and the ambiguous case</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>In triangle $ABC$, $A=40°$, $a=8$ cm and $b=11$ cm. Find the possible values of angle $B$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Sine rule, angle way up: $\dfrac{\sin B}{11}=\dfrac{\sin 40°}{8}$</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$\sin B=\dfrac{11\sin 40°}{8}=\dfrac{11\times0.6428}{8}=0.8838$</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$B=\sin^{-1}(0.8838)=62.1°$</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Since $\sin\theta=\sin(180°-\theta)$, also test $180°-62.1°=117.9°$.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p>Check both fit: $40+62.1=102.1<180$ ✔ and $40+117.9=157.9<180$ ✔ — both triangles exist.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $B=62.1°$ or $B=117.9°$ (1 d.p.)</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Why two answers.</b> Because $b>a$ and angle $A$ is acute, two different triangles can be drawn from these measurements.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>Cosine rule giving an obtuse angle</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A triangle has sides $a=5$ cm, $b=6$ cm and $c=10$ cm. Find angle $C$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$C$ is opposite side $c$, so $\cos C=\dfrac{a^{2}+b^{2}-c^{2}}{2ab}$</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$\cos C=\dfrac{25+36-100}{2\times5\times6}=\dfrac{-39}{60}$</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$\cos C=-0.65$</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$C=\cos^{-1}(-0.65)=130.54\ldots°$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $C=130.5°$ (1 d.p.) — obtuse, exactly as the negative cosine predicted.</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Sense check.</b> $C$ is opposite the longest side ($10$ cm), so it must be the largest angle in the triangle. ✔</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Calculator in radians.</b> Check for <b>DEG</b> on the display before you start.</li>
+    <li><b>Mislabelling opposite and adjacent.</b> They swap over when you change which angle you are using.</li>
+    <li><b>Multiplying when you should divide.</b> If the unknown sits on the bottom of the fraction, divide.</li>
+    <li><b>Using SOH CAH TOA in a triangle with no right angle.</b> Switch to the sine or cosine rule.</li>
+    <li><b>Giving only one solution to a trigonometric equation.</b> Sine, cosine and tangent all repeat — check the curve.</li>
+    <li><b>Ignoring the ambiguous case of the sine rule.</b> Always test $180°-\theta$ as well.</li>
+    <li><b>Square-rooting the cosine rule too early.</b> Work out the whole right-hand side first, then take the root.</li>
+    <li><b>Rounding too early.</b> Store intermediate values; round only the final answer.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <div class="gl-q" data-answer="C" data-why="You know the hypotenuse and want the opposite, so that is SOH: sin 40° = x / 15, giving x = 15 sin 40°.">
+    <p>1. The hypotenuse is $15$ cm and an angle is $40°$. Which line finds the opposite side?</p>
+    <ul>
+      <li data-k="A">$x=15\div\sin 40°$</li>
+      <li data-k="B">$x=15\cos 40°$</li>
+      <li data-k="C">$x=15\sin 40°$</li>
+      <li data-k="D">$x=15\tan 40°$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="Adjacent and hypotenuse means CAH: cos θ = 7/9 = 0.7778, so θ = cos⁻¹(0.7778) = 38.9°.">
+    <p>2. A triangle has adjacent $7$ cm and hypotenuse $9$ cm. Find $\theta$.</p>
+    <ul>
+      <li data-k="A">$51.1°$</li>
+      <li data-k="B">$38.9°$</li>
+      <li data-k="C">$37.9°$</li>
+      <li data-k="D">$0.778°$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="cos 60° = 1/2 exactly — it is the cosine of the 60° angle in half an equilateral triangle of side 2.">
+    <p>3. What is the exact value of $\cos 60°$?</p>
+    <ul>
+      <li data-k="A">$\dfrac{\sqrt3}{2}$</li>
+      <li data-k="B">$\dfrac{\sqrt2}{2}$</li>
+      <li data-k="C">$\sqrt3$</li>
+      <li data-k="D">$\dfrac12$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="sin⁻¹(0.5) = 30°, and sine is symmetrical about x = 90°, so the second solution is 180° − 30° = 150°.">
+    <p>4. Solve $\sin x=0.5$ for $0°\le x\le 360°$.</p>
+    <ul>
+      <li data-k="A">$x=30°$ or $150°$</li>
+      <li data-k="B">$x=30°$ only</li>
+      <li data-k="C">$x=30°$ or $210°$</li>
+      <li data-k="D">$x=60°$ or $120°$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="B" data-why="A negative cosine means the angle lies between 90° and 180°, so it is obtuse. The calculator returns that value directly.">
+    <p>5. The cosine rule gives $\cos A=-0.4$. What does that tell you about $A$?</p>
+    <ul>
+      <li data-k="A">There is no such triangle</li>
+      <li data-k="B">$A$ is obtuse</li>
+      <li data-k="C">$A$ is acute</li>
+      <li data-k="D">$A$ is a right angle</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="C" data-why="Two sides with the angle between them is the cosine rule: a² = b² + c² − 2bc cos A. The sine rule needs a matching side–angle pair, which you do not have.">
+    <p>6. You know two sides of a triangle and the angle <b>between</b> them, and want the third side. Which rule?</p>
+    <ul>
+      <li data-k="A">Sine rule</li>
+      <li data-k="B">SOH CAH TOA</li>
+      <li data-k="C">Cosine rule</li>
+      <li data-k="D">Pythagoras</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="D" data-why="The angle of depression is measured from the horizontal at the top, and the interior angle of the triangle there is its complement: 90° − 32° = 58°.">
+    <p>7. The angle of depression of a boat from a cliff top is $32°$. What is the angle inside the triangle at the cliff top?</p>
+    <ul>
+      <li data-k="A">$32°$</li>
+      <li data-k="B">$148°$</li>
+      <li data-k="C">$122°$</li>
+      <li data-k="D">$58°$</li>
+    </ul>
+  </div>
+  <div class="gl-q" data-answer="A" data-why="tan⁻¹(1) = 45°, and tangent repeats every 180°, so the other solution in the range is 45° + 180° = 225°.">
+    <p>8. Solve $\tan x=1$ for $0°\le x\le 360°$.</p>
+    <ul>
+      <li data-k="A">$x=45°$ or $225°$</li>
+      <li data-k="B">$x=45°$ or $135°$</li>
+      <li data-k="C">$x=45°$ or $315°$</li>
+      <li data-k="D">$x=45°$ only</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-trig";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=8";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>
