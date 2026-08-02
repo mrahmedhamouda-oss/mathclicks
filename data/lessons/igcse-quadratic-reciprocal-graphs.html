@@ -260,59 +260,24 @@
 
 <h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
 <div class="ig-card" data-lab="quiz">
-  <div class="gl-q" data-answer="B" data-why="a is negative, so the parabola opens downwards and its turning point is the highest point — a maximum.">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning.</p>
+  <div class="gl-q" data-answer="maximum" data-accept="max|a maximum" data-why="a = −2 is negative, so the parabola opens downwards and its turning point is the highest point — a maximum.">
     <p>1. The curve $y=-2x^{2}+4x+1$ has a turning point. Is it a maximum or a minimum?</p>
-    <ul>
-      <li data-k="A">A minimum, because $c=1$ is positive</li>
-      <li data-k="B">A maximum, because $a=-2$ is negative</li>
-      <li data-k="C">A minimum, because $b=4$ is positive</li>
-      <li data-k="D">You cannot tell without drawing it</li>
-    </ul>
   </div>
-  <div class="gl-q" data-answer="C" data-why="The y-intercept is found by putting x = 0, which always leaves the constant term c.">
-    <p>2. What is the y-intercept of $y=x^{2}-5x+6$?</p>
-    <ul>
-      <li data-k="A">$(0,-5)$</li>
-      <li data-k="B">$(2,0)$ and $(3,0)$</li>
-      <li data-k="C">$(0,6)$</li>
-      <li data-k="D">$(0,1)$</li>
-    </ul>
+  <div class="gl-q" data-answer="(0, 6)" data-accept="0,6|6" data-why="Put x = 0 and everything but the constant vanishes, leaving y = 6 — so the y-intercept is (0, 6).">
+    <p>2. What is the $y$-intercept of $y=x^{2}-5x+6$? Give it as a coordinate pair.</p>
   </div>
-  <div class="gl-q" data-answer="A" data-why="The line of symmetry is x = −b/(2a) = −(−6)/(2×1) = 3, and it passes through the turning point.">
-    <p>3. The line of symmetry of $y=x^{2}-6x+8$ is:</p>
-    <ul>
-      <li data-k="A">$x=3$</li>
-      <li data-k="B">$x=-3$</li>
-      <li data-k="C">$y=3$</li>
-      <li data-k="D">$x=6$</li>
-    </ul>
+  <div class="gl-q" data-answer="x = 3" data-accept="3" data-why="x = −b/(2a) = −(−6)/(2×1) = 3. The line of symmetry always passes through the turning point.">
+    <p>3. Write down the equation of the line of symmetry of $y=x^{2}-6x+8$.</p>
   </div>
-  <div class="gl-q" data-answer="D" data-why="a is negative, so the branches sit in the 2nd and 4th quadrants; the asymptotes are still the two axes.">
-    <p>4. Where do the branches of $y=\dfrac{-5}{x}$ lie?</p>
-    <ul>
-      <li data-k="A">1st and 3rd quadrants</li>
-      <li data-k="B">Only the 4th quadrant</li>
-      <li data-k="C">Along the axes</li>
-      <li data-k="D">2nd and 4th quadrants</li>
-    </ul>
+  <div class="gl-q" data-answer="2 and 4" data-accept="2,4|4 and 2|second and fourth|2nd and 4th" data-why="a is negative, so the branches sit in the 2nd and 4th quadrants. The asymptotes are still the two axes.">
+    <p>4. In which two quadrants do the branches of $y=\dfrac{-5}{x}$ lie? Give the two numbers.</p>
   </div>
-  <div class="gl-q" data-answer="B" data-why="Rearrange so the left side is exactly the curve you drew: x² − x − 4 = 0 → x² − 2x − 3 = −x + 1, so the line is y = −x + 1.">
-    <p>5. You have drawn $y=x^{2}-2x-3$. Which line solves $x^{2}-x-4=0$?</p>
-    <ul>
-      <li data-k="A">$y=x-4$</li>
-      <li data-k="B">$y=-x+1$</li>
-      <li data-k="C">$y=x+1$</li>
-      <li data-k="D">$y=-4$</li>
-    </ul>
+  <div class="gl-q" data-answer="y = -x + 1" data-accept="-x+1|y=1-x|1-x" data-why="Rearrange so the left side is exactly the curve you drew: x² − x − 4 = 0 → x² − 2x − 3 = −x + 1. So draw y = −x + 1.">
+    <p>5. You have drawn $y=x^{2}-2x-3$. Which straight line must you add to solve $x^{2}-x-4=0$?</p>
   </div>
-  <div class="gl-q" data-answer="C" data-why="First differences +4, +8, +12 are not constant, but the second differences are +4, +4 — that is the signature of a quadratic.">
-    <p>6. A table with equally spaced $x$ gives $y = 3,\ 7,\ 15,\ 27$. The relationship is:</p>
-    <ul>
-      <li data-k="A">Linear</li>
-      <li data-k="B">Reciprocal</li>
-      <li data-k="C">Quadratic</li>
-      <li data-k="D">Exponential</li>
-    </ul>
+  <div class="gl-q" data-answer="quadratic" data-accept="it is quadratic" data-why="First differences +4, +8, +12 are not constant, but the second differences are +4, +4 — constant second differences mean quadratic.">
+    <p>6. Equally spaced $x$ values give $y = 3,\ 7,\ 15,\ 27$. Is this relationship linear, quadratic or reciprocal?</p>
   </div>
 </div>
 </div>
@@ -329,7 +294,7 @@
   if (!s) {
     s = document.createElement("script");
     s.id = "graphlab-js";
-    s.src = "js/graphlab.js?v=8";
+    s.src = "js/graphlab.js?v=9";
     document.head.appendChild(s);
   }
   s.addEventListener("load", go);

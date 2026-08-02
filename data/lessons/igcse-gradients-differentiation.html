@@ -237,59 +237,24 @@
 
 <h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
 <div class="ig-card" data-lab="quiz">
-  <div class="gl-q" data-answer="C" data-why="Multiply by the power and reduce it by one: 5×2 = 10 gives 10x³, and −3 differentiates to 0.">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning.</p>
+  <div class="gl-q" data-answer="20x³" data-accept="20x^3|dy/dx=20x^3|dy/dx=20x³" data-why="Multiply by the power and drop it by one: 5 × 4 = 20 gives 20x³, and the constant −3 differentiates to 0.">
     <p>1. Differentiate $y=5x^{4}-3$.</p>
-    <ul>
-      <li data-k="A">$20x^{3}-3$</li>
-      <li data-k="B">$5x^{3}$</li>
-      <li data-k="C">$20x^{3}$</li>
-      <li data-k="D">$4x^{3}-3$</li>
-    </ul>
   </div>
-  <div class="gl-q" data-answer="A" data-why="dy/dx = 2x + 3; at x = 2 that is 4 + 3 = 7.">
-    <p>2. $y=x^{2}+3x$. What is the gradient at $x=2$?</p>
-    <ul>
-      <li data-k="A">$7$</li>
-      <li data-k="B">$10$</li>
-      <li data-k="C">$4$</li>
-      <li data-k="D">$2x+3$</li>
-    </ul>
+  <div class="gl-q" data-answer="7" data-accept="gradient=7" data-why="dy/dx = 2x + 3, and at x = 2 that is 4 + 3 = 7.">
+    <p>2. $y=x^{2}+3x$. Find the gradient of the curve at $x=2$.</p>
   </div>
-  <div class="gl-q" data-answer="B" data-why="A stationary point is where the gradient is zero, so the tangent there is horizontal.">
-    <p>3. At a stationary point, the tangent to the curve is:</p>
-    <ul>
-      <li data-k="A">Vertical</li>
-      <li data-k="B">Horizontal</li>
-      <li data-k="C">At 45°</li>
-      <li data-k="D">Undefined</li>
-    </ul>
+  <div class="gl-q" data-answer="horizontal" data-accept="flat|level|it is horizontal" data-why="A stationary point is where the gradient is zero, so the tangent there is horizontal.">
+    <p>3. At a stationary point, what is the tangent to the curve? Describe it in one word.</p>
   </div>
-  <div class="gl-q" data-answer="D" data-why="Set dy/dx = 2x − 8 = 0 → x = 4, then substitute into the ORIGINAL equation: y = 16 − 32 + 1 = −15.">
-    <p>4. $y=x^{2}-8x+1$. The stationary point is at:</p>
-    <ul>
-      <li data-k="A">$(4,0)$</li>
-      <li data-k="B">$(8,1)$</li>
-      <li data-k="C">$(-4,49)$</li>
-      <li data-k="D">$(4,-15)$</li>
-    </ul>
+  <div class="gl-q" data-answer="(4, -15)" data-accept="4,-15|(4,−15)" data-why="Set dy/dx = 2x − 8 = 0 → x = 4. Then substitute into the ORIGINAL equation: y = 16 − 32 + 1 = −15.">
+    <p>4. $y=x^{2}-8x+1$. Find the stationary point, as a coordinate pair.</p>
   </div>
-  <div class="gl-q" data-answer="A" data-why="A negative second derivative means the curve is bending downwards there, so the stationary point is a maximum.">
-    <p>5. At a stationary point $\frac{d^{2}y}{dx^{2}}=-6$. The point is a:</p>
-    <ul>
-      <li data-k="A">Maximum</li>
-      <li data-k="B">Minimum</li>
-      <li data-k="C">Point of inflection</li>
-      <li data-k="D">Root</li>
-    </ul>
+  <div class="gl-q" data-answer="maximum" data-accept="max|a maximum" data-why="A negative second derivative means the curve bends downwards there, so the stationary point is a maximum.">
+    <p>5. At a stationary point $\dfrac{d^{2}y}{dx^{2}}=-6$. Is the point a maximum or a minimum?</p>
   </div>
-  <div class="gl-q" data-answer="B" data-why="Two points on the curve give the gradient of a chord, which is the average rate of change over that interval.">
-    <p>6. The gradient of a <b>chord</b> between two points on a curve gives:</p>
-    <ul>
-      <li data-k="A">The gradient at the left-hand point</li>
-      <li data-k="B">The average rate of change over that interval</li>
-      <li data-k="C">The second derivative</li>
-      <li data-k="D">The area under the curve</li>
-    </ul>
+  <div class="gl-q" data-answer="5" data-accept="gradient=5" data-why="That is the gradient of the chord: (16 − 1) ÷ (4 − 1) = 15/3 = 5. The instantaneous rate at x = 1 would be only 2.">
+    <p>6. Find the <b>average</b> rate of change of $y=x^{2}$ between $x=1$ and $x=4$.</p>
   </div>
 </div>
 </div>
@@ -306,7 +271,7 @@
   if (!s) {
     s = document.createElement("script");
     s.id = "graphlab-js";
-    s.src = "js/graphlab.js?v=8";
+    s.src = "js/graphlab.js?v=9";
     document.head.appendChild(s);
   }
   s.addEventListener("load", go);

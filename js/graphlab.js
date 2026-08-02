@@ -1304,41 +1304,128 @@
   };
 
   /* 12 · Markup-driven self-check quiz */
+  /* Self-check — typed answers, not multiple choice.
+
+     Markup per question:
+       <div class="gl-q" data-answer="13" data-accept="13 cm" data-why="…"><p>…</p></div>
+     Add data-open="1" for a "think, then reveal" question with no typed answer.
+     data-accept holds |-separated alternative spellings of the same answer. */
   build.quiz = function (host) {
+    const MINUS_RE = /[−–—]/g;
+    const UNIT_RE = /(cm\^2|m\^2|km\^2|km\/h|m\/s|cm|mm|km|m|deg(?:rees)?|units?|hours?|hrs?)$/;
+
+    // put both sides into one comparable shape: ascii minus, ^2 for ², no spaces
+    function norm(s) {
+      return String(s)
+        .replace(MINUS_RE, "-")
+        .replace(/²/g, "^2").replace(/³/g, "^3")
+        .replace(/×/g, "*").replace(/÷/g, "/")
+        .replace(/≤/g, "<=").replace(/≥/g, ">=").replace(/≠/g, "!=")
+        .replace(/°/g, "")
+        .replace(/[()\s,$]/g, "")
+        .toLowerCase();
+    }
+    // for numeric answers also drop a leading "x=" and any trailing unit
+    function bare(s) {
+      return norm(s).replace(/^[a-zθ]=/, "").replace(UNIT_RE, "");
+    }
+    const numeric = (s) => /^-?\d*\.?\d+$/.test(bare(s));
+    // accept anything that rounds to the same value the answer is quoted to
+    function tolerance(expectedStr, expected) {
+      const dot = bare(expectedStr).indexOf(".");
+      const dp = dot < 0 ? 0 : bare(expectedStr).length - dot - 1;
+      // a whole-number answer is an exact value, so stay tight — a relative
+      // tolerance would wrongly accept 226 for an answer of 225
+      return dp > 0 ? 0.51 * Math.pow(10, -dp) : 0.05;
+    }
+
     const qs = [...host.querySelectorAll(".gl-q")];
     const tally = e("div", "gl-score-bar");
     let asked = 0, right = 0;
     const update = () => (tally.textContent = "Score: " + right + " / " + asked + " answered");
+
     qs.forEach((q) => {
-      const ans = q.dataset.answer;
+      [...q.querySelectorAll("ul")].forEach((ul) => ul.remove());   // drop any legacy option list
+      const ans = q.dataset.answer || "";
       const why = q.dataset.why || "";
-      const opts = [...q.querySelectorAll("li")];
-      const fb = e("div", "gl-msg");
+      const open = q.dataset.open === "1";
+      const alts = [ans].concat((q.dataset.accept || "").split("|")).filter(Boolean);
+      const isNum = !open && numeric(ans);
+
+      const row = e("div", "gl-answer-row");
+      let input = null;
+      if (!open) {
+        input = document.createElement("input");
+        input.type = "text";
+        input.className = "gl-cell ans";
+        input.placeholder = "your answer";
+        input.setAttribute("aria-label", "your answer");
+        input.autocomplete = "off";
+        row.appendChild(input);
+      }
+      const check = open ? null : e("button", "gl-btn", "✓ Check");
+      const show = e("button", "gl-btn ghost", open ? "Show the answer" : "Show answer");
+      if (check) { check.type = "button"; row.appendChild(check); }
+      show.type = "button";
+      row.appendChild(show);
+      q.appendChild(row);
+
+      // stays hidden until the student checks or reveals
+      const fb = e("div", "gl-msg empty");
       q.appendChild(fb);
-      let locked = false;
-      opts.forEach((li) => {
-        li.setAttribute("role", "button");
-        li.tabIndex = 0;
-        li.classList.add("gl-opt");
-        const pick = () => {
-          if (locked) return;
-          locked = true;
-          asked++;
-          const ok = li.dataset.k === ans;
-          if (ok) { right++; li.classList.add("ok"); }
-          else {
-            li.classList.add("bad");
-            const good = opts.find((o) => o.dataset.k === ans);
-            if (good) good.classList.add("ok");
-          }
-          fb.className = "gl-msg " + (ok ? "good" : "bad");
-          fb.textContent = (ok ? "Correct. " : "Not quite. ") + why;
-          update();
-        };
-        li.addEventListener("click", pick);
-        li.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); pick(); } });
-      });
+      const say = (cls, text, asHtml) => {
+        fb.className = "gl-msg" + (cls ? " " + cls : "");
+        if (asHtml) fb.innerHTML = text; else fb.textContent = text;
+      };
+
+      let done = false, tries = 0;
+
+      function finish(correct) {
+        done = true;
+        asked++;
+        if (correct) right++;
+        if (input) input.disabled = true;
+        if (check) check.disabled = true;
+        update();
+      }
+      function reveal(byUser) {
+        if (done) { if (byUser) say("", "Answer: " + ans + ". " + why); return; }
+        if (input) input.classList.add("bad");
+        say("", "<b>Answer: " + ans + "</b> " + why, true);
+        finish(false);
+      }
+      function go() {
+        if (done || !input) return;
+        const got = input.value.trim();
+        if (!got) { say("warn", "Type something first."); return; }
+        let ok = alts.some((a) => norm(a) === norm(got) || bare(a) === bare(got));
+        if (!ok && isNum && numeric(got)) {
+          const exp = parseFloat(bare(ans));
+          ok = Math.abs(parseFloat(bare(got)) - exp) <= tolerance(ans, exp);
+        }
+        if (ok) {
+          input.classList.add("ok");
+          say("good", "Correct. " + why);
+          finish(true);
+          return;
+        }
+        tries++;
+        input.classList.add("bad");
+        say("bad", tries >= 2
+          ? "Still not right — press Show answer when you want it."
+          : "Not quite. Check your working and try again.");
+        setTimeout(() => input.classList.remove("bad"), 900);
+      }
+
+      if (input) {
+        input.addEventListener("keydown", (ev) => {
+          if (ev.key === "Enter") { ev.preventDefault(); go(); }
+        });
+      }
+      if (check) check.addEventListener("click", go);
+      show.addEventListener("click", () => reveal(true));
     });
+
     host.appendChild(tally);
     update();
   };
@@ -3774,6 +3861,13 @@
 .gl-cell{width:52px;padding:.25rem;border:1.5px solid var(--line);border-radius:6px;text-align:center;
   font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;background:var(--card);color:var(--ink)}
 .gl-cell.wide{width:62px}
+.gl-cell.ans{width:auto;flex:1 1 140px;min-width:120px;max-width:260px;text-align:left;padding:.42rem .7rem;font-size:.92rem}
+.gl-cell:disabled{opacity:.7;cursor:default}
+.gl-answer-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 0}
+.gl-answer-row .gl-btn{flex:none;padding:.42rem .85rem}
+.gl-q{margin:0 0 20px;padding:0 0 4px;border-bottom:1px dashed var(--line)}
+.gl-q:last-of-type{border-bottom:none}
+.gl-msg.empty{display:none}
 .gl-cell:focus{outline:2px solid var(--dc,#3B5BDB);outline-offset:1px}
 .gl-cell.ok{border-color:var(--good,#16a34a);background:var(--good-soft,#f0fdf4)}
 .gl-cell.bad{border-color:var(--bad,#dc2626);background:var(--bad-soft,#fef2f2)}

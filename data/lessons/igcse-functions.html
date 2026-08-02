@@ -279,59 +279,24 @@
 
 <h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
 <div class="ig-card" data-lab="quiz">
-  <div class="gl-q" data-answer="B" data-why="f(−3) = 2(−3)² + 1 = 2(9) + 1 = 19. The brackets keep (−3)² positive.">
-    <p>1. $f(x)=2x^{2}+1$. What is $f(-3)$?</p>
-    <ul>
-      <li data-k="A">$-17$</li>
-      <li data-k="B">$19$</li>
-      <li data-k="C">$37$</li>
-      <li data-k="D">$-35$</li>
-    </ul>
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning.</p>
+  <div class="gl-q" data-answer="19" data-accept="f(-3)=19" data-why="f(−3) = 2(−3)² + 1 = 2(9) + 1 = 19. The brackets keep (−3)² positive.">
+    <p>1. $f(x)=2x^{2}+1$. Work out $f(-3)$.</p>
   </div>
-  <div class="gl-q" data-answer="C" data-why="f(x) = 7 is an equation: 4x − 1 = 7 → 4x = 8 → x = 2.">
+  <div class="gl-q" data-answer="x = 2" data-accept="2" data-why="f(x) = 7 is an equation to solve: 4x − 1 = 7 → 4x = 8 → x = 2. That is different from finding f(7).">
     <p>2. $f(x)=4x-1$. Solve $f(x)=7$.</p>
-    <ul>
-      <li data-k="A">$x=27$</li>
-      <li data-k="B">$x=7$</li>
-      <li data-k="C">$x=2$</li>
-      <li data-k="D">$x=1.5$</li>
-    </ul>
   </div>
-  <div class="gl-q" data-answer="A" data-why="A vertical line through a circle meets it twice, so one input gives two outputs — it fails the vertical line test.">
-    <p>3. Which of these is <b>not</b> a function?</p>
-    <ul>
-      <li data-k="A">$x^{2}+y^{2}=25$</li>
-      <li data-k="B">$y=x^{3}$</li>
-      <li data-k="C">$y=\frac{1}{x}$</li>
-      <li data-k="D">$y=5-2x$</li>
-    </ul>
+  <div class="gl-q" data-answer="a² - 1" data-accept="a^2-1|a²-1" data-why="f(a+1) = (a+1)² − 2(a+1) = a² + 2a + 1 − 2a − 2 = a² − 1. Subtracting the whole bracket flips both signs inside it.">
+    <p>3. $f(x)=x^{2}-2x$. Find $f(a+1)$, simplified as far as possible.</p>
   </div>
-  <div class="gl-q" data-answer="D" data-why="The denominator must not be zero, so x + 3 ≠ 0, giving x ≠ −3.">
-    <p>4. The domain of $f(x)=\dfrac{2}{x+3}$ is:</p>
-    <ul>
-      <li data-k="A">all real $x$</li>
-      <li data-k="B">$x\ge3$</li>
-      <li data-k="C">$x\neq3$</li>
-      <li data-k="D">$x\neq-3$</li>
-    </ul>
+  <div class="gl-q" data-answer="x ≠ -3" data-accept="x!=-3|x≠−3|x is not -3" data-why="The denominator must not be zero, so x + 3 ≠ 0, giving x ≠ −3.">
+    <p>4. State the domain of $f(x)=\dfrac{2}{x+3}$.</p>
   </div>
-  <div class="gl-q" data-answer="B" data-why="Do the inner function first: g(2) = 2² = 4, then f(4) = 3(4) = 12.">
-    <p>5. $f(x)=3x$ and $g(x)=x^{2}$. What is $fg(2)$?</p>
-    <ul>
-      <li data-k="A">$36$</li>
-      <li data-k="B">$12$</li>
-      <li data-k="C">$6$</li>
-      <li data-k="D">$9$</li>
-    </ul>
+  <div class="gl-q" data-answer="12" data-accept="fg(2)=12" data-why="Do the inner function first: g(2) = 2² = 4, then f(4) = 3(4) = 12. Order matters — gf(2) would be 36.">
+    <p>5. $f(x)=3x$ and $g(x)=x^{2}$. Work out $fg(2)$.</p>
   </div>
-  <div class="gl-q" data-answer="A" data-why="y = 5x − 2 → swap: x = 5y − 2 → y = (x + 2)/5.">
-    <p>6. If $f(x)=5x-2$, then $f^{-1}(x)$ is:</p>
-    <ul>
-      <li data-k="A">$\dfrac{x+2}{5}$</li>
-      <li data-k="B">$\dfrac{1}{5x-2}$</li>
-      <li data-k="C">$\dfrac{x-2}{5}$</li>
-      <li data-k="D">$5x+2$</li>
-    </ul>
+  <div class="gl-q" data-answer="(x + 2)/5" data-accept="(x+2)/5|x+2/5" data-why="Write y = 5x − 2, swap to get x = 5y − 2, then rearrange: y = (x + 2)/5.">
+    <p>6. If $f(x)=5x-2$, find $f^{-1}(x)$.</p>
   </div>
 </div>
 </div>
@@ -348,7 +313,7 @@
   if (!s) {
     s = document.createElement("script");
     s.id = "graphlab-js";
-    s.src = "js/graphlab.js?v=8";
+    s.src = "js/graphlab.js?v=9";
     document.head.appendChild(s);
   }
   s.addEventListener("load", go);
