@@ -1,0 +1,341 @@
+<div class="ig-lesson" id="iglab-applying-vectors">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#1864AB)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow);overflow-x:auto}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{position:relative;padding-left:24px;margin:8px 0;color:var(--ink);line-height:1.6}
+.ig-lesson .ig-obj li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ig-accent);font-weight:900}
+</style>
+<p class="ig-intro">This is the Paper 4 lesson: everything from <b>Vectors</b> put to work. Almost every 0580 vectors question is one of six types, and recognising the type tells you the method before you write anything. The labs below run the two techniques that carry the hardest marks — comparing coefficients to find where two lines cross, and area ratios.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Recognise which of the six standard question types you are looking at.</li>
+    <li>Compare coefficients to find two unknowns — and say why you are allowed to.</li>
+    <li>Find the intersection of two lines using two independent parameters.</li>
+    <li>Turn a scalar multiple into a length ratio.</li>
+    <li>Use the same-height rule and the similar-triangle rule for area ratios.</li>
+    <li>Write the concluding sentence that earns the final mark in a proof.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> The toolkit, on one page</h4>
+  <table class="ig-table">
+    <tr><th>Tool</th><th>Statement</th><th>Use it when…</th></tr>
+    <tr><td><b>Route rule</b></td><td>$\overrightarrow{AB}=\overrightarrow{AO}+\overrightarrow{OB}=\mathbf{b}-\mathbf{a}$</td><td>You need a vector between two labelled points</td></tr>
+    <tr><td><b>Midpoint</b></td><td>$\overrightarrow{OM}=\tfrac12(\mathbf{a}+\mathbf{b})$</td><td>$M$ is the midpoint of $AB$</td></tr>
+    <tr><td><b>Ratio point</b></td><td>$\overrightarrow{OC}=\mathbf{a}+\dfrac{m}{m+n}(\mathbf{b}-\mathbf{a})$</td><td>$C$ is on $AB$ with $AC:CB=m:n$</td></tr>
+    <tr><td><b>Parallel test</b></td><td>$\mathbf{v}=k\mathbf{u}$</td><td>You must prove two lines parallel, or find a ratio</td></tr>
+    <tr><td><b>Comparing coefficients</b></td><td>$\lambda\mathbf{a}+\mu\mathbf{b}=p\mathbf{a}+q\mathbf{b}\Rightarrow\lambda=p,\ \mu=q$</td><td>Two unknowns appear, or two lines intersect</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>The condition that makes it all work.</b> Comparing coefficients is valid only when $\mathbf{a}$ and $\mathbf{b}$ are <b>not parallel</b>. Every IGCSE question sets up two non-parallel base vectors precisely so you can do this — and the mark scheme expects you to say so.</div></div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Two habits worth having.</b> Always write a vector with its start and end letters ($\overrightarrow{MN}$, not "the vector to N"), and always simplify to the form $\alpha\mathbf{a}+\beta\mathbf{b}$ before comparing anything.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> The six question types</h4>
+  <table class="ig-table">
+    <tr><th>Type</th><th>What it looks like</th><th>Method</th></tr>
+    <tr><td><b>A — Arithmetic</b></td><td>"Find $3\mathbf{a}-2\mathbf{b}$ and $|3\mathbf{a}-2\mathbf{b}|$"</td><td>Component arithmetic first, then Pythagoras</td></tr>
+    <tr><td><b>B — Unknowns</b></td><td>"Find $k$ given the vectors are parallel"</td><td>Set one vector $=\lambda\times$ the other; compare</td></tr>
+    <tr><td><b>C — Express</b></td><td>"Express $\overrightarrow{MN}$ in terms of $\mathbf{a}$ and $\mathbf{b}$"</td><td>Walk a route, then collect terms</td></tr>
+    <tr><td><b>D — Prove</b></td><td>"Show $PQ$ is parallel to $AB$" · "Show $X$, $Y$, $Z$ are collinear"</td><td>Factorise to $k\times(\text{something})$, then write the conclusion</td></tr>
+    <tr><td><b>E — Ratio</b></td><td>"Find $AX:XB$" · "Find the ratio of the areas"</td><td>Compare the scalar multiples; areas use the base ratio or $k^{2}$</td></tr>
+    <tr><td><b>F — Intersection</b></td><td>"$BM$ and $ON$ meet at $X$. Find $\overrightarrow{OX}$."</td><td>Two parameters, two expressions, compare coefficients</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Read the command word.</b> "Write down" needs no working. "Find" or "Express" needs the route. "Show that" needs the given answer to appear <b>and</b> a concluding statement. "Explain" or "Justify" awards marks for the words, not the algebra.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Comparing coefficients <span class="ig-try">Interactive</span></h4>
+  <p>If $\mathbf{a}$ and $\mathbf{b}$ are not parallel, the only way two expressions in $\mathbf{a}$ and $\mathbf{b}$ can be equal is for the $\mathbf{a}$ parts to match and the $\mathbf{b}$ parts to match <em>separately</em>. One vector equation therefore carries two ordinary equations.</p>
+  <div class="ig-formula">$\lambda\mathbf{a}+\mu\mathbf{b}=p\mathbf{a}+q\mathbf{b}\quad\Rightarrow\quad \lambda=p\ \text{ and }\ \mu=q$</div>
+
+  <h5>Lab 1 — the coefficient solver</h5>
+  <p>Type the coefficients of any equation of this shape and the lab splits it into its two equations and solves them, with the check at the end.</p>
+  <div data-lab="coefflab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Finding an intersection <span class="ig-try">Interactive</span></h4>
+  <ul class="ig-list">
+    <li>Let $X$ be the intersection. Write $\overrightarrow{OX}$ along the <b>first</b> line using a parameter $t$.</li>
+    <li>Write $\overrightarrow{OX}$ again along the <b>second</b> line using a <em>different</em> parameter $s$.</li>
+    <li>Simplify both into the form $\alpha\mathbf{a}+\beta\mathbf{b}$.</li>
+    <li>Set the $\mathbf{a}$ coefficients equal and the $\mathbf{b}$ coefficients equal — two equations.</li>
+    <li>Solve the pair, then substitute back to get $\overrightarrow{OX}$.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Why two different letters.</b> $X$ sits at a different fraction along each line, so the parameters must be independent. Using $t$ for both is the most common way to lose every mark in the part.</div></div>
+
+  <h5>Lab 2 — where the two lines cross</h5>
+  <p>Move $M$ along $OA$ and $N$ along $AB$. The lab runs the full method — both routes, both comparison equations, the value of $t$, and the ratio in which $X$ divides $ON$. With both at the midpoint you get the median result: $OX:XN=2:1$.</p>
+  <div data-lab="meetlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Ratios of lengths and areas <span class="ig-try">Interactive</span></h4>
+  <h5>Length ratios from a scalar multiple</h5>
+  <p>If $\overrightarrow{OX}=k\,\overrightarrow{OY}$ then $X$ and $Y$ lie on the same line through $O$, and</p>
+  <div class="ig-formula">$OX:XY=k:(1-k)$</div>
+  <p>For example $\overrightarrow{OX}=\tfrac23\overrightarrow{ON}$ gives $OX:XN=2:1$.</p>
+
+  <h5>Two different area rules</h5>
+  <div class="ig-two">
+    <div class="ig-mini"><b>Same height</b><br>Triangles $OAC$ and $OCB$ share the perpendicular height from $O$ to $AB$, so their areas are in the ratio of their <b>bases</b>: $AC:CB$.</div>
+    <div class="ig-mini"><b>Similar triangles</b><br>Lengths in the ratio $1:k$ give areas in the ratio $1:k^{2}$. Showing $\overrightarrow{PQ}=k\,\overrightarrow{AB}$ is what proves the similarity.</div>
+  </div>
+  <table class="ig-table">
+    <tr><th>What you know</th><th>Length ratio</th><th>Area ratio</th></tr>
+    <tr><td>$\overrightarrow{PQ}=\tfrac12\overrightarrow{AB}$</td><td>$1:2$</td><td>$1:4$</td></tr>
+    <tr><td>$\overrightarrow{PQ}=\tfrac13\overrightarrow{AB}$</td><td>$1:3$</td><td>$1:9$</td></tr>
+    <tr><td>$\overrightarrow{PQ}=\tfrac34\overrightarrow{AB}$</td><td>$3:4$</td><td>$9:16$</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Do not mix the two rules.</b> Triangles sharing a height use the <b>base</b> ratio. Similar triangles use the <b>square</b> of the length ratio. Decide which situation you are in before writing an area ratio.</div></div>
+
+  <h5>Lab 3 — the area lab</h5>
+  <p>The first tab splits a triangle at a ratio point and shares the area out by the bases; the second tab shrinks the triangle by a scale factor and squares it. Both tabs give you the sentence the mark scheme wants.</p>
+  <div data-lab="arealab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">6</span> Exam technique</h4>
+  <p>A Paper 4 vectors question is a ladder: each part feeds the next. Part (a) is nearly always one mark for a route you can see immediately; the last part is the proof or ratio that uses everything above it.</p>
+  <ul class="ig-list">
+    <li><b>Label the diagram</b> as you go — write each answer onto the sketch next to the point.</li>
+    <li><b>Never skip an early part.</b> Later parts are marked follow-through from your answer.</li>
+    <li><b>Simplify every answer</b> to the form $\alpha\mathbf{a}+\beta\mathbf{b}$; unsimplified answers lose the accuracy mark.</li>
+    <li><b>Check the coefficients add to $1$</b> whenever the point lies on the line joining the two base points.</li>
+    <li><b>Finish a proof with a sentence.</b> The algebra earns the method marks; the conclusion earns the last one.</li>
+  </ul>
+
+  <h5>Sentences worth memorising</h5>
+  <table class="ig-table">
+    <tr><th>To prove…</th><th>Write…</th></tr>
+    <tr><td>Parallel</td><td>"$\overrightarrow{PQ}=k\,\overrightarrow{AB}$, so $\overrightarrow{PQ}$ is a scalar multiple of $\overrightarrow{AB}$ and therefore $PQ$ is parallel to $AB$."</td></tr>
+    <tr><td>Collinear</td><td>"$\overrightarrow{XZ}=k\,\overrightarrow{XY}$, so they are parallel, and they share the common point $X$; therefore $X$, $Y$ and $Z$ lie on a straight line."</td></tr>
+    <tr><td>A ratio</td><td>"Since $\overrightarrow{OX}=\tfrac23\overrightarrow{ON}$, the point $X$ divides $ON$ so that $OX:XN=2:1$."</td></tr>
+    <tr><td>Equal areas</td><td>"The two triangles have the same height and equal bases, so their areas are equal."</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Notation still counts.</b> Underline your vector letters, and write column vectors with one number above the other and no comma. An examiner cannot award a mark for something they cannot read as a vector.</div></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Two unknowns by comparing coefficients</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$\mathbf{a}$ and $\mathbf{b}$ are not parallel. Given $(2x+y)\mathbf{a}+(x-3y)\mathbf{b}=8\mathbf{a}-3\mathbf{b}$, find $x$ and $y$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Because $\mathbf{a}$ and $\mathbf{b}$ are not parallel, the coefficients must match separately.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>The $\mathbf{a}$ terms:</b> $2x+y=8$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>The $\mathbf{b}$ terms:</b> $x-3y=-3$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>From the first, $y=8-2x$. Substituting: $x-3(8-2x)=-3$.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p>$x-24+6x=-3\Rightarrow 7x=21\Rightarrow x=3$, so $y=8-6=2$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $x=3$ and $y=2$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Check.</b> $2(3)+2=8$ ✓ and $3-3(2)=-3$ ✓. Enter these coefficients into <b>Lab 1</b> to see the same two equations appear.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Finding an intersection point</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>In triangle $OAB$, $\overrightarrow{OA}=\mathbf{a}$ and $\overrightarrow{OB}=\mathbf{b}$. $M$ is the midpoint of $OA$ and $N$ is the midpoint of $AB$. $BM$ and $ON$ intersect at $X$. Find $\overrightarrow{OX}$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Set up the two lines.</b> $\overrightarrow{OM}=\tfrac12\mathbf{a}$ and $\overrightarrow{ON}=\tfrac12(\mathbf{a}+\mathbf{b})$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>$X$ on $ON$:</b> $\overrightarrow{OX}=t\,\overrightarrow{ON}=\tfrac12t\,\mathbf{a}+\tfrac12t\,\mathbf{b}$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>$X$ on $BM$:</b> $\overrightarrow{BM}=-\mathbf{b}+\tfrac12\mathbf{a}$, so $\overrightarrow{OX}=\mathbf{b}+s\left(\tfrac12\mathbf{a}-\mathbf{b}\right)=\tfrac12s\,\mathbf{a}+(1-s)\mathbf{b}$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>Compare $\mathbf{a}$:</b> $\tfrac12t=\tfrac12s$, so $t=s$.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p><b>Compare $\mathbf{b}$:</b> $\tfrac12t=1-s=1-t$, so $\tfrac32t=1$ and $t=\tfrac23$.</p></div></div>
+      <div class="step"><span class="step-num">6</span><div class="step-content"><p>Substitute back: $\overrightarrow{OX}=\tfrac12\cdot\tfrac23\mathbf{a}+\tfrac12\cdot\tfrac23\mathbf{b}$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\overrightarrow{OX}=\tfrac13\mathbf{a}+\tfrac13\mathbf{b}=\tfrac13(\mathbf{a}+\mathbf{b})$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Bonus result.</b> Since $\overrightarrow{OX}=\tfrac23\overrightarrow{ON}$, the ratio $OX:XN=2:1$. $X$ is the centroid, and every median splits this way. <b>Lab 2</b> starts on exactly this case.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Proving parallel and stating the ratio</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>In triangle $OAB$, $P$ lies on $OA$ with $OP:PA=3:1$ and $Q$ lies on $OB$ with $OQ:QB=3:1$. Show that $PQ$ is parallel to $AB$ and find $PQ:AB$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$OP:PA=3:1$ means $P$ is $\tfrac34$ of the way along $OA$, so $\overrightarrow{OP}=\tfrac34\mathbf{a}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Similarly $\overrightarrow{OQ}=\tfrac34\mathbf{b}$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$\overrightarrow{PQ}=\overrightarrow{PO}+\overrightarrow{OQ}=-\tfrac34\mathbf{a}+\tfrac34\mathbf{b}=\tfrac34(\mathbf{b}-\mathbf{a})$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$\overrightarrow{AB}=\mathbf{b}-\mathbf{a}$, so $\overrightarrow{PQ}=\tfrac34\overrightarrow{AB}$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\overrightarrow{PQ}$ is a scalar multiple of $\overrightarrow{AB}$, therefore $PQ$ is parallel to $AB$, and $PQ:AB=3:4$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Extension.</b> Triangles $OPQ$ and $OAB$ are similar with lengths $3:4$, so their areas are in the ratio $9:16$. Check it on the second tab of <b>Lab 3</b>.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>An unknown from a collinearity condition</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$\overrightarrow{OM}=2\mathbf{a}+\mathbf{b}$ and $\overrightarrow{ON}=4\mathbf{a}+k\mathbf{b}$. Given that $O$, $M$ and $N$ are collinear, find $k$ and the ratio $OM:MN$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Collinear through $O$ means $\overrightarrow{ON}=\lambda\,\overrightarrow{OM}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$4\mathbf{a}+k\mathbf{b}=\lambda(2\mathbf{a}+\mathbf{b})=2\lambda\mathbf{a}+\lambda\mathbf{b}$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Compare $\mathbf{a}$:</b> $4=2\lambda$, so $\lambda=2$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>Compare $\mathbf{b}$:</b> $k=\lambda=2$.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p>Since $\overrightarrow{ON}=2\overrightarrow{OM}$, $M$ is the midpoint of $ON$, so $MN=OM$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $k=2$ and $OM:MN=1:1$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>The question asks for $OM:MN$, not $OM:ON$ (which would be $1:2$). Mark the points on the line before writing a ratio down.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>An area ratio from a ratio point</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>In triangle $OAB$, $C$ lies on $AB$ with $AC:CB=3:1$. The area of $OAB$ is $32\text{ cm}^{2}$. Find the area of triangle $OAC$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$OAC$ and $OCB$ share the same perpendicular height from $O$ to the line $AB$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>So their areas are in the ratio of their bases: $\text{area }OAC:\text{area }OCB=3:1$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$OAC$ therefore takes $3$ parts out of $3+1=4$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$\tfrac34\times32=24$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $24\text{ cm}^{2}$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div><b>Reasoning mark.</b> The mark scheme wants the words "same height" or "same perpendicular distance from $O$ to $AB$". The arithmetic alone is not a justification.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>A magnitude with a direction condition</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$\mathbf{a}=\begin{pmatrix}3\\-4\end{pmatrix}$. Find the vector $\mathbf{b}$ that is parallel to $\mathbf{a}$, points in the same direction, and has magnitude $15$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$|\mathbf{a}|=\sqrt{3^{2}+(-4)^{2}}=\sqrt{25}=5$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Parallel means $\mathbf{b}=\lambda\mathbf{a}$ for some scalar $\lambda$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$|\mathbf{b}|=|\lambda|\times|\mathbf{a}|=5|\lambda|=15$, so $|\lambda|=3$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Same direction means $\lambda$ is positive, so $\lambda=3$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\mathbf{b}=3\mathbf{a}=\begin{pmatrix}9\\-12\end{pmatrix}$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Had the question said "opposite direction", the answer would be $-3\mathbf{a}=\begin{pmatrix}-9\\12\end{pmatrix}$. The direction condition is what fixes the sign.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>A full multi-part question</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$OPQR$ is a parallelogram with $\overrightarrow{OP}=\mathbf{p}$ and $\overrightarrow{OR}=\mathbf{r}$. $M$ is the midpoint of $PQ$ and $N$ is the midpoint of $QR$. Find $\overrightarrow{MN}$ and state its relationship to $\overrightarrow{PR}$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>The diagonal.</b> $\overrightarrow{PQ}=\overrightarrow{OR}=\mathbf{r}$ (opposite sides of a parallelogram), so $\overrightarrow{OQ}=\mathbf{p}+\mathbf{r}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Point $M$.</b> $\overrightarrow{OM}=\overrightarrow{OP}+\tfrac12\overrightarrow{PQ}=\mathbf{p}+\tfrac12\mathbf{r}$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Point $N$.</b> $\overrightarrow{QR}=-\mathbf{p}$, so $\overrightarrow{ON}=\mathbf{p}+\mathbf{r}-\tfrac12\mathbf{p}=\tfrac12\mathbf{p}+\mathbf{r}$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>The vector $\overrightarrow{MN}$.</b> $\left(\tfrac12\mathbf{p}+\mathbf{r}\right)-\left(\mathbf{p}+\tfrac12\mathbf{r}\right)=-\tfrac12\mathbf{p}+\tfrac12\mathbf{r}=\tfrac12(\mathbf{r}-\mathbf{p})$.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p><b>Compare with $\overrightarrow{PR}$.</b> $\overrightarrow{PR}=-\mathbf{p}+\mathbf{r}=\mathbf{r}-\mathbf{p}$, so $\overrightarrow{MN}=\tfrac12\overrightarrow{PR}$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\overrightarrow{MN}=\tfrac12(\mathbf{r}-\mathbf{p})$; $MN$ is parallel to $PR$ with $MN:PR=1:2$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>This is the midpoint theorem.</b> The line joining the midpoints of two sides of a triangle (here $PQR$) is parallel to the third side and half its length — proved entirely with vectors.</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Using the same parameter for both lines</b> in an intersection question — you need $t$ and $s$.</li>
+    <li><b>Comparing coefficients without the condition.</b> It is valid only because $\mathbf{a}$ and $\mathbf{b}$ are not parallel — say so.</li>
+    <li><b>Answering the wrong ratio.</b> $OX:XN$ is not $OX:ON$.</li>
+    <li><b>Subtracting magnitudes.</b> $|\overrightarrow{AB}|$ is not $|\mathbf{b}|-|\mathbf{a}|$ — find the vector first, then its length.</li>
+    <li><b>Using the base ratio for similar triangles.</b> Similar triangles need $k^{2}$; only triangles sharing a height use the bases directly.</li>
+    <li><b>Stopping at the algebra in a proof.</b> "Parallel" and "share a common point" are separate marks.</li>
+    <li><b>Leaving an answer unsimplified.</b> The last accuracy mark usually depends on collecting the terms.</li>
+    <li><b>Skipping an early part you find hard.</b> Later parts are marked follow-through, so always write something.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning. Write ratios like $3 : 4$ and coordinates like $(9, -12)$.</p>
+  <div class="gl-q" data-answer="3" data-accept="x=3" data-why="Comparing the a terms gives 2x + y = 8 and the b terms give x − 3y = −3. Substituting y = 8 − 2x into the second: x − 24 + 6x = −3, so 7x = 21 and x = 3.">
+    <p>1. $\mathbf{a}$ and $\mathbf{b}$ are not parallel and $(2x+y)\mathbf{a}+(x-3y)\mathbf{b}=8\mathbf{a}-3\mathbf{b}$. Find $x$.</p>
+  </div>
+  <div class="gl-q" data-answer="2" data-accept="y=2" data-why="With x = 3, the a equation gives y = 8 − 2(3) = 2. Check the b equation: 3 − 3(2) = −3 ✓.">
+    <p>2. For the same equation, find $y$.</p>
+  </div>
+  <div class="gl-q" data-answer="2" data-accept="k=2" data-why="Collinear through O means ON = λ OM. Comparing the a terms: 4 = 2λ, so λ = 2; comparing the b terms: k = λ = 2.">
+    <p>3. $\overrightarrow{OM}=2\mathbf{a}+\mathbf{b}$ and $\overrightarrow{ON}=4\mathbf{a}+k\mathbf{b}$, with $O$, $M$, $N$ collinear. Find $k$.</p>
+  </div>
+  <div class="gl-q" data-answer="3 : 4" data-accept="3:4" data-why="OP = ¾a and OQ = ¾b, so PQ = ¾(b − a) = ¾ AB. The scalar multiple ¾ is the length ratio, so PQ : AB = 3 : 4.">
+    <p>4. In triangle $OAB$, $P$ is on $OA$ with $OP:PA=3:1$ and $Q$ is on $OB$ with $OQ:QB=3:1$. Write down the ratio $PQ:AB$.</p>
+  </div>
+  <div class="gl-q" data-answer="9 : 16" data-accept="9:16" data-why="Triangles OPQ and OAB are similar with lengths in the ratio 3 : 4, and areas scale by the SQUARE of the length ratio: 3² : 4² = 9 : 16.">
+    <p>5. For the same triangle, write down the ratio of the area of $OPQ$ to the area of $OAB$.</p>
+  </div>
+  <div class="gl-q" data-answer="24" data-accept="24 cm2|24 cm²" data-why="OAC and OCB have the same perpendicular height from O to AB, so their areas follow their bases, 3 : 1. OAC therefore takes ¾ of the whole: ¾ × 32 = 24 cm².">
+    <p>6. $C$ lies on $AB$ with $AC:CB=3:1$, and triangle $OAB$ has area $32\text{ cm}^{2}$. Find the area of triangle $OAC$, in $\text{cm}^{2}$.</p>
+  </div>
+  <div class="gl-q" data-answer="(9, −12)" data-accept="(9,-12)|9,-12" data-why="|a| = 5, and b = λa with |b| = 5λ = 15, so λ = 3 (positive because the direction is the same). Then b = 3a, with components 9 and −12.">
+    <p>7. $\mathbf{a}=\begin{pmatrix}3\\-4\end{pmatrix}$. $\mathbf{b}$ is parallel to $\mathbf{a}$, points the same way, and $|\mathbf{b}|=15$. Write down the components of $\mathbf{b}$.</p>
+  </div>
+  <div class="gl-q" data-answer="2 : 1" data-accept="2:1" data-why="Solving the two-parameter equations gives OX = ⅓(a + b), and ON = ½(a + b), so OX = ⅔ ON. X therefore divides ON with OX : XN = 2 : 1 — the centroid split.">
+    <p>8. In triangle $OAB$, $M$ is the midpoint of $OA$ and $N$ the midpoint of $AB$; $BM$ and $ON$ meet at $X$. Write down the ratio $OX:XN$.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-applying-vectors";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=11";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

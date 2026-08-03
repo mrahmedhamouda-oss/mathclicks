@@ -4999,6 +4999,313 @@
     upd();
   };
 
+  /* ---------- exact fractions, so the intersection algebra reads like the mark scheme ---------- */
+
+  function frac(n, d) {
+    n = Math.round(n); d = Math.round(d);
+    if (d < 0) { n = -n; d = -d; }
+    const g = gcd(n, d) || 1;
+    return { n: n / g, d: d / g };
+  }
+  const frA = (p, q) => frac(p.n * q.d + q.n * p.d, p.d * q.d);
+  const frS = (p, q) => frac(p.n * q.d - q.n * p.d, p.d * q.d);
+  const frM = (p, q) => frac(p.n * q.n, p.d * q.d);
+  const frD = (p, q) => frac(p.n * q.d, p.d * q.n);
+  const frV = (p) => p.n / p.d;
+  const frT = (p) => (p.d === 1 ? String(p.n).replace("-", MINUS) : String(p.n).replace("-", MINUS) + "/" + p.d);
+  const ONE = frac(1, 1);
+  // "1/3a + 1/3b"
+  const frLin = (p, q, x, y) => linTxt(p.n, p.d, q.n, q.d, x || "a", y || "b");
+  const FRACS = [
+    { label: "1/4", f: frac(1, 4) }, { label: "1/3", f: frac(1, 3) },
+    { label: "1/2", f: frac(1, 2) }, { label: "2/3", f: frac(2, 3) },
+    { label: "3/4", f: frac(3, 4) },
+  ];
+
+  /* 45 · Where two lines meet — comparing coefficients with two parameters */
+  build.meetlab = function (host) {
+    let m = FRACS[2].f, n = FRACS[2].f;
+
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "In triangle <b>OAB</b>, <b>M</b> lies on <b>OA</b> and <b>N</b> lies on <b>AB</b>. "
+      + "The lines <b>BM</b> and <b>ON</b> cross at <b>X</b>. Move M and N and watch the two-parameter method run.");
+    const mChips = chipRow(FRACS.map((o) => ({ label: "OM = " + o.label + " OA", f: o.f })), (it) => { m = it.f; upd(); }, 2);
+    const nChips = chipRow(FRACS.map((o) => ({ label: "AN = " + o.label + " AB", f: o.f })), (it) => { n = it.f; upd(); }, 2);
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const steps = e("div", "gl-steps");
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const fOX = factHtml("OX in terms of a and b");
+    const fRatio = factHtml("Ratio along ON");
+    [fOX, fRatio].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(prompt); panel.appendChild(mChips.el); panel.appendChild(nChips.el);
+    panel.appendChild(cvBox); panel.appendChild(steps); panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const O = [0, 0], A = [5, 1], B = [1, 4];
+    const at = (P, k) => [P[0] * k, P[1] * k];
+    const lerp = (P, Q, k) => [P[0] + (Q[0] - P[0]) * k, P[1] + (Q[1] - P[1]) * k];
+
+    // t is the fraction of ON at which the two lines cross:  t = m / (1 − n + mn)
+    const tOf = () => frD(m, frA(frS(ONE, n), frM(m, n)));
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.72, minH: 250, maxH: 350,
+      render(c, W, H, P) {
+        const mp = gridView(W, H, autoView([O, A, B], 7));
+        drawGrid(c, P, mp);
+        const M = at(A, frV(m)), N = lerp(A, B, frV(n)), X = at(N, frV(tOf()));
+        strokePath(c, [O, A, B, O].map((p) => [mp.X(p[0]), mp.Y(p[1])]), P.faint, 1.8);
+        arrow(c, mp, O, A, P.c1, 2.4, "a", P);
+        arrow(c, mp, O, B, P.c3, 2.4, "b", P);
+        strokePath(c, [[mp.X(B[0]), mp.Y(B[1])], [mp.X(M[0]), mp.Y(M[1])]], P.c2, 2.2, [6, 4]);
+        strokePath(c, [[mp.X(O[0]), mp.Y(O[1])], [mp.X(N[0]), mp.Y(N[1])]], P.c5, 2.2, [6, 4]);
+        [[O, "O"], [A, "A"], [B, "B"]].forEach(([p, nm]) =>
+          tagOn(c, P, nm, mp.X(p[0]) + 11, mp.Y(p[1]) - 9, P.strong, "center", 12.5));
+        dot(c, mp.X(M[0]), mp.Y(M[1]), P.c2, P.bg, 4);
+        tagOn(c, P, "M", mp.X(M[0]), mp.Y(M[1]) + 14, P.c2, "center", 12);
+        dot(c, mp.X(N[0]), mp.Y(N[1]), P.c5, P.bg, 4);
+        tagOn(c, P, "N", mp.X(N[0]) + 13, mp.Y(N[1]), P.c5, "center", 12);
+        dot(c, mp.X(X[0]), mp.Y(X[1]), P.c4, P.bg, 5.5);
+        tagOn(c, P, "X", mp.X(X[0]) - 13, mp.Y(X[1]) + 11, P.c4, "center", 13);
+      },
+    });
+
+    function step(k, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", k));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function upd() {
+      sketch.draw();
+      const t = tOf(), s = frS(ONE, frM(t, n));
+      const oneN = frS(ONE, n);
+      const ox = frM(t, oneN), oy = frM(t, n);
+      steps.replaceChildren();
+      steps.appendChild(step("1", "Write down the two lines",
+        "OM = " + frT(m) + "a &nbsp;·&nbsp; ON = OA + " + frT(n) + "AB = a + " + frT(n) + "(b − a) = <b>" + frLin(oneN, n) + "</b>"));
+      steps.appendChild(step("2", "X lies on ON — use the parameter t",
+        "OX = t × ON = " + frT(oneN) + "t a + " + frT(n) + "t b"));
+      steps.appendChild(step("3", "X also lies on BM — use a DIFFERENT parameter s",
+        "BM = BO + OM = " + frT(m) + "a − b, so OX = b + s(" + frT(m) + "a − b) = " + frT(m) + "s a + (1 − s) b"));
+      steps.appendChild(step("4", "Compare the coefficients — valid because a and b are not parallel",
+        "a terms: &nbsp;" + frT(oneN) + "t = " + frT(m) + "s<br>b terms: &nbsp;" + frT(n) + "t = 1 − s"));
+      steps.appendChild(step("5", "Solve the pair",
+        "From the b equation, s = 1 − " + frT(n) + "t. Substituting into the a equation gives "
+        + "t = " + frT(m) + " ÷ (1 − " + frT(n) + " + " + frT(m) + "×" + frT(n) + ") = <b>t = " + frT(t) + "</b> &nbsp;(and s = " + frT(s) + ")"));
+      steps.appendChild(step("6", "Substitute back",
+        "OX = " + frT(t) + " × (" + frLin(oneN, n) + ") = <b>OX = " + frLin(ox, oy) + "</b>"));
+      fOX.setValue("<b>OX = " + frLin(ox, oy) + "</b>");
+      fRatio.setValue("OX = " + frT(t) + " ON, so OX : XN = " + frT(t) + " : " + frT(frS(ONE, t))
+        + " = <b>" + t.n + " : " + (t.d - t.n) + "</b>");
+      msg.className = "gl-msg " + (frV(m) === 0.5 && frV(n) === 0.5 ? "good" : "");
+      msg.textContent = frV(m) === 0.5 && frV(n) === 0.5
+        ? "Both midpoints: BM and ON are medians, X is the centroid, and OX : XN = 2 : 1 — the split every median makes."
+        : "Two different parameters is the whole trick. X sits at a different fraction along each line, so using t for both throws away every mark in the part.";
+    }
+    upd();
+  };
+
+  const plural = (n, w) => n + " " + w + (n === 1 ? "" : "s");
+
+  /* 46 · Area ratios — same height, or similar triangles */
+  build.arealab = function (host) {
+    const MODES = [
+      { key: "height", label: "Same height" },
+      { key: "similar", label: "Similar triangles" },
+    ];
+    let mode = "height";
+    const RATIOS = [
+      { label: "1 : 1", m: 1, n: 1 }, { label: "1 : 2", m: 1, n: 2 },
+      { label: "2 : 1", m: 2, n: 1 }, { label: "3 : 1", m: 3, n: 1 },
+      { label: "1 : 3", m: 1, n: 3 },
+    ];
+    let r = RATIOS[3], k = FRACS[2].f;
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(MODES, (it) => { mode = it.key; layout(); }, 0);
+    const rChips = chipRow(RATIOS.map((x) => ({ label: "AC : CB = " + x.label, r: x })), (it) => { r = it.r; upd(); }, 3);
+    const kChips = chipRow(FRACS.map((o) => ({ label: "OP = " + o.label + " OA", f: o.f })), (it) => { k = it.f; upd(); }, 2);
+    const form = e("div", "gl-form");
+    const area = field("Area of triangle OAB (cm²)", "32", "wide", upd);
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "The whole triangle"));
+    const row = e("div", "gl-form-row");
+    row.appendChild(area.el);
+    g.appendChild(row);
+    form.appendChild(g);
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    panel.appendChild(chips.el); panel.appendChild(rChips.el); panel.appendChild(kChips.el);
+    panel.appendChild(form); panel.appendChild(cvBox); panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const O = [0, 0], A = [5, 1], B = [1, 4];
+    const lerp = (P, Q, u) => [P[0] + (Q[0] - P[0]) * u, P[1] + (Q[1] - P[1]) * u];
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.72, minH: 240, maxH: 340,
+      render(c, W, H, P) {
+        const mp = gridView(W, H, autoView([O, A, B], 7));
+        drawGrid(c, P, mp);
+        const px = (p) => [mp.X(p[0]), mp.Y(p[1])];
+        if (mode === "height") {
+          const C = lerp(A, B, r.m / (r.m + r.n));
+          fillPoly(c, [O, A, C].map(px), P.soft);
+          fillPoly(c, [O, C, B].map(px), P.soft3);
+          strokePath(c, [O, A, B, O].map(px), P.faint, 1.8);
+          strokePath(c, [px(O), px(C)], P.c4, 2, [6, 4]);
+          tagOn(c, P, "OAC", px(lerp(lerp(O, A, 0.5), C, 0.45))[0], px(lerp(lerp(O, A, 0.5), C, 0.45))[1], P.c1, "center", 12);
+          tagOn(c, P, "OCB", px(lerp(lerp(O, B, 0.5), C, 0.45))[0], px(lerp(lerp(O, B, 0.5), C, 0.45))[1], P.c2, "center", 12);
+          dot(c, ...px(C), P.c4, P.bg, 4.5);
+          tagOn(c, P, "C", px(C)[0] + 13, px(C)[1] - 8, P.c4, "center", 12);
+        } else {
+          const u = frV(k);
+          const Pp = lerp(O, A, u), Q = lerp(O, B, u);
+          fillPoly(c, [O, A, B].map(px), P.soft3);
+          fillPoly(c, [O, Pp, Q].map(px), P.soft);
+          strokePath(c, [O, A, B, O].map(px), P.faint, 1.8);
+          strokePath(c, [O, Pp, Q, O].map(px), P.c1, 2.2);
+          dot(c, ...px(Pp), P.c1, P.bg, 4); dot(c, ...px(Q), P.c1, P.bg, 4);
+          tagOn(c, P, "P", px(Pp)[0], px(Pp)[1] + 14, P.c1, "center", 12);
+          tagOn(c, P, "Q", px(Q)[0] - 13, px(Q)[1], P.c1, "center", 12);
+        }
+        [[O, "O"], [A, "A"], [B, "B"]].forEach(([p, nm]) =>
+          tagOn(c, P, nm, px(p)[0] + 11, px(p)[1] - 9, P.strong, "center", 12.5));
+      },
+    });
+
+    function step(t, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", t));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function layout() {
+      rChips.el.style.display = mode === "height" ? "" : "none";
+      kChips.el.style.display = mode === "similar" ? "" : "none";
+      upd();
+    }
+    function upd() {
+      sketch.draw();
+      steps.replaceChildren();
+      const T = isFinite(area.get()) && area.get() > 0 ? area.get() : 32;
+      if (mode === "height") {
+        const tot = r.m + r.n;
+        steps.appendChild(step("1", "Spot the shared height",
+          "Triangles OAC and OCB both have their apex at O and their bases on the same line AB, so they have the <b>same perpendicular height</b>."));
+        steps.appendChild(step("2", "So the areas follow the bases",
+          "area OAC : area OCB = AC : CB = <b>" + r.m + " : " + r.n + "</b>"));
+        steps.appendChild(step("3", "Split the whole triangle",
+          "OAC takes " + plural(r.m, "part") + " out of " + tot + ": &nbsp;" + fracTxt(r.m, tot) + " × " + fmt(T, 3)
+          + " = <b>" + fmt((T * r.m) / tot, 3) + " cm²</b><br>OCB takes the other " + plural(r.n, "part") + ": <b>"
+          + fmt((T * r.n) / tot, 3) + " cm²</b>"));
+        steps.appendChild(step("✎", "The words that earn the mark",
+          "\"The two triangles have the same perpendicular height from O to AB, so their areas are in the same ratio as their bases.\""));
+        msg.className = "gl-msg good";
+        msg.textContent = "Use the BASE ratio here — no squaring. Squaring belongs to similar triangles, which is the other tab.";
+      } else {
+        const u = frV(k), kk = frT(k);
+        steps.appendChild(step("1", "Write the two vectors",
+          "OP = " + kk + "a and OQ = " + kk + "b, so PQ = OQ − OP = " + kk + "(b − a) = " + kk + " × AB"));
+        steps.appendChild(step("2", "So the triangles are similar",
+          "PQ is a scalar multiple of AB, so PQ is parallel to AB and triangle OPQ is an enlargement of triangle OAB with scale factor " + kk + "."));
+        steps.appendChild(step("3", "Lengths, then areas",
+          "lengths OPQ : OAB = " + kk + " : 1 = <b>" + k.n + " : " + k.d + "</b><br>areas = the SQUARE of that = <b>"
+          + (k.n * k.n) + " : " + (k.d * k.d) + "</b>"));
+        steps.appendChild(step("4", "Put a number on it",
+          "area OPQ = " + fracTxt(k.n * k.n, k.d * k.d) + " × " + fmt(T, 3) + " = <b>" + fmt(T * u * u, 3) + " cm²</b>"));
+        msg.className = "gl-msg warn";
+        msg.textContent = "Similar triangles square the length ratio. Mixing this up with the same-height rule is the classic slip — check which situation you are in before writing an area ratio.";
+      }
+    }
+    layout();
+  };
+
+  /* 47 · Comparing coefficients — two unknowns, two equations */
+  build.coefflab = function (host) {
+    const panel = e("div", "gl-panel");
+    const eq = html("div", "gl-eq", "(p₁x + q₁y) a + (p₂x + q₂y) b = r₁ a + r₂ b");
+    const prompt = html("div", "gl-prompt",
+      "Valid only because <b>a</b> and <b>b</b> are not parallel — that is why the question always says so.");
+    const form = e("div", "gl-form");
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    const p1 = field("x in the a part", "2", null, upd), q1 = field("y in the a part", "1", null, upd);
+    const p2 = field("x in the b part", "1", null, upd), q2 = field("y in the b part", MINUS + "3", null, upd);
+    const r1 = field("a on the right", "8", null, upd), r2 = field("b on the right", MINUS + "3", null, upd);
+
+    function group(title, items) {
+      const g = e("div", "gl-form-group");
+      g.appendChild(e("div", "gl-form-title", title));
+      const row = e("div", "gl-form-row");
+      items.forEach((i) => row.appendChild(i));
+      g.appendChild(row);
+      return g;
+    }
+    form.appendChild(group("Left-hand side", [p1.el, q1.el, p2.el, q2.el]));
+    form.appendChild(group("Right-hand side", [r1.el, r2.el]));
+    panel.appendChild(eq); panel.appendChild(prompt); panel.appendChild(form);
+    panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    function step(t, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", t));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    // "2x + y", tidily
+    function side(px, qy) {
+      const a = px === 0 ? "" : (px === 1 ? "" : px === -1 ? MINUS : fmt(px, 3)) + "x";
+      let b = "";
+      if (qy !== 0) {
+        const mag = Math.abs(qy) === 1 ? "" : fmt(Math.abs(qy), 3);
+        b = (a ? (qy > 0 ? " + " : " " + MINUS + " ") : qy < 0 ? MINUS : "") + mag + "y";
+      }
+      return (a + b) || "0";
+    }
+    function upd() {
+      const v = (f) => (isFinite(f.get()) ? f.get() : 0);
+      const P1 = v(p1), Q1 = v(q1), P2 = v(p2), Q2 = v(q2), R1 = v(r1), R2 = v(r2);
+      steps.replaceChildren();
+      steps.appendChild(step("1", "Compare the a terms",
+        side(P1, Q1) + " = " + fmt(R1, 3)));
+      steps.appendChild(step("2", "Compare the b terms",
+        side(P2, Q2) + " = " + fmt(R2, 3)));
+      const det = P1 * Q2 - Q1 * P2;
+      if (Math.abs(det) < 1e-9) {
+        msg.className = "gl-msg warn";
+        msg.textContent = "These two equations are not independent, so x and y cannot be pinned down. Change one of the coefficients.";
+        return;
+      }
+      const x = (R1 * Q2 - Q1 * R2) / det, y = (P1 * R2 - R1 * P2) / det;
+      steps.appendChild(step("3", "Solve the pair simultaneously",
+        "Eliminating y: (" + fmt(P1, 3) + "×" + fmt(Q2, 3) + " − " + fmt(Q1, 3) + "×" + fmt(P2, 3) + ")x = "
+        + fmt(R1, 3) + "×" + fmt(Q2, 3) + " − " + fmt(Q1, 3) + "×" + fmt(R2, 3)
+        + " &nbsp;⟹&nbsp; " + fmt(det, 3) + "x = " + fmt(R1 * Q2 - Q1 * R2, 3)));
+      steps.appendChild(step("4", "The two answers",
+        "<b>x = " + fmt(x, 4) + "</b> and <b>y = " + fmt(y, 4) + "</b>"));
+      steps.appendChild(step("✓", "Check both equations",
+        side(P1, Q1) + " = " + fmt(P1 * x + Q1 * y, 3) + " ✓ &nbsp;·&nbsp; "
+        + side(P2, Q2) + " = " + fmt(P2 * x + Q2 * y, 3) + " ✓"));
+      msg.className = "gl-msg good";
+      msg.textContent = "One vector equation carries two ordinary equations — one from the a terms and one from the b terms. That is the whole method, and it is what unlocks intersections too.";
+    }
+    upd();
+  };
+
   function injectCSS() {
     if (document.getElementById("graphlab-css")) return;
     const s = document.createElement("style");

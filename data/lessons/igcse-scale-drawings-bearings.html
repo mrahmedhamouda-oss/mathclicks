@@ -26,8 +26,8 @@
 .ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
 .ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
 .ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
-.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
-.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+.ig-lesson .ig-obj li{position:relative;padding-left:24px;margin:8px 0;color:var(--ink);line-height:1.6}
+.ig-lesson .ig-obj li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ig-accent);font-weight:900}
 </style>
 <p class="ig-intro">A scale drawing shrinks the real world onto paper; a bearing says which way to go once you are there. Together they answer every navigation question on the syllabus. Spin the compass dial below until three-figure bearings feel automatic, then chain two legs of a journey together and let the working appear.</p>
 
@@ -304,7 +304,7 @@
   if (!s) {
     s = document.createElement("script");
     s.id = "graphlab-js";
-    s.src = "js/graphlab.js?v=10";
+    s.src = "js/graphlab.js?v=11";
     document.head.appendChild(s);
   }
   s.addEventListener("load", go);
