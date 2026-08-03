@@ -1,0 +1,320 @@
+<div class="ig-lesson" id="iglab-transformations">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#E8590C)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+<p class="ig-intro">Four transformations, one question behind all of them: what stays the same, and what changes? Move a triangle around the grid below and watch the coordinate rule appear beside it — then use the same routine backwards to describe a transformation you are shown, which is where the marks really are.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Reflect a shape in any of the standard mirror lines, and in $x=a$ or $y=b$.</li>
+    <li>Rotate a shape about the origin or about any other centre.</li>
+    <li>Translate a shape using a column vector.</li>
+    <li>Enlarge a shape by a positive, fractional or negative scale factor.</li>
+    <li>Find a centre of rotation and a centre of enlargement from a diagram.</li>
+    <li><b>Describe any single transformation fully</b> — with every detail the mark scheme wants.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> The four transformations at a glance <span class="ig-try">Interactive</span></h4>
+  <table class="ig-table">
+    <tr><th>Transformation</th><th>What you must state</th><th>Size</th><th>Shape</th><th>Orientation</th></tr>
+    <tr><td><b>Reflection</b></td><td>The <em>equation</em> of the mirror line</td><td>Same</td><td>Same</td><td>Reversed</td></tr>
+    <tr><td><b>Rotation</b></td><td>Angle, direction, centre</td><td>Same</td><td>Same</td><td>Turned</td></tr>
+    <tr><td><b>Translation</b></td><td>Column vector</td><td>Same</td><td>Same</td><td>Same</td></tr>
+    <tr><td><b>Enlargement</b></td><td>Scale factor and centre</td><td>Changed</td><td>Same</td><td>Same (reversed if $k$ is negative)</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Key idea.</b> Reflection, rotation and translation are <b>congruent</b> transformations — the image is identical to the object, just moved. Enlargement is a <b>similar</b> transformation — same shape, different size.</div></div>
+
+  <h5>Lab 1 — the transformation explorer</h5>
+  <p>Pick a transformation and set its details. Triangle <b>A</b> is the object and <b>A′</b> is the image; the panel gives the full description, the coordinate rule, and the points that do not move.</p>
+  <div data-lab="tformlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Reflection</h4>
+  <ul class="ig-list">
+    <li>Measure the perpendicular distance from a point to the mirror line.</li>
+    <li>Count the same distance across to the other side, at right angles to the line.</li>
+    <li>A point already <em>on</em> the mirror line does not move — those are the <b>invariant points</b>.</li>
+  </ul>
+
+  <h5>The mirror lines you must know</h5>
+  <table class="ig-table">
+    <tr><th>Mirror line</th><th>$(x,\,y)$ becomes</th><th>In words</th></tr>
+    <tr><td>$x=0$ (the $y$-axis)</td><td>$(-x,\,y)$</td><td>Change the sign of $x$</td></tr>
+    <tr><td>$y=0$ (the $x$-axis)</td><td>$(x,\,-y)$</td><td>Change the sign of $y$</td></tr>
+    <tr><td>$y=x$</td><td>$(y,\,x)$</td><td>Swap the coordinates</td></tr>
+    <tr><td>$y=-x$</td><td>$(-y,\,-x)$</td><td>Swap and change both signs</td></tr>
+    <tr><td>$x=a$</td><td>$(2a-x,\,y)$</td><td>Vertical line, $y$ unchanged</td></tr>
+    <tr><td>$y=b$</td><td>$(x,\,2b-y)$</td><td>Horizontal line, $x$ unchanged</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div>You must give the <b>equation</b> of the line, not a description. "Reflection in the vertical line" scores nothing; "reflection in $x=3$" scores the mark.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Rotation <span class="ig-try">Interactive</span></h4>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Three things, every single time.</b><br>1 · The <b>angle</b> — usually $90°$, $180°$ or $270°$. &nbsp; 2 · The <b>direction</b> — clockwise or anticlockwise (not needed for $180°$). &nbsp; 3 · The <b>centre</b>, written as coordinates.</div></div>
+
+  <h5>Rotations about the origin</h5>
+  <table class="ig-table">
+    <tr><th>Rotation</th><th>$(x,\,y)$ becomes</th><th>Same as</th></tr>
+    <tr><td>$90°$ anticlockwise</td><td>$(-y,\,x)$</td><td>$270°$ clockwise</td></tr>
+    <tr><td>$90°$ clockwise</td><td>$(y,\,-x)$</td><td>$270°$ anticlockwise</td></tr>
+    <tr><td>$180°$ (either way)</td><td>$(-x,\,-y)$</td><td>—</td></tr>
+  </table>
+
+  <h5>Rotating about a centre that is not the origin</h5>
+  <div class="ig-formula">shift the centre to the origin $\;\rightarrow\;$ rotate $\;\rightarrow\;$ shift back</div>
+  <p>Subtract the centre from the point, apply the rule above, then add the centre on again.</p>
+
+  <h5>Lab 2 — finding the centre</h5>
+  <p>Drag the centre and the shape follows. The construction is drawn for you: join each vertex to its image, bisect each join perpendicularly, and every bisector passes through the centre. Switch tabs to see the ray construction for an enlargement.</p>
+  <div data-lab="centrelab"></div>
+
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Exam shortcut.</b> Tracing paper is allowed. Trace the object, put your pencil on a trial centre and turn — if the tracing lands on the image, that point is the centre.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Translation</h4>
+  <p>A translation is described by a single <b>column vector</b>: the top number is the movement in the $x$ direction, the bottom number the movement in the $y$ direction.</p>
+  <div class="ig-formula">$\begin{pmatrix}x\text{-move}\\y\text{-move}\end{pmatrix}$ &nbsp;·&nbsp; right and up are positive, left and down are negative</div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Finding the vector.</b> Take one vertex and its image: $x$-component $=x_2-x_1$, $y$-component $=y_2-y_1$. Check with a second vertex.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div>Describe a translation with the <b>vector only</b> — never as a coordinate pair with a comma, and never as "5 left and 2 up" when the question asks for a full description.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Enlargement</h4>
+  <p>An enlargement with scale factor $k$ and centre $C$ multiplies every distance <em>from $C$</em> by $k$.</p>
+  <div class="ig-formula">image distance from centre $=k\times$ object distance from centre</div>
+  <table class="ig-table">
+    <tr><th>Scale factor</th><th>What happens</th></tr>
+    <tr><td>$k>1$</td><td>Larger, same side of the centre, same way up</td></tr>
+    <tr><td>$0<k<1$</td><td>Smaller — still called an enlargement — same side, same way up</td></tr>
+    <tr><td>$k<0$</td><td>On the <b>opposite</b> side of the centre and turned upside down</td></tr>
+  </table>
+  <ul class="ig-list">
+    <li>To find the <b>centre</b>: draw a line through a vertex and its image, repeat for a second pair, and extend until they meet.</li>
+    <li>To find the <b>scale factor</b>: divide an image length by the matching object length.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Areas.</b> Under an enlargement of scale factor $k$, lengths multiply by $k$, areas by $k^{2}$ and volumes by $k^{3}$.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">6</span> Describing a transformation fully <span class="ig-try">Interactive</span></h4>
+  <h5>The identification routine</h5>
+  <ul class="ig-list">
+    <li><b>Is the image the same size?</b> If not it is an <b>enlargement</b> — find $k$ from a pair of matching lengths, then the centre from two rays.</li>
+    <li><b>Same size, same way up, not turned?</b> A <b>translation</b> — give the column vector.</li>
+    <li><b>Same size but mirrored?</b> A <b>reflection</b> — find the mirror line and give its equation.</li>
+    <li><b>Same size, turned round?</b> A <b>rotation</b> — give angle, direction and centre.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>The single biggest exam trap.</b> Name <b>one</b> transformation only. "Reflection and translation" scores zero even when both are true — a single transformation always exists, and that is what is being asked for.</div></div>
+  <table class="ig-table">
+    <tr><th>Transformation</th><th>A fully correct description</th><th>Marks lost by</th></tr>
+    <tr><td>Reflection</td><td>Reflection in $y=-x$</td><td>Saying "in the diagonal line"</td></tr>
+    <tr><td>Rotation</td><td>Rotation $90°$ clockwise about $(0,2)$</td><td>Missing the direction or the centre</td></tr>
+    <tr><td>Translation</td><td>Translation by $\begin{pmatrix}4\\-3\end{pmatrix}$</td><td>Writing it as a coordinate</td></tr>
+    <tr><td>Enlargement</td><td>Enlargement, scale factor $3$, centre $(1,1)$</td><td>Missing the centre</td></tr>
+  </table>
+
+  <h5>Lab 3 — describe it fully</h5>
+  <p>A hidden transformation maps <b>A</b> onto <b>A′</b>. Work through the routine, build your answer with the controls, and press Check — you are marked on where your transformation sends the shape, so any correct wording of the same answer is accepted.</p>
+  <div data-lab="describelab"></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Reflecting in a diagonal line</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Triangle A has vertices $(2,1)$, $(5,1)$ and $(2,3)$. Find the image after reflection in the line $y=x$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Reflection in $y=x$ swaps the coordinates: $(x,y)\rightarrow(y,x)$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Apply it to each vertex: $(2,1)\rightarrow(1,2)$, $(5,1)\rightarrow(1,5)$, $(2,3)\rightarrow(3,2)$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $(1,2)$, $(1,5)$ and $(3,2)$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Check.</b> Each point and its image must be the same perpendicular distance from $y=x$, on opposite sides. Set <b>Lab 1</b> to this reflection and compare.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Rotating about a point that is not the origin</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The point $P(5,2)$ is rotated $90°$ clockwise about $C(1,1)$. Find the image.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Shift the centre to the origin.</b> Subtract $C$: $(5-1,\;2-1)=(4,1)$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Rotate about the origin.</b> $90°$ clockwise is $(x,y)\rightarrow(y,-x)$, so $(4,1)\rightarrow(1,-4)$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Shift back.</b> Add $C$ again: $(1+1,\;-4+1)=(2,-3)$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $(2,-3)$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Why it works.</b> Rotating about $C$ is the same as moving $C$ to the origin, turning there, then moving everything back.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Finding the centre of rotation</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Triangle A has vertices $(1,1)$, $(3,1)$, $(1,2)$; its image B has vertices $(5,1)$, $(5,3)$, $(4,1)$. Describe fully the single transformation mapping A onto B.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Same size?</b> Both have legs of $2$ and $1$, so it is not an enlargement.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Turned?</b> The long leg is horizontal in A and vertical in B — a $90°$ turn, so a rotation.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>First bisector.</b> Join $(1,1)$ to $(5,1)$: midpoint $(3,1)$, segment horizontal, so the perpendicular bisector is $x=3$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>Second bisector.</b> Join $(1,2)$ to $(4,1)$: midpoint $(2.5,1.5)$ and gradient $\frac{1-2}{4-1}=-\frac13$, so the perpendicular gradient is $3$ and the bisector is $y-1.5=3(x-2.5)$, i.e. $y=3x-6$.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p><b>Intersect.</b> Putting $x=3$ gives $y=3$, so the centre is $(3,3)$.</p></div></div>
+      <div class="step"><span class="step-num">6</span><div class="step-content"><p><b>Direction.</b> From the centre, $(1,1)$ sits at $(-2,-2)$ and its image $(5,1)$ at $(2,-2)$. The rule $(x,y)\rightarrow(-y,x)$ does exactly that — anticlockwise.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Rotation of $90°$ anticlockwise about $(3,3)$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>Reproduce it in <b>Lab 2</b>: set the centre to $(3,3)$ with a $90°$ anticlockwise turn and watch the bisectors meet there.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>An enlargement with a fractional scale factor</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Shape A has vertices $(2,2)$, $(8,2)$, $(2,5)$. Shape B has vertices $(2,2)$, $(4,2)$, $(2,3)$. Describe fully the transformation mapping A onto B.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Compare a pair of lengths.</b> Horizontal side: $8-2=6$ in A, $4-2=2$ in B. So $k=\frac{2}{6}=\frac13$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Confirm with the other side.</b> Vertical side: $3$ in A and $1$ in B — again $\frac13$. ✓</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Find the centre.</b> The vertex $(2,2)$ has not moved, so it must be the centre.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Enlargement, scale factor $\frac13$, centre $(2,2)$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>A shrinking image is still an <b>enlargement</b> in IGCSE. Never call it a reduction.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>A negative scale factor</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Triangle T has vertices $(1,1)$, $(3,1)$, $(1,2)$. It is enlarged by scale factor $-2$, centre the origin. Find the image.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>With centre the origin, an enlargement multiplies every coordinate by $k$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$(1,1)\rightarrow(-2,-2)$, $(3,1)\rightarrow(-6,-2)$, $(1,2)\rightarrow(-2,-4)$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $(-2,-2)$, $(-6,-2)$ and $(-2,-4)$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Sense check.</b> A negative scale factor puts the image on the far side of the centre and turns it upside down — which is exactly what these coordinates show.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Areas under an enlargement</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A shape of area $12\text{ cm}^{2}$ is enlarged by scale factor $2.5$. Find the area of the image.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Lengths multiply by $2.5$, so areas multiply by $2.5^{2}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$2.5^{2}=6.25$</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$12\times6.25=75$</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $75\text{ cm}^{2}$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Multiplying the area by $2.5$ (giving $30$) is the classic error. Areas scale by the <em>square</em> of the length scale factor.</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Naming two transformations.</b> "Reflection then translation" scores zero when one is asked for.</li>
+    <li><b>Describing a mirror line in words.</b> Always give the equation: $x=3$, $y=-x$, and so on.</li>
+    <li><b>Leaving out the centre</b> of a rotation or enlargement — it is worth a mark on its own.</li>
+    <li><b>Leaving out the direction</b> of a rotation. Needed for $90°$ and $270°$, not for $180°$.</li>
+    <li><b>Writing a translation as a coordinate.</b> It must be a column vector, not $(4,-3)$.</li>
+    <li><b>Calling a shrinking image a "reduction".</b> It is an enlargement with $0<k<1$.</li>
+    <li><b>Scaling area by $k$ instead of $k^{2}$.</b> Lengths use $k$, areas $k^{2}$, volumes $k^{3}$.</li>
+    <li><b>Forgetting that a negative scale factor inverts the shape</b> and moves it to the other side of the centre.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning. Write coordinates as $(3, -4)$.</p>
+  <div class="gl-q" data-answer="(−3, −4)" data-accept="(-3,-4)|-3,-4" data-why="Reflection in the y-axis is x = 0, which changes the sign of x only: (3, −4) → (−3, −4).">
+    <p>1. Find the image of $A(3,-4)$ after a reflection in the $y$-axis.</p>
+  </div>
+  <div class="gl-q" data-answer="(4, −3)" data-accept="(4,-3)|4,-3" data-why="Reflection in y = −x sends (x, y) → (−y, −x). With x = 3 and y = −4 that gives −y = 4 and −x = −3, so the image is (4, −3).">
+    <p>2. Find the image of $A(3,-4)$ after a reflection in the line $y=-x$. <em>(Give the answer as a coordinate.)</em></p>
+  </div>
+  <div class="gl-q" data-answer="(−5, −5)" data-accept="(-5,-5)|-5,-5" data-why="Subtract the object from the image: −1 − 4 = −5 and 2 − 7 = −5. In an exam it must be written as a column vector, never as a coordinate.">
+    <p>3. The point $P(4,7)$ is mapped onto $P'(-1,2)$ by a translation. Write down the two components of the column vector.</p>
+  </div>
+  <div class="gl-q" data-answer="(4, −2)" data-accept="(4,-2)|4,-2" data-why="Shift the centre to the origin: (5 − 2, 3 − 1) = (3, 2). Rotate 90° clockwise, (x, y) → (y, −x): (3, 2) → (2, −3). Shift back: (2 + 2, −3 + 1) = (4, −2).">
+    <p>4. The point $(5,3)$ is rotated $90°$ clockwise about $(2,1)$. Find the image.</p>
+  </div>
+  <div class="gl-q" data-answer="(10, 2)" data-accept="10,2" data-why="(4, 2) is (3, 0) away from the centre. Multiply that displacement by 3 to get (9, 0), then add the centre back: (1 + 9, 2 + 0) = (10, 2).">
+    <p>5. Triangle A has a vertex at $(4,2)$. A is enlarged by scale factor $3$ with centre $(1,2)$. Find the image of that vertex.</p>
+  </div>
+  <div class="gl-q" data-answer="x = 5" data-accept="5|x=5" data-why="The shape is the same size but flipped left-to-right, so it is a reflection in a vertical line. Take a vertex and its image, (4, 3) → (6, 3): the mirror is the perpendicular bisector, at x = (4 + 6) ÷ 2 = 5.">
+    <p>6. Shape A has vertices $(2,3)$, $(2,7)$, $(4,3)$ and shape B has vertices $(8,3)$, $(8,7)$, $(6,3)$. Give the equation of the mirror line that maps A onto B.</p>
+  </div>
+  <div class="gl-q" data-answer="5" data-accept="k=5" data-why="Areas scale by k², so 8k² = 200, giving k² = 25 and k = 5 (taking the positive root).">
+    <p>7. A triangle of area $8\text{ cm}^{2}$ is enlarged by scale factor $k$ and the image has area $200\text{ cm}^{2}$. Find the positive value of $k$.</p>
+  </div>
+  <div class="gl-q" data-answer="(1, 0)" data-accept="1,0" data-why="Reflection in y = 2 sends (x, y) → (x, 4 − y). So (1, 4) → (1, 0).">
+    <p>8. Triangle R has a vertex at $(1,4)$. R is reflected in the line $y=2$. Find the image of that vertex.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-transformations";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=10";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

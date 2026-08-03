@@ -1,0 +1,314 @@
+<div class="ig-lesson" id="iglab-vectors">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#3B5BDB)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow)}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{display:flex;gap:10px;align-items:flex-start;margin:8px 0;color:var(--ink)}
+.ig-lesson .ig-obj li::before{content:"✓";color:var(--ig-accent);font-weight:900;flex:none}
+</style>
+<p class="ig-intro">A vector carries two pieces of information at once — how far, and which way. Everything on this page grows from one rule: $\overrightarrow{AB}=\mathbf{b}-\mathbf{a}$, "end point minus start point". Add and scale vectors in the first lab, then use the route method to write any vector in a diagram in terms of $\mathbf{a}$ and $\mathbf{b}$ — which is where the Paper 4 marks live.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Read and write vectors in all three notations.</li>
+    <li>Add, subtract and scale column vectors.</li>
+    <li>Find the magnitude of a vector with Pythagoras.</li>
+    <li>Use position vectors, and find a vector by walking a route through a diagram.</li>
+    <li>Handle midpoints and points that divide a line in a given ratio.</li>
+    <li>Prove that two lines are parallel, and that three points are collinear.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Vector notation</h4>
+  <p>A <b>vector</b> has both a size (magnitude) and a direction. A <b>scalar</b> has size only. "5 km north" is a vector; "5 km" is a scalar.</p>
+  <table class="ig-table">
+    <tr><th>Notation</th><th>Example</th><th>Meaning</th></tr>
+    <tr><td><b>Column vector</b></td><td>$\begin{pmatrix}3\\-2\end{pmatrix}$</td><td>$3$ in the $x$ direction, $2$ in the negative $y$ direction</td></tr>
+    <tr><td><b>Single bold letter</b></td><td>$\mathbf{a}$</td><td>A named vector, used for algebra</td></tr>
+    <tr><td><b>Two points with an arrow</b></td><td>$\overrightarrow{AB}$</td><td>The vector that takes you from $A$ to $B$</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Handwriting matters.</b> In print a vector is bold, but you cannot write bold — <b>underline</b> the letter instead. An unmarked letter is read as a scalar.</div></div>
+
+  <h5>Two facts that unlock most questions</h5>
+  <table class="ig-table">
+    <tr><th>Fact</th><th>In symbols</th></tr>
+    <tr><td>Reversing a vector reverses its sign</td><td>$\overrightarrow{BA}=-\overrightarrow{AB}$</td></tr>
+    <tr><td>Equal vectors have the same magnitude and direction, wherever they are drawn</td><td>$\overrightarrow{AB}=\overrightarrow{CD}$ when the arrows are the same length, parallel, and point the same way</td></tr>
+  </table>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Adding, subtracting and scaling <span class="ig-try">Interactive</span></h4>
+  <p>Work component by component — top with top, bottom with bottom.</p>
+  <div class="ig-formula">$\begin{pmatrix}a\\b\end{pmatrix}+\begin{pmatrix}c\\d\end{pmatrix}=\begin{pmatrix}a+c\\b+d\end{pmatrix}\qquad k\begin{pmatrix}a\\b\end{pmatrix}=\begin{pmatrix}ka\\kb\end{pmatrix}$</div>
+  <p>Geometrically you add <b>nose to tail</b>: draw $\mathbf{a}$, start $\mathbf{b}$ where $\mathbf{a}$ finished, and the vector from the start of $\mathbf{a}$ to the end of $\mathbf{b}$ is $\mathbf{a}+\mathbf{b}$. Subtracting is adding the reverse: $\mathbf{a}-\mathbf{b}=\mathbf{a}+(-\mathbf{b})$.</p>
+
+  <h5>Lab 1 — the vector calculator</h5>
+  <p>Set $\mathbf{a}$ and $\mathbf{b}$, then any combination $m\mathbf{a}+n\mathbf{b}$. The sketch draws it nose to tail and the working shows why the magnitude is taken <em>last</em>.</p>
+  <div data-lab="veclab"></div>
+
+  <table class="ig-table">
+    <tr><th>Multiple</th><th>Effect</th></tr>
+    <tr><td>$2\mathbf{a}$</td><td>Twice as long, same direction</td></tr>
+    <tr><td>$-\mathbf{a}$</td><td>Same length, opposite direction</td></tr>
+    <tr><td>$\tfrac12\mathbf{a}$</td><td>Half as long, same direction</td></tr>
+    <tr><td>$-3\mathbf{a}$</td><td>Three times as long, opposite direction</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Parallel test.</b> Two vectors are parallel <b>exactly when</b> one is a scalar multiple of the other: if $\mathbf{v}=k\mathbf{u}$ then $\mathbf{v}$ is parallel to $\mathbf{u}$.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Magnitude</h4>
+  <p>The magnitude (or modulus) of a vector is its length, and it comes straight from Pythagoras.</p>
+  <div class="ig-formula">$\left|\begin{pmatrix}x\\y\end{pmatrix}\right|=\sqrt{x^{2}+y^{2}}$</div>
+  <table class="ig-table">
+    <tr><th>Vector</th><th>Working</th><th>Magnitude</th></tr>
+    <tr><td>$\begin{pmatrix}3\\4\end{pmatrix}$</td><td>$\sqrt{9+16}=\sqrt{25}$</td><td>$5$</td></tr>
+    <tr><td>$\begin{pmatrix}-5\\12\end{pmatrix}$</td><td>$\sqrt{25+144}=\sqrt{169}$</td><td>$13$</td></tr>
+    <tr><td>$\begin{pmatrix}6\\-8\end{pmatrix}$</td><td>$\sqrt{36+64}=\sqrt{100}$</td><td>$10$</td></tr>
+    <tr><td>$\begin{pmatrix}2\\3\end{pmatrix}$</td><td>$\sqrt{4+9}=\sqrt{13}$</td><td>$3.61$ (3 s.f.)</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div>Squaring removes the minus sign, so a magnitude is <b>never negative</b>. A negative answer means a slip in the arithmetic.</div></div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Order of operations.</b> For $|3\mathbf{a}-\mathbf{b}|$, do the vector arithmetic <b>first</b> to reach a single column vector, and only then take the magnitude. $|3\mathbf{a}-\mathbf{b}|$ is not $3|\mathbf{a}|-|\mathbf{b}|$.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Position vectors and finding routes <span class="ig-try">Interactive</span></h4>
+  <p>The <b>position vector</b> of a point $A$ is $\overrightarrow{OA}$, the vector from the origin to $A$. If $A$ is $(3,-2)$ its position vector is $\begin{pmatrix}3\\-2\end{pmatrix}$.</p>
+  <div class="ig-formula">$\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}=\mathbf{b}-\mathbf{a}$ &nbsp;— end point minus start point</div>
+  <p>It works because you can always travel backwards to the origin and out again: $\overrightarrow{AB}=\overrightarrow{AO}+\overrightarrow{OB}=-\mathbf{a}+\mathbf{b}$.</p>
+
+  <h5>Route finding in a diagram</h5>
+  <ul class="ig-list">
+    <li>Write the vector you want with its start and end points, for example $\overrightarrow{MN}$.</li>
+    <li>Find a chain of known vectors from $M$ to $N$, travelling backwards where you have to — a backwards step carries a minus sign.</li>
+    <li>Add the chain and collect like terms.</li>
+    <li>Check the joins cancel: $\overrightarrow{MP}+\overrightarrow{PN}=\overrightarrow{MN}$.</li>
+  </ul>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>In a parallelogram.</b> Opposite sides are equal vectors. In $OACB$ with $\overrightarrow{OA}=\mathbf{a}$ and $\overrightarrow{OB}=\mathbf{b}$: $\overrightarrow{AC}=\mathbf{b}$ and $\overrightarrow{BC}=\mathbf{a}$ — that is what lets you cross the shape.</div></div>
+
+  <h5>Lab 2 — the route finder</h5>
+  <p>Pick the vector you want and the lab walks the route, marks it on the diagram and sets out the algebra line by line.</p>
+  <div data-lab="routelab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Midpoints, ratios and proof <span class="ig-try">Interactive</span></h4>
+  <h5>Midpoints</h5>
+  <div class="ig-formula">$\overrightarrow{OM}=\mathbf{a}+\tfrac12\overrightarrow{AB}=\mathbf{a}+\tfrac12(\mathbf{b}-\mathbf{a})=\tfrac12(\mathbf{a}+\mathbf{b})$</div>
+
+  <h5>Dividing a line in a given ratio</h5>
+  <p>If $C$ lies on $AB$ with $AC:CB=m:n$, then $C$ is $\dfrac{m}{m+n}$ of the way along $AB$:</p>
+  <div class="ig-formula">$\overrightarrow{OC}=\mathbf{a}+\dfrac{m}{m+n}(\mathbf{b}-\mathbf{a})$</div>
+  <table class="ig-table">
+    <tr><th>Ratio $AC:CB$</th><th>Fraction along $AB$</th><th>$\overrightarrow{OC}$</th></tr>
+    <tr><td>$1:1$</td><td>$\tfrac12$</td><td>$\tfrac12\mathbf{a}+\tfrac12\mathbf{b}$</td></tr>
+    <tr><td>$1:2$</td><td>$\tfrac13$</td><td>$\tfrac23\mathbf{a}+\tfrac13\mathbf{b}$</td></tr>
+    <tr><td>$2:1$</td><td>$\tfrac23$</td><td>$\tfrac13\mathbf{a}+\tfrac23\mathbf{b}$</td></tr>
+    <tr><td>$3:1$</td><td>$\tfrac34$</td><td>$\tfrac14\mathbf{a}+\tfrac34\mathbf{b}$</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>The fractions swap.</b> For $AC:CB=m:n$ the coefficient of $\mathbf{a}$ is $\dfrac{n}{m+n}$ and the coefficient of $\mathbf{b}$ is $\dfrac{m}{m+n}$. They must always add to $1$ for a point on $AB$ — a free check on every answer.</div></div>
+
+  <h5>Proving lines parallel, and points collinear</h5>
+  <ul class="ig-list">
+    <li><b>Parallel:</b> find both vectors in terms of $\mathbf{a}$ and $\mathbf{b}$, show one is a scalar multiple of the other, then say so — "$\overrightarrow{PQ}=3\overrightarrow{RS}$, therefore $PQ$ is parallel to $RS$".</li>
+    <li><b>Collinear:</b> find two vectors that share a point, show $\overrightarrow{XZ}=k\,\overrightarrow{XY}$, then state that they are parallel <b>and</b> share the common point $X$, so $X$, $Y$, $Z$ lie on a straight line.</li>
+  </ul>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>The word "and" earns the mark.</b> Parallel on its own is not collinearity — you must also say the two vectors share a common point.</div></div>
+
+  <h5>Lab 3 — parallel, or collinear?</h5>
+  <p>Enter two vectors from the same point $O$ and the lab tests whether one is a multiple of the other, then writes the proof out in the wording the mark scheme wants.</p>
+  <div data-lab="collinlab"></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Column vector arithmetic</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$\mathbf{a}=\begin{pmatrix}4\\-1\end{pmatrix}$ and $\mathbf{b}=\begin{pmatrix}-3\\5\end{pmatrix}$. Find $2\mathbf{a}-3\mathbf{b}$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Scale first: $2\mathbf{a}=\begin{pmatrix}8\\-2\end{pmatrix}$ and $3\mathbf{b}=\begin{pmatrix}-9\\15\end{pmatrix}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Subtract component by component: $8-(-9)=17$ and $-2-15=-17$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\begin{pmatrix}17\\-17\end{pmatrix}$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Subtracting a negative component is the commonest slip — write the double negative out in full before simplifying.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Finding a magnitude</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Find $|2\mathbf{a}+\mathbf{b}|$ where $\mathbf{a}=\begin{pmatrix}3\\-1\end{pmatrix}$ and $\mathbf{b}=\begin{pmatrix}-2\\5\end{pmatrix}$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Vector arithmetic first: $2\mathbf{a}=\begin{pmatrix}6\\-2\end{pmatrix}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$2\mathbf{a}+\mathbf{b}=\begin{pmatrix}6+(-2)\\-2+5\end{pmatrix}=\begin{pmatrix}4\\3\end{pmatrix}$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Now the magnitude: $\sqrt{4^{2}+3^{2}}=\sqrt{25}=5$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $5$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>Here the answer is exact. Had it been $\sqrt{26}$ you would write $5.10$ to 3 significant figures.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>From coordinates to a vector and its length</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$P$ is $(-1,4)$ and $Q$ is $(5,-4)$. Find $\overrightarrow{PQ}$ as a column vector and calculate $|\overrightarrow{PQ}|$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>End minus start: $\overrightarrow{PQ}=\overrightarrow{OQ}-\overrightarrow{OP}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Components: $5-(-1)=6$ and $-4-4=-8$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$|\overrightarrow{PQ}|=\sqrt{6^{2}+(-8)^{2}}=\sqrt{36+64}=\sqrt{100}=10$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\overrightarrow{PQ}=\begin{pmatrix}6\\-8\end{pmatrix}$ and $|\overrightarrow{PQ}|=10$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>$\overrightarrow{QP}$ would be $\begin{pmatrix}-6\\8\end{pmatrix}$ — same length, opposite direction. Read which way round the question wants.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>A midpoint in a triangle</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>In triangle $OAB$, $\overrightarrow{OA}=\mathbf{a}$ and $\overrightarrow{OB}=\mathbf{b}$. $M$ is the midpoint of $AB$. Express $\overrightarrow{AB}$ and $\overrightarrow{OM}$ in terms of $\mathbf{a}$ and $\mathbf{b}$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>$\overrightarrow{AB}$:</b> travel back to $O$, then out to $B$: $\overrightarrow{AO}+\overrightarrow{OB}=-\mathbf{a}+\mathbf{b}=\mathbf{b}-\mathbf{a}$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>$\overrightarrow{AM}$:</b> $M$ is halfway, so $\overrightarrow{AM}=\tfrac12(\mathbf{b}-\mathbf{a})$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>$\overrightarrow{OM}$:</b> $\mathbf{a}+\tfrac12(\mathbf{b}-\mathbf{a})=\mathbf{a}-\tfrac12\mathbf{a}+\tfrac12\mathbf{b}$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\overrightarrow{AB}=\mathbf{b}-\mathbf{a}$ and $\overrightarrow{OM}=\tfrac12(\mathbf{a}+\mathbf{b})$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Check.</b> The coefficients $\tfrac12$ and $\tfrac12$ add to $1$, as they must for a point on $AB$. ✓</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Dividing a line in a ratio</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>In triangle $OAB$, $\overrightarrow{OA}=\mathbf{a}$ and $\overrightarrow{OB}=\mathbf{b}$. $C$ lies on $AB$ with $AC:CB=1:3$. Express $\overrightarrow{OC}$ in terms of $\mathbf{a}$ and $\mathbf{b}$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The ratio $1:3$ means $C$ is $\tfrac14$ of the way from $A$ to $B$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$\overrightarrow{AB}=\mathbf{b}-\mathbf{a}$, so $\overrightarrow{AC}=\tfrac14(\mathbf{b}-\mathbf{a})$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$\overrightarrow{OC}=\mathbf{a}+\tfrac14(\mathbf{b}-\mathbf{a})=\mathbf{a}-\tfrac14\mathbf{a}+\tfrac14\mathbf{b}$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\overrightarrow{OC}=\tfrac34\mathbf{a}+\tfrac14\mathbf{b}$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Check.</b> $\tfrac34+\tfrac14=1$ ✓. Notice the coefficient of $\mathbf{a}$ is the <em>second</em> number of the ratio over the total — the fractions swap over. Set Lab 2 to $AP:PB=1:3$ and compare.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Proving points are collinear</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$\overrightarrow{OX}=\mathbf{a}+2\mathbf{b}$ and $\overrightarrow{OY}=3\mathbf{a}+6\mathbf{b}$. Show that $O$, $X$ and $Y$ are collinear and state the ratio $OX:XY$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Factorise: $\overrightarrow{OY}=3\mathbf{a}+6\mathbf{b}=3(\mathbf{a}+2\mathbf{b})$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>So $\overrightarrow{OY}=3\,\overrightarrow{OX}$ — a scalar multiple, so the two vectors are <b>parallel</b>.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>They also share the <b>common point $O$</b>, so the three points lie on a straight line.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>$\overrightarrow{XY}=\overrightarrow{OY}-\overrightarrow{OX}=3(\mathbf{a}+2\mathbf{b})-(\mathbf{a}+2\mathbf{b})=2(\mathbf{a}+2\mathbf{b})$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $O$, $X$, $Y$ are collinear, and $OX:XY=1:2$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div><b>Marks are for the words.</b> The final mark needs both "parallel" <b>and</b> "common point". The algebra alone is not a complete proof.</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Writing a column vector as a coordinate.</b> A vector goes one number above the other with no comma; a coordinate is a position.</li>
+    <li><b>Getting $\overrightarrow{AB}$ and $\overrightarrow{BA}$ the wrong way round.</b> $\overrightarrow{AB}=\mathbf{b}-\mathbf{a}$ is end minus start; $\overrightarrow{BA}$ is its negative.</li>
+    <li><b>Taking the magnitude too early.</b> Simplify to one column vector first, then use Pythagoras.</li>
+    <li><b>Giving a negative magnitude.</b> A length is never negative.</li>
+    <li><b>Losing a root.</b> If $k^{2}=9$ then $k=3$ <em>or</em> $k=-3$.</li>
+    <li><b>Swapping the ratio fractions.</b> For $AC:CB=m:n$, $C$ is $\frac{m}{m+n}$ of the way from $A$, and the coefficient of $\mathbf{a}$ is $\frac{n}{m+n}$.</li>
+    <li><b>Saying "parallel" and stopping.</b> Collinearity also needs the common point.</li>
+    <li><b>Not simplifying.</b> Collect the $\mathbf{a}$ terms and the $\mathbf{b}$ terms — the last mark is usually for the simplest form.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning. Write a column vector as its two components, for example $(3, -4)$.</p>
+  <div class="gl-q" data-answer="(2, 2)" data-accept="2,2" data-why="Add component by component: 3 + (−1) = 2 and −2 + 4 = 2.">
+    <p>1. $\mathbf{a}=\begin{pmatrix}3\\-2\end{pmatrix}$ and $\mathbf{b}=\begin{pmatrix}-1\\4\end{pmatrix}$. Find the components of $\mathbf{a}+\mathbf{b}$.</p>
+  </div>
+  <div class="gl-q" data-answer="(7, −8)" data-accept="(7,-8)|7,-8" data-why="2a has components 6 and −4. Then 6 − (−1) = 7 and −4 − 4 = −8.">
+    <p>2. With the same $\mathbf{a}$ and $\mathbf{b}$, find the components of $2\mathbf{a}-\mathbf{b}$.</p>
+  </div>
+  <div class="gl-q" data-answer="13" data-accept="13 units" data-why="|v| = √(5² + (−12)²) = √(25 + 144) = √169 = 13. Squaring removes the minus sign, so the magnitude is positive.">
+    <p>3. $\mathbf{v}=\begin{pmatrix}5\\-12\end{pmatrix}$. Calculate $|\mathbf{v}|$.</p>
+  </div>
+  <div class="gl-q" data-answer="7.07" data-accept="7.071|√50" data-why="3a has components 6 and 3, so 3a − b has components 6 − (−1) = 7 and 3 − 4 = −1. Then √(7² + 1²) = √50 = 7.0710… = 7.07 to 3 s.f. Note 3|a| − |b| would give a different, wrong answer.">
+    <p>4. $\mathbf{a}=\begin{pmatrix}2\\1\end{pmatrix}$ and $\mathbf{b}=\begin{pmatrix}-1\\4\end{pmatrix}$. Calculate $|3\mathbf{a}-\mathbf{b}|$, correct to 3 significant figures.</p>
+  </div>
+  <div class="gl-q" data-answer="3" data-accept="k=3|3 or -3|3 and -3" data-why="4² + k² = 5², so k² = 25 − 16 = 9 and k = 3 or k = −3. The positive value is 3 — but in an exam that asks for both possible values, do not lose the negative root.">
+    <p>5. $\mathbf{p}=\begin{pmatrix}4\\k\end{pmatrix}$ and $|\mathbf{p}|=5$. Write down the positive value of $k$.</p>
+  </div>
+  <div class="gl-q" data-answer="5" data-accept="5 units" data-why="PQ = OQ − OP has components 5 − 2 = 3 and 1 − (−3) = 4, so the distance is √(3² + 4²) = √25 = 5.">
+    <p>6. $P$ is $(2,-3)$ and $Q$ is $(5,1)$. Calculate the distance $PQ$.</p>
+  </div>
+  <div class="gl-q" data-answer="b − a" data-accept="b-a|-a+b" data-why="Travel from A back to O and out to B: AB = AO + OB = −a + b = b − a. It is always end point minus start point.">
+    <p>7. In triangle $OAB$, $\overrightarrow{OA}=\mathbf{a}$ and $\overrightarrow{OB}=\mathbf{b}$. Express $\overrightarrow{AB}$ in terms of $\mathbf{a}$ and $\mathbf{b}$.</p>
+  </div>
+  <div class="gl-q" data-answer="1 : 2" data-accept="1:2|1 to 2" data-why="OY = 3(a + 2b) = 3 OX, so XY = OY − OX = 2(a + 2b) = 2 OX. That makes OX : XY = 1 : 2 — and since the vectors are parallel and share the point O, the three points are collinear.">
+    <p>8. $\overrightarrow{OX}=\mathbf{a}+2\mathbf{b}$ and $\overrightarrow{OY}=3\mathbf{a}+6\mathbf{b}$. Write down the ratio $OX:XY$.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-vectors";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=10";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

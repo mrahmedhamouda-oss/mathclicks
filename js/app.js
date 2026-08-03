@@ -32,6 +32,8 @@ const DOMAIN_ICONS = {
   "Differentiation": "📉",
   "Trigonometry": "🔺",
   "Bearings & Scale": "🧭",
+  "Transformations": "🔄",
+  "Vectors": "➡️",
 };
 const MODULE_ICON = "📘";
 

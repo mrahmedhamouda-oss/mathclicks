@@ -3811,6 +3811,1194 @@
 
   // ---------- styles (injected once) ----------
 
+  /* ---------- shared machinery for the transformation and vector sketches ---------- */
+
+  // square coordinate grid: keeps 1 unit the same length on both axes, then widens
+  // the x-range so the drawing fills the canvas instead of leaving side margins
+  function gridView(W, H, view) {
+    const pad = 16;
+    const s = Math.min((W - 2 * pad) / (view.xmax - view.xmin), (H - 2 * pad) / (view.ymax - view.ymin));
+    const cx = (view.xmin + view.xmax) / 2, cy = (view.ymin + view.ymax) / 2;
+    const hw = (W - 2 * pad) / (2 * s), hh = (H - 2 * pad) / (2 * s);
+    return {
+      s, cx, cy,
+      v: { xmin: cx - hw, xmax: cx + hw, ymin: cy - hh, ymax: cy + hh },
+      X: (x) => W / 2 + (x - cx) * s,
+      Y: (y) => H / 2 - (y - cy) * s,
+    };
+  }
+  // the square-grid labs read better in a near-square frame than in a very wide one
+  function gridBox() {
+    const b = e("div", "gl-canvas");
+    b.style.maxWidth = "560px";
+    b.style.margin = "0 auto";
+    return b;
+  }
+  function drawGrid(c, P, m) {
+    const v = m.v;
+    const step = v.xmax - v.xmin > 20 ? 2 : 1;
+    c.save();
+    c.strokeStyle = P.grid; c.lineWidth = 1;
+    for (let x = Math.ceil(v.xmin / step) * step; x <= v.xmax; x += step) {
+      c.beginPath(); c.moveTo(m.X(x), m.Y(v.ymin)); c.lineTo(m.X(x), m.Y(v.ymax)); c.stroke();
+    }
+    for (let y = Math.ceil(v.ymin / step) * step; y <= v.ymax; y += step) {
+      c.beginPath(); c.moveTo(m.X(v.xmin), m.Y(y)); c.lineTo(m.X(v.xmax), m.Y(y)); c.stroke();
+    }
+    c.strokeStyle = P.axis; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(m.X(v.xmin), m.Y(0)); c.lineTo(m.X(v.xmax), m.Y(0)); c.stroke();
+    c.beginPath(); c.moveTo(m.X(0), m.Y(v.ymin)); c.lineTo(m.X(0), m.Y(v.ymax)); c.stroke();
+    // numbers every 2 units so the grid stays readable on a phone
+    c.fillStyle = P.text; c.font = "10px Inter, system-ui, sans-serif";
+    c.textAlign = "center"; c.textBaseline = "top";
+    for (let x = Math.ceil(v.xmin / 2) * 2; x <= v.xmax; x += 2) {
+      if (x === 0) continue;
+      c.fillText(String(x).replace("-", MINUS), m.X(x), m.Y(0) + 3);
+    }
+    c.textAlign = "right"; c.textBaseline = "middle";
+    for (let y = Math.ceil(v.ymin / 2) * 2; y <= v.ymax; y += 2) {
+      if (y === 0) continue;
+      c.fillText(String(y).replace("-", MINUS), m.X(0) - 4, m.Y(y));
+    }
+    c.restore();
+  }
+  // a view that comfortably holds every point given, always including the origin
+  function autoView(pts, minSpan) {
+    const xs = pts.map((p) => p[0]).concat([0]);
+    const ys = pts.map((p) => p[1]).concat([0]);
+    const xmin = Math.min.apply(null, xs) - 1.2, xmax = Math.max.apply(null, xs) + 1.2;
+    const ymin = Math.min.apply(null, ys) - 1.2, ymax = Math.max.apply(null, ys) + 1.2;
+    const span = Math.max(minSpan || 9, xmax - xmin, ymax - ymin);
+    const cx = (xmin + xmax) / 2, cy = (ymin + ymax) / 2;
+    return { xmin: cx - span / 2, xmax: cx + span / 2, ymin: cy - span / 2, ymax: cy + span / 2 };
+  }
+  function drawShape(c, P, m, pts, stroke, fill, label, dash) {
+    const px = pts.map((p) => [m.X(p[0]), m.Y(p[1])]);
+    if (fill) fillPoly(c, px, fill);
+    strokePath(c, px.concat([px[0]]), stroke, 2.2, dash);
+    px.forEach((p) => dot(c, p[0], p[1], stroke, P.bg, 3.4));
+    if (label) {
+      const cx = px.reduce((s, p) => s + p[0], 0) / px.length;
+      const cy = px.reduce((s, p) => s + p[1], 0) / px.length;
+      tagOn(c, P, label, cx, cy, stroke, "center", 13);
+    }
+  }
+  function arrow(c, m, from, to, color, width, label, P) {
+    const A = [m.X(from[0]), m.Y(from[1])], B = [m.X(to[0]), m.Y(to[1])];
+    strokePath(c, [A, B], color, width || 2.6);
+    arrowHead(c, B[0], B[1], Math.atan2(B[1] - A[1], B[0] - A[0]), color, 8);
+    if (label) tagOn(c, P, label, (A[0] + B[0]) / 2, (A[1] + B[1]) / 2 - 10, color, "center", 12.5);
+  }
+  const ptTxt = (p) => "(" + fmt(p[0], 3) + ", " + fmt(p[1], 3) + ")";
+  const cv = (a, b) => '<span class="gl-cv"><i>' + fmt(a, 3) + "</i><i>" + fmt(b, 3) + "</i></span>";
+  function factHtml(label, markup) {
+    const r = e("div", "gl-fact");
+    r.appendChild(e("span", "gl-fact-k", label));
+    const v = html("span", "gl-fact-v", markup || "");
+    r.appendChild(v);
+    r.setValue = (mk) => { v.innerHTML = mk; };
+    return r;
+  }
+
+  /* A transformation is held as the affine map (x, y) → (M·p + t), which is what
+     lets these labs work out the SINGLE transformation equivalent to a sequence. */
+  const applyTF = (T, p) => [
+    T.M[0] * p[0] + T.M[1] * p[1] + T.t[0],
+    T.M[2] * p[0] + T.M[3] * p[1] + T.t[1],
+  ];
+  // "T1 first, then T2" as one map
+  function composeTF(T1, T2) {
+    const A = T2.M, B = T1.M;
+    return {
+      M: [A[0] * B[0] + A[1] * B[2], A[0] * B[1] + A[1] * B[3],
+          A[2] * B[0] + A[3] * B[2], A[2] * B[1] + A[3] * B[3]],
+      t: [A[0] * T1.t[0] + A[1] * T1.t[1] + T2.t[0],
+          A[2] * T1.t[0] + A[3] * T1.t[1] + T2.t[1]],
+    };
+  }
+  const MIRRORS = [
+    { value: "y=0", label: "the x-axis (y = 0)" },
+    { value: "x=0", label: "the y-axis (x = 0)" },
+    { value: "y=x", label: "y = x" },
+    { value: "y=-x", label: "y = " + MINUS + "x" },
+    { value: "x=a", label: "x = a" },
+    { value: "y=b", label: "y = b" },
+  ];
+  function specTF(s) {
+    if (s.kind === "reflect") {
+      if (s.line === "y=0") return { M: [1, 0, 0, -1], t: [0, 0] };
+      if (s.line === "x=0") return { M: [-1, 0, 0, 1], t: [0, 0] };
+      if (s.line === "y=x") return { M: [0, 1, 1, 0], t: [0, 0] };
+      if (s.line === "y=-x") return { M: [0, -1, -1, 0], t: [0, 0] };
+      if (s.line === "x=a") return { M: [-1, 0, 0, 1], t: [2 * s.a, 0] };
+      return { M: [1, 0, 0, -1], t: [0, 2 * s.b] };
+    }
+    if (s.kind === "rotate") {
+      const th = s.ang * DEG;
+      const co = Math.round(Math.cos(th)), si = Math.round(Math.sin(th));
+      const M = [co, -si, si, co];
+      return { M, t: [s.cx - (M[0] * s.cx + M[1] * s.cy), s.cy - (M[2] * s.cx + M[3] * s.cy)] };
+    }
+    if (s.kind === "translate") return { M: [1, 0, 0, 1], t: [s.dx, s.dy] };
+    return { M: [s.k, 0, 0, s.k], t: [s.cx * (1 - s.k), s.cy * (1 - s.k)] };
+  }
+  const lineName = (s) =>
+    s.line === "y=0" ? "the x-axis (y = 0)"
+    : s.line === "x=0" ? "the y-axis (x = 0)"
+    : s.line === "y=x" ? "y = x"
+    : s.line === "y=-x" ? "y = " + MINUS + "x"
+    : s.line === "x=a" ? "x = " + fmt(s.a, 3)
+    : "y = " + fmt(s.b, 3);
+  // an inverse scale factor reads better as 1/4 than as 0.25
+  const kTxt = (k) => {
+    const r = 1 / k;
+    return Math.abs(k) < 1 && Math.abs(Math.round(r) - r) < 1e-9
+      ? (k < 0 ? MINUS : "") + "1/" + Math.abs(Math.round(r))
+      : fmt(k, 3);
+  };
+  function describeSpec(s) {
+    if (s.kind === "reflect") return "Reflection in " + lineName(s);
+    if (s.kind === "rotate") {
+      const turn = Math.abs(s.ang) === 180 ? "" : s.ang > 0 ? " anticlockwise" : " clockwise";
+      return "Rotation of " + Math.abs(s.ang) + "°" + turn + " about " + ptTxt([s.cx, s.cy]);
+    }
+    if (s.kind === "translate") return "Translation by the column vector " + cv(s.dx, s.dy);
+    return "Enlargement, scale factor " + kTxt(s.k) + ", centre " + ptTxt([s.cx, s.cy]);
+  }
+  // the coordinate rule, e.g. (x, y) → (−y, x)
+  function ruleTxt(T) {
+    const part = (m1, m2, k) => {
+      let s = "";
+      if (m1) s += (m1 === 1 ? "" : m1 === -1 ? MINUS : fmt(m1, 3)) + "x";
+      if (m2) s += (s && m2 > 0 ? " + " : s ? " " + MINUS + " " : m2 < 0 ? MINUS : "")
+        + (Math.abs(m2) === 1 ? "" : fmt(Math.abs(m2), 3)) + "y";
+      if (k) s += (s ? (k > 0 ? " + " : " " + MINUS + " ") : k < 0 ? MINUS : "") + fmt(Math.abs(k), 3);
+      return s || "0";
+    };
+    return "(x, y) → (" + part(T.M[0], T.M[1], T.t[0]) + ", " + part(T.M[2], T.M[3], T.t[1]) + ")";
+  }
+  const near = (a, b) => Math.abs(a - b) < 1e-7;
+  // the point that does not move: solve (I − M)p = t
+  function fixedPoint(T) {
+    const a = 1 - T.M[0], b = -T.M[1], c = -T.M[2], d = 1 - T.M[3];
+    const det = a * d - b * c;
+    if (Math.abs(det) < 1e-9) return null;
+    return [(T.t[0] * d - b * T.t[1]) / det, (a * T.t[1] - c * T.t[0]) / det];
+  }
+  function lineEqn(p0, u) {
+    if (Math.abs(u[1]) < 1e-7) return "y = " + fmt(p0[1], 3);
+    if (Math.abs(u[0]) < 1e-7) return "x = " + fmt(p0[0], 3);
+    const mm = u[1] / u[0], cc = p0[1] - mm * p0[0];
+    const g = near(mm, 1) ? "x" : near(mm, -1) ? MINUS + "x" : fmt(mm, 3) + "x";
+    return "y = " + g + (Math.abs(cc) < 1e-9 ? "" : cc > 0 ? " + " + fmt(cc, 3) : " " + MINUS + " " + fmt(-cc, 3));
+  }
+  /* Name the single transformation an affine map represents. */
+  function classifyTF(T) {
+    const a = T.M[0], b = T.M[1], c = T.M[2], d = T.M[3], t = T.t;
+    if (near(a, 1) && near(b, 0) && near(c, 0) && near(d, 1)) {
+      if (near(t[0], 0) && near(t[1], 0)) return { head: "The identity", body: "Every point finishes exactly where it started." };
+      return { head: "Translation", body: "by the column vector " + cv(t[0], t[1]) };
+    }
+    if (near(b, 0) && near(c, 0) && near(a, d)) {
+      const k = a, C = fixedPoint(T);
+      if (near(k, -1)) {
+        return { head: "Rotation of 180° about " + ptTxt(C),
+                 body: "An enlargement of scale factor " + MINUS + "1 about the same centre gives this image too — either description is correct." };
+      }
+      return { head: "Enlargement", body: "scale factor " + kTxt(k) + ", centre " + ptTxt(C)
+        + " · lengths × " + kTxt(k) + ", areas × " + kTxt(k * k) };
+    }
+    const det = a * d - b * c;
+    if (near(det, 1)) {
+      const ang = ((Math.atan2(c, a) / DEG) + 360) % 360;
+      const C = fixedPoint(T);
+      if (!C) return { head: "Rotation", body: "of " + fmt(ang, 1) + "° — but the centre could not be pinned down." };
+      if (near(ang, 180)) return { head: "Rotation of 180° about " + ptTxt(C), body: "No direction is needed for a half turn." };
+      return { head: "Rotation", body: "of " + fmt(ang, 1) + "° anticlockwise about " + ptTxt(C)
+        + " — the same as " + fmt(360 - ang, 1) + "° clockwise" };
+    }
+    if (near(det, -1)) {
+      const phi = Math.atan2(c, a) / 2;
+      const u = [Math.cos(phi), Math.sin(phi)];
+      const along = t[0] * u[0] + t[1] * u[1];
+      const perp = [t[0] - along * u[0], t[1] - along * u[1]];
+      const p0 = [perp[0] / 2, perp[1] / 2];
+      if (Math.abs(along) < 1e-7) return { head: "Reflection", body: "in the line " + lineEqn(p0, u) };
+      return { head: "A glide reflection", body: "reflection in " + lineEqn(p0, u) + " together with a translation of "
+        + fmt(Math.abs(along), 3) + " along that line — this one cannot be written as a single reflection, rotation, translation or enlargement." };
+    }
+    return { head: "Not one of the four", body: "This map stretches the shape unevenly, so it is outside the IGCSE list." };
+  }
+
+  /* One transformation, editable: the same control block is reused by every lab
+     below, so the student meets one consistent way of specifying a transformation. */
+  function tfEditor(title, init, onChange) {
+    const wrap = e("div", "gl-form-group");
+    if (title) wrap.appendChild(e("div", "gl-form-title", title));
+    const row = e("div", "gl-form-row");
+    wrap.appendChild(row);
+
+    const relayout = () => { layout(); onChange(); };
+    const kind = picker("Type", [
+      { value: "reflect", label: "Reflection" },
+      { value: "rotate", label: "Rotation" },
+      { value: "translate", label: "Translation" },
+      { value: "enlarge", label: "Enlargement" },
+    ], relayout);
+    const line = picker("Mirror line", MIRRORS, relayout);
+    const aF = field("a", "3", null, onChange);
+    const bF = field("b", "2", null, onChange);
+    const ang = picker("Angle", [
+      { value: "90", label: "90° anticlockwise" },
+      { value: "-90", label: "90° clockwise" },
+      { value: "180", label: "180°" },
+    ], onChange);
+    const cxF = field("centre x", "0", null, onChange);
+    const cyF = field("centre y", "0", null, onChange);
+    const dxF = field("x-move", "3", null, onChange);
+    const dyF = field("y-move", MINUS + "2", null, onChange);
+    const kF = field("scale factor k", "2", null, onChange);
+
+    init = init || {};
+    if (init.kind) kind.sel.value = init.kind;
+    if (init.line) line.sel.value = init.line;
+    if (init.ang != null) ang.sel.value = String(init.ang);
+    if (init.a != null) aF.set(init.a);
+    if (init.b != null) bF.set(init.b);
+    if (init.cx != null) cxF.set(init.cx);
+    if (init.cy != null) cyF.set(init.cy);
+    if (init.dx != null) dxF.set(init.dx);
+    if (init.dy != null) dyF.set(init.dy);
+    if (init.k != null) kF.set(init.k);
+
+    function layout() {
+      row.replaceChildren(kind.el);
+      const k = kind.get();
+      if (k === "reflect") {
+        row.appendChild(line.el);
+        if (line.get() === "x=a") row.appendChild(aF.el);
+        if (line.get() === "y=b") row.appendChild(bF.el);
+      } else if (k === "rotate") {
+        row.appendChild(ang.el); row.appendChild(cxF.el); row.appendChild(cyF.el);
+      } else if (k === "translate") {
+        row.appendChild(dxF.el); row.appendChild(dyF.el);
+      } else {
+        row.appendChild(kF.el); row.appendChild(cxF.el); row.appendChild(cyF.el);
+      }
+    }
+    function get() {
+      const k = kind.get();
+      const safe = (v, dflt) => (isFinite(v) ? v : dflt);
+      if (k === "reflect") return { kind: k, line: line.get(), a: safe(aF.get(), 0), b: safe(bF.get(), 0) };
+      if (k === "rotate") return { kind: k, ang: +ang.get(), cx: safe(cxF.get(), 0), cy: safe(cyF.get(), 0) };
+      if (k === "translate") return { kind: k, dx: safe(dxF.get(), 0), dy: safe(dyF.get(), 0) };
+      return { kind: k, k: safe(kF.get(), 1), cx: safe(cxF.get(), 0), cy: safe(cyF.get(), 0) };
+    }
+    layout();
+    return { el: wrap, get, kind };
+  }
+  // guide lines that make a transformation visible: mirror, centre, translation arrow, rays
+  function drawGuides(c, P, m, s, obj, img) {
+    const v = m.v;
+    if (s.kind === "reflect") {
+      const L = s.line;
+      let A, B;
+      if (L === "y=0") { A = [v.xmin, 0]; B = [v.xmax, 0]; }
+      else if (L === "x=0") { A = [0, v.ymin]; B = [0, v.ymax]; }
+      else if (L === "y=x") { A = [v.xmin, v.xmin]; B = [v.xmax, v.xmax]; }
+      else if (L === "y=-x") { A = [v.xmin, -v.xmin]; B = [v.xmax, -v.xmax]; }
+      else if (L === "x=a") { A = [s.a, v.ymin]; B = [s.a, v.ymax]; }
+      else { A = [v.xmin, s.b]; B = [v.xmax, s.b]; }
+      strokePath(c, [[m.X(A[0]), m.Y(A[1])], [m.X(B[0]), m.Y(B[1])]], P.c4, 2, [7, 5]);
+      const short = L === "y=0" ? "y = 0" : L === "x=0" ? "x = 0" : lineName(s);
+      tagOn(c, P, short, m.X(B[0]) - 30, m.Y(B[1]) - 12, P.c4, "center", 12);
+      obj.forEach((p, i) => strokePath(c,
+        [[m.X(p[0]), m.Y(p[1])], [m.X(img[i][0]), m.Y(img[i][1])]], P.faint, 1, [4, 4]));
+    } else if (s.kind === "rotate" || s.kind === "enlarge") {
+      const C = [s.cx, s.cy];
+      if (s.kind === "enlarge") {
+        obj.forEach((p, i) => strokePath(c,
+          [[m.X(C[0]), m.Y(C[1])], [m.X(img[i][0]), m.Y(img[i][1])]], P.faint, 1, [5, 4]));
+      }
+      dot(c, m.X(C[0]), m.Y(C[1]), P.c4, P.bg, 5);
+      tagOn(c, P, "centre " + ptTxt(C), m.X(C[0]), m.Y(C[1]) + 15, P.c4, "center", 11.5);
+    } else if (s.kind === "translate") {
+      arrow(c, m, obj[0], img[0], P.c3, 2.4, cvPlain(s.dx, s.dy), P);
+    }
+  }
+  const cvPlain = (a, b) => "(" + fmt(a, 3) + ", " + fmt(b, 3) + ")";
+  const OBJ = [[1, 1], [4, 1], [1, 3]];
+  function mapTable(obj, img, head) {
+    const box = e("div", "gl-scroll");
+    const tb = e("table", "gl-table");
+    const h = e("tr");
+    h.appendChild(e("th", null, "Object"));
+    h.appendChild(e("th", null, head || "Image"));
+    tb.appendChild(h);
+    obj.forEach((p, i) => {
+      const r = e("tr");
+      r.appendChild(e("td", "gl-td-x", ptTxt(p)));
+      r.appendChild(e("td", null, ptTxt(img[i])));
+      tb.appendChild(r);
+    });
+    box.appendChild(tb);
+    return box;
+  }
+
+  /* 36 · Transformation explorer — all four, on one grid, with the full description */
+  build.tformlab = function (host) {
+    const panel = e("div", "gl-panel");
+    const form = e("div", "gl-form");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const tableBox = e("div");
+    const msg = e("div", "gl-msg");
+
+    const ed = tfEditor("Choose a transformation", { kind: "reflect", line: "y=x" }, upd);
+    form.appendChild(ed.el);
+    const fDesc = factHtml("Described fully");
+    const fRule = factHtml("Coordinate rule");
+    const fInv = factHtml("Invariant points");
+    [fDesc, fRule, fInv].forEach((f) => facts.appendChild(f));
+    panel.appendChild(form); panel.appendChild(cvBox); panel.appendChild(facts);
+    panel.appendChild(tableBox); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    let cur = ed.get(), T = specTF(cur), img = OBJ.map((p) => applyTF(T, p));
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.72, minH: 250, maxH: 360,
+      render(c, W, H, P) {
+        const extra = cur.kind === "rotate" || cur.kind === "enlarge" ? [[cur.cx, cur.cy]] : [];
+        const m = gridView(W, H, autoView(OBJ.concat(img).concat(extra), 10));
+        drawGrid(c, P, m);
+        drawGuides(c, P, m, cur, OBJ, img);
+        drawShape(c, P, m, OBJ, P.c1, P.soft, "A");
+        drawShape(c, P, m, img, P.c2, P.soft3, "A′");
+      },
+    });
+
+    function upd() {
+      cur = ed.get();
+      T = specTF(cur);
+      img = OBJ.map((p) => applyTF(T, p));
+      sketch.draw();
+      fDesc.setValue(describeSpec(cur));
+      fRule.setValue(ruleTxt(T));
+      fInv.setValue(
+        cur.kind === "reflect" ? "every point on " + lineName(cur)
+        : cur.kind === "translate" ? "none — every point moves"
+        : "just the centre " + ptTxt([cur.cx, cur.cy]));
+      tableBox.replaceChildren(mapTable(OBJ, img));
+      msg.className = "gl-msg good";
+      msg.textContent =
+        cur.kind === "reflect" ? "Same size, same shape, but mirrored. The marks are for the EQUATION of the mirror line — never a description in words."
+        : cur.kind === "rotate" ? "Same size, same shape, turned. Three things are needed every time: angle, direction, centre."
+        : cur.kind === "translate" ? "Same size, same shape, same way up. Describe it with a column vector only — never as a coordinate."
+        : "Shape is the same, size is not. Lengths are multiplied by k and areas by k². A scale factor between 0 and 1 still counts as an enlargement, and a negative one flips the shape to the far side of the centre.";
+    }
+    upd();
+  };
+
+  /* 37 · Finding the centre — perpendicular bisectors and rays */
+  build.centrelab = function (host) {
+    const MODES = [
+      { key: "rot", label: "Centre of rotation" },
+      { key: "enl", label: "Centre of enlargement" },
+    ];
+    let mode = "rot";
+    const st = { cx: 3, cy: 3, ang: 90, k: 2 };
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(MODES, (it) => { mode = it.key; layout(); }, 0);
+    const controls = e("div", "gl-controls");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    const cxS = slider("Centre x", -4, 6, 1, st.cx, (v) => { st.cx = v; upd(); });
+    const cyS = slider("Centre y", -4, 6, 1, st.cy, (v) => { st.cy = v; upd(); });
+    const kS = slider("Scale factor k", -2, 3, 0.5, st.k, (v) => { st.k = v; upd(); });
+    const angChips = chipRow([
+      { label: "90° anticlockwise", ang: 90 },
+      { label: "90° clockwise", ang: -90 },
+      { label: "180°", ang: 180 },
+    ], (it) => { st.ang = it.ang; upd(); }, 0);
+
+    panel.appendChild(chips.el); panel.appendChild(angChips.el); panel.appendChild(controls);
+    panel.appendChild(cvBox); panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    let img = OBJ.slice();
+
+    function currentSpec() {
+      return mode === "rot"
+        ? { kind: "rotate", ang: st.ang, cx: st.cx, cy: st.cy }
+        : { kind: "enlarge", k: st.k, cx: st.cx, cy: st.cy };
+    }
+    const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.75, minH: 260, maxH: 370,
+      render(c, W, H, P) {
+        const m = gridView(W, H, autoView(OBJ.concat(img).concat([[st.cx, st.cy]]), 11));
+        drawGrid(c, P, m);
+        if (mode === "rot") {
+          // join each vertex to its image, then draw the perpendicular bisector of that join
+          OBJ.forEach((p, i) => {
+            const q = img[i];
+            if (Math.hypot(q[0] - p[0], q[1] - p[1]) < 1e-6) return;
+            strokePath(c, [[m.X(p[0]), m.Y(p[1])], [m.X(q[0]), m.Y(q[1])]], P.faint, 1.4, [5, 4]);
+            const M2 = mid(p, q);
+            const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy);
+            const ux = -dy / L, uy = dx / L, R = 40;
+            strokePath(c, [
+              [m.X(M2[0] - ux * R), m.Y(M2[1] - uy * R)],
+              [m.X(M2[0] + ux * R), m.Y(M2[1] + uy * R)],
+            ], P.c5, 1.6, [8, 5]);
+            dot(c, m.X(M2[0]), m.Y(M2[1]), P.c5, P.bg, 3);
+          });
+        } else {
+          OBJ.forEach((p, i) => {
+            const q = img[i];
+            const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy);
+            if (L < 1e-6) return;                       // k = 1, or a vertex sitting on the centre
+            const R = 40;
+            strokePath(c, [
+              [m.X(p[0] - (dx / L) * R), m.Y(p[1] - (dy / L) * R)],
+              [m.X(p[0] + (dx / L) * R), m.Y(p[1] + (dy / L) * R)],
+            ], P.c5, 1.4, [7, 5]);
+          });
+        }
+        drawShape(c, P, m, OBJ, P.c1, P.soft, "A");
+        drawShape(c, P, m, img, P.c2, P.soft3, "A′");
+        dot(c, m.X(st.cx), m.Y(st.cy), P.c4, P.bg, 6);
+        tagOn(c, P, "centre " + ptTxt([st.cx, st.cy]), m.X(st.cx), m.Y(st.cy) + 16, P.c4, "center", 12);
+      },
+    });
+
+    function step(n, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", "Step " + n));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function layout() {
+      angChips.el.style.display = mode === "rot" ? "" : "none";
+      controls.replaceChildren.apply(controls, mode === "rot" ? [cxS.el, cyS.el] : [cxS.el, cyS.el, kS.el]);
+      upd();
+    }
+    function upd() {
+      const s = currentSpec();
+      img = OBJ.map((p) => applyTF(specTF(s), p));
+      sketch.draw();
+      steps.replaceChildren();
+      if (mode === "rot") {
+        steps.appendChild(step(1, "Join matching vertices",
+          "Each dashed grey line joins a vertex of A to the matching vertex of A′."));
+        steps.appendChild(step(2, "Draw the perpendicular bisector of each join",
+          "Those are the pink lines. Every point on one of them is the same distance from the vertex and its image."));
+        steps.appendChild(step(3, "Where they cross is the centre",
+          "All of them pass through <b>" + ptTxt([st.cx, st.cy]) + "</b> — move the sliders and watch the crossing point follow."));
+        steps.appendChild(step(4, "Then find the angle and direction",
+          "Compare one vertex with its image, measured from the centre. Here the turn is <b>"
+          + Math.abs(st.ang) + "°" + (Math.abs(st.ang) === 180 ? "" : st.ang > 0 ? " anticlockwise" : " clockwise") + "</b>."));
+        msg.className = "gl-msg good";
+        msg.textContent = "Two bisectors are enough in the exam — the third is a check. Tracing paper is allowed and is often faster, but the construction is what earns the method mark.";
+      } else {
+        steps.appendChild(step(1, "Draw a ray through each pair",
+          "Join a vertex of A to the matching vertex of A′ and extend the line both ways — the pink rays."));
+        steps.appendChild(step(2, "The rays all meet at the centre",
+          "They cross at <b>" + ptTxt([st.cx, st.cy]) + "</b>."));
+        steps.appendChild(step(3, "Get the scale factor from a pair of matching lengths",
+          "image length ÷ object length = <b>" + fmt(st.k, 3) + "</b>" + (st.k < 0 ? " — negative, so the image is on the other side of the centre and upside down." : ".")));
+        steps.appendChild(step(4, "Check with the distances from the centre",
+          "distance from centre to image = " + fmt(st.k, 3) + " × distance from centre to object."));
+        const odd = Math.abs(st.k - 1) < 1e-9 || Math.abs(st.k) < 1e-9;
+        msg.className = "gl-msg " + (odd || (st.k > 0 && st.k < 1) ? "warn" : "good");
+        msg.textContent = odd
+          ? (Math.abs(st.k) < 1e-9
+            ? "A scale factor of 0 collapses the whole shape onto the centre — slide k away from 0."
+            : "A scale factor of 1 leaves the shape exactly where it is, so there are no rays to draw and no centre to find.")
+          : st.k > 0 && st.k < 1
+            ? "The image is smaller — but in IGCSE this is still an ENLARGEMENT, with a scale factor between 0 and 1. Never call it a reduction."
+            : "Areas are multiplied by k² = " + fmt(st.k * st.k, 3) + ", not by k.";
+      }
+    }
+    layout();
+  };
+
+  /* 38 · Describe it fully — a self-marking drill */
+  build.describelab = function (host) {
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "Triangle <b>A</b> maps onto triangle <b>A′</b>. Build the single transformation you think it is, then press Check. "
+      + "Your answer is judged on where it sends the shape, so any correct wording of the same transformation is accepted.");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const tableBox = e("div");
+    const form = e("div", "gl-form");
+    const bar = e("div", "gl-bar");
+    const msg = e("div", "gl-msg");
+
+    const POOL = [
+      { kind: "reflect", line: "y=x" },
+      { kind: "reflect", line: "y=-x" },
+      { kind: "reflect", line: "x=0" },
+      { kind: "reflect", line: "y=0" },
+      { kind: "reflect", line: "x=a", a: 3 },
+      { kind: "reflect", line: "y=b", b: 2 },
+      { kind: "rotate", ang: 90, cx: 0, cy: 0 },
+      { kind: "rotate", ang: -90, cx: 0, cy: 0 },
+      { kind: "rotate", ang: 180, cx: 0, cy: 0 },
+      { kind: "rotate", ang: 90, cx: 2, cy: 1 },
+      { kind: "rotate", ang: -90, cx: -1, cy: 2 },
+      { kind: "rotate", ang: 180, cx: 1, cy: 1 },
+      { kind: "translate", dx: 4, dy: -3 },
+      { kind: "translate", dx: -5, dy: 2 },
+      { kind: "enlarge", k: 2, cx: 0, cy: 0 },
+      { kind: "enlarge", k: 3, cx: 1, cy: 1 },
+      { kind: "enlarge", k: 0.5, cx: 0, cy: 0 },
+      { kind: "enlarge", k: -1, cx: 0, cy: 0 },
+      { kind: "enlarge", k: -2, cx: 0, cy: 0 },
+    ];
+    let secret = POOL[0], img = OBJ.slice(), done = false;
+
+    const ed = tfEditor("Your description", { kind: "reflect", line: "y=x" }, () => {});
+    form.appendChild(ed.el);
+    const check = e("button", "gl-btn", "✓ Check");
+    const show = e("button", "gl-btn ghost", "Show answer");
+    const next = e("button", "gl-btn ghost", "New pair ↻");
+    [check, show, next].forEach((b) => { b.type = "button"; bar.appendChild(b); });
+
+    panel.appendChild(prompt); panel.appendChild(cvBox); panel.appendChild(tableBox);
+    panel.appendChild(form); panel.appendChild(bar); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.72, minH: 250, maxH: 360,
+      render(c, W, H, P) {
+        const m = gridView(W, H, autoView(OBJ.concat(img), 11));
+        drawGrid(c, P, m);
+        drawShape(c, P, m, OBJ, P.c1, P.soft, "A");
+        drawShape(c, P, m, img, P.c2, P.soft3, "A′");
+      },
+    });
+
+    const same = (p, q) => Math.abs(p[0] - q[0]) < 1e-6 && Math.abs(p[1] - q[1]) < 1e-6;
+    function fresh() {
+      let pick = secret;
+      while (pick === secret) pick = POOL[Math.floor(Math.random() * POOL.length)];
+      secret = pick;
+      img = OBJ.map((p) => applyTF(specTF(secret), p));
+      done = false;
+      check.disabled = false;
+      sketch.draw();
+      tableBox.replaceChildren(mapTable(OBJ, img, "Image A′"));
+      msg.className = "gl-msg";
+      msg.textContent = "Same size? Same way up? Mirrored? Turned? Work through the routine, then set the controls to match.";
+    }
+    check.addEventListener("click", () => {
+      if (done) return;
+      const guess = ed.get();
+      const G = specTF(guess);
+      const got = OBJ.map((p) => applyTF(G, p));
+      if (got.every((p, i) => same(p, img[i]))) {
+        msg.className = "gl-msg good";
+        msg.innerHTML = "Correct — <b>" + describeSpec(secret) + "</b>. Every vertex lands on its image.";
+        done = true;
+        check.disabled = true;
+      } else if (guess.kind === secret.kind) {
+        msg.className = "gl-msg warn";
+        msg.textContent = "Right type, wrong details. Check the "
+          + (guess.kind === "reflect" ? "equation of the mirror line"
+             : guess.kind === "rotate" ? "angle, the direction and the centre"
+             : guess.kind === "translate" ? "two components of the vector"
+             : "scale factor and the centre") + ".";
+      } else {
+        msg.className = "gl-msg bad";
+        msg.textContent = "Not that type. Is the image the same size as the object? If not it is an enlargement. "
+          + "If it is the same size: same way up → translation, mirrored → reflection, turned → rotation.";
+      }
+    });
+    show.addEventListener("click", () => {
+      msg.className = "gl-msg";
+      msg.innerHTML = "<b>" + describeSpec(secret) + "</b> — rule " + ruleTxt(specTF(secret));
+      done = true;
+      check.disabled = true;
+    });
+    next.addEventListener("click", fresh);
+    fresh();
+  };
+
+  /* 39 · Two transformations, one grid — and the single transformation that replaces them */
+  build.combolab = function (host) {
+    const MODES = [
+      { key: "seq", label: "One after the other" },
+      { key: "order", label: "Does the order matter?" },
+    ];
+    let mode = "seq";
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(MODES, (it) => { mode = it.key; upd(); }, 0);
+    const form = e("div", "gl-form");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const tableBox = e("div");
+    const msg = e("div", "gl-msg");
+
+    const ed1 = tfEditor("Transformation 1 (done first)", { kind: "rotate", ang: 90, cx: 0, cy: 0 }, upd);
+    const ed2 = tfEditor("Transformation 2 (done second)", { kind: "reflect", line: "y=0" }, upd);
+    form.appendChild(ed1.el); form.appendChild(ed2.el);
+
+    const fEach = factHtml("Rule of each step");
+    const fRule = factHtml("Combined rule");
+    const fSingle = factHtml("Single equivalent transformation");
+    const fWhy = factHtml("Reflection count");
+    [fEach, fRule, fSingle, fWhy].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(chips.el); panel.appendChild(form); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(tableBox); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    let s1 = ed1.get(), s2 = ed2.get();
+    let mid1 = OBJ.slice(), fin = OBJ.slice(), swapped = OBJ.slice();
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.75, minH: 260, maxH: 380,
+      render(c, W, H, P) {
+        const all = mode === "seq" ? OBJ.concat(mid1).concat(fin) : OBJ.concat(fin).concat(swapped);
+        const m = gridView(W, H, autoView(all, 12));
+        drawGrid(c, P, m);
+        drawShape(c, P, m, OBJ, P.c1, P.soft, "A");
+        if (mode === "seq") {
+          drawShape(c, P, m, mid1, P.c3, null, "B", [6, 4]);
+          drawShape(c, P, m, fin, P.c2, P.soft3, "C");
+        } else {
+          drawShape(c, P, m, fin, P.c2, P.soft3, "1 then 2");
+          drawShape(c, P, m, swapped, P.c5, null, "2 then 1", [6, 4]);
+        }
+      },
+    });
+
+    function upd() {
+      s1 = ed1.get(); s2 = ed2.get();
+      const T1 = specTF(s1), T2 = specTF(s2);
+      const T = composeTF(T1, T2), Tr = composeTF(T2, T1);
+      mid1 = OBJ.map((p) => applyTF(T1, p));
+      fin = OBJ.map((p) => applyTF(T, p));
+      swapped = OBJ.map((p) => applyTF(Tr, p));
+      sketch.draw();
+
+      const reflections = (s1.kind === "reflect" ? 1 : 0) + (s2.kind === "reflect" ? 1 : 0);
+      const cls = classifyTF(T);
+      fEach.setValue("1 · " + ruleTxt(T1) + " &nbsp; 2 · " + ruleTxt(T2));
+      fRule.setValue(ruleTxt(T));
+      fSingle.setValue("<b>" + cls.head + "</b> " + cls.body);
+      fWhy.setValue(reflections + (reflections === 1 ? " reflection — an odd number, so the answer must be a reflection"
+        : reflections === 0 ? " reflections — the shape keeps its sense, so expect a translation, rotation or enlargement"
+        : " reflections — an even number, so the shape is the right way round again"));
+
+      const box = e("div", "gl-scroll");
+      const tb = e("table", "gl-table");
+      const h = e("tr");
+      (mode === "seq" ? ["Object A", "After 1 (B)", "After 2 (C)"] : ["Object A", "1 then 2", "2 then 1"])
+        .forEach((t) => h.appendChild(e("th", null, t)));
+      tb.appendChild(h);
+      OBJ.forEach((p, i) => {
+        const r = e("tr");
+        r.appendChild(e("td", "gl-td-x", ptTxt(p)));
+        r.appendChild(e("td", null, ptTxt(mode === "seq" ? mid1[i] : fin[i])));
+        r.appendChild(e("td", null, ptTxt(mode === "seq" ? fin[i] : swapped[i])));
+        tb.appendChild(r);
+      });
+      box.appendChild(tb);
+      tableBox.replaceChildren(box);
+
+      if (mode === "seq") {
+        msg.className = "gl-msg good";
+        msg.textContent = "Track every vertex through the sequence, then describe the finish in ONE transformation. "
+          + "Naming two transformations scores nothing.";
+      } else {
+        const agree = fin.every((p, i) => Math.abs(p[0] - swapped[i][0]) < 1e-6 && Math.abs(p[1] - swapped[i][1]) < 1e-6);
+        msg.className = "gl-msg " + (agree ? "good" : "warn");
+        msg.textContent = agree
+          ? "These two happen to commute — both orders land on the same image. Two translations always do; most other pairs do not."
+          : "The two orders give different images, so the order genuinely matters. In a 'show that' question, write down BOTH images and say explicitly that they differ.";
+      }
+    }
+    upd();
+  };
+
+  /* 40 · Two mirrors — parallel gives a translation of 2d, crossing gives a rotation of 2θ */
+  build.mirrorlab = function (host) {
+    const MODES = [
+      { key: "par", label: "Parallel mirrors" },
+      { key: "cross", label: "Intersecting mirrors" },
+    ];
+    let mode = "par";
+    const st = { a: 1, b: 4, t1: 0, t2: 45 };
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(MODES, (it) => { mode = it.key; layout(); }, 0);
+    const controls = e("div", "gl-controls");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const aS = slider("First mirror  x =", -4, 4, 1, st.a, (v) => { st.a = v; upd(); });
+    const bS = slider("Second mirror  x =", -4, 6, 1, st.b, (v) => { st.b = v; upd(); });
+    const t1S = slider("First mirror through O at (°)", 0, 170, 5, st.t1, (v) => { st.t1 = v; upd(); });
+    const t2S = slider("Second mirror through O at (°)", 0, 170, 5, st.t2, (v) => { st.t2 = v; upd(); });
+
+    const fFirst = factHtml("Between the mirrors");
+    const fResult = factHtml("Single equivalent transformation");
+    [fFirst, fResult].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(chips.el); panel.appendChild(controls); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const SHAPE = [[-2, 1], [0, 1], [-2, 2]];
+    let one = SHAPE.slice(), two = SHAPE.slice();
+
+    // reflection in the line through the origin at angle th (degrees)
+    function reflectAt(th) {
+      const c2 = Math.cos(2 * th * DEG), s2 = Math.sin(2 * th * DEG);
+      return { M: [c2, s2, s2, -c2], t: [0, 0] };
+    }
+    function pair() {
+      if (mode === "par") return [specTF({ kind: "reflect", line: "x=a", a: st.a }), specTF({ kind: "reflect", line: "x=a", a: st.b })];
+      return [reflectAt(st.t1), reflectAt(st.t2)];
+    }
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.75, minH: 260, maxH: 370,
+      render(c, W, H, P) {
+        const m = gridView(W, H, autoView(SHAPE.concat(one).concat(two), 12));
+        const v = m.v;
+        drawGrid(c, P, m);
+        if (mode === "par") {
+          [[st.a, P.c4], [st.b, P.c5]].forEach(([x, colr]) => {
+            strokePath(c, [[m.X(x), m.Y(v.ymin)], [m.X(x), m.Y(v.ymax)]], colr, 2, [7, 5]);
+            tagOn(c, P, "x = " + fmt(x), m.X(x), m.Y(v.ymax) + 14, colr, "center", 11.5);
+          });
+        } else {
+          [[st.t1, P.c4], [st.t2, P.c5]].forEach(([th, colr]) => {
+            const dx = Math.cos(th * DEG) * 40, dy = Math.sin(th * DEG) * 40;
+            strokePath(c, [[m.X(-dx), m.Y(-dy)], [m.X(dx), m.Y(dy)]], colr, 2, [7, 5]);
+            tagOn(c, P, th + "°", m.X(Math.cos(th * DEG) * v.xmax * 0.7),
+              m.Y(Math.sin(th * DEG) * v.xmax * 0.7) - 10, colr, "center", 11.5);
+          });
+        }
+        drawShape(c, P, m, SHAPE, P.c1, P.soft, "A");
+        drawShape(c, P, m, one, P.c3, null, "B", [6, 4]);
+        drawShape(c, P, m, two, P.c2, P.soft3, "C");
+      },
+    });
+
+    function layout() {
+      controls.replaceChildren.apply(controls, mode === "par" ? [aS.el, bS.el] : [t1S.el, t2S.el]);
+      upd();
+    }
+    function upd() {
+      const [T1, T2] = pair();
+      one = SHAPE.map((p) => applyTF(T1, p));
+      two = SHAPE.map((p) => applyTF(composeTF(T1, T2), p));
+      sketch.draw();
+      const cls = classifyTF(composeTF(T1, T2));
+      if (mode === "par") {
+        const d = st.b - st.a;
+        fFirst.setValue("distance d = " + fmt(st.b) + " − " + fmt(st.a) + " = <b>" + fmt(d) + "</b>");
+        fResult.setValue("<b>" + cls.head + "</b> " + cls.body + " — that is 2d = 2 × " + fmt(d) + " = <b>" + fmt(2 * d) + "</b>");
+        msg.className = "gl-msg good";
+        msg.textContent = "Two reflections in parallel mirrors always give a TRANSLATION of twice the gap, in the direction from the first mirror towards the second. Swap the sliders over and the translation reverses.";
+      } else {
+        const th = st.t2 - st.t1;
+        fFirst.setValue("angle between them θ = " + fmt(th) + "°");
+        fResult.setValue("<b>" + cls.head + "</b> " + cls.body + " — that is 2θ = <b>" + fmt(2 * th) + "°</b>");
+        msg.className = "gl-msg good";
+        msg.textContent = "Two reflections in mirrors that cross at θ always give a ROTATION of 2θ about the crossing point. Perpendicular mirrors (θ = 90°) therefore give a half turn — which is why reflecting in both axes is the same as a 180° rotation about the origin.";
+      }
+    }
+    layout();
+  };
+
+  /* 41 · Inverses — undo one transformation, or undo a whole sequence */
+  build.invlab = function (host) {
+    const MODES = [
+      { key: "one", label: "Undo one" },
+      { key: "two", label: "Undo a sequence" },
+    ];
+    let mode = "one";
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(MODES, (it) => { mode = it.key; layout(); }, 0);
+    const form = e("div", "gl-form");
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    const ed1 = tfEditor("Transformation P (done first)", { kind: "translate", dx: 3, dy: -2 }, upd);
+    const ed2 = tfEditor("Transformation Q (done second)", { kind: "enlarge", k: 4, cx: 0, cy: 0 }, upd);
+
+    panel.appendChild(chips.el); panel.appendChild(form); panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    function inverseSpec(s) {
+      if (s.kind === "reflect") return Object.assign({}, s);                 // its own inverse
+      if (s.kind === "rotate") return Object.assign({}, s, { ang: -s.ang });
+      if (s.kind === "translate") return { kind: "translate", dx: -s.dx, dy: -s.dy };
+      return Object.assign({}, s, { k: s.k === 0 ? 0 : 1 / s.k });
+    }
+    function step(n, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", n));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function layout() {
+      form.replaceChildren.apply(form, mode === "one" ? [ed1.el] : [ed1.el, ed2.el]);
+      upd();
+    }
+    function upd() {
+      const p = ed1.get(), q = ed2.get();
+      const pi = inverseSpec(p), qi = inverseSpec(q);
+      steps.replaceChildren();
+      if (mode === "one") {
+        steps.appendChild(step("P", "You did", describeSpec(p)));
+        steps.appendChild(step("P⁻¹", "To undo it", "<b>" + describeSpec(pi) + "</b>"));
+        const back = composeTF(specTF(p), specTF(pi));
+        const cls = classifyTF(back);
+        steps.appendChild(step("✓", "P then P⁻¹ gives", cls.head.toLowerCase() === "the identity"
+          ? "the identity — every point is back where it started." : cls.head + " " + cls.body));
+        msg.className = "gl-msg good";
+        msg.textContent = p.kind === "reflect"
+          ? "A reflection is its own inverse: reflect twice in the same mirror and nothing has moved."
+          : "Same kind of transformation, reversed: opposite direction, opposite vector, or the reciprocal scale factor — about the same centre or line.";
+      } else {
+        steps.appendChild(step("1", "The sequence you did", describeSpec(p) + "<br>then " + describeSpec(q)));
+        steps.appendChild(step("2", "Undo the LAST one first", "<b>" + describeSpec(qi) + "</b>"));
+        steps.appendChild(step("3", "Then undo the first", "<b>" + describeSpec(pi) + "</b>"));
+        const back = composeTF(composeTF(specTF(p), specTF(q)), composeTF(specTF(qi), specTF(pi)));
+        const cls = classifyTF(back);
+        steps.appendChild(step("✓", "All four together give", cls.head + (cls.head === "The identity" ? " — every point is back at its start." : " " + cls.body)));
+        msg.className = "gl-msg good";
+        msg.textContent = "Shoes and socks: to undo \"P then Q\" you apply Q⁻¹ first and P⁻¹ second. Doing the inverses in the original order does not get you back.";
+      }
+    }
+    layout();
+  };
+
+  /* ---------- vectors ---------- */
+
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { const t = a % b; a = b; b = t; } return a || 1; }
+  function fracTxt(n, d) {
+    if (d < 0) { n = -n; d = -d; }
+    const g = gcd(n, d);
+    n /= g; d /= g;
+    if (n === 0) return "0";
+    return d === 1 ? String(n).replace("-", MINUS) : String(n).replace("-", MINUS) + "/" + d;
+  }
+  // "⅓a + ⅔b" style, written with plain fractions
+  function linTxt(n1, d1, n2, d2, x, y) {
+    const term = (n, d, name) => {
+      if (n === 0) return "";
+      const f = fracTxt(Math.abs(n), d);
+      return (f === "1" ? "" : f) + name;
+    };
+    const t1 = term(n1, d1, x), t2 = term(n2, d2, y);
+    if (!t1 && !t2) return "0";
+    if (!t1) return (n2 < 0 ? MINUS : "") + t2;
+    if (!t2) return (n1 < 0 ? MINUS : "") + t1;
+    return (n1 < 0 ? MINUS : "") + t1 + (n2 < 0 ? " " + MINUS + " " : " + ") + t2;
+  }
+
+  // "2a", "−b", "0.5a" — never "1a" or "−1b"
+  const scaled = (k, name) => (k === 1 ? "" : k === -1 ? MINUS : fmt(k, 2)) + name;
+
+  /* 42 · Column vectors — add, scale, and find the magnitude */
+  build.veclab = function (host) {
+    const panel = e("div", "gl-panel");
+    const form = e("div", "gl-form");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    const a1 = field("a  top", "4", null, upd), a2 = field("a  bottom", MINUS + "1", null, upd);
+    const b1 = field("b  top", MINUS + "3", null, upd), b2 = field("b  bottom", "5", null, upd);
+    const mF = field("m", "2", null, upd), nF = field("n", MINUS + "1", null, upd);
+
+    function group(title, items) {
+      const g = e("div", "gl-form-group");
+      g.appendChild(e("div", "gl-form-title", title));
+      const row = e("div", "gl-form-row");
+      items.forEach((i) => row.appendChild(i));
+      g.appendChild(row);
+      return g;
+    }
+    form.appendChild(group("The two vectors", [a1.el, a2.el, b1.el, b2.el]));
+    form.appendChild(group("The combination  m a + n b", [mF.el, nF.el]));
+
+    const fRes = factHtml("m a + n b");
+    const fMag = factHtml("Its magnitude");
+    [fRes, fMag].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(form); panel.appendChild(cvBox); panel.appendChild(facts);
+    panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    let A = [4, -1], B = [-3, 5], m = 2, n = -1, mA = [8, -2], res = [5, 3];
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.72, minH: 250, maxH: 360,
+      render(c, W, H, P) {
+        const mp = gridView(W, H, autoView([mA, res, [0, 0]], 12));
+        drawGrid(c, P, mp);
+        // nose to tail: m·a from the origin, then n·b from the end of it
+        arrow(c, mp, [0, 0], mA, P.c1, 2.8, scaled(m, "a"), P);
+        arrow(c, mp, mA, res, P.c3, 2.8, scaled(n, "b"), P);
+        arrow(c, mp, [0, 0], res, P.c2, 3.2, null, P);
+        tagOn(c, P, "m a + n b", mp.X(res[0] / 2) + 14, mp.Y(res[1] / 2) + 14, P.c2, "center", 12.5);
+        dot(c, mp.X(0), mp.Y(0), P.strong, P.bg, 4);
+        tagOn(c, P, "O", mp.X(0) - 12, mp.Y(0) + 12, P.strong, "center", 12);
+      },
+    });
+
+    function step(n2, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", "Step " + n2));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function upd() {
+      const g = (f, dflt) => (isFinite(f.get()) ? f.get() : dflt);
+      A = [g(a1, 0), g(a2, 0)]; B = [g(b1, 0), g(b2, 0)];
+      m = g(mF, 1); n = g(nF, 1);
+      mA = [m * A[0], m * A[1]];
+      const nB = [n * B[0], n * B[1]];
+      res = [mA[0] + nB[0], mA[1] + nB[1]];
+      sketch.draw();
+      const len = Math.hypot(res[0], res[1]);
+      const nAbs = Math.abs(n) === 1 ? "" : fmt(Math.abs(n), 2);
+      fRes.setValue((m === 1 ? "" : fmt(m, 2)) + cv(A[0], A[1]) + (n < 0 ? " " + MINUS + " " : " + ") + nAbs
+        + cv(B[0], B[1]) + " = " + cv(res[0], res[1]));
+      fMag.setValue("|m a + n b| = " + fmt(len, 3) + (Math.abs(len - Math.round(len)) < 1e-9 ? "" : "  (" + fmt(len, 2) + " to 3 s.f.)"));
+      steps.replaceChildren();
+      steps.appendChild(step(1, "Scale each vector first",
+        scaled(m, "a") + " = " + cv(mA[0], mA[1]) + " and " + scaled(n, "b") + " = " + cv(nB[0], nB[1])));
+      steps.appendChild(step(2, "Add component by component",
+        "top: " + fmt(mA[0], 3) + " + (" + fmt(nB[0], 3) + ") = <b>" + fmt(res[0], 3) + "</b><br>"
+        + "bottom: " + fmt(mA[1], 3) + " + (" + fmt(nB[1], 3) + ") = <b>" + fmt(res[1], 3) + "</b>"));
+      steps.appendChild(step(3, "Only now take the magnitude",
+        "√(" + fmt(res[0], 3) + "² + " + fmt(res[1], 3) + "²) = √" + fmt(res[0] * res[0] + res[1] * res[1], 3)
+        + " = <b>" + fmt(len, 3) + "</b>"));
+      msg.className = "gl-msg good";
+      msg.textContent = "Do the vector arithmetic first and the magnitude last. |m a + n b| is not m|a| + n|b| — try a = (4, −1), b = (−3, 5) with m = 2, n = −1 and compare the two.";
+    }
+    upd();
+  };
+
+  /* 43 · Route finding — write any vector in terms of a and b */
+  build.routelab = function (host) {
+    const TARGETS = [
+      { key: "AB", label: "AB" },
+      { key: "OM", label: "OM  (M midpoint of AB)" },
+      { key: "OC", label: "OC  (diagonal)" },
+      { key: "BC", label: "BC" },
+      { key: "OP", label: "OP  (P divides AB)" },
+      { key: "BP", label: "BP" },
+    ];
+    const RATIOS = [
+      { label: "1 : 1", m: 1, n: 1 },
+      { label: "1 : 2", m: 1, n: 2 },
+      { label: "2 : 1", m: 2, n: 1 },
+      { label: "1 : 3", m: 1, n: 3 },
+      { label: "3 : 1", m: 3, n: 1 },
+    ];
+    let target = "AB", r = RATIOS[1];
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(TARGETS, (it) => { target = it.key; upd(); }, 0);
+    const rchips = chipRow(RATIOS.map((x) => ({ label: "AP : PB = " + x.label, r: x })), (it) => { r = it.r; upd(); }, 1);
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const steps = e("div", "gl-steps");
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const fAns = factHtml("Answer");
+    const fCheck = factHtml("Coefficient check");
+    [fAns, fCheck].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(chips.el); panel.appendChild(rchips.el); panel.appendChild(cvBox);
+    panel.appendChild(steps); panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const a = [4, 1], b = [1, 3];                       // OA and OB, chosen to draw clearly
+    const O = [0, 0], A = a, B = b, C = [a[0] + b[0], a[1] + b[1]];
+    const lerp = (p, q, t) => [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t];
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.7, minH: 250, maxH: 350,
+      render(c, W, H, P) {
+        const mp = gridView(W, H, autoView([O, A, B, C], 8));
+        drawGrid(c, P, mp);
+        const t = r.m / (r.m + r.n);
+        const M = lerp(A, B, 0.5), Pt = lerp(A, B, t);
+        // the parallelogram OACB
+        strokePath(c, [O, A, C, B, O].map((p) => [mp.X(p[0]), mp.Y(p[1])]), P.faint, 1.6);
+        arrow(c, mp, O, A, P.c1, 2.8, "a", P);
+        arrow(c, mp, O, B, P.c3, 2.8, "b", P);
+        // highlight the route being asked for
+        const route = {
+          AB: [[A, B]], OM: [[O, A], [A, M]], OC: [[O, A], [A, C]],
+          BC: [[B, C]], OP: [[O, A], [A, Pt]], BP: [[B, O], [O, A], [A, Pt]],
+        }[target];
+        route.forEach((seg) => arrow(c, mp, seg[0], seg[1], P.c2, 2.6, null, P));
+        [[O, "O"], [A, "A"], [B, "B"], [C, "C"]].forEach(([p, n]) =>
+          tagOn(c, P, n, mp.X(p[0]) + 12, mp.Y(p[1]) - 10, P.strong, "center", 12.5));
+        if (target === "OM") { dot(c, mp.X(M[0]), mp.Y(M[1]), P.c2, P.bg, 4); tagOn(c, P, "M", mp.X(M[0]) + 12, mp.Y(M[1]) + 12, P.c2, "center", 12); }
+        if (target === "OP" || target === "BP") { dot(c, mp.X(Pt[0]), mp.Y(Pt[1]), P.c2, P.bg, 4); tagOn(c, P, "P", mp.X(Pt[0]) + 12, mp.Y(Pt[1]) + 12, P.c2, "center", 12); }
+      },
+    });
+
+    function step(n, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", n));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function upd() {
+      rchips.el.style.display = target === "OP" || target === "BP" ? "" : "none";
+      sketch.draw();
+      steps.replaceChildren();
+      const den = r.m + r.n, mm = r.m, nn = r.n;
+      let ans = "", coefs = null, route = "", work = [];
+      if (target === "AB") {
+        route = "A → O → B";
+        work = ["AB = AO + OB", "AO is the reverse of OA, so AO = −a", "AB = −a + b"];
+        ans = "b − a"; coefs = [[-1, 1], [1, 1]];
+      } else if (target === "OM") {
+        route = "O → A → M";
+        work = ["OM = OA + AM", "M is the midpoint, so AM = ½AB = ½(b − a)", "OM = a + ½b − ½a"];
+        ans = "½a + ½b, that is ½(a + b)"; coefs = [[1, 2], [1, 2]];
+      } else if (target === "OC") {
+        route = "O → A → C";
+        work = ["OC = OA + AC", "OACB is a parallelogram, so AC = OB = b", "OC = a + b"];
+        ans = "a + b"; coefs = [[1, 1], [1, 1]];
+      } else if (target === "BC") {
+        route = "B → C";
+        work = ["BC is the side opposite OA in the parallelogram", "Equal vectors have the same length and direction", "BC = OA"];
+        ans = "a"; coefs = [[1, 1], [0, 1]];
+      } else if (target === "OP") {
+        route = "O → A → P";
+        work = ["OP = OA + AP",
+          "AP : PB = " + mm + " : " + nn + ", so P is " + fracTxt(mm, den) + " of the way from A to B",
+          "AP = " + fracTxt(mm, den) + "(b − a)",
+          "OP = a " + MINUS + " " + fracTxt(mm, den) + "a + " + fracTxt(mm, den) + "b"];
+        ans = linTxt(nn, den, mm, den, "a", "b"); coefs = [[nn, den], [mm, den]];
+      } else {
+        route = "B → O → A → P";
+        work = ["BP = BO + OP", "BO = −b, and OP = " + linTxt(nn, den, mm, den, "a", "b"),
+          "BP = −b + " + linTxt(nn, den, mm, den, "a", "b")];
+        ans = linTxt(nn, den, mm - den, den, "a", "b"); coefs = null;
+      }
+      steps.appendChild(step("Route", "Walk a chain of known vectors", route
+        + " — the letters at the joins cancel, which is the check that the route is legal."));
+      work.forEach((w, i) => steps.appendChild(step(i + 1, i === work.length - 1 ? "Collect like terms" : "Build the chain", w)));
+      fAns.setValue("<b>" + (target === "AB" ? "AB" : target) + " = " + ans + "</b>");
+      if (coefs) {
+        const sum = coefs[0][0] / coefs[0][1] + coefs[1][0] / coefs[1][1];
+        fCheck.setValue(Math.abs(sum - 1) < 1e-9
+          ? fracTxt(coefs[0][0], coefs[0][1]) + " + " + fracTxt(coefs[1][0], coefs[1][1]) + " = 1 ✓ — so this point really does lie on AB"
+          : "the coefficients add to " + fmt(sum, 3) + ", so this vector is not a point on AB (it is a displacement)");
+      } else {
+        fCheck.setValue("BP is a displacement, not a point on AB, so the add-to-1 check does not apply here.");
+      }
+      msg.className = "gl-msg good";
+      msg.textContent = target === "OP"
+        ? "Notice the swap: for AP : PB = m : n the coefficient of a is n/(m+n) and the coefficient of b is m/(m+n)."
+        : "Every route question is the same idea — go from the start to the end using only vectors you know, taking a minus sign whenever you travel backwards along one.";
+    }
+    upd();
+  };
+
+  /* 44 · Parallel, or collinear? — the proof that earns the marks */
+  build.collinlab = function (host) {
+    const panel = e("div", "gl-panel");
+    const form = e("div", "gl-form");
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    const p1 = field("OX:  a ×", "1", null, upd), p2 = field("b ×", "2", null, upd);
+    const q1 = field("OY:  a ×", "3", null, upd), q2 = field("b ×", "6", null, upd);
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "Two vectors from the same point O"));
+    const row = e("div", "gl-form-row");
+    [p1, p2, q1, q2].forEach((f) => row.appendChild(f.el));
+    g.appendChild(row);
+    form.appendChild(g);
+
+    panel.appendChild(form); panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    function step(n, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", n));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    const vec = (x, y) => linTxt(x, 1, y, 1, "a", "b");
+    function upd() {
+      const g0 = (f) => (isFinite(f.get()) ? f.get() : 0);
+      const X = [g0(p1), g0(p2)], Y = [g0(q1), g0(q2)];
+      steps.replaceChildren();
+      steps.appendChild(step("1", "The two vectors", "OX = " + vec(X[0], X[1]) + " &nbsp;·&nbsp; OY = " + vec(Y[0], Y[1])));
+      if ((X[0] === 0 && X[1] === 0) || (Y[0] === 0 && Y[1] === 0)) {
+        msg.className = "gl-msg warn";
+        msg.textContent = "One of the vectors is zero — give both a non-zero multiple of a or b.";
+        return;
+      }
+      // is Y a multiple of X?
+      const k = X[0] !== 0 ? Y[0] / X[0] : Y[1] / X[1];
+      const ok = Math.abs(Y[0] - k * X[0]) < 1e-9 && Math.abs(Y[1] - k * X[1]) < 1e-9;
+      if (ok) {
+        steps.appendChild(step("2", "Try to factorise one out of the other",
+          "OY = " + vec(Y[0], Y[1]) + " = " + fmt(k, 3) + "(" + vec(X[0], X[1]) + ") = " + fmt(k, 3) + " OX"));
+        steps.appendChild(step("3", "State BOTH parts of the reason",
+          "OY is a scalar multiple of OX, so OX and OY are <b>parallel</b>; they also share the <b>common point O</b>."));
+        const XY = [Y[0] - X[0], Y[1] - X[1]];
+        const ratio = Math.abs(k - 1) < 1e-9 ? "the two points coincide" : "OX : XY = 1 : " + fmt(k - 1, 3);
+        steps.appendChild(step("4", "Conclude, then read off the ratio",
+          "O, X and Y lie on a straight line. XY = OY − OX = " + vec(XY[0], XY[1]) + ", so " + ratio + "."));
+        msg.className = "gl-msg good";
+        msg.textContent = "The final mark is for the words: parallel AND a common point. Algebra on its own is not a complete proof of collinearity.";
+      } else {
+        steps.appendChild(step("2", "Try to factorise one out of the other",
+          "Comparing the a terms needs " + (X[0] !== 0 ? fmt(Y[0] / X[0], 3) : "…")
+          + ", but the b terms need " + (X[1] !== 0 ? fmt(Y[1] / X[1], 3) : "…") + " — no single scalar works."));
+        steps.appendChild(step("3", "So what can you say?",
+          "OY is <b>not</b> a scalar multiple of OX, so the two vectors are not parallel and O, X, Y are <b>not</b> collinear."));
+        msg.className = "gl-msg warn";
+        msg.textContent = "Try OX = a + 2b with OY = 3a + 6b — the same factor must work for BOTH letters before you can claim the vectors are parallel.";
+      }
+    }
+    upd();
+  };
+
   function injectCSS() {
     if (document.getElementById("graphlab-css")) return;
     const s = document.createElement("style");
@@ -3920,6 +5108,10 @@
 .gl-two{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:4px 0 9px}
 @media(max-width:640px){.gl-two{grid-template-columns:1fr}}
 .gl-table .gl-ratio{font-weight:800}
+.gl-cv{display:inline-grid;grid-auto-rows:1.05em;place-items:center;vertical-align:middle;
+  border-left:2px solid currentColor;border-right:2px solid currentColor;border-radius:5px;
+  padding:3px 7px;margin:0 3px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82em;line-height:1.05}
+.gl-cv i{font-style:normal}
 `;
     document.head.appendChild(s);
   }
