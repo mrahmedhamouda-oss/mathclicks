@@ -37,6 +37,8 @@ const DOMAIN_ICONS = {
   "Data Handling": "📊",
   "Averages & Spread": "🎯",
   "Sets": "🧩",
+  "Probability": "🎲",
+  "Symmetry & Circles": "⭕",
 };
 const MODULE_ICON = "📘";
 

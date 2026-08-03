@@ -1,0 +1,316 @@
+<div class="ig-lesson" id="iglab-probability">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#862E9C)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow);overflow-x:auto}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{position:relative;padding-left:24px;margin:8px 0;color:var(--ink);line-height:1.6}
+.ig-lesson .ig-obj li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ig-accent);font-weight:900}
+</style>
+<p class="ig-intro">Probability questions are won on two words: <b>and</b> means multiply, <b>or</b> means add. Everything else is bookkeeping — listing outcomes in a grid, tracking a tree stage by stage, or noticing that "given that" has shrunk the denominator. Build all three below with your own numbers.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Calculate the probability of a single event, and use $P(\text{not }A)=1-P(A)$.</li>
+    <li>Work out an expected frequency, and estimate a probability from experiment.</li>
+    <li>List every outcome of two experiments in a sample space diagram.</li>
+    <li>Tell independent events from mutually exclusive ones, and know which rule each needs.</li>
+    <li>Build tree diagrams with and without replacement.</li>
+    <li>Use the complement for "at least one" questions.</li>
+    <li>Find a conditional probability from a Venn diagram or a two-way table.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Simple probability</h4>
+  <div class="ig-formula">$P(\text{event})=\dfrac{\text{number of favourable outcomes}}{\text{total number of equally likely outcomes}}$</div>
+  <p>Every probability lies between $0$ (impossible) and $1$ (certain).</p>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Two rules that solve half the questions.</b> The probabilities of a complete set of outcomes add up to $1$, and therefore $P(\text{not }A)=1-P(A)$.</div></div>
+
+  <h5>Expected frequency</h5>
+  <div class="ig-formula">expected frequency $=P(\text{event})\times n$</div>
+  <p>A game is won with probability $0.15$. In $400$ games you would expect to win $0.15\times400=60$ times.</p>
+
+  <h5>Relative frequency</h5>
+  <p>When the outcomes are <b>not</b> equally likely — a biased dice, a drawing pin — you estimate the probability from experiment.</p>
+  <div class="ig-formula">relative frequency $=\dfrac{\text{number of successes}}{\text{number of trials}}$</div>
+  <p>A spinner landing on red $42$ times in $120$ spins gives an estimate of $\frac{42}{120}=0.35$. More trials give a more reliable estimate.</p>
+  <div class="ig-warn"><span class="ig-i">!</span><div>Write a probability as a <b>fraction, decimal or percentage</b>. A ratio like $3:5$, or "3 out of 5 chance" in words, scores zero.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Sample space diagrams <span class="ig-try">Interactive</span></h4>
+  <p>A sample space diagram lists <b>every</b> possible outcome of a combined experiment, so you can simply count. Two fair dice give $6\times6=36$ equally likely outcomes.</p>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Order matters.</b> $(2,5)$ and $(5,2)$ are two <em>different</em> outcomes. Counting them as one is the classic error — and it is exactly why a total of $7$ is far more likely than a total of $2$.</div></div>
+
+  <h5>Lab 1 — the sample space grid</h5>
+  <p>Set the two dice or spinners, choose how they combine, and pick an event. Every cell matching the event lights up, and the count becomes the probability.</p>
+  <div data-lab="problab"></div>
+
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>When to use one.</b> A grid works for exactly <b>two</b> experiments with a manageable number of outcomes. For three or more stages, or for picks without replacement, use a tree.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Combined events: AND and OR</h4>
+  <table class="ig-table">
+    <tr><th>Word</th><th>Operation</th><th>Rule</th><th>Condition</th></tr>
+    <tr><td><b>AND</b> (both happen)</td><td>Multiply</td><td>$P(A\cap B)=P(A)\times P(B)$</td><td>Only when $A$ and $B$ are <b>independent</b></td></tr>
+    <tr><td><b>OR</b> (either happens)</td><td>Add</td><td>$P(A\cup B)=P(A)+P(B)$</td><td>Only when they are <b>mutually exclusive</b></td></tr>
+    <tr><td><b>OR</b>, in general</td><td>Add, then correct</td><td>$P(A\cup B)=P(A)+P(B)-P(A\cap B)$</td><td>Always true</td></tr>
+  </table>
+  <table class="ig-table">
+    <tr><th>Term</th><th>Meaning</th><th>Test</th></tr>
+    <tr><td><b>Independent</b></td><td>One event does not change the probability of the other</td><td>$P(A\cap B)=P(A)\times P(B)$</td></tr>
+    <tr><td><b>Mutually exclusive</b></td><td>They cannot both happen at once</td><td>$P(A\cap B)=0$</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Worked through.</b> If $P(A)=0.4$, $P(B)=0.7$ and they are independent: $P(A\cap B)=0.28$, so $P(A\cup B)=0.4+0.7-0.28=0.82$ and $P(\text{neither})=1-0.82=0.18$.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>They are not the same thing.</b> Mutually exclusive events with non-zero probabilities can <em>never</em> be independent — if one happens, the other definitely does not.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Tree diagrams <span class="ig-try">Interactive</span></h4>
+  <ul class="ig-list">
+    <li>Each set of branches from a point is one stage, and those probabilities add to $1$.</li>
+    <li><b>Multiply along</b> the branches for the probability of a complete path.</li>
+    <li><b>Add down</b> the paths that satisfy the event.</li>
+    <li>All the final path probabilities add to $1$ — the fastest check there is.</li>
+  </ul>
+
+  <h5>Lab 2 — the tree diagram</h5>
+  <p>Change what is in the bag and switch replacement on and off. Watch the second stage: with replacement it repeats the first, without replacement both the numerator and the denominator change.</p>
+  <div data-lab="treelab"></div>
+
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>"At least one" — always use the complement.</b> Instead of adding three paths, work out $P(\text{none})$ and subtract from $1$. It is faster and far less error-prone, and it is the only sensible approach with three or more stages.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div>Without replacement the denominator drops by $1$ <em>and</em> the numerator drops for whichever colour was taken. Forgetting the numerator is the commonest slip in the topic.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Venn diagrams and conditional probability <span class="ig-try">Interactive</span></h4>
+  <p>A Venn diagram of frequencies turns a probability question into simple counting. $P(A\mid B)$ is read "the probability of $A$ <b>given that</b> $B$ has happened" — and the key idea is that $B$ becomes the new total.</p>
+  <div class="ig-formula">$P(A\mid B)=\dfrac{n(A\cap B)}{n(B)}=\dfrac{P(A\cap B)}{P(B)}$</div>
+
+  <h5>Lab 3 — conditional probability</h5>
+  <p>Fill in the four regions and compare the straight probabilities with the conditional ones. Notice that $P(A\mid B)$ and $P(B\mid A)$ share a numerator but not a denominator.</p>
+  <div data-lab="condlab"></div>
+
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Spot the wording.</b> "Given that…", "A student who studies Physics is chosen…", "…is known to be…" all signal a conditional probability, and the denominator is no longer the grand total.</div></div>
+
+  <h5>Two-way tables work the same way</h5>
+  <table class="ig-table">
+    <tr><th></th><th>Football</th><th>Hockey</th><th>Total</th></tr>
+    <tr><td><b>Boys</b></td><td>$24$</td><td>$16$</td><td>$40$</td></tr>
+    <tr><td><b>Girls</b></td><td>$14$</td><td>$26$</td><td>$40$</td></tr>
+    <tr><td><b>Total</b></td><td>$38$</td><td>$42$</td><td>$80$</td></tr>
+  </table>
+  <p>$P(\text{girl and hockey})=\frac{26}{80}=\frac{13}{40}$, but $P(\text{hockey}\mid\text{girl})=\frac{26}{40}=\frac{13}{20}$ — the second uses the girls' row total, not $80$.</p>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Simple probability and the complement</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A bag contains $4$ red, $5$ blue and $3$ green counters. One is taken at random. Find $P(\text{red})$, $P(\text{not green})$ and $P(\text{red or blue})$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Total:</b> $4+5+3=12$ counters.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$P(\text{red})=\frac{4}{12}=\frac13$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Use the complement:</b> $P(\text{not green})=1-\frac{3}{12}=\frac{9}{12}=\frac34$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Red and blue are mutually exclusive, so add: $\frac{4}{12}+\frac{5}{12}=\frac34$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $\frac13$, $\frac34$, $\frac34$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>"Not green" and "red or blue" describe the same counters, which is why they give the same probability.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Using a sample space diagram</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Two fair dice are thrown and the totals recorded. Find $P(\text{total}=7)$ and $P(\text{total}>9)$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>There are $6\times6=36$ equally likely outcomes.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Total $7$:</b> $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$ — six of them.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Total more than $9$:</b> $(4,6),(5,5),(5,6),(6,4),(6,5),(6,6)$ — also six.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Both are $\frac{6}{36}=\frac16$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>$(4,6)$ and $(6,4)$ are separate outcomes. Counting each unordered pair once gives the wrong denominator and the wrong answer.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Independent events</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$P(A)=0.4$ and $P(B)=0.7$, and $A$ and $B$ are independent. Find $P(A\cap B)$, $P(A\cup B)$ and $P(\text{neither})$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Both:</b> independent means multiply — $0.4\times0.7=0.28$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>At least one:</b> $0.4+0.7-0.28=0.82$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Neither:</b> the complement of "at least one" — $1-0.82=0.18$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $0.28$, $0.82$, $0.18$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Check another way.</b> Neither means "not $A$ and not $B$" $=0.6\times0.3=0.18$ ✓</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Tree diagram with replacement</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A bag holds $5$ red and $3$ blue counters. One is taken, replaced, and a second taken. Find $P(\text{both red})$ and $P(\text{exactly one red})$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The counter is replaced, so the second stage has the same probabilities as the first.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Both red:</b> multiply along the top path — $\frac58\times\frac58=\frac{25}{64}$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Exactly one red:</b> two paths, R then B and B then R — $\frac{15}{64}+\frac{15}{64}=\frac{30}{64}=\frac{15}{32}$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $P(\text{both red})=\frac{25}{64}$ · $P(\text{exactly one red})=\frac{15}{32}$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>"Exactly one red" needs <b>both</b> orders. Giving only $\frac{15}{64}$ is the standard error.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Tree diagram without replacement</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The same bag, but the first counter is not replaced. Find $P(\text{both blue})$ and $P(\text{at least one red})$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>After the first counter is removed only $7$ remain.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Both blue:</b> $\frac38\times\frac27=\frac{6}{56}=\frac{3}{28}$ — the blue count falls from $3$ to $2$ as well as the total from $8$ to $7$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>At least one red</b> is the opposite of "no reds", which here is exactly "both blue": $1-\frac{6}{56}=\frac{50}{56}=\frac{25}{28}$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $P(\text{both blue})=\frac{3}{28}$ · $P(\text{at least one red})=\frac{25}{28}$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Check.</b> The four paths give $\frac{20}{56}+\frac{15}{56}+\frac{15}{56}+\frac{6}{56}=1$ ✓ — <b>Lab 2</b> does this check for you.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Conditional probability from a Venn diagram</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Of $40$ students, $25$ study Maths, $18$ study Physics and $10$ study both. A student who studies Physics is chosen at random. Find the probability that they also study Maths.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Fill the diagram.</b> Both is $10$, so Maths only is $25-10=15$ and Physics only is $18-10=8$. Neither is $40-33=7$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>The new total.</b> The student is known to study Physics, so the denominator is $n(P)=18$, not $40$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Count the favourable ones.</b> Of those $18$, exactly $10$ also study Maths.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $P(M\mid P)=\frac{10}{18}=\frac59$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Answering $\frac{10}{40}$ ignores the condition. The whole point of "given that" is that the total shrinks.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>Three stages and "at least one"</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A biased coin has $P(\text{head})=0.6$. It is tossed three times. Find $P(\text{three heads})$ and $P(\text{at least one head})$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Each toss is independent, so multiply.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Three heads:</b> $0.6\times0.6\times0.6=0.216$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>At least one head</b> via the complement: $P(\text{no heads})=0.4^{3}=0.064$, so $1-0.064=0.936$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $0.216$ and $0.936$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>Adding the seven paths that contain at least one head gives the same answer and takes far longer. With three or more stages, always look for the complement first.</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Writing a probability as a ratio</b> such as $1:5$, or in words.</li>
+    <li><b>Adding when you should multiply.</b> AND multiplies along a tree; OR adds completed paths.</li>
+    <li><b>Forgetting the second order</b> for "one of each" or "exactly one" — there are always two paths.</li>
+    <li><b>Not changing the numerator</b> on the second stage of a without-replacement tree.</li>
+    <li><b>Treating $(2,5)$ and $(5,2)$ as one outcome</b> in a sample space diagram.</li>
+    <li><b>Using the grand total for a conditional probability.</b> "Given that" shrinks the denominator.</li>
+    <li><b>Confusing $P(A\mid B)$ with $P(B\mid A)$.</b> Different questions, different answers.</li>
+    <li><b>Confusing independent with mutually exclusive.</b> One multiplies; the other has intersection $0$.</li>
+    <li><b>Doing "at least one" the long way</b> instead of $1-P(\text{none})$.</li>
+    <li><b>Rounding partway through a tree.</b> Keep the fractions exact until the last line.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning. Fractions like $3/28$ and decimals are both accepted.</p>
+  <div class="gl-q" data-answer="1/3" data-accept="4/12|0.333|0.3333" data-why="There are 4 + 5 + 3 = 12 counters, of which 4 are red, so P(red) = 4/12 = 1/3.">
+    <p>1. A bag holds $4$ red, $5$ blue and $3$ green counters. Find $P(\text{red})$.</p>
+  </div>
+  <div class="gl-q" data-answer="3/4" data-accept="9/12|0.75" data-why="Use the complement: P(not green) = 1 − 3/12 = 9/12 = 3/4.">
+    <p>2. For the same bag, find $P(\text{not green})$.</p>
+  </div>
+  <div class="gl-q" data-answer="60" data-accept="60 wins" data-why="Expected frequency = P(event) × n = 0.15 × 400 = 60.">
+    <p>3. A game is won with probability $0.15$ and played $400$ times. Calculate the expected number of wins.</p>
+  </div>
+  <div class="gl-q" data-answer="0.35" data-accept="42/120|7/20" data-why="Relative frequency = successes ÷ trials = 42/120 = 7/20 = 0.35. More spins would give a more reliable estimate.">
+    <p>4. A spinner lands on red $42$ times in $120$ spins. Estimate the probability that it lands on red.</p>
+  </div>
+  <div class="gl-q" data-answer="1/6" data-accept="6/36|0.1667|0.167" data-why="Six of the 36 cells give a total of 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1). So P = 6/36 = 1/6.">
+    <p>5. Two fair dice are thrown. Find $P(\text{total}=7)$.</p>
+  </div>
+  <div class="gl-q" data-answer="0.28" data-accept="0.4 x 0.7" data-why="Independent events multiply: 0.4 × 0.7 = 0.28.">
+    <p>6. $A$ and $B$ are independent with $P(A)=0.4$ and $P(B)=0.7$. Find $P(A\cap B)$.</p>
+  </div>
+  <div class="gl-q" data-answer="0.82" data-accept="82%" data-why="P(A ∪ B) = P(A) + P(B) − P(A ∩ B) = 0.4 + 0.7 − 0.28 = 0.82. You subtract the overlap because it has been counted twice.">
+    <p>7. For those same events, find $P(A\cup B)$.</p>
+  </div>
+  <div class="gl-q" data-answer="25/28" data-accept="50/56|0.893" data-why="P(at least one red) = 1 − P(both blue) = 1 − (3/8 × 2/7) = 1 − 6/56 = 50/56 = 25/28.">
+    <p>8. A bag has $5$ red and $3$ blue counters and two are taken <em>without replacement</em>. Find $P(\text{at least one red})$.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-probability";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=13";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

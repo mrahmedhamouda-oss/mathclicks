@@ -1,0 +1,333 @@
+<div class="ig-lesson" id="iglab-symcircles">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#2B8A3E)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow);overflow-x:auto}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{position:relative;padding-left:24px;margin:8px 0;color:var(--ink);line-height:1.6}
+.ig-lesson .ig-obj li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ig-accent);font-weight:900}
+</style>
+<p class="ig-intro">A circle is symmetrical about every line through its centre, and that single fact generates the whole topic: the perpendicular from the centre bisects a chord, a tangent meets a radius at $90°$, and five angle theorems follow. Turn shapes to find their order of symmetry below, then drag points around a circle and watch each theorem hold.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Count lines of symmetry and give the order of rotational symmetry.</li>
+    <li>Count planes of symmetry of a solid.</li>
+    <li>Use the chord and tangent properties to build a right-angled triangle.</li>
+    <li>Apply the five circle theorems.</li>
+    <li>Quote the reason the mark scheme is looking for — it carries its own mark.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Symmetry in two dimensions <span class="ig-try">Interactive</span></h4>
+  <p>A shape has <b>line symmetry</b> if a mirror line can be drawn so that one half is the exact reflection of the other. The <b>order of rotational symmetry</b> is the number of times a shape looks identical during one full turn.</p>
+
+  <h5>Lab 1 — turn it and see</h5>
+  <p>Pick a shape: its mirror lines are drawn in, and the slider turns it. The dashed outline is where it started, so you can see exactly when it lands back on itself.</p>
+  <div data-lab="symlab"></div>
+
+  <table class="ig-table">
+    <tr><th>Shape</th><th>Lines of symmetry</th><th>Order of rotational symmetry</th></tr>
+    <tr><td>Equilateral triangle</td><td>$3$</td><td>$3$</td></tr>
+    <tr><td>Isosceles triangle</td><td>$1$</td><td>$1$</td></tr>
+    <tr><td>Scalene triangle</td><td>$0$</td><td>$1$</td></tr>
+    <tr><td>Square</td><td>$4$</td><td>$4$</td></tr>
+    <tr><td>Rectangle</td><td>$2$</td><td>$2$</td></tr>
+    <tr><td>Rhombus</td><td>$2$</td><td>$2$</td></tr>
+    <tr><td>Parallelogram</td><td>$0$</td><td>$2$</td></tr>
+    <tr><td>Kite</td><td>$1$</td><td>$1$</td></tr>
+    <tr><td>Isosceles trapezium</td><td>$1$</td><td>$1$</td></tr>
+    <tr><td>Regular polygon with $n$ sides</td><td>$n$</td><td>$n$</td></tr>
+    <tr><td>Circle</td><td>infinitely many</td><td>infinite</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>The parallelogram trap.</b> It looks symmetrical but has <b>no</b> lines of symmetry — folding along a diagonal does not match the halves. It does have rotational symmetry of order $2$.</div></div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Order is never zero.</b> A shape with no rotational symmetry has order $1$, because it fits onto itself once in a full turn. Writing $0$ loses the mark.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Symmetry in three dimensions</h4>
+  <p>In 3D a mirror line becomes a <b>plane of symmetry</b>: a flat surface cutting the solid into two mirror-image halves.</p>
+  <table class="ig-table">
+    <tr><th>Solid</th><th>Planes of symmetry</th><th>Where they are</th></tr>
+    <tr><td>Cuboid (all edges different)</td><td>$3$</td><td>One parallel to each pair of faces</td></tr>
+    <tr><td>Square-based cuboid</td><td>$5$</td><td>The $3$ above plus $2$ diagonal planes</td></tr>
+    <tr><td>Cube</td><td>$9$</td><td>$3$ parallel to faces, $6$ through opposite edges</td></tr>
+    <tr><td>Square-based pyramid</td><td>$4$</td><td>$2$ through opposite base edges, $2$ through the base diagonals</td></tr>
+    <tr><td>Triangular prism (equilateral)</td><td>$4$</td><td>$3$ vertical, $1$ horizontal through the middle</td></tr>
+    <tr><td>Cylinder</td><td>infinitely many</td><td>Every vertical plane through the axis, plus one horizontal</td></tr>
+    <tr><td>Cone</td><td>infinitely many</td><td>Every vertical plane through the axis</td></tr>
+    <tr><td>Sphere</td><td>infinitely many</td><td>Every plane through the centre</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>How to count them.</b> Work through the pairs of faces first, then look for diagonal planes through opposite edges. Check each candidate by asking: would the two halves be exact mirror images?</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Chords and tangents <span class="ig-try">Interactive</span></h4>
+  <p>These four results all follow from the symmetry of the circle, and each one turns a circle problem into a right-angled triangle problem.</p>
+  <table class="ig-table">
+    <tr><th>Property</th><th>What it gives you</th></tr>
+    <tr><td>The perpendicular from the centre <b>bisects</b> a chord</td><td>A right-angled triangle: radius, half the chord, distance from the centre</td></tr>
+    <tr><td>Equal chords are <b>equidistant</b> from the centre</td><td>And the converse — chords the same distance from the centre are equal</td></tr>
+    <tr><td>A tangent is <b>perpendicular</b> to the radius at the point of contact</td><td>A right angle at the point of contact</td></tr>
+    <tr><td>The two tangents from an external point are <b>equal</b></td><td>An isosceles triangle, and $OP$ bisects the angle between them</td></tr>
+  </table>
+  <div class="ig-formula">$r^{2}=d^{2}+\left(\tfrac{\text{chord}}{2}\right)^{2}$</div>
+
+  <h5>Lab 2 — the right-angled triangle inside the circle</h5>
+  <p>Give it any two of the radius, the chord and the distance from the centre — or the radius and a tangent — and it draws the triangle to scale and sets out the Pythagoras.</p>
+  <div data-lab="chordlab"></div>
+
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Halve the chord first.</b> Using the full chord as a leg asks you to square-root a negative number — the surest sign the working has gone wrong.</div></div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Two tangents from a point $P$.</b> $PA=PB$, triangle $APB$ is isosceles, $OP$ bisects angle $APB$, angle $OAP=$ angle $OBP=90°$, and therefore angle $AOB+$ angle $APB=180°$.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> The five circle theorems <span class="ig-try">Interactive</span></h4>
+  <div class="ig-two">
+    <div class="ig-mini"><b>1 · Angle at the centre</b><br>The angle at the centre is <b>twice</b> the angle at the circumference, standing on the same arc.</div>
+    <div class="ig-mini"><b>2 · Angle in a semicircle</b><br>An angle drawn on a diameter is $90°$ — this is theorem 1 with a central angle of $180°$.</div>
+    <div class="ig-mini"><b>3 · Same segment</b><br>Angles standing on the same chord, from the same side, are <b>equal</b>.</div>
+    <div class="ig-mini"><b>4 · Cyclic quadrilateral</b><br><b>Opposite</b> angles add to $180°$ — and all four vertices must be on the circle.</div>
+  </div>
+  <div class="ig-formula">5 · the angle between a tangent and a chord $=$ the angle in the alternate segment</div>
+  <p>The "alternate segment" is the part of the circle on the <b>other</b> side of the chord from the angle you are measuring.</p>
+
+  <h5>Lab 3 — the theorem explorer</h5>
+  <p>Pick a theorem and move the points. Every angle shown is measured from the diagram itself, so you can watch the relationship survive whatever you do to it — and the panel gives the exact wording to quote.</p>
+  <div data-lab="circlelab"></div>
+
+  <h5>The reasons to quote</h5>
+  <table class="ig-table">
+    <tr><th>Situation</th><th>The reason to write</th></tr>
+    <tr><td>Two angles on the same arc, one at the centre</td><td>angle at centre $=2\times$ angle at circumference</td></tr>
+    <tr><td>A triangle drawn on a diameter</td><td>angle in a semicircle $=90°$</td></tr>
+    <tr><td>Two angles on the same chord, same side</td><td>angles in the same segment are equal</td></tr>
+    <tr><td>A quadrilateral with all vertices on the circle</td><td>opposite angles of a cyclic quadrilateral sum to $180°$</td></tr>
+    <tr><td>A tangent meeting a chord</td><td>alternate segment theorem</td></tr>
+    <tr><td>A tangent meeting a radius</td><td>tangent is perpendicular to the radius</td></tr>
+    <tr><td>Two tangents from one point</td><td>tangents from an external point are equal</td></tr>
+    <tr><td>Two radii in a triangle</td><td>the triangle is isosceles, so the base angles are equal</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Reasons carry marks.</b> "Give a reason for your answer" is worth a mark of its own. Use the standard wording — "because of the circle theorem" earns nothing.</div></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Symmetry of a solid</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Write down the number of planes of symmetry of <b>(a)</b> a cuboid with all edges different, <b>(b)</b> a cube, <b>(c)</b> a square-based pyramid.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Cuboid:</b> one plane parallel to each pair of opposite faces, halfway between them — three pairs, so $3$. No diagonal plane works because the edges differ.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Cube:</b> the same $3$, plus $6$ diagonal planes through pairs of opposite edges — $9$ in total.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Square-based pyramid:</b> $2$ through opposite base edges and $2$ through the base diagonals — $4$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> (a) $3$ · (b) $9$ · (c) $4$</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Chord and radius with Pythagoras</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A circle has radius $10$ cm and a chord of length $16$ cm. Find the distance from the centre to the chord.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The perpendicular from the centre <b>bisects</b> the chord, so half of it is $16\div2=8$ cm.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>That gives a right-angled triangle with hypotenuse $10$ (the radius) and one leg $8$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Pythagoras: $d^{2}=10^{2}-8^{2}=100-64=36$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $6$ cm</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Using the full chord of $16$ as a leg gives $\sqrt{100-256}$, which is impossible. Always halve the chord first — <b>Lab 2</b> holds exactly this question.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Tangent and radius</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$T$ is on a circle with centre $O$ and radius $5$ cm, and $PT$ is a tangent of length $12$ cm. Find $OP$ and angle $OPT$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The tangent is perpendicular to the radius at $T$, so triangle $OTP$ is right-angled at $T$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$OP^{2}=5^{2}+12^{2}=169$, so $OP=13$ cm.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>At $P$: opposite $=5$, adjacent $=12$, so $\tan(OPT)=\frac{5}{12}$ and angle $OPT=22.6°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $OP=13$ cm and angle $OPT=22.6°$ (1 d.p.)</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Angle at the centre</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$A$, $B$ and $C$ lie on a circle with centre $O$. Angle $AOB=130°$ and $C$ is on the major arc. Find angle $ACB$, giving a reason.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Both angles stand on the same arc $AB$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>The angle at the centre is twice the angle at the circumference, so halve it: $130\div2$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $65°$, because the angle at the centre is twice the angle at the circumference standing on the same arc</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>Drag the slider in <b>Lab 3</b> and watch the two measured angles stay in the ratio $2:1$ whatever the arc.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Angle in a semicircle</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$AB$ is a diameter and $C$ lies on the circle, with angle $CAB=35°$. Find angle $ABC$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$AB$ is a diameter, so angle $ACB=90°$ (angle in a semicircle).</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>The angles of triangle $ABC$ add to $180°$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Angle $ABC=180-90-35=55°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $55°$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Spotting it.</b> Whenever a triangle has one side passing through the centre, the opposite angle is $90°$. Look for the centre marked on the line.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Cyclic quadrilateral</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$ABCD$ is a cyclic quadrilateral with angle $DAB=78°$ and angle $ABC=92°$. Find angle $BCD$ and angle $CDA$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Opposite angles of a cyclic quadrilateral add to $180°$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$A$ and $C$ are opposite: angle $BCD=180-78=102°$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$B$ and $D$ are opposite: angle $CDA=180-92=88°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> angle $BCD=102°$ and angle $CDA=88°$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Check.</b> All four angles total $78+92+102+88=360°$, as they must for any quadrilateral ✓</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>Two tangents from a point</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$PA$ and $PB$ are tangents to a circle with centre $O$, touching at $A$ and $B$, and angle $APB=48°$. Find angle $AOB$ and angle $PAB$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Angle $AOB$:</b> $OAPB$ is a quadrilateral with right angles at $A$ and $B$ (tangent ⟂ radius), and its angles total $360°$: $360-90-90-48=132°$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Angle $PAB$:</b> tangents from an external point are equal, so $PA=PB$ and triangle $APB$ is isosceles. The base angles are equal: $(180-48)\div2=66°$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> angle $AOB=132°$ and angle $PAB=66°$</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 8</span><h6>Alternate segment theorem</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>$TB$ is a tangent to a circle at $T$, and the chord $TA$ makes an angle of $64°$ with the tangent. $B$ lies in the alternate segment. Find angle $TBA$, giving a reason.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Identify the chord: $TA$, drawn from the point of contact $T$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>The alternate segment is the part of the circle on the other side of $TA$ from the $64°$ angle — that is where $B$ lies.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>The theorem says the two angles are equal.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> angle $TBA=64°$, by the alternate segment theorem</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>There are two angles between the tangent and the chord at $T$ and they add to $180°$. Match the one on the <em>opposite</em> side of the chord from the segment containing $B$.</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Saying a parallelogram has lines of symmetry.</b> It has none, but order $2$.</li>
+    <li><b>Giving an order of rotational symmetry of $0$.</b> The minimum is $1$.</li>
+    <li><b>Using the whole chord in Pythagoras.</b> The perpendicular from the centre bisects it.</li>
+    <li><b>Halving the wrong angle.</b> The angle at the <em>centre</em> is the larger one.</li>
+    <li><b>Applying the cyclic quadrilateral rule to adjacent angles.</b> Only <b>opposite</b> pairs.</li>
+    <li><b>Using a theorem when not all the points are on the circle.</b> Check first.</li>
+    <li><b>Picking the wrong angle in the alternate segment theorem.</b> Match the opposite side of the chord.</li>
+    <li><b>Forgetting that two radii make an isosceles triangle</b> — that gives you the base angles for free.</li>
+    <li><b>Giving no reason.</b> "Give a reason" is a separate mark — quote the theorem by name.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning.</p>
+  <div class="gl-q" data-answer="2" data-accept="2 lines" data-why="A rhombus folds along both of its diagonals, so it has 2 lines of symmetry (and rotational symmetry of order 2).">
+    <p>1. Write down the number of lines of symmetry of a rhombus.</p>
+  </div>
+  <div class="gl-q" data-answer="0" data-accept="none|zero" data-why="No fold matches the two halves of a parallelogram — not even along a diagonal. It has 0 lines of symmetry, though its rotational symmetry is order 2.">
+    <p>2. Write down the number of lines of symmetry of a parallelogram.</p>
+  </div>
+  <div class="gl-q" data-answer="9" data-accept="9 planes" data-why="A cube has 3 planes parallel to its faces plus 6 through pairs of opposite edges, giving 9.">
+    <p>3. How many planes of symmetry does a cube have?</p>
+  </div>
+  <div class="gl-q" data-answer="5" data-accept="5 cm" data-why="The perpendicular from the centre bisects the chord, so half of it is 12. Then d² = 13² − 12² = 169 − 144 = 25, so d = 5 cm.">
+    <p>4. A circle has radius $13$ cm and a chord of length $24$ cm. Find the distance from the centre to the chord, in cm.</p>
+  </div>
+  <div class="gl-q" data-answer="30" data-accept="30 cm" data-why="Half the chord = √(17² − 8²) = √225 = 15, so the whole chord is 2 × 15 = 30 cm.">
+    <p>5. A chord is $8$ cm from the centre of a circle of radius $17$ cm. Find the length of the chord, in cm.</p>
+  </div>
+  <div class="gl-q" data-answer="24" data-accept="24 cm" data-why="A tangent is perpendicular to the radius, so PT² = 25² − 7² = 625 − 49 = 576 and PT = 24 cm.">
+    <p>6. $PT$ is a tangent to a circle with centre $O$ and radius $7$ cm, and $OP=25$ cm. Calculate $PT$, in cm.</p>
+  </div>
+  <div class="gl-q" data-answer="70°" data-accept="70" data-why="The angle at the centre is twice the angle at the circumference on the same arc, so x = 140 ÷ 2 = 70°.">
+    <p>7. $A$, $B$ and $C$ are on a circle with centre $O$, and angle $AOB=140°$. Angle $ACB$ is marked $x$. Find $x$.</p>
+  </div>
+  <div class="gl-q" data-answer="102°" data-accept="102" data-why="Opposite angles of a cyclic quadrilateral add to 180°, and A and C are opposite: 180 − 78 = 102°.">
+    <p>8. $ABCD$ is a cyclic quadrilateral with angle $DAB=78°$. Find angle $BCD$.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-symcircles";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=13";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

@@ -6297,6 +6297,728 @@
     upd();
   };
 
+  /* ---------- probability ---------- */
+
+  // a fraction in lowest terms, shown as "5/8" (or a whole number)
+  const pFrac = (n, d) => frT(frac(n, d));
+
+  /* 57 · Sample space diagram — list every outcome, then count */
+  build.problab = function (host) {
+    const EVENTS = [
+      { key: "eq", label: "equals" },
+      { key: "gt", label: "greater than" },
+      { key: "lt", label: "less than" },
+      { key: "double", label: "a double" },
+      { key: "even", label: "an even result" },
+    ];
+    let ev = EVENTS[0];
+
+    const panel = e("div", "gl-panel");
+    const form = e("div", "gl-form");
+    const chips = chipRow(EVENTS.map((x) => ({ label: x.label, ev: x })), (it) => { ev = it.ev; upd(); }, 0);
+    const tableBox = e("div");
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const aF = field("sides on A", "6", null, upd);
+    const bF = field("sides on B", "6", null, upd);
+    const opF = picker("combined by", [{ value: "+", label: "adding" }, { value: "×", label: "multiplying" }], upd);
+    const tF = field("the value", "7", null, upd);
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "Two fair dice or spinners"));
+    const row = e("div", "gl-form-row");
+    [aF, bF, opF, tF].forEach((f) => row.appendChild(f.el));
+    g.appendChild(row); form.appendChild(g);
+
+    const fCount = factHtml("Favourable outcomes");
+    const fProb = factHtml("Probability");
+    [fCount, fProb].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(form); panel.appendChild(chips.el); panel.appendChild(tableBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    function upd() {
+      const A = Math.max(2, Math.min(10, Math.round(isFinite(aF.get()) ? aF.get() : 6)));
+      const B = Math.max(2, Math.min(10, Math.round(isFinite(bF.get()) ? bF.get() : 6)));
+      const op = opF.get(), t = isFinite(tF.get()) ? tF.get() : 0;
+      tF.el.style.display = ev.key === "double" || ev.key === "even" ? "none" : "";
+
+      const hit = (i, j, v) =>
+        ev.key === "eq" ? v === t
+        : ev.key === "gt" ? v > t
+        : ev.key === "lt" ? v < t
+        : ev.key === "double" ? i === j
+        : v % 2 === 0;
+
+      const box = e("div", "gl-scroll");
+      const tb = e("table", "gl-table");
+      const head = e("tr");
+      head.appendChild(e("th", null, op));
+      for (let j = 1; j <= B; j++) head.appendChild(e("th", null, String(j)));
+      tb.appendChild(head);
+      let good = 0;
+      for (let i = 1; i <= A; i++) {
+        const r = e("tr");
+        r.appendChild(e("td", "gl-td-x", String(i)));
+        for (let j = 1; j <= B; j++) {
+          const v = op === "+" ? i + j : i * j;
+          const ok = hit(i, j, v);
+          if (ok) good++;
+          r.appendChild(e("td", ok ? "gl-td-ok" : null, String(v)));
+        }
+        tb.appendChild(r);
+      }
+      box.appendChild(tb);
+      tableBox.replaceChildren(box);
+
+      const total = A * B;
+      const words = ev.key === "eq" ? "the result is " + fmt(t, 2)
+        : ev.key === "gt" ? "the result is greater than " + fmt(t, 2)
+        : ev.key === "lt" ? "the result is less than " + fmt(t, 2)
+        : ev.key === "double" ? "a double is thrown" : "the result is even";
+      fCount.setValue("P(" + words + "): <b>" + good + "</b> of the " + total + " cells are highlighted");
+      fProb.setValue(good + "/" + total + " = <b>" + pFrac(good, total) + "</b> = " + fmt(good / total, 4));
+      msg.className = "gl-msg good";
+      msg.textContent = "Every cell is one equally likely outcome, and (2, 5) is a different cell from (5, 2) — which is exactly why a total of 7 is six times as likely as a total of 2. Use a grid for TWO experiments; for three or more stages, or for picks without replacement, use a tree.";
+    }
+    upd();
+  };
+
+  /* 58 · Tree diagrams, with and without replacement */
+  build.treelab = function (host) {
+    let replace = true;
+    const panel = e("div", "gl-panel");
+    const chips = chipRow([
+      { label: "With replacement", r: true },
+      { label: "Without replacement", r: false },
+    ], (it) => { replace = it.r; upd(); }, 0);
+    const form = e("div", "gl-form");
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const tableBox = e("div");
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const rF = field("red counters", "5", null, upd);
+    const bF = field("blue counters", "3", null, upd);
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "What is in the bag"));
+    const row = e("div", "gl-form-row");
+    [rF, bF].forEach((f) => row.appendChild(f.el));
+    g.appendChild(row); form.appendChild(g);
+
+    const fBoth = factHtml("P(both red)");
+    const fOne = factHtml("P(exactly one red)");
+    const fAtLeast = factHtml("P(at least one red)");
+    const fCheck = factHtml("Check");
+    [fBoth, fOne, fAtLeast, fCheck].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(chips.el); panel.appendChild(form); panel.appendChild(cvBox);
+    panel.appendChild(tableBox); panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const counts = () => {
+      const r = Math.max(0, Math.round(isFinite(rF.get()) ? rF.get() : 0));
+      const b = Math.max(0, Math.round(isFinite(bF.get()) ? bF.get() : 0));
+      return { r, b, n: r + b };
+    };
+    // the four paths, as exact fractions
+    function paths() {
+      const { r, b, n } = counts();
+      if (n === 0) return null;
+      const second = (firstRed, wantRed) => {
+        if (replace) return frac(wantRed ? r : b, n);
+        const nn = n - 1;
+        if (nn <= 0) return frac(0, 1);
+        const top = wantRed ? r - (firstRed ? 1 : 0) : b - (firstRed ? 0 : 1);
+        return frac(Math.max(0, top), nn);
+      };
+      return [
+        { name: "R, R", p: frM(frac(r, n), second(true, true)), first: frac(r, n), sec: second(true, true) },
+        { name: "R, B", p: frM(frac(r, n), second(true, false)), first: frac(r, n), sec: second(true, false) },
+        { name: "B, R", p: frM(frac(b, n), second(false, true)), first: frac(b, n), sec: second(false, true) },
+        { name: "B, B", p: frM(frac(b, n), second(false, false)), first: frac(b, n), sec: second(false, false) },
+      ];
+    }
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.6, minH: 210, maxH: 300,
+      render(c, W, H, P) {
+        const ps = paths();
+        if (!ps) return;
+        const x0 = 22, x1 = W * 0.42, x2 = W * 0.74;
+        const y0 = H / 2, ys = [H * 0.16, H * 0.38, H * 0.62, H * 0.84];
+        const yA = H * 0.27, yB = H * 0.73;
+        dot(c, x0, y0, P.strong, P.bg, 4);
+        // stage 1
+        [[yA, ps[0].first, "Red", P.c2], [yB, ps[2].first, "Blue", P.c1]].forEach(([y, f, nm, colr]) => {
+          strokePath(c, [[x0, y0], [x1, y]], colr, 2);
+          tagOn(c, P, frT(f), (x0 + x1) / 2, (y0 + y) / 2 - 8, colr, "center", 11.5);
+          tagOn(c, P, nm, x1 + 16, y, colr, "center", 12);
+          dot(c, x1, y, colr, P.bg, 3.5);
+        });
+        // stage 2
+        const legs = [[yA, ys[0], ps[0], P.c2], [yA, ys[1], ps[1], P.c1],
+                      [yB, ys[2], ps[2], P.c2], [yB, ys[3], ps[3], P.c1]];
+        legs.forEach(([ya, y, pth, colr]) => {
+          strokePath(c, [[x1 + 32, ya], [x2, y]], colr, 2);
+          tagOn(c, P, frT(pth.sec), (x1 + 32 + x2) / 2, (ya + y) / 2 - 8, colr, "center", 11.5);
+          dot(c, x2, y, colr, P.bg, 3.5);
+          tagOn(c, P, pth.name + "  " + frT(pth.p), x2 + 44, y, P.strong, "center", 11.5);
+        });
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      const ps = paths();
+      tableBox.replaceChildren();
+      if (!ps) { msg.className = "gl-msg warn"; msg.textContent = "Put at least one counter in the bag."; return; }
+      const box = e("div", "gl-scroll");
+      const tb = e("table", "gl-table");
+      const head = e("tr");
+      ["Path", "Working", "Probability"].forEach((t) => head.appendChild(e("th", null, t)));
+      tb.appendChild(head);
+      ps.forEach((p) => {
+        const r = e("tr");
+        r.appendChild(e("td", "gl-td-x", p.name));
+        r.appendChild(e("td", null, frT(p.first) + " × " + frT(p.sec)));
+        r.appendChild(e("td", null, frT(p.p)));
+        tb.appendChild(r);
+      });
+      const tot = ps.reduce((s, p) => frA(s, p.p), frac(0, 1));
+      const tr = e("tr");
+      tr.appendChild(e("td", "gl-td-x", "Total"));
+      tr.appendChild(e("td", null, ""));
+      tr.appendChild(e("td", "gl-td-ok", frT(tot)));
+      tb.appendChild(tr);
+      box.appendChild(tb);
+      tableBox.appendChild(box);
+
+      const one = frA(ps[1].p, ps[2].p);
+      const atLeast = frS(frac(1, 1), ps[3].p);
+      fBoth.setValue(frT(ps[0].first) + " × " + frT(ps[0].sec) + " = <b>" + frT(ps[0].p) + "</b>");
+      fOne.setValue("both orders: " + frT(ps[1].p) + " + " + frT(ps[2].p) + " = <b>" + frT(one) + "</b>");
+      fAtLeast.setValue("1 − P(no red) = 1 − " + frT(ps[3].p) + " = <b>" + frT(atLeast) + "</b>");
+      fCheck.setValue("the four paths add to <b>" + frT(tot) + "</b>" + (frV(tot) === 1 ? " ✓" : " — something is wrong"));
+      msg.className = "gl-msg " + (replace ? "good" : "warn");
+      msg.textContent = replace
+        ? "With replacement the bag is unchanged, so the second stage repeats the first. Multiply ALONG a path, add DOWN the paths that fit."
+        : "Without replacement BOTH numbers change on the second stage — the total drops by one, and so does the colour that was taken. Forgetting the numerator is the commonest slip in the topic.";
+    }
+    upd();
+  };
+
+  /* 59 · Conditional probability — the denominator shrinks */
+  build.condlab = function (host) {
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "Fill in the four regions. \"Given that…\" means you stop looking at the whole group and look only inside one set.");
+    const inputs = e("div", "gl-inputs");
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const aF = field("A only", "15", null, upd);
+    const abF = field("both", "10", null, upd);
+    const bF = field("B only", "8", null, upd);
+    const nF = field("neither", "7", null, upd);
+    [aF, abF, bF, nF].forEach((f) => inputs.appendChild(f.el));
+
+    const fBasic = factHtml("Straight probabilities");
+    const fCondA = factHtml("P(A | B) — given B");
+    const fCondB = factHtml("P(B | A) — given A");
+    [fBasic, fCondA, fCondB].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(prompt); panel.appendChild(inputs); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const val = (f) => Math.max(0, isFinite(f.get()) ? f.get() : 0);
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.6, minH: 200, maxH: 280,
+      render(c, W, H, P) {
+        const g2 = twoSet(W, H);
+        frameE(c, P, g2.box);
+        circle(c, g2.ax, g2.cy, g2.r, P.c1, 2.2);
+        circle(c, g2.bx, g2.cy, g2.r, P.c3, 2.2);
+        tag(c, "A", g2.ax - g2.r * 0.75, g2.cy - g2.r * 0.85, P.c1, "center", 13);
+        tag(c, "B", g2.bx + g2.r * 0.75, g2.cy - g2.r * 0.85, P.c3, "center", 13);
+        tagOn(c, P, fmt(val(aF), 2), g2.ax - g2.r * 0.45, g2.cy, P.c1, "center", 15);
+        tagOn(c, P, fmt(val(abF), 2), (g2.ax + g2.bx) / 2, g2.cy, P.c4, "center", 15);
+        tagOn(c, P, fmt(val(bF), 2), g2.bx + g2.r * 0.45, g2.cy, P.c3, "center", 15);
+        tagOn(c, P, fmt(val(nF), 2), g2.box[0] + g2.box[2] - 28, g2.box[1] + 20, P.text, "center", 14);
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      const a = val(aF), ab = val(abF), b = val(bF), n = val(nF);
+      const total = a + ab + b + n, nA = a + ab, nB = b + ab;
+      if (total === 0) { msg.className = "gl-msg warn"; msg.textContent = "Put some people in the diagram."; return; }
+      fBasic.setValue("P(A) = " + nA + "/" + total + " = " + pFrac(nA, total)
+        + " · P(A ∩ B) = " + ab + "/" + total + " = " + pFrac(ab, total)
+        + " · P(A ∪ B) = " + (a + ab + b) + "/" + total + " = " + pFrac(a + ab + b, total)
+        + " · P(neither) = " + pFrac(n, total));
+      fCondA.setValue(nB === 0 ? "no one is in B, so this cannot be asked"
+        : "the new total is n(B) = <b>" + nB + "</b>, not " + total + ", and " + ab + " of them are also in A → "
+          + ab + "/" + nB + " = <b>" + pFrac(ab, nB) + "</b>");
+      fCondB.setValue(nA === 0 ? "no one is in A, so this cannot be asked"
+        : "the new total is n(A) = <b>" + nA + "</b>, and " + ab + " of them are also in B → "
+          + ab + "/" + nA + " = <b>" + pFrac(ab, nA) + "</b>");
+      msg.className = "gl-msg good";
+      msg.textContent = "P(A | B) and P(B | A) are different questions with different answers — the numerator is the same overlap, but the denominator is whichever set you were told the person is in. Using the grand total instead scores zero.";
+    }
+    upd();
+  };
+
+  /* ---------- symmetry and circle theorems ---------- */
+
+  // the angle APB in degrees, from three screen points
+  function angDeg(V, A, B) {
+    const a1 = Math.atan2(A[1] - V[1], A[0] - V[0]);
+    const a2 = Math.atan2(B[1] - V[1], B[0] - V[0]);
+    let d = Math.abs(a1 - a2);
+    if (d > Math.PI) d = 2 * Math.PI - d;
+    return d / DEG;
+  }
+  // arc marking the (non-reflex) angle at V between the rays to A and B
+  function markAngle(c, P, V, A, B, r, colr, txt) {
+    const a1 = Math.atan2(A[1] - V[1], A[0] - V[0]);
+    const a2 = Math.atan2(B[1] - V[1], B[0] - V[0]);
+    let diff = a2 - a1;
+    while (diff <= -Math.PI) diff += 2 * Math.PI;
+    while (diff > Math.PI) diff -= 2 * Math.PI;
+    c.save();
+    c.strokeStyle = colr; c.lineWidth = 2;
+    c.beginPath(); c.arc(V[0], V[1], r, a1, a1 + diff, diff < 0); c.stroke();
+    c.restore();
+    if (txt) {
+      const mid = a1 + diff / 2;
+      tagOn(c, P, txt, V[0] + Math.cos(mid) * (r + 17), V[1] + Math.sin(mid) * (r + 17), colr, "center", 12);
+    }
+  }
+
+  /* 60 · Lines of symmetry and order of rotational symmetry */
+  build.symlab = function (host) {
+    const SHAPES = [
+      { key: "eq", label: "Equilateral triangle", lines: 3, order: 3,
+        pts: [[0, 1], [-0.866, -0.5], [0.866, -0.5]] },
+      { key: "iso", label: "Isosceles triangle", lines: 1, order: 1,
+        pts: [[0, 1], [-0.7, -0.7], [0.7, -0.7]], mirrors: [[0, 90]] },
+      { key: "scal", label: "Scalene triangle", lines: 0, order: 1,
+        pts: [[-0.2, 1], [-0.9, -0.6], [0.95, -0.35]] },
+      { key: "sq", label: "Square", lines: 4, order: 4,
+        pts: [[-0.75, 0.75], [0.75, 0.75], [0.75, -0.75], [-0.75, -0.75]] },
+      { key: "rect", label: "Rectangle", lines: 2, order: 2,
+        pts: [[-1, 0.55], [1, 0.55], [1, -0.55], [-1, -0.55]], mirrors: [[0, 90], [0, 0]] },
+      { key: "rhom", label: "Rhombus", lines: 2, order: 2,
+        pts: [[0, 0.85], [0.95, 0], [0, -0.85], [-0.95, 0]], mirrors: [[0, 90], [0, 0]] },
+      { key: "para", label: "Parallelogram", lines: 0, order: 2,
+        pts: [[-0.95, -0.5], [-0.3, 0.6], [0.95, 0.6], [0.3, -0.5]] },
+      { key: "kite", label: "Kite", lines: 1, order: 1,
+        pts: [[0, 1], [0.65, 0.15], [0, -1], [-0.65, 0.15]], mirrors: [[0, 90]] },
+      { key: "trap", label: "Isosceles trapezium", lines: 1, order: 1,
+        pts: [[-0.55, 0.6], [0.55, 0.6], [1, -0.6], [-1, -0.6]], mirrors: [[0, 90]] },
+      { key: "pent", label: "Regular pentagon", lines: 5, order: 5, regular: 5 },
+      { key: "hex", label: "Regular hexagon", lines: 6, order: 6, regular: 6 },
+    ];
+    let sh = SHAPES[0], turn = 0;
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(SHAPES.map((s) => ({ label: s.label, s })), (it) => { sh = it.s; turn = 0; tS.set(0); upd(); }, 0);
+    chips.el.classList.add("wrap");
+    const controls = e("div", "gl-controls");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const tS = slider("Turn it (°)", 0, 360, 5, 0, (v) => { turn = v; upd(); });
+    controls.appendChild(tS.el);
+
+    const fLines = factHtml("Lines of symmetry");
+    const fOrder = factHtml("Order of rotational symmetry");
+    const fFit = factHtml("Does it fit onto itself?");
+    [fLines, fOrder, fFit].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(chips.el); panel.appendChild(controls); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const shapePts = (s) => s.regular
+      ? Array.from({ length: s.regular }, (_, i) => {
+          const a = Math.PI / 2 + (2 * Math.PI * i) / s.regular;
+          return [Math.cos(a), Math.sin(a)];
+        })
+      : s.pts;
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.8, minH: 240, maxH: 320,
+      render(c, W, H, P) {
+        const cx = W / 2, cy = H / 2, R = Math.min(W, H) / 2 - 26;
+        const pts = shapePts(sh);
+        const th = -turn * DEG;                       // screen y is flipped, so negate
+        const px = pts.map(([x, y]) => [
+          cx + (x * Math.cos(th) - y * Math.sin(th)) * R,
+          cy - (x * Math.sin(th) + y * Math.cos(th)) * R,
+        ]);
+        // the shape in its start position, faint, so a turn can be compared with it
+        if (turn % 360 !== 0) {
+          strokePath(c, pts.map(([x, y]) => [cx + x * R, cy - y * R])
+            .concat([[cx + pts[0][0] * R, cy - pts[0][1] * R]]), P.faint, 1.6, [5, 4]);
+        }
+        fillPoly(c, px, P.soft);
+        strokePath(c, px.concat([px[0]]), P.c1, 2.4);
+        // mirror lines, drawn in the shape's turned frame
+        const mirrors = sh.regular
+          ? Array.from({ length: sh.regular }, (_, i) => [0, 90 + (180 * i) / sh.regular])
+          : sh.mirrors || (sh.lines === 3 ? [[0, 90], [0, 30], [0, 150]]
+            : sh.lines === 4 ? [[0, 0], [0, 90], [0, 45], [0, 135]] : []);
+        mirrors.forEach((m) => {
+          const a = (m[1] - turn) * DEG;
+          const dx = Math.cos(a) * R * 1.15, dy = Math.sin(a) * R * 1.15;
+          strokePath(c, [[cx - dx, cy + dy], [cx + dx, cy - dy]], P.c2, 1.8, [6, 4]);
+        });
+        dot(c, cx, cy, P.c4, P.bg, 4.5);
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      fLines.setValue(sh.lines === 0 ? "<b>0</b> — no fold matches the two halves" : "<b>" + sh.lines + "</b>");
+      fOrder.setValue("<b>" + sh.order + "</b> — it fits onto itself " + sh.order + " time"
+        + (sh.order === 1 ? "" : "s") + " in a full turn, every " + fmt(360 / sh.order, 1) + "°");
+      const step = 360 / sh.order;
+      const fits = Math.abs(((turn % step) + step) % step) < 1e-6 || Math.abs(((turn % step) + step) % step - step) < 1e-6;
+      fFit.setValue(fits
+        ? "turned " + turn + "° → <b>yes</b>, it lands exactly on the dashed outline"
+        : "turned " + turn + "° → <b>no</b>, the next fit is at " + fmt(Math.ceil(turn / step) * step, 1) + "°");
+      msg.className = "gl-msg " + (sh.key === "para" ? "warn" : "good");
+      msg.textContent = sh.key === "para"
+        ? "The parallelogram trap: it looks symmetrical, but folding along a diagonal does NOT match the halves — 0 lines of symmetry, yet order 2."
+        : "Order is never 0. A shape with no rotational symmetry still fits onto itself once in a full turn, so its order is 1.";
+    }
+    upd();
+  };
+
+  /* 61 · Chords and tangents — the right-angled triangle inside every circle */
+  build.chordlab = function (host) {
+    const MODES = [
+      { key: "chord", label: "Chord and centre" },
+      { key: "tangent", label: "Tangent and radius" },
+    ];
+    let mode = "chord";
+    let find = "d";
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(MODES, (it) => { mode = it.key; find = it.key === "chord" ? "d" : "t"; layout(); }, 0);
+    const form = e("div", "gl-form");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    const rF = field("radius r", "10", null, upd);
+    const cF = field("chord length", "16", null, upd);
+    const dF = field("distance from centre", "6", null, upd);
+    const tF = field("tangent length", "12", null, upd);
+    const pF = field("OP", "13", null, upd);
+    const findC = picker("Find the", [
+      { value: "d", label: "distance from the centre" },
+      { value: "chord", label: "chord length" },
+      { value: "r", label: "radius" },
+    ], () => { find = findC.get(); layout(); });
+    const findT = picker("Find the", [
+      { value: "t", label: "tangent length PT" },
+      { value: "op", label: "distance OP" },
+    ], () => { find = findT.get(); layout(); });
+
+    panel.appendChild(chips.el); panel.appendChild(form); panel.appendChild(cvBox);
+    panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    function group(title, items) {
+      const g = e("div", "gl-form-group");
+      g.appendChild(e("div", "gl-form-title", title));
+      const row = e("div", "gl-form-row");
+      items.forEach((i) => row.appendChild(i.el));
+      g.appendChild(row);
+      return g;
+    }
+    // the numbers actually being drawn, all in circle units
+    function solve() {
+      const r = rF.get(), ch = cF.get(), d = dF.get(), t = tF.get(), op = pF.get();
+      if (mode === "chord") {
+        if (find === "d") {
+          const half = ch / 2, dd = Math.sqrt(Math.max(0, r * r - half * half));
+          return { r, chord: ch, d: dd, ok: r > half, want: "d" };
+        }
+        if (find === "chord") {
+          const half = Math.sqrt(Math.max(0, r * r - d * d));
+          return { r, chord: 2 * half, d, ok: r > d, want: "chord" };
+        }
+        const half = ch / 2, rr = Math.hypot(half, d);
+        return { r: rr, chord: ch, d, ok: true, want: "r" };
+      }
+      if (find === "t") {
+        const tt = Math.sqrt(Math.max(0, op * op - r * r));
+        return { r, t: tt, op, ok: op > r, want: "t" };
+      }
+      const oo = Math.hypot(r, t);
+      return { r, t, op: oo, ok: true, want: "op" };
+    }
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.85, minH: 230, maxH: 320,
+      render(c, W, H, P) {
+        const s = solve();
+        const cx = W / 2, cy = H / 2, R = Math.min(W, H) / 2 - 34;
+        circle(c, cx, cy, R, P.c1, 2.2);
+        dot(c, cx, cy, P.strong, P.bg, 4);
+        tag(c, "O", cx - 13, cy + 12, P.strong, "center", 12.5);
+        if (mode === "chord") {
+          if (!s.ok || !isFinite(s.d) || s.r <= 0) return;
+          const k = R / s.r;                          // pixels per unit
+          const yy = cy + s.d * k, half = (s.chord / 2) * k;
+          strokePath(c, [[cx - half, yy], [cx + half, yy]], P.c3, 2.4);
+          strokePath(c, [[cx, cy], [cx, yy]], P.c2, 2.2);
+          strokePath(c, [[cx, cy], [cx + half, yy]], P.c5, 1.8, [5, 4]);
+          rightAngle(c, [cx, yy], [cx, cy], [cx + half, yy], P.c2, 12);
+          dot(c, cx - half, yy, P.c3, P.bg, 4); dot(c, cx + half, yy, P.c3, P.bg, 4);
+          tag(c, "A", cx - half - 13, yy + 6, P.strong, "center", 12);
+          tag(c, "B", cx + half + 13, yy + 6, P.strong, "center", 12);
+          tagOn(c, P, "M", cx, yy + 14, P.c2, "center", 11.5);
+          if (s.d > 0) tagOn(c, P, fmt(s.d, 3), cx + 16, (cy + yy) / 2, P.c2, "center", 11.5);
+          tagOn(c, P, fmt(s.chord / 2, 3), cx + half / 2, yy - 12, P.c3, "center", 11.5);
+          tagOn(c, P, "r = " + fmt(s.r, 3), cx + half / 2 + 12, (cy + yy) / 2 - 6, P.c5, "center", 11.5);
+        } else {
+          if (!s.ok || !isFinite(s.t) || s.r <= 0) return;
+          const k = R / s.r;
+          const T = [cx + R * Math.cos(-0.9), cy + R * Math.sin(-0.9)];
+          // P sits along the tangent at T, perpendicular to OT
+          const ux = -Math.sin(-0.9), uy = Math.cos(-0.9);
+          const Pp = [T[0] + ux * s.t * k, T[1] + uy * s.t * k];
+          strokePath(c, [[cx, cy], T], P.c2, 2.2);
+          strokePath(c, [T, Pp], P.c3, 2.4);
+          strokePath(c, [[cx, cy], Pp], P.c5, 1.8, [5, 4]);
+          rightAngle(c, T, [cx, cy], Pp, P.c2, 12);
+          dot(c, T[0], T[1], P.c2, P.bg, 4); dot(c, Pp[0], Pp[1], P.c3, P.bg, 4);
+          tagOn(c, P, "T", T[0] - 14, T[1] - 8, P.strong, "center", 12);
+          tagOn(c, P, "P", Pp[0] + 14, Pp[1] + 8, P.strong, "center", 12);
+          tagOn(c, P, "r = " + fmt(s.r, 3), (cx + T[0]) / 2, (cy + T[1]) / 2 - 10, P.c2, "center", 11.5);
+          tagOn(c, P, fmt(s.t, 3), (T[0] + Pp[0]) / 2 + 12, (T[1] + Pp[1]) / 2, P.c3, "center", 11.5);
+          tagOn(c, P, "OP = " + fmt(s.op, 3), (cx + Pp[0]) / 2, (cy + Pp[1]) / 2 + 14, P.c5, "center", 11.5);
+        }
+      },
+    });
+
+    function step(k, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", k));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function layout() {
+      form.replaceChildren();
+      if (mode === "chord") {
+        form.appendChild(group("What you know", [findC].concat(
+          find === "d" ? [rF, cF] : find === "chord" ? [rF, dF] : [cF, dF])));
+      } else {
+        form.appendChild(group("What you know", [findT].concat(find === "t" ? [rF, pF] : [rF, tF])));
+      }
+      upd();
+    }
+    function upd() {
+      sketch.draw();
+      const s = solve();
+      steps.replaceChildren();
+      if (mode === "chord") {
+        if (!s.ok) {
+          msg.className = "gl-msg bad";
+          msg.textContent = "Those numbers are impossible: half the chord can never be longer than the radius.";
+          return;
+        }
+        steps.appendChild(step("1", "Use the symmetry property",
+          "The perpendicular from the centre <b>bisects</b> the chord, so half the chord is " + fmt(s.chord / 2, 3) + "."));
+        steps.appendChild(step("2", "Name the right-angled triangle",
+          "Hypotenuse = the radius " + fmt(s.r, 3) + " · one leg = half the chord " + fmt(s.chord / 2, 3)
+          + " · other leg = the distance from the centre " + fmt(s.d, 3) + "."));
+        steps.appendChild(step("3", "Pythagoras",
+          s.want === "d" ? "d² = " + fmt(s.r, 3) + "² − " + fmt(s.chord / 2, 3) + "² = "
+            + fmt(s.r * s.r - (s.chord / 2) ** 2, 3) + ", so d = <b>" + fmt(s.d, 3) + "</b>"
+          : s.want === "chord" ? "half² = " + fmt(s.r, 3) + "² − " + fmt(s.d, 3) + "² = "
+            + fmt(s.r * s.r - s.d * s.d, 3) + ", so half = " + fmt(s.chord / 2, 3)
+            + " and the whole chord = <b>" + fmt(s.chord, 3) + "</b>"
+          : "r² = " + fmt(s.chord / 2, 3) + "² + " + fmt(s.d, 3) + "² = "
+            + fmt((s.chord / 2) ** 2 + s.d * s.d, 3) + ", so r = <b>" + fmt(s.r, 3) + "</b>"));
+        msg.className = "gl-msg good";
+        msg.textContent = "Halve the chord FIRST. Using the whole chord as a leg is the classic error — it usually asks you to square-root a negative number.";
+      } else {
+        if (!s.ok) {
+          msg.className = "gl-msg bad";
+          msg.textContent = "OP must be longer than the radius, or P would be inside the circle and no tangent could be drawn.";
+          return;
+        }
+        steps.appendChild(step("1", "Use the tangent property",
+          "A tangent is <b>perpendicular to the radius</b> at the point of contact, so triangle OTP is right-angled at T."));
+        steps.appendChild(step("2", "Pythagoras",
+          s.want === "t" ? "PT² = " + fmt(s.op, 3) + "² − " + fmt(s.r, 3) + "² = "
+            + fmt(s.op * s.op - s.r * s.r, 3) + ", so PT = <b>" + fmt(s.t, 3) + "</b>"
+          : "OP² = " + fmt(s.r, 3) + "² + " + fmt(s.t, 3) + "² = "
+            + fmt(s.r * s.r + s.t * s.t, 3) + ", so OP = <b>" + fmt(s.op, 3) + "</b>"));
+        steps.appendChild(step("3", "The angles come free",
+          "tan(OPT) = " + fmt(s.r, 3) + " ÷ " + fmt(s.t, 3) + " → angle OPT = <b>"
+          + fmt(Math.atan2(s.r, s.t) / DEG, 1) + "°</b><br>cos(TOP) = " + fmt(s.r, 3) + " ÷ " + fmt(s.op, 3)
+          + " → angle TOP = <b>" + fmt(Math.acos(Math.min(1, s.r / s.op)) / DEG, 1) + "°</b>"));
+        msg.className = "gl-msg good";
+        msg.textContent = "Two tangents from the same external point are equal, so OAPB is symmetrical about OP — that is where the isosceles triangle in those questions comes from.";
+      }
+    }
+    layout();
+  };
+
+  /* 62 · The five circle theorems, with the reason to quote */
+  build.circlelab = function (host) {
+    const THEOREMS = [
+      { key: "centre", label: "Angle at the centre",
+        reason: "the angle at the centre is twice the angle at the circumference, standing on the same arc" },
+      { key: "semi", label: "Angle in a semicircle",
+        reason: "the angle in a semicircle is a right angle" },
+      { key: "segment", label: "Same segment",
+        reason: "angles in the same segment are equal" },
+      { key: "cyclic", label: "Cyclic quadrilateral",
+        reason: "opposite angles of a cyclic quadrilateral add up to 180°" },
+      { key: "alt", label: "Alternate segment",
+        reason: "the angle between a tangent and a chord equals the angle in the alternate segment" },
+    ];
+    let th = THEOREMS[0];
+    const st = { arc: 130, c: 90, d: 150, quad: 78, alt: 64 };
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(THEOREMS.map((t) => ({ label: t.label, t })), (it) => { th = it.t; layout(); }, 0);
+    chips.el.classList.add("wrap");
+    const controls = e("div", "gl-controls");
+    const cvBox = gridBox();
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const arcS = slider("Angle at the centre (°)", 20, 180, 5, st.arc, (v) => { st.arc = v; upd(); });
+    const cS = slider("Move C round the circle (°)", 5, 175, 5, st.c, (v) => { st.c = v; upd(); });
+    const dS = slider("Move D round the circle (°)", 5, 175, 5, st.d, (v) => { st.d = v; upd(); });
+    const qS = slider("Move A round the circle (°)", 95, 175, 5, st.quad, (v) => { st.quad = v; upd(); });
+    const aS = slider("Tangent–chord angle (°)", 20, 160, 5, st.alt, (v) => { st.alt = v; upd(); });
+
+    const fA = factHtml("What the diagram shows");
+    const fB = factHtml("The theorem");
+    const fWhy = factHtml("The reason to write");
+    [fA, fB, fWhy].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(chips.el); panel.appendChild(controls); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.9, minH: 250, maxH: 340,
+      render(c, W, H, P) {
+        const cx = W / 2, cy = H / 2, R = Math.min(W, H) / 2 - 34;
+        const at = (deg) => [cx + R * Math.cos(-deg * DEG), cy + R * Math.sin(-deg * DEG)];
+        circle(c, cx, cy, R, P.c1, 2);
+        const O = [cx, cy];
+
+        if (th.key === "centre") {
+          const A = at(270 - st.arc / 2), B = at(270 + st.arc / 2), C = at(90);
+          strokePath(c, [O, A], P.c3, 2); strokePath(c, [O, B], P.c3, 2);
+          strokePath(c, [C, A], P.c2, 2); strokePath(c, [C, B], P.c2, 2);
+          markAngle(c, P, O, A, B, 30, P.c3, fmt(angDeg(O, A, B), 1) + "°");
+          markAngle(c, P, C, A, B, 34, P.c2, fmt(angDeg(C, A, B), 1) + "°");
+          [[A, "A"], [B, "B"], [C, "C"]].forEach(([p, n]) => { dot(c, p[0], p[1], P.strong, P.bg, 4); tagOn(c, P, n, p[0], p[1] + (p[1] > cy ? 15 : -15), P.strong, "center", 12.5); });
+          dot(c, cx, cy, P.strong, P.bg, 4); tag(c, "O", cx - 13, cy + 12, P.strong, "center", 12);
+        } else if (th.key === "semi") {
+          const A = at(180), B = at(0), C = at(st.c);
+          strokePath(c, [A, B], P.c3, 2);
+          strokePath(c, [A, C], P.c2, 2); strokePath(c, [C, B], P.c2, 2);
+          rightAngle(c, C, A, B, P.c2, 13);
+          markAngle(c, P, A, B, C, 30, P.c5, fmt(angDeg(A, B, C), 1) + "°");
+          markAngle(c, P, B, A, C, 30, P.c4, fmt(angDeg(B, A, C), 1) + "°");
+          [[A, "A"], [B, "B"], [C, "C"]].forEach(([p, n]) => { dot(c, p[0], p[1], P.strong, P.bg, 4); tagOn(c, P, n, p[0] + (p[0] < cx ? -14 : 14), p[1], P.strong, "center", 12.5); });
+          dot(c, cx, cy, P.strong, P.bg, 4); tag(c, "O", cx, cy + 15, P.strong, "center", 12);
+        } else if (th.key === "segment") {
+          const A = at(250), B = at(290), C = at(st.c), D = at(st.d);
+          strokePath(c, [A, B], P.faint, 1.6);
+          strokePath(c, [C, A], P.c2, 2); strokePath(c, [C, B], P.c2, 2);
+          strokePath(c, [D, A], P.c3, 2); strokePath(c, [D, B], P.c3, 2);
+          markAngle(c, P, C, A, B, 30, P.c2, fmt(angDeg(C, A, B), 1) + "°");
+          markAngle(c, P, D, A, B, 34, P.c3, fmt(angDeg(D, A, B), 1) + "°");
+          [[A, "A"], [B, "B"], [C, "C"], [D, "D"]].forEach(([p, n]) => { dot(c, p[0], p[1], P.strong, P.bg, 4); tagOn(c, P, n, p[0], p[1] + (p[1] > cy ? 15 : -15), P.strong, "center", 12.5); });
+        } else if (th.key === "cyclic") {
+          const A = at(st.quad), B = at(40), C = at(300), D = at(210);
+          strokePath(c, [A, B, C, D, A], P.c1, 2);
+          markAngle(c, P, A, D, B, 28, P.c2, fmt(angDeg(A, D, B), 1) + "°");
+          markAngle(c, P, C, B, D, 28, P.c3, fmt(angDeg(C, B, D), 1) + "°");
+          [[A, "A"], [B, "B"], [C, "C"], [D, "D"]].forEach(([p, n]) => { dot(c, p[0], p[1], P.strong, P.bg, 4); tagOn(c, P, n, p[0] + (p[0] < cx ? -14 : 14), p[1] + (p[1] > cy ? 12 : -12), P.strong, "center", 12.5); });
+        } else {
+          const T = at(270), A = at(270 + 2 * st.alt), B = at(150);
+          const tangent = [[T[0] - R * 0.95, T[1]], [T[0] + R * 0.95, T[1]]];
+          strokePath(c, tangent, P.c4, 2.4);
+          strokePath(c, [T, A], P.c2, 2);
+          strokePath(c, [A, B], P.c3, 2); strokePath(c, [B, T], P.c3, 2);
+          markAngle(c, P, T, tangent[1], A, 30, P.c2, fmt(st.alt, 0) + "°");
+          markAngle(c, P, B, T, A, 32, P.c3, fmt(angDeg(B, T, A), 1) + "°");
+          [[T, "T"], [A, "A"], [B, "B"]].forEach(([p, n]) => { dot(c, p[0], p[1], P.strong, P.bg, 4); tagOn(c, P, n, p[0] + 14, p[1] - 10, P.strong, "center", 12.5); });
+          tag(c, "tangent", tangent[1][0] - 26, T[1] - 12, P.c4, "center", 11);
+        }
+      },
+    });
+
+    function layout() {
+      const which = th.key === "centre" ? [arcS] : th.key === "semi" ? [cS]
+        : th.key === "segment" ? [cS, dS] : th.key === "cyclic" ? [qS] : [aS];
+      controls.replaceChildren.apply(controls, which.map((s) => s.el));
+      upd();
+    }
+    function upd() {
+      sketch.draw();
+      if (th.key === "centre") {
+        fA.setValue("angle AOB at the centre = <b>" + fmt(st.arc, 1) + "°</b> · angle ACB at the circumference = <b>"
+          + fmt(st.arc / 2, 1) + "°</b>");
+        fB.setValue("centre ÷ 2 = circumference: " + fmt(st.arc, 1) + " ÷ 2 = " + fmt(st.arc / 2, 1)
+          + "° — both stand on the same arc AB");
+      } else if (th.key === "semi") {
+        fA.setValue("AB is a diameter, so angle ACB = <b>90°</b> wherever C sits");
+        fB.setValue("the other two angles of triangle ABC must therefore add to 90°");
+      } else if (th.key === "segment") {
+        fA.setValue("angle ACB and angle ADB both stand on the chord AB from the same side, so they are <b>equal</b>");
+        fB.setValue("move either point round the circle — as long as it stays on the same side of AB, the angle does not change");
+      } else if (th.key === "cyclic") {
+        const R = 100, at2 = (deg) => [R * Math.cos(-deg * DEG), R * Math.sin(-deg * DEG)];
+        const A = at2(st.quad), B = at2(40), C = at2(300), D = at2(210);
+        const angA = angDeg(A, D, B), angC = angDeg(C, B, D);
+        fA.setValue("measured on the diagram: angle A = <b>" + fmt(angA, 1) + "°</b> and angle C = <b>"
+          + fmt(angC, 1) + "°</b>, and they add to <b>" + fmt(angA + angC, 1) + "°</b>");
+        fB.setValue("A and C are OPPOSITE angles — the rule never applies to a pair of adjacent angles, and all four vertices must lie on the circle");
+      } else {
+        fA.setValue("the tangent–chord angle at T = <b>" + fmt(st.alt, 0) + "°</b>, and the angle TBA in the alternate segment = <b>"
+          + fmt(st.alt, 0) + "°</b>");
+        fB.setValue("the angle on the OTHER side of the chord at T is 180 − " + fmt(st.alt, 0) + " = "
+          + fmt(180 - st.alt, 0) + "° — match the one facing the segment that contains B");
+      }
+      fWhy.setValue("“" + th.reason + "”");
+      msg.className = "gl-msg good";
+      msg.textContent = "In IGCSE, \"give a reason\" is a mark of its own. Quote the theorem by name in the wording above — \"because of the circle theorem\" earns nothing.";
+    }
+    layout();
+  };
+
   function injectCSS() {
     if (document.getElementById("graphlab-css")) return;
     const s = document.createElement("style");
