@@ -1,0 +1,339 @@
+<div class="ig-lesson" id="iglab-averages">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#087F5B)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow);overflow-x:auto}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{position:relative;padding-left:24px;margin:8px 0;color:var(--ink);line-height:1.6}
+.ig-lesson .ig-obj li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ig-accent);font-weight:900}
+</style>
+<p class="ig-intro">An average tells you where the data sits; a measure of spread tells you how tightly it sits there. Neither is any use alone — and the marks in a comparison question come from quoting <em>one of each</em>, in context. Type your own data into the labs below and watch what a single outlier does to the mean and to the range.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Classify data as qualitative or quantitative, discrete or continuous.</li>
+    <li>Organise data into frequency tables, grouped tables and stem-and-leaf diagrams.</li>
+    <li>Find the mean, median, mode and range of a list.</li>
+    <li>Find the mean, median and mode from a frequency table.</li>
+    <li>Calculate an <em>estimate</em> of the mean from grouped data, and give the modal class.</li>
+    <li>Find quartiles and the interquartile range.</li>
+    <li>Compare two datasets the way the mark scheme wants.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Collecting and classifying data</h4>
+  <table class="ig-table">
+    <tr><th>Type</th><th>Meaning</th><th>Examples</th></tr>
+    <tr><td><b>Qualitative</b></td><td>Described in words, not numbers</td><td>Eye colour, favourite sport, brand</td></tr>
+    <tr><td><b>Quantitative</b></td><td>Numerical</td><td>Height, number of goals, time taken</td></tr>
+    <tr><td><b>Discrete</b></td><td>Counted — only certain values possible</td><td>Number of pets, shoe size, goals scored</td></tr>
+    <tr><td><b>Continuous</b></td><td>Measured — any value in a range</td><td>Mass, time, length, temperature</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Quick test.</b> Ask "could the value be $3.7$?" If yes, the data is <b>continuous</b>. If only whole numbers make sense, it is <b>discrete</b>.</div></div>
+
+  <h5>Primary and secondary data</h5>
+  <table class="ig-table">
+    <tr><th></th><th>Definition</th><th>Advantage</th><th>Disadvantage</th></tr>
+    <tr><td><b>Primary</b></td><td>You collect it yourself</td><td>Exactly what you need, and you know how it was collected</td><td>Slow and expensive</td></tr>
+    <tr><td><b>Secondary</b></td><td>Collected by someone else</td><td>Quick, cheap, often large</td><td>May be out of date or not quite the right question</td></tr>
+  </table>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Bias.</b> A good sample is <b>random</b> — every member of the population has an equal chance of being chosen — and <b>large enough</b>. Asking only your friends, only people in one place, or only those willing to reply gives a biased sample, and no amount of careful calculation afterwards can fix it.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Organising data</h4>
+  <p>A tally and frequency table turns a messy list into something you can calculate with. When data is continuous, or there are too many different values, group it into <b>classes</b> that do not overlap and cover every possible value.</p>
+  <table class="ig-table">
+    <tr><th>Class (time $t$ minutes)</th><th>Meaning</th><th>Midpoint</th></tr>
+    <tr><td>$0<t\le10$</td><td>More than $0$, up to and including $10$</td><td>$5$</td></tr>
+    <tr><td>$10<t\le20$</td><td>More than $10$, up to and including $20$</td><td>$15$</td></tr>
+    <tr><td>$20<t\le30$</td><td>More than $20$, up to and including $30$</td><td>$25$</td></tr>
+  </table>
+  <div class="ig-formula">midpoint $=\dfrac{\text{lower bound}+\text{upper bound}}{2}$</div>
+
+  <h5>Stem-and-leaf diagrams</h5>
+  <p>These keep every original value while showing the shape of the data. The <b>key</b> is essential — without it the diagram means nothing — and the leaves must be in order.</p>
+  <table class="ig-table">
+    <tr><th>Stem (tens)</th><th>Leaves (units)</th><th>Frequency</th></tr>
+    <tr><td>$1$</td><td>2&nbsp; 5&nbsp; 7</td><td>$3$</td></tr>
+    <tr><td>$2$</td><td>0&nbsp; 3&nbsp; 3&nbsp; 6&nbsp; 8</td><td>$5$</td></tr>
+    <tr><td>$3$</td><td>1&nbsp; 4&nbsp; 4&nbsp; 4&nbsp; 9</td><td>$5$</td></tr>
+    <tr><td>$4$</td><td>2&nbsp; 5</td><td>$2$</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Key:</b> $1\,|\,2$ means $12$. Always write one.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Mean, median, mode and range <span class="ig-try">Interactive</span></h4>
+  <table class="ig-table">
+    <tr><th>Measure</th><th>How to find it</th><th>Best used when…</th></tr>
+    <tr><td><b>Mean</b></td><td>total of values $\div$ how many values</td><td>The data is fairly symmetrical with no extreme values</td></tr>
+    <tr><td><b>Median</b></td><td>Put in order, take the middle value</td><td>There are outliers — the median ignores them</td></tr>
+    <tr><td><b>Mode</b></td><td>The most common value</td><td>The data is qualitative, or you want the most popular item</td></tr>
+    <tr><td><b>Range</b></td><td>largest $-$ smallest</td><td>Measuring spread — but one outlier ruins it</td></tr>
+  </table>
+  <div class="ig-formula">the median sits at position $\dfrac{n+1}{2}$</div>
+  <p>With $n=9$ that is the 5th value; with $n=8$ it is position $4.5$, so you average the 4th and 5th values.</p>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Order first.</b> The commonest mistake in the whole topic is taking the "middle" of an unsorted list. Write the ordered list out before doing anything else.</div></div>
+
+  <h5>Lab 1 — the averages calculator</h5>
+  <p>Type any list. The lab orders it, then works through the mean, the median position, the quartiles and the spread — and shows you what happens when you add one extreme value.</p>
+  <div data-lab="meanlab"></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">4</span> Averages from a frequency table <span class="ig-try">Interactive</span></h4>
+  <div class="ig-formula">mean $=\dfrac{\Sigma fx}{\Sigma f}$</div>
+  <p>Here $x$ is the value, $f$ its frequency, $\Sigma f$ the total number of items and $\Sigma fx$ the total of all the values.</p>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Mode versus frequency.</b> The mode is the <b>value</b> with the highest frequency, not the frequency itself. Writing the frequency is a guaranteed lost mark.</div></div>
+
+  <h5>Grouped data — an <em>estimate</em> of the mean</h5>
+  <p>Once data is grouped the individual values are lost, so each class is represented by its <b>midpoint</b>. That is why the answer is only an estimate.</p>
+  <div class="ig-formula">estimated mean $=\dfrac{\Sigma(f\times\text{midpoint})}{\Sigma f}$</div>
+  <table class="ig-table">
+    <tr><th>What is asked</th><th>What you give</th></tr>
+    <tr><td>Modal class</td><td>The class with the highest frequency</td></tr>
+    <tr><td>Class containing the median</td><td>Count to the middle value using cumulative frequency</td></tr>
+  </table>
+
+  <h5>Lab 2 — the frequency-table calculator</h5>
+  <p>Switch between discrete values and grouped classes. The table builds $f\times x$ and the running total for you, and the panel names the mode or the modal class.</p>
+  <div data-lab="freqmeanlab"></div>
+
+  <div class="ig-warn"><span class="ig-i">!</span><div>Dividing by the number of <em>classes</em> instead of $\Sigma f$ is a frequent error. You always divide by the number of <b>items</b>.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">5</span> Quartiles and the interquartile range</h4>
+  <table class="ig-table">
+    <tr><th>Value</th><th>Meaning</th><th>How to find it from an ordered list</th></tr>
+    <tr><td><b>$Q_1$</b></td><td>A quarter of the way through</td><td>The median of the lower half</td></tr>
+    <tr><td><b>$Q_2$</b></td><td>Halfway</td><td>The middle value</td></tr>
+    <tr><td><b>$Q_3$</b></td><td>Three quarters of the way through</td><td>The median of the upper half</td></tr>
+    <tr><td><b>IQR</b></td><td>Spread of the middle half</td><td>$Q_3-Q_1$</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Why the IQR beats the range.</b> The range uses only the two most extreme values, so a single outlier can double it. The IQR describes the middle $50\%$ and ignores the extremes.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div>With an <b>odd</b> number of values, leave the median itself out of both halves before finding the quartiles.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">6</span> Comparing two datasets <span class="ig-try">Interactive</span></h4>
+  <div class="ig-formula">compare ONE average <b>and</b> ONE measure of spread — and say what each means in context</div>
+  <p>Two medians on their own is half an answer. The spread is what tells you whether the data is consistent, and the marks come from saying so in the language of the question.</p>
+
+  <h5>Lab 3 — box plots side by side</h5>
+  <p>Enter the five-number summary of each dataset. The lab draws both box plots on one axis and writes the comparison sentence you should be aiming for.</p>
+  <div data-lab="boxlab"></div>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>The four measures from a list</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Find the mean, median, mode and range of $4,\ 7,\ 3,\ 7,\ 9,\ 2,\ 7,\ 5$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Order first:</b> $2,\ 3,\ 4,\ 5,\ 7,\ 7,\ 7,\ 9$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Mean:</b> total $=44$ and there are $8$ values, so $44\div8=5.5$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Median:</b> $n=8$, so position $\frac{8+1}{2}=4.5$ — average the 4th and 5th: $\frac{5+7}{2}=6$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>Mode:</b> $7$ appears three times. <b>Range:</b> $9-2=7$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Mean $5.5$ · median $6$ · mode $7$ · range $7$</div>
+    </div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Working backwards from a mean</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The mean of six numbers is $14$. Five of them are $10$, $12$, $15$, $17$ and $11$. Find the sixth.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Turn the mean back into a total: total $=$ mean $\times$ how many $=14\times6=84$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Add the five known values: $10+12+15+17+11=65$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>The missing number is the difference: $84-65=19$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $19$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>The key move.</b> Whenever a question gives you a mean, immediately write down the <b>total</b>. Almost every "find the missing value" question turns on that one step.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Averages from a frequency table</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Goals scored in $25$ matches: $0$ goals in $7$ matches, $1$ in $9$, $2$ in $5$, $3$ in $3$, $4$ in $1$. Find the mean, median and mode.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>$\Sigma f=7+9+5+3+1=25$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$\Sigma fx=(0\times7)+(1\times9)+(2\times5)+(3\times3)+(4\times1)=32$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Mean:</b> $32\div25=1.28$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>Median:</b> position $\frac{25+1}{2}=13$. The cumulative frequencies are $7$, $16$, … so the 13th value is in the group $x=1$.</p></div></div>
+      <div class="step"><span class="step-num">5</span><div class="step-content"><p><b>Mode:</b> the largest frequency is $9$, at $x=1$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Mean $1.28$ · median $1$ · mode $1$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>A mean of $1.28$ goals is perfectly fine even though you cannot score $0.28$ of a goal — a mean need not be a possible data value.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Estimated mean from grouped data</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The masses of $40$ parcels: $0<m\le5$ ($3$), $5<m\le10$ ($8$), $10<m\le15$ ($14$), $15<m\le20$ ($10$), $20<m\le25$ ($5$). Estimate the mean and state the modal class.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Midpoints: $2.5,\ 7.5,\ 12.5,\ 17.5,\ 22.5$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>$f\times x$: $7.5,\ 60,\ 175,\ 175,\ 112.5$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Totals: $\Sigma f=40$ and $\Sigma fx=530$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p>Estimated mean $=530\div40=13.25$ kg. The largest frequency is $14$, in $10<m\le15$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Estimated mean $13.25$ kg · modal class $10<m\le15$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Dividing by $5$ (the number of classes) instead of $40$ (the number of parcels) is a frequent error. You always divide by $\Sigma f$.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Quartiles from an even-sized list</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Find the median, quartiles and IQR of $5,\ 7,\ 8,\ 10,\ 11,\ 13,\ 14,\ 16,\ 17,\ 19,\ 22,\ 25$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Already ordered, $n=12$. <b>Median:</b> average the 6th and 7th: $\frac{13+14}{2}=13.5$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Lower half</b> $5,7,8,10,11,13$ — its median is $\frac{8+10}{2}=9$, so $Q_1=9$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Upper half</b> $14,16,17,19,22,25$ — its median is $\frac{17+19}{2}=18$, so $Q_3=18$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>IQR:</b> $18-9=9$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $Q_1=9$ · median $=13.5$ · $Q_3=18$ · IQR $=9$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>With an even $n$ the list splits cleanly in two. With an odd $n$, leave the median out of both halves. Paste this list into <b>Lab 1</b> to check.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>Combining two means</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>In a class of $30$, the $18$ girls have a mean height of $155$ cm and the $12$ boys a mean of $162$ cm. Find the mean height of the whole class.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Convert each mean into a total: girls $18\times155=2790$ cm; boys $12\times162=1944$ cm.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Add the totals: $2790+1944=4734$ cm.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Divide by the total number of students: $4734\div30=157.8$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $157.8$ cm</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Averaging the two means — $\frac{155+162}{2}=158.5$ — is wrong, because there are more girls than boys. Always go back to totals.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>Comparing two datasets properly</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Two machines fill bottles. Machine P has median $52$ ml and IQR $5$ ml; Machine Q has median $52$ ml and IQR $2$ ml. Compare them, and say which you would choose.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Average:</b> the medians are equal at $52$ ml, so on average the two machines fill to the same volume.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Spread:</b> Machine Q has the smaller IQR ($2$ ml against $5$ ml).</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>In context:</b> a smaller spread means the volumes are closer together, so Q is more consistent.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Both machines have the same median volume of $52$ ml, but Machine Q is more consistent because its interquartile range is smaller — so choose Machine Q.</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>Enter these two summaries into <b>Lab 3</b> and compare its sentence with yours.</div></div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Not ordering the list</b> before finding the median or the quartiles.</li>
+    <li><b>Giving the frequency instead of the value</b> when asked for the mode.</li>
+    <li><b>Dividing by the number of classes</b> instead of by $\Sigma f$.</li>
+    <li><b>Forgetting the word "estimate"</b> for a mean from grouped data — it often carries its own mark.</li>
+    <li><b>Averaging two means</b> when the groups are different sizes. Go back to totals.</li>
+    <li><b>Comparing only the averages.</b> One average <em>and</em> one measure of spread, both in context.</li>
+    <li><b>Quoting a bare number as a comparison.</b> "Class B has the higher median" needs the "so…" that follows.</li>
+    <li><b>Trusting the range</b> when there is an outlier — use the IQR instead.</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning.</p>
+  <div class="gl-q" data-answer="6" data-accept="6 " data-why="Ordered: 2, 3, 4, 5, 7, 7, 7, 9. With n = 8 the median is at position 4.5, so average the 4th and 5th values: (5 + 7) ÷ 2 = 6.">
+    <p>1. Find the median of $4,\ 7,\ 3,\ 7,\ 9,\ 2,\ 7,\ 5$.</p>
+  </div>
+  <div class="gl-q" data-answer="19" data-accept="19 " data-why="Total = mean × how many = 14 × 6 = 84. The five known values total 65, so the sixth is 84 − 65 = 19.">
+    <p>2. The mean of six numbers is $14$. Five of them are $10$, $12$, $15$, $17$ and $11$. Find the sixth.</p>
+  </div>
+  <div class="gl-q" data-answer="1.28" data-accept="1.28 goals" data-why="Σf = 25 and Σfx = (0×7) + (1×9) + (2×5) + (3×3) + (4×1) = 32, so the mean is 32 ÷ 25 = 1.28.">
+    <p>3. Goals in $25$ matches: $0$ in $7$, $1$ in $9$, $2$ in $5$, $3$ in $3$, $4$ in $1$. Find the mean.</p>
+  </div>
+  <div class="gl-q" data-answer="13.25" data-accept="13.25 kg" data-why="Midpoints 2.5, 7.5, 12.5, 17.5, 22.5 give f × x of 7.5, 60, 175, 175, 112.5. Σfx = 530 and Σf = 40, so the estimated mean is 530 ÷ 40 = 13.25 kg.">
+    <p>4. Masses of $40$ parcels: $0<m\le5$ ($3$), $5<m\le10$ ($8$), $10<m\le15$ ($14$), $15<m\le20$ ($10$), $20<m\le25$ ($5$). Calculate an estimate of the mean, in kg.</p>
+  </div>
+  <div class="gl-q" data-answer="10 < m ≤ 15" data-accept="10<m≤15|10 to 15|10-15" data-why="The modal class is simply the class with the highest frequency, which is 14 in 10 < m ≤ 15.">
+    <p>5. For that same table, write down the modal class.</p>
+  </div>
+  <div class="gl-q" data-answer="9" data-accept="9 " data-why="With n = 12 the lower half is 5, 7, 8, 10, 11, 13 → Q₁ = (8 + 10) ÷ 2 = 9, and the upper half is 14, 16, 17, 19, 22, 25 → Q₃ = (17 + 19) ÷ 2 = 18. IQR = 18 − 9 = 9.">
+    <p>6. Find the interquartile range of $5,\ 7,\ 8,\ 10,\ 11,\ 13,\ 14,\ 16,\ 17,\ 19,\ 22,\ 25$.</p>
+  </div>
+  <div class="gl-q" data-answer="157.8" data-accept="157.8 cm" data-why="Girls total 18 × 155 = 2790 cm and boys 12 × 162 = 1944 cm. Together 4734 ÷ 30 = 157.8 cm. Averaging the two means would give 158.5, which is wrong because the groups differ in size.">
+    <p>7. $18$ girls have a mean height of $155$ cm and $12$ boys a mean of $162$ cm. Find the mean height of all $30$ students, in cm.</p>
+  </div>
+  <div class="gl-q" data-answer="16" data-accept="16 " data-why="IQR = Q₃ − Q₁ = 50 − 34 = 16. Class B's IQR is smaller than Class A's 24, so Class B's marks are more consistent — and that comparison is what earns the second mark.">
+    <p>8. Class B has $Q_1=34$ and $Q_3=50$. Find its interquartile range.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-averages";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=12";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

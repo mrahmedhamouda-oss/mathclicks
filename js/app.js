@@ -34,6 +34,9 @@ const DOMAIN_ICONS = {
   "Bearings & Scale": "🧭",
   "Transformations": "🔄",
   "Vectors": "➡️",
+  "Data Handling": "📊",
+  "Averages & Spread": "🎯",
+  "Sets": "🧩",
 };
 const MODULE_ICON = "📘";
 

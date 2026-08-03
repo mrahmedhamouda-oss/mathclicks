@@ -1,0 +1,298 @@
+<div class="ig-lesson" id="iglab-data-representation">
+<style>
+.ig-lesson{--ig-accent:var(--dc,#5F3DC4)}
+.ig-lesson .ig-intro{color:var(--muted);font-size:.98rem;margin:0 0 1.2rem;max-width:62ch}
+.ig-lesson .ig-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px;box-shadow:var(--shadow);overflow-x:auto}
+.ig-lesson .ig-card>h4{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.ig-lesson .ig-card>h4 .ig-num{background:var(--ig-accent);color:#fff;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:.9rem;flex:none}
+.ig-lesson .ig-card>h5{margin:18px 0 6px;font-family:var(--font-head);font-weight:700;font-size:.98rem;color:var(--ig-accent)}
+.ig-lesson p{margin:0 0 12px;color:var(--ink);line-height:1.7}
+.ig-lesson b{color:var(--navy)}
+.ig-lesson .ig-formula{background:var(--dc-soft,#f3f0ff);border-left:4px solid var(--ig-accent);padding:12px 16px;border-radius:8px;margin:14px 0;overflow-x:auto;color:var(--ink)}
+.ig-lesson .ig-eg{background:var(--card);border:1px dashed var(--ig-accent);border-radius:10px;padding:14px 18px;margin:14px 0}
+.ig-lesson .ig-eg .ig-lbl{font-weight:700;color:var(--ig-accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.ig-lesson .ig-tip{display:flex;gap:10px;align-items:flex-start;background:var(--dc-soft,#f3f0ff);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-tip .ig-i{flex:none;font-weight:800;color:var(--ig-accent)}
+.ig-lesson .ig-warn{display:flex;gap:10px;align-items:flex-start;background:var(--gold-soft,#fef2e0);border-left:4px solid var(--gold,#f5a623);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:.95rem;color:var(--ink)}
+.ig-lesson .ig-warn .ig-i{flex:none;font-weight:800;color:var(--gold-deep,#8a5d00)}
+.ig-lesson .ig-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.ig-lesson .ig-two{grid-template-columns:1fr}}
+.ig-lesson .ig-mini{background:var(--chip-bg);border-radius:10px;padding:12px 16px;color:var(--ink)}
+.ig-lesson .ig-mini b{color:var(--navy)}
+.ig-lesson .ig-list{margin:8px 0;padding-left:20px;color:var(--ink)}
+.ig-lesson .ig-list li{margin:6px 0;line-height:1.6}
+.ig-lesson table.ig-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.95rem}
+.ig-lesson table.ig-table th,.ig-lesson table.ig-table td{border:1px solid var(--line);padding:7px 11px;text-align:center;color:var(--ink)}
+.ig-lesson table.ig-table th{background:var(--chip-bg);color:var(--navy)}
+.ig-lesson .ig-try{font-size:.72rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--ig-accent);border-radius:999px;padding:2px 10px;margin-left:auto}
+.ig-lesson .ig-obj{list-style:none;padding:0;margin:0}
+.ig-lesson .ig-obj li{position:relative;padding-left:24px;margin:8px 0;color:var(--ink);line-height:1.6}
+.ig-lesson .ig-obj li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ig-accent);font-weight:900}
+</style>
+<p class="ig-intro">Three graphs carry almost all the marks in this topic: the scatter diagram, the histogram and the cumulative frequency curve. Each has one idea that examiners test again and again — correlation is not cause, frequency is <em>area</em>, and the curve tells you "how many are less than or equal to". Drive all three below.</p>
+
+<div class="ig-card">
+  <h4><span class="ig-num">◎</span> What you will be able to do</h4>
+  <ul class="ig-obj">
+    <li>Describe correlation with strength, direction and meaning in context.</li>
+    <li>Draw and use a line of best fit, and know when an estimate is unreliable.</li>
+    <li>Build a histogram using frequency density when class widths are unequal.</li>
+    <li>Read a frequency — and part of a class — back off a histogram.</li>
+    <li>Draw a cumulative frequency curve against the upper class boundary.</li>
+    <li>Estimate the median, the quartiles, the IQR and any percentile from the curve.</li>
+    <li>Turn those five numbers into a box-and-whisker diagram.</li>
+  </ul>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">1</span> Scatter diagrams and correlation <span class="ig-try">Interactive</span></h4>
+  <p>A scatter diagram plots two variables against each other for the same individuals, to see whether they are related.</p>
+  <table class="ig-table">
+    <tr><th>Correlation</th><th>What the points do</th><th>How to describe it</th></tr>
+    <tr><td><b>Strong positive</b></td><td>Close to a line sloping up</td><td>"As $x$ increases, $y$ increases"</td></tr>
+    <tr><td><b>Weak positive</b></td><td>Loosely sloping up</td><td>Same, but the link is less clear</td></tr>
+    <tr><td><b>Strong negative</b></td><td>Close to a line sloping down</td><td>"As $x$ increases, $y$ decreases"</td></tr>
+    <tr><td><b>No correlation</b></td><td>No pattern at all</td><td>"There is no relationship between $x$ and $y$"</td></tr>
+  </table>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>A full-mark description</b> gives <b>strength</b> and <b>direction</b> and says what it means <b>in context</b>: "Strong positive correlation — students who revised for longer tended to score higher marks."</div></div>
+
+  <h5>The line of best fit</h5>
+  <ul class="ig-list">
+    <li>One straight line, drawn with a ruler, following the trend of the points.</li>
+    <li>Roughly the same number of points above it as below it.</li>
+    <li>It does not have to pass through the origin, but it should pass through the <b>mean point</b>.</li>
+    <li>Never join the points dot to dot, and never draw a curve.</li>
+  </ul>
+  <table class="ig-table">
+    <tr><th>Term</th><th>Meaning</th><th>Reliability</th></tr>
+    <tr><td><b>Interpolation</b></td><td>Estimating <em>inside</em> the range of the data</td><td>Reliable</td></tr>
+    <tr><td><b>Extrapolation</b></td><td>Estimating <em>outside</em> the range of the data</td><td>Unreliable — the pattern may not continue</td></tr>
+  </table>
+
+  <h5>Lab 1 — scatter, correlation and the line</h5>
+  <p>Pick a dataset and slide the reading line. The lab describes the correlation, draws the line of best fit through the mean point, and warns you the moment your estimate becomes extrapolation.</p>
+  <div data-lab="scatterlab"></div>
+
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Correlation is not cause.</b> Ice cream sales and sunburn cases correlate strongly, but ice cream does not cause sunburn — hot weather causes both. If a question asks whether one thing causes the other, the answer is almost always "not necessarily".</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">2</span> Histograms <span class="ig-try">Interactive</span></h4>
+  <p>In a histogram it is the <b>area</b> of a bar, not its height, that represents the frequency. So when class widths are unequal, the height must be the <b>frequency density</b>.</p>
+  <div class="ig-formula">frequency density $=\dfrac{\text{frequency}}{\text{class width}}$ &nbsp;·&nbsp; frequency $=$ frequency density $\times$ class width</div>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Three rules for drawing one.</b> Bars <b>touch</b> (the data is continuous) · the vertical axis is labelled <b>frequency density</b> · each bar spans exactly its class, from lower bound to upper bound.</div></div>
+
+  <h5>Lab 2 — the histogram builder</h5>
+  <p>Change any frequency and watch the densities and the bar heights follow. The last box estimates how many values lie in part of a class, by assuming they are spread evenly across it.</p>
+  <div data-lab="histlab"></div>
+
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>The classic error</b> is plotting frequency instead of frequency density. With unequal widths that makes the wide classes look far more common than they are — and scores zero. Note too that the <b>modal class</b> is the one with the greatest frequency <em>density</em>, which need not be the one with the largest frequency.</div></div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">3</span> Cumulative frequency curves <span class="ig-try">Interactive</span></h4>
+  <p>Cumulative frequency is a running total: how many values are less than or equal to each upper class boundary.</p>
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Where to plot.</b> Always plot the cumulative frequency against the <b>upper class boundary</b>, never the midpoint — then join the points with a smooth curve, starting from the point where the cumulative frequency is $0$.</div></div>
+
+  <h5>Reading the curve</h5>
+  <table class="ig-table">
+    <tr><th>You want</th><th>Read across from</th><th>For $n=100$</th></tr>
+    <tr><td>Lower quartile $Q_1$</td><td>$\frac{n}{4}$</td><td>$25$</td></tr>
+    <tr><td>Median $Q_2$</td><td>$\frac{n}{2}$</td><td>$50$</td></tr>
+    <tr><td>Upper quartile $Q_3$</td><td>$\frac{3n}{4}$</td><td>$75$</td></tr>
+    <tr><td>Interquartile range</td><td>$Q_3-Q_1$</td><td>—</td></tr>
+    <tr><td>The $k$-th percentile</td><td>$\frac{kn}{100}$</td><td>90th → $90$</td></tr>
+  </table>
+
+  <h5>Lab 3 — the cumulative frequency curve</h5>
+  <p>Edit the frequencies and the curve, the quartile reading lines and the percentile all update. This is the same data as the worked examples below.</p>
+  <div data-lab="cumfreqlab"></div>
+
+  <div class="ig-tip"><span class="ig-i">✎</span><div><b>Working backwards.</b> To find <em>how many</em> scored more than $45$, read <b>up</b> from $45$ to the curve and across to the cumulative frequency (about $71$), then subtract from the total: $100-71=29$ students.</div></div>
+  <div class="ig-warn"><span class="ig-i">!</span><div><b>Show your reading lines.</b> Examiners award a method mark for a correct line even when the value read off is slightly out — answers are usually accepted within half a square.</div></div>
+
+  <h5>From the curve to a box plot</h5>
+  <p>The five numbers a box-and-whisker diagram needs come straight off the curve: the lowest value, $Q_1$, the median, $Q_3$ and the highest value. Median left of centre with a long right tail means positive skew; median right of centre with a long left tail means negative skew.</p>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">✍️ Worked examples</h3>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 1</span><h6>Describing correlation</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A scatter diagram plots the age of a car against its value. The points slope downwards in a tight band. Describe the correlation and explain what it means.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Direction:</b> the points slope downwards, so the correlation is negative.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Strength:</b> the points lie in a tight band, so it is strong.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Context:</b> say what it means for cars, not for "$x$ and $y$".</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Strong negative correlation — as the age of a car increases, its value decreases.</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>"Negative correlation" alone often scores only one of the two marks. The interpretation in context is usually worth the second.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 2</span><h6>Using a line of best fit</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A scatter diagram shows hours of revision against test score for ten students, for revision times from $1$ to $10$ hours. Estimate the score of a student who revised for $6$ hours, and comment on estimating the score for $20$ hours.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Draw a vertical line up from $h=6$ to the line of best fit.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Draw a horizontal line across to the vertical axis and read the value — about $62$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>$20$ hours is far outside the data, which only reaches $10$ hours.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> About $62\%$. The estimate for $20$ hours would be <b>extrapolation</b> and is unreliable — the relationship may not continue, and a score cannot exceed $100\%$ anyway.</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>Set <b>Lab 1</b> to $6$ and then drag past $10$ to watch the reading turn from interpolation into extrapolation.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 3</span><h6>Completing a histogram</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The classes $0<t\le10$, $10<t\le20$, $20<t\le40$, $40<t\le70$, $70<t\le100$ have frequencies $15$, $25$, $30$, $18$, $12$. Find the frequency density of each class.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>Class widths: $10,\ 10,\ 20,\ 30,\ 30$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Divide each frequency by its width: $15\div10$, $25\div10$, $30\div20$, $18\div30$, $12\div30$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> $1.5$, $2.5$, $1.5$, $0.6$ and $0.4$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div>$20<t\le40$ has the largest frequency ($30$) but not the tallest bar, because it is twice as wide. The modal class is $10<t\le20$ — the greatest frequency density.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 4</span><h6>Reading a frequency back off a histogram</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A bar covers $40<t\le70$ and has height $0.6$. Find the frequency of that class, and estimate how many values lie between $40$ and $50$.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Frequency is the area:</b> $0.6\times(70-40)=0.6\times30=18$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Part of a class:</b> assume the values are spread evenly, so use the same height over the narrower width: $0.6\times10=6$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Frequency $18$; about $6$ values lie between $40$ and $50$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>Reading the height $0.6$ as the frequency is the most common error in the topic — the frequency is the <b>area</b>.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 5</span><h6>Median and quartiles from a curve</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>A cumulative frequency curve shows the marks of $100$ students. Estimate the median, the quartiles and the interquartile range.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>Median:</b> read across from $100\div2=50$ → about $36$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>Lower quartile:</b> read across from $100\div4=25$ → about $26$.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p><b>Upper quartile:</b> read across from $3\times100\div4=75$ → about $47$.</p></div></div>
+      <div class="step"><span class="step-num">4</span><div class="step-content"><p><b>IQR:</b> $47-26=21$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Median $\approx36$ · $Q_1\approx26$ · $Q_3\approx47$ · IQR $\approx21$</div>
+    </div>
+    <div class="ig-tip"><span class="ig-i">✎</span><div><b>Different from a list.</b> With raw data the median is at position $\frac{n+1}{2}$; on a curve you read across from $\frac{n}{2}$, because the curve is a continuous model. <b>Lab 3</b> holds exactly this data.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 6</span><h6>A percentile, and reading backwards</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>Using the same curve, estimate the 90th percentile and find how many students scored more than $45$ marks.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p><b>90th percentile:</b> read across from $\frac{90}{100}\times100=90$ → about $57$ marks, so $90\%$ scored $57$ or less.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p><b>More than 45:</b> read <b>up</b> from $45$ to the curve, then across → about $71$ students scored $45$ or less.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>Subtract from the total: $100-71=29$.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> 90th percentile $\approx57$ marks · about $29$ students scored more than $45$</div>
+    </div>
+    <div class="ig-warn"><span class="ig-i">!</span><div>The curve always answers "how many are <b>less than or equal to</b>". For "more than", subtract from the total.</div></div>
+  </div>
+</div>
+
+<div class="example-card">
+  <div class="example-header">
+    <span class="ex-label"><span class="ex-badge">Example 7</span><h6>Building a box plot from a curve</h6></span>
+    <span class="toggle-icon">⌄</span>
+  </div>
+  <div class="example-body">
+    <p>The $100$ marks range from $0$ to $70$, with $Q_1\approx26$, median $\approx36$ and $Q_3\approx47$. Describe the box-and-whisker diagram and comment on the shape.</p>
+    <div class="reveal-seq">
+      <div class="step"><span class="step-num">1</span><div class="step-content"><p>The five values are the minimum, $Q_1$, the median, $Q_3$ and the maximum: $0,\ 26,\ 36,\ 47,\ 70$.</p></div></div>
+      <div class="step"><span class="step-num">2</span><div class="step-content"><p>Draw the box from $Q_1$ to $Q_3$ with a line at the median, then whiskers out to the extremes.</p></div></div>
+      <div class="step"><span class="step-num">3</span><div class="step-content"><p>The median sits slightly left of the centre of the box ($10$ above $Q_1$, $11$ below $Q_3$), so the middle half is close to symmetrical.</p></div></div>
+      <div class="solution-display"><strong>Answer.</strong> Box from $26$ to $47$ with the median at $36$, whiskers to $0$ and $70$ — roughly symmetrical through the middle half, with marks spread over the full range.</div>
+    </div>
+  </div>
+</div>
+
+<div class="ig-card">
+  <h4><span class="ig-num">!</span> Common mistakes to avoid</h4>
+  <ul class="ig-list">
+    <li><b>Describing correlation without context.</b> Strength, direction <em>and</em> what it means.</li>
+    <li><b>Claiming cause from correlation.</b> A third factor may be driving both variables.</li>
+    <li><b>Extrapolating without saying so.</b> Outside the data, the estimate is unreliable — say it.</li>
+    <li><b>Plotting frequency instead of frequency density</b> when the class widths differ.</li>
+    <li><b>Reading a bar's height as the frequency.</b> Frequency is height × width, i.e. the area.</li>
+    <li><b>Plotting cumulative frequency against the midpoint.</b> It goes against the <b>upper</b> boundary.</li>
+    <li><b>Using $\frac{n+1}{2}$ on a curve.</b> Read across from $\frac{n}{2}$; the $+1$ belongs to raw lists.</li>
+    <li><b>Forgetting to subtract</b> when a question asks "how many scored more than…".</li>
+  </ul>
+</div>
+
+<h3 class="section-title" style="margin-top:1.6rem">🎯 Quick self-check</h3>
+<div class="ig-card" data-lab="quiz">
+  <p class="ig-intro" style="margin:0 0 14px">Work each one out, type your answer, then press <b>Check</b>. Nothing is multiple choice — if you get stuck, <b>Show answer</b> gives the full reasoning.</p>
+  <div class="gl-q" data-answer="0.6" data-accept="0.6 " data-why="Frequency density = frequency ÷ class width = 18 ÷ (70 − 40) = 18 ÷ 30 = 0.6.">
+    <p>1. A class $40<t\le70$ has frequency $18$. Find its frequency density.</p>
+  </div>
+  <div class="gl-q" data-answer="18" data-accept="18 values" data-why="Frequency is the AREA of the bar: 0.6 × (70 − 40) = 0.6 × 30 = 18. Reading the height as the frequency is the classic error.">
+    <p>2. On a histogram a bar covers $40<t\le70$ with height $0.6$. Find the frequency of that class.</p>
+  </div>
+  <div class="gl-q" data-answer="6" data-accept="about 6|6 values" data-why="Assume the values are spread evenly, so use the same density over the narrower width: 0.6 × (50 − 40) = 6.">
+    <p>3. For that same bar, estimate how many values lie between $40$ and $50$.</p>
+  </div>
+  <div class="gl-q" data-answer="10 < t ≤ 20" data-accept="10<t≤20|10 to 20|10-20|2.5" data-why="The modal class is the one with the greatest frequency DENSITY. The densities are 1.5, 2.5, 1.5, 0.6, 0.4, so the tallest bar — and the modal class — is 10 < t ≤ 20, even though 20 < t ≤ 40 has the largest frequency.">
+    <p>4. The five classes above have frequency densities $1.5$, $2.5$, $1.5$, $0.6$, $0.4$. Write down the modal class.</p>
+  </div>
+  <div class="gl-q" data-answer="50" data-accept="n/2|100/2" data-why="On a cumulative frequency curve the median is read across from n ÷ 2 = 100 ÷ 2 = 50 — not from (n + 1) ÷ 2, which belongs to raw lists.">
+    <p>5. A cumulative frequency curve shows $100$ students. Which cumulative frequency do you read across from to estimate the median?</p>
+  </div>
+  <div class="gl-q" data-answer="21" data-accept="21 marks" data-why="IQR = Q₃ − Q₁ = 47 − 26 = 21.">
+    <p>6. From that curve $Q_1\approx26$ and $Q_3\approx47$. Find the interquartile range.</p>
+  </div>
+  <div class="gl-q" data-answer="29" data-accept="29 students" data-why="The curve gives 'less than or equal to': about 71 students scored 45 or less, so 100 − 71 = 29 scored more than 45.">
+    <p>7. Reading up from $45$ marks gives a cumulative frequency of about $71$, out of $100$ students. How many scored <em>more</em> than $45$?</p>
+  </div>
+  <div class="gl-q" data-answer="90" data-accept="90th|cf 90" data-why="The k-th percentile is read across from kn ÷ 100 = 90 × 100 ÷ 100 = 90.">
+    <p>8. For the same $100$ students, which cumulative frequency do you read across from to estimate the 90th percentile?</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var ROOT = "iglab-data-representation";
+  function go() {
+    var root = document.getElementById(ROOT);
+    if (root && window.GraphLab) window.GraphLab.mount(root);
+  }
+  if (window.GraphLab) { go(); return; }
+  var s = document.getElementById("graphlab-js");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "graphlab-js";
+    s.src = "js/graphlab.js?v=12";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", go);
+})();
+</script>

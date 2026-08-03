@@ -5306,6 +5306,997 @@
     upd();
   };
 
+  /* ---------- a plain x–y chart frame for the statistics labs ---------- */
+
+  function chart(W, H, o) {
+    const padL = o.padL == null ? 46 : o.padL, padR = 16, padT = 16, padB = o.padB == null ? 40 : o.padB;
+    return {
+      o, padL, padR, padT, padB,
+      X: (x) => padL + ((x - o.xmin) / (o.xmax - o.xmin)) * (W - padL - padR),
+      Y: (y) => H - padB - ((y - o.ymin) / (o.ymax - o.ymin)) * (H - padT - padB),
+    };
+  }
+  function drawAxes(c, W, H, P, m) {
+    const o = m.o;
+    c.save();
+    c.strokeStyle = P.grid; c.lineWidth = 1;
+    for (let x = o.xmin; x <= o.xmax + 1e-9; x += o.stepx) {
+      c.beginPath(); c.moveTo(m.X(x), m.Y(o.ymin)); c.lineTo(m.X(x), m.Y(o.ymax)); c.stroke();
+    }
+    for (let y = o.ymin; y <= o.ymax + 1e-9; y += o.stepy) {
+      c.beginPath(); c.moveTo(m.X(o.xmin), m.Y(y)); c.lineTo(m.X(o.xmax), m.Y(y)); c.stroke();
+    }
+    c.strokeStyle = P.axis; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(m.X(o.xmin), m.Y(o.ymin)); c.lineTo(m.X(o.xmax), m.Y(o.ymin)); c.stroke();
+    c.beginPath(); c.moveTo(m.X(o.xmin), m.Y(o.ymin)); c.lineTo(m.X(o.xmin), m.Y(o.ymax)); c.stroke();
+    c.fillStyle = P.text; c.font = "10px Inter, system-ui, sans-serif";
+    c.textAlign = "center"; c.textBaseline = "top";
+    for (let x = o.xmin; x <= o.xmax + 1e-9; x += o.stepx) c.fillText(fmt(x, 2), m.X(x), m.Y(o.ymin) + 5);
+    c.textAlign = "right"; c.textBaseline = "middle";
+    for (let y = o.ymin; y <= o.ymax + 1e-9; y += o.stepy) c.fillText(fmt(y, 2), m.X(o.xmin) - 5, m.Y(y));
+    c.fillStyle = P.strong; c.font = "700 11px Inter, system-ui, sans-serif";
+    if (o.xlab) { c.textAlign = "center"; c.textBaseline = "alphabetic"; c.fillText(o.xlab, (m.X(o.xmin) + m.X(o.xmax)) / 2, H - 8); }
+    if (o.ylab) {
+      c.save(); c.translate(11, (m.Y(o.ymin) + m.Y(o.ymax)) / 2); c.rotate(-Math.PI / 2);
+      c.textAlign = "center"; c.textBaseline = "middle"; c.fillText(o.ylab, 0, 0); c.restore();
+    }
+    c.restore();
+  }
+  // least-squares line, which is what a well-drawn line of best fit approximates
+  function bestFit(pts) {
+    const n = pts.length;
+    const mx = pts.reduce((s, p) => s + p[0], 0) / n, my = pts.reduce((s, p) => s + p[1], 0) / n;
+    let sxy = 0, sxx = 0, syy = 0;
+    pts.forEach((p) => { sxy += (p[0] - mx) * (p[1] - my); sxx += (p[0] - mx) ** 2; syy += (p[1] - my) ** 2; });
+    return { m: sxy / sxx, c: my - (sxy / sxx) * mx, mx, my, r: sxy / Math.sqrt(sxx * syy) };
+  }
+
+  /* 48 · Scatter diagrams, correlation and the line of best fit */
+  build.scatterlab = function (host) {
+    const SETS = [
+      { label: "Revision vs score", xlab: "hours of revision", ylab: "test score (%)",
+        pts: [[1,35],[2,42],[3,44],[4,51],[5,56],[6,62],[7,66],[8,71],[9,78],[10,82]],
+        ctx: "students who revised for longer tended to score higher marks" },
+      { label: "Car age vs value", xlab: "age (years)", ylab: "value ($1000s)",
+        pts: [[1,17],[2,15],[3,13.5],[4,11.5],[5,10],[6,8.5],[7,7],[8,6]],
+        ctx: "older cars are worth less" },
+      { label: "Weak positive", xlab: "hours of sleep", ylab: "test score (%)",
+        pts: [[4,48],[5,72],[6,55],[6,68],[7,60],[7,79],[8,66],[8,58],[9,81],[10,70]],
+        ctx: "students who slept longer tended to score a little higher, but the link is loose" },
+      { label: "No correlation", xlab: "shoe size", ylab: "test score (%)",
+        pts: [[3,62],[4,48],[4,77],[5,55],[6,70],[6,44],[7,80],[8,52],[8,68],[9,59]],
+        ctx: "shoe size tells you nothing about the test score" },
+    ];
+    let set = SETS[0], at = 6;
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(SETS.map((s) => ({ label: s.label, s })), (it) => { set = it.s; reset(); }, 0);
+    const controls = e("div", "gl-controls");
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const fCorr = factHtml("Correlation");
+    const fLine = factHtml("Line of best fit");
+    const fRead = factHtml("Estimate from the line");
+    [fCorr, fLine, fRead].forEach((f) => facts.appendChild(f));
+
+    let atS = null;
+    panel.appendChild(chips.el); panel.appendChild(controls); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const view = () => {
+      const xs = set.pts.map((p) => p[0]), ys = set.pts.map((p) => p[1]);
+      const xmin = 0, xmax = Math.ceil(Math.max.apply(null, xs) * 1.4);
+      const ymax = Math.ceil(Math.max.apply(null, ys) * 1.15 / 10) * 10;
+      return { xmin, xmax, ymin: 0, ymax, stepx: niceStep(xmax), stepy: niceStep(ymax),
+               xlab: set.xlab, ylab: set.ylab };
+    };
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.68, minH: 240, maxH: 330,
+      render(c, W, H, P) {
+        const o = view();
+        const m = chart(W, H, o);
+        drawAxes(c, W, H, P, m);
+        const f = bestFit(set.pts);
+        const strong = Math.abs(f.r) > 0.85;
+        // line of best fit across the data range only
+        const x0 = Math.min.apply(null, set.pts.map((p) => p[0])), x1 = Math.max.apply(null, set.pts.map((p) => p[0]));
+        if (strong || Math.abs(f.r) > 0.4) {
+          strokePath(c, [[m.X(x0), m.Y(f.m * x0 + f.c)], [m.X(x1), m.Y(f.m * x1 + f.c)]], P.c2, 2.4);
+          // the dashed part beyond the data is where extrapolation starts
+          strokePath(c, [[m.X(x1), m.Y(f.m * x1 + f.c)], [m.X(o.xmax), m.Y(f.m * o.xmax + f.c)]], P.c2, 1.6, [6, 4]);
+        }
+        set.pts.forEach((p) => dot(c, m.X(p[0]), m.Y(p[1]), P.c1, P.bg, 4));
+        dot(c, m.X(f.mx), m.Y(f.my), P.c4, P.bg, 5.5);
+        tagOn(c, P, "mean point", m.X(f.mx), m.Y(f.my) - 14, P.c4, "center", 11);
+        // the reading lines
+        const yAt = f.m * at + f.c;
+        if (strong || Math.abs(f.r) > 0.4) {
+          strokePath(c, [[m.X(at), m.Y(o.ymin)], [m.X(at), m.Y(yAt)]], P.c3, 1.8, [5, 4]);
+          strokePath(c, [[m.X(o.xmin), m.Y(yAt)], [m.X(at), m.Y(yAt)]], P.c3, 1.8, [5, 4]);
+          dot(c, m.X(at), m.Y(yAt), P.c3, P.bg, 4.5);
+        }
+      },
+    });
+
+    function reset() {
+      const xs = set.pts.map((p) => p[0]);
+      const lo = Math.min.apply(null, xs), hi = Math.max.apply(null, xs);
+      controls.replaceChildren();
+      at = Math.round((lo + hi) / 2);
+      atS = slider("Read the line at " + set.xlab, lo, Math.round(hi * 1.4), 1, at, (v) => { at = v; upd(); });
+      controls.appendChild(atS.el);
+      upd();
+    }
+    function upd() {
+      sketch.draw();
+      const f = bestFit(set.pts);
+      const xs = set.pts.map((p) => p[0]);
+      const hi = Math.max.apply(null, xs), lo = Math.min.apply(null, xs);
+      const strength = Math.abs(f.r) > 0.85 ? "strong" : Math.abs(f.r) > 0.4 ? "weak" : "no";
+      const dirn = f.r > 0 ? "positive" : "negative";
+      fCorr.setValue(strength === "no" ? "<b>No correlation</b> — the points show no pattern"
+        : "<b>" + strength[0].toUpperCase() + strength.slice(1) + " " + dirn + " correlation</b> — " + set.ctx);
+      if (strength === "no") {
+        fLine.setValue("A line of best fit should not be drawn — there is no trend to follow.");
+        fRead.setValue("—");
+        msg.className = "gl-msg warn";
+        msg.textContent = "With no correlation there is no line and no prediction. Saying \"no correlation\" IS the answer to \"describe the correlation\".";
+        return;
+      }
+      fLine.setValue("gradient " + fmt(f.m, 2) + ", intercept " + fmt(f.c, 1)
+        + " · it passes through the mean point (" + fmt(f.mx, 1) + ", " + fmt(f.my, 1) + ")");
+      const y = f.m * at + f.c;
+      const out = at > hi || at < lo;
+      fRead.setValue("at " + fmt(at, 2) + " " + set.xlab.split(" ")[0] + " → <b>" + fmt(y, 1) + "</b>"
+        + (out ? " &nbsp;— <b>extrapolation</b>" : " &nbsp;— interpolation, reliable"));
+      msg.className = "gl-msg " + (out ? "warn" : "good");
+      msg.textContent = out
+        ? "That reading is outside the data (which runs from " + lo + " to " + hi + "), so it is extrapolation — the trend may not continue, and the estimate is unreliable. Exams award the mark for saying exactly that."
+        : "A full-mark description gives strength AND direction AND the meaning in context. Correlation is still not cause: something else may be driving both variables.";
+    }
+    reset();
+  };
+
+  /* 49 · Histograms — frequency density and area */
+  build.histlab = function (host) {
+    const BOUNDS = [0, 10, 20, 40, 70, 100];
+    const freqs = [15, 25, 30, 18, 12];
+    let from = 20, to = 25;
+
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "Type any frequencies you like — the class widths are unequal, so the bar heights must be the <b>frequency density</b>.");
+    const inputs = e("div", "gl-inputs");
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const tableBox = e("div");
+    const form = e("div", "gl-form");
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const fields = freqs.map((f, i) => {
+      const fd = field(BOUNDS[i] + "–" + BOUNDS[i + 1], String(f), null, upd);
+      inputs.appendChild(fd.el);
+      return fd;
+    });
+    const fromF = field("from", String(from), null, upd);
+    const toF = field("to", String(to), null, upd);
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "Estimate the number in part of a class"));
+    const row = e("div", "gl-form-row");
+    row.appendChild(fromF.el); row.appendChild(toF.el);
+    g.appendChild(row); form.appendChild(g);
+
+    const fTotal = factHtml("Total frequency");
+    const fModal = factHtml("Modal class");
+    const fPart = factHtml("Estimated number in that range");
+    [fTotal, fModal, fPart].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(prompt); panel.appendChild(inputs); panel.appendChild(cvBox);
+    panel.appendChild(tableBox); panel.appendChild(form); panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const vals = () => fields.map((f) => (isFinite(f.get()) && f.get() >= 0 ? f.get() : 0));
+    const dens = () => vals().map((v, i) => v / (BOUNDS[i + 1] - BOUNDS[i]));
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.6, minH: 220, maxH: 320,
+      render(c, W, H, P) {
+        const d = dens();
+        const ymax = Math.max(0.5, Math.ceil(Math.max.apply(null, d) * 1.2 * 2) / 2);
+        const m = chart(W, H, { xmin: 0, xmax: BOUNDS[BOUNDS.length - 1], ymin: 0, ymax,
+          stepx: 10, stepy: niceStep(ymax), xlab: "time (minutes)", ylab: "frequency density" });
+        drawAxes(c, W, H, P, m);
+        d.forEach((h, i) => {
+          const x0 = m.X(BOUNDS[i]), x1 = m.X(BOUNDS[i + 1]), y0 = m.Y(0), y1 = m.Y(h);
+          c.save();
+          c.fillStyle = P.soft; c.fillRect(x0, y1, x1 - x0, y0 - y1);
+          c.strokeStyle = P.c1; c.lineWidth = 2; c.strokeRect(x0, y1, x1 - x0, y0 - y1);
+          c.restore();
+          if (h > 0) tagOn(c, P, fmt(h, 2), (x0 + x1) / 2, y1 - 9, P.c1, "center", 10.5);
+        });
+        // the slice being estimated
+        const a = Math.min(fromF.get(), toF.get()), b = Math.max(fromF.get(), toF.get());
+        if (isFinite(a) && isFinite(b) && b > a) {
+          c.save();
+          c.fillStyle = P.soft3;
+          c.fillRect(m.X(Math.max(a, 0)), m.Y(m.o.ymax), m.X(Math.min(b, BOUNDS[BOUNDS.length - 1])) - m.X(Math.max(a, 0)), m.Y(0) - m.Y(m.o.ymax));
+          c.restore();
+        }
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      const v = vals(), d = dens();
+      const box = e("div", "gl-scroll");
+      const tb = e("table", "gl-table");
+      const head = e("tr");
+      ["Class", "Frequency", "Width", "Frequency density"].forEach((t) => head.appendChild(e("th", null, t)));
+      tb.appendChild(head);
+      v.forEach((f, i) => {
+        const r = e("tr");
+        r.appendChild(e("td", "gl-td-x", BOUNDS[i] + " < t ≤ " + BOUNDS[i + 1]));
+        r.appendChild(e("td", null, fmt(f, 2)));
+        r.appendChild(e("td", null, String(BOUNDS[i + 1] - BOUNDS[i])));
+        r.appendChild(e("td", null, fmt(d[i], 3)));
+        tb.appendChild(r);
+      });
+      box.appendChild(tb);
+      tableBox.replaceChildren(box);
+
+      const total = v.reduce((s, x) => s + x, 0);
+      const best = d.indexOf(Math.max.apply(null, d));
+      fTotal.setValue(fmt(total, 2) + " values");
+      fModal.setValue(BOUNDS[best] + " < t ≤ " + BOUNDS[best + 1]
+        + " — the tallest bar, i.e. the greatest frequency <b>density</b>");
+      const a = Math.min(fromF.get(), toF.get()), b = Math.max(fromF.get(), toF.get());
+      if (!isFinite(a) || !isFinite(b) || b <= a) {
+        fPart.setValue("enter a range");
+      } else {
+        let n = 0, parts = [];
+        d.forEach((h, i) => {
+          const lo = Math.max(a, BOUNDS[i]), hi = Math.min(b, BOUNDS[i + 1]);
+          if (hi > lo) { n += h * (hi - lo); parts.push(fmt(h, 3) + " × " + fmt(hi - lo, 2)); }
+        });
+        fPart.setValue(parts.join(" + ") + " = <b>" + fmt(n, 2) + "</b>, so about " + Math.round(n) + " values");
+      }
+      msg.className = "gl-msg good";
+      msg.textContent = "Frequency is the AREA of a bar, not its height. The widest class here can hold the most values while having one of the shortest bars — which is exactly why plotting frequency instead of density scores zero.";
+    }
+    upd();
+  };
+
+  /* 50 · Cumulative frequency, quartiles and the box plot */
+  build.cumfreqlab = function (host) {
+    const BOUNDS = [0, 10, 20, 30, 40, 50, 60, 70];
+    const start = [4, 10, 18, 28, 22, 12, 6];
+    let pct = 50;
+
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "Cumulative frequency is a running total plotted against the <b>upper</b> class boundary. Slide the percentile to read values off the curve.");
+    const inputs = e("div", "gl-inputs");
+    const controls = e("div", "gl-controls");
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const fields = start.map((f, i) => {
+      const fd = field(BOUNDS[i] + "–" + BOUNDS[i + 1], String(f), null, upd);
+      inputs.appendChild(fd.el);
+      return fd;
+    });
+    const pS = slider("Percentile", 1, 99, 1, pct, (v) => { pct = v; upd(); });
+    controls.appendChild(pS.el);
+
+    const fCF = factHtml("Cumulative frequencies");
+    const fQ = factHtml("Median and quartiles");
+    const fIQR = factHtml("Interquartile range");
+    const fPct = factHtml("Percentile reading");
+    [fCF, fQ, fIQR, fPct].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(prompt); panel.appendChild(inputs); panel.appendChild(controls);
+    panel.appendChild(cvBox); panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const vals = () => fields.map((f) => (isFinite(f.get()) && f.get() >= 0 ? f.get() : 0));
+    function cum() {
+      const v = vals(); const out = [0]; let s = 0;
+      v.forEach((x) => { s += x; out.push(s); });
+      return out;                                     // out[i] is the CF at BOUNDS[i]
+    }
+    // read a value off the curve by linear interpolation, the way a student reads a graph
+    function readAt(cf) {
+      const cu = cum(), n = cu[cu.length - 1];
+      if (n <= 0) return null;
+      for (let i = 1; i < cu.length; i++) {
+        if (cf <= cu[i]) {
+          const span = cu[i] - cu[i - 1];
+          const t = span === 0 ? 0 : (cf - cu[i - 1]) / span;
+          return BOUNDS[i - 1] + t * (BOUNDS[i] - BOUNDS[i - 1]);
+        }
+      }
+      return BOUNDS[BOUNDS.length - 1];
+    }
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.68, minH: 250, maxH: 340,
+      render(c, W, H, P) {
+        const cu = cum(), n = cu[cu.length - 1];
+        const ymax = Math.max(10, Math.ceil(n / 10) * 10);
+        const m = chart(W, H, { xmin: 0, xmax: BOUNDS[BOUNDS.length - 1], ymin: 0, ymax,
+          stepx: 10, stepy: niceStep(ymax), xlab: "mark", ylab: "cumulative frequency" });
+        drawAxes(c, W, H, P, m);
+        const pts = cu.map((v, i) => [m.X(BOUNDS[i]), m.Y(v)]);
+        strokePath(c, pts, P.c1, 2.6);
+        pts.forEach((p) => dot(c, p[0], p[1], P.c1, P.bg, 3.5));
+        // quartile reading lines
+        [[n / 4, "Q₁", P.c3], [n / 2, "median", P.c2], [(3 * n) / 4, "Q₃", P.c5]].forEach(([cf, lab, colr]) => {
+          const x = readAt(cf);
+          if (x == null) return;
+          strokePath(c, [[m.X(0), m.Y(cf)], [m.X(x), m.Y(cf)]], colr, 1.5, [5, 4]);
+          strokePath(c, [[m.X(x), m.Y(cf)], [m.X(x), m.Y(0)]], colr, 1.5, [5, 4]);
+          // label at the reading point itself, so the three do not collide on the axis
+          tagOn(c, P, lab + " " + fmt(x, 1), m.X(x) + 30, m.Y(cf) - 9, colr, "center", 10.5);
+        });
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      const cu = cum(), n = cu[cu.length - 1];
+      fCF.setValue(cu.slice(1).map((v, i) => "≤" + BOUNDS[i + 1] + ": " + fmt(v, 2)).join(" · "));
+      if (n <= 0) { fQ.setValue("enter some frequencies"); return; }
+      const q1 = readAt(n / 4), med = readAt(n / 2), q3 = readAt((3 * n) / 4);
+      fQ.setValue("read across from " + fmt(n / 4, 2) + ", " + fmt(n / 2, 2) + " and " + fmt((3 * n) / 4, 2)
+        + " → Q₁ ≈ <b>" + fmt(q1, 1) + "</b>, median ≈ <b>" + fmt(med, 1) + "</b>, Q₃ ≈ <b>" + fmt(q3, 1) + "</b>");
+      fIQR.setValue("Q₃ − Q₁ = " + fmt(q3, 1) + " − " + fmt(q1, 1) + " = <b>" + fmt(q3 - q1, 1) + "</b>");
+      const cf = (pct / 100) * n, x = readAt(cf);
+      fPct.setValue("the " + pct + "th percentile: read across from " + fmt(cf, 2) + " → <b>" + fmt(x, 1)
+        + "</b>, so " + pct + "% scored " + fmt(x, 1) + " or less &nbsp;·&nbsp; " + fmt(n - cf, 2) + " scored more");
+      msg.className = "gl-msg good";
+      msg.textContent = "On a curve you read across from n ÷ 2, not (n + 1) ÷ 2 — the curve is a continuous model. Draw your reading lines on the paper: a correct line earns the method mark even if the value is slightly out.";
+    }
+    upd();
+  };
+
+  /* 51 · Averages and spread from a list */
+  build.meanlab = function (host) {
+    const panel = e("div", "gl-panel");
+    const form = e("div", "gl-form");
+    const steps = e("div", "gl-steps");
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const listF = document.createElement("input");
+    listF.type = "text";
+    listF.className = "gl-cell ans";
+    listF.value = "3, 5, 6, 8, 11, 12, 14, 15, 18, 20, 25";
+    listF.style.maxWidth = "none";
+    listF.addEventListener("input", upd);
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "Your data — separate the values with commas"));
+    const row = e("div", "gl-form-row");
+    row.appendChild(listF);
+    g.appendChild(row); form.appendChild(g);
+
+    const fMean = factHtml("Mean");
+    const fMed = factHtml("Median");
+    const fMode = factHtml("Mode");
+    const fSpread = factHtml("Range and IQR");
+    [fMean, fMed, fMode, fSpread].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(form); panel.appendChild(steps); panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    function step(k, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", k));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    const medOf = (a) => {
+      const k = a.length;
+      return k === 0 ? null : k % 2 ? a[(k - 1) / 2] : (a[k / 2 - 1] + a[k / 2]) / 2;
+    };
+    function upd() {
+      const nums = listF.value.split(/[,\s]+/).map((s) => parseFloat(s.replace(/−/g, "-")))
+        .filter((x) => isFinite(x));
+      steps.replaceChildren();
+      if (nums.length < 2) {
+        msg.className = "gl-msg warn";
+        msg.textContent = "Type at least two numbers, separated by commas.";
+        return;
+      }
+      const a = nums.slice().sort((p, q) => p - q);
+      const n = a.length, sum = a.reduce((s, x) => s + x, 0);
+      steps.appendChild(step("1", "Put the values in order first",
+        a.join(", ") + " &nbsp;(n = " + n + ")"));
+      steps.appendChild(step("2", "Mean = total ÷ how many",
+        fmt(sum, 3) + " ÷ " + n + " = <b>" + fmt(sum / n, 3) + "</b>"));
+      const pos = (n + 1) / 2;
+      steps.appendChild(step("3", "Median sits at position (n + 1) ÷ 2",
+        "(" + n + " + 1) ÷ 2 = " + fmt(pos, 1) + (Number.isInteger(pos)
+          ? ", so the " + pos + "th value" : ", so the mean of the " + Math.floor(pos) + "th and " + Math.ceil(pos) + "th values")
+        + " → <b>" + fmt(medOf(a), 3) + "</b>"));
+      const half = Math.floor(n / 2);
+      const lower = a.slice(0, half), upper = a.slice(n % 2 ? half + 1 : half);
+      const q1 = medOf(lower), q3 = medOf(upper);
+      steps.appendChild(step("4", "Quartiles are the medians of the two halves",
+        "lower half " + lower.join(", ") + " → Q₁ = <b>" + fmt(q1, 3) + "</b><br>"
+        + "upper half " + upper.join(", ") + " → Q₃ = <b>" + fmt(q3, 3) + "</b>"
+        + (n % 2 ? "<br>(with an odd n the median itself is left out of both halves)" : "")));
+      const counts = {};
+      a.forEach((x) => { counts[x] = (counts[x] || 0) + 1; });
+      const top = Math.max.apply(null, Object.values(counts));
+      const modes = Object.keys(counts).filter((k) => counts[k] === top).map(Number);
+      fMean.setValue(fmt(sum / n, 3));
+      fMed.setValue(fmt(medOf(a), 3));
+      fMode.setValue(top === 1 ? "no mode — every value appears once"
+        : modes.join(", ") + " (appearing " + top + " times)");
+      fSpread.setValue("range = " + fmt(a[n - 1], 3) + " − " + fmt(a[0], 3) + " = <b>" + fmt(a[n - 1] - a[0], 3)
+        + "</b> · IQR = " + fmt(q3, 3) + " − " + fmt(q1, 3) + " = <b>" + fmt(q3 - q1, 3) + "</b>");
+      msg.className = "gl-msg good";
+      msg.textContent = "Add one huge value to the list and watch: the mean and the range jump, the median and the IQR barely move. That is exactly why the median and IQR are used when there are outliers.";
+    }
+    upd();
+  };
+
+  /* 52 · Mean from a frequency table — discrete values or grouped classes */
+  build.freqmeanlab = function (host) {
+    const MODES = [
+      { key: "discrete", label: "Discrete values" },
+      { key: "grouped", label: "Grouped classes" },
+    ];
+    let mode = "discrete";
+    const XS = [0, 1, 2, 3, 4];
+    const DF = [5, 8, 4, 2, 1];
+    const CB = [0, 10, 20, 30, 40, 50];
+    const GF = [4, 9, 12, 7, 3];
+
+    const panel = e("div", "gl-panel");
+    const chips = chipRow(MODES, (it) => { mode = it.key; layout(); }, 0);
+    const inputs = e("div", "gl-inputs");
+    const tableBox = e("div");
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const dFields = DF.map((f, i) => field("x = " + XS[i], String(f), null, upd));
+    const gFields = GF.map((f, i) => field(CB[i] + "–" + CB[i + 1], String(f), null, upd));
+
+    const fSum = factHtml("Σf and Σfx");
+    const fMean = factHtml("Mean");
+    const fMed = factHtml("Median");
+    const fMode = factHtml("Mode / modal class");
+    [fSum, fMean, fMed, fMode].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(chips.el); panel.appendChild(inputs); panel.appendChild(tableBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    function layout() {
+      inputs.replaceChildren.apply(inputs, (mode === "discrete" ? dFields : gFields).map((f) => f.el));
+      upd();
+    }
+    function upd() {
+      const grouped = mode === "grouped";
+      const fs = (grouped ? gFields : dFields).map((f) => (isFinite(f.get()) && f.get() >= 0 ? f.get() : 0));
+      const xs = grouped ? CB.slice(0, -1).map((b, i) => (b + CB[i + 1]) / 2) : XS;
+      const labels = grouped ? CB.slice(0, -1).map((b, i) => b + " < t ≤ " + CB[i + 1]) : XS.map(String);
+
+      const box = e("div", "gl-scroll");
+      const tb = e("table", "gl-table");
+      const head = e("tr");
+      [grouped ? "Class" : "Value x", "Frequency f", grouped ? "Midpoint x" : "f × x", grouped ? "f × x" : "Cumulative f"]
+        .forEach((t) => head.appendChild(e("th", null, t)));
+      if (grouped) head.appendChild(e("th", null, "Cumulative f"));
+      tb.appendChild(head);
+      let sf = 0, sfx = 0;
+      const cums = [];
+      fs.forEach((f, i) => {
+        sf += f; sfx += f * xs[i]; cums.push(sf);
+        const r = e("tr");
+        r.appendChild(e("td", "gl-td-x", labels[i]));
+        r.appendChild(e("td", null, fmt(f, 2)));
+        if (grouped) r.appendChild(e("td", null, fmt(xs[i], 2)));
+        r.appendChild(e("td", null, fmt(f * xs[i], 2)));
+        r.appendChild(e("td", null, fmt(sf, 2)));
+        tb.appendChild(r);
+      });
+      const tot = e("tr");
+      tot.appendChild(e("td", "gl-td-x", "Total"));
+      tot.appendChild(e("td", "gl-td-ok", fmt(sf, 2)));
+      if (grouped) tot.appendChild(e("td", null, ""));
+      tot.appendChild(e("td", "gl-td-ok", fmt(sfx, 2)));
+      tot.appendChild(e("td", null, ""));
+      tb.appendChild(tot);
+      box.appendChild(tb);
+      tableBox.replaceChildren(box);
+
+      if (sf <= 0) { fMean.setValue("enter some frequencies"); return; }
+      fSum.setValue("Σf = " + fmt(sf, 2) + " · Σfx = " + fmt(sfx, 2));
+      fMean.setValue((grouped ? "estimated mean = " : "mean = ") + "Σfx ÷ Σf = " + fmt(sfx, 2) + " ÷ " + fmt(sf, 2)
+        + " = <b>" + fmt(sfx / sf, 3) + "</b>" + (grouped ? " — an <b>estimate</b>, because every value is treated as sitting at the midpoint" : ""));
+      // median position, then the row it falls in
+      const pos = (sf + 1) / 2;
+      let idx = cums.findIndex((c) => c >= pos);
+      if (idx < 0) idx = fs.length - 1;
+      fMed.setValue(grouped
+        ? "the " + fmt(pos, 1) + "th value falls in <b>" + labels[idx] + "</b> — the class containing the median"
+        : "the " + fmt(pos, 1) + "th value → median = <b>" + fmt(xs[idx], 2) + "</b>");
+      const best = fs.indexOf(Math.max.apply(null, fs));
+      fMode.setValue(grouped ? "modal class = <b>" + labels[best] + "</b>"
+        : "mode = <b>" + fmt(xs[best], 2) + "</b> — the value, not its frequency (" + fmt(fs[best], 2) + ")");
+      msg.className = "gl-msg " + (grouped ? "warn" : "good");
+      msg.textContent = grouped
+        ? "Once data is grouped the original values are gone, so the mean can only be estimated — and the word \"estimate\" often carries its own mark."
+        : "The mode is the VALUE with the highest frequency, not the frequency itself. Writing the frequency is a guaranteed lost mark.";
+    }
+    layout();
+  };
+
+  /* 53 · Comparing two datasets with box plots */
+  build.boxlab = function (host) {
+    const A = [12, 28, 40, 52, 68], B = [20, 34, 42, 50, 62];
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "Enter the five-number summary of each dataset — minimum, Q₁, median, Q₃, maximum — and compare one average with one measure of spread.");
+    const form = e("div", "gl-form");
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const NAMES = ["min", "Q₁", "median", "Q₃", "max"];
+    const aF = A.map((v, i) => field(NAMES[i], String(v), null, upd));
+    const bF = B.map((v, i) => field(NAMES[i], String(v), null, upd));
+    function group(title, items) {
+      const g = e("div", "gl-form-group");
+      g.appendChild(e("div", "gl-form-title", title));
+      const row = e("div", "gl-form-row");
+      items.forEach((i) => row.appendChild(i.el));
+      g.appendChild(row);
+      return g;
+    }
+    form.appendChild(group("Class A", aF));
+    form.appendChild(group("Class B", bF));
+
+    const fA = factHtml("Class A");
+    const fB = factHtml("Class B");
+    const fSay = factHtml("The comparison that earns the marks");
+    [fA, fB, fSay].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(prompt); panel.appendChild(form); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const read = (fs) => fs.map((f) => (isFinite(f.get()) ? f.get() : 0));
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.5, minH: 190, maxH: 260,
+      render(c, W, H, P) {
+        const a = read(aF), b = read(bF);
+        const all = a.concat(b);
+        const lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+        const pad = Math.max(2, (hi - lo) * 0.1);
+        const m = chart(W, H, { xmin: Math.floor((lo - pad) / 10) * 10, xmax: Math.ceil((hi + pad) / 10) * 10,
+          ymin: 0, ymax: 2, stepx: 10, stepy: 1, padL: 62, xlab: "score" });
+        // axis only along the bottom
+        c.save();
+        c.strokeStyle = P.grid; c.lineWidth = 1;
+        for (let x = m.o.xmin; x <= m.o.xmax + 1e-9; x += 10) {
+          c.beginPath(); c.moveTo(m.X(x), m.Y(0)); c.lineTo(m.X(x), m.Y(2)); c.stroke();
+        }
+        c.strokeStyle = P.axis; c.lineWidth = 1.5;
+        c.beginPath(); c.moveTo(m.X(m.o.xmin), m.Y(0)); c.lineTo(m.X(m.o.xmax), m.Y(0)); c.stroke();
+        c.fillStyle = P.text; c.font = "10px Inter, system-ui, sans-serif";
+        c.textAlign = "center"; c.textBaseline = "top";
+        for (let x = m.o.xmin; x <= m.o.xmax + 1e-9; x += 10) c.fillText(String(x), m.X(x), m.Y(0) + 5);
+        c.restore();
+        [[a, 1.45, P.c1, "A"], [b, 0.75, P.c2, "B"]].forEach(([d, y, colr, nm]) => {
+          const h = 0.22;
+          const yc = m.Y(y), yt = m.Y(y + h), yb = m.Y(y - h);
+          strokePath(c, [[m.X(d[0]), yt], [m.X(d[0]), yb]], colr, 2);       // min whisker cap
+          strokePath(c, [[m.X(d[4]), yt], [m.X(d[4]), yb]], colr, 2);       // max whisker cap
+          strokePath(c, [[m.X(d[0]), yc], [m.X(d[1]), yc]], colr, 1.6);
+          strokePath(c, [[m.X(d[3]), yc], [m.X(d[4]), yc]], colr, 1.6);
+          c.save();
+          c.fillStyle = P.soft; c.fillRect(m.X(d[1]), yt, m.X(d[3]) - m.X(d[1]), yb - yt);
+          c.strokeStyle = colr; c.lineWidth = 2; c.strokeRect(m.X(d[1]), yt, m.X(d[3]) - m.X(d[1]), yb - yt);
+          c.restore();
+          strokePath(c, [[m.X(d[2]), yt], [m.X(d[2]), yb]], colr, 2.6);
+          tagOn(c, P, nm, m.X(m.o.xmin) - 20, yc, colr, "center", 13);
+        });
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      const a = read(aF), b = read(bF);
+      const iqrA = a[3] - a[1], iqrB = b[3] - b[1];
+      fA.setValue("median " + fmt(a[2], 2) + " · IQR " + fmt(a[3], 2) + " − " + fmt(a[1], 2) + " = <b>" + fmt(iqrA, 2)
+        + "</b> · range " + fmt(a[4] - a[0], 2));
+      fB.setValue("median " + fmt(b[2], 2) + " · IQR " + fmt(b[3], 2) + " − " + fmt(b[1], 2) + " = <b>" + fmt(iqrB, 2)
+        + "</b> · range " + fmt(b[4] - b[0], 2));
+      const higher = a[2] === b[2] ? null : a[2] > b[2] ? "A" : "B";
+      const tighter = iqrA === iqrB ? null : iqrA < iqrB ? "A" : "B";
+      fSay.setValue(
+        (higher ? "Class " + higher + " has the higher median (" + fmt(Math.max(a[2], b[2]), 2) + " against "
+          + fmt(Math.min(a[2], b[2]), 2) + "), so Class " + higher + " scored better on average. "
+          : "The two medians are equal, so on average the two classes scored the same. ")
+        + (tighter ? "Class " + tighter + " has the smaller interquartile range (" + fmt(Math.min(iqrA, iqrB), 2)
+          + " against " + fmt(Math.max(iqrA, iqrB), 2) + "), so its scores are more consistent."
+          : "The interquartile ranges are equal, so the two are equally consistent."));
+      msg.className = "gl-msg good";
+      msg.textContent = "One average AND one measure of spread, each said in context — that is the full-mark answer. Quoting only the medians throws away half the marks.";
+    }
+    upd();
+  };
+
+  /* ---------- Venn diagram drawing, shared by the set labs ---------- */
+
+  // two circles side by side inside the canvas
+  function twoSet(W, H) {
+    // the frame must fit the canvas: it is 4.2r wide and 3r tall
+    const r = Math.min((W - 10) / 4.2, (H - 10) / 3);
+    const cy = H / 2;
+    return { r, cy, ax: W / 2 - r * 0.62, bx: W / 2 + r * 0.62,
+             box: [W / 2 - r * 2.1, cy - r * 1.5, r * 4.2, r * 3] };
+  }
+  function frameE(c, P, b, label) {
+    c.save();
+    c.strokeStyle = P.axis; c.lineWidth = 1.4;
+    (c.roundRect ? c.roundRect(b[0], b[1], b[2], b[3], 8) : c.rect(b[0], b[1], b[2], b[3]));
+    c.stroke();
+    c.restore();
+    tag(c, label || "ℰ", b[0] + 14, b[1] + 13, P.text, "center", 12);
+  }
+  function circle(c, x, y, r, colr, w) {
+    c.save();
+    c.strokeStyle = colr; c.lineWidth = w || 2;
+    c.beginPath(); c.arc(x, y, r, 0, 7); c.stroke();
+    c.restore();
+  }
+  // shade a region described by a predicate over (inA, inB[, inC])
+  function shadeRegion(c, P, box, test, colr) {
+    c.save();
+    c.beginPath();
+    (c.roundRect ? c.roundRect(box[0], box[1], box[2], box[3], 8) : c.rect(box[0], box[1], box[2], box[3]));
+    c.clip();
+    c.fillStyle = colr;
+    const step = 3;
+    for (let x = box[0]; x < box[0] + box[2]; x += step) {
+      for (let y = box[1]; y < box[1] + box[3]; y += step) {
+        if (test(x + step / 2, y + step / 2)) c.fillRect(x, y, step, step);
+      }
+    }
+    c.restore();
+  }
+  const inCircle = (x, y, cx, cy, r) => (x - cx) ** 2 + (y - cy) ** 2 <= r * r;
+
+  const setTxt = (arr) => (arr.length ? "{" + arr.join(", ") + "}" : "∅");
+  function parseSet(s) {
+    return [...new Set(String(s).split(/[,\s]+/).map((t) => t.trim()).filter(Boolean))];
+  }
+  const sortSet = (a) => a.slice().sort((p, q) => {
+    const np = parseFloat(p), nq = parseFloat(q);
+    return isFinite(np) && isFinite(nq) ? np - nq : String(p).localeCompare(String(q));
+  });
+
+  /* 54 · Set notation — build any region and see it shaded */
+  build.setlab = function (host) {
+    const OPS = [
+      { key: "AuB", label: "A ∪ B", test: (a, b) => a || b, words: "in A or B or both" },
+      { key: "AnB", label: "A ∩ B", test: (a, b) => a && b, words: "in both A and B" },
+      { key: "Ac", label: "A′", test: (a) => !a, words: "everything not in A" },
+      { key: "AuBc", label: "(A ∪ B)′", test: (a, b) => !(a || b), words: "outside both circles" },
+      { key: "AcnB", label: "A′ ∩ B", test: (a, b) => !a && b, words: "in B but not in A" },
+      { key: "AnBc", label: "A ∩ B′", test: (a, b) => a && !b, words: "in A but not in B" },
+      { key: "AcuBc", label: "A′ ∪ B′", test: (a, b) => !a || !b, words: "everything except the overlap" },
+    ];
+    let op = OPS[0];
+
+    const panel = e("div", "gl-panel");
+    const form = e("div", "gl-form");
+    const chips = chipRow(OPS.map((o) => ({ label: o.label, o })), (it) => { op = it.o; upd(); }, 0);
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const uF = field("ℰ", "1,2,3,4,5,6,7,8,9,10,11,12", "wide", upd);
+    uF.input.style.width = "260px";
+    const aF = field("A", "3,6,9,12", "wide", upd);
+    aF.input.style.width = "150px";
+    const bF = field("B", "2,4,6,8,10,12", "wide", upd);
+    bF.input.style.width = "150px";
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "The universal set and the two sets"));
+    const row = e("div", "gl-form-row");
+    [uF, aF, bF].forEach((f) => row.appendChild(f.el));
+    g.appendChild(row); form.appendChild(g);
+
+    const fRegion = factHtml("The region you picked");
+    const fCount = factHtml("How many");
+    const fCheck = factHtml("Counting formula");
+    [fRegion, fCount, fCheck].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(form); panel.appendChild(chips.el); panel.appendChild(cvBox);
+    panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const sets = () => {
+      const U = parseSet(uF.input.value), A = parseSet(aF.input.value).filter((x) => U.includes(x));
+      const B = parseSet(bF.input.value).filter((x) => U.includes(x));
+      return { U, A, B };
+    };
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.62, minH: 220, maxH: 300,
+      render(c, W, H, P) {
+        const { U, A, B } = sets();
+        const g2 = twoSet(W, H);
+        const inA = (x, y) => inCircle(x, y, g2.ax, g2.cy, g2.r);
+        const inB = (x, y) => inCircle(x, y, g2.bx, g2.cy, g2.r);
+        shadeRegion(c, P, g2.box, (x, y) => op.test(inA(x, y), inB(x, y)), P.soft3);
+        frameE(c, P, g2.box);
+        circle(c, g2.ax, g2.cy, g2.r, P.c1, 2.2);
+        circle(c, g2.bx, g2.cy, g2.r, P.c3, 2.2);
+        tag(c, "A", g2.ax - g2.r * 0.75, g2.cy - g2.r * 0.85, P.c1, "center", 13);
+        tag(c, "B", g2.bx + g2.r * 0.75, g2.cy - g2.r * 0.85, P.c3, "center", 13);
+        // place the elements in their regions
+        const put = (list, cx, cy, wide) => {
+          const per = Math.max(1, Math.ceil(Math.sqrt(list.length)));
+          list.forEach((v, i) => {
+            const col = i % per, rw = Math.floor(i / per);
+            tag(c, String(v), cx + (col - (per - 1) / 2) * (wide || 17), cy + (rw - (Math.ceil(list.length / per) - 1) / 2) * 15,
+              P.strong, "center", 11.5);
+          });
+        };
+        const onlyA = sortSet(A.filter((x) => !B.includes(x)));
+        const both = sortSet(A.filter((x) => B.includes(x)));
+        const onlyB = sortSet(B.filter((x) => !A.includes(x)));
+        const none = sortSet(U.filter((x) => !A.includes(x) && !B.includes(x)));
+        put(onlyA, g2.ax - g2.r * 0.45, g2.cy);
+        put(both, (g2.ax + g2.bx) / 2, g2.cy);
+        put(onlyB, g2.bx + g2.r * 0.45, g2.cy);
+        put(none, g2.box[0] + g2.box[2] - 34, g2.box[1] + 22);
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      const { U, A, B } = sets();
+      const inA = (x) => A.includes(x), inB = (x) => B.includes(x);
+      const result = sortSet(U.filter((x) => op.test(inA(x), inB(x))));
+      fRegion.setValue("<b>" + op.label + "</b> = " + setTxt(result) + " &nbsp;— " + op.words);
+      fCount.setValue("n(" + op.label + ") = <b>" + result.length + "</b> &nbsp;·&nbsp; n(ℰ) = " + U.length
+        + ", n(A) = " + A.length + ", n(B) = " + B.length);
+      const bothN = A.filter((x) => B.includes(x)).length;
+      fCheck.setValue("n(A ∪ B) = n(A) + n(B) − n(A ∩ B) = " + A.length + " + " + B.length + " − " + bothN
+        + " = <b>" + (A.length + B.length - bothN) + "</b>");
+      msg.className = "gl-msg good";
+      msg.textContent = "Read the notation from the inside out, and leave the dash until last: (A ∪ B)′ means \"find A ∪ B, then take everything else\". Compare it with A′ ∪ B′ on the chips above — they are not the same region.";
+    }
+    upd();
+  };
+
+  /* 55 · Two-set counting problems, including the unknown-x kind */
+  build.vennlab = function (host) {
+    const KNOWN = [
+      { value: "both", label: "I know how many are in both" },
+      { value: "neither", label: "I know how many are in neither" },
+    ];
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "The classic question: totals for each set, and one more fact. Everything else follows from n(A ∪ B) = n(A) + n(B) − n(A ∩ B).");
+    const form = e("div", "gl-form");
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const steps = e("div", "gl-steps");
+    const msg = e("div", "gl-msg");
+
+    const eF = field("n(ℰ)", "30", null, upd);
+    const aF = field("n(A)", "18", null, upd);
+    const bF = field("n(B)", "15", null, upd);
+    const which = picker("The extra fact", KNOWN, upd);
+    const kF = field("its value", "7", null, upd);
+    const g = e("div", "gl-form-group");
+    g.appendChild(e("div", "gl-form-title", "What the question tells you"));
+    const row = e("div", "gl-form-row");
+    [eF, aF, bF, which, kF].forEach((f) => row.appendChild(f.el));
+    g.appendChild(row); form.appendChild(g);
+
+    panel.appendChild(prompt); panel.appendChild(form); panel.appendChild(cvBox);
+    panel.appendChild(steps); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    let regions = { onlyA: 11, both: 7, onlyB: 8, none: 4 };
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.6, minH: 210, maxH: 290,
+      render(c, W, H, P) {
+        const g2 = twoSet(W, H);
+        frameE(c, P, g2.box);
+        circle(c, g2.ax, g2.cy, g2.r, P.c1, 2.2);
+        circle(c, g2.bx, g2.cy, g2.r, P.c3, 2.2);
+        tag(c, "A", g2.ax - g2.r * 0.75, g2.cy - g2.r * 0.85, P.c1, "center", 13);
+        tag(c, "B", g2.bx + g2.r * 0.75, g2.cy - g2.r * 0.85, P.c3, "center", 13);
+        const put = (v, x, y, colr) => tagOn(c, P, fmt(v, 2), x, y, colr || P.strong, "center", 15);
+        put(regions.onlyA, g2.ax - g2.r * 0.45, g2.cy, P.c1);
+        put(regions.both, (g2.ax + g2.bx) / 2, g2.cy, P.c4);
+        put(regions.onlyB, g2.bx + g2.r * 0.45, g2.cy, P.c3);
+        put(regions.none, g2.box[0] + g2.box[2] - 28, g2.box[1] + 20, P.text);
+      },
+    });
+
+    function step(k, title, body) {
+      const d = e("div", "gl-step");
+      d.appendChild(e("span", "gl-step-n", k));
+      d.appendChild(html("div", "gl-step-b", "<b>" + title + "</b><br>" + body));
+      return d;
+    }
+    function upd() {
+      const nE = eF.get(), nA = aF.get(), nB = bF.get(), k = kF.get();
+      steps.replaceChildren();
+      if (![nE, nA, nB, k].every(isFinite)) {
+        msg.className = "gl-msg warn"; msg.textContent = "Fill in all four numbers."; return;
+      }
+      let both, none;
+      if (which.get() === "both") {
+        both = k;
+        const union = nA + nB - both;
+        none = nE - union;
+        steps.appendChild(step("1", "Start in the middle", "n(A ∩ B) = <b>" + fmt(both, 2) + "</b> goes in the overlap."));
+        steps.appendChild(step("2", "Subtract to get the \"only\" regions",
+          "A only = " + fmt(nA, 2) + " − " + fmt(both, 2) + " = <b>" + fmt(nA - both, 2) + "</b><br>"
+          + "B only = " + fmt(nB, 2) + " − " + fmt(both, 2) + " = <b>" + fmt(nB - both, 2) + "</b>"));
+        steps.appendChild(step("3", "At least one",
+          "n(A ∪ B) = " + fmt(nA, 2) + " + " + fmt(nB, 2) + " − " + fmt(both, 2) + " = <b>" + fmt(union, 2) + "</b>"));
+        steps.appendChild(step("4", "Neither",
+          "n((A ∪ B)′) = n(ℰ) − n(A ∪ B) = " + fmt(nE, 2) + " − " + fmt(union, 2) + " = <b>" + fmt(none, 2) + "</b>"));
+      } else {
+        none = k;
+        const union = nE - none;
+        both = nA + nB - union;
+        steps.appendChild(step("1", "Call the overlap x",
+          "Every region in terms of x: A only = " + fmt(nA, 2) + " − x, both = x, B only = " + fmt(nB, 2) + " − x, neither = " + fmt(none, 2)));
+        steps.appendChild(step("2", "Add all four regions and set the total to n(ℰ)",
+          "(" + fmt(nA, 2) + " − x) + x + (" + fmt(nB, 2) + " − x) + " + fmt(none, 2) + " = " + fmt(nE, 2)));
+        steps.appendChild(step("3", "Solve",
+          fmt(nA + nB + none, 2) + " − x = " + fmt(nE, 2) + " &nbsp;⟹&nbsp; x = <b>" + fmt(both, 2) + "</b>"));
+        steps.appendChild(step("4", "Fill the diagram in",
+          "A only = <b>" + fmt(nA - both, 2) + "</b> · both = <b>" + fmt(both, 2) + "</b> · B only = <b>"
+          + fmt(nB - both, 2) + "</b> · neither = <b>" + fmt(none, 2) + "</b>"));
+      }
+      regions = { onlyA: nA - both, both, onlyB: nB - both, none };
+      sketch.draw();
+      const total = regions.onlyA + regions.both + regions.onlyB + regions.none;
+      const bad = [regions.onlyA, regions.both, regions.onlyB, regions.none].some((v) => v < 0);
+      msg.className = "gl-msg " + (bad ? "bad" : "good");
+      msg.textContent = bad
+        ? "One region has come out negative, so these numbers cannot all be true together — check the values in the question."
+        : "Check: " + fmt(regions.onlyA, 2) + " + " + fmt(regions.both, 2) + " + " + fmt(regions.onlyB, 2)
+          + " + " + fmt(regions.none, 2) + " = " + fmt(total, 2) + " = n(ℰ) ✓. Always finish by adding every region — if it misses, the overlap has been counted twice.";
+    }
+    upd();
+  };
+
+  /* 56 · Three sets — and why n(A ∩ B) is not the region between A and B */
+  build.venn3lab = function (host) {
+    const R = { a: 8, b: 7, c: 2, ab: 6, ac: 5, bc: 3, abc: 4, out: 5 };
+    const QUERIES = [
+      { key: "A", label: "n(A)", parts: ["a", "ab", "ac", "abc"], words: "everything inside circle A" },
+      { key: "AnB", label: "n(A ∩ B)", parts: ["ab", "abc"], words: "in A and B — the pair region AND the centre" },
+      { key: "AnBnCc", label: "n(A ∩ B ∩ C′)", parts: ["ab"], words: "in A and B but NOT in C — the pair region alone" },
+      { key: "AnBnC", label: "n(A ∩ B ∩ C)", parts: ["abc"], words: "in all three — the centre" },
+      { key: "union", label: "n(A ∪ B ∪ C)", parts: ["a", "b", "c", "ab", "ac", "bc", "abc"], words: "in at least one set" },
+      { key: "Cc", label: "n(C′)", parts: ["a", "b", "ab", "out"], words: "everything outside circle C" },
+    ];
+    let q = QUERIES[0];
+
+    const panel = e("div", "gl-panel");
+    const prompt = html("div", "gl-prompt",
+      "Fill the eight regions from the centre outwards, then pick a query — the regions it uses light up.");
+    const inputs = e("div", "gl-inputs");
+    const chips = chipRow(QUERIES.map((x) => ({ label: x.label, q: x })), (it) => { q = it.q; upd(); }, 0);
+    const cvBox = e("div", "gl-canvas");
+    const canvas = document.createElement("canvas");
+    cvBox.appendChild(canvas);
+    const facts = e("div", "gl-facts");
+    const msg = e("div", "gl-msg");
+
+    const LABS = { abc: "all three", ab: "A,B only", ac: "A,C only", bc: "B,C only",
+                   a: "A only", b: "B only", c: "C only", out: "none" };
+    const fields = {};
+    ["abc", "ab", "ac", "bc", "a", "b", "c", "out"].forEach((k) => {
+      fields[k] = field(LABS[k], String(R[k]), null, upd);
+      inputs.appendChild(fields[k].el);
+    });
+
+    const fTotal = factHtml("n(ℰ)");
+    const fAns = factHtml("Your query");
+    [fTotal, fAns].forEach((f) => facts.appendChild(f));
+
+    panel.appendChild(prompt); panel.appendChild(inputs); panel.appendChild(chips.el);
+    panel.appendChild(cvBox); panel.appendChild(facts); panel.appendChild(msg);
+    host.appendChild(panel);
+
+    const val = (k) => (isFinite(fields[k].get()) ? fields[k].get() : 0);
+
+    const sketch = new Sketch(canvas, {
+      ratio: 0.82, minH: 260, maxH: 360,
+      render(c, W, H, P) {
+        const r = Math.min((W - 10) / 4.8, (H - 10) / 4.0);   // the frame is 4.8r by 4.0r
+        const cx = W / 2, cy = H / 2 + r * 0.18;
+        const d = r * 0.62;
+        const A = [cx - d, cy - d * 0.55], B = [cx + d, cy - d * 0.55], C = [cx, cy + d];
+        const box = [cx - r * 2.4, cy - r * 2.1, r * 4.8, r * 4.0];
+        const inA = (x, y) => inCircle(x, y, A[0], A[1], r);
+        const inB = (x, y) => inCircle(x, y, B[0], B[1], r);
+        const inC = (x, y) => inCircle(x, y, C[0], C[1], r);
+        const member = { a: (x, y) => inA(x, y) && !inB(x, y) && !inC(x, y),
+                         b: (x, y) => !inA(x, y) && inB(x, y) && !inC(x, y),
+                         c: (x, y) => !inA(x, y) && !inB(x, y) && inC(x, y),
+                         ab: (x, y) => inA(x, y) && inB(x, y) && !inC(x, y),
+                         ac: (x, y) => inA(x, y) && !inB(x, y) && inC(x, y),
+                         bc: (x, y) => !inA(x, y) && inB(x, y) && inC(x, y),
+                         abc: (x, y) => inA(x, y) && inB(x, y) && inC(x, y),
+                         out: (x, y) => !inA(x, y) && !inB(x, y) && !inC(x, y) };
+        shadeRegion(c, P, box, (x, y) => q.parts.some((k) => member[k](x, y)), P.soft3);
+        frameE(c, P, box);
+        circle(c, A[0], A[1], r, P.c1, 2.2);
+        circle(c, B[0], B[1], r, P.c3, 2.2);
+        circle(c, C[0], C[1], r, P.c5, 2.2);
+        tag(c, "A", A[0] - r * 0.85, A[1] - r * 0.8, P.c1, "center", 13);
+        tag(c, "B", B[0] + r * 0.85, B[1] - r * 0.8, P.c3, "center", 13);
+        tag(c, "C", C[0] - r * 0.9, C[1] + r * 0.85, P.c5, "center", 13);
+        const at = {
+          abc: [cx, cy - d * 0.02],
+          ab: [cx, A[1] - r * 0.42],
+          ac: [cx - d * 0.95, cy + d * 0.34],
+          bc: [cx + d * 0.95, cy + d * 0.34],
+          a: [A[0] - r * 0.5, A[1] - r * 0.22],
+          b: [B[0] + r * 0.5, B[1] - r * 0.22],
+          c: [C[0], C[1] + r * 0.55],
+          out: [box[0] + box[2] - 26, box[1] + 20],
+        };
+        Object.keys(at).forEach((k) => {
+          const on = q.parts.includes(k);
+          tagOn(c, P, fmt(val(k), 2), at[k][0], at[k][1], on ? P.c2 : P.strong, "center", on ? 15 : 13);
+        });
+      },
+    });
+
+    function upd() {
+      sketch.draw();
+      const all = ["a", "b", "c", "ab", "ac", "bc", "abc", "out"];
+      const total = all.reduce((s, k) => s + val(k), 0);
+      fTotal.setValue(all.map((k) => fmt(val(k), 2)).join(" + ") + " = <b>" + fmt(total, 2) + "</b>");
+      const sum = q.parts.reduce((s, k) => s + val(k), 0);
+      fAns.setValue("<b>" + q.label + "</b> = " + q.parts.map((k) => fmt(val(k), 2)).join(" + ")
+        + " = <b>" + fmt(sum, 2) + "</b> &nbsp;— " + q.words);
+      msg.className = "gl-msg " + (q.key === "AnB" ? "warn" : "good");
+      msg.textContent = q.key === "AnB"
+        ? "This is the single biggest trap: n(A ∩ B) INCLUDES the centre. The region drawn between A and B on its own is n(A ∩ B ∩ C′) — compare the next chip."
+        : "Fill a three-set diagram from the centre outwards: the centre first, then each pair region as \"pair total minus centre\", then each single region as \"set total minus everything already placed\".";
+    }
+    upd();
+  };
+
   function injectCSS() {
     if (document.getElementById("graphlab-css")) return;
     const s = document.createElement("style");
@@ -5348,7 +6339,7 @@
 .gl-table{border-collapse:collapse;font-size:.87rem;min-width:100%}
 .gl-table th{background:var(--dc,#3B5BDB);color:#fff;padding:.4rem .7rem;text-align:center;font-weight:800;white-space:nowrap}
 .gl-table td{border:1px solid var(--line);padding:.3rem .45rem;text-align:center;color:var(--ink);
-  font-family:ui-monospace,Menlo,Consolas,monospace;min-width:44px}
+  font-family:ui-monospace,Menlo,Consolas,monospace;min-width:44px;white-space:nowrap}
 .gl-table .gl-td-x{background:var(--chip-bg);font-weight:800}
 .gl-table .gl-td-undef{color:var(--bad,#dc2626);font-weight:700;font-size:.78rem}
 .gl-table .gl-td-blank{background:transparent;border:none}
