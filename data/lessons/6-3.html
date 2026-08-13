@@ -1,107 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 6-3: nth Roots and Rational Exponents</title>
-<style>
-  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
-  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#1a4fa0 55%,#e05c2a 100%);color:white;padding:48px 24px 32px;text-align:center;}
-  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
-  .hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;}
-  .hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto;}
-  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
-  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
-  nav a:hover{background:var(--navy);color:white;}
-  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
-  section{margin-bottom:48px;}
-  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
-  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
-  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
-  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
-  .concept-card ul{margin:8px 0 0 20px;}
-  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);line-height:1.9;}
-  .vocab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
-  @media(max-width:600px){.vocab{grid-template-columns:1fr;}}
-  .vocab-item{background:#fafafa;border:1px solid #e2e8f0;border-radius:6px;padding:10px 14px;font-size:14px;line-height:1.6;}
-  .vocab-item b{color:var(--orange);}
-  .steps-list{counter-reset:s;margin:10px 0;}
-  .steps-list .s{position:relative;padding:10px 12px 10px 44px;margin-bottom:8px;background:#fafafa;border-radius:6px;font-size:14px;line-height:1.6;}
-  .steps-list .s:before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
-  table.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
-  table.tbl th{background:var(--navy);color:white;padding:9px 12px;text-align:left;font-weight:600;}
-  table.tbl td{padding:9px 12px;border-bottom:1px solid #e2e8f0;}
-  table.tbl tr:nth-child(even) td{background:#f8faff;}
-  table.tbl code{font-family:'Courier New',monospace;color:var(--navy);}
-  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
-  .example-header{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
-  .example-header:hover{background:#f8faff;}
-  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;flex-shrink:0;}
-  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
-  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
-  .example-header.open .toggle-icon{transform:rotate(45deg);}
-  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
-  .example-body.open{display:block;}
-  .problem-stmt{background:#f8faff;border-left:4px solid var(--orange);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;font-family:'Courier New',monospace;}
-  .solution-step{display:flex;gap:12px;margin-bottom:8px;padding:9px 12px;border-radius:6px;background:#fafafa;align-items:baseline;flex-wrap:wrap;}
-  .solution-step .num{width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;min-width:180px;}
-  .solution-step .reason{font-size:13px;color:var(--orange);font-style:italic;min-width:160px;text-align:right;}
-  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
-  .check-box{background:var(--light-green);border:1px solid #86efac;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
-  .check-box strong{color:#15803d;}
-  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
-  .warning-box strong{color:var(--orange);}
-  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
-  .info-box strong{color:var(--blue);}
-  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
-  @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
-  .case-box{background:#fafafa;border:1px solid #e2e8f0;border-radius:8px;padding:14px;}
-  .case-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
-  .case-box .math{font-family:'Courier New',monospace;font-size:13px;line-height:1.9;}
-  .quiz-header{background:linear-gradient(135deg,#e05c2a,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
-  .quiz-header h2{color:white;border:none;font-size:20px;}
-  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
-  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
-  .q-num{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
-  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
-  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  @media(max-width:560px){.options{grid-template-columns:1fr;}}
-  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
-  .option-btn:hover:not(:disabled){border-color:var(--orange);background:#fff7f3;}
-  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
-  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
-  .option-btn:disabled{cursor:default;}
-  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;line-height:1.6;}
-  .feedback.show{display:block;}
-  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
-  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
-  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
-  .score-panel.show{display:block;}
-  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
-  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
-  .btn-retry{padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
-</style>
-</head>
-<body>
-
-<div class="hero">
-  <div class="module-badge">Module 6 &middot; Lesson 6-3</div>
-  <h1>nth Roots and Rational Exponents</h1>
-  <p>Simplify radicals, use absolute value correctly, and convert between radical and exponential form</p>
-</div>
-
-<nav>
-  <a href="#concepts">Concepts</a>
-  <a href="#examples">Step-by-Step Examples</a>
-  <a href="#summary">Summary</a>
-  <a href="#quiz">Practice Quiz</a>
-</nav>
-
-<main>
-
+<div class="sat-lesson">
+<p class="lesson-objective">Simplify radicals, use absolute value correctly, and convert between radical and exponential form</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Step-by-Step Examples</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
 <section id="concepts">
   <h2>Key Concepts</h2>
 
@@ -152,7 +51,7 @@
 
 <section id="examples">
   <h2>Step-by-Step Worked Examples</h2>
-  <p style="font-size:14px;color:#64748b;margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
+  <p style="font-size:14px;color:var(--sl-muted);margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
 <div class="example-card">
   <button class="example-header open" onclick="toggleExample(this)">
     <span class="example-label">Example 1</span>
@@ -161,16 +60,16 @@
   </button>
   <div class="example-body open">
     <div class="problem-stmt">Simplify.&nbsp; a. &plusmn;&radic;(25x&#8308;)&nbsp;&nbsp; b. &minus;&radic;((y&sup2; + 7)&sup1;&sup2;)&nbsp;&nbsp; c. &#8731;(343a&sup1;&#8312;b&#8310;)&nbsp;&nbsp; d. &radic;(&minus;289c&#8312;d&#8308;)</div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: &plusmn;&radic;(25x&#8308;)</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part a: &plusmn;&radic;(25x&#8308;)</p>
     <div class="solution-step"><span class="num">1</span><span class="math">&plusmn;&radic;(25x&#8308;) = &plusmn;&radic;((5x&sup2;)&sup2;)</span><span class="reason">Write the radicand as a perfect square</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">= &plusmn;5x&sup2;</span><span class="reason">Take the square root</span></div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: &minus;&radic;((y&sup2; + 7)&sup1;&sup2;)</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part b: &minus;&radic;((y&sup2; + 7)&sup1;&sup2;)</p>
     <div class="solution-step"><span class="num">1</span><span class="math">&minus;&radic;((y&sup2; + 7)&sup1;&sup2;) = &minus;&radic;([(y&sup2; + 7)&#8310;]&sup2;)</span><span class="reason">(y&sup2; + 7)&sup1;&sup2; = [(y&sup2; + 7)&#8310;]&sup2;</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">= &minus;(y&sup2; + 7)&#8310;</span><span class="reason">The negative sign in front stays</span></div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part c: &#8731;(343a&sup1;&#8312;b&#8310;)</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part c: &#8731;(343a&sup1;&#8312;b&#8310;)</p>
     <div class="solution-step"><span class="num">1</span><span class="math">&#8731;(343a&sup1;&#8312;b&#8310;) = &#8731;((7a&#8310;b&sup2;)&sup3;)</span><span class="reason">7&sup3; = 343; (a&#8310;)&sup3; = a&sup1;&#8312;; (b&sup2;)&sup3; = b&#8310;</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">= 7a&#8310;b&sup2;</span><span class="reason">Odd index &mdash; no absolute value needed</span></div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part d: &radic;(&minus;289c&#8312;d&#8308;)</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part d: &radic;(&minus;289c&#8312;d&#8308;)</p>
     <div class="solution-step"><span class="num">1</span><span class="math">There are no real roots of &radic;(&minus;289)</span><span class="reason">Even index with a negative radicand</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">&radic;(&minus;289c&#8312;d&#8308;) = &radic;(&minus;1) &middot; &radic;(289c&#8312;d&#8308;)</span><span class="reason">Separate the factor of &minus;1</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">= i &middot; 17c&#8308;d&sup2;</span><span class="reason">&radic;(&minus;1) = i; use the principal root 17i</span></div>
@@ -188,10 +87,10 @@
   </button>
   <div class="example-body">
     <div class="problem-stmt">Simplify.&nbsp; a. &#8308;&radic;(81x&#8308;)&nbsp;&nbsp; b. &#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;)</div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: &#8308;&radic;(81x&#8308;)</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part a: &#8308;&radic;(81x&#8308;)</p>
     <div class="solution-step"><span class="num">1</span><span class="math">&#8308;&radic;(81x&#8308;) = &#8308;&radic;((3x)&#8308;)</span><span class="reason">81x&#8308; = (3x)&#8308;</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">= 3|x|</span><span class="reason">x could be negative, so bars ensure a nonnegative principal root</span></div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: &#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;)</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part b: &#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;)</p>
     <div class="solution-step"><span class="num">1</span><span class="math">&#8312;&radic;(256(y&sup2; &minus; 2)&sup2;&#8308;) = &#8312;&radic;256 &middot; &#8312;&radic;((y&sup2; &minus; 2)&sup2;&#8308;)</span><span class="reason">Separate the numeric and variable factors</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">&#8312;&radic;256 = 2</span><span class="reason">2&#8312; = 256</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">&#8312;&radic;((y&sup2; &minus; 2)&sup2;&#8308;) = |(y&sup2; &minus; 2)&sup3;|</span><span class="reason">24 &divide; 8 = 3; even index, odd result &rarr; absolute value</span></div>
@@ -265,16 +164,16 @@
   </button>
   <div class="example-body">
     <div class="problem-stmt">Simplify each expression.&nbsp; a. x<sup>2/3</sup> &middot; x<sup>1/6</sup>&nbsp;&nbsp; b. y<sup>&minus;2/3</sup>&nbsp;&nbsp; c. z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup></div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: x<sup>2/3</sup> &middot; x<sup>1/6</sup></p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part a: x<sup>2/3</sup> &middot; x<sup>1/6</sup></p>
     <div class="solution-step"><span class="num">1</span><span class="math">x<sup>2/3</sup> &middot; x<sup>1/6</sup> = x<sup>2/3 + 1/6</sup></span><span class="reason">Add powers when multiplying like bases</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">2/3 = 4/6</span><span class="reason">Find a common denominator</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">= x<sup>4/6 + 1/6</sup> = x<sup>5/6</sup></span><span class="reason">Add the exponents</span></div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: y<sup>&minus;2/3</sup></p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part b: y<sup>&minus;2/3</sup></p>
     <div class="solution-step"><span class="num">1</span><span class="math">y<sup>&minus;2/3</sup> = 1 / y<sup>2/3</sup></span><span class="reason">b<sup>&minus;n</sup> = 1/b<sup>n</sup></span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">= (1 / y<sup>2/3</sup>) &middot; (y<sup>1/3</sup> / y<sup>1/3</sup>)</span><span class="reason">Multiply by a form of 1 to rationalise</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">= y<sup>1/3</sup> / y<sup>2/3 + 1/3</sup></span><span class="reason">2/3 + 1/3 = 1</span></div>
       <div class="solution-step"><span class="num">4</span><span class="math">= y<sup>1/3</sup> / y &nbsp;or&nbsp; &#8731;y / y</span><span class="reason">Simplest form &mdash; no negative exponents</span></div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part c: z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup></p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part c: z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup></p>
     <div class="solution-step"><span class="num">1</span><span class="math">z<sup>&minus;1/3</sup> &middot; z<sup>3/4</sup> = z<sup>&minus;1/3 + 3/4</sup></span><span class="reason">Add powers</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">&minus;1/3 = &minus;4/12 &nbsp;and&nbsp; 3/4 = 9/12</span><span class="reason">Common denominator of 12</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">= z<sup>&minus;4/12 + 9/12</sup> = z<sup>5/12</sup></span><span class="reason">Add the exponents</span></div>
@@ -325,11 +224,8 @@
     <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
   </div>
 </section>
-
-</main>
-
 <script>
-/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+/* scope guard: the SPA re-runs this script on every lesson view */
 (function(){
 const questions=[
   {q:"In the expression &#8319;&radic;36, the value n is called the:",opts:["radicand","index","principal root","coefficient"],ans:1,exp:"The index is the small number in the crook of the radical that tells you which root to take. 36 is the radicand."},
@@ -379,10 +275,10 @@ function showScore(){
   document.getElementById('scorePanel').classList.add('show');
   document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
 }
-function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
-window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+
 buildQuiz();
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
 })();
 </script>
-</body>
-</html>
+</div>

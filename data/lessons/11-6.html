@@ -1,0 +1,668 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Find the volume of any prism or pyramid &mdash; right, oblique, or composite &mdash; using V = Bh and V = &#8531;Bh.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. What volume actually measures</h3>
+    <p>The <b>volume</b> of a solid is the measure of the amount of space that the solid encloses. Volume is measured in <b>cubic units</b>.</p>
+    <p>Think of filling a rectangular prism with unit cubes. If the bottom layer holds 6 &middot; 4 = 24 cubic units, and the prism is 2 layers tall, the total volume is 24 &middot; 2 = 48 cubic units. That "one layer &times; number of layers" idea <em>is</em> the volume formula.</p>
+    <div class="formula-box">bottom layer = area of the base = <b>B</b><br>number of layers = height = <b>h</b><br>total = <b>B &middot; h</b></div>
+    <div class="vocab">
+      <div class="vocab-item"><b>B</b> &mdash; the area of the <i>base</i> of the solid, in square units. Not the length of a side.</div>
+      <div class="vocab-item"><b>h</b> &mdash; the <i>height</i>: the perpendicular distance between the two bases (prism) or from the apex straight down to the base plane (pyramid).</div>
+      <div class="vocab-item"><b>Right solid</b> &mdash; the lateral edges are perpendicular to the base.</div>
+      <div class="vocab-item"><b>Oblique solid</b> &mdash; the lateral edges lean; the height is still measured <i>vertically</i>, not along the slanted edge.</div>
+    </div>
+  </div>
+
+  <div class="theorem">
+    <div class="theorem-head">Key Concept &middot; Volume of a Prism</div>
+    <div class="theorem-body">
+      <b>Words:</b> The volume <i>V</i> of a prism is <i>V</i> = <i>Bh</i>, where <i>B</i> is the area of a base and <i>h</i> is the height of the prism.
+      <div class="formula-box"><b>V = Bh</b></div>
+      This works for <em>every</em> prism &mdash; rectangular, triangular, trapezoidal, pentagonal, hexagonal. Only the way you compute <i>B</i> changes.
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Computing <i>B</i> for the common bases</h3>
+    <div class="formula-box">
+      rectangle: <code>B = &#8467;w</code><br>
+      triangle: <code>B = &frac12;bh<sub>base</sub></code><br>
+      trapezoid: <code>B = &frac12;h<sub>base</sub>(b<sub>1</sub> + b<sub>2</sub>)</code><br>
+      regular polygon: <code>B = &frac12;aP</code> &nbsp;(<i>a</i> = apothem, <i>P</i> = perimeter)
+    </div>
+    <div class="info-box"><strong>Study Tip:</strong> The base of a prism is <em>not</em> always the face resting on the table. It is one of the two congruent parallel faces. For a triangular prism lying on a rectangular face, the base is still the triangle.</div>
+  </div>
+
+  <div class="theorem">
+    <div class="theorem-head">Key Concept &middot; Cavalieri's Principle</div>
+    <div class="theorem-body">
+      <b>Words:</b> If two solids have the same height <i>h</i> and the same cross-sectional area <i>B</i> at every level, then they have the same volume.
+      <div class="formula-box">same <i>h</i> &nbsp;+&nbsp; same cross-section at every level &nbsp;&rarr;&nbsp; same <i>V</i></div>
+      This is why <code>V = Bh</code> works for an <em>oblique</em> prism too. Leaning a stack of cards to one side does not change how much space the stack takes up.
+    </div>
+  </div>
+
+  <div class="warning-box"><strong>Watch Out! Cross-Sectional Area.</strong> For solids with the same height to have the same volume, their cross sections must have the same <em>area</em>. The cross sections of the different solids do <em>not</em> have to be congruent polygons &mdash; a square and a rectangle of equal area work just as well.</div>
+
+  <div class="theorem">
+    <div class="theorem-head">Key Concept &middot; Volume of a Pyramid</div>
+    <div class="theorem-body">
+      <b>Words:</b> The volume <i>V</i> of a pyramid is <i>V</i> = &#8531;<i>Bh</i>, where <i>B</i> is the area of the base and <i>h</i> is the height of the pyramid.
+      <div class="formula-box"><b>V = &#8531;Bh</b> &nbsp;&nbsp;or&nbsp;&nbsp; <b>V = Bh &divide; 3</b></div>
+      Exactly three pyramids with the same base and the same height fill a prism with that base and height. So a pyramid holds one third of its "parent" prism.
+    </div>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt"><b>Prism:</b> <code>V = Bh</code>. <b>Pyramid:</b> <code>V = &#8531;Bh</code>. Same base, same height &rarr; the pyramid is exactly &#8531; of the prism.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt">Find <i>B</i> <b>first</b>, as a single number in square units. Only then multiply by <i>h</i>.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt"><i>h</i> is always the <b>perpendicular</b> (vertical) distance between the bases &mdash; never the slanted lateral edge.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt">Cavalieri: an oblique prism and a right prism with the same <i>B</i> and the same <i>h</i> have <b>equal</b> volumes.</div></div>
+  <div class="keyfact"><div class="ico">5</div><div class="txt">For a composite solid, split it into a prism plus a pyramid, find each volume, then <b>add</b>.</div></div>
+
+  <div class="concept-card">
+    <h3>3. The method, every time</h3>
+    <div class="steps-list">
+      <div class="s">Identify the <b>base</b>: the pair of congruent parallel faces (prism) or the single face opposite the apex (pyramid).</div>
+      <div class="s">Compute <b>B</b>, the area of that base, using the correct 2-D area formula. Label the units as square units.</div>
+      <div class="s">Identify <b>h</b>, the perpendicular height. If the solid is oblique, do <em>not</em> use the slant edge.</div>
+      <div class="s">Substitute into <code>V = Bh</code> (prism) or <code>V = &#8531;Bh</code> (pyramid).</div>
+      <div class="s">Report the answer in <b>cubic</b> units.</div>
+    </div>
+  </div>
+
+  <div class="warning-box"><strong>Watch Out! Area and Volume.</strong> Area is two-dimensional, so it is measured in <em>square</em> units. Volume is three-dimensional, so it is measured in <em>cubic</em> units. Writing 340 mm<sup>2</sup> for a volume is a scoring error even when the number is right.</div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Volume of a Prism &mdash; V = Bh</div>
+    <svg id="fig1" viewBox="0 0 340 290" width="340" role="img" aria-label="Rectangular prism in oblique projection with base area B shaded and vertical height h drawn as a dashed interior segment">
+      <g data-part="solid">
+        <polygon class="g-shape" fill-opacity=".55" points="80,130 215,130 215,230 80,230"/>
+        <polygon class="g-shape" fill-opacity=".55" points="80,130 215,130 257,100 122,100"/>
+        <polygon class="g-shape" fill-opacity=".55" points="215,130 257,100 257,200 215,230"/>
+        <path class="g-aux" d="M 122 200 L 257 200 M 122 200 L 122 100 M 122 200 L 80 230"/>
+        <path class="g-line" d="M 80 230 L 215 230 L 215 130 L 80 130 Z"/>
+        <path class="g-line" d="M 80 130 L 122 100 L 257 100 L 215 130"/>
+        <path class="g-line" d="M 215 230 L 257 200 L 257 100"/>
+      </g>
+      <g data-part="base">
+        <polygon class="g-shape-alt" fill-opacity=".55" points="80,230 215,230 257,200 122,200"/>
+        <path class="g-line-thin" d="M 50 254 L 100 236"/>
+        <text class="g-meas" x="24" y="260">B</text>
+      </g>
+      <g data-part="height">
+        <path class="g-dash" d="M 168.5 215 L 168.5 115"/>
+        <path class="g-right" d="M 180.5 215 L 180.5 203 L 168.5 203"/>
+        <text class="g-meas g-halo" x="176" y="166">h</text>
+      </g>
+      <text class="g-meas" x="147" y="252" text-anchor="middle">&#8467;</text>
+      <text class="g-meas" x="245" y="228">w</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','base')">Base B</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','height')">Height h</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','solid')">The prism</button>
+    </div>
+    <figcaption>The base <i>B</i> = &#8467;<i>w</i> is the shaded parallelogram at the bottom (hidden edges dashed grey). The height <i>h</i> runs straight up from the base and meets it at a right angle, so <i>V</i> = <i>Bh</i>.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Cavalieri's Principle &mdash; Right vs. Oblique</div>
+    <svg id="fig2" viewBox="0 0 470 300" width="470" role="img" aria-label="A right prism and an oblique prism with equal bases and equal vertical heights, showing congruent cross sections at the same level">
+      <g data-part="solid">
+        <polygon class="g-shape" fill-opacity=".55" points="50,120 140,120 140,240 50,240"/>
+        <polygon class="g-shape" fill-opacity=".55" points="50,120 140,120 182,90 92,90"/>
+        <polygon class="g-shape" fill-opacity=".55" points="140,240 140,120 182,90 182,210"/>
+        <path class="g-aux" d="M 92 210 L 182 210 M 92 210 L 92 90 M 92 210 L 50 240"/>
+        <path class="g-line" d="M 50 240 L 140 240 L 140 120 L 50 120 Z"/>
+        <path class="g-line" d="M 50 120 L 92 90 L 182 90 L 140 120"/>
+        <path class="g-line" d="M 140 240 L 182 210 L 182 90"/>
+        <polygon class="g-shape" fill-opacity=".55" points="250,240 340,240 380,120 290,120"/>
+        <polygon class="g-shape" fill-opacity=".55" points="340,240 382,210 422,90 380,120"/>
+        <polygon class="g-shape" fill-opacity=".55" points="290,120 380,120 422,90 332,90"/>
+        <path class="g-aux" d="M 292 210 L 382 210 M 292 210 L 332 90 M 292 210 L 250 240"/>
+        <path class="g-line" d="M 250 240 L 340 240 L 380 120 L 290 120 Z"/>
+        <path class="g-line" d="M 290 120 L 332 90 L 422 90 L 380 120"/>
+        <path class="g-line" d="M 340 240 L 382 210 L 422 90"/>
+      </g>
+      <g data-part="base">
+        <polygon class="g-shape-alt" fill-opacity=".55" points="50,240 140,240 182,210 92,210"/>
+        <polygon class="g-shape-alt" fill-opacity=".55" points="250,240 340,240 382,210 292,210"/>
+        <text class="g-meas" x="86" y="262" text-anchor="middle">B</text>
+        <text class="g-meas" x="286" y="262" text-anchor="middle">B</text>
+      </g>
+      <g data-part="height">
+        <path class="g-dash" d="M 116 225 L 116 105 M 316 225 L 316 105"/>
+        <path class="g-right" d="M 128 225 L 128 213 L 116 213"/>
+        <path class="g-right" d="M 328 225 L 328 213 L 316 213"/>
+        <text class="g-meas g-halo" x="122" y="136">h</text>
+        <text class="g-meas g-halo" x="322" y="136">h</text>
+      </g>
+      <g data-part="cross">
+        <polygon class="g-shape-alt" fill-opacity=".55" points="50,180 140,180 182,150 92,150"/>
+        <polygon class="g-shape-alt" fill-opacity=".55" points="270,180 360,180 402,150 312,150"/>
+      </g>
+      <text class="g-lbl-sm" x="116" y="284" text-anchor="middle">right prism</text>
+      <text class="g-lbl-sm" x="336" y="284" text-anchor="middle">oblique prism</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','base')">Equal bases</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','height')">Equal heights</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','cross')">Cross sections</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','solid')">Both solids</button>
+    </div>
+    <figcaption>Both prisms sit on congruent bases and rise to the same vertical height <i>h</i>. Slice each at the same level: the two cross sections have the same area. By Cavalieri's Principle the volumes are equal, so <i>V</i> = <i>Bh</i> for the leaning prism too.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Volume of a Pyramid &mdash; V = &#8531;Bh</div>
+    <svg id="fig3" viewBox="0 0 340 285" width="340" role="img" aria-label="Square pyramid in oblique projection with shaded base and dashed vertical height from apex to base centre">
+      <g data-part="solid">
+        <polygon class="g-shape" fill-opacity=".55" points="90,240 230,240 181,95"/>
+        <polygon class="g-shape" fill-opacity=".55" points="230,240 272,210 181,95"/>
+        <path class="g-aux" d="M 90 240 L 132 210 L 272 210 M 181 95 L 132 210"/>
+        <path class="g-line" d="M 90 240 L 230 240 L 272 210"/>
+        <path class="g-line" d="M 181 95 L 90 240 M 181 95 L 230 240 M 181 95 L 272 210"/>
+      </g>
+      <g data-part="base">
+        <polygon class="g-shape-alt" fill-opacity=".55" points="90,240 230,240 272,210 132,210"/>
+        <path class="g-line-thin" d="M 58 252 L 106 236"/>
+        <text class="g-meas" x="34" y="258">B</text>
+        <text class="g-meas g-halo" x="160" y="258" text-anchor="middle">s</text>
+      </g>
+      <g data-part="height">
+        <path class="g-dash" d="M 181 225 L 181 95"/>
+        <path class="g-right" d="M 193 225 L 193 213 L 181 213"/>
+        <text class="g-meas g-halo" x="189" y="160">h</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','base')">Base B</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','height')">Height h</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','solid')">Lateral faces</button>
+    </div>
+    <figcaption>For a square base of side <i>s</i>, <i>B</i> = <i>s</i><sup>2</sup>. The height <i>h</i> drops from the apex to the centre of the base and meets the base plane at a right angle, giving <i>V</i> = &#8531;<i>s</i><sup>2</sup><i>h</i>.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Why the &#8531;? Pyramid Inside Its Prism</div>
+    <svg id="fig4" viewBox="0 0 330 290" width="330" role="img" aria-label="A pyramid drawn inside a prism that shares its base and height, illustrating the one third relationship">
+      <g data-part="prism">
+        <polygon class="g-shape" fill-opacity=".55" points="80,140 200,140 200,240 80,240"/>
+        <polygon class="g-shape" fill-opacity=".55" points="80,140 200,140 242,110 122,110"/>
+        <polygon class="g-shape" fill-opacity=".55" points="200,240 200,140 242,110 242,210"/>
+        <path class="g-aux" d="M 122 210 L 242 210 M 122 210 L 122 110 M 122 210 L 80 240"/>
+        <path class="g-line" d="M 80 240 L 200 240 L 200 140 L 80 140 Z"/>
+        <path class="g-line" d="M 80 140 L 122 110 L 242 110 L 200 140"/>
+        <path class="g-line" d="M 200 240 L 242 210 L 242 110"/>
+      </g>
+      <g data-part="pyramid">
+        <path class="g-dash" d="M 161 125 L 80 240 M 161 125 L 200 240 M 161 125 L 242 210 M 161 125 L 122 210"/>
+        <polygon class="g-shape-alt" fill-opacity=".55" points="80,240 200,240 242,210 122,210"/>
+      </g>
+      <g data-part="height">
+        <path class="g-dash" d="M 161 225 L 161 125"/>
+        <path class="g-right" d="M 173 225 L 173 213 L 161 213"/>
+        <text class="g-meas g-halo" x="168" y="180">h</text>
+      </g>
+      <text class="g-meas" x="150" y="262" text-anchor="middle">B</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','prism')">Prism (V = Bh)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','pyramid')">Pyramid (V = &#8531;Bh)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','height')">Shared height</button>
+    </div>
+    <figcaption>The pyramid (orange, dashed edges) shares the shaded base and the full height of the prism. Three copies of that pyramid fill the prism exactly, so its volume is one third of <i>Bh</i>.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Volume of a Prism (regular pentagonal base)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Find the volume of the prism. The base is a regular pentagon with apothem <i>a</i> = 3.4 mm and perimeter <i>P</i> = 25 mm (side 5 mm). The height of the prism is 8 mm.</div>
+      <figure class="fig">
+        <div class="fig-title">Example 1 &mdash; Regular Pentagonal Prism</div>
+        <svg id="fig5" viewBox="0 0 340 285" width="340" role="img" aria-label="Right pentagonal prism with apothem 3.4 mm, side 5 mm and height 8 mm">
+          <polygon class="g-shape" fill-opacity=".55" points="85.2,115.6 124.8,128 124.8,238 85.2,225.6"/>
+          <polygon class="g-shape" fill-opacity=".55" points="124.8,128 199.3,115.6 199.3,225.6 124.8,238"/>
+          <polygon class="g-shape" fill-opacity=".55" points="199.3,115.6 205.7,95.4 205.7,205.4 199.3,225.6"/>
+          <polygon class="g-shape" fill-opacity=".55" points="124.8,128 199.3,115.6 205.7,95.4 135.1,95.4 85.2,115.6"/>
+          <path class="g-aux" d="M 135.1 95.4 L 135.1 205.4 M 135.1 205.4 L 205.7 205.4 M 135.1 205.4 L 85.2 225.6"/>
+          <path class="g-line" d="M 124.8 128 L 199.3 115.6 L 205.7 95.4 L 135.1 95.4 L 85.2 115.6 Z"/>
+          <path class="g-line" d="M 85.2 115.6 L 85.2 225.6 M 124.8 128 L 124.8 238 M 199.3 115.6 L 199.3 225.6 M 205.7 95.4 L 205.7 205.4"/>
+          <path class="g-line" d="M 85.2 225.6 L 124.8 238 L 199.3 225.6 L 205.7 205.4"/>
+          <path class="g-dash" d="M 150 110 L 105 121.8"/>
+          <text class="g-meas g-halo" x="100" y="142" text-anchor="middle">a = 3.4 mm</text>
+          <path class="g-dash" d="M 150 220 L 150 110"/>
+          <path class="g-right" d="M 162 220 L 162 208 L 150 208"/>
+          <path class="g-aux" d="M 205.7 95.4 L 236 95.4 M 205.7 205.4 L 236 205.4"/>
+          <path class="g-line-thin" d="M 232 95.4 L 232 205.4 M 226 95.4 L 238 95.4 M 226 205.4 L 238 205.4"/>
+          <text class="g-meas" x="242" y="154">8 mm</text>
+          <text class="g-meas g-halo" x="170" y="248">5 mm</text>
+          <text class="g-meas-b" x="30" y="266">B = &frac12;aP = 42.5 mm&sup2;</text>
+        </svg>
+        <figcaption>The apothem 3.4 mm runs from the centre of the pentagon to the midpoint of a side; the height 8 mm is vertical.</figcaption>
+      </figure>
+      <p><b>Step 1 &mdash; Find the area of the base <i>B</i>.</b></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">B = &frac12;aP</span><span class="reason">area of a regular polygon</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">B = &frac12;(3.4)(25)</span><span class="reason">a = 3.4 and P = 25</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">B = 42.5</span><span class="reason">the base is 42.5 mm&sup2;</span></div>
+      <p><b>Step 2 &mdash; Find the volume of the prism.</b></p>
+      <div class="solution-step"><span class="num">4</span><span class="math">V = Bh</span><span class="reason">volume of a prism</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">V = 42.5(8)</span><span class="reason">B = 42.5 and h = 8</span></div>
+      <div class="answer-box">V = 340 cubic millimetres (340 mm<sup>3</sup>)</div>
+      <div class="check-box"><strong>Check:</strong> 42.5 &times; 8 = 40(8) + 2.5(8) = 320 + 20 = 340 &#10003; &nbsp;Units: mm<sup>2</sup> &times; mm = mm<sup>3</sup> &#10003;</div>
+      <div class="warning-box"><strong>Trap:</strong> <code>P</code> is the whole perimeter (5 sides &times; 5 mm = 25 mm), not one side. Using <i>P</i> = 5 would give <i>B</i> = 8.5 and a volume five times too small.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Volume of an Oblique Prism</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the volume of the oblique prism. The base is a trapezoid with parallel sides <i>b</i><sub>1</sub> = 4 cm and <i>b</i><sub>2</sub> = 2 cm and base height 5 cm. The prism's height is 8 cm.</div>
+      <figure class="fig">
+        <div class="fig-title">Example 2 &mdash; Oblique Trapezoidal Prism</div>
+        <svg id="fig6" viewBox="0 0 440 300" width="440" role="img" aria-label="Oblique prism with a trapezoidal base, vertical height 8 cm, shown next to a flat drawing of the trapezoidal base">
+          <polygon class="g-shape" fill-opacity=".55" points="80,245 152,245 177,101 105,101"/>
+          <polygon class="g-shape" fill-opacity=".55" points="152,245 171.8,218 196.8,74 177,101"/>
+          <polygon class="g-shape" fill-opacity=".55" points="105,101 177,101 196.8,74 160.8,74"/>
+          <path class="g-aux" d="M 135.8 218 L 80 245 M 135.8 218 L 171.8 218 M 135.8 218 L 160.8 74"/>
+          <path class="g-line" d="M 80 245 L 152 245 L 171.8 218"/>
+          <path class="g-line" d="M 80 245 L 105 101 M 152 245 L 177 101 M 171.8 218 L 196.8 74"/>
+          <path class="g-line" d="M 105 101 L 177 101 L 196.8 74 L 160.8 74 Z"/>
+          <polygon class="g-shape-alt" fill-opacity=".55" points="80,245 152,245 171.8,218 135.8,218"/>
+          <path class="g-dash" d="M 150 231 L 150 87"/>
+          <path class="g-right" d="M 162 231 L 162 219 L 150 219"/>
+          <text class="g-meas g-halo" x="157" y="152">8 cm</text>
+          <text class="g-meas g-halo" x="100" y="240" text-anchor="middle">B</text>
+          <polygon class="g-shape-alt" fill-opacity=".55" points="300,240 372,240 354,150 318,150"/>
+          <path class="g-line" d="M 300 240 L 372 240 L 354 150 L 318 150 Z"/>
+          <path class="g-dash" d="M 336 240 L 336 150"/>
+          <path class="g-right" d="M 348 240 L 348 228 L 336 228"/>
+          <text class="g-meas" x="336" y="260" text-anchor="middle">4 cm</text>
+          <text class="g-meas" x="336" y="142" text-anchor="middle">2 cm</text>
+          <text class="g-meas g-halo" x="344" y="199">5 cm</text>
+          <text class="g-grn" x="336" y="284" text-anchor="middle">B = &frac12;(5)(4 + 2) = 15 cm&sup2;</text>
+          <text class="g-lbl-sm" x="140" y="284" text-anchor="middle">oblique prism</text>
+        </svg>
+        <figcaption>The lateral edges lean, but the height (dashed, with the right-angle mark) is still measured straight up from the base plane.</figcaption>
+      </figure>
+      <p><b>Part A &mdash; Find the area of the base.</b> The base of the prism is a trapezoid.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &frac12;h(b<sub>1</sub> + b<sub>2</sub>)</span><span class="reason">area of a trapezoid</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = &frac12;(5)(4 + 2)</span><span class="reason">h = 5, b<sub>1</sub> = 4, b<sub>2</sub> = 2</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = &frac12;(5)(6) = 15</span><span class="reason">the base is 15 cm&sup2;</span></div>
+      <p><b>Part B &mdash; Find the volume.</b></p>
+      <div class="solution-step"><span class="num">4</span><span class="math">V = Bh</span><span class="reason">volume of a prism (valid by Cavalieri)</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">V = (15)(8)</span><span class="reason">B = 15 and h = 8</span></div>
+      <div class="answer-box">V = 120 cm<sup>3</sup></div>
+      <div class="warning-box"><strong>Trap:</strong> The trapezoid's own height (5 cm) and the prism's height (8 cm) are two different numbers. The 5 belongs inside the area formula; only the 8 multiplies <i>B</i>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Volume of a Prism Using Algebraic Expressions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A rectangular prism has a base measuring 4<i>x</i> by <i>x</i> and a height of 4<i>x</i> + 3. <b>Part A</b> Find the volume in terms of <i>x</i>. <b>Part B</b> Find the volume if <i>x</i> = 2.</div>
+      <p><b>Part A, Step 1 &mdash; Find the area of the base.</b> The base is a rectangle.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &#8467;w</span><span class="reason">area of a rectangle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = (4x)(x)</span><span class="reason">substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = 4x&sup2;</span><span class="reason">solve</span></div>
+      <p><b>Part A, Step 2 &mdash; Find the volume.</b></p>
+      <div class="solution-step"><span class="num">4</span><span class="math">V = Bh</span><span class="reason">volume of a prism</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">V = (4x&sup2;)(4x + 3)</span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">V = 16x&sup3; + 12x&sup2;</span><span class="reason">distribute and simplify</span></div>
+      <p><b>Part B &mdash; Evaluate at <i>x</i> = 2.</b></p>
+      <div class="solution-step"><span class="num">7</span><span class="math">V = 16(2)&sup3; + 12(2)&sup2;</span><span class="reason">substitute x = 2</span></div>
+      <div class="solution-step"><span class="num">8</span><span class="math">V = 16(8) + 12(4) = 128 + 48</span><span class="reason">simplify</span></div>
+      <div class="answer-box">V = 16x<sup>3</sup> + 12x<sup>2</sup> &nbsp;&nbsp;&#8594;&nbsp;&nbsp; V = 176 in<sup>3</sup> when x = 2</div>
+      <div class="check-box"><strong>Check:</strong> Substitute first instead: <i>B</i> = 4(2)<sup>2</sup> = 16, <i>h</i> = 4(2) + 3 = 11, so <i>V</i> = 16(11) = 176 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Volume of a Pyramid</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the volume of the pyramid whose base area is <i>B</i> = 22 cm<sup>2</sup> and whose height is 5 cm.</div>
+      <figure class="fig">
+        <div class="fig-title">Example 4 &mdash; Pyramid with B = 22 cm&sup2;</div>
+        <svg id="fig7" viewBox="0 0 340 285" width="340" role="img" aria-label="Pyramid with base area 22 square centimetres and vertical height 5 centimetres">
+          <polygon class="g-shape" fill-opacity=".55" points="100,240 210,240 176,105"/>
+          <polygon class="g-shape" fill-opacity=".55" points="210,240 252,210 176,105"/>
+          <path class="g-aux" d="M 100 240 L 142 210 L 252 210 M 176 105 L 142 210"/>
+          <polygon class="g-shape-alt" fill-opacity=".55" points="100,240 210,240 252,210 142,210"/>
+          <path class="g-line" d="M 100 240 L 210 240 L 252 210"/>
+          <path class="g-line" d="M 176 105 L 100 240 M 176 105 L 210 240 M 176 105 L 252 210"/>
+          <path class="g-dash" d="M 176 225 L 176 105"/>
+          <path class="g-right" d="M 188 225 L 188 213 L 176 213"/>
+          <text class="g-meas g-halo" x="184" y="168">h = 5 cm</text>
+          <text class="g-meas-b" x="176" y="264" text-anchor="middle">B = 22 cm&sup2;</text>
+        </svg>
+        <figcaption>The height is the dashed vertical segment from the apex to the centre of the base, meeting the base at 90&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">V = &#8531;Bh</span><span class="reason">volume of a pyramid</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">V = &#8531;(22)(5)</span><span class="reason">B = 22 and h = 5</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">V = 110/3 &asymp; 36.7</span><span class="reason">divide, round to the nearest tenth</span></div>
+      <div class="answer-box">V &asymp; 36.7 cm<sup>3</sup></div>
+      <div class="check-box"><strong>Check:</strong> A prism with the same base and height would hold 22(5) = 110 cm<sup>3</sup>. One third of 110 is about 36.7 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Volume of a Pyramid Using Algebraic Expressions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A square pyramid has base edge 8<i>x</i>. A right triangle inside the pyramid has legs 4<i>x</i> (centre of the base to the midpoint of an edge) and <i>h</i>, with hypotenuse 5<i>x</i>. <b>Part A</b> Find <i>V</i> in terms of <i>x</i>. <b>Part B</b> Find <i>V</i> if <i>x</i> = 4.</div>
+      <p><b>Part A, Step 1 &mdash; Find the area <i>B</i> of the square base.</b></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">B = (8x)&sup2; = 64x&sup2;</span><span class="reason">area of a square</span></div>
+      <p><b>Part A, Step 2 &mdash; Find the height with the Pythagorean Theorem.</b></p>
+      <div class="solution-step"><span class="num">2</span><span class="math">a&sup2; + b&sup2; = c&sup2;</span><span class="reason">Pythagorean Theorem</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">(4x)&sup2; + h&sup2; = (5x)&sup2;</span><span class="reason">a = 4x, b = h, c = 5x</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">16x&sup2; + h&sup2; = 25x&sup2;</span><span class="reason">square each term</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">h&sup2; = 9x&sup2;, so h = 3x</span><span class="reason">solve for h (lengths are positive)</span></div>
+      <p><b>Part A, Step 3 &mdash; Find the volume.</b></p>
+      <div class="solution-step"><span class="num">6</span><span class="math">V = &#8531;Bh = &#8531;(64x&sup2;)(3x)</span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">V = 64x&sup3;</span><span class="reason">&#8531; &middot; 3 = 1</span></div>
+      <p><b>Part B &mdash; Evaluate at <i>x</i> = 4.</b></p>
+      <div class="solution-step"><span class="num">8</span><span class="math">V = 64(4)&sup3; = 64(64)</span><span class="reason">substitute x = 4</span></div>
+      <div class="answer-box">V = 64x<sup>3</sup> &nbsp;&nbsp;&#8594;&nbsp;&nbsp; V = 4096 in<sup>3</sup> when x = 4</div>
+      <div class="info-box"><strong>Study Tip:</strong> 3-4-5 shows up again: legs 4<i>x</i> and 3<i>x</i>, hypotenuse 5<i>x</i>. Recognising the triple saves you the arithmetic.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">Volume of a Composite Solid</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the volume of the composite solid: a rectangular prism with a 6 in. by 6 in. base and height 3 in., topped by a square pyramid of height 4 in.</div>
+      <figure class="fig">
+        <div class="fig-title">Example 6 &mdash; Prism Topped by a Square Pyramid</div>
+        <svg id="fig8" viewBox="0 0 340 300" width="340" role="img" aria-label="Composite solid made of a rectangular prism with a square pyramid on top, with dimensions labelled">
+          <polygon class="g-shape" fill-opacity=".55" points="80,190 200,190 200,250 80,250"/>
+          <polygon class="g-shape" fill-opacity=".55" points="200,250 200,190 242,160 242,220"/>
+          <path class="g-aux" d="M 122 220 L 242 220 M 122 220 L 122 160 M 122 220 L 80 250"/>
+          <polygon class="g-shape-alt" fill-opacity=".55" points="80,190 200,190 161,95"/>
+          <polygon class="g-shape-alt" fill-opacity=".55" points="200,190 242,160 161,95"/>
+          <path class="g-aux" d="M 161 95 L 122 160 M 80 190 L 122 160 L 242 160"/>
+          <path class="g-line" d="M 80 250 L 200 250 L 200 190 L 80 190 Z"/>
+          <path class="g-line" d="M 200 250 L 242 220 L 242 160 L 200 190"/>
+          <path class="g-line" d="M 80 190 L 122 160 L 242 160"/>
+          <path class="g-line" d="M 161 95 L 80 190 M 161 95 L 200 190 M 161 95 L 242 160"/>
+          <path class="g-dash" d="M 161 175 L 161 95"/>
+          <path class="g-right" d="M 173 175 L 173 163 L 161 163"/>
+          <text class="g-meas g-halo" x="168" y="134">4 in.</text>
+          <path class="g-aux" d="M 80 190 L 62 190 M 80 250 L 62 250"/>
+          <path class="g-line-thin" d="M 68 190 L 68 250 M 62 190 L 74 190 M 62 250 L 74 250"/>
+          <text class="g-meas" x="56" y="224" text-anchor="end">3 in.</text>
+          <text class="g-meas" x="140" y="272" text-anchor="middle">6 in.</text>
+          <text class="g-meas g-halo" x="230" y="248">6 in.</text>
+        </svg>
+        <figcaption>The prism and the pyramid share the same 6 in. by 6 in. square face, so both use <i>B</i> = 36 in<sup>2</sup>.</figcaption>
+      </figure>
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>Part A &mdash; the prism</h4>
+          <div class="math">V = Bh<br>= 36(3)<br><b>= 108 in<sup>3</sup></b></div>
+        </div>
+        <div class="case-box">
+          <h4>Part B &mdash; the pyramid</h4>
+          <div class="math">V = &#8531;Bh<br>= &#8531;(36)(4)<br><b>= 48 in<sup>3</sup></b></div>
+        </div>
+      </div>
+      <p><b>Part C &mdash; the composite solid.</b> The two pieces do not overlap, so add the volumes.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">V = 108 + 48</span><span class="reason">prism + pyramid</span></div>
+      <div class="answer-box">V = 156 in<sup>3</sup></div>
+      <div class="warning-box"><strong>Trap:</strong> Do not use 5 in. (a slanted edge) as the pyramid's height. Only the vertical 4 in. goes into <i>V</i> = &#8531;<i>Bh</i>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 7</span>
+      <span class="example-title">Approximate the Volume of a Composite Solid</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A monument-shaped solid is modelled by a square prism with base edge 6.5 units and height 36 units, topped by a square pyramid with the same base and height 6.5 units. Approximate the total volume to the nearest tenth.</div>
+      <p><b>Step 1 &mdash; the square prism.</b> The base is a square of edge 6.5, so <i>B</i> = 6.5<sup>2</sup> = 42.25.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">V = Bh = 42.25(36)</span><span class="reason">B = 42.25 and h = 36</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">V = 1521</span><span class="reason">volume of the square prism</span></div>
+      <p><b>Step 2 &mdash; the square pyramid.</b></p>
+      <div class="solution-step"><span class="num">3</span><span class="math">V = &#8531;Bh = &#8531;(42.25)(6.5)</span><span class="reason">B = 42.25 and h = 6.5</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">V = 274.625/3 &asymp; 91.5</span><span class="reason">simplify, round to the nearest tenth</span></div>
+      <p><b>Step 3 &mdash; the whole sculpture.</b></p>
+      <div class="solution-step"><span class="num">5</span><span class="math">V &asymp; 1521 + 91.5</span><span class="reason">add the two pieces</span></div>
+      <div class="answer-box">V &asymp; 1612.5 cubic units</div>
+      <div class="info-box"><strong>Study Tip:</strong> Round only at the very end. Rounding 91.541&#8230; to 92 before adding would shift the final answer by half a cubic unit.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1 &mdash; prism with a triangular base</h4>
+    <div class="prob">A prism has a right-triangular base with legs 6 cm and 9 cm. The prism's height is 12 cm. Find <i>V</i>.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">B = &frac12;(6)(9) = 27</span><span class="reason">area of a right triangle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">V = Bh = 27(12)</span><span class="reason">volume of a prism</span></div>
+      <div class="answer-box">V = 324 cm<sup>3</sup></div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2 &mdash; regular hexagonal prism</h4>
+    <div class="prob">A prism's base is a regular hexagon with apothem 5&radic;3 in. and side 10 in. The prism is 7 in. tall. Find <i>V</i>.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">P = 6(10) = 60</span><span class="reason">perimeter of the hexagon</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">B = &frac12;aP = &frac12;(5&radic;3)(60) = 150&radic;3</span><span class="reason">regular polygon area</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">V = Bh = 150&radic;3(7) = 1050&radic;3</span><span class="reason">volume of a prism</span></div>
+      <div class="answer-box">V = 1050&radic;3 &asymp; 1818.7 in<sup>3</sup></div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3 &mdash; oblique prism (Cavalieri)</h4>
+    <div class="prob">An oblique prism has a trapezoidal base with parallel sides 7 m and 3 m and base height 4 m. Its vertical height is 9 m; each lateral edge measures 11 m. Find <i>V</i>.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">B = &frac12;(4)(7 + 3) = 20</span><span class="reason">area of a trapezoid</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">V = Bh = 20(9)</span><span class="reason">Cavalieri: use 9, not the 11 m slant</span></div>
+      <div class="answer-box">V = 180 m<sup>3</sup></div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4 &mdash; pyramid in terms of <i>x</i></h4>
+    <div class="prob">A pyramid has a rectangular base 6<i>x</i> by 2<i>x</i> and height 5<i>x</i>. Find <i>V</i> in terms of <i>x</i>, then evaluate at <i>x</i> = 3.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">B = (6x)(2x) = 12x&sup2;</span><span class="reason">area of a rectangle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">V = &#8531;(12x&sup2;)(5x) = 20x&sup3;</span><span class="reason">volume of a pyramid</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">V = 20(3)&sup3; = 20(27)</span><span class="reason">substitute x = 3</span></div>
+      <div class="answer-box">V = 20x<sup>3</sup>, and V = 540 cubic units when x = 3</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5 &mdash; solve backwards for <i>h</i></h4>
+    <div class="prob">A pyramid has a volume of 270 ft<sup>3</sup> and a base area of 45 ft<sup>2</sup>. Find its height.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">270 = &#8531;(45)h</span><span class="reason">substitute into V = &#8531;Bh</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">270 = 15h</span><span class="reason">&#8531;(45) = 15</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">h = 18</span><span class="reason">divide each side by 15</span></div>
+      <div class="answer-box">h = 18 ft (the same answer whether the pyramid is right or oblique)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6 &mdash; composite solid</h4>
+    <div class="prob">A cube of edge 4 in. has a square pyramid of height 9 in. built on its top face. Find the total volume.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">B = 4&sup2; = 16</span><span class="reason">shared square face</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">V<sub>cube</sub> = 16(4) = 64</span><span class="reason">V = Bh</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">V<sub>pyr</sub> = &#8531;(16)(9) = 48</span><span class="reason">V = &#8531;Bh</span></div>
+      <div class="answer-box">V = 64 + 48 = 112 in<sup>3</sup></div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Any prism (right or oblique)</td><td>Find <i>B</i>, multiply by the vertical height</td><td><code>V = Bh</code></td></tr>
+    <tr><td>Any pyramid</td><td>Find <i>B</i>, multiply by <i>h</i>, divide by 3</td><td><code>V = &#8531;Bh</code></td></tr>
+    <tr><td>Base is a rectangle</td><td><code>B = &#8467;w</code></td><td><code>V = &#8467;wh</code></td></tr>
+    <tr><td>Base is a triangle</td><td><code>B = &frac12;b&middot;h<sub>base</sub></code></td><td><code>V = &frac12;b&middot;h<sub>base</sub>&middot;h</code></td></tr>
+    <tr><td>Base is a trapezoid</td><td><code>B = &frac12;h<sub>base</sub>(b<sub>1</sub> + b<sub>2</sub>)</code></td><td>then multiply by <i>h</i></td></tr>
+    <tr><td>Base is a regular polygon</td><td><code>B = &frac12;aP</code></td><td>then multiply by <i>h</i> (or &#8531;<i>h</i>)</td></tr>
+    <tr><td>Solid leans (oblique)</td><td>Use the vertical height, never the slant edge</td><td>Cavalieri's Principle</td></tr>
+    <tr><td>Given <i>V</i>, find <i>h</i></td><td>Prism: <code>h = V/B</code>; Pyramid: <code>h = 3V/B</code></td><td>solve the equation</td></tr>
+    <tr><td>Composite solid</td><td>Split into prism + pyramid, compute each, add</td><td><code>V = V<sub>1</sub> + V<sub>2</sub></code></td></tr>
+    <tr><td>Dimensions given as expressions</td><td>Build <i>B</i> and <i>h</i> in terms of <i>x</i>, multiply, then substitute</td><td>polynomial in <i>x</i></td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">V = Bh</span>
+    <span class="pill">V = &#8531;Bh</span>
+    <span class="pill">B = &#8467;w</span>
+    <span class="pill">B = &frac12;bh</span>
+    <span class="pill">B = &frac12;h(b&#8321; + b&#8322;)</span>
+    <span class="pill">B = &frac12;aP</span>
+    <span class="pill">h = V/B</span>
+    <span class="pill">h = 3V/B</span>
+    <span class="pill">a&sup2; + b&sup2; = c&sup2;</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid:</strong>
+    <ul>
+      <li>Using a <em>side length</em> where the formula wants the <em>base area B</em>.</li>
+      <li>Using the slant (lateral) edge instead of the perpendicular height on an oblique solid or a pyramid.</li>
+      <li>Forgetting the &#8531; on a pyramid &mdash; that answer is exactly 3 times too big.</li>
+      <li>Mixing up the base's internal height (inside a triangle or trapezoid area formula) with the solid's height.</li>
+      <li>Using the perimeter of one side instead of the whole polygon in <code>B = &frac12;aP</code>.</li>
+      <li>Reporting the answer in square units instead of cubic units.</li>
+      <li>Rounding partway through a composite-solid calculation instead of at the end.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"A prism has base area B and height h. Its volume is:",opts:["V = &#8531;Bh","V = Bh","V = 2Bh","V = B + h"],ans:1,exp:"A prism is a stack of identical layers, each of area B, piled to a height h. Multiplying the layer area by the height gives V = Bh. The &#8531; belongs to pyramids, not prisms."},
+  {q:"A prism has base area B = 24 cm&sup2; and height h = 7 cm. Find V.",opts:["84 cm&sup3;","31 cm&sup3;","168 cm&sup3;","56 cm&sup3;"],ans:2,exp:"V = Bh = 24(7) = 168 cm&sup3;. Choice A is &frac12;Bh, choice B adds instead of multiplying, and choice D uses 24 &divide; 3 &times; 7."},
+  {q:"A pyramid has base area B and height h. Its volume is:",opts:["V = Bh","V = 3Bh","V = &frac12;Bh","V = &#8531;Bh"],ans:3,exp:"Exactly three congruent pyramids with base B and height h fill the prism of volume Bh, so each pyramid holds one third of it: V = &#8531;Bh."},
+  {q:"A pyramid has B = 45 in&sup2; and h = 8 in. Find V.",opts:["120 in&sup3;","360 in&sup3;","180 in&sup3;","60 in&sup3;"],ans:0,exp:"V = &#8531;(45)(8) = 15(8) = 120 in&sup3;. Choice B (360) is the volume of the matching prism &mdash; it forgets the &#8531;."},
+  {q:"Find the volume of the rectangular prism shown.",fig:"<svg viewBox='0 0 340 200' width='340' role='img' aria-label='Rectangular prism 9 by 4 by 5'><polygon class='g-shape' fill-opacity='.55' points='70,90 190,90 190,160 70,160'/><polygon class='g-shape' fill-opacity='.55' points='70,90 190,90 232,60 112,60'/><polygon class='g-shape' fill-opacity='.55' points='190,160 190,90 232,60 232,130'/><path class='g-aux' d='M 112 130 L 232 130 M 112 130 L 112 60 M 112 130 L 70 160'/><path class='g-line' d='M 70 160 L 190 160 L 190 90 L 70 90 Z'/><path class='g-line' d='M 70 90 L 112 60 L 232 60 L 190 90'/><path class='g-line' d='M 190 160 L 232 130 L 232 60'/><text class='g-meas' x='130' y='182' text-anchor='middle'>&#8467; = 9</text><text class='g-meas' x='218' y='158'>w = 4</text><text class='g-meas' x='60' y='130' text-anchor='end'>h = 5</text></svg>",opts:["45 cubic units","180 cubic units","60 cubic units","36 cubic units"],ans:1,exp:"The base is the 9 by 4 rectangle, so B = 36. Then V = Bh = 36(5) = 180 cubic units. Choice A stops at 9(5), and choice D is just the base area B."},
+  {q:"A prism has a right-triangular base with legs 6 and 5, and a height of 10. Find V.",opts:["300 cubic units","75 cubic units","150 cubic units","30 cubic units"],ans:2,exp:"First B = &frac12;(6)(5) = 15. Then V = Bh = 15(10) = 150. Choice A (300) forgets the &frac12; in the triangle's area; choice D is B only."},
+  {q:"Two solids have the same height and the same cross-sectional area at every level. What can you conclude?",opts:["The oblique solid has the smaller volume","The right solid has the larger volume","Their volumes cannot be compared without more data","Their volumes are equal"],ans:3,exp:"This is exactly the hypothesis of Cavalieri's Principle, so the volumes are equal. Note that the cross sections need only have the same area &mdash; they need not be congruent polygons."},
+  {q:"An oblique prism has a trapezoidal base with parallel sides 6 and 4 and base height 5. The prism's vertical height is 9. Find V.",opts:["225 cubic units","450 cubic units","75 cubic units","270 cubic units"],ans:0,exp:"B = &frac12;(5)(6 + 4) = 25, so V = Bh = 25(9) = 225. Choice B forgets the &frac12; in the trapezoid area, and choice D wrongly multiplies 6(5)(9)."},
+  {q:"Find the volume of the square pyramid shown.",fig:"<svg viewBox='0 0 340 210' width='340' role='img' aria-label='Square pyramid with base edge 6 and height 10'><polygon class='g-shape' fill-opacity='.55' points='90,170 200,170 166,55'/><polygon class='g-shape' fill-opacity='.55' points='200,170 242,140 166,55'/><path class='g-aux' d='M 90 170 L 132 140 L 242 140 M 166 55 L 132 140'/><polygon class='g-shape-alt' fill-opacity='.55' points='90,170 200,170 242,140 132,140'/><path class='g-line' d='M 90 170 L 200 170 L 242 140'/><path class='g-line' d='M 166 55 L 90 170 M 166 55 L 200 170 M 166 55 L 242 140'/><path class='g-dash' d='M 166 155 L 166 55'/><path class='g-right' d='M 178 155 L 178 143 L 166 143'/><text class='g-meas g-halo' x='174' y='108'>h = 10</text><text class='g-meas' x='145' y='190' text-anchor='middle'>s = 6</text></svg>",opts:["360 cubic units","60 cubic units","240 cubic units","120 cubic units"],ans:3,exp:"B = 6&sup2; = 36, so V = &#8531;(36)(10) = 12(10) = 120. Choice A (360) is the prism volume, and choice B multiplies the side by the height instead of using the base area."},
+  {q:"A rectangular prism has a base measuring 3x by x and a height of 2x + 1. Find V in terms of x.",opts:["6x&sup3; + 3x&sup2;","6x&sup3; + 3x","3x&sup3; + 6x&sup2;","6x&sup2; + 3x"],ans:0,exp:"B = (3x)(x) = 3x&sup2;. Then V = 3x&sup2;(2x + 1) = 6x&sup3; + 3x&sup2;. Distributing 3x&sup2; over both terms raises each degree by 2, which rules out the other choices."},
+  {q:"Using V = 6x&sup3; + 3x&sup2; from the previous question, find V when x = 2.",opts:["36 cubic units","60 cubic units","48 cubic units","72 cubic units"],ans:1,exp:"V = 6(2)&sup3; + 3(2)&sup2; = 6(8) + 3(4) = 48 + 12 = 60. Check it the other way: B = 3(2)&sup2; = 12 and h = 2(2) + 1 = 5, so V = 12(5) = 60."},
+  {q:"A square pyramid has base edge 8x. The segment from the centre of the base to the midpoint of an edge is 4x, and the slant height to that midpoint is 5x. Find V in terms of x.",opts:["40x&sup3;","192x&sup3;","64x&sup3;","128x&sup3;"],ans:2,exp:"By the Pythagorean Theorem (4x)&sup2; + h&sup2; = (5x)&sup2;, so h&sup2; = 9x&sup2; and h = 3x. Then B = (8x)&sup2; = 64x&sup2; and V = &#8531;(64x&sup2;)(3x) = 64x&sup3;. Choice B uses 5x as the height and forgets nothing else; choice D uses 6x."},
+  {q:"A composite solid is a prism with B = 36 and h = 3, topped by a pyramid with the same base and h = 4. Find the total volume.",opts:["156 cubic units","204 cubic units","144 cubic units","168 cubic units"],ans:0,exp:"Prism: 36(3) = 108. Pyramid: &#8531;(36)(4) = 48. Total 108 + 48 = 156. Choice B (204) forgets the &#8531; on the pyramid; choice C adds the heights first, which is not valid."},
+  {q:"A pyramid and a prism have the same base and the same height. The prism's volume is 96 cm&sup3;. Find the pyramid's volume.",opts:["288 cm&sup3;","48 cm&sup3;","32 cm&sup3;","16 cm&sup3;"],ans:2,exp:"Since V_prism = Bh and V_pyramid = &#8531;Bh, the pyramid is one third of the prism: 96 &divide; 3 = 32 cm&sup3;. Choice A multiplies by 3, and choice B halves instead of taking a third."},
+  {q:"A pyramid has a volume of 270 ft&sup3; and a base area of 45 ft&sup2;. Find its height.",opts:["6 ft","18 ft","54 ft","9 ft"],ans:1,exp:"From 270 = &#8531;(45)h you get 270 = 15h, so h = 18 ft. Equivalently h = 3V/B = 810/45 = 18. Choice A comes from using V = Bh and skipping the factor of 3."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

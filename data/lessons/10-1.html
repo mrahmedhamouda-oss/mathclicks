@@ -1,0 +1,813 @@
+<div class="sat-lesson">
+<p class="lesson-objective">By the end of this page you will be able to name every part of a circle, convert freely between radius, diameter and circumference, and find missing measures where two circles meet.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<!-- ==================== CONCEPTS ==================== -->
+<section id="concepts">
+<h2>Core Concepts</h2>
+
+<div class="concept-card">
+  <h3>1 &middot; What a circle actually is</h3>
+  <p>A circle is not "a round shape" &mdash; it is a <em>distance rule</em>. Pick a point, then collect
+  every point in the plane that sits exactly the same distance from it. That collection is the circle.</p>
+  <div class="formula-box">
+    A <b>circle</b> is the set of all points in a plane that are the same distance from a given point<br>
+    called the <b>center of the circle</b>.
+  </div>
+  <p>A circle is <strong>named by its center</strong>. A circle whose center is <code>C</code> is written
+  <code>&#9737;C</code> and read "circle&nbsp;C". That single symbol tells you everything: same center, same rule.</p>
+  <div class="info-box"><strong>Notice:</strong> the center is <em>not part of</em> the circle. The circle is
+  only the rim &mdash; the points at distance <code>r</code>. The center is at distance 0, so it is in the
+  <em>interior</em>, not on the circle.</div>
+</div>
+
+<div class="concept-card">
+  <h3>2 &middot; Today's vocabulary</h3>
+  <div class="vocab">
+    <div class="vocab-item"><b>circle</b> &mdash; the set of all points in a plane the same distance from a given point.</div>
+    <div class="vocab-item"><b>center of a circle</b> &mdash; the given point that every point of the circle is measured from.</div>
+    <div class="vocab-item"><b>radius of a circle</b> &mdash; a segment from the center to a point on the circle. Plural: <em>radii</em>.</div>
+    <div class="vocab-item"><b>chord of a circle</b> &mdash; a segment whose <em>endpoints are both on</em> the circle.</div>
+    <div class="vocab-item"><b>diameter of a circle</b> &mdash; a chord that passes through the center of the circle.</div>
+    <div class="vocab-item"><b>pi (&pi;)</b> &mdash; the irrational number equal to the ratio <code>C/d</code> for every circle.</div>
+    <div class="vocab-item"><b>concentric circles</b> &mdash; coplanar circles that have the same center.</div>
+    <div class="vocab-item"><b>congruent circles</b> &mdash; circles with congruent radii (Postulate 10.1).</div>
+  </div>
+  <div class="info-box"><strong>Words that do double duty:</strong> <em>radius</em> and <em>diameter</em> name
+  <strong>segments</strong> ("<span style="text-decoration:overline">CF</span> is a radius") <em>and</em> they name
+  <strong>lengths</strong> ("the radius is 7&nbsp;ft"). Read the sentence to tell which one is meant.</div>
+  <div class="warning-box"><strong>Watch out &mdash; chord vs. diameter.</strong> Every diameter is a chord, but
+  most chords are <em>not</em> diameters. A chord only earns the name "diameter" when it goes <em>through the
+  center</em>. The diameter is the longest chord a circle has.</div>
+</div>
+
+<div class="concept-card">
+  <h3>3 &middot; Radius and diameter relationships</h3>
+  <p>A diameter is built out of two radii laid end to end, so the diameter is always exactly twice the radius.
+  Turn that around and the radius is half the diameter.</p>
+  <div class="theorem">
+    <div class="theorem-head">Key Concept &middot; Radius and Diameter Relationships</div>
+    <div class="theorem-body">
+      If a circle has radius <code>r</code> and diameter <code>d</code>, then the following relationships are true.
+      <div class="formula-box" style="margin-bottom:0">
+        <b>Radius Formula</b>&nbsp;&nbsp; r = d/2 &nbsp;&nbsp;or&nbsp;&nbsp; r = &frac12;d<br>
+        <b>Diameter Formula</b>&nbsp;&nbsp; d = 2r
+      </div>
+    </div>
+  </div>
+  <div class="keyfact"><div class="ico">1</div><div class="txt">All radii of a circle are <strong>congruent</strong>.
+  That is the whole definition of a circle restated: every point on it is the same distance from the center.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt">Because a diameter is composed of two radii, all
+  <strong>diameters of a circle are also congruent</strong>.</div></div>
+</div>
+
+<div class="concept-card">
+  <h3>4 &middot; Pi and the circumference formula</h3>
+  <p>The <strong>circumference</strong> of a circle is the distance around it. Measure the circumference of
+  <em>any</em> circle, divide by its diameter, and you always get the same number. That constant ratio is
+  <strong>pi</strong>, written <code>&pi;</code>, and it is irrational &mdash; its decimal never ends and never repeats.</p>
+  <p>Both circumference formulas come straight out of that one definition:</p>
+  <div class="steps-list">
+    <div class="s"><code>C/d = &pi;</code> &nbsp; &mdash; <em>Definition of pi</em></div>
+    <div class="s"><code>C = &pi;d</code> &nbsp; &mdash; <em>Multiply each side by <code>d</code></em></div>
+    <div class="s"><code>C = &pi;(2r)</code> &nbsp; &mdash; <em>Substitute <code>d = 2r</code></em></div>
+    <div class="s"><code>C = 2&pi;r</code> &nbsp; &mdash; <em>Simplify</em></div>
+  </div>
+  <div class="theorem">
+    <div class="theorem-head">Key Concept &middot; Circumference Formula</div>
+    <div class="theorem-body">
+      <strong>Words:</strong> If a circle has diameter <code>d</code> or radius <code>r</code>, the circumference
+      <code>C</code> equals the diameter times pi or twice the radius times pi.
+      <div class="formula-box" style="margin-bottom:0"><b>Symbols:</b>&nbsp;&nbsp; C = &pi;d &nbsp;&nbsp;or&nbsp;&nbsp; C = 2&pi;r</div>
+    </div>
+  </div>
+  <div class="info-box"><strong>Study Tip &mdash; levels of accuracy.</strong> Because &pi; is irrational, its value
+  cannot be written as a terminating decimal. Using <code>3</code> for &pi; gives a quick mental estimate.
+  Using <code>3.14</code> or <code>22/7</code> is closer. For the most accurate answer, use the
+  <code>&pi;</code> key on a calculator. Unless a problem says otherwise, assume the &pi; key was used.</div>
+  <div class="warning-box"><strong>Watch out &mdash; <code>r</code> or <code>d</code>?</strong> <code>C = &pi;d</code>
+  and <code>C = 2&pi;r</code> are the <em>same</em> formula. The classic error is feeding a <em>radius</em> into
+  <code>C = &pi;d</code> (which halves your answer) or a <em>diameter</em> into <code>C = 2&pi;r</code>
+  (which doubles it). Before you compute, write down which one you were given.</div>
+</div>
+
+<div class="concept-card">
+  <h3>5 &middot; Pairs of circles</h3>
+  <p>As with other figures, pairs of circles can be congruent, similar, or share other special relationships.
+  Because a circle is completely determined by its center and its radius, comparing two circles reduces to
+  comparing two numbers.</p>
+  <div class="theorem">
+    <div class="theorem-head">Postulate 10.1</div>
+    <div class="theorem-body">Two circles are congruent if and only if they have congruent radii.</div>
+  </div>
+  <figure class="fig">
+    <div class="fig-title">Postulate 10.1 &mdash; Congruent circles</div>
+    <svg viewBox="0 0 400 215" width="400" role="img" aria-label="Circle G with radius GH congruent to circle J with radius JK, both radii 58 units long">
+      <circle class="g-line" cx="100" cy="100" r="58"/>
+      <circle class="g-line" cx="280" cy="100" r="58"/>
+      <line class="g-line" x1="100" y1="100" x2="133.3" y2="147.5"/>
+      <line class="g-line" x1="280" y1="100" x2="324.4" y2="62.7"/>
+      <line class="g-tick" x1="111.7" y1="127.1" x2="121.5" y2="120.3"/>
+      <line class="g-tick" x1="298.3" y1="76.8" x2="306.1" y2="85.9"/>
+      <circle class="g-pt" cx="100" cy="100" r="5"/>
+      <circle class="g-pt" cx="280" cy="100" r="5"/>
+      <circle class="g-pt" cx="133.3" cy="147.5" r="4.5"/>
+      <circle class="g-pt" cx="324.4" cy="62.7" r="4.5"/>
+      <text class="g-lbl" x="88" y="96" text-anchor="end">G</text>
+      <text class="g-lbl" x="140" y="164" text-anchor="start">H</text>
+      <text class="g-lbl" x="268" y="96" text-anchor="end">J</text>
+      <text class="g-lbl" x="332" y="55" text-anchor="start">K</text>
+    </svg>
+    <figcaption>Both radii are drawn 58 units long and carry one tick mark:
+    <span style="text-decoration:overline">GH</span> &cong; <span style="text-decoration:overline">JK</span>,
+    so &#9737;G &cong; &#9737;J.</figcaption>
+  </figure>
+  <div class="theorem">
+    <div class="theorem-head">Theorem 10.1</div>
+    <div class="theorem-body"><strong>Words:</strong> All circles are similar.<br>
+    <em>Why:</em> every circle has the same shape &mdash; you can always scale one circle onto another by the ratio
+    of their radii, so a similarity transformation always exists.</div>
+  </div>
+  <figure class="fig">
+    <div class="fig-title">Theorem 10.1 &mdash; All circles are similar</div>
+    <svg viewBox="0 0 380 190" width="380" role="img" aria-label="Circle X of radius 55 and circle Y of radius 32, similar figures">
+      <circle class="g-line" cx="105" cy="95" r="55"/>
+      <circle class="g-line" cx="275" cy="95" r="32"/>
+      <circle class="g-pt" cx="105" cy="95" r="5"/>
+      <circle class="g-pt" cx="275" cy="95" r="5"/>
+      <text class="g-lbl" x="93" y="91" text-anchor="end">X</text>
+      <text class="g-lbl" x="263" y="91" text-anchor="end">Y</text>
+    </svg>
+    <figcaption>&#9737;X ~ &#9737;Y for <em>any</em> two circles, no matter how different the radii.</figcaption>
+  </figure>
+  <p><strong>Concentric circles</strong> are coplanar circles that have the same center. Two concentric circles
+  never intersect, because every point of one is a different distance from the shared center than every point of the other.</p>
+  <div class="info-box"><strong>Study Tip &mdash; points of intersection.</strong> Two distinct circles can meet in
+  <strong>2 points</strong> (they cross), <strong>1 point</strong> (they are tangent &mdash; externally or internally),
+  or <strong>0 points</strong> (one is completely outside or completely inside the other, including the concentric case).
+  Two circles can never meet in exactly 3 points.</div>
+</div>
+
+</section>
+
+<!-- ==================== KEY FIGURES ==================== -->
+<section id="figures">
+<h2>Key Figures</h2>
+<p style="font-size:15px;line-height:1.7;margin-bottom:6px;">Click a chip under any diagram to isolate that part
+of the figure &mdash; everything else fades out. Click the same chip again to bring it all back.</p>
+
+<figure class="fig">
+  <div class="fig-title">Figure 1 &middot; The parts of &#9737;C</div>
+  <svg id="fig1" viewBox="0 0 430 310" width="430" role="img" aria-label="Circle C with center C, radius CF, chord AB and diameter DE">
+    <g data-part="circle">
+      <circle class="g-shape" cx="205" cy="152" r="104"/>
+    </g>
+    <g data-part="diameter">
+      <line class="g-line" x1="101" y1="152" x2="309" y2="152"/>
+      <circle class="g-pt" cx="101" cy="152" r="4.5"/>
+      <circle class="g-pt" cx="309" cy="152" r="4.5"/>
+      <text class="g-lbl" x="84" y="157" text-anchor="end">D</text>
+      <text class="g-lbl" x="326" y="157" text-anchor="start">E</text>
+    </g>
+    <g data-part="radius">
+      <line class="g-line" x1="205" y1="152" x2="253.8" y2="243.8"/>
+      <circle class="g-pt" cx="253.8" cy="243.8" r="4.5"/>
+      <text class="g-lbl" x="263" y="266" text-anchor="start">F</text>
+    </g>
+    <g data-part="chord">
+      <line class="g-line" x1="110" y1="109.7" x2="291.2" y2="93.8"/>
+      <circle class="g-pt" cx="110" cy="109.7" r="4.5"/>
+      <circle class="g-pt" cx="291.2" cy="93.8" r="4.5"/>
+      <text class="g-lbl" x="94" y="105" text-anchor="end">A</text>
+      <text class="g-lbl" x="306" y="87" text-anchor="start">B</text>
+    </g>
+    <g data-part="center">
+      <circle class="g-pt" cx="205" cy="152" r="5.5"/>
+      <text class="g-lbl" x="205" y="140" text-anchor="middle">C</text>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig1','circle')">The circle</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','center')">Center C</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','radius')">Radius CF</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','chord')">Chord AB</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','diameter')">Diameter DE</button>
+  </div>
+  <figcaption>Points A, B, D, E and F all lie on &#9737;C (each is exactly 104 units from C in the drawing).
+  <span style="text-decoration:overline">CD</span>, <span style="text-decoration:overline">CE</span> and
+  <span style="text-decoration:overline">CF</span> are radii;
+  <span style="text-decoration:overline">AB</span> and <span style="text-decoration:overline">DE</span> are chords;
+  only <span style="text-decoration:overline">DE</span> passes through C, so only it is a diameter.</figcaption>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Figure 2 &middot; Radius, diameter, circumference</div>
+  <svg id="fig2" viewBox="0 0 420 320" width="420" role="img" aria-label="Circle O of radius 110 with a horizontal diameter and one radius drawn, circumference highlighted">
+    <g data-part="circumference">
+      <circle class="g-arc" cx="200" cy="155" r="110"/>
+      <text class="g-grn" x="200" y="32" text-anchor="middle">C = &pi;d = 2&pi;r</text>
+    </g>
+    <g data-part="diameter">
+      <line class="g-line" x1="90" y1="155" x2="310" y2="155"/>
+      <circle class="g-pt" cx="90" cy="155" r="4.5"/>
+      <circle class="g-pt" cx="310" cy="155" r="4.5"/>
+      <text class="g-meas g-halo" x="140" y="147" text-anchor="middle">d</text>
+    </g>
+    <g data-part="radius">
+      <line class="g-line" x1="200" y1="155" x2="263.1" y2="64.9"/>
+      <circle class="g-pt" cx="263.1" cy="64.9" r="4.5"/>
+      <text class="g-meas g-halo" x="244" y="104" text-anchor="start">r</text>
+    </g>
+    <g data-part="center">
+      <circle class="g-pt" cx="200" cy="155" r="5.5"/>
+      <text class="g-lbl" x="200" y="178" text-anchor="middle">O</text>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig2','circumference')">Circumference C</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','diameter')">Diameter d</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','radius')">Radius r</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','center')">Center O</button>
+  </div>
+  <figcaption>The green curve is the circumference &mdash; the distance <em>around</em>. The drawn diameter is
+  220 units and the drawn radius is 110 units, exactly the 2&nbsp;:&nbsp;1 ratio the formula
+  <code>d = 2r</code> requires.</figcaption>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Figure 3 &middot; Concentric circles</div>
+  <svg id="fig3" viewBox="0 0 400 300" width="400" role="img" aria-label="Two concentric circles with common center A, inner radius AB and outer radius AC">
+    <g data-part="outer"><circle class="g-shape" cx="190" cy="160" r="106"/></g>
+    <g data-part="inner"><circle class="g-shape-alt" cx="190" cy="160" r="62"/></g>
+    <g data-part="outer">
+      <line class="g-line" x1="190" y1="160" x2="279.9" y2="216.2"/>
+      <circle class="g-pt" cx="279.9" cy="216.2" r="4.5"/>
+      <text class="g-lbl" x="292" y="232" text-anchor="start">C</text>
+    </g>
+    <g data-part="inner">
+      <line class="g-line" x1="190" y1="160" x2="236.1" y2="118.5"/>
+      <circle class="g-pt" cx="236.1" cy="118.5" r="4.5"/>
+      <text class="g-lbl" x="248" y="110" text-anchor="start">B</text>
+    </g>
+    <g data-part="center">
+      <circle class="g-pt" cx="190" cy="160" r="5.5"/>
+      <text class="g-lbl" x="176" y="156" text-anchor="end">A</text>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig3','center')">Shared center A</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','inner')">Inner circle (radius AB)</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','outer')">Outer circle (radius AC)</button>
+  </div>
+  <figcaption>&#9737;A with radius <span style="text-decoration:overline">AB</span> and &#9737;A with radius
+  <span style="text-decoration:overline">AC</span> are <strong>concentric</strong>: same center, different radii,
+  so they never intersect.</figcaption>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Figure 4 &middot; How two circles can meet</div>
+  <svg id="fig4" viewBox="0 0 540 235" width="540" role="img" aria-label="Three pairs of circles showing two points of intersection, one point of intersection, and no points of intersection">
+    <g data-part="p2">
+      <circle class="g-line" cx="80" cy="105" r="48"/>
+      <circle class="g-line" cx="130" cy="105" r="48"/>
+      <circle class="g-pt" cx="105" cy="64" r="5"/>
+      <circle class="g-pt" cx="105" cy="146" r="5"/>
+      <text class="g-lbl-sm" x="105" y="192" text-anchor="middle">2 points</text>
+    </g>
+    <g data-part="p1">
+      <circle class="g-line" cx="250" cy="105" r="44"/>
+      <circle class="g-line" cx="338" cy="105" r="44"/>
+      <circle class="g-pt" cx="294" cy="105" r="5"/>
+      <text class="g-lbl-sm" x="294" y="192" text-anchor="middle">1 point (tangent)</text>
+    </g>
+    <g data-part="p0">
+      <circle class="g-line" cx="430" cy="105" r="40"/>
+      <circle class="g-line" cx="500" cy="105" r="26"/>
+      <text class="g-lbl-sm" x="461" y="192" text-anchor="middle">0 points</text>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig4','p2')">Two points</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','p1')">One point</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','p0')">No points</button>
+  </div>
+  <figcaption>Left: centers 50 apart with radii 48 and 48 &rarr; they cross at two points.
+  Middle: centers 88 apart with radii 44 and 44, and 44 + 44 = 88, so the circles touch at exactly one point.
+  Right: centers 70 apart with radii 40 and 26, and 40 + 26 = 66 &lt; 70, so they never meet.</figcaption>
+</figure>
+
+</section>
+
+<!-- ==================== WORKED EXAMPLES ==================== -->
+<section id="examples">
+<h2>Worked Examples</h2>
+
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Identify segments in a circle</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">Name the circle and identify a radius, a chord, and a diameter of the circle.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 430 320" width="430" role="img" aria-label="Circle with center X, points R S T U V Z on the circle, diameter ZT, chord RS crossing it at Y, and radii XV and XU">
+        <circle class="g-shape" cx="210" cy="160" r="105"/>
+        <line class="g-line" x1="105" y1="160" x2="315" y2="160"/>
+        <line class="g-line" x1="210" y1="160" x2="305.9" y2="117.3"/>
+        <line class="g-line" x1="210" y1="160" x2="252.7" y2="255.9"/>
+        <line class="g-line" x1="109.1" y1="188.9" x2="265.6" y2="71"/>
+        <circle class="g-pt" cx="105" cy="160" r="4.5"/>
+        <circle class="g-pt" cx="315" cy="160" r="4.5"/>
+        <circle class="g-pt" cx="305.9" cy="117.3" r="4.5"/>
+        <circle class="g-pt" cx="265.6" cy="71" r="4.5"/>
+        <circle class="g-pt" cx="252.7" cy="255.9" r="4.5"/>
+        <circle class="g-pt" cx="109.1" cy="188.9" r="4.5"/>
+        <circle class="g-pt-o" cx="147.5" cy="160" r="4"/>
+        <circle class="g-pt" cx="210" cy="160" r="5.5"/>
+        <text class="g-lbl" x="88" y="156" text-anchor="end">Z</text>
+        <text class="g-lbl" x="92" y="200" text-anchor="end">R</text>
+        <text class="g-lbl" x="331" y="165" text-anchor="start">T</text>
+        <text class="g-lbl" x="322" y="112" text-anchor="start">V</text>
+        <text class="g-lbl" x="275" y="58" text-anchor="start">S</text>
+        <text class="g-lbl" x="260" y="274" text-anchor="start">U</text>
+        <text class="g-lbl g-halo" x="144" y="150" text-anchor="end">Y</text>
+        <text class="g-lbl" x="210" y="182" text-anchor="middle">X</text>
+      </svg>
+      <figcaption>All six labelled points sit exactly 105 units from X. <span style="text-decoration:overline">ZT</span>
+      is horizontal through X; chord <span style="text-decoration:overline">RS</span> crosses it at Y.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">The circle has its center at X, so it is named circle X, or &#9737;X.</span><span class="reason">a circle is named by its center</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">Radii shown: XV, XT, XU, XZ &mdash; each joins the center X to a point on the circle.</span><span class="reason">definition of radius</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">Chords shown: RS and TZ &mdash; both endpoints of each lie on the circle.</span><span class="reason">definition of chord</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">TZ contains the center X, so TZ is the diameter.</span><span class="reason">definition of diameter</span></div>
+    <div class="answer-box">&#9737;X &nbsp;&middot;&nbsp; radius: <span style="text-decoration:overline">XV</span> &nbsp;&middot;&nbsp; chord: <span style="text-decoration:overline">RS</span> &nbsp;&middot;&nbsp; diameter: <span style="text-decoration:overline">TZ</span></div>
+    <div class="warning-box"><strong>Trap:</strong> <span style="text-decoration:overline">RS</span> looks like it
+    "almost" reaches the center, but it misses it &mdash; it crosses <span style="text-decoration:overline">ZT</span>
+    at Y, not at X. Close is not through. <span style="text-decoration:overline">RS</span> is a chord only.
+    Also note Y is <em>not</em> a point of the circle, so <span style="text-decoration:overline">XY</span> is not a radius.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Use radius and diameter relationships</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">If TU = 14 feet, what is the radius of &#9737;Q?</div>
+    <figure class="fig">
+      <svg viewBox="0 0 400 320" width="400" role="img" aria-label="Circle Q with vertical diameter TU of 14 feet and radius QV">
+        <circle class="g-shape" cx="205" cy="160" r="95"/>
+        <line class="g-line" x1="205" y1="65" x2="205" y2="255"/>
+        <line class="g-line" x1="205" y1="160" x2="293.1" y2="124.4"/>
+        <circle class="g-pt" cx="205" cy="65" r="4.5"/>
+        <circle class="g-pt" cx="205" cy="255" r="4.5"/>
+        <circle class="g-pt" cx="293.1" cy="124.4" r="4.5"/>
+        <circle class="g-pt" cx="205" cy="160" r="5.5"/>
+        <text class="g-lbl" x="205" y="48" text-anchor="middle">T</text>
+        <text class="g-lbl" x="205" y="277" text-anchor="middle">U</text>
+        <text class="g-lbl" x="308" y="118" text-anchor="start">V</text>
+        <text class="g-lbl" x="192" y="156" text-anchor="end">Q</text>
+        <text class="g-meas g-halo" x="218" y="207" text-anchor="start">TU = 14 ft</text>
+      </svg>
+      <figcaption><span style="text-decoration:overline">TU</span> is drawn through the center Q, so it is a
+      diameter, not just a chord.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">TU passes through Q &there4; TU is a diameter, d = 14</span><span class="reason">definition of diameter</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">r = d/2</span><span class="reason">Radius Formula</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">r = 14/2 = 7</span><span class="reason">substitute and simplify</span></div>
+    <div class="answer-box">The radius of &#9737;Q is 7 feet.</div>
+    <div class="check-box"><strong>Check:</strong> d = 2r = 2(7) = 14 ft &#10003; &mdash; the diameter formula
+    returns the value we started with.</div>
+    <hr style="border:none;border-top:1px solid var(--sl-line);margin:18px 0">
+    <div class="problem-stmt">Check &nbsp;&middot;&nbsp; If LM = 11 inches, what is the diameter of &#9737;L?</div>
+    <figure class="fig">
+      <svg viewBox="0 0 400 300" width="400" role="img" aria-label="Circle L with horizontal diameter JK and radius LM of 11 inches">
+        <circle class="g-shape" cx="195" cy="155" r="95"/>
+        <line class="g-line" x1="100" y1="155" x2="290" y2="155"/>
+        <line class="g-line" x1="195" y1="155" x2="141.9" y2="76.2"/>
+        <circle class="g-pt" cx="100" cy="155" r="4.5"/>
+        <circle class="g-pt" cx="290" cy="155" r="4.5"/>
+        <circle class="g-pt" cx="141.9" cy="76.2" r="4.5"/>
+        <circle class="g-pt" cx="195" cy="155" r="5.5"/>
+        <text class="g-lbl" x="83" y="151" text-anchor="end">J</text>
+        <text class="g-lbl" x="307" y="160" text-anchor="start">K</text>
+        <text class="g-lbl" x="130" y="62" text-anchor="end">M</text>
+        <text class="g-lbl" x="195" y="177" text-anchor="middle">L</text>
+        <text class="g-meas g-halo" x="182" y="108" text-anchor="start">11 in.</text>
+      </svg>
+      <figcaption><span style="text-decoration:overline">LM</span> runs from the center L to M on the circle,
+      so it is a radius.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">L is the center &there4; LM is a radius, r = 11</span><span class="reason">definition of radius</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">d = 2r = 2(11) = 22</span><span class="reason">Diameter Formula</span></div>
+    <div class="answer-box">The diameter of &#9737;L is 22 inches.</div>
+    <div class="warning-box"><strong>Compare the two parts.</strong> In the first problem you were handed a
+    <em>diameter</em> and had to halve it; here you were handed a <em>radius</em> and had to double it. Always
+    identify which segment you were given <em>before</em> you touch the formula.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Find circumference from the radius</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">A circular path has every point 18 meters from its center. Find the circumference
+    of the path, exactly in terms of &pi; and to the nearest hundredth.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 400 300" width="400" role="img" aria-label="Circle of radius 18 meters with the radius drawn and the circumference highlighted in green">
+        <circle class="g-arc" cx="195" cy="150" r="100"/>
+        <line class="g-line" x1="195" y1="150" x2="276.9" y2="92.6"/>
+        <circle class="g-pt" cx="276.9" cy="92.6" r="4.5"/>
+        <circle class="g-pt" cx="195" cy="150" r="5.5"/>
+        <text class="g-meas g-halo" x="228" y="110" text-anchor="middle">r = 18 m</text>
+        <text class="g-grn" x="195" y="32" text-anchor="middle">C = ?</text>
+      </svg>
+      <figcaption>Every point of the path is 18&nbsp;m from the center, so 18&nbsp;m is the <em>radius</em>.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">C = 2&pi;r</span><span class="reason">Circumference Formula</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">C = 2&pi;(18)</span><span class="reason">substitution</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">C = 36&pi;</span><span class="reason">simplify</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">C &asymp; 113.10</span><span class="reason">use a calculator (&pi; key)</span></div>
+    <div class="answer-box">C = 36&pi; m &asymp; 113.10 m</div>
+    <div class="info-box"><strong>Why keep 36&pi;?</strong> <code>36&pi;</code> is the <em>exact</em> answer;
+    <code>113.10</code> is only a rounded one. Whenever a question says "in terms of &pi;", stop at
+    <code>36&pi;</code> &mdash; do not multiply out.</div>
+    <div class="check-box"><strong>Check with an estimate:</strong> using &pi; &asymp; 3, C &asymp; 2(3)(18) = 108,
+    which is close to 113.10 &#10003;</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Find diameter and radius from the circumference</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Find the diameter and radius of a circle to the nearest hundredth if the
+    circumference of the circle is 77.8 centimeters.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 400 300" width="400" role="img" aria-label="Circle with circumference 77.8 centimeters, unknown diameter and unknown radius shown dashed">
+        <circle class="g-arc" cx="195" cy="155" r="98"/>
+        <line class="g-dash" x1="97" y1="155" x2="293" y2="155"/>
+        <line class="g-dash" x1="195" y1="155" x2="195" y2="57"/>
+        <circle class="g-pt" cx="97" cy="155" r="4.5"/>
+        <circle class="g-pt" cx="293" cy="155" r="4.5"/>
+        <circle class="g-pt" cx="195" cy="57" r="4.5"/>
+        <circle class="g-pt" cx="195" cy="155" r="5.5"/>
+        <text class="g-meas g-halo" x="243" y="146" text-anchor="middle">d = ?</text>
+        <text class="g-meas g-halo" x="206" y="106" text-anchor="start">r = ?</text>
+        <text class="g-grn" x="195" y="32" text-anchor="middle">C = 77.8 cm</text>
+      </svg>
+      <figcaption>The circumference is known (green); the diameter and radius are unknown (dashed).</figcaption>
+    </figure>
+    <p style="font-size:14px;font-weight:700;color:var(--sl-navy);margin:6px 0">Step A &mdash; find the diameter.</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">C = &pi;d</span><span class="reason">Circumference Formula</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">77.8 = &pi;d</span><span class="reason">substitution</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">77.8/&pi; = d</span><span class="reason">divide each side by &pi;</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">24.76 &asymp; d</span><span class="reason">use a calculator</span></div>
+    <p style="font-size:14px;font-weight:700;color:var(--sl-navy);margin:14px 0 6px">Step B &mdash; use the diameter to find the radius.</p>
+    <div class="solution-step"><span class="num">5</span><span class="math">r = &frac12;d</span><span class="reason">Radius Formula</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">r &asymp; &frac12;(24.76)</span><span class="reason">d &asymp; 24.76</span></div>
+    <div class="solution-step"><span class="num">7</span><span class="math">r &asymp; 12.38</span><span class="reason">use a calculator</span></div>
+    <div class="answer-box">d &asymp; 24.76 cm &nbsp;&nbsp;and&nbsp;&nbsp; r &asymp; 12.38 cm</div>
+    <div class="check-box"><strong>Check:</strong> C = &pi;d &asymp; &pi;(24.76) &asymp; 77.79 cm, which rounds back
+    to 77.8 cm &#10003;</div>
+    <div class="warning-box"><strong>Watch out &mdash; rounding too early.</strong> Divide 77.8 by the calculator's
+    &pi; key, not by 3.14. Using 3.14 gives d &asymp; 24.78, which is already wrong in the hundredths place.</div>
+    <hr style="border:none;border-top:1px solid var(--sl-line);margin:18px 0">
+    <div class="problem-stmt">Check &nbsp;&middot;&nbsp; Find the diameter and radius of a circle to the nearest
+    hundredth if the circumference is 94.2 yards.</div>
+    <div class="case-grid">
+      <div class="case-box"><h4>Part A &mdash; quick estimate (&pi; &asymp; 3)</h4>
+        <div class="math">d &asymp; 94.2 &divide; 3 = 31.4 yd<br>r &asymp; &frac12;(31.4) = 15.7 yd</div></div>
+      <div class="case-box"><h4>Part B &mdash; exact to the hundredth (&pi; key)</h4>
+        <div class="math">d = 94.2/&pi; &asymp; 29.98 yd<br>r &asymp; &frac12;(29.98) &asymp; 14.99 yd</div></div>
+    </div>
+    <div class="answer-box">diameter &asymp; 29.98 yd &nbsp;&nbsp;&middot;&nbsp;&nbsp; radius &asymp; 14.99 yd</div>
+    <div class="info-box"><strong>Levels of accuracy in action.</strong> The &pi; &asymp; 3 estimate (31.4) is
+    useful for checking that your answer is in the right neighbourhood, but it is about 1.4&nbsp;yd too big.
+    Report the &pi;-key value unless told otherwise.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 5</span>
+    <span class="example-title">Find measures in intersecting circles</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">The diameter of &#9737;K is 12 units, the diameter of &#9737;J is 20 units, and
+    JD = 8 units. Find EK.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 430 320" width="430" role="img" aria-label="Circle J of radius 120 and circle K of radius 72 intersecting, with collinear points J D E K on a horizontal line">
+        <circle class="g-line" cx="150" cy="160" r="120"/>
+        <circle class="g-line" cx="318" cy="160" r="72"/>
+        <line class="g-line-thin" x1="30" y1="160" x2="390" y2="160"/>
+        <circle class="g-pt" cx="150" cy="160" r="5.5"/>
+        <circle class="g-pt" cx="246" cy="160" r="5"/>
+        <circle class="g-pt" cx="270" cy="160" r="5"/>
+        <circle class="g-pt" cx="318" cy="160" r="5.5"/>
+        <text class="g-lbl" x="150" y="143" text-anchor="middle">J</text>
+        <text class="g-lbl" x="243" y="141" text-anchor="end">D</text>
+        <text class="g-lbl" x="273" y="141" text-anchor="start">E</text>
+        <text class="g-lbl" x="318" y="143" text-anchor="middle">K</text>
+        <text class="g-meas" x="198" y="184" text-anchor="middle">JD = 8</text>
+        <line class="g-aux" x1="258" y1="168" x2="258" y2="202"/>
+        <text class="g-grn" x="258" y="216" text-anchor="middle">DE = ?</text>
+        <text class="g-grn" x="300" y="184" text-anchor="middle">EK = ?</text>
+      </svg>
+      <figcaption>Drawn to scale at 12 px per unit: radius of &#9737;J = 120 px (10 units), radius of
+      &#9737;K = 72 px (6 units), JD = 96 px (8 units). D lands on &#9737;K and E lands on &#9737;J.</figcaption>
+    </figure>
+    <p style="font-size:14px;font-weight:700;color:var(--sl-navy);margin:6px 0">Step A &mdash; work inside &#9737;J to get DE.</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">diameter of &#9737;J = 20 &there4; JE = 10</span><span class="reason">JE is a radius of &#9737;J; r = &frac12;d</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">JD + DE = JE</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">8 + DE = 10</span><span class="reason">substitution</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">DE = 2</span><span class="reason">solve</span></div>
+    <p style="font-size:14px;font-weight:700;color:var(--sl-navy);margin:14px 0 6px">Step B &mdash; work inside &#9737;K to get EK.</p>
+    <div class="solution-step"><span class="num">5</span><span class="math">diameter of &#9737;K = 12 &there4; DK = 6</span><span class="reason">DK is a radius of &#9737;K; r = &frac12;d</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">DE + EK = DK</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">7</span><span class="math">2 + EK = 6</span><span class="reason">substitution</span></div>
+    <div class="solution-step"><span class="num">8</span><span class="math">EK = 4</span><span class="reason">solve</span></div>
+    <div class="answer-box">EK = 4 units</div>
+    <div class="check-box"><strong>Check:</strong> JK = JD + DE + EK = 8 + 2 + 4 = 14. Then JE = JK &minus; EK
+    = 14 &minus; 4 = 10 &#10003; (radius of &#9737;J) and DK = JK &minus; JD = 14 &minus; 8 = 6 &#10003;
+    (radius of &#9737;K).</div>
+    <div class="warning-box"><strong>The key move:</strong> <span style="text-decoration:overline">DE</span> is
+    part of <em>both</em> radii &mdash; it is a piece of <span style="text-decoration:overline">JE</span>
+    (radius of &#9737;J) and a piece of <span style="text-decoration:overline">DK</span> (radius of &#9737;K).
+    That shared piece is what links the two circles. Find it first, then move to the second circle.</div>
+  </div>
+</div>
+
+</section>
+
+<!-- ==================== PRACTICE ==================== -->
+<section id="practice">
+<h2>Try It Yourself</h2>
+<p style="font-size:15px;line-height:1.7;margin-bottom:6px;">Work each one on paper first, then reveal the full solution.</p>
+
+<div class="try-box">
+  <h4>Problem 1</h4>
+  <div class="prob">A circle has diameter d = 8&frac12; in. Find the radius, and find the circumference both
+  exactly (in terms of &pi;) and to the nearest hundredth.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">d = 8.5</span><span class="reason">write the mixed number as a decimal</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">r = d/2 = 8.5/2 = 4.25</span><span class="reason">Radius Formula</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">C = &pi;d = 8.5&pi;</span><span class="reason">Circumference Formula (exact)</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">C &asymp; 26.70</span><span class="reason">use a calculator</span></div>
+    <div class="answer-box">r = 4.25 in. &nbsp;&middot;&nbsp; C = 8.5&pi; in. &asymp; 26.70 in.</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 2</h4>
+  <div class="prob">C = 628 m. Find the diameter and the radius to the nearest hundredth.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">C = &pi;d &rarr; 628 = &pi;d</span><span class="reason">Circumference Formula</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">d = 628/&pi;</span><span class="reason">divide each side by &pi;</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">d &asymp; 199.90</span><span class="reason">use a calculator</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">r = &frac12;d &asymp; &frac12;(199.8986) &asymp; 99.95</span><span class="reason">Radius Formula</span></div>
+    <div class="answer-box">d &asymp; 199.90 m &nbsp;&middot;&nbsp; r &asymp; 99.95 m</div>
+    <div class="check-box"><strong>Estimate check:</strong> with &pi; &asymp; 3, d &asymp; 628 &divide; 3 &asymp; 209,
+    the right order of magnitude &#10003;</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 3</h4>
+  <div class="prob">A circle has radius r = x/8. Find the diameter and the circumference in terms of x and &pi;.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">d = 2r = 2(x/8)</span><span class="reason">Diameter Formula</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">d = 2x/8 = x/4</span><span class="reason">simplify the fraction</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">C = &pi;d = &pi;(x/4)</span><span class="reason">Circumference Formula</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">C = &pi;x/4</span><span class="reason">simplify</span></div>
+    <div class="answer-box">d = x/4 &nbsp;&middot;&nbsp; C = &pi;x/4</div>
+    <div class="info-box"><strong>Sanity test:</strong> let x = 8. Then r = 1, d = 2 and C = 2&pi;.
+    The general answers give d = 8/4 = 2 &#10003; and C = 8&pi;/4 = 2&pi; &#10003;</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 4</h4>
+  <div class="prob">The diameter of &#9737;A is 26 units and the diameter of &#9737;B is 14 units. Points A, M,
+  N, B are collinear in that order, M lies on &#9737;B, N lies on &#9737;A, and AM = 9. Find NB.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <figure class="fig">
+      <svg viewBox="0 0 420 300" width="420" role="img" aria-label="Circle A of radius 117 and circle B of radius 63 intersecting, with collinear points A M N B">
+        <circle class="g-line" cx="145" cy="152" r="117"/>
+        <circle class="g-line" cx="271" cy="152" r="63"/>
+        <line class="g-line-thin" x1="28" y1="152" x2="334" y2="152"/>
+        <circle class="g-pt" cx="145" cy="152" r="5.5"/>
+        <circle class="g-pt" cx="208" cy="152" r="5"/>
+        <circle class="g-pt" cx="262" cy="152" r="5"/>
+        <circle class="g-pt" cx="271" cy="152" r="5.5"/>
+        <text class="g-lbl" x="145" y="135" text-anchor="middle">A</text>
+        <text class="g-lbl" x="208" y="135" text-anchor="middle">M</text>
+        <text class="g-lbl" x="256" y="133" text-anchor="end">N</text>
+        <text class="g-lbl" x="278" y="133" text-anchor="start">B</text>
+        <text class="g-meas" x="176" y="176" text-anchor="middle">AM = 9</text>
+        <line class="g-aux" x1="235" y1="160" x2="235" y2="194"/>
+        <text class="g-grn" x="235" y="208" text-anchor="middle">MN = ?</text>
+        <text class="g-grn" x="290" y="176" text-anchor="start">NB = ?</text>
+      </svg>
+      <figcaption>Drawn at 9 px per unit: radius of &#9737;A = 117 px (13 units), radius of &#9737;B = 63 px
+      (7 units), AM = 81 px (9 units), AB = 126 px (14 units).</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">diameter of &#9737;A = 26 &there4; AN = 13</span><span class="reason">AN is a radius of &#9737;A</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">AM + MN = AN &rarr; 9 + MN = 13</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">MN = 4</span><span class="reason">solve</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">diameter of &#9737;B = 14 &there4; MB = 7</span><span class="reason">MB is a radius of &#9737;B</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">MN + NB = MB &rarr; 4 + NB = 7</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">NB = 3</span><span class="reason">solve</span></div>
+    <div class="answer-box">NB = 3 units</div>
+    <div class="check-box"><strong>Check:</strong> AB = 9 + 4 + 3 = 16? No &mdash; AB = AM + MN + NB = 9 + 4 + 3 = 16
+    would put B 16 from A, but AN = 13 and NB = 3 give AB = 16 as well &#10003; and MB = AB &minus; AM
+    = 16 &minus; 9 = 7 &#10003;</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 5</h4>
+  <div class="prob">Two concentric circles have radii 5 and 9. Find the difference of their circumferences,
+  exactly in terms of &pi;.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">C&#8322; = 2&pi;(9) = 18&pi;</span><span class="reason">circumference of the outer circle</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">C&#8321; = 2&pi;(5) = 10&pi;</span><span class="reason">circumference of the inner circle</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">C&#8322; &minus; C&#8321; = 18&pi; &minus; 10&pi;</span><span class="reason">subtract</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">= 8&pi;</span><span class="reason">simplify</span></div>
+    <div class="answer-box">8&pi; units &asymp; 25.13 units</div>
+    <div class="info-box"><strong>Pattern worth remembering:</strong> the difference of circumferences is
+    2&pi;(R &minus; r) &mdash; it depends only on the <em>difference of the radii</em>, never on how big the
+    circles are. Radii 105 and 109 give the same answer, 8&pi;.</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 6</h4>
+  <div class="prob">&#9737;P has radius r and &#9737;Q has radius 3r. Compare their circumferences, and state
+  what happens to the circumference of a circle when its radius is tripled.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">C&#8341; = 2&pi;r</span><span class="reason">Circumference Formula for &#9737;P</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">C&#8344; = 2&pi;(3r)</span><span class="reason">substitute 3r for the radius</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">C&#8344; = 3(2&pi;r) = 3C&#8341;</span><span class="reason">Associative and Commutative Properties</span></div>
+    <div class="answer-box">C&#8344; = 3C&#8341; &mdash; tripling the radius triples the circumference.</div>
+    <div class="info-box"><strong>Why:</strong> circumference is a <em>linear</em> function of the radius,
+    <code>C = 2&pi;r</code>. Multiply <code>r</code> by <code>k</code> and <code>C</code> is multiplied by the
+    same <code>k</code>. (Area, which uses <code>r&sup2;</code>, does not behave this way.)</div>
+  </div>
+</div>
+
+</section>
+
+<!-- ==================== SUMMARY ==================== -->
+<section id="summary">
+<h2>Summary</h2>
+
+<table class="tbl">
+  <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+  <tr><td>Given <code>d</code>, need <code>r</code></td><td>Halve it</td><td><code>r = d/2</code></td></tr>
+  <tr><td>Given <code>r</code>, need <code>d</code></td><td>Double it</td><td><code>d = 2r</code></td></tr>
+  <tr><td>Given <code>d</code>, need <code>C</code></td><td>Multiply by &pi;</td><td><code>C = &pi;d</code></td></tr>
+  <tr><td>Given <code>r</code>, need <code>C</code></td><td>Double, then multiply by &pi;</td><td><code>C = 2&pi;r</code></td></tr>
+  <tr><td>Given <code>C</code>, need <code>d</code></td><td>Divide by &pi;</td><td><code>d = C/&pi;</code></td></tr>
+  <tr><td>Given <code>C</code>, need <code>r</code></td><td>Divide by 2&pi;</td><td><code>r = C/(2&pi;)</code></td></tr>
+  <tr><td>Segment with both endpoints on the circle</td><td>Check whether it hits the center</td><td>through center &rarr; diameter; otherwise just a chord</td></tr>
+  <tr><td>Two circles, are they congruent?</td><td>Compare radii (Postulate 10.1)</td><td>congruent radii &harr; congruent circles</td></tr>
+  <tr><td>Two circles, are they similar?</td><td>Nothing to check (Theorem 10.1)</td><td>always similar</td></tr>
+  <tr><td>Two circles share a center</td><td>Name the relationship</td><td>concentric &mdash; they never intersect</td></tr>
+  <tr><td>Collinear centers with a point on each circle</td><td>Radius + Segment Addition Postulate</td><td>solve piece by piece</td></tr>
+</table>
+
+<h3 style="font-size:15px;color:var(--sl-navy);margin:18px 0 4px;">Every formula from this lesson</h3>
+<div class="pill-row">
+  <span class="pill">r = d/2</span>
+  <span class="pill">r = &frac12;d</span>
+  <span class="pill">d = 2r</span>
+  <span class="pill">C/d = &pi;</span>
+  <span class="pill">C = &pi;d</span>
+  <span class="pill">C = 2&pi;r</span>
+  <span class="pill">d = C/&pi;</span>
+  <span class="pill">r = C/(2&pi;)</span>
+</div>
+
+<div class="keyfact"><div class="ico">&#9737;</div><div class="txt">A circle is named by its <strong>center</strong>:
+&#9737;C. Two circles are congruent <strong>if and only if</strong> their radii are congruent, and <em>all</em>
+circles are similar.</div></div>
+<div class="keyfact"><div class="ico">&pi;</div><div class="txt">&pi; is the ratio <code>C/d</code> for
+<em>every</em> circle, and it is irrational. "In terms of &pi;" means leave the &pi; in the answer
+(<code>36&pi;</code>), not <code>113.10</code>.</div></div>
+<div class="keyfact"><div class="ico">&equiv;</div><div class="txt">Within one circle, all radii are congruent
+and all diameters are congruent. That is what lets you transfer a length from one part of a figure to another.</div></div>
+
+<div class="warning-box">
+  <strong>Common mistakes to avoid</strong>
+  <ul style="margin:8px 0 0 20px;line-height:1.9;">
+    <li>Putting a <em>radius</em> into <code>C = &pi;d</code> (answer comes out half of what it should be).</li>
+    <li>Putting a <em>diameter</em> into <code>C = 2&pi;r</code> (answer comes out double).</li>
+    <li>Calling every chord a diameter. A chord is a diameter <strong>only</strong> if it passes through the center.</li>
+    <li>Multiplying out <code>36&pi;</code> when the question asked for an exact answer in terms of &pi;.</li>
+    <li>Rounding mid-problem: use the full calculator value, round only at the very end.</li>
+    <li>Using 3.14 (or 3) when the &pi; key is available &mdash; it changes the hundredths digit.</li>
+    <li>Forgetting that concentric circles are <em>not</em> congruent &mdash; same center, but different radii.</li>
+    <li>Assuming a point that <em>looks</em> like the center actually is the center. Only labelled information counts.</li>
+  </ul>
+</div>
+</section>
+
+<!-- ==================== QUIZ ==================== -->
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"A segment whose endpoints are the center of a circle and a point on the circle is called a &hellip;",opts:["chord","diameter","radius","circumference"],ans:2,exp:"A radius joins the center to a point on the circle. A chord has BOTH endpoints on the circle, and a diameter is the special chord that passes through the center."},
+  {q:"In the figure, which segment is a chord that is NOT a diameter?",opts:["MN","PQ","OS","OQ"],ans:0,fig:"<svg viewBox=\"0 0 360 265\" width=\"360\" role=\"img\" aria-label=\"Circle O with diameter PQ, chord MN, and radius OS\"><circle class=\"g-shape\" cx=\"170\" cy=\"125\" r=\"88\"/><line class=\"g-line\" x1=\"82\" y1=\"125\" x2=\"258\" y2=\"125\"/><line class=\"g-line\" x1=\"102.6\" y1=\"68.4\" x2=\"226.6\" y2=\"57.6\"/><line class=\"g-line\" x1=\"170\" y1=\"125\" x2=\"220.5\" y2=\"197.1\"/><circle class=\"g-pt\" cx=\"82\" cy=\"125\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"258\" cy=\"125\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"102.6\" cy=\"68.4\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"226.6\" cy=\"57.6\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"220.5\" cy=\"197.1\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"170\" cy=\"125\" r=\"5.5\"/><text class=\"g-lbl\" x=\"66\" y=\"121\" text-anchor=\"end\">P</text><text class=\"g-lbl\" x=\"274\" y=\"130\" text-anchor=\"start\">Q</text><text class=\"g-lbl\" x=\"90\" y=\"58\" text-anchor=\"end\">M</text><text class=\"g-lbl\" x=\"238\" y=\"47\" text-anchor=\"start\">N</text><text class=\"g-lbl\" x=\"230\" y=\"214\" text-anchor=\"start\">S</text><text class=\"g-lbl\" x=\"160\" y=\"145\" text-anchor=\"end\">O</text></svg>",exp:"MN has both endpoints on the circle but misses the center O, so it is a chord only. PQ is a chord through O, which makes it a diameter, and OS and OQ start at the center, so they are radii."},
+  {q:"A circle has diameter d = 25 in. Find the radius r.",opts:["50 in.","25 in.","6.25 in.","12.5 in."],ans:3,exp:"r = d/2 = 25/2 = 12.5. Dividing by 2 (not multiplying) is what turns a diameter into a radius."},
+  {q:"A circle has radius r = 11&#8532; ft. Find the diameter d.",opts:["5&#8535; ft","22&#8536; ft","11&#8532; ft","23&#8532; ft"],ans:1,exp:"d = 2r = 2(11.4) = 22.8 ft, and 22.8 = 22&#8536; ft. Double the radius; do not just re-copy it."},
+  {q:"Find the exact circumference, in terms of &pi;, of a circle whose diameter is 14 m.",opts:["7&pi; m","196&pi; m","28&pi; m","14&pi; m"],ans:3,exp:"C = &pi;d = &pi;(14) = 14&pi; m. Because a diameter was given, use C = &pi;d directly; 28&pi; would come from wrongly treating 14 as a radius."},
+  {q:"Find the exact circumference, in terms of &pi;, of a circle whose radius is 6.5 units.",opts:["6.5&pi;","26&pi;","13&pi;","42.25&pi;"],ans:2,exp:"C = 2&pi;r = 2&pi;(6.5) = 13&pi;. Choosing 6.5&pi; means the radius was fed into C = &pi;d by mistake."},
+  {q:"The circle below has the marked diameter. Find its exact circumference in terms of &pi;.",opts:["8&pi; cm","4&pi; cm","16&pi; cm","64&pi; cm"],ans:0,fig:"<svg viewBox=\"0 0 320 245\" width=\"320\" role=\"img\" aria-label=\"Circle with a horizontal diameter labeled 8 centimeters\"><circle class=\"g-shape\" cx=\"155\" cy=\"118\" r=\"82\"/><line class=\"g-line\" x1=\"73\" y1=\"118\" x2=\"237\" y2=\"118\"/><circle class=\"g-pt\" cx=\"73\" cy=\"118\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"237\" cy=\"118\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"155\" cy=\"118\" r=\"5.5\"/><text class=\"g-meas g-halo\" x=\"155\" y=\"108\" text-anchor=\"middle\">8 cm</text></svg>",exp:"The labelled segment runs through the center, so 8 cm is the diameter: C = &pi;d = 8&pi; cm. 16&pi; would be right only if 8 cm were the radius."},
+  {q:"The circumference of a circle is C = 36&pi;. Find the radius r.",opts:["6","18","36","72"],ans:1,exp:"C = 2&pi;r gives 36&pi; = 2&pi;r, so r = 36&pi;/(2&pi;) = 18. The &pi; cancels, which is why the answer is a clean whole number."},
+  {q:"The circumference of a circle is 77.8 cm. Find the diameter to the nearest hundredth.",opts:["12.38 cm","49.52 cm","24.76 cm","244.42 cm"],ans:2,exp:"C = &pi;d, so d = 77.8/&pi; &asymp; 24.76 cm. The value 12.38 is the radius, and 244.42 comes from multiplying by &pi; instead of dividing."},
+  {q:"The circumference of a circle is 44 cm. Find the radius to the nearest hundredth.",opts:["69.12 cm","14.01 cm","22.00 cm","7.00 cm"],ans:3,exp:"C = 2&pi;r, so r = 44/(2&pi;) = 22/&pi; &asymp; 7.00 cm. Dividing only by &pi; gives 14.01, which is the diameter."},
+  {q:"Complete Postulate 10.1: Two circles are congruent if and only if they have &hellip;",opts:["the same center","congruent radii","equal circumferences and the same center","congruent chords"],ans:1,exp:"Congruent radii is the exact wording of Postulate 10.1. Sharing a center makes circles concentric, not congruent, and congruent chords can occur in circles of different sizes."},
+  {q:"Complete Theorem 10.1: All circles are &hellip;",opts:["similar","congruent","concentric","tangent"],ans:0,exp:"All circles have the same shape, so one can always be scaled onto another by the ratio of the radii &mdash; they are similar. They are congruent only when the radii are equal."},
+  {q:"The two circles shown are concentric with radii 5 and 9. Find the exact difference of their circumferences.",opts:["4&pi;","56&pi;","14&pi;","8&pi;"],ans:3,fig:"<svg viewBox=\"0 0 320 260\" width=\"320\" role=\"img\" aria-label=\"Two concentric circles of radius 5 and radius 9 with both radii drawn\"><circle class=\"g-shape\" cx=\"150\" cy=\"120\" r=\"90\"/><circle class=\"g-shape-alt\" cx=\"150\" cy=\"120\" r=\"50\"/><line class=\"g-line\" x1=\"150\" y1=\"120\" x2=\"92.1\" y2=\"51.1\"/><line class=\"g-line\" x1=\"150\" y1=\"120\" x2=\"200\" y2=\"120\"/><circle class=\"g-pt\" cx=\"92.1\" cy=\"51.1\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"200\" cy=\"120\" r=\"4.5\"/><circle class=\"g-pt\" cx=\"150\" cy=\"120\" r=\"5.5\"/><text class=\"g-meas g-halo\" x=\"177\" y=\"112\" text-anchor=\"middle\">5</text><text class=\"g-meas-b g-halo\" x=\"130\" y=\"76\" text-anchor=\"end\">9</text></svg>",exp:"2&pi;(9) &minus; 2&pi;(5) = 18&pi; &minus; 10&pi; = 8&pi;. The difference equals 2&pi;(R &minus; r), so only the difference of the radii matters &mdash; not their size."},
+  {q:"&#9737;P has radius 9 and &#9737;Q has radius 5. Points P, D, E, Q are collinear in that order, D lies on &#9737;Q, E lies on &#9737;P, and PD = 6. Find EQ.",opts:["4","3","2","5"],ans:2,fig:"<svg viewBox=\"0 0 400 305\" width=\"400\" role=\"img\" aria-label=\"Circle P of radius 117 and circle Q of radius 65 intersecting with collinear points P D E Q\"><circle class=\"g-line\" cx=\"140\" cy=\"150\" r=\"117\"/><circle class=\"g-line\" cx=\"283\" cy=\"150\" r=\"65\"/><line class=\"g-line-thin\" x1=\"23\" y1=\"150\" x2=\"348\" y2=\"150\"/><circle class=\"g-pt\" cx=\"140\" cy=\"150\" r=\"5.5\"/><circle class=\"g-pt\" cx=\"218\" cy=\"150\" r=\"5\"/><circle class=\"g-pt\" cx=\"257\" cy=\"150\" r=\"5\"/><circle class=\"g-pt\" cx=\"283\" cy=\"150\" r=\"5.5\"/><text class=\"g-lbl\" x=\"140\" y=\"133\" text-anchor=\"middle\">P</text><text class=\"g-lbl\" x=\"218\" y=\"133\" text-anchor=\"middle\">D</text><text class=\"g-lbl\" x=\"257\" y=\"133\" text-anchor=\"middle\">E</text><text class=\"g-lbl\" x=\"283\" y=\"133\" text-anchor=\"middle\">Q</text><text class=\"g-meas\" x=\"179\" y=\"176\" text-anchor=\"middle\">PD = 6</text><line class=\"g-aux\" x1=\"237\" y1=\"158\" x2=\"237\" y2=\"192\"/><text class=\"g-grn\" x=\"237\" y=\"206\" text-anchor=\"middle\">DE = ?</text><text class=\"g-grn\" x=\"272\" y=\"176\" text-anchor=\"start\">EQ = ?</text></svg>",exp:"PE = 9 is a radius of &#9737;P, so PD + DE = PE gives 6 + DE = 9 and DE = 3. Then DQ = 5 is a radius of &#9737;Q, so DE + EQ = DQ gives 3 + EQ = 5 and EQ = 2."},
+  {q:"A circle has circumference C = 35x cm. Find its radius in terms of x and &pi;.",opts:["35x/&pi; cm","35x/(2&pi;) cm","70x/&pi; cm","35&pi;x/2 cm"],ans:1,exp:"C = 2&pi;r gives 35x = 2&pi;r, so r = 35x/(2&pi;). The choice 35x/&pi; is the diameter, since d = C/&pi;."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

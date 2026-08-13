@@ -1,112 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 3-7: Quadratic Inequalities</title>
+<div class="sat-lesson">
 <style>
-  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--purple:#7c3aed;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
-  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#7c3aed 60%,#2563eb 100%);color:white;padding:48px 24px 32px;text-align:center;}
-  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
-  .hero h1{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:10px;}
-  .hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto;}
-  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
-  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
-  nav a:hover{background:var(--navy);color:white;}
-  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
-  section{margin-bottom:48px;}
-  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
-  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
-  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
-  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
-  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);}
-  .step-list{counter-reset:step-counter;padding-left:0;list-style:none;}
-  .step-list li{counter-increment:step-counter;padding:8px 0 8px 52px;position:relative;border-bottom:1px solid #e2e8f0;}
-  .step-list li:last-child{border-bottom:none;}
-  .step-list li::before{content:"Step " counter(step-counter);position:absolute;left:0;background:var(--blue);color:white;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;}
-  .ineq-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
-  .ineq-table th{background:var(--navy);color:white;padding:10px 12px;text-align:left;}
-  .ineq-table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;}
-  .ineq-table tr:nth-child(even) td{background:var(--light-blue);}
-  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
-  .example-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
-  .example-header:hover{background:#f8faff;}
-  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0;}
-  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
-  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
-  .example-header.open .toggle-icon{transform:rotate(45deg);}
-  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
-  .example-body.open{display:block;}
-  .problem-stmt{background:#f8faff;border-left:4px solid var(--blue);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;}
-  .solution-step{display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:#fafafa;}
-  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;}
-  .solution-step .reason{font-size:13px;color:var(--blue);font-style:italic;min-width:170px;text-align:right;}
-  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
-  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;}
-  .warning-box strong{color:var(--orange);}
-  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;}
-  .info-box strong{color:var(--blue);}
-
-  /* Grapher */
-  .grapher-section{background:white;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09);}
-  .grapher-controls{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;align-items:flex-end;}
-  .ctrl-group{display:flex;flex-direction:column;gap:4px;}
-  .ctrl-group label{font-size:12px;font-weight:600;color:var(--navy);}
-  .ctrl-group input,.ctrl-group select{padding:8px 10px;border:2px solid #cbd5e1;border-radius:6px;font-size:14px;width:80px;outline:none;transition:border-color .2s;}
-  .ctrl-group select{width:120px;}
-  .ctrl-group input:focus,.ctrl-group select:focus{border-color:var(--blue);}
-  .btn{padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
-  .btn-primary{background:var(--navy);color:white;}
-  .btn-primary:hover{background:var(--blue);}
-  .graph-canvas-wrap{position:relative;overflow:hidden;border-radius:8px;border:2px solid #e2e8f0;}
-  canvas{display:block;width:100%;}
-  .graph-info{margin-top:12px;background:var(--light-blue);border-radius:6px;padding:12px 16px;font-size:14px;line-height:1.7;font-family:'Courier New',monospace;color:var(--navy);}
-  .number-line-wrap{background:#f8faff;border-radius:8px;padding:16px;margin-top:12px;}
-
-  /* Quiz */
-  .quiz-header{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
-  .quiz-header h2{color:white;border:none;font-size:20px;}
-  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
-  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
-  .q-num{font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;margin-bottom:8px;}
-  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
-  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  @media(max-width:500px){.options{grid-template-columns:1fr;}}
-  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
-  .option-btn:hover:not(:disabled){border-color:var(--purple);background:#f5f3ff;}
-  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
-  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
-  .option-btn:disabled{cursor:default;}
-  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;}
-  .feedback.show{display:block;}
-  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
-  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
-  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
-  .score-panel.show{display:block;}
-  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
-  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
-  .btn-retry{padding:12px 32px;background:var(--purple);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+.sat-lesson { --navy:var(--sl-navy);--blue:var(--sl-blue);--orange:var(--sl-orange);--green:var(--sl-green);--purple:var(--sl-purple);--light-blue:var(--sl-blue-soft);--light-orange:var(--sl-orange-soft);--light-green:var(--sl-green-soft) }
+.sat-lesson section { margin-bottom:48px }
+.sat-lesson h2 { font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block }
+.sat-lesson .concept-card { background:var(--sl-surface);border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07) }
+.sat-lesson .concept-card h3 { color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px }
+.sat-lesson .concept-card p, .sat-lesson .concept-card li { font-size:15px;line-height:1.7 }
+.sat-lesson .formula-box { background:var(--light-blue);border:1px solid var(--sl-blue-line);border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy) }
+.sat-lesson .step-list { counter-reset:step-counter;padding-left:0;list-style:none }
+.sat-lesson .step-list li { counter-increment:step-counter;padding:8px 0 8px 52px;position:relative;border-bottom:1px solid var(--sl-line) }
+.sat-lesson .step-list li:last-child { border-bottom:none }
+.sat-lesson .step-list li::before { content:"Step " counter(step-counter);position:absolute;left:0;background:var(--blue);color:white;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px }
+.sat-lesson .ineq-table { width:100%;border-collapse:collapse;margin:12px 0;font-size:14px }
+.sat-lesson .ineq-table th { background:var(--navy);color:white;padding:10px 12px;text-align:left }
+.sat-lesson .ineq-table td { padding:10px 12px;border-bottom:1px solid var(--sl-line) }
+.sat-lesson .ineq-table tr:nth-child(even) td { background:var(--light-blue) }
+.sat-lesson .example-card { background:var(--sl-surface);border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden }
+.sat-lesson .example-header { display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:var(--sl-surface);border:none;width:100%;text-align:left }
+.sat-lesson .example-header:hover { background:var(--sl-surface-3) }
+.sat-lesson .example-label { font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0 }
+.sat-lesson .example-title { font-size:15px;font-weight:600;color:var(--navy);flex:1 }
+.sat-lesson .toggle-icon { font-size:20px;color:var(--sl-muted-2);transition:transform .3s }
+.sat-lesson .example-header.open .toggle-icon { transform:rotate(45deg) }
+.sat-lesson .example-body { display:none;padding:20px 24px;border-top:1px solid var(--sl-line) }
+.sat-lesson .example-body.open { display:block }
+.sat-lesson .problem-stmt { background:var(--sl-surface-3);border-left:4px solid var(--blue);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px }
+.sat-lesson .solution-step { display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:var(--sl-surface-2) }
+.sat-lesson .solution-step .math { font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1 }
+.sat-lesson .solution-step .reason { font-size:13px;color:var(--blue);font-style:italic;min-width:170px;text-align:right }
+.sat-lesson .answer-box { background:var(--sl-green-soft);border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:var(--sl-green-ink);font-weight:700;text-align:center }
+.sat-lesson .warning-box { background:var(--light-orange);border:1px solid var(--sl-orange-line);border-radius:6px;padding:12px 16px;margin:10px 0 }
+.sat-lesson .warning-box strong { color:var(--orange) }
+.sat-lesson .info-box { background:var(--light-blue);border:1px solid var(--sl-blue-line);border-radius:6px;padding:12px 16px;margin:10px 0 }
+.sat-lesson .info-box strong { color:var(--blue) }
+.sat-lesson .grapher-section { background:var(--sl-surface);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09) }
+.sat-lesson .grapher-controls { display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;align-items:flex-end }
+.sat-lesson .ctrl-group { display:flex;flex-direction:column;gap:4px }
+.sat-lesson .ctrl-group label { font-size:12px;font-weight:600;color:var(--navy) }
+.sat-lesson .ctrl-group input, .sat-lesson .ctrl-group select { padding:8px 10px;border:2px solid var(--sl-line-3);border-radius:6px;font-size:14px;width:80px;outline:none;transition:border-color .2s }
+.sat-lesson .ctrl-group select { width:120px }
+.sat-lesson .ctrl-group input:focus, .sat-lesson .ctrl-group select:focus { border-color:var(--blue) }
+.sat-lesson .btn { padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s }
+.sat-lesson .btn-primary { background:var(--navy);color:white }
+.sat-lesson .btn-primary:hover { background:var(--blue) }
+.sat-lesson .graph-canvas-wrap { position:relative;overflow:hidden;border-radius:8px;border:2px solid var(--sl-line) }
+.sat-lesson canvas { display:block;width:100% }
+.sat-lesson .graph-info { margin-top:12px;background:var(--light-blue);border-radius:6px;padding:12px 16px;font-size:14px;line-height:1.7;font-family:'Courier New',monospace;color:var(--navy) }
+.sat-lesson .number-line-wrap { background:var(--sl-surface-3);border-radius:8px;padding:16px;margin-top:12px }
+.sat-lesson .quiz-header { background:linear-gradient(135deg,var(--sl-purple),#6d28d9);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center }
+.sat-lesson .quiz-header h2 { color:white;border:none;font-size:20px }
+.sat-lesson .quiz-header p { opacity:.9;font-size:14px;margin-top:6px }
+.sat-lesson .q-card { background:var(--sl-surface);border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08) }
+.sat-lesson .q-num { font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;margin-bottom:8px }
+.sat-lesson .q-text { font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace }
+.sat-lesson .options { display:grid;grid-template-columns:1fr 1fr;gap:8px }
+@media(max-width:500px) {
+  .sat-lesson .options { grid-template-columns:1fr }
+}
+.sat-lesson .option-btn { padding:10px 14px;border:2px solid var(--sl-line-3);border-radius:8px;background:var(--sl-surface);font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace }
+.sat-lesson .option-btn:hover:not(:disabled) { border-color:var(--purple);background:#f5f3ff }
+.sat-lesson .option-btn.correct { border-color:var(--green);background:var(--light-green);color:var(--sl-green-ink) }
+.sat-lesson .option-btn.wrong { border-color:var(--sl-bad);background:var(--sl-bad-soft);color:var(--sl-bad-ink) }
+.sat-lesson .option-btn:disabled { cursor:default }
+.sat-lesson .feedback { margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none }
+.sat-lesson .feedback.show { display:block }
+.sat-lesson .feedback.correct { background:var(--light-green);color:var(--sl-green-ink);border:1px solid var(--sl-green-line) }
+.sat-lesson .feedback.wrong { background:var(--sl-bad-soft);color:var(--sl-bad-ink);border:1px solid var(--sl-bad-line) }
+.sat-lesson .score-panel { display:none;background:var(--sl-surface);border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px }
+.sat-lesson .score-panel.show { display:block }
+.sat-lesson .score-big { font-size:56px;font-weight:800;color:var(--navy) }
+.sat-lesson .score-msg { font-size:18px;color:var(--sl-muted);margin:8px 0 20px }
+.sat-lesson .btn-retry { padding:12px 32px;background:var(--purple);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer }
 </style>
-</head>
-<body>
-
-<div class="hero">
-  <div class="module-badge">Module 3 · Lesson 3-7</div>
-  <h1>Quadratic Inequalities</h1>
-  <p>Graph and solve quadratic inequalities in two variables — with interactive graphing and shading</p>
-</div>
-
-<nav>
-  <a href="#concepts">Concepts</a>
-  <a href="#examples">Examples</a>
-  <a href="#grapher">Graph It</a>
-  <a href="#quiz">Practice Quiz</a>
-</nav>
-
-<main>
-
+<p class="lesson-objective">Graph and solve quadratic inequalities in two variables — with interactive graphing and shading</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Examples</a><a data-jump="grapher">Graph It</a><a data-jump="quiz">Practice Quiz</a></nav>
 <section id="concepts">
   <h2>Key Concepts</h2>
 
@@ -138,7 +105,7 @@
       <tr><td>ax² + bx + c ≤ 0</td><td>{x | x₁ ≤ x ≤ x₂}</td><td>{x | x ≤ x₁ or x ≥ x₂}</td></tr>
       <tr><td>ax² + bx + c ≥ 0</td><td>{x | x ≤ x₁ or x ≥ x₂}</td><td>{x | x₁ ≤ x ≤ x₂}</td></tr>
     </table>
-    <p style="margin-top:8px;font-size:14px;color:#64748b;">Where x₁ and x₂ are the zeros (roots) of the related equation.</p>
+    <p style="margin-top:8px;font-size:14px;color:var(--sl-muted);">Where x₁ and x₂ are the zeros (roots) of the related equation.</p>
   </div>
 
   <div class="concept-card">
@@ -249,7 +216,7 @@
 <section id="grapher">
   <h2>Interactive Inequality Grapher</h2>
   <div class="grapher-section">
-    <p style="margin-bottom:14px;font-size:14px;color:#64748b;">Enter a, b, c for <strong>y [ineq] ax² + bx + c</strong>. The grapher shades the solution region and shows any 1-variable solution on a number line.</p>
+    <p style="margin-bottom:14px;font-size:14px;color:var(--sl-muted);">Enter a, b, c for <strong>y [ineq] ax² + bx + c</strong>. The grapher shades the solution region and shows any 1-variable solution on a number line.</p>
     <div class="grapher-controls">
       <div class="ctrl-group"><label>a =</label><input type="number" id="g_a" value="1" step="0.5"></div>
       <div class="ctrl-group"><label>b =</label><input type="number" id="g_b" value="-1" step="1"></div>
@@ -281,10 +248,8 @@
     <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
   </div>
 </section>
-</main>
-
 <script>
-/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+/* scope guard: the SPA re-runs this script on every lesson view */
 (function(){
 function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
 
@@ -545,11 +510,9 @@ function showScore(){
   document.getElementById('scorePanel').classList.add('show');
   document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
 }
-function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
 buildQuiz();
-
-window.toggleExample=toggleExample;window.drawInequality=drawInequality;window.pick=pick;window.resetQuiz=resetQuiz;
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
 })();
 </script>
-</body>
-</html>
+</div>

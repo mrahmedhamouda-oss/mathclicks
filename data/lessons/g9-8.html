@@ -1,0 +1,595 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Use the Law of Cosines to find a missing side from SAS, a missing angle from SSS, and to completely solve any right or nonright triangle.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+<h2>Core Concepts</h2>
+
+<div class="concept-card">
+<h3>Why we need a second law</h3>
+<p>The Law of Sines needs a <b>complete pair</b> &mdash; an angle and the side directly across from it. If you are handed two sides and the angle squeezed <em>between</em> them (SAS), or all three sides and no angles at all (SSS), you never get such a pair, so the Law of Sines is useless. <b>When the Law of Sines cannot be used to solve a triangle, the Law of Cosines may apply.</b></p>
+<p>You can use the Law of Cosines to find the length of the third side of a triangle when the measures of two sides and the included angle are known, or to find the angle measures of a triangle if the lengths of all three sides are known.</p>
+</div>
+
+<div class="theorem">
+<div class="theorem-head">Theorem 9.11 &middot; Law of Cosines</div>
+<div class="theorem-body">
+If &#9651;<i>ABC</i> has lengths <i>a</i>, <i>b</i>, and <i>c</i>, representing the lengths of the sides opposite the angles with measures <i>A</i>, <i>B</i>, and <i>C</i>, then
+<div class="formula-box">
+a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> &minus; 2bc&middot;cos A<br>
+b<sup>2</sup> = a<sup>2</sup> + c<sup>2</sup> &minus; 2ac&middot;cos B<br>
+c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab&middot;cos C
+</div>
+Read the pattern once and you never have to memorise three formulas: <b>the side you are solving for sits alone on the left, and the angle on the right is the one opposite it.</b> The other two sides appear twice &mdash; squared, and again in the product 2(side)(side).
+</div>
+</div>
+
+<div class="concept-card">
+<h3>The same law, rearranged to hunt for angles</h3>
+<p>Solve <code>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> &minus; 2bc cos A</code> for <code>cos A</code> and you get the angle form. This is the version you use for SSS.</p>
+<div class="formula-box">
+cos A = (b<sup>2</sup> + c<sup>2</sup> &minus; a<sup>2</sup>) / (2bc)&nbsp;&nbsp;&there4;&nbsp;&nbsp;m&ang;A = cos<sup>&minus;1</sup>[(b<sup>2</sup> + c<sup>2</sup> &minus; a<sup>2</sup>) / (2bc)]
+</div>
+<p>Notice the numerator: <b>the squared side that stands alone is the one being subtracted</b>, and it is the side opposite the angle you want.</p>
+</div>
+
+<div class="concept-card">
+<h3>Which law do I reach for?</h3>
+<div class="vocab">
+<div class="vocab-item"><b>ASA</b> &mdash; two angles and the included side. Third angle by Angle-Sum, then <b>Law of Sines</b>.</div>
+<div class="vocab-item"><b>AAS</b> &mdash; two angles and a non-included side. You already have a complete pair &rarr; <b>Law of Sines</b>.</div>
+<div class="vocab-item"><b>SSA</b> &mdash; two sides and a non-included angle. Complete pair exists &rarr; <b>Law of Sines</b> (ambiguous case).</div>
+<div class="vocab-item"><b>SAS</b> &mdash; two sides and the included angle. No pair &rarr; <b>Law of Cosines</b>.</div>
+<div class="vocab-item"><b>SSS</b> &mdash; three sides, no angles. No pair &rarr; <b>Law of Cosines</b>.</div>
+<div class="vocab-item"><b>Right triangle</b> &mdash; sine, cosine, tangent and the Pythagorean Theorem are fastest, but <b>either law still works</b>.</div>
+</div>
+</div>
+
+<div class="concept-card">
+<h3>Method &mdash; SAS: find the missing side</h3>
+<div class="steps-list">
+<div class="s">Name the unknown side with the letter matching the <b>given angle</b>. If &ang;C is known, the missing side is <i>c</i>.</div>
+<div class="s">Write <code>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab cos C</code>.</div>
+<div class="s">Substitute the two known side lengths and the angle. Keep the cosine unevaluated for now.</div>
+<div class="s">Simplify the constants: <code>c<sup>2</sup> = (a<sup>2</sup>+b<sup>2</sup>) &minus; (2ab) cos C</code>.</div>
+<div class="s">Take the <b>positive</b> square root of each side, then use a calculator in degree mode.</div>
+</div>
+</div>
+
+<div class="concept-card">
+<h3>Method &mdash; SSS: find a missing angle</h3>
+<div class="steps-list">
+<div class="s">Choose which angle you want; write the equation whose lone left-hand side is the side <b>opposite</b> that angle.</div>
+<div class="s">Substitute all three lengths.</div>
+<div class="s">Simplify both constant pieces, then isolate the cosine term.</div>
+<div class="s">Divide by the coefficient of the cosine. Watch the signs &mdash; a negative result is legal and means the angle is obtuse.</div>
+<div class="s">Apply <code>cos<sup>&minus;1</sup></code> and round.</div>
+</div>
+</div>
+
+<div class="keyfact"><div class="ico">1</div><div class="txt">The Law of Cosines works on <b>every</b> triangle &mdash; acute, right or obtuse. Nothing about it assumes a right angle.</div></div>
+<div class="keyfact"><div class="ico">2</div><div class="txt">The Pythagorean Theorem is just the Law of Cosines with C = 90&deg;: since <code>cos 90&deg; = 0</code>, the term <code>&minus;2ab cos C</code> vanishes and <code>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></code>.</div></div>
+<div class="keyfact"><div class="ico">3</div><div class="txt"><code>cos A &lt; 0 &hArr; A is obtuse</code>. So if <code>a<sup>2</sup> &gt; b<sup>2</sup> + c<sup>2</sup></code>, angle A is obtuse; if they are equal, A is right.</div></div>
+<div class="keyfact"><div class="ico">4</div><div class="txt">A triangle has <b>at most one</b> obtuse angle, and it is always opposite the <b>longest side</b>. That single fact rescues you from the ambiguous case.</div></div>
+
+<div class="info-box"><strong>Study Tip &middot; SSS:</strong> When given all three side lengths of a triangle, you must use the Law of Cosines to find the first angle measure. Then you can use either the Law of Cosines or the Law of Sines to find a second angle measure. If you plan to use the Law of Cosines for the second angle, the order does not matter. But if you want to use the Law of Sines for the second angle, you should find the <b>largest</b> angle first with the Law of Cosines.</div>
+
+<div class="warning-box"><strong>Watch Out! Rounding.</strong> When you round a numerical solution and then use it in later calculations, your answers may become inaccurate. Wait until after you have completed all of your calculations to round.</div>
+
+<div class="warning-box"><strong>Watch Out! The inverse sine lies.</strong> <code>sin<sup>&minus;1</sup></code> on a calculator only ever returns an <b>acute</b> value. If the angle you are chasing is actually obtuse, the calculator hands you its supplement. <code>cos<sup>&minus;1</sup></code> has no such flaw &mdash; it returns values from 0&deg; to 180&deg; and gets obtuse angles right automatically. That is why the Law of Cosines is the safe tool for the largest angle.</div>
+
+<div class="info-box"><strong>Study Tip &middot; Obtuse Angles:</strong> There are also values for sin A, cos A, and tan A when m&ang;A &ge; 90&deg;. Values of the ratios for these angles can be found by using the trigonometric functions on your calculator. It is good practice to solve for smaller angles first, and then use the Triangle Angle-Sum Theorem to find the measure of the largest, third angle.</div>
+</section>
+
+<section id="figures">
+<h2>Key Figures</h2>
+
+<figure class="fig">
+<div class="fig-title">Standard labeling of an oblique triangle</div>
+<svg id="fig1" viewBox="0 0 420 300" width="420" role="img" aria-label="Triangle ABC with sides a, b, c opposite angles A, B, C">
+  <path class="g-shape" d="M55 235 L345 235 L140 70 Z"/>
+  <g data-part="angles">
+    <path class="g-angle" d="M91 235 A36 36 0 0 0 71.5 203"/>
+    <path class="g-angle" d="M309 235 A36 36 0 0 1 316.9 212.4"/>
+    <path class="g-angle" d="M123.5 102 A36 36 0 0 0 168.1 92.6"/>
+  </g>
+  <g data-part="side-a"><line class="g-shape-alt" stroke-width="5" x1="345" y1="235" x2="140" y2="70"/><text class="g-meas g-halo" x="255" y="137" text-anchor="middle">a</text></g>
+  <g data-part="side-b"><line class="g-shape-alt" stroke-width="5" x1="55" y1="235" x2="140" y2="70"/><text class="g-meas g-halo" x="80" y="143" text-anchor="middle">b</text></g>
+  <g data-part="side-c"><line class="g-shape-alt" stroke-width="5" x1="55" y1="235" x2="345" y2="235"/><text class="g-meas g-halo" x="200" y="258" text-anchor="middle">c</text></g>
+  <circle class="g-pt" cx="55" cy="235" r="4.5"/><circle class="g-pt" cx="345" cy="235" r="4.5"/><circle class="g-pt" cx="140" cy="70" r="4.5"/>
+  <text class="g-lbl" x="44" y="243" text-anchor="end">A</text>
+  <text class="g-lbl" x="356" y="243" text-anchor="start">B</text>
+  <text class="g-lbl" x="140" y="55" text-anchor="middle">C</text>
+</svg>
+<div class="fig-legend">
+  <button class="fig-chip" onclick="figHi(this,'fig1','side-a')">Side a (opposite A)</button>
+  <button class="fig-chip" onclick="figHi(this,'fig1','side-b')">Side b (opposite B)</button>
+  <button class="fig-chip" onclick="figHi(this,'fig1','side-c')">Side c (opposite C)</button>
+  <button class="fig-chip" onclick="figHi(this,'fig1','angles')">The three angles</button>
+</div>
+<figcaption>Lowercase letters name sides, capitals name angles, and each lowercase side sits <em>across</em> from its capital. Every version of the Law of Cosines respects this pairing.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig-title">SAS &mdash; two sides and the included angle</div>
+<svg id="fig2" viewBox="0 0 360 270" width="360" role="img" aria-label="Triangle with sides 8 and 5 meeting at a 60 degree angle, third side 7">
+  <path class="g-shape" d="M60 210 L284 210 L130 88.8 Z"/>
+  <g data-part="known">
+    <line class="g-shape-alt" stroke-width="5" x1="60" y1="210" x2="284" y2="210"/>
+    <line class="g-shape-alt" stroke-width="5" x1="60" y1="210" x2="130" y2="88.8"/>
+    <text class="g-meas g-halo" x="172" y="234" text-anchor="middle">b = 8</text>
+    <text class="g-meas g-halo" x="78" y="139" text-anchor="end">c = 5</text>
+  </g>
+  <g data-part="angle">
+    <path class="g-angle-fill" d="M60 210 L100 210 A40 40 0 0 0 80 175.4 Z"/>
+    <text class="g-meas" x="112" y="185" text-anchor="start">60&deg;</text>
+  </g>
+  <g data-part="unknown">
+    <line class="g-line" stroke-width="5" x1="130" y1="88.8" x2="284" y2="210"/>
+    <text class="g-grn g-halo" x="222" y="134" text-anchor="start">a = ?</text>
+  </g>
+  <circle class="g-pt" cx="60" cy="210" r="4.5"/><circle class="g-pt" cx="284" cy="210" r="4.5"/><circle class="g-pt" cx="130" cy="88.8" r="4.5"/>
+  <text class="g-lbl" x="48" y="218" text-anchor="end">A</text>
+  <text class="g-lbl" x="124" y="76" text-anchor="middle">B</text>
+  <text class="g-lbl" x="296" y="218" text-anchor="start">C</text>
+</svg>
+<div class="fig-legend">
+  <button class="fig-chip" onclick="figHi(this,'fig2','known')">The two known sides</button>
+  <button class="fig-chip" onclick="figHi(this,'fig2','angle')">The included angle</button>
+  <button class="fig-chip" onclick="figHi(this,'fig2','unknown')">The side you find</button>
+</div>
+<figcaption>a<sup>2</sup> = 8<sup>2</sup> + 5<sup>2</sup> &minus; 2(8)(5)cos 60&deg; = 89 &minus; 80(0.5) = 49, so <b>a = 7</b>. The angle is <em>between</em> the two known sides, so no complete pair exists and the Law of Sines cannot start.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig-title">Which law solves which triangle?</div>
+<svg id="fig3" viewBox="0 0 500 320" width="500" role="img" aria-label="Five triangles showing ASA, AAS, SSA solved by Law of Sines and SAS, SSS by Law of Cosines">
+  <defs><path id="t98" d="M0 72 L112 72 L72 0 Z"/></defs>
+  <text class="g-meas-b" x="250" y="16" text-anchor="middle">LAW OF SINES &mdash; a complete angle&ndash;side pair exists</text>
+  <g data-part="asa" transform="translate(24,34)">
+    <use href="#t98" class="g-shape"/>
+    <line class="g-shape-alt" stroke-width="5" x1="0" y1="72" x2="112" y2="72"/>
+    <path class="g-angle" stroke-width="3" d="M24 72 A24 24 0 0 0 16.97 55.03"/>
+    <path class="g-angle" stroke-width="3" d="M88 72 A24 24 0 0 1 100.35 51.02"/>
+    <text class="g-lbl-sm" x="56" y="94" text-anchor="middle">ASA</text>
+  </g>
+  <g data-part="aas" transform="translate(184,34)">
+    <use href="#t98" class="g-shape"/>
+    <line class="g-shape-alt" stroke-width="5" x1="112" y1="72" x2="72" y2="0"/>
+    <path class="g-angle" stroke-width="3" d="M24 72 A24 24 0 0 0 16.97 55.03"/>
+    <path class="g-angle" stroke-width="3" d="M88 72 A24 24 0 0 1 100.35 51.02"/>
+    <text class="g-lbl-sm" x="56" y="94" text-anchor="middle">AAS</text>
+  </g>
+  <g data-part="ssa" transform="translate(344,34)">
+    <use href="#t98" class="g-shape"/>
+    <line class="g-shape-alt" stroke-width="5" x1="0" y1="72" x2="112" y2="72"/>
+    <line class="g-shape-alt" stroke-width="5" x1="112" y1="72" x2="72" y2="0"/>
+    <path class="g-angle" stroke-width="3" d="M24 72 A24 24 0 0 0 16.97 55.03"/>
+    <text class="g-lbl-sm" x="56" y="94" text-anchor="middle">SSA</text>
+  </g>
+  <text class="g-meas-b" x="250" y="184" text-anchor="middle">LAW OF COSINES &mdash; no complete pair</text>
+  <g data-part="sas" transform="translate(104,202)">
+    <use href="#t98" class="g-shape"/>
+    <line class="g-shape-alt" stroke-width="5" x1="0" y1="72" x2="112" y2="72"/>
+    <line class="g-shape-alt" stroke-width="5" x1="0" y1="72" x2="72" y2="0"/>
+    <path class="g-angle" stroke-width="3" d="M24 72 A24 24 0 0 0 16.97 55.03"/>
+    <text class="g-lbl-sm" x="56" y="94" text-anchor="middle">SAS</text>
+  </g>
+  <g data-part="sss" transform="translate(264,202)">
+    <use href="#t98" class="g-shape"/>
+    <line class="g-shape-alt" stroke-width="5" x1="0" y1="72" x2="112" y2="72"/>
+    <line class="g-shape-alt" stroke-width="5" x1="0" y1="72" x2="72" y2="0"/>
+    <line class="g-shape-alt" stroke-width="5" x1="112" y1="72" x2="72" y2="0"/>
+    <text class="g-lbl-sm" x="56" y="94" text-anchor="middle">SSS</text>
+  </g>
+</svg>
+<div class="fig-legend">
+  <button class="fig-chip" onclick="figHi(this,'fig3','asa')">ASA</button>
+  <button class="fig-chip" onclick="figHi(this,'fig3','aas')">AAS</button>
+  <button class="fig-chip" onclick="figHi(this,'fig3','ssa')">SSA</button>
+  <button class="fig-chip" onclick="figHi(this,'fig3','sas')">SAS</button>
+  <button class="fig-chip" onclick="figHi(this,'fig3','sss')">SSS</button>
+</div>
+<figcaption>Orange marks what you are given. In the top row a marked angle always faces a marked side &mdash; that is the complete pair the Law of Sines needs. In the bottom row it never does, so the Law of Cosines takes over.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig-title">Why the Law of Cosines is true (Exercise 20)</div>
+<svg id="fig4" viewBox="0 0 420 300" width="420" role="img" aria-label="Triangle ABC with altitude h from C splitting side c into c minus x and x">
+  <path class="g-shape" d="M60 220 L360 220 L280 70 Z"/>
+  <g data-part="sides">
+    <line class="g-shape-alt" stroke-width="5" x1="60" y1="220" x2="280" y2="70"/>
+    <line class="g-shape-alt" stroke-width="5" x1="360" y1="220" x2="280" y2="70"/>
+    <text class="g-meas g-halo" x="160" y="130" text-anchor="middle">a</text>
+    <text class="g-meas g-halo" x="338" y="137" text-anchor="start">b</text>
+  </g>
+  <g data-part="alt">
+    <line class="g-line" stroke-width="3" x1="280" y1="70" x2="280" y2="220"/>
+    <path class="g-right" d="M280 208 L292 208 L292 220"/>
+    <text class="g-meas-b g-halo" x="272" y="147" text-anchor="end">h</text>
+  </g>
+  <g data-part="seg">
+    <line class="g-aux" x1="60" y1="222" x2="60" y2="286"/>
+    <line class="g-aux" x1="280" y1="222" x2="280" y2="258"/>
+    <line class="g-aux" x1="360" y1="222" x2="360" y2="286"/>
+    <line class="g-line-thin" x1="60" y1="250" x2="280" y2="250"/>
+    <line class="g-line-thin" x1="60" y1="244" x2="60" y2="256"/>
+    <line class="g-line-thin" x1="280" y1="244" x2="280" y2="256"/>
+    <line class="g-line-thin" x1="280" y1="250" x2="360" y2="250"/>
+    <line class="g-line-thin" x1="360" y1="244" x2="360" y2="256"/>
+    <line class="g-line-thin" x1="60" y1="278" x2="360" y2="278"/>
+    <line class="g-line-thin" x1="60" y1="272" x2="60" y2="284"/>
+    <line class="g-line-thin" x1="360" y1="272" x2="360" y2="284"/>
+    <text class="g-lbl-sm" x="170" y="242" text-anchor="middle">c &minus; x</text>
+    <text class="g-lbl-sm" x="320" y="242" text-anchor="middle">x</text>
+    <text class="g-lbl-sm" x="210" y="270" text-anchor="middle">c</text>
+  </g>
+  <path class="g-angle" d="M326 220 A34 34 0 0 1 344 190"/>
+  <circle class="g-pt" cx="60" cy="220" r="4.5"/><circle class="g-pt" cx="360" cy="220" r="4.5"/><circle class="g-pt" cx="280" cy="70" r="4.5"/>
+  <text class="g-lbl" x="48" y="228" text-anchor="end">B</text>
+  <text class="g-lbl" x="374" y="228" text-anchor="start">A</text>
+  <text class="g-lbl" x="280" y="56" text-anchor="middle">C</text>
+</svg>
+<div class="fig-legend">
+  <button class="fig-chip" onclick="figHi(this,'fig4','alt')">Altitude h</button>
+  <button class="fig-chip" onclick="figHi(this,'fig4','seg')">Base split into x and c &minus; x</button>
+  <button class="fig-chip" onclick="figHi(this,'fig4','sides')">Sides a and b</button>
+</div>
+<figcaption>Right triangles give <code>h<sup>2</sup> = b<sup>2</sup> &minus; x<sup>2</sup></code> and <code>a<sup>2</sup> = h<sup>2</sup> + (c &minus; x)<sup>2</sup></code>. Substituting and expanding: <code>a<sup>2</sup> = b<sup>2</sup> &minus; x<sup>2</sup> + c<sup>2</sup> &minus; 2cx + x<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> &minus; 2cx</code>. Since <code>cos A = x/b</code>, we get <code>x = b cos A</code> and therefore <code>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> &minus; 2bc cos A</code>. Drawn to scale: b = 170, c = 300, x = 80, h = 150, a &asymp; 266.3.</figcaption>
+</figure>
+</section>
+
+<section id="examples">
+<h2>Worked Examples</h2>
+
+<div class="example-card">
+<button class="example-header open" onclick="toggleExample(this)">
+  <span class="example-label">Example 1</span>
+  <span class="example-title">The Law of Cosines (SAS)</span>
+  <span class="toggle-icon">+</span>
+</button>
+<div class="example-body open">
+<div class="problem-stmt">Find the value of x to the nearest tenth. In &#9651;ABC, AC = 2.9, CB = 0.9, and m&ang;C = 44&deg;. AB = x.</div>
+<figure class="fig">
+<svg viewBox="0 0 400 250" width="400" role="img" aria-label="Triangle with sides 2.9 and 0.9 meeting at a 44 degree angle at C">
+  <path class="g-shape" d="M78.9 93.8 L320 145 L255.1 185.5 Z"/>
+  <path class="g-angle" d="M280.9 136.7 A40 40 0 0 0 286.1 166.2"/>
+  <circle class="g-pt" cx="78.9" cy="93.8" r="4.5"/><circle class="g-pt" cx="320" cy="145" r="4.5"/><circle class="g-pt" cx="255.1" cy="185.5" r="4.5"/>
+  <text class="g-lbl" x="66" y="88" text-anchor="end">A</text>
+  <text class="g-lbl" x="334" y="142" text-anchor="start">C</text>
+  <text class="g-lbl" x="256" y="208" text-anchor="middle">B</text>
+  <text class="g-meas g-halo" x="199" y="108" text-anchor="middle">2.9</text>
+  <text class="g-meas g-halo" x="298" y="180" text-anchor="start">0.9</text>
+  <text class="g-meas" x="258" y="158" text-anchor="middle">44&deg;</text>
+  <text class="g-grn g-halo" x="156" y="160" text-anchor="middle">x</text>
+</svg>
+<figcaption>Two sides and the angle between them &mdash; SAS.</figcaption>
+</figure>
+<p>We are given the measures of two sides and their included angle. Use the Law of Cosines to write an equation. The unknown side is opposite &ang;C, so it plays the role of <i>c</i>.</p>
+<div class="solution-step"><span class="num">1</span><span class="math">c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab cos C</span><span class="reason">Law of Cosines</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">x<sup>2</sup> = 0.9<sup>2</sup> + 2.9<sup>2</sup> &minus; 2(0.9)(2.9) cos 44&deg;</span><span class="reason">Substitution</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">x<sup>2</sup> = 9.22 &minus; 5.22 cos 44&deg;</span><span class="reason">Simplify</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">x = &radic;(9.22 &minus; 5.22 cos 44&deg;)</span><span class="reason">Take the positive square root of each side</span></div>
+<div class="solution-step"><span class="num">5</span><span class="math">x &asymp; &radic;(9.22 &minus; 3.755) = &radic;5.465</span><span class="reason">Use a calculator</span></div>
+<div class="answer-box">x &asymp; 2.3</div>
+<div class="check-box"><strong>Check:</strong> 2.3 lies between 2.9 &minus; 0.9 = 2.0 and 2.9 + 0.9 = 3.8, so the Triangle Inequality is satisfied. &#10003; Also, 44&deg; is acute, so x should be shorter than the 2.9 side &mdash; and it is.</div>
+<div class="warning-box"><strong>Watch Out!</strong> <code>2(0.9)(2.9) cos 44&deg;</code> is one product. Do <b>not</b> compute <code>(9.22 &minus; 5.22)</code> first and then multiply by cos 44&deg;. Multiplication comes before subtraction.</div>
+</div>
+</div>
+
+<div class="example-card">
+<button class="example-header" onclick="toggleExample(this)">
+  <span class="example-label">Example 2</span>
+  <span class="example-title">The Law of Cosines (SSS)</span>
+  <span class="toggle-icon">+</span>
+</button>
+<div class="example-body">
+<div class="problem-stmt">Find the value of x to the nearest whole number. In &#9651;MNP, MN = 9, MP = 11, NP = 5, and m&ang;P = x&deg;.</div>
+<figure class="fig">
+<svg viewBox="0 0 400 290" width="400" role="img" aria-label="Triangle MNP with sides 9, 11 and 5, angle x at P">
+  <path class="g-shape" d="M120 45 L294 139.2 L258.8 243.2 Z"/>
+  <path class="g-angle" d="M269.8 211 A34 34 0 0 0 239.3 215.3"/>
+  <circle class="g-pt" cx="120" cy="45" r="4.5"/><circle class="g-pt" cx="294" cy="139.2" r="4.5"/><circle class="g-pt" cx="258.8" cy="243.2" r="4.5"/>
+  <text class="g-lbl" x="108" y="40" text-anchor="end">M</text>
+  <text class="g-lbl" x="308" y="136" text-anchor="start">N</text>
+  <text class="g-lbl" x="262" y="266" text-anchor="middle">P</text>
+  <text class="g-meas g-halo" x="216" y="76" text-anchor="middle">9</text>
+  <text class="g-meas g-halo" x="170" y="158" text-anchor="middle">11</text>
+  <text class="g-meas g-halo" x="298" y="200" text-anchor="start">5</text>
+  <text class="g-grn" x="248" y="196" text-anchor="middle">x&deg;</text>
+</svg>
+<figcaption>Three sides, no angles &mdash; SSS. Side <i>p</i> = MN = 9 is opposite &ang;P, so it stands alone.</figcaption>
+</figure>
+<div class="solution-step"><span class="num">1</span><span class="math">p<sup>2</sup> = m<sup>2</sup> + n<sup>2</sup> &minus; 2mn cos P</span><span class="reason">Law of Cosines</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">9<sup>2</sup> = 5<sup>2</sup> + 11<sup>2</sup> &minus; 2(5)(11) cos x&deg;</span><span class="reason">Substitution</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">81 = 146 &minus; 110 cos x&deg;</span><span class="reason">Simplify</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">&minus;65 = &minus;110 cos x&deg;</span><span class="reason">Subtract 146 from each side</span></div>
+<div class="solution-step"><span class="num">5</span><span class="math">&minus;65/&minus;110 = cos x&deg;</span><span class="reason">Divide each side by &minus;110</span></div>
+<div class="solution-step"><span class="num">6</span><span class="math">x = cos<sup>&minus;1</sup>(0.5909)</span><span class="reason">Use the inverse cosine function</span></div>
+<div class="solution-step"><span class="num">7</span><span class="math">x &asymp; 53.78</span><span class="reason">Use a calculator</span></div>
+<div class="answer-box">x &asymp; 54</div>
+<div class="check-box"><strong>Check:</strong> 9 is the middle-length side, so &ang;P should be the middle-sized angle. cos<sup>&minus;1</sup> of a positive number is acute &mdash; consistent with a 54&deg; result. &#10003;</div>
+</div>
+</div>
+
+<div class="example-card">
+<button class="example-header" onclick="toggleExample(this)">
+  <span class="example-label">Example 3</span>
+  <span class="example-title">Indirect measurement with the Law of Cosines</span>
+  <span class="toggle-icon">+</span>
+</button>
+<div class="example-body">
+<div class="problem-stmt">GOLF &middot; The tee box is 378 yards from the hole. To avoid a water hazard, Nhat turns 32&deg; and hits a shot 261.5 yards up the fairway. Find the distance from Nhat's ball to the hole, to the nearest yard.</div>
+<p>Because we know the measures of two sides of the triangle (378 and 261.5) and the included angle (32&deg;), use the Law of Cosines to find the remaining distance <i>x</i>.</p>
+<div class="solution-step"><span class="num">1</span><span class="math">x<sup>2</sup> = 261.5<sup>2</sup> + 378<sup>2</sup> &minus; 2(261.5)(378) cos 32&deg;</span><span class="reason">Law of Cosines</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">x<sup>2</sup> = 211,266.25 &minus; 197,694 cos 32&deg;</span><span class="reason">Simplify</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">x = &radic;(211,266.25 &minus; 197,694 cos 32&deg;)</span><span class="reason">Take the positive square root of each side</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">x &asymp; &radic;(211,266.25 &minus; 167,654) = &radic;43,612</span><span class="reason">Use a calculator</span></div>
+<div class="answer-box">x &asymp; 209 yards</div>
+<div class="info-box"><strong>Study Tip &middot; Rounding:</strong> Do not round 197,694 cos 32&deg; to a few digits and then subtract &mdash; carry the full calculator value all the way to the square root, and round only at the very end.</div>
+</div>
+</div>
+
+<div class="example-card">
+<button class="example-header" onclick="toggleExample(this)">
+  <span class="example-label">Example 4</span>
+  <span class="example-title">Solve a nonright triangle with the Law of Cosines</span>
+  <span class="toggle-icon">+</span>
+</button>
+<div class="example-body">
+<div class="problem-stmt">Solve &#9651;ABC. Round to the nearest degree. AB = 8, AC = 11, BC = 7.</div>
+<figure class="fig">
+<svg viewBox="0 0 380 300" width="380" role="img" aria-label="Triangle ABC with sides 8, 11 and 7">
+  <path class="g-shape" d="M187 40.5 L130 190 L256.9 249.2 Z"/>
+  <circle class="g-pt" cx="187" cy="40.5" r="4.5"/><circle class="g-pt" cx="130" cy="190" r="4.5"/><circle class="g-pt" cx="256.9" cy="249.2" r="4.5"/>
+  <text class="g-lbl" x="187" y="27" text-anchor="middle">A</text>
+  <text class="g-lbl" x="116" y="196" text-anchor="end">B</text>
+  <text class="g-lbl" x="270" y="258" text-anchor="start">C</text>
+  <text class="g-meas g-halo" x="140" y="108" text-anchor="middle">8</text>
+  <text class="g-meas g-halo" x="241" y="139" text-anchor="middle">11</text>
+  <text class="g-meas g-halo" x="185" y="238" text-anchor="middle">7</text>
+</svg>
+<figcaption>Drawn to scale: the 11-side really is the longest, and the angle facing it really is the biggest.</figcaption>
+</figure>
+<p>Because 7<sup>2</sup> + 8<sup>2</sup> &ne; 11<sup>2</sup> (49 + 64 = 113, not 121), this is not a right triangle. All three sides are given (SSS), so decide which angle you want first, then use the Law of Cosines. Here <i>a</i> = 7, <i>b</i> = 11, <i>c</i> = 8.</p>
+<div class="solution-step"><span class="num">1</span><span class="math">a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup> &minus; 2bc cos A</span><span class="reason">Law of Cosines</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">7<sup>2</sup> = 11<sup>2</sup> + 8<sup>2</sup> &minus; 2(11)(8) cos A</span><span class="reason">Substitute</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">49 = 185 &minus; 176 cos A</span><span class="reason">Simplify</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">&minus;136 = &minus;176 cos A</span><span class="reason">Subtract 185 from each side</span></div>
+<div class="solution-step"><span class="num">5</span><span class="math">&minus;136/&minus;176 = cos A</span><span class="reason">Divide each side by &minus;176</span></div>
+<div class="solution-step"><span class="num">6</span><span class="math">m&ang;A = cos<sup>&minus;1</sup>(0.7727) &asymp; 39</span><span class="reason">Inverse cosine, then a calculator</span></div>
+<div class="warning-box"><strong>Watch Out! Do not reach for the Law of Sines next.</strong> It would give sin B = 11 sin 39.35&deg; / 7 &asymp; 0.9974, and sin<sup>&minus;1</sup>(0.9974) &asymp; 86&deg;. But <i>b</i> = 11 is the <b>longest</b> side, so &ang;B must be the <b>largest</b> angle &mdash; and 86&deg; would be smaller than the third angle. The calculator returned the acute twin; the true angle is its supplement, 180&deg; &minus; 86&deg; = 94&deg;. Use the Law of Cosines for the largest angle and the trap disappears.</div>
+<div class="solution-step"><span class="num">7</span><span class="math">cos B = (a<sup>2</sup>+c<sup>2</sup>&minus;b<sup>2</sup>)/(2ac) = (49+64&minus;121)/112</span><span class="reason">Angle form, for the largest angle</span></div>
+<div class="solution-step"><span class="num">8</span><span class="math">cos B = &minus;8/112 &asymp; &minus;0.0714 &there4; m&ang;B &asymp; 94</span><span class="reason">Negative cosine &rarr; obtuse angle</span></div>
+<div class="solution-step"><span class="num">9</span><span class="math">m&ang;C &asymp; 180 &minus; (39 + 94) = 47</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+<div class="answer-box">m&ang;A &asymp; 39&deg;, m&ang;B &asymp; 94&deg;, m&ang;C &asymp; 47&deg;</div>
+<div class="check-box"><strong>Check:</strong> Order the sides 7 &lt; 8 &lt; 11 and the angles 39&deg; &lt; 47&deg; &lt; 94&deg; &mdash; the orders match, and 39 + 94 + 47 = 180. &#10003;</div>
+</div>
+</div>
+
+<div class="example-card">
+<button class="example-header" onclick="toggleExample(this)">
+  <span class="example-label">Example 5</span>
+  <span class="example-title">Solve a right triangle with the Law of Cosines</span>
+  <span class="toggle-icon">+</span>
+</button>
+<div class="example-body">
+<div class="problem-stmt">Solve &#9651;FGH. Round angle measures to the nearest degree and side measures to the nearest tenth. FH = 3, HG = 2, and m&ang;H = 90&deg;.</div>
+<figure class="fig">
+<svg viewBox="0 0 320 280" width="320" role="img" aria-label="Right triangle FGH with legs 3 and 2 and right angle at H">
+  <path class="g-shape" d="M110 65 L110 230 L220 230 Z"/>
+  <path class="g-right" d="M110 218 L122 218 L122 230"/>
+  <circle class="g-pt" cx="110" cy="65" r="4.5"/><circle class="g-pt" cx="110" cy="230" r="4.5"/><circle class="g-pt" cx="220" cy="230" r="4.5"/>
+  <text class="g-lbl" x="110" y="52" text-anchor="middle">F</text>
+  <text class="g-lbl" x="98" y="246" text-anchor="end">H</text>
+  <text class="g-lbl" x="234" y="238" text-anchor="start">G</text>
+  <text class="g-meas g-halo" x="98" y="152" text-anchor="end">3</text>
+  <text class="g-meas g-halo" x="165" y="250" text-anchor="middle">2</text>
+  <text class="g-grn g-halo" x="182" y="136" text-anchor="start">&radic;13</text>
+</svg>
+<figcaption>Legs 3 and 2 drawn to scale (55 px per unit); the hypotenuse FG measures &radic;13 &asymp; 3.6.</figcaption>
+</figure>
+<p><b>Find FG.</b> With a right angle available, the Pythagorean Theorem is fastest.</p>
+<div class="solution-step"><span class="num">1</span><span class="math">h<sup>2</sup> = f<sup>2</sup> + g<sup>2</sup> = 2<sup>2</sup> + 3<sup>2</sup> = 13</span><span class="reason">Pythagorean Theorem</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">h = &radic;13 &asymp; 3.6</span><span class="reason">Positive square root; FG &asymp; 3.6</span></div>
+<p><b>Find m&ang;F</b> with the Law of Cosines. Side <i>f</i> = GH = 2 is opposite &ang;F.</p>
+<div class="solution-step"><span class="num">3</span><span class="math">f<sup>2</sup> = g<sup>2</sup> + h<sup>2</sup> &minus; 2gh cos F</span><span class="reason">Law of Cosines</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">2<sup>2</sup> = 3<sup>2</sup> + (&radic;13)<sup>2</sup> &minus; 2(3)(&radic;13) cos F</span><span class="reason">Substitution</span></div>
+<div class="solution-step"><span class="num">5</span><span class="math">4 = 22 &minus; 6&radic;13 cos F</span><span class="reason">Simplify</span></div>
+<div class="solution-step"><span class="num">6</span><span class="math">&minus;18 = &minus;6&radic;13 cos F</span><span class="reason">Subtract 22 from each side</span></div>
+<div class="solution-step"><span class="num">7</span><span class="math">&minus;18/&minus;6&radic;13 = 3/&radic;13 &asymp; 0.8321 = cos F</span><span class="reason">Divide each side by &minus;6&radic;13</span></div>
+<div class="solution-step"><span class="num">8</span><span class="math">m&ang;F = cos<sup>&minus;1</sup>(0.8321) &asymp; 34</span><span class="reason">Use a calculator</span></div>
+<div class="solution-step"><span class="num">9</span><span class="math">m&ang;G &asymp; 90 &minus; 34 = 56</span><span class="reason">Acute angles of a right triangle are complementary</span></div>
+<div class="answer-box">FG &asymp; 3.6, m&ang;F &asymp; 34&deg;, m&ang;G &asymp; 56&deg;</div>
+<div class="check-box"><strong>Check with right-triangle trig:</strong> tan F = opposite/adjacent = 2/3, so m&ang;F = tan<sup>&minus;1</sup>(2/3) &asymp; 33.7&deg; &asymp; 34&deg;. &#10003; The Law of Cosines agrees &mdash; it simply is not the quickest road for a right triangle.</div>
+</div>
+</div>
+</section>
+
+<section id="practice">
+<h2>Try It Yourself</h2>
+
+<div class="try-box">
+<h4>Problem 1 &middot; SAS</h4>
+<div class="prob">In &#9651;ABC, b = 6, c = 10, and m&ang;A = 120&deg;. Find a.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+<div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">a<sup>2</sup> = 6<sup>2</sup> + 10<sup>2</sup> &minus; 2(6)(10) cos 120&deg;</span><span class="reason">Law of Cosines</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">a<sup>2</sup> = 136 &minus; 120(&minus;0.5)</span><span class="reason">cos 120&deg; = &minus;&frac12;</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">a<sup>2</sup> = 136 + 60 = 196</span><span class="reason">Subtracting a negative adds</span></div>
+<div class="answer-box">a = 14</div>
+</div>
+</div>
+
+<div class="try-box">
+<h4>Problem 2 &middot; SSS, recognising a right angle</h4>
+<div class="prob">A triangle has sides 8, 15, and 17. Find the measure of the angle opposite the side of length 17.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+<div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">cos &theta; = (8<sup>2</sup> + 15<sup>2</sup> &minus; 17<sup>2</sup>)/(2&middot;8&middot;15)</span><span class="reason">Angle form</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">cos &theta; = (64 + 225 &minus; 289)/240 = 0/240 = 0</span><span class="reason">Simplify</span></div>
+<div class="answer-box">&theta; = cos<sup>&minus;1</sup>(0) = 90&deg;</div>
+<div class="check-box"><strong>Why:</strong> the numerator is zero exactly when b<sup>2</sup> + c<sup>2</sup> = a<sup>2</sup> &mdash; the Pythagorean Theorem falling out of the Law of Cosines. &#10003;</div>
+</div>
+</div>
+
+<div class="try-box">
+<h4>Problem 3 &middot; SSS</h4>
+<div class="prob">In &#9651;ABC, a = 4, b = 5, and c = 6. Find m&ang;C to the nearest degree.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+<div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">6<sup>2</sup> = 4<sup>2</sup> + 5<sup>2</sup> &minus; 2(4)(5) cos C</span><span class="reason">c is opposite &ang;C</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">36 = 41 &minus; 40 cos C &rarr; &minus;5 = &minus;40 cos C</span><span class="reason">Simplify, then subtract 41</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">cos C = 0.125 &rarr; C = cos<sup>&minus;1</sup>(0.125) &asymp; 82.82</span><span class="reason">Inverse cosine</span></div>
+<div class="answer-box">m&ang;C &asymp; 83&deg;</div>
+</div>
+</div>
+
+<div class="try-box">
+<h4>Problem 4 &middot; SAS to the nearest tenth</h4>
+<div class="prob">In &#9651;DEF, d = 9, f = 12, and m&ang;E = 53&deg;. Find e to the nearest tenth.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+<div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">e<sup>2</sup> = d<sup>2</sup> + f<sup>2</sup> &minus; 2df cos E</span><span class="reason">&ang;E is included between d and f</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">e<sup>2</sup> = 81 + 144 &minus; 2(9)(12) cos 53&deg; = 225 &minus; 216 cos 53&deg;</span><span class="reason">Substitute and simplify</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">e<sup>2</sup> &asymp; 225 &minus; 129.99 = 95.01</span><span class="reason">cos 53&deg; &asymp; 0.60182</span></div>
+<div class="answer-box">e &asymp; 9.7</div>
+</div>
+</div>
+
+<div class="try-box">
+<h4>Problem 5 &middot; Solve the whole triangle</h4>
+<div class="prob">Solve &#9651;ABC completely if a = 6, b = 9, and c = 12. Round angle measures to the nearest degree.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+<div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">cos C = (36 + 81 &minus; 144)/(2&middot;6&middot;9) = &minus;27/108 = &minus;0.25</span><span class="reason">Largest side first &rarr; largest angle</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">m&ang;C = cos<sup>&minus;1</sup>(&minus;0.25) &asymp; 104.48</span><span class="reason">Negative cosine &rarr; obtuse</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">cos A = (81 + 144 &minus; 36)/(2&middot;9&middot;12) = 189/216 = 0.875</span><span class="reason">Law of Cosines again</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">m&ang;A = cos<sup>&minus;1</sup>(0.875) &asymp; 28.96</span><span class="reason">Inverse cosine</span></div>
+<div class="solution-step"><span class="num">5</span><span class="math">m&ang;B &asymp; 180 &minus; (104.48 + 28.96) = 46.56</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+<div class="answer-box">m&ang;A &asymp; 29&deg;, m&ang;B &asymp; 47&deg;, m&ang;C &asymp; 104&deg;</div>
+<div class="check-box"><strong>Check:</strong> sides 6 &lt; 9 &lt; 12 pair with angles 29&deg; &lt; 47&deg; &lt; 104&deg;. Because we found the obtuse angle first with the Law of Cosines, the Law of Sines would now be safe for the rest. &#10003;</div>
+</div>
+</div>
+</section>
+
+<section id="summary">
+<h2>Summary</h2>
+
+<table class="tbl">
+<tr><th>What you are given</th><th>What to do</th><th>Result</th></tr>
+<tr><td>SAS &mdash; two sides and the included angle</td><td><code>a&sup2; = b&sup2; + c&sup2; &minus; 2bc cos A</code>, then positive square root</td><td>The third side</td></tr>
+<tr><td>SSS &mdash; three sides</td><td><code>cos A = (b&sup2;+c&sup2;&minus;a&sup2;)/(2bc)</code>, then <code>cos<sup>&minus;1</sup></code></td><td>Any angle you choose</td></tr>
+<tr><td>SSS &mdash; solve the whole triangle</td><td>Law of Cosines for the <b>largest</b> angle first, then Law of Cosines or Law of Sines, then Angle-Sum</td><td>All three angles</td></tr>
+<tr><td>ASA / AAS / SSA</td><td>Law of <b>Sines</b> &mdash; a complete angle&ndash;side pair already exists</td><td>Remaining parts</td></tr>
+<tr><td>Right triangle</td><td>sin, cos, tan or Pythagorean Theorem (either law also works)</td><td>Remaining parts</td></tr>
+<tr><td>Result <code>cos A = 0</code></td><td>Recognise <code>a&sup2; = b&sup2; + c&sup2;</code></td><td>A = 90&deg;, right triangle</td></tr>
+<tr><td>Result <code>cos A &lt; 0</code></td><td>Nothing special &mdash; <code>cos<sup>&minus;1</sup></code> handles it</td><td>A is obtuse (90&deg; &lt; A &lt; 180&deg;)</td></tr>
+</table>
+
+<div class="pill-row">
+<span class="pill">a&sup2; = b&sup2; + c&sup2; &minus; 2bc cos A</span>
+<span class="pill">b&sup2; = a&sup2; + c&sup2; &minus; 2ac cos B</span>
+<span class="pill">c&sup2; = a&sup2; + b&sup2; &minus; 2ab cos C</span>
+<span class="pill">cos A = (b&sup2;+c&sup2;&minus;a&sup2;)/(2bc)</span>
+<span class="pill">cos B = (a&sup2;+c&sup2;&minus;b&sup2;)/(2ac)</span>
+<span class="pill">cos C = (a&sup2;+b&sup2;&minus;c&sup2;)/(2ab)</span>
+<span class="pill">cos 90&deg; = 0 &rarr; c&sup2; = a&sup2; + b&sup2;</span>
+<span class="pill">A + B + C = 180&deg;</span>
+</div>
+
+<div class="warning-box"><strong>Common mistakes to avoid</strong>
+<ul style="margin:8px 0 0 20px;">
+<li>Pairing the wrong angle with the lone side. The angle in the cosine is always <b>opposite</b> the side by itself.</li>
+<li>Subtracting before multiplying: <code>9.22 &minus; 5.22 cos 44&deg;</code> means <code>9.22 &minus; (5.22 &middot; cos 44&deg;)</code>.</li>
+<li>Forgetting that <code>&minus;2ab cos C</code> <em>adds</em> when C is obtuse, because cos C is then negative.</li>
+<li>Dropping the square root at the end of an SAS problem &mdash; you solved for <code>a&sup2;</code>, not <code>a</code>.</li>
+<li>Using the Law of Sines to find a large angle after an SSS start; <code>sin<sup>&minus;1</sup></code> only returns acute values.</li>
+<li>Rounding intermediate values and then continuing to calculate.</li>
+<li>Reaching for the Law of Cosines when a complete angle&ndash;side pair already exists &mdash; the Law of Sines is far less work.</li>
+<li>Calculator in radian mode. Every angle here is in degrees.</li>
+</ul>
+</div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+{q:"Which equation is a correct form of the Law of Cosines for side b of &#9651;ABC?",opts:["b<sup>2</sup> = a<sup>2</sup> + c<sup>2</sup> &minus; 2ac cos A","b<sup>2</sup> = a<sup>2</sup> + c<sup>2</sup> &minus; 2ac cos B","b<sup>2</sup> = a<sup>2</sup> + c<sup>2</sup> + 2ac cos B","b<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab cos B"],ans:1,exp:"The side alone on the left must be paired with the angle opposite it, and the other two sides (a and c) appear both squared and in the product 2ac. Choice A uses the wrong angle, C has the wrong sign, and D repeats b on the right."},
+{q:"The Law of Cosines can be applied directly when the given information is:",opts:["ASA only","AAS or ASA","SSA only","SAS or SSS"],ans:3,exp:"SAS and SSS are exactly the two cases with no complete angle&ndash;side pair, so the Law of Sines cannot start. ASA, AAS and SSA all contain (or immediately produce) a pair, so the Law of Sines handles them."},
+{q:"In &#9651;ABC, b = 8, c = 5, and m&ang;A = 60&deg;. Find a.",opts:["7","&radic;89 &asymp; 9.4","6.2","11.4"],ans:0,exp:"a<sup>2</sup> = 8<sup>2</sup> + 5<sup>2</sup> &minus; 2(8)(5)cos 60&deg; = 89 &minus; 80(0.5) = 89 &minus; 40 = 49, so a = 7. Choice B is what you get if you forget the cosine term entirely.",fig:"<svg viewBox='0 0 270 215' width='270' role='img' aria-label='Triangle with sides 8 and 5 meeting at 60 degrees'><path class='g-shape' d='M50 180 L210 180 L100 93.4 Z'/><path class='g-angle' d='M80 180 A30 30 0 0 0 65 154'/><circle class='g-pt' cx='50' cy='180' r='4'/><circle class='g-pt' cx='210' cy='180' r='4'/><circle class='g-pt' cx='100' cy='93.4' r='4'/><text class='g-lbl' x='38' y='188' text-anchor='end'>A</text><text class='g-lbl' x='94' y='82' text-anchor='middle'>B</text><text class='g-lbl' x='222' y='188' text-anchor='start'>C</text><text class='g-meas g-halo' x='56' y='128' text-anchor='end'>5</text><text class='g-meas g-halo' x='130' y='200' text-anchor='middle'>8</text><text class='g-meas' x='92' y='158' text-anchor='start'>60&deg;</text><text class='g-grn g-halo' x='168' y='124' text-anchor='start'>a</text></svg>"},
+{q:"In &#9651;ABC, a = 7, b = 8, and c = 5. Find m&ang;A.",opts:["30&deg;","45&deg;","60&deg;","90&deg;"],ans:2,exp:"cos A = (b<sup>2</sup>+c<sup>2</sup>&minus;a<sup>2</sup>)/(2bc) = (64+25&minus;49)/(2&middot;8&middot;5) = 40/80 = 0.5, and cos<sup>&minus;1</sup>(0.5) = 60&deg;. Notice this is the reverse of the previous question &mdash; the same triangle read backwards."},
+{q:"If m&ang;C = 90&deg;, the equation c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab cos C becomes:",opts:["c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab","c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>","c<sup>2</sup> = a<sup>2</sup> &minus; b<sup>2</sup>","c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> + 2ab"],ans:1,exp:"cos 90&deg; = 0, so the entire term &minus;2ab cos C equals zero and vanishes. This is why the Pythagorean Theorem is just a special case of the Law of Cosines."},
+{q:"In &#9651;PQR, p = 6, r = 10, and m&ang;Q = 120&deg;. Find q.",opts:["8","&asymp; 11.7","&asymp; 13.1","14"],ans:3,exp:"q<sup>2</sup> = 6<sup>2</sup> + 10<sup>2</sup> &minus; 2(6)(10)cos 120&deg; = 136 &minus; 120(&minus;0.5) = 136 + 60 = 196, so q = 14. Because cos 120&deg; is negative, the term is added &mdash; choice B (&radic;136) is what you get if you drop the cosine, and choice A comes from subtracting 60 instead.",fig:"<svg viewBox='0 0 300 240' width='300' role='img' aria-label='Triangle PQR with sides 10 and 6 meeting at 120 degrees'><path class='g-shape' d='M140 200 L236 200 L60 61.4 Z'/><path class='g-angle' d='M170 200 A30 30 0 0 0 125 174'/><circle class='g-pt' cx='140' cy='200' r='4'/><circle class='g-pt' cx='236' cy='200' r='4'/><circle class='g-pt' cx='60' cy='61.4' r='4'/><text class='g-lbl' x='134' y='222' text-anchor='middle'>Q</text><text class='g-lbl' x='52' y='52' text-anchor='middle'>P</text><text class='g-lbl' x='250' y='206' text-anchor='start'>R</text><text class='g-meas g-halo' x='188' y='222' text-anchor='middle'>6</text><text class='g-meas g-halo' x='84' y='142' text-anchor='end'>10</text><text class='g-meas' x='168' y='160' text-anchor='start'>120&deg;</text><text class='g-grn g-halo' x='158' y='114' text-anchor='start'>q</text></svg>"},
+{q:"A triangle has sides 5, 6, and 7. Find the measure of the angle opposite the side of length 7, to the nearest degree.",opts:["78&deg;","57&deg;","68&deg;","88&deg;"],ans:0,exp:"cos &theta; = (5<sup>2</sup>+6<sup>2</sup>&minus;7<sup>2</sup>)/(2&middot;5&middot;6) = (25+36&minus;49)/60 = 12/60 = 0.2, and cos<sup>&minus;1</sup>(0.2) &asymp; 78.46&deg;. The result is acute because the numerator is positive."},
+{q:"A triangle has sides 4, 7, and 9. Find the measure of the angle opposite the side of length 9, to the nearest degree.",opts:["73&deg;","97&deg;","107&deg;","117&deg;"],ans:2,exp:"cos &theta; = (4<sup>2</sup>+7<sup>2</sup>&minus;9<sup>2</sup>)/(2&middot;4&middot;7) = (16+49&minus;81)/56 = &minus;16/56 &asymp; &minus;0.2857, so &theta; = cos<sup>&minus;1</sup>(&minus;0.2857) &asymp; 106.6&deg;. The negative cosine is the signal that the angle is obtuse; dropping the negative sign gives the wrong answer 73&deg;."},
+{q:"In &#9651;ABC, a = 9, b = 12, and m&ang;C = 40&deg;. Which substitution is correct?",opts:["c<sup>2</sup> = 9<sup>2</sup> + 12<sup>2</sup> &minus; 2(9)(12) cos 40&deg;","c<sup>2</sup> = 9<sup>2</sup> + 12<sup>2</sup> + 2(9)(12) cos 40&deg;","9<sup>2</sup> = 12<sup>2</sup> + c<sup>2</sup> &minus; 2(12)(c) cos 40&deg;","c<sup>2</sup> = 9<sup>2</sup> &minus; 12<sup>2</sup> &minus; 2(9)(12) cos 40&deg;"],ans:0,exp:"&ang;C sits between the two known sides, so the side you can find is c, the one opposite &ang;C. Choice C wrongly pairs the 40&deg; angle with side a, and it also leaves two unknowns in one equation."},
+{q:"In &#9651;ABC, a = 13, b = 7, and c = 8. Find m&ang;A.",opts:["60&deg;","90&deg;","150&deg;","120&deg;"],ans:3,exp:"cos A = (7<sup>2</sup>+8<sup>2</sup>&minus;13<sup>2</sup>)/(2&middot;7&middot;8) = (49+64&minus;169)/112 = &minus;56/112 = &minus;0.5, so m&ang;A = cos<sup>&minus;1</sup>(&minus;0.5) = 120&deg;. Choice A is cos<sup>&minus;1</sup>(+0.5) &mdash; the sign matters."},
+{q:"Solve for x: x<sup>2</sup> = 5<sup>2</sup> + 7<sup>2</sup> &minus; 2(5)(7) cos 60&deg;. Round to the nearest tenth.",opts:["&asymp; 6.2","39","&asymp; 8.6","&asymp; 3.9"],ans:0,exp:"x<sup>2</sup> = 25 + 49 &minus; 70(0.5) = 74 &minus; 35 = 39, so x = &radic;39 &asymp; 6.245. Choice B is x<sup>2</sup>, not x &mdash; the most common slip is forgetting the final square root. Choice C is &radic;74, from dropping the cosine term."},
+{q:"While solving an SSS triangle you compute cos A = &minus;0.42. What does this tell you about &ang;A?",opts:["The triangle is impossible","&ang;A is acute","&ang;A is obtuse","You made a sign error; cosine cannot be negative"],ans:2,exp:"Cosine is negative exactly for angles between 90&deg; and 180&deg;, so cos<sup>&minus;1</sup>(&minus;0.42) &asymp; 114.8&deg;. A negative cosine is perfectly legal and is the fastest way to spot the obtuse angle of a triangle."},
+{q:"In &#9651;ABC, a = 5, b = 12, and c = 13. Computing cos C gives:",opts:["1, so m&ang;C = 0&deg;","0, so m&ang;C = 90&deg;","&minus;1, so m&ang;C = 180&deg;","0.5, so m&ang;C = 60&deg;"],ans:1,exp:"cos C = (25+144&minus;169)/(2&middot;5&middot;12) = 0/120 = 0, so m&ang;C = 90&deg;. The numerator collapses to zero precisely when a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>, confirming 5-12-13 is a right triangle."},
+{q:"In &#9651;ABC, a = 7, b = 11, c = 8, and m&ang;A &asymp; 39&deg;. The Law of Sines gives sin B &asymp; 0.997 and sin<sup>&minus;1</sup>(0.997) &asymp; 86&deg;. What is the correct m&ang;B?",opts:["86&deg;","90&deg;","104&deg;","94&deg;"],ans:3,exp:"Side b = 11 is the longest side, so &ang;B must be the largest angle &mdash; it cannot be 86&deg; when the other angles would then sum to 94&deg;. The inverse sine only returns acute values, so take the supplement: 180&deg; &minus; 86&deg; = 94&deg;. Checking with cos B = (49+64&minus;121)/112 = &minus;0.0714 confirms m&ang;B &asymp; 94&deg;."},
+{q:"After finding one angle of an SSS triangle with the Law of Cosines, which angle is always safe to find next using the Law of Sines?",opts:["The angle opposite the longest side","The angle opposite the shortest side","Any of the remaining angles","The angle you already found"],ans:1,exp:"A triangle has at most one obtuse angle, and it lies opposite the longest side. The angle opposite the shortest side must therefore be acute, so sin<sup>&minus;1</sup> returns the correct value. Choice A is exactly the case that can be misread as its supplement."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

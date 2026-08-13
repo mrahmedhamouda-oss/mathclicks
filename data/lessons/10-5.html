@@ -1,0 +1,751 @@
+<div class="sat-lesson">
+<p class="lesson-objective">After this page you will be able to use the radius&ndash;tangent right angle, congruent tangent segments, and circumscribed angles to find missing lengths, angle measures, and perimeters.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+<h2>Core Concepts</h2>
+
+<div class="concept-card">
+  <h3>1. What is a tangent?</h3>
+  <p>A tangent just <em>grazes</em> a circle &mdash; it touches it once and then leaves. It never cuts through the inside.</p>
+  <div class="vocab">
+    <div class="vocab-item"><b>tangent to a circle</b> &mdash; a line or segment in the plane of a circle that intersects the circle in exactly one point and does not contain any points in the interior of the circle.</div>
+    <div class="vocab-item"><b>point of tangency</b> &mdash; for a line that intersects a circle in one point, the point at which they intersect.</div>
+    <div class="vocab-item"><b>common tangent</b> &mdash; a line or segment that is tangent to two circles in the same plane.</div>
+    <div class="vocab-item"><b>circumscribed angle</b> &mdash; an angle with sides that are tangent to a circle.</div>
+    <div class="vocab-item"><b>circumscribed polygon</b> &mdash; a polygon whose vertices lie outside the circle and whose sides are all tangent to the circle.</div>
+    <div class="vocab-item"><b>shortest distance</b> &mdash; the shortest distance from a tangent to the center of a circle is the radius drawn to the point of tangency.</div>
+  </div>
+  <p>More than one line can be tangent to the same circle &mdash; in fact infinitely many, one at every point of the circle.</p>
+</div>
+
+<div class="theorem">
+  <div class="theorem-head">Theorem 10.11</div>
+  <div class="theorem-body">
+    In a plane, a line is tangent to a circle <strong>if and only if</strong> it is perpendicular to a radius drawn to the point of tangency.
+    <div class="formula-box">If line <em>&#8467;</em> is tangent to &#8857;<em>O</em> at <em>P</em>, then <em>&#8467;</em> &perp; <span style="text-decoration:overline">OP</span>.<br>
+    If <em>&#8467;</em> &perp; <span style="text-decoration:overline">OP</span> at <em>P</em> on &#8857;<em>O</em>, then <em>&#8467;</em> is tangent to &#8857;<em>O</em>.</div>
+    <p style="font-size:14px;color:var(--sl-ink-2);margin-top:6px;">Because "if and only if" works both ways, this single theorem does two jobs: it <em>gives</em> you a right angle when you know a line is tangent, and it <em>proves</em> tangency when you can show the right angle exists.</p>
+  </div>
+</div>
+
+<div class="concept-card">
+  <h3>2. Testing whether a segment is tangent</h3>
+  <p>Because Theorem 10.11 hands you a right triangle, the Pythagorean Theorem becomes a tangency detector.</p>
+  <div class="steps-list">
+    <div class="s">Identify the radius (call it <code>r</code>), the segment you suspect is tangent (call it <code>t</code>), and the segment from the exterior point to the center (call it <code>d</code>).</div>
+    <div class="s">Test whether <code>r&sup2; + t&sup2; = d&sup2;</code>.</div>
+    <div class="s">If the equation is true, the triangle is a right triangle, the segment is &perp; to the radius at the point on the circle, and by Theorem 10.11 the segment <strong>is tangent</strong>.</div>
+    <div class="s">If the equation is false, the angle is not 90&deg;, so the segment is <strong>not tangent</strong>.</div>
+  </div>
+  <div class="formula-box">r&sup2; + t&sup2; = d&sup2; &nbsp;&rarr;&nbsp; tangent &nbsp;&nbsp;|&nbsp;&nbsp; r&sup2; + t&sup2; &ne; d&sup2; &nbsp;&rarr;&nbsp; not tangent</div>
+  <div class="info-box"><strong>Problem-Solving Tip &mdash; Solve a Simpler Problem:</strong> Sketch the right triangle <em>without</em> the circle and label it. Once the circle is gone you are just doing Pythagoras.</div>
+</div>
+
+<div class="theorem">
+  <div class="theorem-head">Theorem 10.12 &mdash; Tangent to a Circle Theorem</div>
+  <div class="theorem-body">
+    If two segments from the same exterior point are tangent to a circle, then they are congruent.
+    <div class="formula-box">If <span style="text-decoration:overline">PA</span> and <span style="text-decoration:overline">PB</span> are tangent to &#8857;<em>O</em>, then <span style="text-decoration:overline">PA</span> &cong; <span style="text-decoration:overline">PB</span>, so <code>PA = PB</code>.</div>
+    <p style="font-size:14px;color:var(--sl-ink-2);margin-top:6px;">Why it works: &#9651;<em>OAP</em> and &#9651;<em>OBP</em> are right triangles that share hypotenuse <span style="text-decoration:overline">OP</span> and have congruent legs <span style="text-decoration:overline">OA</span> &cong; <span style="text-decoration:overline">OB</span> (both radii). By HL they are congruent, so <span style="text-decoration:overline">PA</span> &cong; <span style="text-decoration:overline">PB</span>.</p>
+  </div>
+</div>
+
+<div class="theorem">
+  <div class="theorem-head">Theorem 10.13</div>
+  <div class="theorem-body">
+    If two segments or lines are tangent to a circle, then the circumscribed angle and the central angle that intercept the arc formed by the points of tangency are <strong>supplementary</strong>.
+    <div class="formula-box">If <span style="text-decoration:overline">QS</span> and <span style="text-decoration:overline">RS</span> are tangent to &#8857;<em>P</em>, then <code>m&ang;P + m&ang;S = 180&deg;</code>.</div>
+    <p style="font-size:14px;color:var(--sl-ink-2);margin-top:6px;">Why it works: quadrilateral <em>PQSR</em> has right angles at <em>Q</em> and at <em>R</em> (Theorem 10.11). Its four angles add to 360&deg;, and 90 + 90 = 180, so the remaining two angles &mdash; &ang;<em>P</em> and &ang;<em>S</em> &mdash; must add to 180&deg;.</p>
+  </div>
+</div>
+
+<div class="concept-card">
+  <h3>3. Circumscribed polygons</h3>
+  <p>A circumscribed polygon wraps around a circle: every vertex sits outside the circle and every side is tangent to it. Each vertex therefore has <em>two</em> tangent segments coming out of it, and by Theorem 10.12 those two are equal. That single fact solves almost every perimeter problem.</p>
+  <div class="formula-box">Perimeter of a circumscribed polygon = 2 &times; (sum of one tangent length from each vertex)</div>
+  <div class="warning-box"><strong>Watch Out! &mdash; Identifying Circumscribed Polygons:</strong> Just because a circle is tangent to one or more of the sides of a polygon does <em>not</em> mean the polygon is circumscribed about the circle. <em>Every</em> side must be tangent, and the circle must sit inside.</div>
+</div>
+
+<div class="concept-card">
+  <h3>4. Counting common tangents</h3>
+  <p>How many lines can be tangent to two circles at once depends entirely on how the circles are positioned.</p>
+  <table class="tbl">
+    <tr><th>Position of the two circles</th><th>Number of common tangents</th></tr>
+    <tr><td>Separate, neither inside the other</td><td><code>4</code> (2 external + 2 internal)</td></tr>
+    <tr><td>Externally tangent (touching at one point, outside)</td><td><code>3</code></td></tr>
+    <tr><td>Intersecting at two points</td><td><code>2</code> (both external)</td></tr>
+    <tr><td>Internally tangent (touching at one point, one inside)</td><td><code>1</code></td></tr>
+    <tr><td>One entirely inside the other (including concentric)</td><td><code>0</code> &mdash; <em>no common tangent</em></td></tr>
+  </table>
+  <div class="info-box"><strong>Think About It!</strong> Two circles have no common tangent exactly when one circle lies strictly inside the other without touching it.</div>
+</div>
+
+<div class="keyfact"><div class="ico">1</div><div class="txt">Tangent line &rarr; instantly draw the radius to the point of tangency and mark a <strong>right angle</strong>.</div></div>
+<div class="keyfact"><div class="ico">2</div><div class="txt">Right angle &rarr; the Pythagorean Theorem <code>r&sup2; + t&sup2; = d&sup2;</code> is available.</div></div>
+<div class="keyfact"><div class="ico">3</div><div class="txt">Two tangents from the <strong>same exterior point</strong> are <strong>congruent</strong>. Set the two expressions equal.</div></div>
+<div class="keyfact"><div class="ico">4</div><div class="txt">Circumscribed angle + central angle = <strong>180&deg;</strong>.</div></div>
+<div class="keyfact"><div class="ico">5</div><div class="txt">Circumscribed polygon &rarr; the two tangent segments at each vertex are equal; the perimeter is twice their total.</div></div>
+</section>
+
+<section id="figures">
+<h2>Key Figures</h2>
+<p style="font-size:14px;color:var(--sl-ink-2);margin-bottom:8px;">Click a chip under any figure to isolate that part of the drawing. Click it again to bring everything back.</p>
+
+<figure class="fig">
+  <div class="fig-title">Theorem 10.11 &mdash; Tangent &perp; Radius</div>
+  <svg id="fig1" viewBox="0 0 400 270" width="400" role="img" aria-label="Circle O with radius OP and tangent line perpendicular to it at P">
+    <g data-part="circle" class="g-hot">
+      <circle cx="170" cy="150" r="80" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/>
+      <circle class="g-pt" cx="170" cy="150" r="4"/>
+      <text class="g-lbl" x="160" y="146" text-anchor="end">O</text>
+    </g>
+    <g data-part="radius" class="g-hot">
+      <line class="g-line" x1="170" y1="150" x2="242.5" y2="116.2"/>
+      <text class="g-meas-b g-halo" x="200" y="126" text-anchor="middle">r</text>
+    </g>
+    <g data-part="tangent" class="g-hot">
+      <line class="g-line" x1="208.7" y1="43.7" x2="276.3" y2="188.7" stroke="var(--sl-orange)"/>
+      <text class="g-lbl" x="286" y="200" text-anchor="start" fill="var(--sl-orange)">&#8467;</text>
+    </g>
+    <g data-part="poft" class="g-hot">
+      <circle class="g-pt" cx="242.5" cy="116.2" r="5"/>
+      <text class="g-lbl" x="262" y="128" text-anchor="start">P</text>
+    </g>
+    <g data-part="right" class="g-hot">
+      <path class="g-right" d="M 229.8 110.3 L 223.9 97.6 L 236.6 103.5"/>
+      <text class="g-meas" x="214" y="86" text-anchor="middle">90&deg;</text>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig1','circle')">Circle O</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','radius')">Radius</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','poft')">Point of tangency</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','tangent')">Tangent line</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','right')">Right angle</button>
+  </div>
+  <figcaption>Line <em>&#8467;</em> touches &#8857;<em>O</em> only at <em>P</em>. The radius <span style="text-decoration:overline">OP</span> meets it at exactly 90&deg; &mdash; that is the whole content of Theorem 10.11.</figcaption>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Theorem 10.12 &mdash; Two Tangents From One Point</div>
+  <svg id="fig2" viewBox="0 0 400 290" width="400" role="img" aria-label="Two congruent tangent segments PA and PB drawn from exterior point P to circle O">
+    <g data-part="circle" class="g-hot">
+      <circle cx="280" cy="150" r="75" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/>
+      <circle class="g-pt" cx="280" cy="150" r="4"/>
+      <text class="g-lbl" x="292" y="156" text-anchor="start">O</text>
+    </g>
+    <g data-part="radii" class="g-hot">
+      <line class="g-line-thin" x1="280" y1="150" x2="249.6" y2="81.44"/>
+      <line class="g-line-thin" x1="280" y1="150" x2="249.6" y2="218.56"/>
+    </g>
+    <g data-part="tan1" class="g-hot">
+      <line class="g-line" x1="95" y1="150" x2="249.6" y2="81.44"/>
+      <line class="g-tick" x1="175.5" y1="123.0" x2="169.1" y2="108.4"/>
+      <text class="g-meas g-halo" x="160" y="98" text-anchor="middle">PA</text>
+    </g>
+    <g data-part="tan2" class="g-hot">
+      <line class="g-line" x1="95" y1="150" x2="249.6" y2="218.56"/>
+      <line class="g-tick" x1="175.5" y1="177.0" x2="169.1" y2="191.6"/>
+      <text class="g-meas g-halo" x="160" y="208" text-anchor="middle">PB</text>
+    </g>
+    <g data-part="right" class="g-hot">
+      <path class="g-right" d="M 254.9 93.3 L 243.0 98.6 L 237.7 86.7"/>
+      <path class="g-right" d="M 254.9 206.7 L 243.0 201.4 L 237.7 213.3"/>
+    </g>
+    <g data-part="pts" class="g-hot">
+      <circle class="g-pt" cx="95" cy="150" r="5"/>
+      <text class="g-lbl" x="85" y="156" text-anchor="end">P</text>
+      <circle class="g-pt" cx="249.6" cy="81.44" r="4.5"/>
+      <text class="g-lbl" x="252" y="66" text-anchor="middle">A</text>
+      <circle class="g-pt" cx="249.6" cy="218.56" r="4.5"/>
+      <text class="g-lbl" x="252" y="242" text-anchor="middle">B</text>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig2','pts')">Points</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','tan1')">Tangent PA</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','tan2')">Tangent PB</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','radii')">Radii</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','right')">Right angles</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','circle')">Circle O</button>
+  </div>
+  <figcaption>Matching single tick marks show <span style="text-decoration:overline">PA</span> &cong; <span style="text-decoration:overline">PB</span>. The two right triangles &#9651;<em>OAP</em> and &#9651;<em>OBP</em> are congruent by HL.</figcaption>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Theorem 10.13 &mdash; Circumscribed Angle</div>
+  <svg id="fig3" viewBox="0 0 400 290" width="400" role="img" aria-label="Circumscribed angle D of 57 degrees supplementary to central angle EGF of 123 degrees">
+    <g data-part="circle" class="g-hot">
+      <circle cx="160" cy="150" r="70" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/>
+      <circle class="g-pt" cx="160" cy="150" r="4"/>
+      <text class="g-lbl" x="148" y="156" text-anchor="end">G</text>
+    </g>
+    <g data-part="arc" class="g-hot">
+      <path class="g-arc" d="M 193.4 88.5 A 70 70 0 0 1 193.4 211.5"/>
+    </g>
+    <g data-part="central" class="g-hot">
+      <line class="g-line-thin" x1="160" y1="150" x2="193.4" y2="88.5"/>
+      <line class="g-line-thin" x1="160" y1="150" x2="193.4" y2="211.5"/>
+      <path class="g-angle" d="M 176.2 179.9 A 34 34 0 0 0 176.2 120.1"/>
+      <text class="g-meas-b g-halo" x="210" y="150" text-anchor="middle" dominant-baseline="middle">123&deg;</text>
+    </g>
+    <g data-part="tangents" class="g-hot">
+      <line class="g-line" x1="193.4" y1="88.5" x2="306.7" y2="150"/>
+      <line class="g-line" x1="193.4" y1="211.5" x2="306.7" y2="150"/>
+      <circle class="g-pt" cx="193.4" cy="88.5" r="4.5"/>
+      <text class="g-lbl" x="192" y="74" text-anchor="middle">E</text>
+      <circle class="g-pt" cx="193.4" cy="211.5" r="4.5"/>
+      <text class="g-lbl" x="192" y="230" text-anchor="middle">F</text>
+    </g>
+    <g data-part="circum" class="g-hot">
+      <circle class="g-pt" cx="306.7" cy="150" r="5"/>
+      <text class="g-lbl" x="318" y="156" text-anchor="start">D</text>
+      <path class="g-angle" d="M 276.8 166.2 A 34 34 0 0 1 276.8 133.8"/>
+      <text class="g-meas g-halo" x="264" y="150" text-anchor="end" dominant-baseline="middle">57&deg;</text>
+    </g>
+    <g data-part="right" class="g-hot">
+      <path class="g-right" d="M 187.7 99.0 L 198.2 104.7 L 203.9 94.2"/>
+      <path class="g-right" d="M 187.7 201.0 L 198.2 195.3 L 203.9 205.8"/>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig3','central')">Central &ang;EGF</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','circum')">Circumscribed &ang;D</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','tangents')">Tangents</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','arc')">Intercepted arc</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','right')">Right angles</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','circle')">Circle G</button>
+  </div>
+  <figcaption>Both angles intercept arc <em>EF</em> (green). 123&deg; + 57&deg; = 180&deg;, so the circumscribed angle and the central angle are supplementary.</figcaption>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Circumscribed Polygon &mdash; Equal Tangent Pairs</div>
+  <svg id="fig4" viewBox="0 0 380 300" width="380" role="img" aria-label="Triangle JKL circumscribed about circle Q with three pairs of congruent tangent segments">
+    <g data-part="circle" class="g-hot">
+      <circle cx="200" cy="192" r="58" fill="var(--sl-orange-soft)" stroke="var(--sl-orange)" stroke-width="2.2"/>
+      <circle class="g-pt" cx="200" cy="192" r="4"/>
+      <text class="g-lbl" x="212" y="198" text-anchor="start">Q</text>
+    </g>
+    <g data-part="tri" class="g-hot">
+      <path class="g-line" d="M 60 250 L 208.4 101.42 L 310 250 Z"/>
+      <text class="g-lbl" x="46" y="262" text-anchor="middle">J</text>
+      <text class="g-lbl" x="208" y="88" text-anchor="middle">K</text>
+      <text class="g-lbl" x="324" y="260" text-anchor="middle">L</text>
+    </g>
+    <g data-part="pairJ" class="g-hot">
+      <line class="g-line" x1="60" y1="250" x2="158.93" y2="150.95" stroke="var(--sl-green)"/>
+      <line class="g-line" x1="60" y1="250" x2="200" y2="250" stroke="var(--sl-green)"/>
+      <line class="g-tick" x1="114.4" y1="205.4" x2="104.6" y2="195.6" stroke="var(--sl-green)"/>
+      <line class="g-tick" x1="130" y1="243" x2="130" y2="257" stroke="var(--sl-green)"/>
+      <text class="g-grn" x="98" y="189" text-anchor="middle">14</text>
+      <text class="g-grn" x="130" y="270" text-anchor="middle">14</text>
+    </g>
+    <g data-part="pairK" class="g-hot">
+      <line class="g-line" x1="208.4" y1="101.42" x2="158.93" y2="150.95" stroke="var(--sl-blue)"/>
+      <line class="g-line" x1="208.4" y1="101.42" x2="247.91" y2="159.2" stroke="var(--sl-blue)"/>
+      <line class="g-tick" x1="190.8" y1="127.6" x2="182.3" y2="119.2" stroke="var(--sl-blue)"/>
+      <line class="g-tick" x1="185.2" y1="133.2" x2="176.7" y2="124.8" stroke="var(--sl-blue)"/>
+      <line class="g-tick" x1="235.5" y1="130.2" x2="225.6" y2="137.0" stroke="var(--sl-blue)"/>
+      <line class="g-tick" x1="230.9" y1="123.6" x2="221.0" y2="130.4" stroke="var(--sl-blue)"/>
+      <text class="g-meas-b" x="170" y="112" text-anchor="middle">7</text>
+      <text class="g-meas-b" x="243" y="118" text-anchor="middle">7</text>
+    </g>
+    <g data-part="pairL" class="g-hot">
+      <line class="g-line" x1="310" y1="250" x2="247.91" y2="159.2" stroke="var(--sl-orange)"/>
+      <line class="g-line" x1="310" y1="250" x2="200" y2="250" stroke="var(--sl-orange)"/>
+      <line class="g-tick" x1="283.95" y1="201.2" x2="274.05" y2="208.0"/>
+      <line class="g-tick" x1="286.75" y1="205.3" x2="276.85" y2="212.1"/>
+      <line class="g-tick" x1="281.15" y1="197.1" x2="271.25" y2="203.9"/>
+      <line class="g-tick" x1="250" y1="243" x2="250" y2="257"/>
+      <line class="g-tick" x1="255" y1="243" x2="255" y2="257"/>
+      <line class="g-tick" x1="260" y1="243" x2="260" y2="257"/>
+      <text class="g-meas" x="298" y="192" text-anchor="middle">11</text>
+      <text class="g-meas" x="255" y="270" text-anchor="middle">11</text>
+    </g>
+    <g data-part="pts" class="g-hot">
+      <circle class="g-pt" cx="158.93" cy="150.95" r="4.5"/>
+      <text class="g-lbl" x="144" y="140" text-anchor="middle">M</text>
+      <circle class="g-pt" cx="247.91" cy="159.2" r="4.5"/>
+      <text class="g-lbl" x="266" y="152" text-anchor="middle">N</text>
+      <circle class="g-pt" cx="200" cy="250" r="4.5"/>
+      <text class="g-lbl" x="200" y="242" text-anchor="middle">P</text>
+    </g>
+  </svg>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig4','pairJ')">Tangents from J</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','pairK')">Tangents from K</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','pairL')">Tangents from L</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','pts')">Points of tangency</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','circle')">Inscribed circle</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','tri')">Triangle JKL</button>
+  </div>
+  <figcaption>&#9651;<em>JKL</em> is circumscribed about &#8857;<em>Q</em>. Each vertex sends out two tangent segments of equal length: 14 &amp; 14, 7 &amp; 7, 11 &amp; 11. Perimeter = 2(14 + 7 + 11) = 64.</figcaption>
+</figure>
+</section>
+
+<section id="examples">
+<h2>Worked Examples</h2>
+
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Identify Common Tangents</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">Identify the number of common tangents that exist between each pair of circles. If no common tangent exists, state <em>no common tangent</em>.</div>
+    <div class="case-grid">
+      <div class="case-box"><h4>a. Two circles that intersect at two points</h4>
+        <figure class="fig" style="margin:6px 0;border:none;box-shadow:none;padding:0;">
+          <svg viewBox="0 0 440 300" width="440" role="img" aria-label="Two intersecting circles with two common external tangents">
+            <circle cx="150" cy="150" r="70" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4" fill-opacity=".55"/>
+            <circle cx="255" cy="150" r="40" fill="var(--sl-orange-soft)" stroke="var(--sl-blue)" stroke-width="2.4" fill-opacity=".55"/>
+            <line class="g-line" x1="94.5" y1="73.9" x2="414.4" y2="154.9" stroke="var(--sl-orange)"/>
+            <line class="g-line" x1="94.5" y1="226.1" x2="414.4" y2="145.1" stroke="var(--sl-orange)"/>
+            <circle class="g-pt" cx="130" cy="82.9" r="4"/>
+            <circle class="g-pt" cx="130" cy="217.1" r="4"/>
+            <circle class="g-pt" cx="243.6" cy="111.7" r="4"/>
+            <circle class="g-pt" cx="243.6" cy="188.3" r="4"/>
+            <text class="g-grn g-halo" x="130" y="60" text-anchor="middle">tangent 1</text>
+            <text class="g-grn g-halo" x="130" y="248" text-anchor="middle">tangent 2</text>
+          </svg>
+        </figure>
+        <div class="math">The circles cross at two points, so the two internal tangents cannot exist.<br><strong>2 common tangents</strong></div>
+      </div>
+      <div class="case-box"><h4>b. Two circles that do not intersect</h4>
+        <figure class="fig" style="margin:6px 0;border:none;box-shadow:none;padding:0;">
+          <svg viewBox="0 0 480 300" width="480" role="img" aria-label="Two separate circles with four common tangents">
+            <circle cx="140" cy="150" r="55" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4" fill-opacity=".55"/>
+            <circle cx="330" cy="150" r="45" fill="var(--sl-orange-soft)" stroke="var(--sl-blue)" stroke-width="2.4" fill-opacity=".55"/>
+            <line class="g-line" x1="43.0" y1="89.8" x2="432.2" y2="110.3" stroke="var(--sl-orange)"/>
+            <line class="g-line" x1="43.0" y1="210.2" x2="432.2" y2="189.7" stroke="var(--sl-orange)"/>
+            <line class="g-line" x1="92.4" y1="55.8" x2="382.8" y2="235.7" stroke="var(--sl-green)"/>
+            <line class="g-line" x1="92.4" y1="244.2" x2="382.8" y2="64.3" stroke="var(--sl-green)"/>
+            <circle class="g-pt" cx="142.9" cy="95.1" r="4"/>
+            <circle class="g-pt" cx="332.4" cy="105.1" r="4"/>
+            <circle class="g-pt" cx="142.9" cy="204.9" r="4"/>
+            <circle class="g-pt" cx="332.4" cy="194.9" r="4"/>
+            <circle class="g-pt" cx="169.0" cy="103.2" r="4"/>
+            <circle class="g-pt" cx="306.3" cy="188.3" r="4"/>
+            <circle class="g-pt" cx="169.0" cy="196.8" r="4"/>
+            <circle class="g-pt" cx="306.3" cy="111.7" r="4"/>
+            <text class="g-meas g-halo" x="60" y="78" text-anchor="start">external</text>
+            <text class="g-grn g-halo" x="112" y="48" text-anchor="start">internal</text>
+          </svg>
+        </figure>
+        <div class="math">Separate circles allow 2 external tangents (orange) and 2 internal tangents (green).<br><strong>4 common tangents</strong></div>
+      </div>
+    </div>
+    <div class="answer-box">a. 2 common tangents &nbsp;&nbsp;|&nbsp;&nbsp; b. 4 common tangents</div>
+    <div class="warning-box"><strong>Watch Out!</strong> Count by <em>position</em>, not by eye. Overlapping circles never have internal tangents, and a circle strictly inside another has none at all.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Identify a Tangent</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt"><span style="text-decoration:overline">AB</span> is a radius of &#8857;<em>A</em>. Determine whether <span style="text-decoration:overline">BC</span> is tangent to &#8857;<em>A</em>. Justify your answer. (<em>AB</em> = 9, <em>BC</em> = 12, and <em>C</em> lies 6 units beyond the circle on <span style="text-decoration:overline">AC</span>.)</div>
+    <figure class="fig">
+      <svg viewBox="0 0 360 250" width="360" role="img" aria-label="Circle A of radius 9 with segment BC of length 12 and AC of length 15">
+        <circle cx="180" cy="118" r="72" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/>
+        <line class="g-line" x1="180" y1="118" x2="180" y2="190"/>
+        <line class="g-line" x1="180" y1="190" x2="276" y2="190"/>
+        <line class="g-line" x1="180" y1="118" x2="276" y2="190"/>
+        <path class="g-right" d="M 180 178 L 192 178 L 192 190"/>
+        <circle class="g-pt" cx="180" cy="118" r="4"/>
+        <circle class="g-pt" cx="180" cy="190" r="4.5"/>
+        <circle class="g-pt" cx="276" cy="190" r="4.5"/>
+        <circle class="g-pt-o" cx="237.6" cy="161.2" r="4"/>
+        <text class="g-lbl" x="168" y="112" text-anchor="end">A</text>
+        <text class="g-lbl" x="172" y="208" text-anchor="end">B</text>
+        <text class="g-lbl" x="288" y="196" text-anchor="start">C</text>
+        <text class="g-meas-b g-halo" x="170" y="158" text-anchor="end">9</text>
+        <text class="g-meas g-halo" x="228" y="208" text-anchor="middle">12</text>
+        <text class="g-meas g-halo" x="266" y="166" text-anchor="start">6</text>
+      </svg>
+      <figcaption>Radius <em>AB</em> = 9, so <em>AC</em> = 9 + 6 = 15. Is &ang;<em>ABC</em> a right angle?</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">Test whether &#9651;ABC is a right triangle.</span><span class="reason">converse of Theorem 10.11</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">9&sup2; + 12&sup2; =? (9 + 6)&sup2;</span><span class="reason">Pythagorean Theorem</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">81 + 144 =? 15&sup2;</span><span class="reason">multiply and add</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">225 = 225 &#10003;</span><span class="reason">simplify</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">&#9651;ABC is a right triangle with right &ang;ABC, so <span style="text-decoration:overline">BC</span> &perp; <span style="text-decoration:overline">AB</span> at B.</span><span class="reason">converse of Pythagorean Thm.</span></div>
+    <div class="answer-box">Yes &mdash; by Theorem 10.11, <span style="text-decoration:overline">BC</span> is tangent to &#8857;<em>A</em>.</div>
+    <div class="warning-box"><strong>Trap:</strong> the hypotenuse is <em>AC</em> = 9 + 6 = 15, <strong>not</strong> 6. The 6 is only the piece of <span style="text-decoration:overline">AC</span> outside the circle; you must add the radius.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Use a Tangent to Find Missing Values</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt"><span style="text-decoration:overline">QS</span> is tangent to &#8857;<em>R</em> at <em>Q</em>. If <em>RQ</em> = <em>x</em>, <em>QS</em> = 4, and <em>RS</em> = <em>x</em> + 2, find the value of <em>x</em>.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 380 260" width="380" role="img" aria-label="Right triangle RQS with legs x and 4 and hypotenuse x plus 2, QS tangent to circle R at Q">
+        <circle cx="252" cy="120" r="72" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/>
+        <line class="g-line" x1="252" y1="120" x2="180" y2="120"/>
+        <line class="g-line" x1="180" y1="120" x2="180" y2="216"/>
+        <line class="g-line" x1="252" y1="120" x2="180" y2="216"/>
+        <path class="g-right" d="M 192 120 L 192 132 L 180 132"/>
+        <circle class="g-pt" cx="252" cy="120" r="4"/>
+        <circle class="g-pt" cx="180" cy="120" r="4.5"/>
+        <circle class="g-pt" cx="180" cy="216" r="4.5"/>
+        <text class="g-lbl" x="172" y="114" text-anchor="end">Q</text>
+        <text class="g-lbl" x="264" y="114" text-anchor="start">R</text>
+        <text class="g-lbl" x="172" y="228" text-anchor="end">S</text>
+        <text class="g-meas-b g-halo" x="216" y="110" text-anchor="middle">x</text>
+        <text class="g-meas g-halo" x="170" y="172" text-anchor="end">4</text>
+        <text class="g-meas g-halo" x="234" y="182" text-anchor="start">x + 2</text>
+      </svg>
+      <figcaption>By Theorem 10.11, <span style="text-decoration:overline">RQ</span> &perp; <span style="text-decoration:overline">QS</span>, so &#9651;<em>RQS</em> is a right triangle with hypotenuse <span style="text-decoration:overline">RS</span>.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">RQ&sup2; + QS&sup2; = RS&sup2;</span><span class="reason">Pythagorean Theorem</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">x&sup2; + 4&sup2; = (x + 2)&sup2;</span><span class="reason">RQ = x, QS = 4, RS = x + 2</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">x&sup2; + 16 = x&sup2; + 4x + 4</span><span class="reason">multiply</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">12 = 4x</span><span class="reason">simplify (subtract x&sup2; and 4)</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">3 = x</span><span class="reason">divide each side by 4</span></div>
+    <div class="answer-box">x = 3</div>
+    <div class="check-box"><strong>Check:</strong> the sides become 3, 4, and 5. Since 3&sup2; + 4&sup2; = 9 + 16 = 25 = 5&sup2; &#10003;, the drawing really is a 3-4-5 right triangle.</div>
+    <div class="check-box"><strong>Your turn (textbook Check):</strong> <span style="text-decoration:overline">BC</span> is tangent to &#8857;<em>A</em> at <em>C</em>, with <em>BA</em> = 17, <em>BC</em> = 14, and radius <em>AC</em> = <em>x</em>. Then 14&sup2; + x&sup2; = 17&sup2; &rarr; x&sup2; = 289 &minus; 196 = 93 &rarr; <strong>x &asymp; 9.64</strong>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Use Congruent Tangents to Find Measures</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt"><span style="text-decoration:overline">AB</span> and <span style="text-decoration:overline">AC</span> are tangent to a circle from the same exterior point <em>A</em>. If <em>AB</em> = 7<em>x</em> &minus; 9 and <em>AC</em> = 5<em>x</em> + 5, find <em>AB</em>.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 420 300" width="420" role="img" aria-label="Two congruent tangent segments from exterior point A labeled 7x minus 9 and 5x plus 5">
+        <circle cx="300" cy="150" r="70" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/>
+        <circle class="g-pt" cx="300" cy="150" r="4"/>
+        <line class="g-line-thin" x1="300" y1="150" x2="274.2" y2="84.9"/>
+        <line class="g-line-thin" x1="300" y1="150" x2="274.2" y2="215.1"/>
+        <line class="g-line" x1="110" y1="150" x2="274.2" y2="84.9"/>
+        <line class="g-line" x1="110" y1="150" x2="274.2" y2="215.1"/>
+        <path class="g-right" d="M 278.6 96.1 L 267.5 100.5 L 263.0 89.3"/>
+        <path class="g-right" d="M 278.6 203.9 L 267.5 199.5 L 263.0 210.7"/>
+        <line class="g-tick" x1="189.5" y1="111.0" x2="194.7" y2="124.0"/>
+        <line class="g-tick" x1="194.7" y1="176.0" x2="189.5" y2="189.1"/>
+        <circle class="g-pt" cx="110" cy="150" r="5"/>
+        <circle class="g-pt" cx="274.2" cy="84.9" r="4.5"/>
+        <circle class="g-pt" cx="274.2" cy="215.1" r="4.5"/>
+        <text class="g-lbl" x="100" y="156" text-anchor="end">A</text>
+        <text class="g-lbl" x="284" y="72" text-anchor="start">B</text>
+        <text class="g-lbl" x="284" y="234" text-anchor="start">C</text>
+        <text class="g-meas g-halo" x="180" y="98" text-anchor="middle">7x &minus; 9</text>
+        <text class="g-meas g-halo" x="180" y="208" text-anchor="middle">5x + 5</text>
+      </svg>
+      <figcaption>The tick marks record what Theorem 10.12 guarantees: the two tangent segments from <em>A</em> are congruent.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">Because tangents <span style="text-decoration:overline">AB</span> and <span style="text-decoration:overline">AC</span> come from the same exterior point A, <span style="text-decoration:overline">AB</span> &cong; <span style="text-decoration:overline">AC</span>.</span><span class="reason">Theorem 10.12</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">AB = AC</span><span class="reason">definition of congruent segments</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">7x &minus; 9 = 5x + 5</span><span class="reason">substitution</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">2x = 14 &rarr; x = 7</span><span class="reason">solve</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">AB = 7(7) &minus; 9 = 49 &minus; 9 = 40</span><span class="reason">substitute x = 7</span></div>
+    <div class="answer-box">AB = 40 units</div>
+    <div class="check-box"><strong>Check:</strong> AC = 5(7) + 5 = 40 &#10003; the two tangents match.</div>
+    <div class="check-box"><strong>Your turn (textbook Check):</strong> <span style="text-decoration:overline">DE</span> and <span style="text-decoration:overline">FE</span> are tangent to &#8857;<em>G</em> with <em>DE</em> = 3<em>x</em> &minus; 3.5 and <em>FE</em> = <em>x</em> + 0.5. Then 3x &minus; 3.5 = x + 0.5 &rarr; 2x = 4 &rarr; x = 2, so <strong>DE = 2.5 ft</strong>.</div>
+    <div class="warning-box"><strong>Watch Out!</strong> The question asks for <em>AB</em>, not for <em>x</em>. Finding <em>x</em> = 7 is only half the job &mdash; always substitute back.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 5</span>
+    <span class="example-title">Use Circumscribed Angles to Find Measures</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">If <em>m</em>&ang;<em>EGF</em> = (19<em>x</em> + 9)&deg; and <em>m</em>&ang;<em>D</em> = (10<em>x</em> &minus; 3)&deg;, find <em>m</em>&ang;<em>D</em>. (<span style="text-decoration:overline">ED</span> and <span style="text-decoration:overline">FD</span> are tangent to &#8857;<em>G</em>.)</div>
+    <figure class="fig">
+      <svg viewBox="0 0 400 290" width="400" role="img" aria-label="Circle G with tangents ED and FD meeting at D forming a circumscribed angle">
+        <circle cx="160" cy="150" r="70" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/>
+        <circle class="g-pt" cx="160" cy="150" r="4"/>
+        <line class="g-line-thin" x1="160" y1="150" x2="193.4" y2="88.5"/>
+        <line class="g-line-thin" x1="160" y1="150" x2="193.4" y2="211.5"/>
+        <line class="g-line" x1="193.4" y1="88.5" x2="306.7" y2="150"/>
+        <line class="g-line" x1="193.4" y1="211.5" x2="306.7" y2="150"/>
+        <path class="g-right" d="M 187.7 99.0 L 198.2 104.7 L 203.9 94.2"/>
+        <path class="g-right" d="M 187.7 201.0 L 198.2 195.3 L 203.9 205.8"/>
+        <path class="g-angle" d="M 176.2 179.9 A 34 34 0 0 0 176.2 120.1"/>
+        <path class="g-angle" d="M 276.8 166.2 A 34 34 0 0 1 276.8 133.8"/>
+        <circle class="g-pt" cx="193.4" cy="88.5" r="4.5"/>
+        <circle class="g-pt" cx="193.4" cy="211.5" r="4.5"/>
+        <circle class="g-pt" cx="306.7" cy="150" r="5"/>
+        <text class="g-lbl" x="148" y="156" text-anchor="end">G</text>
+        <text class="g-lbl" x="192" y="74" text-anchor="middle">E</text>
+        <text class="g-lbl" x="192" y="230" text-anchor="middle">F</text>
+        <text class="g-lbl" x="318" y="156" text-anchor="start">D</text>
+        <text class="g-meas-b g-halo" x="216" y="150" text-anchor="middle" dominant-baseline="middle">(19x + 9)&deg;</text>
+        <text class="g-meas g-halo" x="270" y="118" text-anchor="middle">(10x &minus; 3)&deg;</text>
+      </svg>
+      <figcaption>&ang;<em>D</em> is the circumscribed angle; &ang;<em>EGF</em> is the central angle intercepting the same arc <em>EF</em>.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">Because <span style="text-decoration:overline">ED</span> and <span style="text-decoration:overline">FD</span> are tangent to &#8857;G, &ang;EGF and &ang;D are supplementary.</span><span class="reason">Theorem 10.13</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">m&ang;EGF + m&ang;D = 180&deg;</span><span class="reason">definition of supplementary angles</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">(19x + 9) + (10x &minus; 3) = 180</span><span class="reason">substitution</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">29x + 6 = 180</span><span class="reason">simplify</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">29x = 174</span><span class="reason">subtract 6 from each side</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">x = 6</span><span class="reason">divide each side by 29</span></div>
+    <div class="solution-step"><span class="num">7</span><span class="math">m&ang;D = 10(6) &minus; 3 = 57</span><span class="reason">substitute x = 6</span></div>
+    <div class="answer-box">m&ang;D = 57&deg;</div>
+    <div class="check-box"><strong>Check:</strong> m&ang;<em>EGF</em> = 19(6) + 9 = 123&deg;, and 123 + 57 = 180 &#10003;</div>
+    <div class="check-box"><strong>Your turn (textbook Check):</strong> if <em>m</em>&ang;<em>XWZ</em> = (7<em>x</em> + 10)&deg; and <em>m</em>&ang;<em>Y</em> = (4<em>x</em> + 5)&deg;, then 11x + 15 = 180 &rarr; x = 15, so <strong>m&ang;Y = 65&deg;</strong>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 6</span>
+    <span class="example-title">Find Measures in Circumscribed Polygons</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">&#9651;<em>JKL</em> is circumscribed about &#8857;<em>Q</em>, with points of tangency <em>M</em> on <span style="text-decoration:overline">JK</span>, <em>N</em> on <span style="text-decoration:overline">KL</span>, and <em>P</em> on <span style="text-decoration:overline">JL</span>. Given <em>JM</em> = 14, <em>KN</em> = 7, and <em>LP</em> = 11, find the perimeter of &#9651;<em>JKL</em>.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 380 300" width="380" role="img" aria-label="Triangle JKL circumscribed about circle Q with tangent lengths 14, 7 and 11">
+        <circle cx="200" cy="192" r="58" fill="var(--sl-orange-soft)" stroke="var(--sl-orange)" stroke-width="2.2"/>
+        <circle class="g-pt" cx="200" cy="192" r="4"/>
+        <path class="g-line" d="M 60 250 L 208.4 101.42 L 310 250 Z"/>
+        <circle class="g-pt" cx="158.93" cy="150.95" r="4.5"/>
+        <circle class="g-pt" cx="247.91" cy="159.2" r="4.5"/>
+        <circle class="g-pt" cx="200" cy="250" r="4.5"/>
+        <text class="g-lbl" x="46" y="262" text-anchor="middle">J</text>
+        <text class="g-lbl" x="208" y="88" text-anchor="middle">K</text>
+        <text class="g-lbl" x="324" y="260" text-anchor="middle">L</text>
+        <text class="g-lbl" x="144" y="140" text-anchor="middle">M</text>
+        <text class="g-lbl" x="266" y="152" text-anchor="middle">N</text>
+        <text class="g-lbl" x="200" y="242" text-anchor="middle">P</text>
+        <text class="g-lbl" x="212" y="198" text-anchor="start">Q</text>
+        <text class="g-meas g-halo" x="98" y="189" text-anchor="middle">14</text>
+        <text class="g-meas-b g-halo" x="243" y="118" text-anchor="middle">7</text>
+        <text class="g-meas g-halo" x="298" y="192" text-anchor="middle">11</text>
+      </svg>
+      <figcaption>Only three lengths are given &mdash; but each one repeats on the neighbouring side.</figcaption>
+    </figure>
+    <p style="font-size:14px;font-weight:700;color:var(--sl-navy);margin:12px 0 6px;">Step 1 &mdash; Find the missing measures.</p>
+    <div class="solution-step"><span class="num">1</span><span class="math"><span style="text-decoration:overline">JM</span> &cong; <span style="text-decoration:overline">JP</span>, <span style="text-decoration:overline">KM</span> &cong; <span style="text-decoration:overline">KN</span>, <span style="text-decoration:overline">LN</span> &cong; <span style="text-decoration:overline">LP</span></span><span class="reason">Theorem 10.12</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">JM = JP = 14, &nbsp; KM = KN = 7, &nbsp; LN = LP = 11</span><span class="reason">definition of congruent segments</span></div>
+    <p style="font-size:14px;font-weight:700;color:var(--sl-navy);margin:12px 0 6px;">Step 2 &mdash; Find the perimeter of &#9651;<em>JKL</em>.</p>
+    <div class="solution-step"><span class="num">3</span><span class="math">JK = JM + KM = 14 + 7 = 21</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">KL = KN + LN = 7 + 11 = 18</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">JL = JP + LP = 14 + 11 = 25</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">perimeter = 21 + 18 + 25 = 64</span><span class="reason">add the three sides</span></div>
+    <div class="answer-box">Perimeter of &#9651;JKL = 64 units</div>
+    <div class="check-box"><strong>Shortcut check:</strong> perimeter = 2(14 + 7 + 11) = 2(32) = 64 &#10003; Every tangent length is counted exactly twice.</div>
+    <div class="check-box"><strong>Your turn (textbook Check):</strong> quadrilateral <em>RSTU</em> is circumscribed about &#8857;<em>J</em>. The tangent lengths at the four vertices are 3, 3, <em>x</em>, <em>x</em>, and the perimeter is 18. Then 2(3 + 3 + x + x) = 18 &rarr; 4x + 12 = 18 &rarr; <strong>x = 1.5 units (choice A)</strong>.</div>
+  </div>
+</div>
+</section>
+
+<section id="practice">
+<h2>Try It Yourself</h2>
+
+<div class="try-box">
+  <h4>Practice 1 &mdash; radius, tangent, hypotenuse</h4>
+  <div class="prob"><span style="text-decoration:overline">RQ</span> is a radius of &#8857;<em>R</em> and <span style="text-decoration:overline">QS</span> is tangent to &#8857;<em>R</em> at <em>Q</em>. If <em>RQ</em> = 7 and <em>QS</em> = 24, find <em>RS</em>.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">&ang;RQS = 90&deg;</span><span class="reason">Theorem 10.11</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">7&sup2; + 24&sup2; = RS&sup2;</span><span class="reason">Pythagorean Theorem</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">49 + 576 = 625</span><span class="reason">simplify</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">RS = &radic;625 = 25</span><span class="reason">take the positive square root</span></div>
+    <div class="answer-box">RS = 25</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 2 &mdash; congruent tangents</h4>
+  <div class="prob"><span style="text-decoration:overline">PA</span> and <span style="text-decoration:overline">PB</span> are tangent to &#8857;<em>O</em> from exterior point <em>P</em>. If <em>PA</em> = 6<em>x</em> &minus; 5 and <em>PB</em> = 2<em>x</em> + 19, find <em>PA</em>.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">PA = PB</span><span class="reason">Theorem 10.12</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">6x &minus; 5 = 2x + 19</span><span class="reason">substitution</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">4x = 24 &rarr; x = 6</span><span class="reason">solve</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">PA = 6(6) &minus; 5 = 31</span><span class="reason">substitute back</span></div>
+    <div class="answer-box">PA = 31 &nbsp;(and PB = 2(6) + 19 = 31 &#10003;)</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 3 &mdash; tangency test</h4>
+  <div class="prob"><span style="text-decoration:overline">AB</span> = 12 is a radius of &#8857;<em>A</em>, <em>BC</em> = 16, and <em>AC</em> = 20. Is <span style="text-decoration:overline">BC</span> tangent to &#8857;<em>A</em>?</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">12&sup2; + 16&sup2; =? 20&sup2;</span><span class="reason">Pythagorean test</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">144 + 256 = 400 = 20&sup2; &#10003;</span><span class="reason">simplify</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">&ang;ABC = 90&deg;, so <span style="text-decoration:overline">BC</span> &perp; radius <span style="text-decoration:overline">AB</span> at B.</span><span class="reason">converse of Pythagorean Thm.</span></div>
+    <div class="answer-box">Yes &mdash; tangent, by Theorem 10.11</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 4 &mdash; circumscribed angle</h4>
+  <div class="prob"><span style="text-decoration:overline">SQ</span> and <span style="text-decoration:overline">SR</span> are tangent to &#8857;<em>P</em>. If <em>m</em>&ang;<em>S</em> = (3<em>x</em> + 10)&deg; and <em>m</em>&ang;<em>QPR</em> = (7<em>x</em> + 30)&deg;, find <em>m</em>&ang;<em>S</em> and <em>m</em>&ang;<em>QPR</em>.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">(3x + 10) + (7x + 30) = 180</span><span class="reason">Theorem 10.13</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">10x + 40 = 180</span><span class="reason">simplify</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">10x = 140 &rarr; x = 14</span><span class="reason">solve</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">m&ang;S = 3(14) + 10 = 52&deg;</span><span class="reason">substitute</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">m&ang;QPR = 7(14) + 30 = 128&deg;</span><span class="reason">substitute</span></div>
+    <div class="answer-box">m&ang;S = 52&deg; and m&ang;QPR = 128&deg; &nbsp;(52 + 128 = 180 &#10003;)</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 5 &mdash; circumscribed triangle perimeter</h4>
+  <div class="prob">A triangle is circumscribed about a circle. The tangent lengths from its three vertices are 9, 6, and 13. Find the perimeter.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">Each vertex contributes its tangent length to two different sides.</span><span class="reason">Theorem 10.12</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">sides: 9 + 6 = 15, &nbsp; 6 + 13 = 19, &nbsp; 13 + 9 = 22</span><span class="reason">Segment Addition Postulate</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">perimeter = 15 + 19 + 22 = 56</span><span class="reason">add</span></div>
+    <div class="answer-box">Perimeter = 2(9 + 6 + 13) = 56</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 6 &mdash; solve for the radius</h4>
+  <div class="prob">A tangent segment from an exterior point <em>P</em> to a circle has length 15. The distance from <em>P</em> to the center is 17. Find the radius <em>r</em>.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">r&sup2; + 15&sup2; = 17&sup2;</span><span class="reason">Pythagorean Theorem (right angle at the point of tangency)</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">r&sup2; + 225 = 289</span><span class="reason">simplify</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">r&sup2; = 64</span><span class="reason">subtract 225</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">r = 8</span><span class="reason">take the positive square root</span></div>
+    <div class="answer-box">r = 8</div>
+    <div class="warning-box"><strong>Watch Out!</strong> The 17 is the <em>hypotenuse</em> because it runs from the exterior point to the center. Never square the tangent and the distance and add them.</div>
+  </div>
+</div>
+</section>
+
+<section id="summary">
+<h2>Summary</h2>
+<table class="tbl">
+  <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+  <tr><td>A line is tangent to a circle</td><td>Draw the radius to the point of tangency</td><td>You get a <code>90&deg;</code> angle (Thm 10.11)</td></tr>
+  <tr><td>Radius <code>r</code>, tangent <code>t</code>, exterior distance <code>d</code></td><td>Use the Pythagorean Theorem</td><td><code>r&sup2; + t&sup2; = d&sup2;</code></td></tr>
+  <tr><td>Asked "is it tangent?"</td><td>Test <code>r&sup2; + t&sup2; = d&sup2;</code></td><td>True &rarr; tangent; false &rarr; not tangent</td></tr>
+  <tr><td>Two tangents from one exterior point</td><td>Set the two expressions equal</td><td><code>PA = PB</code> (Thm 10.12)</td></tr>
+  <tr><td>Circumscribed angle + central angle</td><td>Add them and set equal to 180</td><td><code>m&ang;S + m&ang;P = 180&deg;</code> (Thm 10.13)</td></tr>
+  <tr><td>Polygon circumscribed about a circle</td><td>Pair up the two tangents at each vertex</td><td><code>P = 2(sum of vertex tangent lengths)</code></td></tr>
+  <tr><td>Counting common tangents</td><td>Classify the position of the two circles</td><td><code>0, 1, 2, 3, or 4</code></td></tr>
+</table>
+
+<div class="pill-row">
+  <span class="pill">r&sup2; + t&sup2; = d&sup2;</span>
+  <span class="pill">tangent &perp; radius</span>
+  <span class="pill">PA = PB</span>
+  <span class="pill">m&ang;S + m&ang;P = 180&deg;</span>
+  <span class="pill">P = 2(a + b + c)</span>
+  <span class="pill">t = &radic;(d&sup2; &minus; r&sup2;)</span>
+  <span class="pill">r = &radic;(d&sup2; &minus; t&sup2;)</span>
+</div>
+
+<div class="warning-box"><strong>Common mistakes to avoid:</strong>
+  <ul style="margin:8px 0 0 20px;line-height:1.8;">
+    <li>Using the <em>outside piece</em> of a segment instead of the whole distance to the center. If the exterior part is 6 and the radius is 9, the hypotenuse is 15.</li>
+    <li>Putting the tangent length in the hypotenuse position. The hypotenuse always runs from the exterior point to the <strong>center</strong>.</li>
+    <li>Stopping after finding <em>x</em> when the question asked for a length or an angle measure.</li>
+    <li>Assuming a polygon is circumscribed because the circle touches <em>some</em> sides &mdash; every side must be tangent.</li>
+    <li>Confusing "supplementary" (adds to 180&deg;) with "congruent" in Theorem 10.13.</li>
+    <li>Forgetting that intersecting circles have only 2 common tangents, not 4.</li>
+  </ul>
+</div>
+</section>
+
+<section id="quiz">
+<div class="quiz-header">
+  <h2>Practice Quiz</h2>
+  <p>15 questions &middot; click an answer to check it instantly</p>
+</div>
+<div id="quiz-container"></div>
+<div class="score-panel" id="scorePanel">
+  <div class="score-big" id="scoreBig">0/15</div>
+  <div class="score-msg" id="scoreMsg"></div>
+  <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+</div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+{q:"A line in the plane of a circle that intersects the circle in exactly one point and contains no points of the interior is called a &mdash;",opts:["secant","tangent","chord","diameter"],ans:1,exp:"A secant cuts the circle twice and a chord has both endpoints on the circle; only a tangent touches at exactly one point and stays outside the interior."},
+{q:"The single point where a tangent line touches a circle is called the &mdash;",opts:["point of tangency","center of the circle","midpoint of the radius","vertex of the arc"],ans:0,exp:"By definition, the point where a tangent and a circle intersect is the point of tangency, and the radius drawn there is perpendicular to the tangent."},
+{q:"Theorem 10.11: In a plane, a line is tangent to a circle if and only if it is ______ a radius drawn to the point of tangency.",opts:["parallel to","congruent to","perpendicular to","supplementary to"],ans:2,exp:"The radius to the point of tangency is the shortest distance from the center to the line, and the shortest distance is always measured along a perpendicular."},
+{q:"<span style='text-decoration:overline'>OT</span> is a radius of &#8857;O and <span style='text-decoration:overline'>TX</span> is tangent at T. If OT = 6 and TX = 8, find OX.",opts:["10","14","&radic;28","48"],ans:0,exp:"&ang;OTX = 90&deg;, so OX is the hypotenuse: 6&sup2; + 8&sup2; = 36 + 64 = 100, and &radic;100 = 10. Adding 6 + 8 would ignore the right angle entirely.",fig:'<svg viewBox="0 0 300 220" width="300" role="img" aria-label="Circle O of radius 6 with tangent TX of length 8"><circle cx="210" cy="100" r="60" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/><line class="g-line" x1="210" y1="100" x2="150" y2="100"/><line class="g-line" x1="150" y1="100" x2="150" y2="180"/><line class="g-line" x1="210" y1="100" x2="150" y2="180"/><path class="g-right" d="M 162 100 L 162 112 L 150 112"/><circle class="g-pt" cx="210" cy="100" r="4"/><circle class="g-pt" cx="150" cy="100" r="4.5"/><circle class="g-pt" cx="150" cy="180" r="4.5"/><text class="g-lbl" x="140" y="96" text-anchor="end">T</text><text class="g-lbl" x="222" y="96" text-anchor="start">O</text><text class="g-lbl" x="140" y="192" text-anchor="end">X</text><text class="g-meas-b g-halo" x="180" y="92" text-anchor="middle">6</text><text class="g-meas g-halo" x="140" y="144" text-anchor="end">8</text><text class="g-grn g-halo" x="192" y="150" text-anchor="start">?</text></svg>'},
+{q:"<span style='text-decoration:overline'>QS</span> is tangent to &#8857;R at Q. If the radius RQ = 9 and QS = 12, find RS.",opts:["3&radic;7","21","&radic;63","15"],ans:3,exp:"RS is the hypotenuse of the right triangle: 9&sup2; + 12&sup2; = 81 + 144 = 225, so RS = 15. The choice 3&radic;7 comes from wrongly subtracting instead of adding."},
+{q:"<span style='text-decoration:overline'>AB</span> = 8 is a radius of &#8857;A, BC = 15, and AC = 17. Which statement is correct?",opts:["<span style='text-decoration:overline'>BC</span> is not tangent, since 8&sup2; + 15&sup2; &ne; 17&sup2;","<span style='text-decoration:overline'>BC</span> is a chord of &#8857;A","<span style='text-decoration:overline'>BC</span> is tangent to &#8857;A at B, since 8&sup2; + 15&sup2; = 17&sup2;","There is not enough information"],ans:2,exp:"64 + 225 = 289 = 17&sup2;, so &#9651;ABC has a right angle at B. A line perpendicular to a radius at a point of the circle is tangent, by Theorem 10.11."},
+{q:"<span style='text-decoration:overline'>PA</span> and <span style='text-decoration:overline'>PB</span> are tangent to &#8857;O from P, with PA = 3x + 4 and PB = 5x &minus; 10. Find x.",opts:["3","7","&minus;7","14"],ans:1,exp:"Tangent segments from the same exterior point are congruent, so 3x + 4 = 5x &minus; 10 gives 14 = 2x and x = 7. (Then PA = PB = 25.)",fig:'<svg viewBox="0 0 300 220" width="300" role="img" aria-label="Two congruent tangent segments from P to circle O"><circle cx="215" cy="110" r="55" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/><circle class="g-pt" cx="215" cy="110" r="4"/><line class="g-line-thin" x1="215" y1="110" x2="192.6" y2="59.8"/><line class="g-line-thin" x1="215" y1="110" x2="192.6" y2="160.2"/><line class="g-line" x1="80" y1="110" x2="192.6" y2="59.8"/><line class="g-line" x1="80" y1="110" x2="192.6" y2="160.2"/><path class="g-right" d="M 197.1 69.8 L 187.1 74.3 L 182.6 64.3"/><path class="g-right" d="M 197.1 150.2 L 187.1 145.7 L 182.6 155.7"/><line class="g-tick" x1="139.2" y1="91.3" x2="133.4" y2="78.5"/><line class="g-tick" x1="133.4" y1="141.5" x2="139.2" y2="128.7"/><circle class="g-pt" cx="80" cy="110" r="5"/><circle class="g-pt" cx="192.6" cy="59.8" r="4.5"/><circle class="g-pt" cx="192.6" cy="160.2" r="4.5"/><text class="g-lbl" x="70" y="116" text-anchor="end">P</text><text class="g-lbl" x="200" y="46" text-anchor="middle">A</text><text class="g-lbl" x="200" y="180" text-anchor="middle">B</text><text class="g-lbl" x="226" y="116" text-anchor="start">O</text><text class="g-meas g-halo" x="132" y="66" text-anchor="middle">3x + 4</text><text class="g-meas g-halo" x="132" y="160" text-anchor="middle">5x &minus; 10</text></svg>'},
+{q:"<span style='text-decoration:overline'>PA</span> and <span style='text-decoration:overline'>PB</span> are tangent to a circle from exterior point P, with PA = 2x + 9 and PB = 4x &minus; 7. Find PB.",opts:["8","16","32","25"],ans:3,exp:"Set 2x + 9 = 4x &minus; 7 to get 16 = 2x and x = 8; then PB = 4(8) &minus; 7 = 25. Choice A (8) is only the value of x, not the length asked for."},
+{q:"Theorem 10.12 states that two segments drawn from the same exterior point and tangent to a circle are &mdash;",opts:["congruent","perpendicular","supplementary","parallel"],ans:0,exp:"The two right triangles formed share the hypotenuse from the exterior point to the center and have congruent radii as legs, so they are congruent by HL, making the tangent segments congruent."},
+{q:"<span style='text-decoration:overline'>QS</span> and <span style='text-decoration:overline'>RS</span> are tangent to &#8857;P. If the central angle m&ang;QPR = 118&deg;, find m&ang;S.",opts:["118&deg;","59&deg;","62&deg;","31&deg;"],ans:2,exp:"The circumscribed angle and the central angle intercepting the same arc are supplementary, so m&ang;S = 180 &minus; 118 = 62&deg;. Halving the central angle (59&deg;) is the inscribed-angle rule, which does not apply here.",fig:'<svg viewBox="0 0 320 240" width="320" role="img" aria-label="Circumscribed angle S with central angle QPR of 118 degrees"><circle cx="140" cy="120" r="60" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2.4"/><circle class="g-pt" cx="140" cy="120" r="4"/><line class="g-line-thin" x1="140" y1="120" x2="170.9" y2="68.6"/><line class="g-line-thin" x1="140" y1="120" x2="170.9" y2="171.4"/><line class="g-line" x1="170.9" y1="68.6" x2="256.5" y2="120"/><line class="g-line" x1="170.9" y1="171.4" x2="256.5" y2="120"/><path class="g-right" d="M 165.2 78.0 L 174.6 83.7 L 180.3 74.3"/><path class="g-right" d="M 165.2 162.0 L 174.6 156.3 L 180.3 165.7"/><path class="g-angle" d="M 155.5 145.7 A 30 30 0 0 0 155.5 94.3"/><path class="g-angle" d="M 232.5 134.4 A 28 28 0 0 1 232.5 105.6"/><circle class="g-pt" cx="170.9" cy="68.6" r="4.5"/><circle class="g-pt" cx="170.9" cy="171.4" r="4.5"/><circle class="g-pt" cx="256.5" cy="120" r="5"/><text class="g-lbl" x="128" y="126" text-anchor="end">P</text><text class="g-lbl" x="170" y="56" text-anchor="middle">Q</text><text class="g-lbl" x="170" y="190" text-anchor="middle">R</text><text class="g-lbl" x="268" y="126" text-anchor="start">S</text><text class="g-meas-b g-halo" x="182" y="120" text-anchor="middle" dominant-baseline="middle">118&deg;</text><text class="g-meas g-halo" x="224" y="120" text-anchor="end" dominant-baseline="middle">x&deg;</text></svg>'},
+{q:"<span style='text-decoration:overline'>ED</span> and <span style='text-decoration:overline'>FD</span> are tangent to &#8857;G. If m&ang;EGF = (19x + 9)&deg; and m&ang;D = (10x &minus; 3)&deg;, find m&ang;D.",opts:["6&deg;","117&deg;","123&deg;","57&deg;"],ans:3,exp:"Supplementary gives 29x + 6 = 180, so x = 6; then m&ang;D = 10(6) &minus; 3 = 57&deg;. The value 123&deg; is the central angle m&ang;EGF, and 6 is just x."},
+{q:"&#9651;JKL is circumscribed about &#8857;Q. The tangent lengths from J, K, and L are 14, 7, and 11. Find the perimeter of &#9651;JKL.",opts:["32","64","96","46"],ans:1,exp:"Each tangent length appears on two sides, so the perimeter is 2(14 + 7 + 11) = 2(32) = 64. Choice A forgets to double the total.",fig:'<svg viewBox="0 0 304 240" width="304" role="img" aria-label="Triangle JKL circumscribed about a circle with tangent lengths 14, 7 and 11"><g transform="scale(0.8)"><circle cx="200" cy="192" r="58" fill="var(--sl-orange-soft)" stroke="var(--sl-orange)" stroke-width="2.4"/><circle class="g-pt" cx="200" cy="192" r="5"/><path class="g-line" d="M 60 250 L 208.4 101.42 L 310 250 Z"/><circle class="g-pt" cx="158.93" cy="150.95" r="5"/><circle class="g-pt" cx="247.91" cy="159.2" r="5"/><circle class="g-pt" cx="200" cy="250" r="5"/><text class="g-lbl" x="44" y="264" text-anchor="middle" font-size="20">J</text><text class="g-lbl" x="208" y="86" text-anchor="middle" font-size="20">K</text><text class="g-lbl" x="328" y="262" text-anchor="middle" font-size="20">L</text><text class="g-lbl" x="216" y="200" text-anchor="start" font-size="20">Q</text><text class="g-meas g-halo" x="94" y="186" text-anchor="middle" font-size="17">14</text><text class="g-meas-b g-halo" x="246" y="114" text-anchor="middle" font-size="17">7</text><text class="g-meas g-halo" x="302" y="190" text-anchor="middle" font-size="17">11</text></g></svg>'},
+{q:"Quadrilateral RSTU is circumscribed about &#8857;J. The tangent lengths from the four vertices are 3, 3, x, and x, and the perimeter is 18. Find x.",opts:["3","2","1.5","6"],ans:2,exp:"The perimeter is 2(3 + 3 + x + x) = 4x + 12. Setting 4x + 12 = 18 gives 4x = 6, so x = 1.5."},
+{q:"Two circles in the same plane intersect in exactly two points. How many common tangents do they have?",opts:["2","3","4","1"],ans:0,exp:"Once the circles overlap, no line can separate them, so the two internal tangents disappear and only the 2 external tangents remain."},
+{q:"Two circles are tangent to each other externally, touching at exactly one point. How many common tangents do they have?",opts:["1","2","4","3"],ans:3,exp:"There are 2 external tangents plus the single line through the shared point of contact, giving 3. Only when the circles are completely separate do all 4 exist."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

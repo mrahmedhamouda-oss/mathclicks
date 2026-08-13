@@ -1,0 +1,594 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Decompose a regular polygon into congruent triangles to find its area with A = &frac12;aP, and add or subtract basic regions to find the area of a composite figure.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. The four words you need before any formula</h3>
+    <p>Every regular polygon fits perfectly inside one circle &mdash; each vertex touches the circle. That circle is what gives the polygon a <em>center</em>, a <em>radius</em> and an <em>apothem</em>.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>Center of a regular polygon</b> &mdash; the center of the circle circumscribed about the polygon.</div>
+      <div class="vocab-item"><b>Radius of a regular polygon</b> &mdash; the radius of the circumscribed circle: a segment from the center to a <em>vertex</em>.</div>
+      <div class="vocab-item"><b>Apothem</b> &mdash; a <em>perpendicular</em> segment between the center of the polygon and a <em>side</em> of the polygon.</div>
+      <div class="vocab-item"><b>Central angle</b> &mdash; an angle with its vertex at the center whose sides pass through two <em>consecutive</em> vertices.</div>
+      <div class="vocab-item"><b>Composite figure</b> &mdash; a figure that can be separated into basic regions (triangles, rectangles, trapezoids, circles, regular polygons).</div>
+      <div class="vocab-item"><b>Decomposing into triangles</b> &mdash; splitting an <em>n</em>-gon into <em>n</em> congruent isosceles triangles by drawing all <em>n</em> radii.</div>
+    </div>
+    <div class="warning-box"><strong>Watch Out!</strong> The radius goes to a <em>corner</em>; the apothem goes to the <em>middle of a side</em>. They are never the same length &mdash; the apothem is always shorter, because the perpendicular distance to a line is the shortest distance.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. The central angle: 360/n</h3>
+    <p>Drawing all <em>n</em> radii chops the full turn around the center into <em>n</em> equal pieces, and a full turn is 360&deg;. So each slice gets the same share.</p>
+    <div class="theorem">
+      <div class="theorem-head">Central Angle of a Regular Polygon</div>
+      <div class="theorem-body">The measure of each central angle of a regular <em>n</em>-gon is <code>360&deg;/n</code>.<br>
+      Example: a regular octagon has <code>360&deg;/8 = 45&deg;</code>; a regular pentagon has <code>360&deg;/5 = 72&deg;</code>.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip:</strong> The apothem <em>bisects</em> the central angle (it is the altitude of an isosceles triangle drawn to the base). So the acute angle you actually use in trigonometry is <code>180&deg;/n</code>, not <code>360&deg;/n</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Why the area formula works</h3>
+    <p>Split the regular <em>n</em>-gon into <em>n</em> congruent isosceles triangles. Each triangle has base <code>s</code> (one side of the polygon) and height <code>a</code> (the apothem).</p>
+    <div class="formula-box">
+      area of ONE triangle = &frac12;<em>bh</em> = &frac12;<em>sa</em><br>
+      area of ALL <em>n</em> triangles = <em>n</em> &middot; &frac12;<em>sa</em> = &frac12;<em>a</em>(<em>ns</em>)<br>
+      but <em>ns</em> = <em>P</em>, the perimeter &nbsp;&there4;&nbsp; <strong>A = &frac12;<em>aP</em></strong>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Area of a Regular Polygon</div>
+      <div class="theorem-body">The area <em>A</em> of a regular <em>n</em>-gon with side length <em>s</em> is one half the product of the apothem <em>a</em> and the perimeter <em>P</em>.<br>
+      <code>A = &frac12;a(ns)</code> &nbsp; or &nbsp; <code>A = &frac12;aP</code></div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Finding a missing apothem, radius or side</h3>
+    <p>Drop the apothem to a side. You get a right triangle whose legs are <code>a</code> and <code>s/2</code>, whose hypotenuse is the radius <code>r</code>, and whose angle at the center is <code>180&deg;/n</code>.</p>
+    <div class="formula-box">
+      tan(180&deg;/<em>n</em>) = (<em>s</em>/2) / <em>a</em> &nbsp;&rarr;&nbsp; <em>a</em> = <em>s</em> / (2&middot;tan(180&deg;/<em>n</em>))<br>
+      sin(180&deg;/<em>n</em>) = (<em>s</em>/2) / <em>r</em> &nbsp;&rarr;&nbsp; <em>r</em> = <em>s</em> / (2&middot;sin(180&deg;/<em>n</em>))<br>
+      cos(180&deg;/<em>n</em>) = <em>a</em> / <em>r</em> &nbsp;&rarr;&nbsp; <em>a</em> = <em>r</em>&middot;cos(180&deg;/<em>n</em>)<br>
+      Pythagorean check: <em>r</em>&sup2; = <em>a</em>&sup2; + (<em>s</em>/2)&sup2;
+    </div>
+    <div class="steps-list">
+      <div class="s">Find the central angle <code>360&deg;/n</code>, then halve it to get <code>180&deg;/n</code>.</div>
+      <div class="s">Halve the side to get the leg <code>s/2</code>.</div>
+      <div class="s">Use tangent (or a special right triangle) to get the apothem <code>a</code>.</div>
+      <div class="s">Compute the perimeter <code>P = ns</code>.</div>
+      <div class="s">Substitute into <code>A = &frac12;aP</code> and round only at the end.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip:</strong> Two shortcuts worth memorising, both from 30-60-90 triangles:<br>
+    equilateral triangle &rarr; <code>A = (&radic;3/4)s&sup2;</code> &nbsp;&middot;&nbsp; regular hexagon &rarr; <code>a = (&radic;3/2)s</code>, <code>r = s</code>, <code>A = (3&radic;3/2)s&sup2;</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Composite figures</h3>
+    <p>A composite figure is just several basic figures glued together. Break it apart, find each piece, then <em>add</em> (Area Addition Postulate) &mdash; or, when a piece has been cut out, find the big region and <em>subtract</em> the hole.</p>
+    <div class="formula-box">area of figure = area of piece&#8321; + area of piece&#8322; + &hellip;<br>area of figure = area of enclosing region &minus; area of removed region</div>
+    <div class="warning-box"><strong>Study Tip &middot; Drawing Figures:</strong> To solve area problems by subtracting, redraw the basic shapes that are being removed. Seeing the "hole" as its own triangle or rectangle makes the missing measures obvious.</div>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt">Central angle of a regular <em>n</em>-gon = <code>360&deg;/n</code>. The apothem bisects it into two angles of <code>180&deg;/n</code>.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt"><code>A = &frac12;aP</code>. Apothem &times; perimeter &divide; 2 &mdash; nothing else.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt">The apothem is <em>perpendicular</em> to a side and <em>bisects</em> it, so its foot is the midpoint of that side.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt">Radius &gt; apothem, always. <code>r&sup2; = a&sup2; + (s/2)&sup2;</code>.</div></div>
+  <div class="keyfact"><div class="ico">5</div><div class="txt">Composite figure = add the parts, or subtract the hole. Never mix the two by accident.</div></div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Anatomy of a Regular Polygon</div>
+    <svg id="fig1" viewBox="0 0 400 300" width="420" role="img" aria-label="Regular pentagon ABCDE inscribed in a circle with center P, showing a radius, an apothem and a central angle">
+      <g data-part="circle"><circle cx="200" cy="160" r="110" class="g-line-thin"/></g>
+      <g data-part="poly"><polygon class="g-shape" points="200,50 304.6,126 264.7,249 135.3,249 95.4,126"/></g>
+      <g data-part="angle">
+        <path class="g-angle-fill" d="M 200 160 L 200 126 A 34 34 0 0 1 232.3 149.5 Z"/>
+        <text class="g-meas g-halo" x="233" y="115" text-anchor="middle">72&deg;</text>
+      </g>
+      <g data-part="radius">
+        <line class="g-line" x1="200" y1="160" x2="95.4" y2="126"/>
+        <line class="g-line" x1="200" y1="160" x2="200" y2="50"/>
+        <line class="g-line" x1="200" y1="160" x2="304.6" y2="126"/>
+        <text class="g-meas-b g-halo" x="140" y="128" text-anchor="middle">radius</text>
+      </g>
+      <g data-part="apothem">
+        <line class="g-dash" x1="200" y1="160" x2="200" y2="249"/>
+        <path class="g-right" d="M 188 249 L 188 237 L 200 237"/>
+        <circle class="g-pt" cx="200" cy="249" r="4.5"/>
+        <text class="g-meas g-halo" x="210" y="205" text-anchor="start">apothem</text>
+        <text class="g-lbl" x="200" y="272" text-anchor="middle">F</text>
+      </g>
+      <g data-part="center">
+        <circle class="g-pt" cx="200" cy="160" r="5"/>
+        <text class="g-lbl g-halo" x="186" y="152" text-anchor="end">P</text>
+      </g>
+      <text class="g-lbl" x="80" y="120" text-anchor="end">A</text>
+      <text class="g-lbl" x="200" y="40" text-anchor="middle">B</text>
+      <text class="g-lbl" x="318" y="120" text-anchor="start">C</text>
+      <text class="g-lbl" x="278" y="264" text-anchor="start">D</text>
+      <text class="g-lbl" x="122" y="264" text-anchor="end">E</text>
+    </svg>
+    <figcaption>Regular pentagon <em>ABCDE</em> inscribed in &#8857;<em>P</em>. <span style="text-decoration:overline">PA</span> is a radius (center &rarr; vertex, length 110 units); <span style="text-decoration:overline">PF</span> is the apothem (center &rarr; midpoint of a side, length 89 units, meeting the side at 90&deg;). &ang;<em>BPC</em> is a central angle: 360&deg;/5 = 72&deg;.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','center')">Center</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','radius')">Radius</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','apothem')">Apothem</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','angle')">Central angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','circle')">Circumcircle</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Decomposing an Octagon into 8 Congruent Triangles</div>
+    <svg id="fig2" viewBox="0 0 400 320" width="440" role="img" aria-label="Regular octagon divided by its eight radii into eight congruent isosceles triangles, one shaded with apothem, radius and side labelled">
+      <g data-part="tri">
+        <polygon class="g-shape" points="200,50 277.8,82.2 310,160 277.8,237.8 200,270 122.2,237.8 90,160 122.2,82.2"/>
+        <polygon class="g-shape-alt" points="200,160 310,160 277.8,237.8"/>
+        <line class="g-line" x1="200" y1="160" x2="200" y2="50"/>
+        <line class="g-line" x1="200" y1="160" x2="277.8" y2="82.2"/>
+        <line class="g-line" x1="200" y1="160" x2="310" y2="160"/>
+        <line class="g-line" x1="200" y1="160" x2="277.8" y2="237.8"/>
+        <line class="g-line" x1="200" y1="160" x2="200" y2="270"/>
+        <line class="g-line" x1="200" y1="160" x2="122.2" y2="237.8"/>
+        <line class="g-line" x1="200" y1="160" x2="90" y2="160"/>
+        <line class="g-line" x1="200" y1="160" x2="122.2" y2="82.2"/>
+        <circle class="g-pt" cx="200" cy="160" r="5"/>
+        <text class="g-lbl g-halo" x="186" y="150" text-anchor="end">P</text>
+      </g>
+      <g data-part="angle">
+        <path class="g-angle" d="M 200 122 A 38 38 0 0 1 226.9 133.1"/>
+        <text class="g-meas g-halo" x="222" y="106" text-anchor="middle">45&deg;</text>
+      </g>
+      <g data-part="apothem">
+        <line class="g-dash" x1="200" y1="160" x2="293.9" y2="198.9"/>
+        <path class="g-right" d="M 289.3 210 L 278.2 205.4 L 282.8 194.3"/>
+        <circle class="g-pt" cx="293.9" cy="198.9" r="4"/>
+        <text class="g-meas g-halo" x="242" y="192" text-anchor="middle">a</text>
+      </g>
+      <g data-part="radius"><text class="g-meas-b g-halo" x="255" y="152" text-anchor="middle">r</text></g>
+      <g data-part="side">
+        <line x1="310" y1="160" x2="277.8" y2="237.8" stroke="var(--sl-orange)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <text class="g-meas g-halo" x="312" y="206" text-anchor="start">s</text>
+      </g>
+    </svg>
+    <figcaption>The 8 radii cut the octagon into 8 congruent isosceles triangles. One triangle has base <em>s</em> (a side), height <em>a</em> (the apothem, meeting the side at 90&deg;), and apex angle 360&deg;/8 = 45&deg;. Its area is &frac12;<em>sa</em>, so the octagon's area is 8&middot;&frac12;<em>sa</em> = &frac12;<em>a</em>(8<em>s</em>) = &frac12;<em>aP</em>.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','tri')">8 triangles</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','angle')">Central angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','apothem')">Apothem a</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','radius')">Radius r</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','side')">Side s</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Central Angle = 360&deg; / n</div>
+    <svg id="fig3" viewBox="0 0 470 215" width="470" role="img" aria-label="Equilateral triangle, regular pentagon and regular octagon each split by radii, with central angles 120, 72 and 45 degrees">
+      <g data-part="n3">
+        <polygon class="g-shape" points="80,50 127.6,132.5 32.4,132.5"/>
+        <line class="g-line" x1="80" y1="105" x2="80" y2="50"/>
+        <line class="g-line" x1="80" y1="105" x2="127.6" y2="132.5"/>
+        <line class="g-line" x1="80" y1="105" x2="32.4" y2="132.5"/>
+        <circle class="g-pt" cx="80" cy="105" r="4"/>
+        <path class="g-angle" d="M 80 80 A 25 25 0 0 1 101.7 117.5"/>
+        <text class="g-lbl-sm" x="80" y="190" text-anchor="middle">n = 3 &rarr; 360/3 = 120&deg;</text>
+      </g>
+      <g data-part="n5">
+        <polygon class="g-shape" points="230,50 282.3,88 262.3,149.5 197.7,149.5 177.7,88"/>
+        <line class="g-line" x1="230" y1="105" x2="230" y2="50"/>
+        <line class="g-line" x1="230" y1="105" x2="282.3" y2="88"/>
+        <line class="g-line" x1="230" y1="105" x2="262.3" y2="149.5"/>
+        <line class="g-line" x1="230" y1="105" x2="197.7" y2="149.5"/>
+        <line class="g-line" x1="230" y1="105" x2="177.7" y2="88"/>
+        <circle class="g-pt" cx="230" cy="105" r="4"/>
+        <path class="g-angle" d="M 230 80 A 25 25 0 0 1 253.8 96.3"/>
+        <text class="g-lbl-sm" x="230" y="190" text-anchor="middle">n = 5 &rarr; 360/5 = 72&deg;</text>
+      </g>
+      <g data-part="n8">
+        <polygon class="g-shape" points="380,50 418.9,66.1 435,105 418.9,143.9 380,160 341.1,143.9 325,105 341.1,66.1"/>
+        <line class="g-line" x1="380" y1="105" x2="380" y2="50"/>
+        <line class="g-line" x1="380" y1="105" x2="418.9" y2="66.1"/>
+        <line class="g-line" x1="380" y1="105" x2="435" y2="105"/>
+        <line class="g-line" x1="380" y1="105" x2="418.9" y2="143.9"/>
+        <line class="g-line" x1="380" y1="105" x2="380" y2="160"/>
+        <line class="g-line" x1="380" y1="105" x2="341.1" y2="143.9"/>
+        <line class="g-line" x1="380" y1="105" x2="325" y2="105"/>
+        <line class="g-line" x1="380" y1="105" x2="341.1" y2="66.1"/>
+        <circle class="g-pt" cx="380" cy="105" r="4"/>
+        <path class="g-angle" d="M 380 80 A 25 25 0 0 1 397.7 87.3"/>
+        <text class="g-lbl-sm" x="380" y="190" text-anchor="middle">n = 8 &rarr; 360/8 = 45&deg;</text>
+      </g>
+    </svg>
+    <figcaption>More sides &rarr; smaller central angle, but the <em>n</em> triangles are always congruent and always fill exactly 360&deg; at the center.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','n3')">Triangle (120&deg;)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','n5')">Pentagon (72&deg;)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','n8')">Octagon (45&deg;)</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">The 30-60-90 Triangle Hidden in Every Hexagon</div>
+    <svg id="fig4" viewBox="0 0 340 320" width="400" role="img" aria-label="Regular hexagon with a highlighted right triangle formed by the apothem, half a side and a radius">
+      <g data-part="hex"><polygon class="g-shape" points="170,65 256.6,115 256.6,215 170,265 83.4,215 83.4,115"/></g>
+      <g data-part="tri"><polygon class="g-shape-alt" points="170,165 256.6,165 256.6,115"/></g>
+      <g data-part="apothem">
+        <line class="g-line" x1="170" y1="165" x2="256.6" y2="165"/>
+        <text class="g-meas g-halo" x="210" y="184" text-anchor="middle">a = (&radic;3/2)s</text>
+      </g>
+      <g data-part="half">
+        <line class="g-line" x1="256.6" y1="165" x2="256.6" y2="115"/>
+        <text class="g-meas-b g-halo" x="266" y="144" text-anchor="start">s/2</text>
+      </g>
+      <g data-part="radius">
+        <line class="g-line" x1="170" y1="165" x2="256.6" y2="115"/>
+        <text class="g-grn g-halo" x="205" y="126" text-anchor="middle">r = s</text>
+      </g>
+      <g data-part="angle">
+        <path class="g-angle" d="M 202 165 A 32 32 0 0 0 197.7 149"/>
+        <text class="g-meas g-halo" x="222" y="152" text-anchor="middle">30&deg;</text>
+      </g>
+      <path class="g-right" d="M 244.6 165 L 244.6 153 L 256.6 153"/>
+      <circle class="g-pt" cx="170" cy="165" r="5"/>
+      <circle class="g-pt" cx="256.6" cy="165" r="4"/>
+      <text class="g-lbl g-halo" x="160" y="180" text-anchor="end">P</text>
+      <text class="g-lbl" x="270" y="108" text-anchor="start">K</text>
+      <text class="g-lbl" x="270" y="180" text-anchor="start">M</text>
+    </svg>
+    <figcaption>The apothem splits the 60&deg; central angle into two 30&deg; angles, so &#9651;<em>PMK</em> is a 30-60-90 triangle with legs in ratio 1 : &radic;3 and hypotenuse 2. Here <em>s</em>/2 = 50, <em>a</em> = 86.6 and <em>r</em> = 100 units &mdash; exactly 1 : &radic;3 : 2. Notice <em>r</em> is visibly longer than <em>a</em>.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','hex')">Hexagon</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','tri')">Right triangle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','apothem')">Apothem</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','half')">Half-side</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','radius')">Radius</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','angle')">180&deg;/n</button>
+    </div>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Identify Segments and Angles in Regular Polygons</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">In the figure, regular hexagon JKLMNP is inscribed in &#8857;R. Identify the center, a radius, an apothem, and a central angle of the polygon. Then find the measure of a central angle.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 400 320" width="400" role="img" aria-label="Regular hexagon JKLMNP inscribed in circle R with radius RK, apothem RS and central angle KRL">
+          <circle cx="200" cy="160" r="105" class="g-line-thin"/>
+          <polygon class="g-shape" points="200,55 290.9,107.5 290.9,212.5 200,265 109.1,212.5 109.1,107.5"/>
+          <path class="g-angle-fill" d="M 200 160 L 231.2 142 A 36 36 0 0 1 231.2 178 Z"/>
+          <line class="g-line" x1="200" y1="160" x2="290.9" y2="107.5"/>
+          <line class="g-line" x1="200" y1="160" x2="290.9" y2="212.5"/>
+          <line class="g-dash" x1="200" y1="160" x2="290.9" y2="160"/>
+          <path class="g-right" d="M 290.9 172 L 278.9 172 L 278.9 160"/>
+          <circle class="g-pt" cx="200" cy="160" r="5"/>
+          <circle class="g-pt" cx="290.9" cy="160" r="4"/>
+          <text class="g-meas g-halo" x="258" y="144" text-anchor="middle">60&deg;</text>
+          <text class="g-lbl g-halo" x="192" y="176" text-anchor="end">R</text>
+          <text class="g-lbl" x="302" y="168" text-anchor="start">S</text>
+          <text class="g-lbl" x="200" y="44" text-anchor="middle">J</text>
+          <text class="g-lbl" x="304" y="101" text-anchor="start">K</text>
+          <text class="g-lbl" x="304" y="222" text-anchor="start">L</text>
+          <text class="g-lbl" x="200" y="286" text-anchor="middle">M</text>
+          <text class="g-lbl" x="96" y="222" text-anchor="end">N</text>
+          <text class="g-lbl" x="96" y="101" text-anchor="end">P</text>
+        </svg>
+        <figcaption>Radius <span style="text-decoration:overline">RK</span> reaches a vertex; apothem <span style="text-decoration:overline">RS</span> reaches the midpoint of <span style="text-decoration:overline">KL</span> at a right angle.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">center = point <em>R</em></span><span class="reason">center of the circumscribed circle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">radius = <span style="text-decoration:overline">RK</span></span><span class="reason">center to a vertex</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">apothem = <span style="text-decoration:overline">RS</span></span><span class="reason">center &perp; to side <span style="text-decoration:overline">KL</span></span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">central angle = &ang;<em>KRL</em></span><span class="reason">vertex at <em>R</em>, sides through consecutive vertices <em>K</em>, <em>L</em></span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">a regular hexagon has <em>n</em> = 6 sides</span><span class="reason">definition of hexagon</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">m&ang;<em>KRL</em> = 360&deg;/6 = 60&deg;</span><span class="reason">central angle = 360&deg;/<em>n</em></span></div>
+      <div class="answer-box">center <em>R</em>; radius <span style="text-decoration:overline">RK</span>; apothem <span style="text-decoration:overline">RS</span>; central angle &ang;<em>KRL</em> = 60&deg;</div>
+      <div class="warning-box"><strong>Watch Out!</strong> &ang;<em>KRM</em> is <em>not</em> a central angle &mdash; <em>K</em> and <em>M</em> are not consecutive vertices. It measures 2(60&deg;) = 120&deg;.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Area of a Regular Polygon (octagon, s = 4 cm)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A regular octagon has a side length of 4 centimeters. Find the area it covers. Round to the nearest tenth.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 360 320" width="360" role="img" aria-label="Isosceles triangle ABC with apex B at the polygon center, base AC of length 4 and apothem BD">
+          <polygon class="g-shape" points="185,55 263.7,245 106.3,245"/>
+          <line class="g-dash" x1="185" y1="55" x2="185" y2="245"/>
+          <path class="g-right" d="M 185 233 L 197 233 L 197 245"/>
+          <path class="g-angle" d="M 185 95 A 40 40 0 0 0 200.3 91.9"/>
+          <text class="g-meas g-halo" x="200" y="112" text-anchor="start">22.5&deg;</text>
+          <line class="g-tick" x1="141" y1="240" x2="149" y2="250"/>
+          <line class="g-tick" x1="220" y1="240" x2="228" y2="250"/>
+          <text class="g-meas-b g-halo" x="176" y="152" text-anchor="end">a</text>
+          <text class="g-meas g-halo" x="224" y="264" text-anchor="middle">2 cm</text>
+          <text class="g-lbl" x="185" y="44" text-anchor="middle">B</text>
+          <text class="g-lbl" x="98" y="266" text-anchor="end">A</text>
+          <text class="g-lbl" x="272" y="266" text-anchor="start">C</text>
+          <text class="g-lbl" x="185" y="266" text-anchor="middle">D</text>
+          <text class="g-lbl-sm" x="185" y="292" text-anchor="middle">AC = s = 4 cm</text>
+        </svg>
+        <figcaption>One of the eight congruent triangles. <span style="text-decoration:overline">BD</span> is both the apothem and the altitude, so it bisects &ang;<em>ABC</em> and bisects <span style="text-decoration:overline">AC</span>.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;<em>ABC</em> = 360&deg;/8 = 45&deg;</span><span class="reason">Step 1: central angle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m&ang;<em>DBC</em> = 45&deg; &divide; 2 = 22.5&deg;</span><span class="reason">apothem bisects the central angle</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>DC</em> = 4 &divide; 2 = 2 cm</span><span class="reason">apothem bisects <span style="text-decoration:overline">AC</span></span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">tan 22.5&deg; = 2 / <em>a</em></span><span class="reason">Step 2: tan&theta; = opp/adj</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math"><em>a</em> = 2 / tan 22.5&deg; &asymp; 4.828 cm</span><span class="reason">solve for <em>a</em></span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math"><em>P</em> = 8(4) = 32 cm</span><span class="reason">perimeter = <em>ns</em></span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math"><em>A</em> = &frac12;<em>aP</em> = &frac12;(4.828)(32)</span><span class="reason">Step 3: area of a regular polygon</span></div>
+      <div class="solution-step"><span class="num">8</span><span class="math"><em>A</em> &asymp; 77.25</span><span class="reason">multiply</span></div>
+      <div class="answer-box">A &asymp; 77.3 square centimeters</div>
+      <div class="check-box"><strong>Check &middot; regular pentagon, s = 4 in:</strong> central angle = 360&deg;/5 = 72&deg;, half = 36&deg;, half-side = 2, so <code>a = 2/tan 36&deg; &asymp; 2.753</code>, <code>P = 20</code>, and <code>A = &frac12;(2.753)(20) &asymp; 27.5 in&sup2;</code>.</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Use 22.5&deg;, not 45&deg;, in the tangent ratio &mdash; the right triangle sits on <em>half</em> the central angle. Also keep the unrounded apothem in your calculator; rounding to 4.8 too early gives 76.8 instead of 77.3.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Find the Area of a Composite Figure by Adding</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the area of a composite figure made of a square (s = 9 cm), a regular hexagon (a = 4.5&radic;3 cm, P = 54 cm), and a trapezoid (h = 19 cm, b&#8321; = 15 cm, b&#8322; = 9 cm).</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">area of figure = square + hexagon + trapezoid</span><span class="reason">Step 1: separate the figure</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><em>A</em> = <em>s</em>&sup2; = 9&sup2; = 81 cm&sup2;</span><span class="reason">Step 2: area of a square</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>A</em> = &frac12;<em>aP</em> = &frac12;(4.5&radic;3)(54) &asymp; 210.4 cm&sup2;</span><span class="reason">area of a regular polygon</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math"><em>A</em> = &frac12;<em>h</em>(b&#8321; + b&#8322;) = &frac12;(19)(15 + 9) = 228 cm&sup2;</span><span class="reason">area of a trapezoid</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math"><em>A</em> &asymp; 81 + 210.4 + 228</span><span class="reason">Step 3: Area Addition Postulate</span></div>
+      <div class="answer-box">A &asymp; 519.4 square centimeters</div>
+      <div class="info-box"><strong>Study Tip:</strong> 121.5&radic;3 = 210.44&hellip; Keep the radical until the last line so the rounding error does not build up across three pieces.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Find the Area of a Composite Figure by Subtracting</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the area of the composite figure. Round to the nearest tenth, if necessary.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 360 250" width="380" role="img" aria-label="Trapezoid of top 12 m and bottom 8 m with a triangular notch of base 2 m cut from the top">
+          <path class="g-shape" d="M 60 60 L 160 60 L 180 178.3 L 200 60 L 300 60 L 260 198.3 L 100 198.3 Z"/>
+          <line class="g-aux" x1="160" y1="60" x2="200" y2="60"/>
+          <line class="g-aux" x1="180" y1="178.3" x2="180" y2="198.3"/>
+          <text class="g-meas" x="110" y="50" text-anchor="middle">5 m</text>
+          <text class="g-meas" x="180" y="50" text-anchor="middle">2 m</text>
+          <text class="g-meas" x="250" y="50" text-anchor="middle">5 m</text>
+          <text class="g-meas-b g-halo" x="152" y="124" text-anchor="end">6 m</text>
+          <text class="g-meas-b g-halo" x="208" y="124" text-anchor="start">6 m</text>
+          <text class="g-meas g-halo" x="188" y="194" text-anchor="start">1 m</text>
+          <text class="g-meas" x="180" y="218" text-anchor="middle">8 m</text>
+        </svg>
+        <figcaption>Subtract the notched triangle (base 2 m, height &radic;35 m) from the whole trapezoid (bases 12 m and 8 m, height &radic;35 + 1 m).</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">1&sup2; + <em>h</em>&sup2; = 6&sup2; &rarr; <em>h</em> = &radic;35</span><span class="reason">Step 1: Pythagorean Thm; the altitude bisects the base</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><em>A</em> = &frac12;<em>bh</em> = &frac12;(2)(&radic;35) = &radic;35 m&sup2;</span><span class="reason">Step 2: area of the triangle</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>A</em> = &frac12;<em>h</em>(b&#8321;+b&#8322;) = &frac12;(&radic;35 + 1)(12 + 8)</span><span class="reason">Step 3: area of the trapezoid</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math"><em>A</em> = 10&radic;35 + 10 m&sup2;</span><span class="reason">distribute</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">figure = (10&radic;35 + 10) &minus; &radic;35 = 9&radic;35 + 10</span><span class="reason">Step 4: subtract the removed region</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">9(5.9161) + 10 &asymp; 63.24</span><span class="reason">evaluate</span></div>
+      <div class="answer-box">A &asymp; 63.2 square meters</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The trapezoid's height is &radic;35 + <strong>1</strong>, not &radic;35 &mdash; the notch stops 1 m above the bottom edge. Forgetting the extra metre loses 20 m&sup2;.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Problem 1</h4>
+    <div class="prob">Find the measure of a central angle of a regular 20-gon, and the acute angle used in the apothem right triangle.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">central angle = 360&deg;/20 = 18&deg;</span><span class="reason">360&deg;/<em>n</em></span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">half = 18&deg; &divide; 2 = 9&deg;</span><span class="reason">apothem bisects it</span></div>
+      <div class="answer-box">central angle 18&deg;; right-triangle angle 9&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 2</h4>
+    <div class="prob">Find the area of a regular hexagon with a perimeter of 72 inches. Round to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math"><em>s</em> = 72 &divide; 6 = 12 in</span><span class="reason">P = ns</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><em>a</em> = (&radic;3/2)(12) = 6&radic;3 &asymp; 10.392 in</span><span class="reason">hexagon 30-60-90 shortcut</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>A</em> = &frac12;(6&radic;3)(72) = 216&radic;3</span><span class="reason">A = &frac12;aP</span></div>
+      <div class="answer-box">A &asymp; 374.1 square inches</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 3</h4>
+    <div class="prob">A regular hendecagon (11-gon) has edges of 7.46 millimeters. Find its area to the nearest hundredth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">180&deg;/11 &asymp; 16.3636&deg;</span><span class="reason">half the central angle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><em>a</em> = 3.73 / tan 16.3636&deg; &asymp; 12.7036 mm</span><span class="reason">tan = (s/2)/a</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>P</em> = 11(7.46) = 82.06 mm</span><span class="reason">P = ns</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math"><em>A</em> = &frac12;(12.7036)(82.06)</span><span class="reason">A = &frac12;aP</span></div>
+      <div class="answer-box">A &asymp; 521.23 square millimeters</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 4</h4>
+    <div class="prob">A regular octagon has an apothem of 14 inches. Find its area to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">tan 22.5&deg; = (<em>s</em>/2) / 14</span><span class="reason">half central angle = 22.5&deg;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><em>s</em> = 28 tan 22.5&deg; &asymp; 11.598 in</span><span class="reason">solve for s</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>P</em> = 8(11.598) &asymp; 92.784 in</span><span class="reason">P = ns</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math"><em>A</em> = &frac12;(14)(92.784)</span><span class="reason">A = &frac12;aP</span></div>
+      <div class="answer-box">A &asymp; 649.5 square inches</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 5</h4>
+    <div class="prob">A regular octagon is inscribed in a circle of diameter 16 feet. Find the area of the octagon to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math"><em>r</em> = 16 &divide; 2 = 8 ft</span><span class="reason">radius of the regular polygon</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><em>a</em> = 8 cos 22.5&deg; &asymp; 7.391 ft</span><span class="reason">a = r cos(180&deg;/n)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>s</em> = 2(8) sin 22.5&deg; &asymp; 6.123 ft</span><span class="reason">s = 2r sin(180&deg;/n)</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math"><em>A</em> = &frac12;(7.391)(8 &middot; 6.123)</span><span class="reason">A = &frac12;aP</span></div>
+      <div class="answer-box">A &asymp; 181.0 square feet</div>
+      <div class="check-box"><strong>Check:</strong> the circumscribed circle has area &pi;(8&sup2;) &asymp; 201.1 ft&sup2;. The octagon must be a little smaller &mdash; 181.0 &lt; 201.1 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 6</h4>
+    <div class="prob">A regular heptagon has sides of 6 millimeters. Find its area to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">180&deg;/7 &asymp; 25.7143&deg;</span><span class="reason">half the central angle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><em>a</em> = 3 / tan 25.7143&deg; &asymp; 6.2296 mm</span><span class="reason">tan = (s/2)/a</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><em>A</em> = &frac12;(6.2296)(42)</span><span class="reason">P = 7(6) = 42</span></div>
+      <div class="answer-box">A &asymp; 130.8 square millimeters</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>If you are given&hellip;</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Only <em>n</em></td><td>Divide 360&deg; by <em>n</em>; halve it for the right triangle</td><td>central angle 360&deg;/<em>n</em>, half-angle 180&deg;/<em>n</em></td></tr>
+    <tr><td>Apothem <em>a</em> and perimeter <em>P</em></td><td>Substitute directly</td><td><code>A = &frac12;aP</code></td></tr>
+    <tr><td>Side <em>s</em> and <em>n</em></td><td><code>a = s / (2 tan(180&deg;/n))</code>, then <code>P = ns</code></td><td><code>A = ns&sup2; / (4 tan(180&deg;/n))</code></td></tr>
+    <tr><td>Apothem <em>a</em> and <em>n</em></td><td><code>s = 2a tan(180&deg;/n)</code>, then <code>P = ns</code></td><td><code>A = &frac12;aP</code></td></tr>
+    <tr><td>Radius <em>r</em> and <em>n</em></td><td><code>a = r cos(180&deg;/n)</code>, <code>s = 2r sin(180&deg;/n)</code></td><td><code>A = &frac12;aP</code></td></tr>
+    <tr><td>Hexagon with side <em>s</em></td><td>Use the 30-60-90 shortcut <code>a = (&radic;3/2)s</code></td><td><code>A = (3&radic;3/2)s&sup2;</code></td></tr>
+    <tr><td>Equilateral triangle side <em>s</em></td><td>Use <code>a = s/(2&radic;3)</code></td><td><code>A = (&radic;3/4)s&sup2;</code></td></tr>
+    <tr><td>A composite figure</td><td>Separate into basic regions</td><td>add the parts &mdash; or subtract the removed region</td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">central &ang; = 360&deg;/n</span>
+    <span class="pill">A = &frac12;aP</span>
+    <span class="pill">A = &frac12;a(ns)</span>
+    <span class="pill">P = ns</span>
+    <span class="pill">a = s/(2 tan(180&deg;/n))</span>
+    <span class="pill">r = s/(2 sin(180&deg;/n))</span>
+    <span class="pill">a = r cos(180&deg;/n)</span>
+    <span class="pill">r&sup2; = a&sup2; + (s/2)&sup2;</span>
+    <span class="pill">A = (&radic;3/4)s&sup2;</span>
+    <span class="pill">A = (3&radic;3/2)s&sup2;</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:6px 0 0 20px;line-height:1.8">
+      <li>Using the full central angle 360&deg;/<em>n</em> in the trig ratio instead of the half-angle 180&deg;/<em>n</em>.</li>
+      <li>Using the whole side <em>s</em> as the opposite leg instead of <em>s</em>/2.</li>
+      <li>Substituting the <em>side length</em> for <em>P</em> in <code>A = &frac12;aP</code>. <em>P</em> is the whole perimeter.</li>
+      <li>Confusing radius and apothem. <code>a</code> reaches the middle of a side; <code>r</code> reaches a vertex; <code>r &gt; a</code>.</li>
+      <li>Assuming <code>a = (&radic;3/2)s</code> for every polygon &mdash; that is a hexagon-only shortcut, so the statement is only <em>sometimes</em> true.</li>
+      <li>Rounding the apothem too early; carry full precision until the final line.</li>
+      <li>In a composite figure, adding a region that was actually cut out.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"What is the measure of one central angle of a regular 15-gon?",opts:["18&deg;","24&deg;","30&deg;","36&deg;"],ans:1,exp:"A central angle of a regular n-gon is 360&deg;/n. Here 360&deg; &divide; 15 = 24&deg;. (18&deg; would come from a 20-gon, 30&deg; from a 12-gon.)"},
+  {q:"Which statement correctly describes the apothem of a regular polygon?",opts:["A segment from the center to a vertex","A segment joining two nonconsecutive vertices","A perpendicular segment from the center to a side","A segment joining the midpoints of two adjacent sides"],ans:2,exp:"The apothem is a perpendicular segment from the center to a side, so its endpoint is the midpoint of that side. The segment from the center to a vertex is the radius."},
+  {q:"A regular polygon has apothem a = 6 and perimeter P = 40. Find its area.",opts:["24","60","240","120"],ans:3,exp:"A = &frac12;aP = &frac12;(6)(40) = 120. Choice C (240) forgets the factor of &frac12;."},
+  {q:"Find the area of a regular hexagon with side length 12. Round to the nearest tenth.",opts:["374.1","187.1","259.8","432.0"],ans:0,exp:"For a hexagon a = (&radic;3/2)s = 6&radic;3 &asymp; 10.392 and P = 6(12) = 72, so A = &frac12;(6&radic;3)(72) = 216&radic;3 &asymp; 374.1. Choice B is exactly half &mdash; the &frac12; applied twice.",fig:"<svg viewBox='0 0 340 200' width='300' role='img' aria-label='Regular hexagon with apothem drawn to a side'><polygon class='g-shape' points='170,25 230.6,60 230.6,130 170,165 109.4,130 109.4,60'/><line class='g-dash' x1='170' y1='95' x2='230.6' y2='95'/><path class='g-right' d='M 230.6 107 L 218.6 107 L 218.6 95'/><circle class='g-pt' cx='170' cy='95' r='4.5'/><text class='g-meas g-halo' x='198' y='88' text-anchor='middle'>a</text><text class='g-meas-b g-halo' x='240' y='99' text-anchor='start'>s = 12</text></svg>"},
+  {q:"A regular octagon has a side length of 4 cm. Find its apothem to the nearest hundredth.",opts:["2.83 cm","4.83 cm","5.66 cm","9.66 cm"],ans:1,exp:"Half the central angle is (360&deg;/8)&divide;2 = 22.5&deg; and half the side is 2, so tan 22.5&deg; = 2/a, giving a = 2/tan 22.5&deg; &asymp; 4.83 cm. Using 45&deg; instead of 22.5&deg; gives the wrong 2.00."},
+  {q:"A regular polygon has central angles measuring 40&deg;. How many sides does it have?",opts:["8","12","9","10"],ans:2,exp:"360&deg;/n = 40&deg; so n = 360 &divide; 40 = 9. Check: a regular nonagon does have nine 40&deg; slices totalling 360&deg;."},
+  {q:"Find the area of an equilateral triangle with side length 8 mm. Round to the nearest tenth.",opts:["16.0 mm&sup2;","32.0 mm&sup2;","55.4 mm&sup2;","27.7 mm&sup2;"],ans:3,exp:"A = (&radic;3/4)s&sup2; = (&radic;3/4)(64) = 16&radic;3 &asymp; 27.7 mm&sup2;. Equivalently a = 8/(2&radic;3) &asymp; 2.309 and A = &frac12;(2.309)(24) &asymp; 27.7. Choice C is double &mdash; that is &frac12;bh with h mistaken for the full side."},
+  {q:"Find the area of a regular pentagon with side length 10. Round to the nearest tenth.",opts:["172.0","68.8","344.1","86.0"],ans:0,exp:"Half the central angle is 36&deg;, so a = 5/tan 36&deg; &asymp; 6.882. With P = 50, A = &frac12;(6.882)(50) &asymp; 172.0. Choice B is just the apothem times 10, and C omits the &frac12;.",fig:"<svg viewBox='0 0 340 200' width='300' role='img' aria-label='Regular pentagon split into five congruent triangles by its radii'><polygon class='g-shape' points='170,28 238.5,77.8 212.3,158.3 127.7,158.3 101.5,77.8'/><line class='g-line' x1='170' y1='100' x2='170' y2='28'/><line class='g-line' x1='170' y1='100' x2='238.5' y2='77.8'/><line class='g-line' x1='170' y1='100' x2='212.3' y2='158.3'/><line class='g-line' x1='170' y1='100' x2='127.7' y2='158.3'/><line class='g-line' x1='170' y1='100' x2='101.5' y2='77.8'/><circle class='g-pt' cx='170' cy='100' r='4.5'/><path class='g-angle' d='M 170 70 A 30 30 0 0 1 198.5 90.7'/><text class='g-meas g-halo' x='202' y='60' text-anchor='middle'>72&deg;</text><text class='g-meas-b g-halo' x='170' y='180' text-anchor='middle'>s = 10</text></svg>"},
+  {q:"A regular octagon is inscribed in a circle of radius 10. Find its apothem to the nearest hundredth.",opts:["7.07","9.24","3.83","8.66"],ans:1,exp:"a = r&middot;cos(180&deg;/n) = 10 cos 22.5&deg; &asymp; 9.24. Choice C is 10 sin 22.5&deg;, which gives half the side length, not the apothem. Note a &lt; r, as it must be."},
+  {q:"A regular hexagon has area 96&radic;3 square units. Find its side length.",opts:["6","4&radic;3","8","12"],ans:2,exp:"For a hexagon A = (3&radic;3/2)s&sup2;. Set (3&radic;3/2)s&sup2; = 96&radic;3, so s&sup2; = 96&radic;3 &middot; 2/(3&radic;3) = 64 and s = 8."},
+  {q:"Which expression gives the area of a regular n-gon with side length s?",opts:["A = ns&sup2;&middot;tan(180&deg;/n)/4","A = ns&sup2;/(4 sin(180&deg;/n))","A = ns&sup2;/(2 tan(180&deg;/n))","A = ns&sup2;/(4 tan(180&deg;/n))"],ans:3,exp:"Start from A = &frac12;aP with a = s/(2 tan(180&deg;/n)) and P = ns: A = &frac12;&middot;[s/(2tan(180&deg;/n))]&middot;ns = ns&sup2;/(4 tan(180&deg;/n)). Choice C drops the &frac12;, and choice B uses sine, which would give the radius instead of the apothem."},
+  {q:"A regular octagon has an apothem of 14 in. Find its area to the nearest tenth.",opts:["649.5 in&sup2;","392.0 in&sup2;","784.0 in&sup2;","324.7 in&sup2;"],ans:0,exp:"s = 2a&middot;tan 22.5&deg; = 28 tan 22.5&deg; &asymp; 11.598, so P &asymp; 92.784 and A = &frac12;(14)(92.784) &asymp; 649.5 in&sup2;. Choice B is the area of a 28-by-14 rectangle, not the octagon."},
+  {q:"A composite figure is a square of side 9 with an equilateral triangle of side 9 attached along one edge. Find the total area to the nearest tenth.",opts:["81.0","116.1","120.5","152.0"],ans:1,exp:"Square = 9&sup2; = 81. Equilateral triangle = (&radic;3/4)(9&sup2;) = 20.25&radic;3 &asymp; 35.1. By the Area Addition Postulate the total is 81 + 35.1 &asymp; 116.1. Choice D wrongly uses &frac12;(9)(9) &times; ... a right triangle of leg 9."},
+  {q:"The apothem of a regular polygon with side s equals (&radic;3/2)s. This is ____ true.",opts:["always","never","sometimes","only for squares"],ans:2,exp:"It is true exactly when tan(180&deg;/n) = 1/&radic;3, i.e. 180&deg;/n = 30&deg;, i.e. n = 6. So it holds for a regular hexagon and no other regular polygon &mdash; sometimes true. For a square a = s/2, and for a triangle a = s/(2&radic;3)."},
+  {q:"A trapezoid with bases 12 m and 8 m and height (&radic;35 + 1) m has a triangle of base 2 m and height &radic;35 m removed from it. Find the remaining area to the nearest tenth.",opts:["63.2 m&sup2;","73.2 m&sup2;","53.2 m&sup2;","69.2 m&sup2;"],ans:0,exp:"Trapezoid = &frac12;(&radic;35+1)(12+8) = 10&radic;35 + 10. Triangle = &frac12;(2)(&radic;35) = &radic;35. Difference = 9&radic;35 + 10 &asymp; 9(5.9161) + 10 &asymp; 63.2 m&sup2;. Choice B forgets to subtract the triangle."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

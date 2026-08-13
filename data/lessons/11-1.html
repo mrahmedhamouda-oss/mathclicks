@@ -1,0 +1,621 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Find the areas of parallelograms, trapezoids, rhombi, and kites &mdash; and work backwards from an area to a missing dimension.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. What "base" and "height" really mean</h3>
+    <p>Every area formula on this page is really the same idea: <em>how far across</em> times <em>how far up</em>. The trap is that "how far up" is never a slanted side &mdash; it is always measured straight up, at a right angle to the base.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>Base of a parallelogram</b> &mdash; any side of the parallelogram. All four sides can serve as a base.</div>
+      <div class="vocab-item"><b>Altitude of a parallelogram</b> &mdash; a perpendicular segment between any two parallel bases.</div>
+      <div class="vocab-item"><b>Height of a parallelogram</b> &mdash; the length of an altitude of the parallelogram.</div>
+      <div class="vocab-item"><b>Height of a trapezoid</b> &mdash; the perpendicular distance between the bases of the trapezoid.</div>
+      <div class="vocab-item"><b>Decomposition</b> &mdash; the process of separating a figure into two or more nonoverlapping parts.</div>
+      <div class="vocab-item"><b>Diagonal</b> (review) &mdash; a segment that connects any two nonconsecutive vertices of a polygon.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Heights of Figures:</strong> the height of a figure can be measured by <em>extending</em> a base. In parallelogram <em>ABCD</em>, the height that corresponds to base <span style="text-decoration:overline">DC</span> may land outside the figure, on the extension of <span style="text-decoration:overline">DC</span>. That is still a legal height.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Where the parallelogram formula comes from</h3>
+    <p>Cut a right triangle off one end of a parallelogram and slide it to the other end. Nothing is added and nothing is lost &mdash; you get a <strong>rectangle with the same base and the same height</strong>. A rectangle's area is <code>bh</code>, so the parallelogram's area must be <code>bh</code> too.</p>
+    <div class="theorem">
+      <div class="theorem-head">Postulate 11.1 &middot; Area Addition Postulate</div>
+      <div class="theorem-body">The area of a region is the sum of the areas of its nonoverlapping parts.</div>
+    </div>
+    <p>This postulate is what makes decomposition legal: chop a figure into pieces, add the pieces' areas, and you have the whole.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Area of a Parallelogram</div>
+      <div class="theorem-body">The area <em>A</em> of a parallelogram is the product of the base <em>b</em> and its corresponding height <em>h</em>.
+        <div class="formula-box">A = bh</div>
+      </div>
+    </div>
+    <div class="warning-box"><strong>Watch Out! Units:</strong> area is measured in <em>square</em> units &mdash; square feet (ft<sup>2</sup>), square millimetres (mm<sup>2</sup>), square yards (yd<sup>2</sup>). If your answer has no exponent on the unit, you have written a length, not an area.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Where the trapezoid formula comes from</h3>
+    <p>A <strong>trapezoid</strong> is a quadrilateral with exactly one pair of parallel sides; those parallel sides are the <strong>bases</strong>. Take a trapezoid, copy it, rotate the copy 180&deg;, and fit the two together. The result is a parallelogram whose base is <code>b<sub>1</sub> + b<sub>2</sub></code> and whose height is <code>h</code>. That parallelogram has area <code>h(b<sub>1</sub> + b<sub>2</sub>)</code>, and one trapezoid is exactly half of it.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Area of a Trapezoid</div>
+      <div class="theorem-body">The area <em>A</em> of a trapezoid is one half the product of the height <em>h</em> and the sum of its bases, <em>b</em><sub>1</sub> and <em>b</em><sub>2</sub>.
+        <div class="formula-box">A = &frac12; h(b<sub>1</sub> + b<sub>2</sub>)</div>
+      </div>
+    </div>
+    <div class="info-box"><strong>Read it as an average:</strong> <code>A = h &middot; (b<sub>1</sub>+b<sub>2</sub>)/2</code>. The trapezoid behaves like a rectangle whose width is the <em>average</em> of the two bases.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Rhombi and kites &mdash; use the diagonals</h3>
+    <p>A <strong>rhombus</strong> is a parallelogram with all four sides congruent. A <strong>kite</strong> is a quadrilateral with exactly two pairs of consecutive congruent sides. In both figures the diagonals are perpendicular, so their areas are controlled by the diagonals rather than by a base and height.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Area of a Rhombus or Kite</div>
+      <div class="theorem-body">The area <em>A</em> of a rhombus or kite is one half the product of the lengths of its diagonals, <em>d</em><sub>1</sub> and <em>d</em><sub>2</sub>.
+        <div class="formula-box">A = &frac12; d<sub>1</sub>d<sub>2</sub></div>
+      </div>
+    </div>
+    <div class="warning-box"><strong>Watch Out! Half-diagonals:</strong> the diagonals of a <em>rhombus</em> bisect each other, so a figure labelled "6 mm" and "7 mm" from the centre really has <code>d<sub>1</sub> = 12</code> and <code>d<sub>2</sub> = 14</code>. Double every half before you multiply. In a <em>kite</em>, only one diagonal is bisected.</div>
+    <p>A rhombus is also a parallelogram, so <code>A = bh</code> still works on it &mdash; use whichever information you are actually given.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. When the height is missing</h3>
+    <div class="steps-list">
+      <div class="s"><strong>Right triangle in the corner?</strong> Use the Pythagorean Theorem: <code>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></code>, where the slant side is the hypotenuse.</div>
+      <div class="s"><strong>45&deg; angle?</strong> In a 45&deg;-45&deg;-90&deg; triangle the two legs are equal, so the height equals the horizontal offset.</div>
+      <div class="s"><strong>30&deg; or 60&deg; angle?</strong> In a 30&deg;-60&deg;-90&deg; triangle the legs are in ratio <code>1 : &radic;3</code>, short leg opposite the 30&deg;.</div>
+      <div class="s"><strong>Odd angle?</strong> Use trigonometry: <code>h = (slant side) &middot; sin(angle)</code>.</div>
+      <div class="s"><strong>Trapezoid with two slant legs?</strong> Drop <em>two</em> perpendiculars to split it into right triangle + rectangle + right triangle.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Separating Figures:</strong> to solve some area problems you may need to draw in parallel and/or perpendicular lines to find information that is not provided.</div>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt">Parallelogram: <code>A = bh</code>. The <em>h</em> must be perpendicular to the <em>b</em> you chose.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt">Trapezoid: <code>A = &frac12;h(b<sub>1</sub> + b<sub>2</sub>)</code>. Only the two <em>parallel</em> sides are bases.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt">Rhombus or kite: <code>A = &frac12;d<sub>1</sub>d<sub>2</sub></code>, using <em>full</em> diagonals.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt">Working backwards from an area is just solving a one-step equation for the unknown length.</div></div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Base, Altitude and Height of a Parallelogram</div>
+    <svg id="fig1" viewBox="0 0 460 250" width="460" role="img" aria-label="Parallelogram with a dashed perpendicular altitude drawn from a top vertex to the bottom base, marked with a right angle square">
+      <g data-part="shape">
+        <polygon class="g-shape" points="80,200 368,200 428,56 140,56"/>
+      </g>
+      <g data-part="base">
+        <line class="g-line" x1="80" y1="200" x2="368" y2="200"/>
+        <text class="g-meas" x="224" y="224" text-anchor="middle">base b</text>
+      </g>
+      <g data-part="height">
+        <line class="g-dash" x1="140" y1="56" x2="140" y2="200"/>
+        <path class="g-right" d="M 140 188 L 152 188 L 152 200"/>
+        <text class="g-grn" x="132" y="132" text-anchor="end">height h</text>
+      </g>
+      <g data-part="marks">
+        <path class="g-line-thin" d="M 218 194 L 226 200 L 218 206"/>
+        <path class="g-line-thin" d="M 278 50 L 286 56 L 278 62"/>
+        <text class="g-meas-b" x="284" y="44" text-anchor="middle">base</text>
+      </g>
+    </svg>
+    <figcaption>The altitude is drawn between the two parallel bases and meets the base at exactly 90&deg;. Its length is the height <em>h</em>. Any side may be chosen as the base &mdash; but the height must match the base you chose.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','shape')">Parallelogram</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','base')">Base b</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','height')">Altitude &amp; height h</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','marks')">Parallel bases</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Why A = bh &mdash; Shearing a Parallelogram into a Rectangle</div>
+    <svg id="fig2" viewBox="0 0 380 260" width="380" role="img" aria-label="A parallelogram with a right triangle cut off the left end and translated to the right end, forming a rectangle of the same base and height">
+      <g data-part="para">
+        <polygon class="g-shape" points="40,190 232,190 304,70 112,70"/>
+      </g>
+      <g data-part="cut">
+        <line class="g-dash" x1="112" y1="70" x2="112" y2="190"/>
+        <path class="g-right" d="M 112 178 L 124 178 L 124 190"/>
+        <text class="g-grn" x="104" y="136" text-anchor="end">h</text>
+      </g>
+      <g data-part="moved">
+        <polygon class="g-shape-alt" points="232,190 304,190 304,70" fill-opacity=".5"/>
+        <path class="g-aux" d="M 92 150 L 258 150"/>
+        <path class="g-line-thin" d="M 258 144 L 270 150 L 258 156"/>
+        <text class="g-meas" x="175" y="142" text-anchor="middle">slide</text>
+      </g>
+      <g data-part="rect">
+        <polyline class="g-aux" points="112,70 304,70 304,190 112,190"/>
+        <path class="g-right" d="M 304 178 L 292 178 L 292 190"/>
+        <text class="g-meas" x="208" y="212" text-anchor="middle">b</text>
+      </g>
+    </svg>
+    <figcaption>The triangle removed from the left end is congruent to the triangle added at the right end, so no area is created or destroyed. The rectangle that results has the same base <em>b</em> and the same height <em>h</em> &there4; <code>A = bh</code>.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','para')">Original parallelogram</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','cut')">Perpendicular cut</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','moved')">Translated triangle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','rect')">Resulting rectangle</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Anatomy of a Trapezoid</div>
+    <svg id="fig3" viewBox="0 0 400 250" width="400" role="img" aria-label="Trapezoid with parallel bases b1 on top and b2 on the bottom and a dashed perpendicular height between them">
+      <g data-part="shape">
+        <polygon class="g-shape" points="50,190 350,190 290,70 110,70"/>
+      </g>
+      <g data-part="bases">
+        <line class="g-line" x1="110" y1="70" x2="290" y2="70"/>
+        <line class="g-line" x1="50" y1="190" x2="350" y2="190"/>
+        <text class="g-meas-b" x="200" y="58" text-anchor="middle">b<tspan font-size="10" dy="4">1</tspan></text>
+        <text class="g-meas" x="200" y="214" text-anchor="middle">b<tspan font-size="10" dy="4">2</tspan></text>
+        <path class="g-line-thin" d="M 244 64 L 252 70 L 244 76"/>
+        <path class="g-line-thin" d="M 244 184 L 252 190 L 244 196"/>
+      </g>
+      <g data-part="height">
+        <line class="g-dash" x1="180" y1="70" x2="180" y2="190"/>
+        <path class="g-right" d="M 180 178 L 192 178 L 192 190"/>
+        <text class="g-grn" x="172" y="134" text-anchor="end">h</text>
+      </g>
+      <g data-part="legs">
+        <line class="g-line" x1="50" y1="190" x2="110" y2="70"/>
+        <line class="g-line" x1="350" y1="190" x2="290" y2="70"/>
+      </g>
+    </svg>
+    <figcaption>Only the two parallel sides are bases. The two slanted sides are legs &mdash; they are <strong>never</strong> used as <em>h</em>. Here <code>b<sub>2</sub> = 10</code>, <code>b<sub>1</sub> = 6</code>, <code>h = 4</code>, so <code>A = &frac12;(4)(6+10) = 32</code> square units.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','shape')">Trapezoid</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','bases')">Parallel bases</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','height')">Height h</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','legs')">Legs (not heights)</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Why A = &frac12;h(b<sub>1</sub>+b<sub>2</sub>) &mdash; Two Trapezoids Make a Parallelogram</div>
+    <svg id="fig4" viewBox="0 0 470 250" width="470" role="img" aria-label="Two congruent trapezoids, one rotated 180 degrees, fitted together to form a parallelogram of base b1 plus b2">
+      <g data-part="t1">
+        <polygon class="g-shape" points="40,180 236,180 208,82 96,82"/>
+        <text class="g-meas" x="138" y="204" text-anchor="middle">b<tspan font-size="10" dy="4">2</tspan></text>
+        <text class="g-meas-b" x="152" y="70" text-anchor="middle">b<tspan font-size="10" dy="4">1</tspan></text>
+      </g>
+      <g data-part="t2">
+        <polygon class="g-shape-alt" points="236,180 348,180 404,82 208,82"/>
+        <text class="g-meas" x="292" y="204" text-anchor="middle">b<tspan font-size="10" dy="4">1</tspan></text>
+        <text class="g-meas-b" x="306" y="70" text-anchor="middle">b<tspan font-size="10" dy="4">2</tspan></text>
+      </g>
+      <g data-part="height">
+        <line class="g-dash" x1="120" y1="82" x2="120" y2="180"/>
+        <path class="g-right" d="M 120 168 L 132 168 L 132 180"/>
+        <text class="g-grn" x="112" y="138" text-anchor="end">h</text>
+      </g>
+      <g data-part="para">
+        <polygon class="g-aux" points="40,180 348,180 404,82 96,82"/>
+        <text class="g-lbl-sm" x="222" y="230" text-anchor="middle">parallelogram base = b1 + b2, height = h</text>
+      </g>
+    </svg>
+    <figcaption>The orange trapezoid is the blue one rotated 180&deg;. Together they tile a parallelogram of base <code>b<sub>1</sub>+b<sub>2</sub></code> and height <code>h</code>, whose area is <code>h(b<sub>1</sub>+b<sub>2</sub>)</code>. One trapezoid is half of that.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','t1')">Trapezoid</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','t2')">Rotated copy</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','height')">Shared height h</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','para')">Combined parallelogram</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Rhombus and Kite &mdash; Perpendicular Diagonals</div>
+    <svg id="fig5" viewBox="0 0 450 260" width="450" role="img" aria-label="A rhombus whose diagonals bisect each other and a kite whose axis of symmetry bisects the other diagonal, both with perpendicular diagonals">
+      <g data-part="rhombus">
+        <polygon class="g-shape" points="38,130 110,76 182,130 110,184"/>
+        <text class="g-lbl-sm" x="110" y="224" text-anchor="middle">Rhombus</text>
+      </g>
+      <g data-part="kite">
+        <polygon class="g-shape" points="250,130 322,70 394,130 322,178"/>
+        <text class="g-lbl-sm" x="322" y="224" text-anchor="middle">Kite</text>
+      </g>
+      <g data-part="diag">
+        <line class="g-dash" x1="38" y1="130" x2="182" y2="130"/>
+        <line class="g-dash" x1="110" y1="76" x2="110" y2="184"/>
+        <line class="g-dash" x1="250" y1="130" x2="394" y2="130"/>
+        <line class="g-dash" x1="322" y1="70" x2="322" y2="178"/>
+        <text class="g-meas g-halo" x="64" y="148" text-anchor="middle">d<tspan font-size="10" dy="4">1</tspan></text>
+        <text class="g-meas-b g-halo" x="120" y="102" text-anchor="start">d<tspan font-size="10" dy="4">2</tspan></text>
+        <text class="g-meas g-halo" x="276" y="148" text-anchor="middle">d<tspan font-size="10" dy="4">1</tspan></text>
+        <text class="g-meas-b g-halo" x="332" y="102" text-anchor="start">d<tspan font-size="10" dy="4">2</tspan></text>
+      </g>
+      <g data-part="perp">
+        <path class="g-right" d="M 110 118 L 122 118 L 122 130"/>
+        <path class="g-right" d="M 322 118 L 334 118 L 334 130"/>
+      </g>
+      <g data-part="ticks">
+        <path class="g-tick" d="M 74 124 L 74 136"/>
+        <path class="g-tick" d="M 146 124 L 146 136"/>
+        <path class="g-tick" d="M 104 100 L 116 100"/>
+        <path class="g-tick" d="M 104 160 L 116 160"/>
+        <path class="g-tick" d="M 286 124 L 286 136"/>
+        <path class="g-tick" d="M 358 124 L 358 136"/>
+      </g>
+    </svg>
+    <figcaption>In the rhombus <em>both</em> diagonals are bisected (all four tick pairs match). In the kite only the horizontal diagonal is bisected &mdash; the axis of symmetry is longer above the crossing than below. Either way the diagonals meet at 90&deg; and <code>A = &frac12;d<sub>1</sub>d<sub>2</sub></code>.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig5','rhombus')">Rhombus</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','kite')">Kite</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','diag')">Diagonals</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','perp')">Right angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','ticks')">Bisected halves</button>
+    </div>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Area of a Parallelogram (height falls outside)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Find the area of parallelogram ABCD. The slant side <span style="text-decoration:overline">AD</span> = 25 ft, the base <span style="text-decoration:overline">DC</span> = 23 ft, and the altitude from A meets the extension of <span style="text-decoration:overline">DC</span> 7 ft to the left of D.</div>
+      <svg viewBox="0 0 330 260" width="330" role="img" aria-label="Parallelogram ABCD with a 25 foot slant side, a 23 foot base and a dashed height meeting the extended base 7 feet beyond D">
+        <polygon class="g-shape" points="88,56 226,56 268,200 130,200"/>
+        <line class="g-aux" x1="130" y1="200" x2="88" y2="200"/>
+        <line class="g-dash" x1="88" y1="56" x2="88" y2="200"/>
+        <path class="g-right" d="M 88 188 L 100 188 L 100 200"/>
+        <text class="g-lbl" x="78" y="50" text-anchor="end">A</text>
+        <text class="g-lbl" x="236" y="50" text-anchor="start">B</text>
+        <text class="g-lbl" x="278" y="206" text-anchor="start">C</text>
+        <text class="g-lbl" x="130" y="242" text-anchor="middle">D</text>
+        <text class="g-meas-b g-halo" x="118" y="124" text-anchor="start">25 ft</text>
+        <text class="g-meas" x="109" y="220" text-anchor="middle">7 ft</text>
+        <text class="g-meas" x="199" y="220" text-anchor="middle">23 ft</text>
+        <text class="g-grn" x="80" y="132" text-anchor="end">h</text>
+      </svg>
+      <div class="solution-step"><span class="num">1</span><span class="math">h<sup>2</sup> + 7<sup>2</sup> = 25<sup>2</sup></span><span class="reason">Pythagorean Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">h<sup>2</sup> = 625 &minus; 49 = 576</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">h = 24</span><span class="reason">Solve (positive root)</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A = bh</span><span class="reason">Area of a parallelogram</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">A = (23)(24) = 552</span><span class="reason">Solve</span></div>
+      <div class="answer-box">A = 552 ft<sup>2</sup></div>
+      <div class="warning-box"><strong>The trap:</strong> 25 ft is the <em>slant side</em>, not the height. Using <code>A = 23 &times; 25 = 575</code> is the single most common error on this figure. The height is the dashed segment, and it lands <em>outside</em> the parallelogram on the extension of <span style="text-decoration:overline">DC</span> &mdash; that is perfectly legal.</div>
+      <div class="check-box"><strong>Check:</strong> 7-24-25 is a Pythagorean triple, and 7<sup>2</sup> + 24<sup>2</sup> = 49 + 576 = 625 = 25<sup>2</sup> &check;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Use Trigonometry (a 45&deg;-45&deg;-90&deg; triangle) to Find the Area</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the area of a parallelogram with base 17 yd, whose altitude cuts off a 45&deg;-45&deg;-90&deg; corner triangle with a horizontal leg of 9 yd.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">45&deg;-45&deg;-90&deg; &rArr; leg = leg</span><span class="reason">Special right triangle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">h = 9 yd</span><span class="reason">Leg opposite 45&deg; = leg adjacent to 45&deg;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = bh</span><span class="reason">Area of a parallelogram</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A = (17)(9) = 153</span><span class="reason">Solve</span></div>
+      <div class="answer-box">A = 153 yd<sup>2</sup></div>
+      <div class="info-box"><strong>General trig version:</strong> if the slant side has length <em>s</em> and makes an angle &theta; with the base, then <code>h = s &middot; sin&theta;</code> and <code>A = b &middot; s &middot; sin&theta;</code>. The special right triangles are just the shortcut cases &theta; = 30&deg;, 45&deg;, 60&deg;.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Area of a Trapezoid</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A raised garden bed is shaped like a trapezoid with h = 7 ft, b<sub>1</sub> = 8 ft and b<sub>2</sub> = 1.5 ft. Find its area, then decide how many 12-square-foot bags of mulch are needed.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &frac12;h(b<sub>1</sub> + b<sub>2</sub>)</span><span class="reason">Area of a trapezoid</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = &frac12;(7)(8 + 1.5)</span><span class="reason">h = 7, b<sub>1</sub> = 8, b<sub>2</sub> = 1.5</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = &frac12;(7)(9.5) = 33.25</span><span class="reason">Solve</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">33.25 ft<sup>2</sup> &times; (1 bag / 12 ft<sup>2</sup>) = 2.77 bags</span><span class="reason">Unit analysis</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">round <em>up</em> &rarr; 3 bags</span><span class="reason">2 bags would not be enough</span></div>
+      <div class="answer-box">A = 33.25 ft<sup>2</sup>; 3 bags of mulch</div>
+      <div class="warning-box"><strong>Watch Out!</strong> When a count of physical items comes from an area, always round <em>up</em>, never to the nearest whole number.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Use Right Triangles to Find the Area of a Trapezoid</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the area of the isosceles trapezoid with bases 2 cm and 4 cm and legs of 3 cm each.</div>
+      <svg viewBox="0 0 330 275" width="330" role="img" aria-label="Isosceles trapezoid with 2 centimetre top base, 4 centimetre bottom base and 3 centimetre legs, decomposed by two dashed perpendicular heights into two right triangles and a rectangle">
+        <polygon class="g-shape" points="70,210 270,210 220,68.6 120,68.6"/>
+        <line class="g-dash" x1="120" y1="68.6" x2="120" y2="210"/>
+        <line class="g-dash" x1="220" y1="68.6" x2="220" y2="210"/>
+        <path class="g-right" d="M 120 198 L 132 198 L 132 210"/>
+        <path class="g-right" d="M 220 198 L 208 198 L 208 210"/>
+        <text class="g-meas" x="170" y="56" text-anchor="middle">2 cm</text>
+        <text class="g-meas" x="84" y="136" text-anchor="end">3 cm</text>
+        <text class="g-meas" x="256" y="136" text-anchor="start">3 cm</text>
+        <text class="g-meas-b" x="95" y="232" text-anchor="middle">1 cm</text>
+        <text class="g-meas-b" x="170" y="232" text-anchor="middle">2 cm</text>
+        <text class="g-meas-b" x="245" y="232" text-anchor="middle">1 cm</text>
+        <text class="g-meas" x="170" y="258" text-anchor="middle">4 cm</text>
+        <text class="g-grn" x="130" y="146" text-anchor="start">h</text>
+      </svg>
+      <div class="solution-step"><span class="num">1</span><span class="math">x + 2 + x = 4</span><span class="reason">Bottom base split by the two altitudes</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">2x = 2, so x = 1</span><span class="reason">Solve</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">1<sup>2</sup> + h<sup>2</sup> = 3<sup>2</sup></span><span class="reason">Pythagorean Theorem on a corner triangle</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">h = &radic;(9 &minus; 1) = &radic;8 = 2&radic;2</span><span class="reason">Solve</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">A = &frac12;h(b<sub>1</sub> + b<sub>2</sub>) = &frac12;(&radic;8)(4 + 2)</span><span class="reason">Area of a trapezoid</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">A = 3&radic;8 = 6&radic;2 &asymp; 8.49</span><span class="reason">Solve</span></div>
+      <div class="answer-box">A &asymp; 8.49 cm<sup>2</sup></div>
+      <div class="check-box"><strong>Check by decomposition:</strong> rectangle = 2 &middot; 2&radic;2 = 4&radic;2; two triangles = 2 &middot; &frac12; &middot; 1 &middot; 2&radic;2 = 2&radic;2. Total = 6&radic;2 &check; (Area Addition Postulate)</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Area of a Rhombus from Half-Diagonals</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the area of a rhombus in which the distance from the centre to a vertex is 6 mm along one diagonal and 7 mm along the other.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">d<sub>1</sub> = 6 + 6 = 12 mm</span><span class="reason">Diagonals of a rhombus bisect each other</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">d<sub>2</sub> = 7 + 7 = 14 mm</span><span class="reason">Same reason</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = &frac12;d<sub>1</sub>d<sub>2</sub></span><span class="reason">Area of a rhombus</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A = &frac12;(12)(14) = 84</span><span class="reason">Solve</span></div>
+      <div class="answer-box">A = 84 mm<sup>2</sup></div>
+      <div class="warning-box"><strong>The trap:</strong> using the half-diagonals directly gives <code>&frac12;(6)(7) = 21</code> &mdash; exactly one quarter of the truth. Doubling both halves multiplies the answer by 4.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">Area of a Kite</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the area of a kite whose diagonals measure 16 in. and 9 in.</div>
+      <svg viewBox="0 0 360 250" width="360" role="img" aria-label="Kite with a 16 inch horizontal diagonal and a 9 inch vertical diagonal crossing at right angles">
+        <polygon class="g-shape" points="61,150 189,60 317,150 189,204"/>
+        <line class="g-dash" x1="61" y1="150" x2="317" y2="150"/>
+        <line class="g-dash" x1="189" y1="60" x2="189" y2="204"/>
+        <path class="g-right" d="M 189 138 L 201 138 L 201 150"/>
+        <path class="g-tick" d="M 125 144 L 125 156"/>
+        <path class="g-tick" d="M 253 144 L 253 156"/>
+        <text class="g-meas g-halo" x="110" y="172" text-anchor="middle">16 in.</text>
+        <text class="g-meas-b g-halo" x="200" y="110" text-anchor="start">9 in.</text>
+      </svg>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &frac12;d<sub>1</sub>d<sub>2</sub></span><span class="reason">Area of a kite</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = &frac12;(16)(9)</span><span class="reason">Substitute</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = 72</span><span class="reason">Solve</span></div>
+      <div class="answer-box">A = 72 in<sup>2</sup></div>
+      <div class="info-box"><strong>Why it works:</strong> the perpendicular diagonals cut the kite into four right triangles. Adding their areas gives <code>&frac12;d<sub>1</sub>d<sub>2</sub></code> no matter where along <em>d</em><sub>2</sub> the crossing point sits &mdash; which is why the same formula covers both the rhombus and the kite.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 7</span>
+      <span class="example-title">Use Area to Find a Missing Measure</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">One diagonal of a kite measures 55.88 centimetres. If the area of the kite is 92 square inches, what is the length of the other diagonal in inches, to the nearest tenth? (1 in. = 2.54 cm)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">55.88 cm &times; (1 in. / 2.54 cm) = 22 in.</span><span class="reason">Convert units first</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&frac12;d<sub>1</sub>d<sub>2</sub> = A</span><span class="reason">Area of a kite</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&frac12;(22)(x) = 92</span><span class="reason">A = 92, d<sub>1</sub> = 22, d<sub>2</sub> = x</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">11x = 92, x = 92/11 &asymp; 8.4</span><span class="reason">Solve</span></div>
+      <div class="answer-box">The other diagonal is about 8.4 in.</div>
+      <div class="warning-box"><strong>Watch Out! Converting units:</strong> one measure is metric and the area is in square inches. Convert the <em>length</em> before you substitute &mdash; converting an area needs the square of the conversion factor, which is a far easier place to slip.</div>
+      <div class="check-box"><strong>Check:</strong> &frac12;(22)(8.4) = 92.4 &asymp; 92 &check; (small gap is the rounding of 8.36 to 8.4)</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">Find the area of a parallelogram with base 22 cm and height 10 cm.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A = bh</span><span class="reason">Area of a parallelogram</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = (22)(10) = 220</span><span class="reason">Substitute and solve</span></div>
+      <div class="answer-box">A = 220 cm<sup>2</sup></div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">Find the area of a trapezoid with bases 9 in. and 6 in. and a height of 10 in.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &frac12;h(b<sub>1</sub> + b<sub>2</sub>)</span><span class="reason">Area of a trapezoid</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = &frac12;(10)(9 + 6) = &frac12;(10)(15)</span><span class="reason">Substitute</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = 75</span><span class="reason">Solve</span></div>
+      <div class="answer-box">A = 75 in<sup>2</sup></div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">A rhombus has diagonals of 20 m and 11 m. Find its area.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &frac12;d<sub>1</sub>d<sub>2</sub></span><span class="reason">Area of a rhombus</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = &frac12;(20)(11) = 110</span><span class="reason">Substitute and solve</span></div>
+      <div class="answer-box">A = 110 m<sup>2</sup></div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">A trapezoid has base lengths of 12 ft and 14 ft and an area of 322 ft<sup>2</sup>. Find the height, to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">322 = &frac12;h(12 + 14)</span><span class="reason">Substitute into the trapezoid formula</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">322 = 13h</span><span class="reason">&frac12;(26) = 13</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">h = 322/13 &asymp; 24.8</span><span class="reason">Divide</span></div>
+      <div class="answer-box">h &asymp; 24.8 ft</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">A kite has an area of 150 cm<sup>2</sup>. One diagonal is 25 cm. Find the other diagonal.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">150 = &frac12;(25)(d<sub>2</sub>)</span><span class="reason">Area of a kite</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">150 = 12.5 d<sub>2</sub></span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">d<sub>2</sub> = 12</span><span class="reason">Divide</span></div>
+      <div class="answer-box">d<sub>2</sub> = 12 cm</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6 &mdash; challenge</h4>
+    <div class="prob">The height of a parallelogram is 10 ft more than the length of its base. The area is 1200 ft<sup>2</sup>. Find the base and the height.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">let b = base, h = b + 10</span><span class="reason">Define the variable</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b(b + 10) = 1200</span><span class="reason">A = bh</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">b<sup>2</sup> + 10b &minus; 1200 = 0</span><span class="reason">Standard form</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">(b + 40)(b &minus; 30) = 0</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">b = 30 (reject b = &minus;40)</span><span class="reason">A length cannot be negative</span></div>
+      <div class="answer-box">base = 30 ft, height = 40 ft</div>
+      <div class="check-box"><strong>Check:</strong> 30 &times; 40 = 1200 &check; and 40 is 10 more than 30 &check;</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Parallelogram, <em>b</em> and <em>h</em> given</td><td>Multiply directly</td><td><code>A = bh</code></td></tr>
+    <tr><td>Parallelogram, slant side + offset given</td><td>Pythagorean Theorem for <em>h</em>, then <code>bh</code></td><td>e.g. 7-24-25 &rarr; <code>A = 23(24)</code></td></tr>
+    <tr><td>Parallelogram, slant side + angle given</td><td><code>h = s &middot; sin&theta;</code> (or a special right triangle)</td><td><code>A = b &middot; s &middot; sin&theta;</code></td></tr>
+    <tr><td>Trapezoid, both bases + <em>h</em></td><td>Average the bases, times the height</td><td><code>A = &frac12;h(b<sub>1</sub>+b<sub>2</sub>)</code></td></tr>
+    <tr><td>Trapezoid, legs given but no <em>h</em></td><td>Drop two altitudes; solve the corner right triangle</td><td><code>h = &radic;(leg<sup>2</sup> &minus; x<sup>2</sup>)</code></td></tr>
+    <tr><td>Rhombus or kite, diagonals given</td><td>Half the product of the diagonals</td><td><code>A = &frac12;d<sub>1</sub>d<sub>2</sub></code></td></tr>
+    <tr><td>Only half-diagonals marked</td><td>Double each half first</td><td><code>d = 2 &middot; (half)</code></td></tr>
+    <tr><td>Area given, a length missing</td><td>Substitute into the formula, solve the equation</td><td>e.g. <code>&frac12;(22)x = 92</code></td></tr>
+    <tr><td>Mixed units (cm and in.)</td><td>Convert lengths before substituting</td><td>1 in. = 2.54 cm</td></tr>
+    <tr><td>Irregular figure</td><td>Decompose it; add the parts</td><td>Area Addition Postulate</td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">A = bh</span>
+    <span class="pill">A = &frac12;h(b<sub>1</sub>+b<sub>2</sub>)</span>
+    <span class="pill">A = &frac12;d<sub>1</sub>d<sub>2</sub></span>
+    <span class="pill">a<sup>2</sup>+b<sup>2</sup>=c<sup>2</sup></span>
+    <span class="pill">h = s&middot;sin&theta;</span>
+    <span class="pill">45-45-90 &rarr; 1:1:&radic;2</span>
+    <span class="pill">30-60-90 &rarr; 1:&radic;3:2</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8">
+      <li>Using a <em>slant side</em> as the height of a parallelogram or trapezoid.</li>
+      <li>Using a <em>leg</em> of a trapezoid as a base &mdash; only the parallel sides are bases.</li>
+      <li>Forgetting to double half-diagonals in a rhombus (this quarters the answer).</li>
+      <li>Forgetting the &frac12; in the trapezoid, rhombus and kite formulas (this doubles the answer).</li>
+      <li>Reporting the answer in linear units instead of square units.</li>
+      <li>Rounding a bag/tile/sheet count down instead of up.</li>
+      <li>Substituting a centimetre length into a square-inch equation without converting.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"Which formula gives the area of a trapezoid with bases b&#8321; and b&#8322; and height h?",opts:["A = &frac12;h(b&#8321; + b&#8322;)","A = h(b&#8321; + b&#8322;)","A = &frac12;b&#8321;b&#8322;","A = &frac12;h(b&#8321; &minus; b&#8322;)"],ans:0,exp:"Two congruent trapezoids fit together into a parallelogram of base b&#8321;+b&#8322; and height h, whose area is h(b&#8321;+b&#8322;). One trapezoid is half of that."},
+  {q:"Find the area of a parallelogram with base 14 units and height 9 units.",opts:["112 units&sup2;","126 units&sup2;","252 units&sup2;","63 units&sup2;"],ans:1,exp:"A = bh = 14 &times; 9 = 126. There is no &frac12; in the parallelogram formula &mdash; 63 would be the area of a triangle with the same base and height."},
+  {q:"A trapezoid has bases of 8 and 12 and a height of 5. Find its area.",opts:["100","40","50","25"],ans:2,exp:"A = &frac12;h(b&#8321;+b&#8322;) = &frac12;(5)(8+12) = &frac12;(5)(20) = 50. Dropping the &frac12; gives 100; multiplying the bases instead of adding them gives 240."},
+  {q:"A rhombus has diagonals of length 12 mm and 14 mm. Find its area.",opts:["168 mm&sup2;","26 mm&sup2;","42 mm&sup2;","84 mm&sup2;"],ans:3,exp:"A = &frac12;d&#8321;d&#8322; = &frac12;(12)(14) = 84. Forgetting the &frac12; gives 168; 42 comes from using the half-diagonals 6 and 7 instead of the full diagonals."},
+  {q:"Find the area of a kite whose diagonals measure 16 in. and 9 in.",opts:["72 in&sup2;","144 in&sup2;","36 in&sup2;","25 in&sup2;"],ans:0,exp:"A = &frac12;d&#8321;d&#8322; = &frac12;(16)(9) = 72. The perpendicular diagonals split the kite into four right triangles whose areas total &frac12;d&#8321;d&#8322;."},
+  {q:"In the parallelogram shown, the slant side is 25, the base is 23, and the altitude meets the extension of the base 7 units beyond the vertex. Find the area.",fig:"<svg viewBox='0 0 270 225' width='270' role='img' aria-label='Parallelogram with a 25 unit slant side, 23 unit base and a dashed height meeting the extended base 7 units to the left'><polygon class='g-shape' points='60,58 175,58 210,178 95,178'/><line class='g-aux' x1='95' y1='178' x2='60' y2='178'/><line class='g-dash' x1='60' y1='58' x2='60' y2='178'/><path class='g-right' d='M 60 168 L 70 168 L 70 178'/><text class='g-meas-b g-halo' x='85' y='118' text-anchor='start'>25</text><text class='g-meas' x='77' y='198' text-anchor='middle'>7</text><text class='g-meas' x='152' y='198' text-anchor='middle'>23</text></svg>",opts:["575","552","161","264"],ans:1,exp:"The height is not 25. Since 7&sup2; + h&sup2; = 25&sup2;, h&sup2; = 625 &minus; 49 = 576 and h = 24. Then A = bh = 23 &times; 24 = 552. Choice A is the classic error of multiplying by the slant side."},
+  {q:"An isosceles trapezoid has bases of 2 cm and 4 cm and legs of 3 cm. Find its area to the nearest hundredth.",opts:["6.00 cm&sup2;","12.00 cm&sup2;","8.49 cm&sup2;","4.24 cm&sup2;"],ans:2,exp:"Each altitude cuts off a horizontal segment x with x + 2 + x = 4, so x = 1. Then h = &radic;(3&sup2; &minus; 1&sup2;) = &radic;8 = 2&radic;2. A = &frac12;(2&radic;2)(2+4) = 6&radic;2 &asymp; 8.49."},
+  {q:"A parallelogram has base 17 and a slant side that meets the base at 45&deg;, cutting off a corner right triangle whose horizontal leg is 9. Find the area.",opts:["76.5","108","120.2","153"],ans:3,exp:"In a 45&deg;-45&deg;-90&deg; triangle the two legs are congruent, so h = 9. Then A = bh = 17 &times; 9 = 153. Choice A halves it as if it were a triangle."},
+  {q:"A trapezoid has bases of 4 ft and 19 ft and an area of 115 ft&sup2;. Find its height.",opts:["10 ft","5 ft","20 ft","4.6 ft"],ans:0,exp:"115 = &frac12;h(4+19) = &frac12;h(23) = 11.5h, so h = 115 &divide; 11.5 = 10 ft. Choice B forgets the &frac12; when solving; choice C doubles it twice."},
+  {q:"A kite has an area of 72 m&sup2; and one diagonal is four times as long as the other. Find the lengths of the diagonals.",opts:["3 m and 12 m","6 m and 24 m","9 m and 36 m","12 m and 48 m"],ans:1,exp:"Let d and 4d be the diagonals. Then &frac12;(d)(4d) = 2d&sup2; = 72, so d&sup2; = 36 and d = 6. The diagonals are 6 m and 24 m; check &frac12;(6)(24) = 72."},
+  {q:"A trapezoid has a height of 8 m, one base of 12 m, and an area of 64 m&sup2;. Find the other base.",opts:["8 m","6 m","4 m","2 m"],ans:2,exp:"64 = &frac12;(8)(12 + b&#8322;) = 4(12 + b&#8322;), so 16 = 12 + b&#8322; and b&#8322; = 4 m. Notice the second base is shorter than the first &mdash; that is allowed."},
+  {q:"The height of a parallelogram is 10 more than its base, and its area is 1200. Find the base and the height.",opts:["b = 20, h = 30","b = 24, h = 34","b = 25, h = 35","b = 30, h = 40"],ans:3,exp:"b(b + 10) = 1200 gives b&sup2; + 10b &minus; 1200 = 0, which factors as (b + 40)(b &minus; 30) = 0. Reject b = &minus;40, so b = 30 and h = 40. Check: 30 &times; 40 = 1200."},
+  {q:"The diagonal of a square measures 6&radic;2. Find the area of the square.",opts:["36","72","18","24"],ans:0,exp:"A square is a rhombus, so A = &frac12;d&#8321;d&#8322; = &frac12;(6&radic;2)(6&radic;2) = &frac12;(72) = 36. Equivalently the side is 6&radic;2 &divide; &radic;2 = 6, and 6&sup2; = 36."},
+  {q:"Find the area of the quadrilateral with vertices A(&minus;8, 6), B(&minus;5, 8), C(&minus;2, 6), D(&minus;5, 0).",opts:["12 units&sup2;","24 units&sup2;","48 units&sup2;","30 units&sup2;"],ans:1,exp:"Diagonal AC is horizontal with length |&minus;2 &minus; (&minus;8)| = 6; diagonal BD is vertical with length |8 &minus; 0| = 8. They are perpendicular and BD bisects AC, so the figure is a kite: A = &frac12;(6)(8) = 24."},
+  {q:"The area of a rhombus is 168 cm&sup2; and one diagonal is three times as long as the other. Find the diagonals to the nearest tenth.",opts:["8.4 cm and 25.2 cm","9.7 cm and 29.1 cm","10.6 cm and 31.7 cm","11.2 cm and 33.6 cm"],ans:2,exp:"Let the diagonals be d and 3d. Then &frac12;(d)(3d) = 1.5d&sup2; = 168, so d&sup2; = 112 and d = &radic;112 &asymp; 10.6. The other is 3(10.583) &asymp; 31.7. Check: &frac12;(10.583)(31.749) &asymp; 168."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

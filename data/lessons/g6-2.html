@@ -1,0 +1,702 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Use the Angle Bisector Theorem, its converse, and the Incenter Theorem to find missing angle measures and distances.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. What an angle bisector is</h3>
+    <p>An <b>angle bisector</b> is a line, segment, or ray that cuts an angle into <b>two congruent angles</b>. Nothing more, nothing less &mdash; it splits the opening exactly in half.</p>
+    <div class="formula-box">If ray BD bisects &ang;ABC, then<br>&ang;ABD &cong; &ang;DBC &nbsp;&nbsp;and&nbsp;&nbsp; m&ang;ABD = m&ang;DBC = &frac12;&middot;m&ang;ABC</div>
+    <p>Turning that around: <code>m&ang;ABC = 2 &middot; m&ang;ABD</code>. Every problem in this lesson is built on those two sentences.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>Angle bisector</b> &mdash; a ray (or line or segment) that divides an angle into two congruent angles.</div>
+      <div class="vocab-item"><b>Equidistant</b> &mdash; the same distance from. Distance from a point to a line always means the <em>perpendicular</em> distance.</div>
+      <div class="vocab-item"><b>Incenter</b> &mdash; the point where the three angle bisectors of a triangle meet.</div>
+      <div class="vocab-item"><b>Point of concurrency</b> &mdash; the single point three or more lines all pass through.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Distance from a point to a side means perpendicular distance</h3>
+    <p>Before the theorems make sense you must accept one convention: the distance from a point to a line is measured <b>along the perpendicular</b>. Any slanted segment is longer. That is why every diagram in this lesson is covered in little right-angle squares &mdash; they are not decoration, they are what makes the lengths count as <em>distances</em>.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 6.4 &mdash; Angle Bisector Theorem</div>
+      <div class="theorem-body">
+        <b>Words:</b> If a point is on the bisector of an angle, then it is equidistant from the sides of the angle.<br>
+        <b>Symbols:</b> If ray BF bisects &ang;DBE, <span style="text-decoration:overline">FD</span> &perp; <span style="text-decoration:overline">BD</span>, and <span style="text-decoration:overline">FE</span> &perp; <span style="text-decoration:overline">BE</span>, then <code>DF = FE</code>.
+      </div>
+    </div>
+    <p><b>Why it works:</b> triangles <i>BDF</i> and <i>BEF</i> share side <span style="text-decoration:overline">BF</span>, have congruent halves of the bisected angle, and both contain a right angle. By AAS they are congruent, so the corresponding sides <span style="text-decoration:overline">DF</span> and <span style="text-decoration:overline">FE</span> must match.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. The converse runs the logic backwards</h3>
+    <p>Theorem 6.4 goes <em>bisector &rarr; equal distances</em>. Theorem 6.5 goes <em>equal distances &rarr; bisector</em>. That second direction is how you <b>prove</b> something is a bisector.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 6.5 &mdash; Converse of the Angle Bisector Theorem</div>
+      <div class="theorem-body">
+        <b>Words:</b> If a point in the interior of an angle is equidistant from the sides of the angle, then it is on the bisector of the angle.<br>
+        <b>Symbols:</b> If <span style="text-decoration:overline">FD</span> &perp; <span style="text-decoration:overline">BD</span>, <span style="text-decoration:overline">FE</span> &perp; <span style="text-decoration:overline">BE</span>, and <code>DF = FE</code>, then ray BF bisects &ang;DBE.
+      </div>
+    </div>
+    <div class="warning-box"><strong>Watch out!</strong> The converse needs <em>three</em> conditions, not one: the point must be <b>interior</b> to the angle, and <b>both</b> segments must be perpendicular to the sides. Two equal slanted segments prove nothing at all.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. The incenter</h3>
+    <p>A triangle has three angles, so it has three angle bisectors. They are always <b>concurrent</b> &mdash; all three cross at one single point, and that point sits inside the triangle every time.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 6.6 &mdash; Incenter Theorem</div>
+      <div class="theorem-body">
+        <b>Words:</b> The angle bisectors of a triangle intersect at a point called the <b>incenter</b> that is equidistant from the sides of the triangle.<br>
+        <b>Symbols:</b> If <i>P</i> is the incenter of &#9651;ABC, then <code>PD = PE = PF</code>, where <i>D</i>, <i>E</i>, <i>F</i> are the feet of the perpendiculars to the three sides.
+      </div>
+    </div>
+    <p>Because the incenter is the same perpendicular distance from all three sides, a circle centred there with that radius touches all three sides exactly once &mdash; the <b>inscribed circle</b>. That is the picture worth memorising.</p>
+    <div class="info-box"><strong>Study Tip:</strong> Incenter and circumcenter are easy to swap. The <b>incenter</b> comes from <b>angle bisectors</b> and is equidistant from the <b>sides</b>. The <b>circumcenter</b> comes from <b>perpendicular bisectors</b> and is equidistant from the <b>vertices</b>.</p></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. The three things to memorise</h3>
+    <div class="keyfact"><div class="ico">1</div><div class="txt">On the bisector &rArr; equal <b>perpendicular</b> distances to the two sides. Set the two expressions equal and solve.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt">Equal perpendicular distances from an interior point &rArr; that point is on the bisector, so the two half-angles are congruent.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt">Incenter &rArr; each vertex angle is <b>twice</b> its half-angle, and the three whole angles still add to 180&deg;.</div></div>
+    <div class="steps-list">
+      <div class="s">Read the diagram and find every right-angle square. Only those segments are distances.</div>
+      <div class="s">Decide which theorem you are using: given a bisector (6.4), given equal distances (6.5), or given an incenter (6.6).</div>
+      <div class="s">Write the equation the theorem gives you &mdash; either <code>length = length</code> or <code>angle = angle</code>.</div>
+      <div class="s">Solve for the variable, then substitute back to answer the question that was actually asked.</div>
+    </div>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Theorem 6.4 &mdash; bisector gives equal distances</div>
+    <svg id="fig1" viewBox="0 0 420 300" width="420" role="img" aria-label="Ray BF bisects angle DBE. FD is perpendicular to BD and FE is perpendicular to BE, so DF equals FE.">
+      <g data-part="sides">
+        <line class="g-line" x1="70" y1="235" x2="211.1" y2="40.8"/>
+        <line class="g-line" x1="70" y1="235" x2="350" y2="235"/>
+        <circle class="g-pt" cx="70" cy="235" r="4.5"/>
+        <text class="g-lbl" x="58" y="242" text-anchor="end">B</text>
+      </g>
+      <g data-part="bisector">
+        <line class="g-line" x1="70" y1="235" x2="310.6" y2="112.4"/>
+        <path class="g-angle" d="M 116 235 A 46 46 0 0 0 110.99 214.12"/>
+        <path class="g-angle" d="M 124 235 A 54 54 0 0 0 118.11 210.48"/>
+        <path class="g-angle" d="M 110.99 214.12 A 46 46 0 0 0 97.04 197.79"/>
+        <path class="g-angle" d="M 118.11 210.48 A 54 54 0 0 0 101.73 191.32"/>
+      </g>
+      <g data-part="dist">
+        <line class="g-line" x1="169.5" y1="98" x2="239.3" y2="148.7"/>
+        <line class="g-line" x1="239.3" y1="148.7" x2="239.3" y2="235"/>
+        <path class="g-right" d="M 161.86 108.52 L 172.37 116.16 L 180.01 105.64"/>
+        <path class="g-right" d="M 226.3 235 L 226.3 222 L 239.3 222"/>
+        <line class="g-tick" x1="208.51" y1="117.69" x2="200.29" y2="129.01"/>
+        <line class="g-tick" x1="246.3" y1="191.85" x2="232.3" y2="191.85"/>
+        <circle class="g-pt" cx="169.5" cy="98" r="4.5"/>
+        <circle class="g-pt" cx="239.3" cy="235" r="4.5"/>
+        <text class="g-grn g-halo" x="180" y="205" text-anchor="middle">DF = FE</text>
+      </g>
+      <circle class="g-pt" cx="239.3" cy="148.7" r="4.5"/>
+      <text class="g-lbl" x="158" y="90" text-anchor="end">D</text>
+      <text class="g-lbl g-halo" x="248" y="138">F</text>
+      <text class="g-lbl" x="239" y="258" text-anchor="middle">E</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','sides')">Sides of the angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','bisector')">Bisector &amp; equal halves</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','dist')">Equal distances</button>
+    </div>
+    <figcaption>The double arcs show &ang;DBF &cong; &ang;FBE (each 27&deg;). The two right-angle squares make <span style="text-decoration:overline">FD</span> and <span style="text-decoration:overline">FE</span> genuine distances, and the single ticks show they are equal.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Theorem 6.5 &mdash; equal distances give the bisector</div>
+    <svg id="fig2" viewBox="0 0 420 300" width="420" role="img" aria-label="Point F is interior to angle DBE with equal perpendicular distances to both sides, so ray BF bisects the angle.">
+      <g data-part="given">
+        <line class="g-line" x1="70" y1="235" x2="211.1" y2="40.8"/>
+        <line class="g-line" x1="70" y1="235" x2="350" y2="235"/>
+        <line class="g-line" x1="169.5" y1="98" x2="239.3" y2="148.7"/>
+        <line class="g-line" x1="239.3" y1="148.7" x2="239.3" y2="235"/>
+        <path class="g-right" d="M 161.86 108.52 L 172.37 116.16 L 180.01 105.64"/>
+        <path class="g-right" d="M 226.3 235 L 226.3 222 L 239.3 222"/>
+        <line class="g-tick" x1="208.51" y1="117.69" x2="200.29" y2="129.01"/>
+        <line class="g-tick" x1="246.3" y1="191.85" x2="232.3" y2="191.85"/>
+        <circle class="g-pt" cx="169.5" cy="98" r="4.5"/>
+        <circle class="g-pt" cx="239.3" cy="235" r="4.5"/>
+        <circle class="g-pt" cx="70" cy="235" r="4.5"/>
+      </g>
+      <g data-part="concl">
+        <line class="g-line" x1="70" y1="235" x2="310.6" y2="112.4"/>
+        <path class="g-angle" d="M 116 235 A 46 46 0 0 0 110.99 214.12"/>
+        <path class="g-angle" d="M 124 235 A 54 54 0 0 0 118.11 210.48"/>
+        <path class="g-angle" d="M 110.99 214.12 A 46 46 0 0 0 97.04 197.79"/>
+        <path class="g-angle" d="M 118.11 210.48 A 54 54 0 0 0 101.73 191.32"/>
+        <text class="g-grn g-halo" x="180" y="205" text-anchor="middle">so BF bisects &ang;DBE</text>
+      </g>
+      <circle class="g-pt" cx="239.3" cy="148.7" r="4.5"/>
+      <text class="g-lbl" x="158" y="90" text-anchor="end">D</text>
+      <text class="g-lbl g-halo" x="248" y="138">F</text>
+      <text class="g-lbl" x="239" y="258" text-anchor="middle">E</text>
+      <text class="g-lbl" x="58" y="242" text-anchor="end">B</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','given')">What you are given</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','concl')">What you conclude</button>
+    </div>
+    <figcaption>Same picture, opposite direction of reasoning: the ticks and right angles are the <em>hypothesis</em>, and the congruent double arcs are the <em>conclusion</em>.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Theorem 6.6 &mdash; the incenter and the inscribed circle</div>
+    <svg id="fig3" viewBox="0 0 400 320" width="400" role="img" aria-label="Triangle ABC with legs 180 and 240; the three angle bisectors meet at P, and the circle centred at P of radius 60 is tangent to all three sides.">
+      <g data-part="tri">
+        <polygon class="g-shape" points="60,80 300,260 60,260"/>
+        <circle class="g-pt" cx="60" cy="80" r="4.5"/>
+        <circle class="g-pt" cx="300" cy="260" r="4.5"/>
+        <circle class="g-pt" cx="60" cy="260" r="4.5"/>
+        <text class="g-lbl" x="60" y="66" text-anchor="middle">A</text>
+        <text class="g-lbl" x="48" y="278" text-anchor="end">B</text>
+        <text class="g-lbl" x="312" y="278">C</text>
+      </g>
+      <g data-part="bis">
+        <line class="g-line-thin" x1="60" y1="80" x2="150" y2="260"/>
+        <line class="g-line-thin" x1="60" y1="260" x2="162.86" y2="157.14"/>
+        <line class="g-line-thin" x1="300" y1="260" x2="60" y2="180"/>
+        <path class="g-angle" d="M 94 260 A 34 34 0 0 0 84.04 235.96"/>
+        <path class="g-angle" d="M 102 260 A 42 42 0 0 0 89.70 230.30"/>
+        <path class="g-angle" d="M 84.04 235.96 A 34 34 0 0 0 60 226"/>
+        <path class="g-angle" d="M 89.70 230.30 A 42 42 0 0 0 60 218"/>
+      </g>
+      <g data-part="circ">
+        <circle class="g-arc" cx="120" cy="200" r="60"/>
+        <line class="g-dash" x1="120" y1="200" x2="60" y2="200"/>
+        <line class="g-dash" x1="120" y1="200" x2="156" y2="152"/>
+        <line class="g-dash" x1="120" y1="200" x2="120" y2="260"/>
+        <path class="g-right" d="M 60 187 L 73 187 L 73 200"/>
+        <path class="g-right" d="M 148.2 162.4 L 158.6 170.2 L 166.4 159.8"/>
+        <path class="g-right" d="M 107 260 L 107 247 L 120 247"/>
+        <circle class="g-pt" cx="60" cy="200" r="4"/>
+        <circle class="g-pt" cx="156" cy="152" r="4"/>
+        <circle class="g-pt" cx="120" cy="260" r="4"/>
+        <text class="g-lbl" x="46" y="206" text-anchor="end">D</text>
+        <text class="g-lbl" x="168" y="146">E</text>
+        <text class="g-lbl" x="120" y="284" text-anchor="middle">F</text>
+      </g>
+      <circle class="g-pt" cx="120" cy="200" r="5"/>
+      <text class="g-lbl g-halo" x="130" y="192">P</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','tri')">Triangle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','bis')">Three angle bisectors</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','circ')">Inscribed circle &amp; radii</button>
+    </div>
+    <figcaption>All three bisectors pass through <i>P</i>(120, 200). The dashed radii <span style="text-decoration:overline">PD</span>, <span style="text-decoration:overline">PE</span>, <span style="text-decoration:overline">PF</span> each measure 60 and each meets its side at 90&deg;, so <code>PD = PE = PF</code> and the circle is tangent to all three sides.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Study Tip &mdash; when you may NOT conclude &ldquo;bisector&rdquo;</div>
+    <svg id="fig4" viewBox="0 0 400 340" width="400" role="img" aria-label="Angle ABC with interior point D where AD equals CD but neither segment is perpendicular to a side; ray BD does not bisect the angle.">
+      <g data-part="ang">
+        <line class="g-line" x1="70" y1="170" x2="282" y2="37.5"/>
+        <line class="g-line" x1="70" y1="170" x2="282" y2="302.5"/>
+        <circle class="g-pt" cx="70" cy="170" r="4.5"/>
+        <text class="g-lbl" x="56" y="176" text-anchor="end">B</text>
+      </g>
+      <g data-part="eq">
+        <line class="g-line" x1="180" y1="175" x2="189.17" y2="95.53"/>
+        <line class="g-line" x1="180" y1="175" x2="201.36" y2="252.09"/>
+        <line class="g-tick" x1="191.54" y1="136.07" x2="177.64" y2="134.47"/>
+        <line class="g-tick" x1="197.43" y1="211.68" x2="183.93" y2="215.42"/>
+        <circle class="g-pt" cx="189.17" cy="95.53" r="4.5"/>
+        <circle class="g-pt" cx="201.36" cy="252.09" r="4.5"/>
+        <text class="g-lbl" x="200" y="88">A</text>
+        <text class="g-lbl" x="213" y="262">C</text>
+      </g>
+      <g data-part="not">
+        <line class="g-line" x1="70" y1="170" x2="180" y2="175"/>
+        <path class="g-angle" d="M 112.40 143.50 A 50 50 0 0 1 119.95 172.27"/>
+        <path class="g-angle" d="M 131.94 172.81 A 62 62 0 0 1 122.58 202.85"/>
+        <text class="g-meas g-halo" x="147" y="147">34.6&deg;</text>
+        <text class="g-meas g-halo" x="156" y="200">29.4&deg;</text>
+        <circle class="g-pt" cx="180" cy="175" r="4.5"/>
+        <text class="g-lbl g-halo" x="172" y="166" text-anchor="end">D</text>
+        <text class="g-meas g-halo" x="250" y="180" text-anchor="middle">BD does NOT bisect &ang;ABC</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','ang')">The angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','eq')">Equal segments AD = CD</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','not')">Unequal halves</button>
+    </div>
+    <figcaption>Here <code>AD = CD</code>, yet the two halves measure 34.6&deg; and 29.4&deg;. Nothing is perpendicular, so Theorem 6.5 does not apply. You must also know <span style="text-decoration:overline">AD</span> &perp; <span style="text-decoration:overline">BA</span> and <span style="text-decoration:overline">CD</span> &perp; <span style="text-decoration:overline">BC</span>.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Use the Angle Bisector Theorem &mdash; find QT</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Ray RT is the angle bisector of &ang;QRS. <span style="text-decoration:overline">QT</span> &perp; <span style="text-decoration:overline">RQ</span>, <span style="text-decoration:overline">ST</span> &perp; <span style="text-decoration:overline">RS</span>, QT = 4x + 8 and TS = 9x &minus; 7. Find QT.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 420 300" width="420" role="img" aria-label="Ray RT bisects angle QRS with perpendicular segments QT equal to 4x plus 8 and TS equal to 9x minus 7.">
+          <line class="g-line" x1="60" y1="245" x2="201.6" y2="63.8"/>
+          <line class="g-line" x1="60" y1="245" x2="350" y2="245"/>
+          <line class="g-line" x1="60" y1="245" x2="330" y2="113.3"/>
+          <line class="g-line" x1="156.9" y1="121.1" x2="217.3" y2="168.3"/>
+          <line class="g-line" x1="217.3" y1="168.3" x2="217.3" y2="245"/>
+          <path class="g-right" d="M 148.9 131.34 L 159.14 139.34 L 167.14 129.10"/>
+          <path class="g-right" d="M 204.3 245 L 204.3 232 L 217.3 232"/>
+          <path class="g-angle" d="M 104 245 A 44 44 0 0 0 99.55 225.71"/>
+          <path class="g-angle" d="M 112 245 A 52 52 0 0 0 106.74 222.20"/>
+          <path class="g-angle" d="M 99.55 225.71 A 44 44 0 0 0 87.09 210.33"/>
+          <path class="g-angle" d="M 106.74 222.20 A 52 52 0 0 0 92.02 204.02"/>
+          <circle class="g-pt" cx="60" cy="245" r="4.5"/>
+          <circle class="g-pt" cx="156.9" cy="121.1" r="4.5"/>
+          <circle class="g-pt" cx="217.3" cy="168.3" r="4.5"/>
+          <circle class="g-pt" cx="217.3" cy="245" r="4.5"/>
+          <text class="g-lbl" x="46" y="252" text-anchor="end">R</text>
+          <text class="g-lbl" x="146" y="114" text-anchor="end">Q</text>
+          <text class="g-lbl g-halo" x="228" y="162">T</text>
+          <text class="g-lbl" x="217" y="268" text-anchor="middle">S</text>
+          <text class="g-meas g-halo" x="196" y="132">4x + 8</text>
+          <text class="g-meas g-halo" x="228" y="211">9x &minus; 7</text>
+        </svg>
+        <figcaption>Both marked segments are perpendicular to a side, so both are true distances from <i>T</i> to the sides of &ang;QRS.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">QT = ST</span><span class="reason">Angle Bisector Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">4x + 8 = 9x &minus; 7</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&minus;5x = &minus;15</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x = 3</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">QT = 4(3) + 8</span><span class="reason">Substitute x = 3</span></div>
+      <div class="answer-box">QT = 20</div>
+      <div class="check-box"><strong>Check:</strong> TS = 9(3) &minus; 7 = 27 &minus; 7 = 20. Both distances are 20, exactly as the theorem promises. &#10003;</div>
+      <div class="warning-box"><strong>Trap:</strong> the question asked for <i>QT</i>, not <i>x</i>. Stopping at x = 3 loses the mark.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Check 1</span>
+      <span class="example-title">Same idea &mdash; find SP</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Ray JS bisects &ang;MJP, with <span style="text-decoration:overline">MS</span> &perp; <span style="text-decoration:overline">JM</span> and <span style="text-decoration:overline">SP</span> &perp; <span style="text-decoration:overline">JP</span>. If MS = 3x + 5 and SP = 6x &minus; 7, find SP.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">MS = SP</span><span class="reason">Angle Bisector Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">3x + 5 = 6x &minus; 7</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&minus;3x = &minus;12 &nbsp;&rarr;&nbsp; x = 4</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">SP = 6(4) &minus; 7 = 17</span><span class="reason">Substitute</span></div>
+      <div class="answer-box">SP = 17</div>
+      <div class="check-box"><strong>Check:</strong> MS = 3(4) + 5 = 17. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Use the Converse of the Angle Bisector Theorem &mdash; find m&ang;ZYW</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">In the figure, <span style="text-decoration:overline">WX</span> &perp; ray YX, <span style="text-decoration:overline">WZ</span> &perp; ray YZ, WX = WZ = 5, and m&ang;XYW = 38&deg;. Find m&ang;ZYW.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 420 300" width="420" role="img" aria-label="Point W is interior to angle XYZ with WX equal to WZ equal to 5 and both perpendicular to the sides, and angle XYW measures 38 degrees.">
+          <line class="g-line" x1="70" y1="235" x2="117.2" y2="45.8"/>
+          <line class="g-line" x1="70" y1="235" x2="340" y2="235"/>
+          <line class="g-line" x1="70" y1="235" x2="267" y2="81.1"/>
+          <line class="g-line" x1="98.6" y1="120.3" x2="188.2" y2="142.6"/>
+          <line class="g-line" x1="188.2" y1="142.6" x2="188.2" y2="235"/>
+          <path class="g-right" d="M 95.46 132.91 L 108.08 136.05 L 111.22 123.44"/>
+          <path class="g-right" d="M 175.2 235 L 175.2 222 L 188.2 222"/>
+          <line class="g-tick" x1="141.71" y1="138.25" x2="145.09" y2="124.65"/>
+          <line class="g-tick" x1="181.2" y1="188.8" x2="195.2" y2="188.8"/>
+          <path class="g-angle" d="M 118 235 A 48 48 0 0 0 107.82 205.45"/>
+          <path class="g-angle" d="M 126 235 A 56 56 0 0 0 114.13 200.52"/>
+          <path class="g-angle" d="M 107.82 205.45 A 48 48 0 0 0 81.61 188.43"/>
+          <path class="g-angle" d="M 114.13 200.52 A 56 56 0 0 0 83.55 180.66"/>
+          <circle class="g-pt" cx="70" cy="235" r="4.5"/>
+          <circle class="g-pt" cx="98.6" cy="120.3" r="4.5"/>
+          <circle class="g-pt" cx="188.2" cy="142.6" r="4.5"/>
+          <circle class="g-pt" cx="188.2" cy="235" r="4.5"/>
+          <text class="g-lbl" x="56" y="242" text-anchor="end">Y</text>
+          <text class="g-lbl" x="86" y="116" text-anchor="end">X</text>
+          <text class="g-lbl g-halo" x="200" y="136">W</text>
+          <text class="g-lbl" x="188" y="258" text-anchor="middle">Z</text>
+          <text class="g-meas g-halo" x="152" y="124" text-anchor="middle">5</text>
+          <text class="g-meas g-halo" x="200" y="192">5</text>
+          <text class="g-meas g-halo" x="109" y="175" text-anchor="middle">38&deg;</text>
+          <text class="g-meas g-halo" x="138" y="212" text-anchor="middle">38&deg;</text>
+        </svg>
+        <figcaption>Because <i>W</i> is interior and the two perpendicular distances are equal, ray YW must be the bisector &mdash; so the lower half also measures 38&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">WX &perp; YX, WZ &perp; YZ, WX = WZ</span><span class="reason">Given</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">ray YW bisects &ang;XYZ</span><span class="reason">Converse of the Angle Bisector Theorem</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&ang;ZYW &cong; &ang;XYW</span><span class="reason">Definition of angle bisector</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;ZYW = m&ang;XYW</span><span class="reason">Definition of congruent angles</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">m&ang;ZYW = 38</span><span class="reason">Substitution</span></div>
+      <div class="answer-box">m&ang;ZYW = 38&deg;</div>
+      <div class="check-box"><strong>Check:</strong> the whole angle is m&ang;XYZ = 38 + 38 = 76&deg;, and 38 is exactly half of 76. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Check 2</span>
+      <span class="example-title">Find m&ang;JKL</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Point L is interior to &ang;JKM, <span style="text-decoration:overline">LJ</span> &perp; ray KJ, <span style="text-decoration:overline">LM</span> &perp; ray KM, LJ = LM, and m&ang;LKM = 37&deg;. Find m&ang;JKL.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">LJ = LM with both perpendicular</span><span class="reason">Given</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">ray KL bisects &ang;JKM</span><span class="reason">Converse of the Angle Bisector Theorem</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;JKL = m&ang;LKM = 37</span><span class="reason">Definition of angle bisector</span></div>
+      <div class="answer-box">m&ang;JKL = 37&deg;</div>
+      <div class="check-box"><strong>Check:</strong> the full angle m&ang;JKM = 2(37) = 74&deg;. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Use the Incenter Theorem &mdash; find m&ang;LZP</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">P is the incenter of &#9651;XYZ. Ray XP bisects &ang;LXK, ray YP bisects &ang;KYJ, and ray ZP bisects &ang;LZJ. If m&ang;PXK = 24.6&deg; and m&ang;PYJ = 25.1&deg;, find m&ang;LZP.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 400 330" width="400" role="img" aria-label="Triangle XYZ with incenter P; half-angles of 24.6 degrees at X and 25.1 degrees at Y, perpendicular distances PL, PJ and PK all equal.">
+          <polygon class="g-shape" points="103.14,69.83 270,270 70,270"/>
+          <line class="g-line-thin" x1="103.14" y1="69.83" x2="141.15" y2="209.66"/>
+          <line class="g-line-thin" x1="270" y1="270" x2="141.15" y2="209.66"/>
+          <line class="g-line-thin" x1="70" y1="270" x2="141.15" y2="209.66"/>
+          <line class="g-dash" x1="141.15" y1="209.66" x2="141.15" y2="270"/>
+          <line class="g-dash" x1="141.15" y1="209.66" x2="81.62" y2="199.80"/>
+          <line class="g-dash" x1="141.15" y1="209.66" x2="187.49" y2="171.02"/>
+          <path class="g-right" d="M 128.15 270 L 128.15 257 L 141.15 257"/>
+          <path class="g-right" d="M 94.45 201.92 L 92.33 214.75 L 79.50 212.63"/>
+          <path class="g-right" d="M 177.51 179.35 L 185.83 189.34 L 195.81 181.01"/>
+          <path class="g-angle" d="M 128.75 100.55 A 40 40 0 0 1 113.64 108.43"/>
+          <path class="g-angle" d="M 113.64 108.43 A 40 40 0 0 1 96.61 109.29"/>
+          <path class="g-angle" d="M 243.11 237.73 A 42 42 0 0 0 231.98 252.15"/>
+          <path class="g-angle" d="M 231.98 252.15 A 42 42 0 0 0 228 270"/>
+          <path class="g-angle" d="M 114 270 A 44 44 0 0 0 103.56 241.54"/>
+          <path class="g-angle" d="M 114 270 A 44 44 0 0 0 77.19 226.59"/>
+          <circle class="g-pt" cx="103.14" cy="69.83" r="4.5"/>
+          <circle class="g-pt" cx="270" cy="270" r="4.5"/>
+          <circle class="g-pt" cx="70" cy="270" r="4.5"/>
+          <circle class="g-pt" cx="141.15" cy="270" r="4"/>
+          <circle class="g-pt" cx="81.62" cy="199.80" r="4"/>
+          <circle class="g-pt" cx="187.49" cy="171.02" r="4"/>
+          <circle class="g-pt" cx="141.15" cy="209.66" r="5"/>
+          <text class="g-lbl" x="103" y="56" text-anchor="middle">X</text>
+          <text class="g-lbl" x="286" y="284">Y</text>
+          <text class="g-lbl" x="54" y="284" text-anchor="end">Z</text>
+          <text class="g-lbl" x="141" y="292" text-anchor="middle">J</text>
+          <text class="g-lbl" x="66" y="194" text-anchor="end">L</text>
+          <text class="g-lbl" x="200" y="165">K</text>
+          <text class="g-lbl g-halo" x="150" y="204">P</text>
+          <text class="g-meas g-halo" x="142" y="116">24.6&deg;</text>
+          <text class="g-meas g-halo" x="216" y="230" text-anchor="end">25.1&deg;</text>
+          <text class="g-meas g-halo" x="122" y="252" text-anchor="middle">?</text>
+        </svg>
+        <figcaption>The three dashed radii <span style="text-decoration:overline">PL</span>, <span style="text-decoration:overline">PJ</span>, <span style="text-decoration:overline">PK</span> are all 60.3 units and all meet their side at 90&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;LXK = 2 &middot; m&ang;PXK = 2(24.6) = 49.2</span><span class="reason">Definition of angle bisector</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m&ang;KYJ = 2 &middot; m&ang;PYJ = 2(25.1) = 50.2</span><span class="reason">Definition of angle bisector</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;LXK + m&ang;KYJ + m&ang;LZJ = 180</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">49.2 + 50.2 + m&ang;LZJ = 180</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">m&ang;LZJ = 80.6</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">m&ang;LZP = &frac12;(80.6)</span><span class="reason">ray ZP bisects &ang;LZJ</span></div>
+      <div class="answer-box">m&ang;LZP = 40.3&deg;</div>
+      <div class="check-box"><strong>Check:</strong> 24.6 + 24.6 + 25.1 + 25.1 + 40.3 + 40.3 = 180. All six half-angles account for the full triangle sum. &#10003;</div>
+      <div class="warning-box"><strong>Trap:</strong> the given 24.6&deg; and 25.1&deg; are <em>halves</em>. You must double them <b>before</b> using the Triangle Angle-Sum Theorem, then halve the result at the end.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Check 3</span>
+      <span class="example-title">Find m&ang;JAC when J is the incenter of &#9651;ABC</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">J is the incenter of &#9651;ABC, m&ang;ABJ = 33.9&deg; and m&ang;BCJ = 28.5&deg;. Find m&ang;JAC.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;ABC = 2(33.9) = 67.8</span><span class="reason">BJ bisects &ang;ABC</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m&ang;BCA = 2(28.5) = 57.0</span><span class="reason">CJ bisects &ang;BCA</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;BAC = 180 &minus; 67.8 &minus; 57.0 = 55.2</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;JAC = &frac12;(55.2)</span><span class="reason">AJ bisects &ang;BAC</span></div>
+      <div class="answer-box">m&ang;JAC = 27.6&deg;</div>
+      <div class="check-box"><strong>Check:</strong> 67.8 + 57.0 + 55.2 = 180. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Using angle bisectors in design &mdash; locate the point equidistant from three roads</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A charging station must be equidistant from the three roads joining towns A(0, 0), B(2, 7) and C(9, 1). Find the approximate location of the station.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 400 370" width="400" role="img" aria-label="Coordinate plane with triangle A at origin, B at 2 comma 7, C at 9 comma 1, and the incenter near 3.3 comma 2.8.">
+          <g class="g-grid">
+            <line x1="50" y1="30" x2="50" y2="330"/><line x1="80" y1="30" x2="80" y2="330"/>
+            <line x1="110" y1="30" x2="110" y2="330"/><line x1="140" y1="30" x2="140" y2="330"/>
+            <line x1="170" y1="30" x2="170" y2="330"/><line x1="200" y1="30" x2="200" y2="330"/>
+            <line x1="230" y1="30" x2="230" y2="330"/><line x1="260" y1="30" x2="260" y2="330"/>
+            <line x1="290" y1="30" x2="290" y2="330"/><line x1="320" y1="30" x2="320" y2="330"/>
+            <line x1="350" y1="30" x2="350" y2="330"/>
+            <line x1="50" y1="30" x2="350" y2="30"/><line x1="50" y1="60" x2="350" y2="60"/>
+            <line x1="50" y1="90" x2="350" y2="90"/><line x1="50" y1="120" x2="350" y2="120"/>
+            <line x1="50" y1="150" x2="350" y2="150"/><line x1="50" y1="180" x2="350" y2="180"/>
+            <line x1="50" y1="210" x2="350" y2="210"/><line x1="50" y1="240" x2="350" y2="240"/>
+            <line x1="50" y1="270" x2="350" y2="270"/><line x1="50" y1="300" x2="350" y2="300"/>
+            <line x1="50" y1="330" x2="350" y2="330"/>
+          </g>
+          <line class="g-axis" x1="40" y1="330" x2="362" y2="330"/>
+          <line class="g-axis" x1="50" y1="340" x2="50" y2="22"/>
+          <text class="g-lbl-sm" x="110" y="348" text-anchor="middle">2</text>
+          <text class="g-lbl-sm" x="170" y="348" text-anchor="middle">4</text>
+          <text class="g-lbl-sm" x="230" y="348" text-anchor="middle">6</text>
+          <text class="g-lbl-sm" x="290" y="348" text-anchor="middle">8</text>
+          <text class="g-lbl-sm" x="350" y="348" text-anchor="middle">10</text>
+          <text class="g-lbl-sm" x="42" y="274" text-anchor="end">2</text>
+          <text class="g-lbl-sm" x="42" y="214" text-anchor="end">4</text>
+          <text class="g-lbl-sm" x="42" y="154" text-anchor="end">6</text>
+          <text class="g-lbl-sm" x="42" y="94" text-anchor="end">8</text>
+          <text class="g-lbl-sm" x="42" y="34" text-anchor="end">10</text>
+          <polygon class="g-shape" points="50,330 110,120 320,300"/>
+          <line class="g-line-thin" x1="50" y1="330" x2="148.2" y2="247"/>
+          <line class="g-line-thin" x1="110" y1="120" x2="148.2" y2="247"/>
+          <line class="g-line-thin" x1="320" y1="300" x2="148.2" y2="247"/>
+          <circle class="g-pt" cx="50" cy="330" r="4.5"/>
+          <circle class="g-pt" cx="110" cy="120" r="4.5"/>
+          <circle class="g-pt" cx="320" cy="300" r="4.5"/>
+          <circle class="g-pt" cx="148.2" cy="247" r="5.5"/>
+          <text class="g-lbl g-halo" x="44" y="322" text-anchor="end">A</text>
+          <text class="g-lbl g-halo" x="110" y="108" text-anchor="middle">B</text>
+          <text class="g-lbl g-halo" x="332" y="296">C</text>
+          <text class="g-grn g-halo" x="160" y="240">(3.3, 2.8)</text>
+        </svg>
+        <figcaption>The three angle bisectors of &#9651;ABC meet at the incenter, the only point equidistant from all three roads.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">Distance to a road = perpendicular distance</span><span class="reason">Definition of distance to a line</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">The point equidistant from all three sides is the incenter</span><span class="reason">Incenter Theorem</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">Construct the bisectors of &ang;A, &ang;B and &ang;C</span><span class="reason">Compass and straightedge (or software)</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">Read the point of concurrency</span><span class="reason">Point of concurrency = incenter</span></div>
+      <div class="answer-box">The station belongs at about (3.3, 2.8)</div>
+      <div class="check-box"><strong>Check:</strong> the point lies inside the triangle, which is where the incenter always lies &mdash; a quick sanity test. &#10003;</div>
+      <div class="info-box"><strong>Study Tip:</strong> if the problem had said &ldquo;equidistant from the three <b>towns</b>&rdquo; instead of the three <b>roads</b>, you would need the <em>circumcenter</em> (perpendicular bisectors) instead. Sides &rarr; incenter, vertices &rarr; circumcenter.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">Ray BD bisects &ang;ABC. If m&ang;ABD = 4x &minus; 3 and m&ang;DBC = 2x + 15, find m&ang;ABC.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">4x &minus; 3 = 2x + 15</span><span class="reason">Definition of angle bisector</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">2x = 18 &nbsp;&rarr;&nbsp; x = 9</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;ABD = 4(9) &minus; 3 = 33</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;ABC = 2(33)</span><span class="reason">The bisector makes two equal halves</span></div>
+      <div class="answer-box">m&ang;ABC = 66&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">P lies on the bisector of &ang;RST, <span style="text-decoration:overline">PA</span> &perp; ray SR and <span style="text-decoration:overline">PB</span> &perp; ray ST. If PA = 7y &minus; 4 and PB = 3y + 12, find PA.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">PA = PB</span><span class="reason">Angle Bisector Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">7y &minus; 4 = 3y + 12</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">4y = 16 &nbsp;&rarr;&nbsp; y = 4</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">PA = 7(4) &minus; 4 = 24</span><span class="reason">Substitution</span></div>
+      <div class="answer-box">PA = 24 &nbsp;(and PB = 3(4) + 12 = 24)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">Q is interior to &ang;MNK with <span style="text-decoration:overline">QM</span> &perp; ray NM, <span style="text-decoration:overline">QK</span> &perp; ray NK, QM = QK = 9, and m&ang;QNM = 24&deg;. Find m&ang;MNK.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">Q is interior and QM = QK, both &perp; to a side</span><span class="reason">Given</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">ray NQ bisects &ang;MNK</span><span class="reason">Converse of the Angle Bisector Theorem</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;QNK = m&ang;QNM = 24</span><span class="reason">Definition of angle bisector</span></div>
+      <div class="answer-box">m&ang;MNK = 24 + 24 = 48&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">I is the incenter of &#9651;DEF. If m&ang;IDE = 21&deg; and m&ang;IEF = 32&deg;, find m&ang;DFE.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;D = 2(21) = 42</span><span class="reason">DI bisects &ang;D</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m&ang;E = 2(32) = 64</span><span class="reason">EI bisects &ang;E</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;F = 180 &minus; 42 &minus; 64</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="answer-box">m&ang;DFE = 74&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">I is the incenter of &#9651;ABC and m&ang;BIC = 130&deg;. Find m&ang;A.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;IBC + m&ang;ICB = 180 &minus; 130 = 50</span><span class="reason">Triangle Angle-Sum in &#9651;BIC</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&frac12;m&ang;B + &frac12;m&ang;C = 50</span><span class="reason">BI and CI are bisectors</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;B + m&ang;C = 100</span><span class="reason">Multiply by 2</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;A = 180 &minus; 100</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="answer-box">m&ang;A = 80&deg;</div>
+      <div class="check-box"><strong>Shortcut:</strong> for any incenter, <code>m&ang;BIC = 90 + &frac12;m&ang;A</code>. Here 130 = 90 + &frac12;(80). &#10003;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6</h4>
+    <div class="prob">I is the incenter of &#9651;XYZ. The perpendicular distances to two of the sides are IA = 3a + 2 and IB = a + 10. Find the distance from I to the third side.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">IA = IB</span><span class="reason">Incenter Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">3a + 2 = a + 10</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">2a = 8 &nbsp;&rarr;&nbsp; a = 4</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">IA = 3(4) + 2 = 14</span><span class="reason">Substitution</span></div>
+      <div class="answer-box">The distance to the third side is also 14</div>
+      <div class="check-box"><strong>Why:</strong> the incenter is equidistant from <em>all three</em> sides, so the third distance equals the other two. &#10003;</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Given: a ray bisects an angle; two half-angles are expressions</td><td>Set the two expressions equal</td><td>Solve for x, then double for the whole angle</td></tr>
+    <tr><td>Given: a point on the bisector with two <b>perpendicular</b> segments to the sides</td><td>Angle Bisector Theorem &rarr; set the lengths equal</td><td>Solve for x, then substitute for the length asked</td></tr>
+    <tr><td>Given: an interior point, two perpendicular segments, equal lengths</td><td>Converse of the Angle Bisector Theorem</td><td>The ray is a bisector, so the two half-angles are equal</td></tr>
+    <tr><td>Given: the incenter and one half-angle at a vertex</td><td>Double it to get the whole vertex angle</td><td>Use the Triangle Angle-Sum Theorem for the third angle</td></tr>
+    <tr><td>Given: the incenter and one perpendicular distance</td><td>Incenter Theorem</td><td>All three distances are equal; that value is the inradius</td></tr>
+    <tr><td>Asked: point equidistant from the three <b>sides</b></td><td>Intersect the three angle bisectors</td><td>Incenter (always inside the triangle)</td></tr>
+    <tr><td>Asked: point equidistant from the three <b>vertices</b></td><td>Intersect the three perpendicular bisectors</td><td>Circumcenter &mdash; a different point</td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">m&ang;ABD = m&ang;DBC</span>
+    <span class="pill">m&ang;ABC = 2 &middot; m&ang;ABD</span>
+    <span class="pill">DF = FE (Thm 6.4)</span>
+    <span class="pill">DF = FE &rArr; bisector (Thm 6.5)</span>
+    <span class="pill">PD = PE = PF (Thm 6.6)</span>
+    <span class="pill">m&ang;A + m&ang;B + m&ang;C = 180&deg;</span>
+    <span class="pill">m&ang;BIC = 90&deg; + &frac12;m&ang;A</span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8;">
+      <li>Using two segments that are <b>not</b> perpendicular to the sides. No right-angle mark, no theorem.</li>
+      <li>Forgetting the point must be <b>interior</b> to the angle when you apply the converse.</li>
+      <li>Solving for <i>x</i> and stopping, when the question asked for a length or an angle measure.</li>
+      <li>Treating a given half-angle as the whole vertex angle in the Triangle Angle-Sum Theorem &mdash; double it first.</li>
+      <li>Confusing incenter (bisectors, equidistant from <b>sides</b>) with circumcenter (perpendicular bisectors, equidistant from <b>vertices</b>).</li>
+      <li>Assuming equal segments from an interior point to the two sides always means a bisector &mdash; only when they are perpendicular.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+{q:"An angle bisector divides an angle into &mdash;",opts:["two congruent angles","two supplementary angles","two right angles","two complementary angles"],ans:0,exp:"That is the definition. The two halves are congruent, so each is exactly half of the original angle measure. They need not be right, complementary or supplementary."},
+{q:"Angle Bisector Theorem: a point on the bisector of an angle is equidistant from the &mdash;",opts:["vertex of the angle","sides of the angle","endpoints of the rays","opposite side of the triangle"],ans:1,exp:"Theorem 6.4 compares the two perpendicular distances from the point to the two SIDES (rays) of the angle. Distance to a vertex is a single number, so there would be nothing to compare."},
+{q:"Ray BD bisects &ang;ABC. If m&ang;ABD = 3x + 5 and m&ang;DBC = 5x &minus; 11, find x.",opts:["3","6","8","16"],ans:2,exp:"A bisector makes the halves equal: 3x + 5 = 5x &minus; 11, so 16 = 2x and x = 8. Check: 3(8) + 5 = 29 and 5(8) &minus; 11 = 29.",fig:'<svg viewBox="0 0 300 280" width="300" role="img" aria-label="Angle ABC of 84 degrees with bisector BD; halves labelled 3x plus 5 and 5x minus 11."><line class="g-line" x1="50" y1="140" x2="157.7" y2="43"/><line class="g-line" x1="50" y1="140" x2="157.7" y2="237"/><line class="g-line" x1="50" y1="140" x2="215" y2="140"/><path class="g-angle" d="M 90 140 A 40 40 0 0 0 79.73 113.23"/><path class="g-angle" d="M 98 140 A 48 48 0 0 0 85.67 107.88"/><path class="g-angle" d="M 79.73 166.77 A 40 40 0 0 0 90 140"/><path class="g-angle" d="M 85.67 172.12 A 48 48 0 0 0 98 140"/><circle class="g-pt" cx="50" cy="140" r="4.5"/><text class="g-lbl" x="38" y="146" text-anchor="end">B</text><text class="g-lbl" x="166" y="38">A</text><text class="g-lbl" x="166" y="250">C</text><text class="g-lbl" x="222" y="144">D</text><text class="g-meas g-halo" x="117" y="114" text-anchor="middle">3x + 5</text><text class="g-meas g-halo" x="117" y="170" text-anchor="middle">5x &minus; 11</text></svg>'},
+{q:"Ray RT bisects &ang;QRS, with <span style=\"text-decoration:overline\">QT</span> &perp; <span style=\"text-decoration:overline\">RQ</span> and <span style=\"text-decoration:overline\">ST</span> &perp; <span style=\"text-decoration:overline\">RS</span>. If QT = 4x + 8 and TS = 9x &minus; 7, find QT.",opts:["3","15","12","20"],ans:3,exp:"By Theorem 6.4 the two perpendicular distances are equal: 4x + 8 = 9x &minus; 7 gives &minus;5x = &minus;15 and x = 3. The question wants QT, so substitute: QT = 4(3) + 8 = 20. Choice A is only the value of x."},
+{q:"Ray YW bisects &ang;XYZ and m&ang;XYW = 38&deg;. Find m&ang;XYZ.",opts:["19&deg;","38&deg;","76&deg;","142&deg;"],ans:2,exp:"The 38&deg; is one HALF of the angle, so the whole angle is 2(38) = 76&deg;. Choice A halves it again and choice D wrongly treats the halves as supplementary."},
+{q:"P is on the bisector of &ang;RST, with <span style=\"text-decoration:overline\">PD</span> &perp; ray SR and <span style=\"text-decoration:overline\">PE</span> &perp; ray ST. If PD = 2x + 3 and PE = 4x &minus; 9, find PD.",opts:["6","15","12","21"],ans:1,exp:"Set the distances equal: 2x + 3 = 4x &minus; 9, so 12 = 2x and x = 6. Then PD = 2(6) + 3 = 15, and PE = 4(6) &minus; 9 = 15 as a check. Choice A is x, not PD.",fig:'<svg viewBox="0 0 340 250" width="340" role="img" aria-label="Point P on the bisector of angle RST with perpendicular distances 2x plus 3 and 4x minus 9."><line class="g-line" x1="50" y1="200" x2="178.6" y2="46.8"/><line class="g-line" x1="50" y1="200" x2="300" y2="200"/><line class="g-line" x1="50" y1="200" x2="258.4" y2="102.8"/><line class="g-line" x1="146.1" y1="85.5" x2="199.5" y2="130.3"/><line class="g-line" x1="199.5" y1="130.3" x2="199.5" y2="200"/><path class="g-right" d="M 138.39 94.69 L 147.58 102.40 L 155.29 93.21"/><path class="g-right" d="M 187.5 200 L 187.5 188 L 199.5 188"/><path class="g-angle" d="M 90 200 A 40 40 0 0 0 86.25 183.10"/><path class="g-angle" d="M 97 200 A 47 47 0 0 0 92.60 180.14"/><path class="g-angle" d="M 86.25 183.10 A 40 40 0 0 0 75.71 169.36"/><path class="g-angle" d="M 92.60 180.14 A 47 47 0 0 0 80.21 164.00"/><circle class="g-pt" cx="50" cy="200" r="4.5"/><circle class="g-pt" cx="146.1" cy="85.5" r="4.5"/><circle class="g-pt" cx="199.5" cy="130.3" r="4.5"/><circle class="g-pt" cx="199.5" cy="200" r="4.5"/><text class="g-lbl" x="38" y="207" text-anchor="end">S</text><text class="g-lbl" x="136" y="78" text-anchor="end">D</text><text class="g-lbl g-halo" x="206" y="126">P</text><text class="g-lbl" x="199" y="222" text-anchor="middle">E</text><text class="g-meas g-halo" x="183" y="100">2x + 3</text><text class="g-meas g-halo" x="208" y="170">4x &minus; 9</text></svg>'},
+{q:"The point of concurrency of the three angle bisectors of a triangle is called the &mdash;",opts:["circumcenter","centroid","incenter","orthocenter"],ans:2,exp:"Angle bisectors meet at the incenter. Perpendicular bisectors meet at the circumcenter, medians at the centroid, and altitudes at the orthocenter."},
+{q:"By the Incenter Theorem, the incenter of a triangle is equidistant from the &mdash;",opts:["vertices of the triangle","sides of the triangle","midpoints of the sides","feet of the altitudes"],ans:1,exp:"The incenter lies on all three angle bisectors, and every point on a bisector is equidistant from the two SIDES of that angle. Equidistant from the vertices describes the circumcenter instead."},
+{q:"P is the incenter of &#9651;XYZ. If m&ang;PXK = 24.6&deg; and m&ang;PYJ = 25.1&deg;, find m&ang;LZJ.",opts:["40.3&deg;","49.2&deg;","50.2&deg;","80.6&deg;"],ans:3,exp:"Double each half first: m&ang;LXK = 2(24.6) = 49.2&deg; and m&ang;KYJ = 2(25.1) = 50.2&deg;. Then the Triangle Angle-Sum Theorem gives m&ang;LZJ = 180 &minus; 49.2 &minus; 50.2 = 80.6&deg;. Choices B and C are just the doubled vertex angles."},
+{q:"For that same triangle (m&ang;PXK = 24.6&deg;, m&ang;PYJ = 25.1&deg;), find m&ang;LZP.",opts:["40.3&deg;","80.6&deg;","20.15&deg;","49.7&deg;"],ans:0,exp:"The whole angle at Z is 80.6&deg;, and ray ZP bisects it because P is the incenter. So m&ang;LZP = &frac12;(80.6) = 40.3&deg;. Choice B forgets to halve; choice C halves twice."},
+{q:"In &#9651;ABC, m&ang;A = 50&deg; and m&ang;B = 70&deg;. If I is the incenter, find m&ang;AIB.",opts:["110&deg;","120&deg;","125&deg;","130&deg;"],ans:1,exp:"In &#9651;AIB the angles at A and B are halved: m&ang;IAB = 25&deg; and m&ang;IBA = 35&deg;. So m&ang;AIB = 180 &minus; 25 &minus; 35 = 120&deg;. The shortcut 90 + &frac12;m&ang;C gives 90 + &frac12;(60) = 120&deg; as well."},
+{q:"D is in the interior of &ang;ABC and AD = CD. Which extra fact lets you conclude that ray BD bisects &ang;ABC?",opts:["AB = CB","&ang;BAD &cong; &ang;BCD","<span style=\"text-decoration:overline\">AD</span> &perp; <span style=\"text-decoration:overline\">BA</span> and <span style=\"text-decoration:overline\">CD</span> &perp; <span style=\"text-decoration:overline\">BC</span>","D is the midpoint of <span style=\"text-decoration:overline\">AC</span>"],ans:2,exp:"The converse only applies to PERPENDICULAR distances. Without the right angles, AD and CD are just two equal slanted segments and the two halves of the angle can easily differ, as the Study Tip figure shows."},
+{q:"P is in the interior of &ang;ABC with <span style=\"text-decoration:overline\">PX</span> &perp; ray BA, <span style=\"text-decoration:overline\">PY</span> &perp; ray BC and PX = PY. What follows?",opts:["P is the midpoint of <span style=\"text-decoration:overline\">XY</span>","BX = BP","&ang;ABC is a right angle","P lies on the bisector of &ang;ABC"],ans:3,exp:"This is exactly the hypothesis of Theorem 6.5, the converse: an interior point equidistant (perpendicularly) from both sides must lie on the bisector. Nothing here forces the angle to be right or P to be a midpoint."},
+{q:"Ray MR bisects &ang;NMP. If m&ang;NMR = 5x + 8 and m&ang;RMP = 8x &minus; 16, find x.",opts:["8","3","24","48"],ans:0,exp:"Equal halves give 5x + 8 = 8x &minus; 16, so 24 = 3x and x = 8. Choice C is the value of each half angle, 5(8) + 8 = 48 is the whole angle, and neither is x."},
+{q:"Ray YL bisects &ang;JYF. If m&ang;JYL = 8x + 10 and m&ang;LYF = 11x &minus; 8, find m&ang;JYF.",opts:["6","58","64","116"],ans:3,exp:"First 8x + 10 = 11x &minus; 8 gives 18 = 3x and x = 6. Each half is 8(6) + 10 = 58&deg;, so the WHOLE angle &ang;JYF is 2(58) = 116&deg;. Choice A is x and choice B is only one half."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

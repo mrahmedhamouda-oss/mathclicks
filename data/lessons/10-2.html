@@ -1,0 +1,937 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Find the measures of central angles and arcs, add adjacent arcs, and compute arc length in both degrees and radians.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<!-- ==================== CONCEPTS ==================== -->
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Central Angles &mdash; the angle that "owns" the arc</h3>
+    <p>A <b>central angle</b> is an angle that sits right at the middle of the circle. Its vertex
+    is the <em>center</em>, and both of its sides are <em>radii</em>. Because the two sides reach
+    all the way out to the circle, a central angle "cuts out" a piece of the circle &mdash; and the
+    size of that piece is exactly the size of the angle.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>central angle of a circle</b> &mdash; an angle with a vertex at the center of a circle and sides that are radii. In &#9737;<i>B</i>, &ang;<i>ABC</i> is a central angle.</div>
+      <div class="vocab-item"><b>degree</b> &mdash; <sup>1</sup>&frasl;<sub>360</sub> of the circular rotation about a point. That is why one full turn is 360&deg;.</div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Sum of Central Angles</div>
+      <div class="theorem-body">
+        <b>Words:</b> The sum of the measures of the central angles of a circle with no interior
+        points in common is 360&deg;.<br>
+        <b>Example:</b> <code>m&ang;1 + m&ang;2 + m&ang;3 = 360&deg;</code>
+      </div>
+    </div>
+    <div class="info-box"><strong>Why it works:</strong> "No interior points in common" just means
+    the angles do not overlap. Laid side by side they sweep out one complete rotation, and one
+    complete rotation is 360 degrees.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Arcs: minor, major, and semicircle</h3>
+    <p>An <b>arc</b> is a piece of the circle itself &mdash; the curved part, not the region inside.
+    Any two points on a circle split it into two arcs: a short one and a long one.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>arc</b> &mdash; part of a circle defined by two endpoints.</div>
+      <div class="vocab-item"><b>minor arc</b> &mdash; an arc measuring <em>less than</em> 180&deg;. Its measure equals its related central angle: <code>m(arc&nbsp;PR) = m&ang;PQR</code>.</div>
+      <div class="vocab-item"><b>major arc</b> &mdash; an arc measuring <em>more than</em> 180&deg;. <code>m(arc&nbsp;PSR) = 360&deg; &minus; m(arc&nbsp;PR)</code>.</div>
+      <div class="vocab-item"><b>semicircle</b> &mdash; an arc measuring exactly 180&deg;. Its endpoints lie on a diameter: <code>m(arc&nbsp;RST) = 180&deg;</code>.</div>
+      <div class="vocab-item"><b>congruent arcs</b> &mdash; arcs in the same circle, or in congruent circles, that have the same measure.</div>
+      <div class="vocab-item"><b>adjacent arcs</b> &mdash; arcs of a circle that have exactly one point in common.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Naming Arcs:</strong> Minor arcs are named by just
+    their two endpoints (arc&nbsp;<i>PR</i>). Major arcs and semicircles need <em>three</em> letters:
+    the two endpoints plus a point on the arc that lies between them (arc&nbsp;<i>PSR</i>). Without
+    the middle letter nobody can tell which way around the circle you went.</div>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 10.2</div>
+      <div class="theorem-body">
+        <b>Words:</b> In the same circle or in congruent circles, two minor arcs are congruent
+        <em>if and only if</em> their central angles are congruent.<br>
+        <b>Example:</b> If &ang;1 &cong; &ang;2, then arc&nbsp;<i>FG</i> &cong; arc&nbsp;<i>HJ</i>.
+        If arc&nbsp;<i>FG</i> &cong; arc&nbsp;<i>HJ</i>, then &ang;1 &cong; &ang;2.
+      </div>
+    </div>
+    <div class="warning-box"><strong>Watch Out!</strong> "If and only if" means the statement works in
+    <em>both</em> directions. Equal central angles force equal arcs, and equal arcs force equal
+    central angles &mdash; but only inside the same circle or congruent circles. A 60&deg; arc on a
+    tiny circle and a 60&deg; arc on a huge circle have the same <em>measure</em> but very different
+    <em>lengths</em>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Adding arcs</h3>
+    <p>If two arcs touch at exactly one point, you can glue them together and just add their
+    measures &mdash; exactly like adjacent angles.</p>
+    <div class="theorem">
+      <div class="theorem-head">Postulate 10.2 &middot; Arc Addition Postulate</div>
+      <div class="theorem-body">
+        <b>Words:</b> The measure of an arc formed by two adjacent arcs is the sum of the measures
+        of the two arcs.<br>
+        <b>Example:</b> <code>m(arc&nbsp;XZ) = m(arc&nbsp;XY) + m(arc&nbsp;YZ)</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Arc length &mdash; how far is it, really?</h3>
+    <p>The <em>measure</em> of an arc is in degrees. The <b>arc length</b> is the actual distance you
+    would walk along the curve, in centimetres, metres, inches &hellip; An arc is a fraction of the
+    whole circle, so its length is that same fraction of the circumference.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Arc Length in Degrees</div>
+      <div class="theorem-body">
+        <b>Words:</b> The ratio of the length of an arc &#8467; to the circumference of the circle is
+        equal to the ratio of the degree measure of the arc to 360&deg;.
+        <div class="formula-box">
+          Proportion:&nbsp;&nbsp; &#8467; &divide; (2&pi;r) = x &divide; 360<br>
+          Equation:&nbsp;&nbsp;&nbsp;&nbsp; &#8467; = (x / 360) &middot; 2&pi;r
+        </div>
+      </div>
+    </div>
+    <div class="warning-box"><strong>Watch Out! &mdash; Arc Length vs. Arc Measure:</strong> The
+    <em>length</em> of an arc is given in linear units such as centimetres. The <em>measure</em> of
+    an arc is given in degrees. They are different quantities and they are never interchangeable.</div>
+    <div class="info-box"><strong>Problem-Solving Tip:</strong> If you forget the formula, rebuild it.
+    An arc is a portion of a circle, so its length is a fraction of the circumference. That fraction
+    is (arc measure)/360. Multiply it by 2&pi;r and you are done.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Radian measure</h3>
+    <p>Degrees are an arbitrary human choice. A <b>radian</b> is the natural unit: it is the angle
+    you get when the arc you cut off is exactly as long as the radius.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>arc length</b> &mdash; the distance between the endpoints of an arc measured along the arc, in linear units.</div>
+      <div class="vocab-item"><b>radian</b> &mdash; a unit of angular measurement equal to <code>180&deg;/&pi;</code>, or about 57.296&deg;.</div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Radian Measure</div>
+      <div class="theorem-body">
+        The radian measure &theta; of a central angle is the ratio of the arc length to the radius
+        of the circle.
+        <div class="formula-box">&theta; = &#8467; / r &nbsp;&nbsp;radians &nbsp;&nbsp;&#8658;&nbsp;&nbsp; &#8467; = r&theta;</div>
+      </div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Degree and Radian Conversion Rules</div>
+      <div class="theorem-body">
+        <div class="steps-list">
+          <div class="s">To convert a <b>degree</b> measure to <b>radians</b>, multiply by
+            <code>&pi;&nbsp;radians / 180&deg;</code>.</div>
+          <div class="s">To convert a <b>radian</b> measure to <b>degrees</b>, multiply by
+            <code>180&deg; / &pi;&nbsp;radians</code>.</div>
+        </div>
+        <p style="margin-top:8px">Both rules are just multiplying by 1, because
+        <code>180&deg; = &pi;&nbsp;radians</code>. Put the unit you <em>want</em> on top.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt">Central angles that do not overlap add to <b>360&deg;</b>.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt">A <b>minor arc</b> has the same measure as its central angle. A <b>major arc</b> is <code>360&deg; &minus; </code>the minor arc. A <b>semicircle</b> is <code>180&deg;</code>.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt">Adjacent arcs add: <code>m(arc&nbsp;XZ) = m(arc&nbsp;XY) + m(arc&nbsp;YZ)</code>.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt">Arc <b>length</b>: <code>&#8467; = (x/360) &middot; 2&pi;r</code> &nbsp;(degrees) &nbsp;or&nbsp; <code>&#8467; = r&theta;</code> &nbsp;(radians).</div></div>
+  <div class="keyfact"><div class="ico">5</div><div class="txt"><code>180&deg; = &pi;&nbsp;radians</code>. Degrees &rarr; radians: <code>&times; &pi;/180</code>. Radians &rarr; degrees: <code>&times; 180/&pi;</code>.</div></div>
+</section>
+
+<!-- ==================== FIGURES ==================== -->
+<section id="figures">
+  <h2>Key Figures</h2>
+  <p style="font-size:14.5px;line-height:1.7;margin-bottom:6px">Click a chip under any diagram to
+  isolate that part of the picture. Click it again to bring everything back.</p>
+
+  <!-- FIG 1 : central angle, minor arc, major arc -->
+  <figure class="fig">
+    <div class="fig-title">Central Angle, Minor Arc, Major Arc</div>
+    <svg id="fig1" viewBox="0 0 440 320" width="440" role="img" aria-label="Circle O with a 100 degree central angle AOB, minor arc AB and major arc ACB">
+      <circle cx="220" cy="165" r="105" class="g-line-thin" fill="none"/>
+      <g data-part="radii" class="g-hot">
+        <line class="g-line" x1="220" y1="165" x2="152.51" y2="84.57"/>
+        <line class="g-line" x1="220" y1="165" x2="310.93" y2="112.50"/>
+      </g>
+      <g data-part="angle" class="g-hot">
+        <path class="g-angle" d="M 251.18 147.00 A 36 36 0 0 0 196.86 137.42"/>
+        <text class="g-meas" x="230.07" y="107.88" text-anchor="middle">100&deg;</text>
+      </g>
+      <g data-part="minor" class="g-hot">
+        <path class="g-arc" d="M 152.51 84.57 A 105 105 0 0 1 310.93 112.50"/>
+        <text class="g-grn" x="241.53" y="42.88" text-anchor="middle">minor arc AB = 100&deg;</text>
+      </g>
+      <g data-part="major" class="g-hot">
+        <path class="g-dash" d="M 152.51 84.57 A 105 105 0 1 0 310.93 112.50"/>
+        <text class="g-meas" x="121.95" y="247.28" text-anchor="middle">major arc ACB = 260&deg;</text>
+      </g>
+      <circle class="g-pt" cx="220" cy="165" r="4.5"/>
+      <circle class="g-pt" cx="152.51" cy="84.57" r="4.5"/>
+      <circle class="g-pt" cx="310.93" cy="112.50" r="4.5"/>
+      <circle class="g-pt" cx="184.09" cy="263.67" r="4.5"/>
+      <text class="g-lbl" x="139.01" y="68.48" text-anchor="middle">A</text>
+      <text class="g-lbl" x="329.12" y="102.00" text-anchor="middle">B</text>
+      <text class="g-lbl" x="176.91" y="283.40" text-anchor="middle">C</text>
+      <text class="g-lbl" x="206" y="158" text-anchor="end">O</text>
+    </svg>
+    <figcaption>&ang;AOB is a central angle of &#9737;O, so m(arc&nbsp;AB) = m&ang;AOB = 100&deg;.
+    The major arc uses the third letter C: m(arc&nbsp;ACB) = 360&deg; &minus; 100&deg; = 260&deg;.
+    Together the two arcs make the whole circle: 100 + 260 = 360.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','radii')">Radii</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','angle')">Central angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','minor')">Minor arc</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','major')">Major arc</button>
+    </div>
+  </figure>
+
+  <!-- FIG 2 : semicircles -->
+  <figure class="fig">
+    <div class="fig-title">A Diameter Creates Two Semicircles</div>
+    <svg id="fig2" viewBox="0 0 430 300" width="430" role="img" aria-label="Circle O with diameter PQ splitting the circle into two 180 degree semicircles PRQ and PSQ">
+      <circle cx="215" cy="160" r="100" class="g-line-thin" fill="none"/>
+      <g data-part="diam" class="g-hot">
+        <line class="g-line" x1="115" y1="160" x2="315" y2="160"/>
+        <path class="g-angle" d="M 247 160 A 32 32 0 0 0 183 160"/>
+      </g>
+      <g data-part="upper" class="g-hot">
+        <path class="g-arc" d="M 115 160 A 100 100 0 0 1 315 160"/>
+        <text class="g-grn" x="215" y="34" text-anchor="middle">arc PRQ = 180&deg;</text>
+      </g>
+      <g data-part="lower" class="g-hot">
+        <path class="g-dash" d="M 115 160 A 100 100 0 0 0 315 160"/>
+        <text class="g-meas" x="215" y="288" text-anchor="middle">arc PSQ = 180&deg;</text>
+      </g>
+      <circle class="g-pt" cx="215" cy="160" r="4.5"/>
+      <circle class="g-pt" cx="115" cy="160" r="4.5"/>
+      <circle class="g-pt" cx="315" cy="160" r="4.5"/>
+      <circle class="g-pt" cx="172.74" cy="69.37" r="4.5"/>
+      <circle class="g-pt" cx="180.80" cy="253.97" r="4.5"/>
+      <text class="g-lbl" x="98" y="166" text-anchor="end">P</text>
+      <text class="g-lbl" x="332" y="166" text-anchor="start">Q</text>
+      <text class="g-lbl" x="164.29" y="51.24" text-anchor="middle">R</text>
+      <text class="g-lbl" x="173.96" y="272.76" text-anchor="middle">S</text>
+      <text class="g-lbl g-halo" x="206" y="152" text-anchor="end">O</text>
+    </svg>
+    <figcaption>Because <span style="text-decoration:overline">PQ</span> is a diameter, &ang;POQ is a
+    straight angle of 180&deg;. Each half of the circle is therefore a semicircle of exactly 180&deg;.
+    Note the three-letter names: arc&nbsp;PRQ and arc&nbsp;PSQ are different arcs even though they
+    share endpoints P and Q.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','diam')">Diameter</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','upper')">Semicircle PRQ</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','lower')">Semicircle PSQ</button>
+    </div>
+  </figure>
+
+  <!-- FIG 3 : arc addition -->
+  <figure class="fig">
+    <div class="fig-title">Arc Addition Postulate</div>
+    <svg id="fig3" viewBox="0 0 420 300" width="420" role="img" aria-label="Circle W with adjacent arcs XY of 70 degrees and YZ of 50 degrees forming arc XZ of 120 degrees">
+      <circle cx="210" cy="160" r="100" class="g-line-thin" fill="none"/>
+      <g data-part="radii" class="g-hot">
+        <line class="g-line" x1="210" y1="160" x2="111.52" y2="177.36"/>
+        <line class="g-line" x1="210" y1="160" x2="160.00" y2="73.40"/>
+        <line class="g-line" x1="210" y1="160" x2="244.20" y2="66.03"/>
+      </g>
+      <g data-part="a1" class="g-hot">
+        <path class="g-arc" d="M 111.52 177.36 A 100 100 0 0 0 160.00 73.40"/>
+        <path class="g-angle" d="M 191.00 127.09 A 38 38 0 0 0 172.58 166.60"/>
+        <text class="g-meas" x="152.00" y="132.95" text-anchor="middle">70&deg;</text>
+      </g>
+      <g data-part="a2" class="g-hot">
+        <path class="g-arc" d="M 160.00 73.40 A 100 100 0 0 0 244.20 66.03"/>
+        <path class="g-angle" d="M 223.00 124.29 A 38 38 0 0 0 191.00 127.09"/>
+        <text class="g-meas" x="204.42" y="96.24" text-anchor="middle">50&deg;</text>
+      </g>
+      <circle class="g-pt" cx="210" cy="160" r="4.5"/>
+      <circle class="g-pt" cx="111.52" cy="177.36" r="4.5"/>
+      <circle class="g-pt" cx="160.00" cy="73.40" r="4.5"/>
+      <circle class="g-pt" cx="244.20" cy="66.03" r="4.5"/>
+      <text class="g-lbl" x="91.82" y="180.84" text-anchor="end">X</text>
+      <text class="g-lbl" x="150.00" y="56.08" text-anchor="middle">Y</text>
+      <text class="g-lbl" x="253.04" y="47.24" text-anchor="middle">Z</text>
+      <text class="g-lbl" x="222" y="176" text-anchor="start">W</text>
+      <text class="g-grn" x="210" y="285" text-anchor="middle">m(arc XZ) = 70&deg; + 50&deg; = 120&deg;</text>
+    </svg>
+    <figcaption>arc&nbsp;XY and arc&nbsp;YZ are adjacent &mdash; they meet at exactly one point, Y.
+    So their measures simply add: m(arc&nbsp;XZ) = m(arc&nbsp;XY) + m(arc&nbsp;YZ) = 120&deg;.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','radii')">Radii</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','a1')">arc XY (70&deg;)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','a2')">arc YZ (50&deg;)</button>
+    </div>
+  </figure>
+
+  <!-- FIG 4 : arc length / radian -->
+  <figure class="fig">
+    <div class="fig-title">Arc Length and Radian Measure</div>
+    <svg id="fig4" viewBox="0 0 400 300" width="400" role="img" aria-label="Circle O with radius r, central angle of 60 degrees and the arc length l it cuts off">
+      <circle cx="200" cy="165" r="95" class="g-line-thin" fill="none"/>
+      <g data-part="rad" class="g-hot">
+        <line class="g-line" x1="200" y1="165" x2="295" y2="165"/>
+        <line class="g-line" x1="200" y1="165" x2="247.50" y2="82.73"/>
+        <text class="g-meas-b g-halo" x="247.5" y="185" text-anchor="middle">r</text>
+      </g>
+      <g data-part="ang" class="g-hot">
+        <path class="g-angle" d="M 236 165 A 36 36 0 0 0 218 133.82"/>
+        <text class="g-meas" x="250.50" y="139.00" text-anchor="middle">60&deg;</text>
+      </g>
+      <g data-part="len" class="g-hot">
+        <path class="g-arc" d="M 295 165 A 95 95 0 0 0 247.50 82.73"/>
+        <text class="g-grn" x="306" y="106" text-anchor="start">&#8467;</text>
+      </g>
+      <circle class="g-pt" cx="200" cy="165" r="4.5"/>
+      <circle class="g-pt" cx="295" cy="165" r="4.5"/>
+      <circle class="g-pt" cx="247.50" cy="82.73" r="4.5"/>
+      <text class="g-lbl" x="313" y="171" text-anchor="start">A</text>
+      <text class="g-lbl" x="257.50" y="65.41" text-anchor="middle">B</text>
+      <text class="g-lbl" x="192" y="183" text-anchor="end">O</text>
+      <text class="g-lbl-sm" x="200" y="288" text-anchor="middle">&#8467; = (60/360) &middot; 2&pi;r &nbsp;&nbsp;and&nbsp;&nbsp; &theta; = &#8467;/r = &pi;/3 radians</text>
+    </svg>
+    <figcaption>The 60&deg; central angle cuts off <sup>60</sup>&frasl;<sub>360</sub> = <sup>1</sup>&frasl;<sub>6</sub>
+    of the circumference. In radians the same angle is &#8467;/r = &pi;/3 &asymp; 1.047 radians &mdash;
+    the arc is a little longer than one radius.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','rad')">Radii</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','ang')">Central angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','len')">Arc length &#8467;</button>
+    </div>
+  </figure>
+</section>
+
+<!-- ==================== EXAMPLES ==================== -->
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <!-- EXAMPLE 1 -->
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Find Measures of Central Angles</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Find the value of x.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 340 270" width="340" role="img" aria-label="Circle A with central angles of 90 degrees, 40 degrees, 85 degrees and x degrees">
+          <circle cx="170" cy="130" r="95" class="g-line-thin" fill="none"/>
+          <line class="g-line" x1="170" y1="130" x2="75" y2="130"/>
+          <line class="g-line" x1="170" y1="130" x2="97.23" y2="68.94"/>
+          <line class="g-line" x1="170" y1="130" x2="224.49" y2="52.18"/>
+          <line class="g-line" x1="170" y1="130" x2="170" y2="225"/>
+          <path class="g-right" d="M 170 146 L 154 146 L 154 130"/>
+          <text class="g-meas" x="140.30" y="159.70" text-anchor="middle">90&deg;</text>
+          <text class="g-meas" x="119.26" y="111.53" text-anchor="middle">40&deg;</text>
+          <text class="g-meas" x="162.95" y="76.46" text-anchor="middle">85&deg;</text>
+          <text class="g-meas" x="227.22" y="148.04" text-anchor="middle">x&deg;</text>
+          <circle class="g-pt" cx="170" cy="130" r="4.5"/>
+          <circle class="g-pt" cx="75" cy="130" r="4.5"/>
+          <circle class="g-pt" cx="97.23" cy="68.94" r="4.5"/>
+          <circle class="g-pt" cx="224.49" cy="52.18" r="4.5"/>
+          <circle class="g-pt" cx="170" cy="225" r="4.5"/>
+          <text class="g-lbl" x="55" y="136" text-anchor="end">B</text>
+          <text class="g-lbl" x="81.90" y="56.08" text-anchor="middle">C</text>
+          <text class="g-lbl" x="235.96" y="35.80" text-anchor="middle">D</text>
+          <text class="g-lbl" x="170" y="248" text-anchor="middle">E</text>
+          <text class="g-lbl g-halo" x="160" y="121" text-anchor="end">A</text>
+        </svg>
+        <figcaption>Four central angles of &#9737;A with no interior points in common.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;EAB + m&ang;BAC + m&ang;CAD + m&ang;DAE = 360&deg;</span><span class="reason">Sum of central angles</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">90 + 40 + 85 + x = 360</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">215 + x = 360</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x = 145</span><span class="reason">Solve</span></div>
+      <div class="answer-box">x = 145</div>
+      <div class="check-box"><strong>Check:</strong> 90 + 40 + 85 + 145 = 360 &#10003;</div>
+      <div class="warning-box"><strong>Trap:</strong> The right-angle square is a measurement too.
+      It is worth 90&deg; and it must be included in the sum &mdash; students who only add the three
+      printed numbers get x = 235.</div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 2 -->
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Classify Arcs and Find Arc Measures</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt"><span style="text-decoration:overline">PM</span> is a diameter of
+      &#9737;R. Identify each arc as a <em>major arc</em>, <em>minor arc</em>, or <em>semicircle</em>.
+      Then find its measure. &nbsp; a. arc&nbsp;MQ &nbsp; b. arc&nbsp;MNP &nbsp; c. arc&nbsp;MNQ</div>
+      <figure class="fig">
+        <svg viewBox="0 0 330 265" width="330" role="img" aria-label="Circle R with diameter PM, a 115 degree central angle PRQ and a right angle NRP">
+          <circle cx="165" cy="130" r="92" class="g-line-thin" fill="none"/>
+          <line class="g-line" x1="196.47" y1="43.55" x2="133.53" y2="216.45"/>
+          <line class="g-line" x1="165" y1="130" x2="230.05" y2="195.05"/>
+          <line class="g-line" x1="165" y1="130" x2="78.55" y2="98.53"/>
+          <path class="g-angle" d="M 178.68 92.41 A 40 40 0 0 1 193.28 158.28"/>
+          <text class="g-meas" x="219.67" y="117.88" text-anchor="middle">115&deg;</text>
+          <path class="g-right" d="M 150.90 124.87 L 156.03 110.77 L 170.13 115.90"/>
+          <circle class="g-pt" cx="165" cy="130" r="4.5"/>
+          <circle class="g-pt" cx="196.47" cy="43.55" r="4.5"/>
+          <circle class="g-pt" cx="133.53" cy="216.45" r="4.5"/>
+          <circle class="g-pt" cx="230.05" cy="195.05" r="4.5"/>
+          <circle class="g-pt" cx="78.55" cy="98.53" r="4.5"/>
+          <text class="g-lbl" x="203.30" y="24.77" text-anchor="middle">P</text>
+          <text class="g-lbl" x="126.70" y="238" text-anchor="middle">M</text>
+          <text class="g-lbl" x="248" y="215" text-anchor="middle">Q</text>
+          <text class="g-lbl" x="59.77" y="91.70" text-anchor="middle">N</text>
+          <text class="g-lbl g-halo" x="156" y="150" text-anchor="end">R</text>
+        </svg>
+        <figcaption>&ang;PRQ = 115&deg;; &ang;NRP is a right angle; PM passes through the center R.</figcaption>
+      </figure>
+      <div class="case-grid">
+        <div class="case-box"><h4>a. arc MQ &mdash; minor arc</h4>
+          <div class="math">m(arc MQ) = m&ang;MRQ<br>
+          &ang;MRQ and &ang;PRQ form a linear pair<br>
+          m&ang;MRQ = 180 &minus; 115 = 65<br>
+          <b>m(arc MQ) = 65&deg;</b></div></div>
+        <div class="case-box"><h4>b. arc MNP &mdash; semicircle</h4>
+          <div class="math">P and M are the ends of diameter PM<br>
+          so arc MNP is a semicircle<br>
+          <b>m(arc MNP) = 180&deg;</b></div></div>
+      </div>
+      <div class="solution-step"><span class="num">1</span><span class="math">c. arc MNQ shares endpoints M and Q with minor arc MQ, but goes the long way through N</span><span class="reason">Classify: major arc</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m(arc MNQ) = 360&deg; &minus; m(arc MQ)</span><span class="reason">Major arc rule</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 360 &minus; 65 = 295</span><span class="reason">Substitute and simplify</span></div>
+      <div class="answer-box">a. 65&deg; (minor) &nbsp;&middot;&nbsp; b. 180&deg; (semicircle) &nbsp;&middot;&nbsp; c. 295&deg; (major)</div>
+      <div class="check-box"><strong>Check:</strong> 65 + 295 = 360 &#10003; &mdash; a minor arc and its
+      matching major arc must always complete the circle.</div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 3 -->
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Find Arc Measures in Circle Graphs</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">The circle graph &#9737;P is divided into sectors by percent.
+      The sector between D and E is 12% of the whole circle. Find m(arc&nbsp;DE).</div>
+      <figure class="fig">
+        <svg viewBox="0 0 360 300" width="360" role="img" aria-label="Circle graph with center P divided into sectors of 44, 20, 14, 12, 7 and 3 percent">
+          <path class="g-shape" d="M 180 145 L 180 50 A 95 95 0 0 1 214.97 233.33 Z"/>
+          <path class="g-shape" d="M 180 145 L 214.97 233.33 A 95 95 0 0 1 106.80 205.56 Z"/>
+          <path class="g-shape" d="M 180 145 L 106.80 205.56 A 95 95 0 0 1 86.68 127.20 Z"/>
+          <path class="g-shape-alt" d="M 180 145 L 86.68 127.20 A 95 95 0 0 1 124.16 68.14 Z"/>
+          <path class="g-shape" d="M 180 145 L 124.16 68.14 A 95 95 0 0 1 162.20 51.68 Z"/>
+          <path class="g-shape" d="M 180 145 L 162.20 51.68 A 95 95 0 0 1 180 50 Z"/>
+          <text class="g-lbl-sm" x="240.90" y="133.38" text-anchor="middle">44%</text>
+          <text class="g-lbl-sm" x="164.58" y="205.05" text-anchor="middle">20%</text>
+          <text class="g-lbl-sm" x="119.95" y="160.42" text-anchor="middle">14%</text>
+          <text class="g-meas" x="127.65" y="111.78" text-anchor="middle">12%</text>
+          <text class="g-lbl-sm" x="154.58" y="86.26" text-anchor="middle">7%</text>
+          <line class="g-line-thin" x1="172.47" y1="65.36" x2="234" y2="40"/>
+          <text class="g-lbl-sm" x="238" y="44" text-anchor="start">3%</text>
+          <circle class="g-pt" cx="180" cy="145" r="4.5"/>
+          <text class="g-lbl" x="180" y="31" text-anchor="middle">A</text>
+          <text class="g-lbl" x="158.64" y="33.02" text-anchor="middle">F</text>
+          <text class="g-lbl" x="112.99" y="52.77" text-anchor="middle">E</text>
+          <text class="g-lbl" x="68.02" y="123.64" text-anchor="end">D</text>
+          <text class="g-lbl" x="92.16" y="217.67" text-anchor="middle">C</text>
+          <text class="g-lbl" x="221.97" y="251.00" text-anchor="middle">B</text>
+          <text class="g-lbl g-halo" x="172" y="163" text-anchor="end">P</text>
+        </svg>
+        <figcaption>Every sector of a circle graph is a central angle, so its degree measure is that
+        percent of 360&deg;. The highlighted sector DPE is 12%.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">arc DE is a minor arc</span><span class="reason">it measures less than 180&deg;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m(arc DE) = m&ang;DPE</span><span class="reason">Minor arc = its central angle</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;DPE = 0.12(360&deg;)</span><span class="reason">Find 12% of 360&deg;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 43.2&deg;</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">m(arc DE) = 43.2&deg;</div>
+      <div class="check-box"><strong>Check:</strong> 44 + 20 + 14 + 12 + 7 + 3 = 100%, and
+      158.4 + 72 + 50.4 + 43.2 + 25.2 + 10.8 = 360&deg; &#10003;</div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 4 -->
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Use Arc Addition to Find Measures of Arcs</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find m(arc&nbsp;WY) in &#9737;V.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 330 265" width="330" role="img" aria-label="Circle V with a right central angle WVX and a 62 degree central angle XVY">
+          <circle cx="165" cy="130" r="90" class="g-line-thin" fill="none"/>
+          <line class="g-line" x1="165" y1="130" x2="165" y2="40"/>
+          <line class="g-line" x1="165" y1="130" x2="75" y2="130"/>
+          <line class="g-line" x1="165" y1="130" x2="122.75" y2="209.47"/>
+          <line class="g-line" x1="165" y1="130" x2="210" y2="207.94"/>
+          <path class="g-arc" d="M 165 40 A 90 90 0 0 0 122.75 209.47"/>
+          <path class="g-right" d="M 165 115 L 150 115 L 150 130"/>
+          <path class="g-angle" d="M 127 130 A 38 38 0 0 0 147.16 163.55"/>
+          <text class="g-meas" x="117.00" y="158.84" text-anchor="middle">62&deg;</text>
+          <circle class="g-pt" cx="165" cy="130" r="4.5"/>
+          <circle class="g-pt" cx="165" cy="40" r="4.5"/>
+          <circle class="g-pt" cx="75" cy="130" r="4.5"/>
+          <circle class="g-pt" cx="122.75" cy="209.47" r="4.5"/>
+          <circle class="g-pt" cx="210" cy="207.94" r="4.5"/>
+          <text class="g-lbl" x="165" y="22" text-anchor="middle">W</text>
+          <text class="g-lbl" x="55" y="136" text-anchor="end">X</text>
+          <text class="g-lbl" x="113.36" y="230" text-anchor="middle">Y</text>
+          <text class="g-lbl" x="222" y="228" text-anchor="middle">Z</text>
+          <text class="g-lbl g-halo" x="180" y="128" text-anchor="start">V</text>
+        </svg>
+        <figcaption>arc&nbsp;WX and arc&nbsp;XY are adjacent arcs that meet at X (shown in green).</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">m(arc WY) = m(arc WX) + m(arc XY)</span><span class="reason">Arc Addition Postulate</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= m&ang;WVX + m&ang;XVY</span><span class="reason">m(arc WX) = m&ang;WVX, m(arc XY) = m&ang;XVY</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 90&deg; + 62&deg;</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 152&deg;</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">m(arc WY) = 152&deg;</div>
+      <div class="check-box"><strong>Check:</strong> 152&deg; &lt; 180&deg;, so arc&nbsp;WY really is a
+      minor arc and a two-letter name is correct. &#10003;</div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 5 -->
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Find Arc Length by Using Degrees</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the length of arc&nbsp;AB to the nearest hundredth.
+      In &#9737;O the diameter is 14 m and m&ang;AOB = 80&deg;.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 320 260" width="320" role="img" aria-label="Circle O of diameter 14 metres with an 80 degree central angle AOB">
+          <circle cx="160" cy="125" r="88" class="g-line-thin" fill="none"/>
+          <line class="g-line-thin" x1="72" y1="125" x2="248" y2="125"/>
+          <text class="g-meas-b g-halo" x="205" y="118" text-anchor="middle">14 m</text>
+          <line class="g-line" x1="160" y1="125" x2="77.31" y2="155.10"/>
+          <line class="g-line" x1="160" y1="125" x2="116" y2="48.79"/>
+          <path class="g-arc" d="M 116 48.79 A 88 88 0 0 0 77.31 155.10"/>
+          <path class="g-angle" d="M 142 93.82 A 36 36 0 0 0 126.17 137.31"/>
+          <text class="g-meas" x="111.14" y="107.21" text-anchor="middle">80&deg;</text>
+          <circle class="g-pt" cx="160" cy="125" r="4.5"/>
+          <circle class="g-pt" cx="77.31" cy="155.10" r="4.5"/>
+          <circle class="g-pt" cx="116" cy="48.79" r="4.5"/>
+          <text class="g-lbl" x="58.51" y="167" text-anchor="end">A</text>
+          <text class="g-lbl" x="106" y="31.47" text-anchor="middle">B</text>
+          <text class="g-lbl g-halo" x="170" y="143" text-anchor="start">O</text>
+        </svg>
+        <figcaption>The diameter is 14 m, so the radius is r = 7 m.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">&#8467; = (x / 360) &middot; 2&pi;r</span><span class="reason">Arc Length Equation</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">r = 14 &divide; 2 = 7</span><span class="reason">Radius is half the diameter</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&#8467; = (80 / 360) &middot; 2&pi;(7)</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (2/9) &middot; 14&pi; = 28&pi;/9</span><span class="reason">Simplify the fraction</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">&asymp; 9.77</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">arc AB &asymp; 9.77 m</div>
+      <div class="check-box"><strong>Check:</strong> The whole circumference is 2&pi;(7) &asymp; 43.98 m,
+      and 80&deg; is about two ninths of the circle. 43.98 &divide; 9 &times; 2 &asymp; 9.77 &#10003;</div>
+      <div class="warning-box"><strong>Trap:</strong> 14 is the <em>diameter</em>, not the radius.
+      Using r = 14 gives 19.55 m &mdash; exactly double the correct answer.</div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 6 -->
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">Convert from Degrees to Radian Measure</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Write 135&deg; in radians as a multiple of &pi;.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">135&deg; = 135&deg; &times; (&pi; radians / 180&deg;)</span><span class="reason">Multiply by &pi; radians / 180&deg;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 135&pi; / 180 radians</span><span class="reason">Multiply</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 3&pi; / 4 radians</span><span class="reason">Simplify (divide 135 and 180 by 45)</span></div>
+      <div class="answer-box">135&deg; = 3&pi;/4 radians</div>
+      <div class="check-box"><strong>Check:</strong> 3&pi;/4 &asymp; 2.356 radians, and
+      2.356 &times; 57.296 &asymp; 135&deg; &#10003;</div>
+      <div class="info-box"><strong>Tip:</strong> Write the conversion factor with the unit you
+      <em>want</em> on top. Going to radians? Put &pi; radians on top so the degrees cancel.</div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 7 -->
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 7</span>
+      <span class="example-title">Convert from Radian Measure to Degrees</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Write 11&pi;/6 radians in degrees.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">11&pi;/6 radians = (11&pi;/6) &times; (180&deg; / &pi; radians)</span><span class="reason">Multiply by 180&deg; / &pi; radians</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 11 &times; 180 / 6 degrees</span><span class="reason">The &pi; and the radians cancel</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 1980 / 6 = 330</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">11&pi;/6 radians = 330&deg;</div>
+      <div class="check-box"><strong>Check:</strong> 11&pi;/6 is just under 2&pi; (a full turn), and
+      330&deg; is just under 360&deg; &#10003;</div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 8 -->
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 8</span>
+      <span class="example-title">Find Arc Length by Using Radian Measure</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the length of arc&nbsp;ZY to the nearest hundredth.
+      In &#9737;O the radius is 9 cm and &ang;ZOY = 3&pi;/4 radians.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 330 280" width="330" role="img" aria-label="Circle O of radius 9 centimetres with a central angle of three pi over four radians from Z to Y">
+          <circle cx="170" cy="140" r="95" class="g-line-thin" fill="none"/>
+          <line class="g-line" x1="170" y1="140" x2="265" y2="140"/>
+          <line class="g-line" x1="170" y1="140" x2="102.82" y2="72.82"/>
+          <path class="g-arc" d="M 102.82 72.82 A 95 95 0 0 1 265 140"/>
+          <path class="g-angle" d="M 210 140 A 40 40 0 0 0 141.72 111.72"/>
+          <text class="g-meas" x="196" y="86.41" text-anchor="middle">3&pi;/4</text>
+          <text class="g-meas-b g-halo" x="125.10" y="117.70" text-anchor="middle">9 cm</text>
+          <circle class="g-pt" cx="170" cy="140" r="4.5"/>
+          <circle class="g-pt" cx="265" cy="140" r="4.5"/>
+          <circle class="g-pt" cx="102.82" cy="72.82" r="4.5"/>
+          <text class="g-lbl" x="88.68" y="58.68" text-anchor="middle">Z</text>
+          <text class="g-lbl" x="283" y="146" text-anchor="start">Y</text>
+          <text class="g-lbl g-halo" x="162" y="160" text-anchor="end">O</text>
+        </svg>
+        <figcaption>3&pi;/4 radians = 135&deg;, so Z sits 135&deg; counterclockwise from Y.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">&theta; = &#8467; / r</span><span class="reason">Radian measure equation</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">3&pi;/4 = &#8467; / 9</span><span class="reason">&theta; = 3&pi;/4, r = 9</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">9(3&pi;/4) = &#8467;</span><span class="reason">Multiply each side by 9</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">27&pi;/4 = &#8467;</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">&#8467; &asymp; 21.21</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">arc ZY &asymp; 21.21 cm</div>
+      <div class="check-box"><strong>Check with degrees:</strong> 3&pi;/4 rad = 135&deg;, so
+      &#8467; = (135/360) &middot; 2&pi;(9) = 0.375 &times; 56.549 &asymp; 21.21 cm &#10003; Same answer,
+      two routes.</div>
+      <div class="info-box"><strong>Why radians are nicer:</strong> in radians the arc length formula
+      collapses to &#8467; = r&theta; &mdash; no 360, no 2&pi;. That is the whole point of the unit.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRACTICE ==================== -->
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Try It 1 &mdash; classify and measure</h4>
+    <div class="prob"><span style="text-decoration:overline">GJ</span> is a diameter of &#9737;K and
+    m&ang;GKH = 122&deg;. Identify each arc as a major arc, minor arc, or semicircle, then find its
+    measure: &nbsp;a. arc&nbsp;GH &nbsp;b. arc&nbsp;GLH &nbsp;c. arc&nbsp;GLJ</div>
+    <figure class="fig">
+      <svg viewBox="0 0 340 260" width="340" role="img" aria-label="Circle K with diameter GJ and a 122 degree central angle GKH, with point L on the lower arc">
+        <circle cx="155" cy="125" r="88" class="g-line-thin" fill="none"/>
+        <line class="g-line" x1="67" y1="125" x2="243" y2="125"/>
+        <line class="g-line" x1="155" y1="125" x2="201.63" y2="50.37"/>
+        <path class="g-angle" d="M 175.14 92.77 A 38 38 0 0 0 117 125"/>
+        <text class="g-meas" x="129.79" y="79.52" text-anchor="middle">122&deg;</text>
+        <circle class="g-pt" cx="155" cy="125" r="4.5"/>
+        <circle class="g-pt" cx="67" cy="125" r="4.5"/>
+        <circle class="g-pt" cx="243" cy="125" r="4.5"/>
+        <circle class="g-pt" cx="201.63" cy="50.37" r="4.5"/>
+        <circle class="g-pt" cx="104.52" cy="197.09" r="4.5"/>
+        <text class="g-lbl" x="47" y="131" text-anchor="end">G</text>
+        <text class="g-lbl" x="263" y="131" text-anchor="start">J</text>
+        <text class="g-lbl" x="212.23" y="33.41" text-anchor="middle">H</text>
+        <text class="g-lbl" x="93.05" y="216" text-anchor="middle">L</text>
+        <text class="g-lbl g-halo" x="148" y="145" text-anchor="end">K</text>
+      </svg>
+    </figure>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">a. arc GH: minor arc, m = m&ang;GKH = 122&deg;</span><span class="reason">minor arc = central angle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b. arc GLH: major arc, m = 360 &minus; 122 = 238&deg;</span><span class="reason">same endpoints, long way</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">c. arc GLJ: semicircle, m = 180&deg;</span><span class="reason">GJ is a diameter</span></div>
+      <div class="answer-box">a. 122&deg; &nbsp;&middot;&nbsp; b. 238&deg; &nbsp;&middot;&nbsp; c. 180&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try It 2 &mdash; several arcs at once</h4>
+    <div class="prob"><span style="text-decoration:overline">AC</span> and
+    <span style="text-decoration:overline">EB</span> are diameters of &#9737;R.
+    Find m(arc&nbsp;EA), m(arc&nbsp;CB), m(arc&nbsp;DC) and m(arc&nbsp;AB).</div>
+    <figure class="fig">
+      <svg viewBox="0 0 340 270" width="340" role="img" aria-label="Circle R with diameters AC and EB and central angles of 30, 100 and 50 degrees">
+        <circle cx="170" cy="130" r="95" class="g-line-thin" fill="none"/>
+        <line class="g-line" x1="75" y1="130" x2="265" y2="130"/>
+        <line class="g-line" x1="108.94" y1="202.77" x2="231.06" y2="57.23"/>
+        <line class="g-line" x1="170" y1="130" x2="87.73" y2="82.50"/>
+        <text class="g-meas" x="115.91" y="115.51" text-anchor="middle">30&deg;</text>
+        <text class="g-meas" x="160.28" y="74.85" text-anchor="middle">100&deg;</text>
+        <text class="g-meas" x="220.75" y="106.33" text-anchor="middle">50&deg;</text>
+        <circle class="g-pt" cx="170" cy="130" r="4.5"/>
+        <circle class="g-pt" cx="75" cy="130" r="4.5"/>
+        <circle class="g-pt" cx="87.73" cy="82.50" r="4.5"/>
+        <circle class="g-pt" cx="231.06" cy="57.23" r="4.5"/>
+        <circle class="g-pt" cx="265" cy="130" r="4.5"/>
+        <circle class="g-pt" cx="108.94" cy="202.77" r="4.5"/>
+        <text class="g-lbl" x="55" y="136" text-anchor="end">E</text>
+        <text class="g-lbl" x="70.41" y="72.50" text-anchor="middle">D</text>
+        <text class="g-lbl" x="243.92" y="41.90" text-anchor="middle">C</text>
+        <text class="g-lbl" x="285" y="136" text-anchor="start">B</text>
+        <text class="g-lbl" x="96.08" y="222" text-anchor="middle">A</text>
+        <text class="g-lbl g-halo" x="163" y="148" text-anchor="end">R</text>
+      </svg>
+    </figure>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;ERD + m&ang;DRC + m&ang;CRB = 30 + 100 + 50 = 180&deg;</span><span class="reason">E, R, B are collinear (diameter)</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&ang;ERA and &ang;CRB are vertical angles</span><span class="reason">EB and AC are intersecting diameters</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m(arc EA) = m&ang;ERA = m&ang;CRB = 50&deg;</span><span class="reason">vertical angles are congruent</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m(arc CB) = m&ang;CRB = 50&deg;</span><span class="reason">given</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">m(arc DC) = m&ang;DRC = 100&deg;</span><span class="reason">given</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">m(arc AB) = 360 &minus; (30 + 100 + 50 + 50) = 130&deg;</span><span class="reason">arcs of a circle sum to 360&deg;</span></div>
+      <div class="answer-box">arc EA = 50&deg; &nbsp;&middot;&nbsp; arc CB = 50&deg; &nbsp;&middot;&nbsp; arc DC = 100&deg; &nbsp;&middot;&nbsp; arc AB = 130&deg;</div>
+      <div class="check-box"><strong>Check:</strong> 30 + 100 + 50 + 130 + 50 = 360 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try It 3 &mdash; arc length from degrees</h4>
+    <div class="prob">In &#9737;O the radius is 3 cm and m&ang;POQ = 45&deg;.
+    Find the length of arc&nbsp;PQ to the nearest hundredth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&#8467; = (45 / 360) &middot; 2&pi;(3)</span><span class="reason">Arc Length Equation</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (1/8) &middot; 6&pi; = 3&pi;/4</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&asymp; 2.36</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">arc PQ &asymp; 2.36 cm</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try It 4 &mdash; degrees to radians</h4>
+    <div class="prob">Write 240&deg; in radians as a multiple of &pi;. Then write 150&deg; in radians.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">240 &times; (&pi;/180) = 240&pi;/180</span><span class="reason">Multiply by &pi;/180</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 4&pi;/3 radians</span><span class="reason">Divide top and bottom by 60</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">150 &times; (&pi;/180) = 150&pi;/180 = 5&pi;/6 radians</span><span class="reason">Divide top and bottom by 30</span></div>
+      <div class="answer-box">240&deg; = 4&pi;/3 radians &nbsp;&middot;&nbsp; 150&deg; = 5&pi;/6 radians</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try It 5 &mdash; radians to degrees</h4>
+    <div class="prob">Write 2&pi;/3 radians in degrees. Then write 3&pi;/2 radians in degrees.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">(2&pi;/3) &times; (180/&pi;) = 2(180)/3 = 360/3</span><span class="reason">Multiply by 180&deg;/&pi; radians</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 120&deg;</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">(3&pi;/2) &times; (180/&pi;) = 3(180)/2 = 540/2 = 270&deg;</span><span class="reason">Same rule</span></div>
+      <div class="answer-box">2&pi;/3 radians = 120&deg; &nbsp;&middot;&nbsp; 3&pi;/2 radians = 270&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try It 6 &mdash; arc length from radians</h4>
+    <div class="prob">In &#9737;O the radius is 2 in. and &ang;MON = 7&pi;/12 radians.
+    Find the length of arc&nbsp;MN to the nearest hundredth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&theta; = &#8467;/r &rArr; &#8467; = r&theta;</span><span class="reason">Radian arc length</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&#8467; = 2(7&pi;/12) = 14&pi;/12 = 7&pi;/6</span><span class="reason">Substitute and simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&asymp; 3.67</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">arc MN &asymp; 3.67 in.</div>
+      <div class="check-box"><strong>Check:</strong> 7&pi;/12 rad = 105&deg;, and
+      (105/360) &middot; 2&pi;(2) = 3.665 &#10003;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SUMMARY ==================== -->
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Several non-overlapping central angles fill the circle</td><td>Set their sum equal to 360&deg; and solve</td><td><code>m&ang;1 + m&ang;2 + &hellip; = 360&deg;</code></td></tr>
+    <tr><td>You need a <b>minor</b> arc (two-letter name)</td><td>Read off its central angle</td><td><code>m(arc AB) = m&ang;AOB</code></td></tr>
+    <tr><td>You need a <b>major</b> arc (three-letter name)</td><td>Subtract the minor arc from a full circle</td><td><code>360&deg; &minus; m(arc AB)</code></td></tr>
+    <tr><td>The endpoints lie on a diameter</td><td>Recognise a <b>semicircle</b></td><td><code>180&deg;</code></td></tr>
+    <tr><td>Two arcs share exactly one endpoint</td><td>Apply the Arc Addition Postulate</td><td><code>m(arc XZ) = m(arc XY) + m(arc YZ)</code></td></tr>
+    <tr><td>Two central angles in one circle are congruent</td><td>Apply Theorem 10.2</td><td>their minor arcs are congruent</td></tr>
+    <tr><td>A sector is given as a percent of a circle graph</td><td>Multiply the percent by 360&deg;</td><td><code>m&ang; = (percent)(360&deg;)</code></td></tr>
+    <tr><td>You need the actual <b>length</b> of an arc, angle in degrees</td><td>Take that fraction of the circumference</td><td><code>&#8467; = (x/360) &middot; 2&pi;r</code></td></tr>
+    <tr><td>You need the actual <b>length</b> of an arc, angle in radians</td><td>Multiply radius by the radian measure</td><td><code>&#8467; = r&theta;</code></td></tr>
+    <tr><td>Convert degrees &rarr; radians</td><td>Multiply by &pi;/180 and simplify</td><td><code>x&deg; &middot; &pi;/180</code></td></tr>
+    <tr><td>Convert radians &rarr; degrees</td><td>Multiply by 180/&pi; and simplify</td><td><code>&theta; &middot; 180/&pi;</code></td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">m&ang;1 + m&ang;2 + m&ang;3 = 360&deg;</span>
+    <span class="pill">m(arc AB) = m&ang;AOB</span>
+    <span class="pill">major = 360&deg; &minus; minor</span>
+    <span class="pill">semicircle = 180&deg;</span>
+    <span class="pill">m(arc XZ) = m(arc XY) + m(arc YZ)</span>
+    <span class="pill">&#8467;/(2&pi;r) = x/360</span>
+    <span class="pill">&#8467; = (x/360) &middot; 2&pi;r</span>
+    <span class="pill">&theta; = &#8467;/r</span>
+    <span class="pill">&#8467; = r&theta;</span>
+    <span class="pill">180&deg; = &pi; radians</span>
+    <span class="pill">1 radian = 180&deg;/&pi; &asymp; 57.296&deg;</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid:</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8">
+      <li>Forgetting that a right-angle square in the figure is worth 90&deg; in the sum.</li>
+      <li>Naming a major arc with only two letters &mdash; it becomes ambiguous with the minor arc.</li>
+      <li>Confusing arc <em>measure</em> (degrees) with arc <em>length</em> (cm, m, in.).</li>
+      <li>Plugging the <em>diameter</em> into <code>2&pi;r</code> and doubling the answer.</li>
+      <li>Using <code>&#8467; = r&theta;</code> while &theta; is still in degrees &mdash; that formula only works in radians.</li>
+      <li>Applying Theorem 10.2 across circles of different sizes; it needs the same circle or congruent circles.</li>
+      <li>Rounding halfway through. Keep the exact value (like 27&pi;/4) until the last step.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== QUIZ ==================== -->
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"A central angle of a circle is an angle whose vertex is located where?",
+   opts:["On the circle","At the center of the circle","Outside the circle","At the midpoint of a chord"],
+   ans:1,
+   exp:"By definition a central angle has its vertex at the center, and both of its sides are radii. That is exactly why its measure equals the measure of the arc it intercepts."},
+
+  {q:"Several central angles of one circle have no interior points in common and together fill the circle. What must the sum of their measures be?",
+   opts:["180&deg;","270&deg;","360&deg;","540&deg;"],
+   ans:2,
+   exp:"Non-overlapping central angles that fill the circle sweep out one complete rotation, and one complete rotation about a point is 360&deg;."},
+
+  {q:"In &#9737;O, m&ang;AOB = 76&deg;. Find m(arc&nbsp;AB), the minor arc.",
+   opts:["76&deg;","38&deg;","152&deg;","284&deg;"],
+   ans:0,
+   exp:"A minor arc has exactly the same measure as its central angle &mdash; you do not halve it or double it. 38&deg; comes from halving (that is the inscribed-angle rule, a different lesson) and 284&deg; is the major arc."},
+
+  {q:"Three central angles of &#9737;O measure 145&deg;, 165&deg; and x&deg; and have no interior points in common. Find x.",
+   opts:["40&deg;","45&deg;","50&deg;","60&deg;"],
+   ans:2,
+   fig:'<svg viewBox="0 0 300 260" width="300" role="img" aria-label="Circle with three central angles measuring 145 degrees, 165 degrees and x degrees"><circle cx="150" cy="125" r="88" class="g-line-thin" fill="none"/><line class="g-line" x1="150" y1="125" x2="150" y2="37"/><line class="g-line" x1="150" y1="125" x2="200.47" y2="197.09"/><line class="g-line" x1="150" y1="125" x2="82.59" y2="68.43"/><text class="g-meas" x="199.60" y="109.36" text-anchor="middle">145&deg;</text><text class="g-meas" x="111.66" y="160.13" text-anchor="middle">165&deg;</text><text class="g-meas" x="128.02" y="77.87" text-anchor="middle">x&deg;</text><circle class="g-pt" cx="150" cy="125" r="4.5"/><circle class="g-pt" cx="150" cy="37" r="4.5"/><circle class="g-pt" cx="200.47" cy="197.09" r="4.5"/><circle class="g-pt" cx="82.59" cy="68.43" r="4.5"/></svg>',
+   exp:"145 + 165 + x = 360, so 310 + x = 360 and x = 50. Always add the known angles first, then subtract from 360."},
+
+  {q:"A minor arc of a circle measures 118&deg;. What is the measure of the major arc with the same two endpoints?",
+   opts:["62&deg;","118&deg;","236&deg;","242&deg;"],
+   ans:3,
+   exp:"The two arcs together form the whole circle, so the major arc is 360 &minus; 118 = 242&deg;. Choice A is the supplement (180 &minus; 118) and choice C is just double the minor arc &mdash; neither completes the circle."},
+
+  {q:"The endpoints of arc&nbsp;RST lie on a diameter of the circle. What is m(arc&nbsp;RST)?",
+   opts:["90&deg;","180&deg;","270&deg;","360&deg;"],
+   ans:1,
+   exp:"When the endpoints lie on a diameter the central angle is a straight angle, so the arc is a semicircle measuring exactly 180&deg;. Notice it is named with three letters because two letters could not tell you which half."},
+
+  {q:"In &#9737;A the four central angles have no interior points in common. Find the value of x.",
+   opts:["135&deg;","140&deg;","145&deg;","150&deg;"],
+   ans:2,
+   fig:'<svg viewBox="0 0 340 270" width="340" role="img" aria-label="Circle A with central angles of 90 degrees, 40 degrees, 85 degrees and x degrees"><circle cx="170" cy="130" r="95" class="g-line-thin" fill="none"/><line class="g-line" x1="170" y1="130" x2="75" y2="130"/><line class="g-line" x1="170" y1="130" x2="97.23" y2="68.94"/><line class="g-line" x1="170" y1="130" x2="224.49" y2="52.18"/><line class="g-line" x1="170" y1="130" x2="170" y2="225"/><path class="g-right" d="M 170 146 L 154 146 L 154 130"/><text class="g-meas" x="140.30" y="159.70" text-anchor="middle">90&deg;</text><text class="g-meas" x="119.26" y="111.53" text-anchor="middle">40&deg;</text><text class="g-meas" x="162.95" y="76.46" text-anchor="middle">85&deg;</text><text class="g-meas" x="227.22" y="148.04" text-anchor="middle">x&deg;</text><circle class="g-pt" cx="170" cy="130" r="4.5"/><circle class="g-pt" cx="75" cy="130" r="4.5"/><circle class="g-pt" cx="97.23" cy="68.94" r="4.5"/><circle class="g-pt" cx="224.49" cy="52.18" r="4.5"/><circle class="g-pt" cx="170" cy="225" r="4.5"/><text class="g-lbl" x="55" y="136" text-anchor="end">B</text><text class="g-lbl" x="81.90" y="56.08" text-anchor="middle">C</text><text class="g-lbl" x="235.96" y="35.80" text-anchor="middle">D</text><text class="g-lbl" x="170" y="248" text-anchor="middle">E</text><text class="g-lbl g-halo" x="160" y="121" text-anchor="end">A</text></svg>',
+   exp:"The corner square counts as 90&deg;: 90 + 40 + 85 + x = 360, so 215 + x = 360 and x = 145. Skipping the right angle would give the wrong value 235."},
+
+  {q:"In &#9737;W, arc&nbsp;XY and arc&nbsp;YZ are adjacent arcs with m(arc&nbsp;XY) = 70&deg; and m(arc&nbsp;YZ) = 50&deg;. Find m(arc&nbsp;XZ).",
+   opts:["120&deg;","20&deg;","110&deg;","240&deg;"],
+   ans:0,
+   exp:"Adjacent arcs meet at exactly one point, so the Arc Addition Postulate lets you add: 70 + 50 = 120&deg;. Subtracting or doubling has no justification here."},
+
+  {q:"<span style=\"text-decoration:overline\">PM</span> is a diameter of &#9737;R and m&ang;PRQ = 115&deg;. Find m(arc&nbsp;MQ).",
+   opts:["115&deg;","65&deg;","55&deg;","295&deg;"],
+   ans:1,
+   fig:'<svg viewBox="0 0 330 265" width="330" role="img" aria-label="Circle R with diameter PM and a 115 degree central angle PRQ"><circle cx="165" cy="130" r="92" class="g-line-thin" fill="none"/><line class="g-line" x1="196.47" y1="43.55" x2="133.53" y2="216.45"/><line class="g-line" x1="165" y1="130" x2="230.05" y2="195.05"/><line class="g-line" x1="165" y1="130" x2="78.55" y2="98.53"/><path class="g-angle" d="M 178.68 92.41 A 40 40 0 0 1 193.28 158.28"/><text class="g-meas" x="219.67" y="117.88" text-anchor="middle">115&deg;</text><path class="g-right" d="M 150.90 124.87 L 156.03 110.77 L 170.13 115.90"/><circle class="g-pt" cx="165" cy="130" r="4.5"/><circle class="g-pt" cx="196.47" cy="43.55" r="4.5"/><circle class="g-pt" cx="133.53" cy="216.45" r="4.5"/><circle class="g-pt" cx="230.05" cy="195.05" r="4.5"/><circle class="g-pt" cx="78.55" cy="98.53" r="4.5"/><text class="g-lbl" x="203.30" y="24.77" text-anchor="middle">P</text><text class="g-lbl" x="126.70" y="238" text-anchor="middle">M</text><text class="g-lbl" x="248" y="215" text-anchor="middle">Q</text><text class="g-lbl" x="59.77" y="91.70" text-anchor="middle">N</text><text class="g-lbl g-halo" x="156" y="150" text-anchor="end">R</text></svg>',
+   exp:"Because PM is a diameter, &ang;PRQ and &ang;MRQ form a linear pair, so m&ang;MRQ = 180 &minus; 115 = 65&deg;. arc MQ is a minor arc, so it equals that central angle: 65&deg;."},
+
+  {q:"Using the same circle (<span style=\"text-decoration:overline\">PM</span> a diameter of &#9737;R, m&ang;PRQ = 115&deg;), find m(arc&nbsp;MNQ).",
+   opts:["65&deg;","115&deg;","180&deg;","295&deg;"],
+   ans:3,
+   exp:"arc MNQ is the major arc with the same endpoints as minor arc MQ, so it measures 360 &minus; 65 = 295&deg;. The three-letter name is what tells you to go the long way, through N."},
+
+  {q:"In &#9737;O, m&ang;AOB = m&ang;COD = 54&deg;. Which statement must be true?",
+   opts:["arc&nbsp;AB &cong; arc&nbsp;CD","arc&nbsp;AB and arc&nbsp;CD are semicircles","arc&nbsp;AB = 108&deg;","<span style=\"text-decoration:overline\">AB</span> is a diameter"],
+   ans:0,
+   exp:"Theorem 10.2: in the same circle, two minor arcs are congruent if and only if their central angles are congruent. Equal 54&deg; central angles force equal 54&deg; minor arcs &mdash; nothing here makes them semicircles or diameters."},
+
+  {q:"Find the length of arc&nbsp;AB to the nearest hundredth if the diameter of &#9737;O is 14 m and m&ang;AOB = 80&deg;.",
+   opts:["4.89 m","19.55 m","9.77 m","43.98 m"],
+   ans:2,
+   exp:"The radius is 14 &divide; 2 = 7. Then &#8467; = (80/360) &middot; 2&pi;(7) = 28&pi;/9 &asymp; 9.77 m. Choice B is what you get by using 14 as the radius, and choice D is the whole circumference."},
+
+  {q:"Write 240&deg; in radians as a multiple of &pi;.",
+   opts:["2&pi;/3","3&pi;/4","5&pi;/6","4&pi;/3"],
+   ans:3,
+   exp:"Multiply by &pi;/180: 240&pi;/180. Dividing top and bottom by 60 gives 4&pi;/3. A quick sanity check: 240&deg; is more than 180&deg;, so the answer must be greater than &pi; &mdash; only 4&pi;/3 is."},
+
+  {q:"Write 11&pi;/6 radians in degrees.",
+   opts:["300&deg;","330&deg;","360&deg;","198&deg;"],
+   ans:1,
+   exp:"Multiply by 180&deg;/&pi;: the &pi; cancels and you get 11(180)/6 = 1980/6 = 330&deg;. Choice D comes from multiplying by 180/6 and forgetting to cancel &pi; correctly."},
+
+  {q:"In &#9737;O the radius is 9 cm and the central angle &ang;ZOY measures 3&pi;/4 radians. Find the length of arc&nbsp;ZY to the nearest hundredth.",
+   opts:["21.21 cm","6.75 cm","12.00 cm","28.27 cm"],
+   ans:0,
+   exp:"With the angle already in radians use &#8467; = r&theta; = 9(3&pi;/4) = 27&pi;/4 &asymp; 21.21 cm. Checking in degrees, 3&pi;/4 rad = 135&deg; and (135/360) &middot; 2&pi;(9) gives the same 21.21 cm."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

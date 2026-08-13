@@ -1,0 +1,567 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Define and represent the sample space of an experiment with lists, tables, and tree diagrams, and count outcomes with the Fundamental Counting Principle.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="trees">Trees &amp; Tables</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Experiment, Outcome, Sample Space, Event</h3>
+    <p>Probability starts with four words. An <b>experiment</b> is anything involving chance &mdash; tossing a coin, rolling a die, spinning a spinner. One single run of that experiment produces one <b>outcome</b>. Collect <em>every</em> outcome that could possibly happen and you have the <b>sample space</b>. Pick out just the outcomes you care about and you have an <b>event</b>.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>Experiment</b> &mdash; a situation involving chance.</div>
+      <div class="vocab-item"><b>Outcome</b> &mdash; the result of a single performance, or trial, of an experiment.</div>
+      <div class="vocab-item"><b>Sample space</b> &mdash; the set of all possible outcomes of an experiment.</div>
+      <div class="vocab-item"><b>Event</b> &mdash; a subset of the sample space.</div>
+      <div class="vocab-item"><b>Finite sample space</b> &mdash; a sample space that contains a countable number of outcomes.</div>
+      <div class="vocab-item"><b>Infinite sample space</b> &mdash; a sample space with outcomes that cannot be counted.</div>
+    </div>
+    <div class="formula-box">
+      Roll one die: &nbsp; S = {1, 2, 3, 4, 5, 6} &nbsp; &larr; sample space<br>
+      Event "even number": &nbsp; S(even) = {2, 4, 6} &nbsp; &larr; a <em>subset</em> of S
+    </div>
+    <p>Notice that the event lives <em>inside</em> the sample space. Every outcome of the event must already be an outcome of the experiment &mdash; you never invent new outcomes when you build an event.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Finite vs. Infinite Sample Spaces</h3>
+    <p>Sample spaces come in three flavours. Ask yourself two questions: <em>Can I finish listing them?</em> and if not, <em>could I at least line them up in order?</em></p>
+    <table class="tbl">
+      <tr><th>Finite</th><th>Infinite Discrete</th><th>Infinite Continuous</th></tr>
+      <tr>
+        <td>Spinning a spinner<br><code>S = {red, blue, purple}</code></td>
+        <td>Tossing a coin <em>until</em> you get two heads<br><code>S = {H, TH, TTH, &hellip;}</code></td>
+        <td>All of the diameters in a circle</td>
+      </tr>
+      <tr>
+        <td>You can finish the list. The outcomes are <b>countable</b>.</td>
+        <td>The list never ends, but the outcomes can be <b>arranged in a sequence</b> and counted off one by one.</td>
+        <td>The outcomes <b>cannot be counted or listed</b> &mdash; there are infinitely many ways to fill the space, with no "next" one.</td>
+      </tr>
+    </table>
+    <div class="keyfact"><div class="ico">1</div><div class="txt"><b>Finite</b> &rarr; the list ends. Count it and write S out in full.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt"><b>Infinite discrete</b> &rarr; the list goes on forever but you can still write the first few and put "&hellip;". A give-away word is <em>until</em> (spin until it lands on yellow, roll until you get a 6).</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt"><b>Infinite continuous</b> &rarr; a measurement (height, distance, time, length). Between any two values there is always another value, so no list is possible.</div></div>
+    <div class="info-box"><strong>Study Tip &mdash; Empty Set:</strong> An empty set is a set containing no elements. In probability, if there are no possible outcomes that satisfy an event, then the sample space is described using the empty set <code>&empty;</code>. For example, the event "roll a 7 on a standard die" gives <code>S = &empty;</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Three Ways to Represent a Sample Space</h3>
+    <p>You can represent a sample space by using an <b>organized list</b>, a <b>table</b>, or a <b>tree diagram</b>. All three show the same outcomes &mdash; you choose whichever one keeps you from missing any.</p>
+    <div class="steps-list">
+      <div class="s"><b>Organized list</b> &mdash; pair each outcome of stage 1 with every outcome of stage 2 and write them as ordered pairs: <code>S = {(R, R), (R, B), (B, R), (B, B)}</code>. Best for small experiments and when order matters.</div>
+      <div class="s"><b>Table</b> &mdash; stage 1 down the side, stage 2 across the top; each cell is one outcome. Best for exactly <b>two</b> stages (a table has only two directions).</div>
+      <div class="s"><b>Tree diagram</b> &mdash; one level of branching per stage; each complete path from the start to a leaf is one outcome. Best for <b>three or more</b> stages, and the only one of the three that handles a stage whose choices depend on the previous stage.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Tree Diagram Notation:</strong> Choose notation for outcomes in your tree diagrams that will eliminate confusion. In the hat example below, <code>R</code> stands for the red hat and <code>B</code> stands for the black hat.</div>
+    <div class="warning-box"><strong>Watch Out &mdash; order matters:</strong> <code>(R, B)</code> and <code>(B, R)</code> are <em>not</em> the same outcome. The first entry is Saturday's hat and the second is Sunday's hat, so red-then-black is a different outcome from black-then-red. Never merge them into one.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. The Fundamental Counting Principle</h3>
+    <p>For some large or complicated experiments, listing the entire sample space may not be practical or necessary. To find the <em>number</em> of possible outcomes, you can multiply instead of list.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Fundamental Counting Principle</div>
+      <div class="theorem-body">
+        <p><b>Words:</b> The number of possible outcomes in a sample space can be found by multiplying the number of possible outcomes from each stage or event.</p>
+        <p style="margin-top:10px"><b>Symbols:</b> In a <em>k</em>-stage experiment, let<br>
+        <code>n<sub>1</sub></code> = the number of possible outcomes for the first stage,<br>
+        <code>n<sub>2</sub></code> = the number of possible outcomes for the second stage after the first stage has occurred, &hellip;<br>
+        <code>n<sub>k</sub></code> = the number of possible outcomes for the <em>k</em>th stage after the first <em>k</em>&nbsp;&minus;&nbsp;1 stages have occurred.</p>
+        <div class="formula-box">Total possible outcomes = n<sub>1</sub> &middot; n<sub>2</sub> &middot; n<sub>3</sub> &middot; &hellip; &middot; n<sub>k</sub></div>
+      </div>
+    </div>
+    <p><b>Why it works:</b> every one of the <code>n<sub>1</sub></code> first-stage branches splits into <code>n<sub>2</sub></code> second-stage branches, so the tree ends with <code>n<sub>1</sub></code> groups of <code>n<sub>2</sub></code> leaves &mdash; that is <code>n<sub>1</sub> &middot; n<sub>2</sub></code> leaves. Repeat for each new stage.</p>
+    <div class="info-box"><strong>Study Tip &mdash; Multiplication Rule:</strong> The Fundamental Counting Principle is sometimes called the <em>Multiplication Rule for Counting</em> or the <em>Counting Principle</em>.</div>
+    <div class="warning-box"><strong>Watch Out &mdash; multiply, don't add:</strong> If you choose one item from <em>each</em> category, <b>multiply</b>. You only add when you choose one item from <em>one</em> category <em>or</em> another. Also watch the phrase <em>without replacement</em>: the stage counts then drop by one each time (<code>n</code>, <code>n&nbsp;&minus;&nbsp;1</code>, <code>n&nbsp;&minus;&nbsp;2</code>, &hellip;).</div>
+  </div>
+</section>
+
+<section id="trees">
+  <h2>Tree Diagrams &amp; Sample-Space Tables</h2>
+  <p style="font-size:15px;line-height:1.7;margin-bottom:8px">Click a chip under any tree to isolate one branch &mdash; everything else fades so you can read that branch's outcomes on their own. Click the same chip again to bring the whole tree back.</p>
+
+  <figure class="fig">
+    <div class="fig-title">Two-Stage Tree &middot; One Hat Each Day</div>
+    <svg id="fig1" viewBox="0 0 540 330" width="540" role="img" aria-label="Tree diagram for choosing a red or black hat on Saturday and again on Sunday, giving four outcomes">
+      <text class="g-lbl-sm" x="8" y="155">Saturday</text>
+      <text class="g-lbl-sm" x="8" y="253">Sunday</text>
+      <text class="g-lbl-sm" x="8" y="294">Outcome</text>
+      <text class="g-lbl-sm" x="330" y="28" text-anchor="middle">Start</text>
+      <circle class="g-pt" cx="330" cy="50" r="5"/>
+      <g data-part="satR">
+        <line class="g-line" x1="330" y1="50" x2="230" y2="150"/>
+        <text class="g-meas" x="272" y="92" text-anchor="end">R</text>
+        <circle class="g-pt" cx="230" cy="150" r="5"/>
+        <line class="g-line" x1="230" y1="150" x2="170" y2="248"/>
+        <line class="g-line" x1="230" y1="150" x2="290" y2="248"/>
+        <text class="g-meas" x="192" y="193" text-anchor="end">R</text>
+        <text class="g-meas" x="268" y="193" text-anchor="start">B</text>
+        <circle class="g-pt" cx="170" cy="248" r="5"/>
+        <circle class="g-pt" cx="290" cy="248" r="5"/>
+        <text class="g-lbl-sm" x="170" y="290" text-anchor="middle">(R, R)</text>
+        <text class="g-lbl-sm" x="290" y="290" text-anchor="middle">(R, B)</text>
+      </g>
+      <g data-part="satB">
+        <line class="g-line" x1="330" y1="50" x2="430" y2="150"/>
+        <text class="g-meas" x="388" y="92" text-anchor="start">B</text>
+        <circle class="g-pt" cx="430" cy="150" r="5"/>
+        <line class="g-line" x1="430" y1="150" x2="370" y2="248"/>
+        <line class="g-line" x1="430" y1="150" x2="490" y2="248"/>
+        <text class="g-meas" x="392" y="193" text-anchor="end">R</text>
+        <text class="g-meas" x="468" y="193" text-anchor="start">B</text>
+        <circle class="g-pt" cx="370" cy="248" r="5"/>
+        <circle class="g-pt" cx="490" cy="248" r="5"/>
+        <text class="g-lbl-sm" x="370" y="290" text-anchor="middle">(B, R)</text>
+        <text class="g-lbl-sm" x="490" y="290" text-anchor="middle">(B, B)</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','satR')">Saturday = R</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','satB')">Saturday = B</button>
+    </div>
+    <figcaption>2 choices &middot; 2 choices = 4 outcomes. Each complete path from Start to a leaf is one outcome, written as an ordered pair (Saturday, Sunday).</figcaption>
+  </figure>
+
+  <table class="tbl">
+    <tr><th>Saturday &darr; &nbsp;/&nbsp; Sunday &rarr;</th><th>R</th><th>B</th></tr>
+    <tr><td><b>R</b></td><td><code>R, R</code></td><td><code>R, B</code></td></tr>
+    <tr><td><b>B</b></td><td><code>B, R</code></td><td><code>B, B</code></td></tr>
+  </table>
+  <p style="font-size:14px;color:var(--sl-ink-2);margin-bottom:16px"><em>The same sample space as a two-way table: 2 rows &times; 2 columns = 4 cells = 4 outcomes.</em></p>
+
+  <figure class="fig">
+    <div class="fig-title">Three-Stage Tree &middot; Tossing a Coin Three Times</div>
+    <svg id="fig2" viewBox="-60 0 620 350" width="560" role="img" aria-label="Tree diagram for three coin tosses producing eight outcomes">
+      <text class="g-lbl-sm" x="-54" y="123">Toss 1</text>
+      <text class="g-lbl-sm" x="-54" y="201">Toss 2</text>
+      <text class="g-lbl-sm" x="-54" y="279">Toss 3</text>
+      <text class="g-lbl-sm" x="-54" y="312">Outcome</text>
+      <text class="g-lbl-sm" x="280" y="22" text-anchor="middle">Start</text>
+      <circle class="g-pt" cx="280" cy="40" r="5"/>
+      <g data-part="firstH">
+        <line class="g-line" x1="280" y1="40" x2="150" y2="118"/>
+        <line class="g-line" x1="150" y1="118" x2="85" y2="196"/>
+        <line class="g-line" x1="150" y1="118" x2="215" y2="196"/>
+        <line class="g-line" x1="85" y1="196" x2="52" y2="274"/>
+        <line class="g-line" x1="85" y1="196" x2="118" y2="274"/>
+        <line class="g-line" x1="215" y1="196" x2="182" y2="274"/>
+        <line class="g-line" x1="215" y1="196" x2="248" y2="274"/>
+        <circle class="g-pt" cx="150" cy="118" r="5"/>
+        <circle class="g-pt" cx="85" cy="196" r="5"/>
+        <circle class="g-pt" cx="215" cy="196" r="5"/>
+        <circle class="g-pt" cx="52" cy="274" r="5"/>
+        <circle class="g-pt" cx="118" cy="274" r="5"/>
+        <circle class="g-pt" cx="182" cy="274" r="5"/>
+        <circle class="g-pt" cx="248" cy="274" r="5"/>
+        <text class="g-meas g-halo" x="215" y="79" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="118" y="157" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="183" y="157" text-anchor="middle" dominant-baseline="middle">T</text>
+        <text class="g-meas g-halo" x="69" y="235" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="102" y="235" text-anchor="middle" dominant-baseline="middle">T</text>
+        <text class="g-meas g-halo" x="199" y="235" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="232" y="235" text-anchor="middle" dominant-baseline="middle">T</text>
+        <text class="g-lbl-sm" x="52" y="308" text-anchor="middle">HHH</text>
+        <text class="g-lbl-sm" x="118" y="308" text-anchor="middle">HHT</text>
+        <text class="g-lbl-sm" x="182" y="308" text-anchor="middle">HTH</text>
+        <text class="g-lbl-sm" x="248" y="308" text-anchor="middle">HTT</text>
+      </g>
+      <g data-part="firstT">
+        <line class="g-line" x1="280" y1="40" x2="410" y2="118"/>
+        <line class="g-line" x1="410" y1="118" x2="345" y2="196"/>
+        <line class="g-line" x1="410" y1="118" x2="475" y2="196"/>
+        <line class="g-line" x1="345" y1="196" x2="312" y2="274"/>
+        <line class="g-line" x1="345" y1="196" x2="378" y2="274"/>
+        <line class="g-line" x1="475" y1="196" x2="442" y2="274"/>
+        <line class="g-line" x1="475" y1="196" x2="508" y2="274"/>
+        <circle class="g-pt" cx="410" cy="118" r="5"/>
+        <circle class="g-pt" cx="345" cy="196" r="5"/>
+        <circle class="g-pt" cx="475" cy="196" r="5"/>
+        <circle class="g-pt" cx="312" cy="274" r="5"/>
+        <circle class="g-pt" cx="378" cy="274" r="5"/>
+        <circle class="g-pt" cx="442" cy="274" r="5"/>
+        <circle class="g-pt" cx="508" cy="274" r="5"/>
+        <text class="g-meas g-halo" x="345" y="79" text-anchor="middle" dominant-baseline="middle">T</text>
+        <text class="g-meas g-halo" x="378" y="157" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="443" y="157" text-anchor="middle" dominant-baseline="middle">T</text>
+        <text class="g-meas g-halo" x="329" y="235" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="362" y="235" text-anchor="middle" dominant-baseline="middle">T</text>
+        <text class="g-meas g-halo" x="459" y="235" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="492" y="235" text-anchor="middle" dominant-baseline="middle">T</text>
+        <text class="g-lbl-sm" x="312" y="308" text-anchor="middle">THH</text>
+        <text class="g-lbl-sm" x="378" y="308" text-anchor="middle">THT</text>
+        <text class="g-lbl-sm" x="442" y="308" text-anchor="middle">TTH</text>
+        <text class="g-lbl-sm" x="508" y="308" text-anchor="middle">TTT</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','firstH')">First toss = H</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','firstT')">First toss = T</button>
+    </div>
+    <figcaption>2 &middot; 2 &middot; 2 = 8 outcomes. Isolating "First toss = H" shows the 4 outcomes that begin with H &mdash; exactly half the sample space, because the remaining two stages still give 2 &middot; 2 = 4 paths.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Unequal Stages &middot; Spinner (A, B, C) then a Coin</div>
+    <svg id="fig3" viewBox="-70 0 590 300" width="530" role="img" aria-label="Tree diagram for spinning a three part spinner then tossing a coin, giving six outcomes">
+      <text class="g-lbl-sm" x="-64" y="145">Spinner</text>
+      <text class="g-lbl-sm" x="-64" y="243">Coin</text>
+      <text class="g-lbl-sm" x="-64" y="280">Outcome</text>
+      <text class="g-lbl-sm" x="260" y="24" text-anchor="middle">Start</text>
+      <circle class="g-pt" cx="260" cy="42" r="5"/>
+      <g data-part="sA">
+        <line class="g-line" x1="260" y1="42" x2="110" y2="140"/>
+        <text class="g-meas" x="177" y="85" text-anchor="end">A</text>
+        <circle class="g-pt" cx="110" cy="140" r="5"/>
+        <line class="g-line" x1="110" y1="140" x2="68" y2="238"/>
+        <line class="g-line" x1="110" y1="140" x2="152" y2="238"/>
+        <text class="g-meas g-halo" x="89" y="189" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="131" y="189" text-anchor="middle" dominant-baseline="middle">T</text>
+        <circle class="g-pt" cx="68" cy="238" r="5"/>
+        <circle class="g-pt" cx="152" cy="238" r="5"/>
+        <text class="g-lbl-sm" x="68" y="276" text-anchor="middle">(A, H)</text>
+        <text class="g-lbl-sm" x="152" y="276" text-anchor="middle">(A, T)</text>
+      </g>
+      <g data-part="sB">
+        <line class="g-line" x1="260" y1="42" x2="260" y2="140"/>
+        <text class="g-meas" x="270" y="91" text-anchor="start">B</text>
+        <circle class="g-pt" cx="260" cy="140" r="5"/>
+        <line class="g-line" x1="260" y1="140" x2="218" y2="238"/>
+        <line class="g-line" x1="260" y1="140" x2="302" y2="238"/>
+        <text class="g-meas g-halo" x="239" y="189" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="281" y="189" text-anchor="middle" dominant-baseline="middle">T</text>
+        <circle class="g-pt" cx="218" cy="238" r="5"/>
+        <circle class="g-pt" cx="302" cy="238" r="5"/>
+        <text class="g-lbl-sm" x="218" y="276" text-anchor="middle">(B, H)</text>
+        <text class="g-lbl-sm" x="302" y="276" text-anchor="middle">(B, T)</text>
+      </g>
+      <g data-part="sC">
+        <line class="g-line" x1="260" y1="42" x2="410" y2="140"/>
+        <text class="g-meas" x="343" y="85" text-anchor="start">C</text>
+        <circle class="g-pt" cx="410" cy="140" r="5"/>
+        <line class="g-line" x1="410" y1="140" x2="368" y2="238"/>
+        <line class="g-line" x1="410" y1="140" x2="452" y2="238"/>
+        <text class="g-meas g-halo" x="389" y="189" text-anchor="middle" dominant-baseline="middle">H</text>
+        <text class="g-meas g-halo" x="431" y="189" text-anchor="middle" dominant-baseline="middle">T</text>
+        <circle class="g-pt" cx="368" cy="238" r="5"/>
+        <circle class="g-pt" cx="452" cy="238" r="5"/>
+        <text class="g-lbl-sm" x="368" y="276" text-anchor="middle">(C, H)</text>
+        <text class="g-lbl-sm" x="452" y="276" text-anchor="middle">(C, T)</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','sA')">Spinner = A</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','sB')">Spinner = B</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','sC')">Spinner = C</button>
+    </div>
+    <figcaption>3 &middot; 2 = 6 outcomes. The two stages need not have the same number of branches &mdash; each spinner branch simply splits into the same 2 coin branches.</figcaption>
+  </figure>
+
+  <div class="concept-card">
+    <h3>Two-Way Table &middot; Rolling Two Dice</h3>
+    <p>A table is the fastest picture of a <b>two-stage</b> sample space. Rows = first die, columns = second die, and each of the <code>6 &times; 6 = 36</code> cells is one outcome. Here each cell shows the <em>sum</em>, so an event like "the sum is 8" is just the set of bold cells &mdash; there are <b>5</b> of them.</p>
+    <table class="tbl">
+      <tr><th>1st &darr; / 2nd &rarr;</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+      <tr><td><b>1</b></td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+      <tr><td><b>2</b></td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td><b>8</b></td></tr>
+      <tr><td><b>3</b></td><td>4</td><td>5</td><td>6</td><td>7</td><td><b>8</b></td><td>9</td></tr>
+      <tr><td><b>4</b></td><td>5</td><td>6</td><td>7</td><td><b>8</b></td><td>9</td><td>10</td></tr>
+      <tr><td><b>5</b></td><td>6</td><td>7</td><td><b>8</b></td><td>9</td><td>10</td><td>11</td></tr>
+      <tr><td><b>6</b></td><td>7</td><td><b>8</b></td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+    </table>
+    <div class="warning-box"><strong>Watch Out:</strong> the sample space here has <b>36</b> outcomes, not 11. The sums 2 through 12 are only 11 <em>values</em>; they are not equally likely because different numbers of cells produce them.</div>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Define a sample space</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">A fair die is tossed once.<br>a. What is the sample space of the experiment?<br>b. What is the sample space for the event of rolling a prime number?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">S includes all possible outcomes of rolling a die</span><span class="reason">definition of sample space</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">S = {1, 2, 3, 4, 5, 6}</span><span class="reason">list every face</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S(prime number on a die) includes all primes less than 6</span><span class="reason">an event is a subset of S</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">2, 3, 5 are prime; 1 is not prime; 4 and 6 are composite</span><span class="reason">test each outcome</span></div>
+      <div class="answer-box">a. S = {1, 2, 3, 4, 5, 6} &nbsp;&nbsp; b. S(prime) = {2, 3, 5}</div>
+      <div class="check-box"><strong>Check:</strong> every element of {2, 3, 5} appears in {1, 2, 3, 4, 5, 6} &check; &mdash; the event really is a subset.</div>
+      <div class="warning-box"><strong>Watch Out:</strong> 1 is <em>not</em> prime (it has only one factor), and 6 is not prime even though it is bigger than 5. Test each face separately instead of guessing a pattern.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Represent a sample space three ways</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Kembe has a black hat and a red hat. He chooses one hat for each day, Saturday and Sunday. Represent the sample space for this experiment by making an organized list, a table, and a tree diagram.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">For each day there are two possibilities: red (R) or black (B)</span><span class="reason">identify the stages</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Pair each Saturday choice with each Sunday choice</span><span class="reason">organized list</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S = {(R, R), (R, B), (B, B), (B, R)}</span><span class="reason">4 ordered pairs</span></div>
+      <div class="case-grid">
+        <div class="case-box"><h4>Table</h4><div class="math">Saturday down the side, Sunday across the top:<br>row R: R,&nbsp;R&nbsp;&nbsp;|&nbsp;&nbsp;R,&nbsp;B<br>row B: B,&nbsp;R&nbsp;&nbsp;|&nbsp;&nbsp;B,&nbsp;B</div></div>
+        <div class="case-box"><h4>Tree diagram</h4><div class="math">Stage 1: R, B<br>Each splits into R, B<br>4 paths = 4 outcomes<br>(see Figure 1 above)</div></div>
+      </div>
+      <div class="answer-box">S = {(R, R), (R, B), (B, R), (B, B)} &nbsp;&mdash;&nbsp; 4 outcomes</div>
+      <div class="check-box"><strong>Talk About It &mdash; why are (R, B) and (B, R) different?</strong> The position tells you the day. (R, B) means red on Saturday and black on Sunday; (B, R) means black on Saturday and red on Sunday. Different days get different hats, so they are different outcomes.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Finite and infinite sample spaces</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Classify each sample space as finite or infinite. If it is finite, write the sample space. If it is infinite, classify whether it is discrete or continuous.<br>a. A marble is drawn from a bag containing 3 orange, 5 green, and 4 blue marbles.<br>b. A spinner with four equal parts of green, blue, red, and yellow is spun until it lands on yellow.<br>c. A ball is thrown into the air and its height is recorded in inches.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">a. Only 3 possible outcomes: orange, green, or blue</span><span class="reason">colour is what is recorded, not which marble</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">a. S = {orange, green, blue} &rarr; finite</span><span class="reason">the list ends</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">b. The spin could take 1, 2, 3, &hellip; tries &rarr; infinite number of outcomes</span><span class="reason">the word "until"</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">b. S = {Y, NY, NNY, &hellip;} can be sequenced &rarr; infinite discrete</span><span class="reason">countable, but never ends</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">c. Heights can be recorded indefinitely (12 in., 12.4 in., 12.41 in., &hellip;)</span><span class="reason">a measurement</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">c. No list is possible &rarr; infinite continuous</span><span class="reason">between any two heights lies another</span></div>
+      <div class="answer-box">a. finite, S = {orange, green, blue} &nbsp;&nbsp; b. infinite discrete &nbsp;&nbsp; c. infinite continuous</div>
+      <div class="warning-box"><strong>Watch Out:</strong> in part (a) the bag holds 12 marbles, but the experiment records the <em>colour</em>, so the sample space has 3 outcomes &mdash; not 12. Always ask what is being recorded.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Use the Fundamental Counting Principle</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Santiago lists the number of sections available for the courses he will take in his first semester at college: Art History 6, French 5, Mathematics 9, Art 4, English 6. How many different schedules could Santiago create for this semester?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">Estimate: about 10 sections of Mathematics, about 5 sections of each of the other four courses</span><span class="reason">round to friendly numbers</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">10 &middot; 5 &middot; 5 &middot; 5 &middot; 5 = 6250 schedules (estimate)</span><span class="reason">Fundamental Counting Principle</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">n<sub>1</sub> &middot; n<sub>2</sub> &middot; n<sub>3</sub> &middot; n<sub>4</sub> &middot; n<sub>5</sub> = 6 &middot; 5 &middot; 9 &middot; 4 &middot; 6</span><span class="reason">5-stage experiment</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">6 &middot; 5 = 30, &nbsp; 30 &middot; 9 = 270, &nbsp; 270 &middot; 4 = 1080, &nbsp; 1080 &middot; 6 = 6480</span><span class="reason">multiply left to right</span></div>
+      <div class="answer-box">6 &middot; 5 &middot; 9 &middot; 4 &middot; 6 = 6480 different schedules</div>
+      <div class="check-box"><strong>Check:</strong> 6480 is close to the estimate of 6250, so the answer is reasonable. A tree diagram here would need 6480 leaves &mdash; this is exactly when the Counting Principle beats a drawing.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Counting with and without replacement</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A lock uses a 4-number combination, each number from 0 to 9.<br>a. How many combinations are possible if there is no restriction on the number of times a number can be used?<br>b. How many combinations are possible if each number can be used only once?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">a. Each of the 4 stages has 10 choices</span><span class="reason">digits may repeat</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">a. 10 &middot; 10 &middot; 10 &middot; 10 = 10<sup>4</sup> = 10,000</span><span class="reason">Counting Principle</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">b. After a digit is used it is gone: 10, then 9, then 8, then 7</span><span class="reason">no repeats &rarr; each stage loses one choice</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">b. 10 &middot; 9 &middot; 8 &middot; 7 = 5040</span><span class="reason">multiply</span></div>
+      <div class="answer-box">a. 10,000 combinations &nbsp;&nbsp; b. 5040 combinations</div>
+      <div class="check-box"><strong>Check:</strong> 5040 &lt; 10,000 &check; &mdash; forbidding repeats can only remove possibilities, never add any.</div>
+      <div class="warning-box"><strong>Watch Out:</strong> "no repeats" does not mean subtract. The stage counts <em>drop by one each time</em> because the earlier choice is no longer available: n, n&nbsp;&minus;&nbsp;1, n&nbsp;&minus;&nbsp;2, &hellip;</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1 &middot; define a sample space</h4>
+    <div class="prob">A numbered spinner with eight equal parts, labelled 1 through 8, is spun once.<br>a. Write the sample space S. &nbsp; b. Write the sample space for the event of landing on a multiple of 3.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">S = {1, 2, 3, 4, 5, 6, 7, 8}</span><span class="reason">every equal part is one outcome</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Multiples of 3 that are 8 or less: 3 and 6</span><span class="reason">9 is not on the spinner</span></div>
+      <div class="answer-box">a. S = {1, 2, 3, 4, 5, 6, 7, 8} &nbsp;&nbsp; b. S(multiple of 3) = {3, 6}</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2 &middot; two-stage sample space</h4>
+    <div class="prob">A spinner with three equal parts A, B, C is spun once and then a coin is tossed. List the sample space and state how many outcomes it contains.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">Stage 1: 3 outcomes. Stage 2: 2 outcomes.</span><span class="reason">read the stages</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">S = {(A, H), (A, T), (B, H), (B, T), (C, H), (C, T)}</span><span class="reason">pair every spinner part with every coin face</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">3 &middot; 2 = 6</span><span class="reason">Counting Principle confirms the list</span></div>
+      <div class="answer-box">6 outcomes (see Figure 3 above)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3 &middot; classify the sample space</h4>
+    <div class="prob">Classify each as finite, infinite discrete, or infinite continuous.<br>a. A letter is chosen at random from the alphabet.<br>b. A die is rolled until a 6 appears.<br>c. The distance a rolled marble travels is measured in centimetres.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">a. 26 outcomes, S = {A, B, C, &hellip;, Z}</span><span class="reason">the list ends &rarr; finite</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b. Could take 1, 2, 3, &hellip; rolls &mdash; countable but endless</span><span class="reason">"until" &rarr; infinite discrete</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">c. A measurement with no smallest step</span><span class="reason">infinite continuous</span></div>
+      <div class="answer-box">a. finite &nbsp;&nbsp; b. infinite discrete &nbsp;&nbsp; c. infinite continuous</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4 &middot; Fundamental Counting Principle</h4>
+    <div class="prob">A code consists of 2 letters (A&ndash;Z) followed by 3 digits (0&ndash;9), and repeats are allowed. How many different codes are possible?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">Stages: 26, 26, 10, 10, 10</span><span class="reason">5-stage experiment, repeats allowed</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">26 &middot; 26 = 676 &nbsp; and &nbsp; 10 &middot; 10 &middot; 10 = 1000</span><span class="reason">group the like stages</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">676 &middot; 1000 = 676,000</span><span class="reason">multiply</span></div>
+      <div class="answer-box">676,000 codes</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5 &middot; counting inside an event</h4>
+    <div class="prob">Two fair dice are rolled once.<br>a. How many outcomes are in the sample space? &nbsp; b. How many outcomes give a sum of 8? &nbsp; c. How many outcomes give an odd sum?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">a. 6 &middot; 6 = 36</span><span class="reason">Counting Principle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b. (2,6), (3,5), (4,4), (5,3), (6,2)</span><span class="reason">read the bold cells of the table</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">b. 5 outcomes</span><span class="reason">count them</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">c. odd sum = (even, odd) or (odd, even) = 3 &middot; 3 + 3 &middot; 3</span><span class="reason">odd + even is odd</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">c. 9 + 9 = 18</span><span class="reason">add the two disjoint cases</span></div>
+      <div class="answer-box">a. 36 &nbsp;&nbsp; b. 5 &nbsp;&nbsp; c. 18</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6 &middot; without replacement</h4>
+    <div class="prob">A box contains 6 different objects. Three objects are removed one at a time, without putting an object back. How many possible outcomes are there?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">Stage 1: 6 choices</span><span class="reason">all objects available</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Stage 2: 5 choices; Stage 3: 4 choices</span><span class="reason">one fewer each time</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">6 &middot; 5 &middot; 4 = 120</span><span class="reason">Counting Principle</span></div>
+      <div class="answer-box">120 outcomes</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>"What is the sample space?"</td><td>List <em>every</em> possible outcome inside braces</td><td><code>S = {1, 2, 3, 4, 5, 6}</code></td></tr>
+    <tr><td>"Sample space for the event &hellip;"</td><td>Keep only the outcomes of S that fit the description</td><td><code>S(prime) = {2, 3, 5}</code></td></tr>
+    <tr><td>No outcome satisfies the event</td><td>Write the empty set</td><td><code>S = &empty;</code></td></tr>
+    <tr><td>2-stage experiment, small</td><td>Organized list or a two-way table</td><td><code>{(R,R), (R,B), (B,R), (B,B)}</code></td></tr>
+    <tr><td>3 or more stages, or stages depend on each other</td><td>Tree diagram &mdash; one level per stage, one path per outcome</td><td>8 leaves for 3 coin tosses</td></tr>
+    <tr><td>Only the <em>number</em> of outcomes is needed</td><td>Fundamental Counting Principle: multiply the stages</td><td><code>6 &middot; 5 &middot; 9 &middot; 4 &middot; 6 = 6480</code></td></tr>
+    <tr><td>Choices are used up (no repeats)</td><td>Drop the stage count by one each time</td><td><code>10 &middot; 9 &middot; 8 &middot; 7 = 5040</code></td></tr>
+    <tr><td>The list ends</td><td>Call it finite and write S out</td><td><code>{orange, green, blue}</code></td></tr>
+    <tr><td>"&hellip; until &hellip;" appears</td><td>Endless but sequenceable</td><td>infinite discrete</td></tr>
+    <tr><td>A measurement is recorded</td><td>Cannot be listed at all</td><td>infinite continuous</td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">S = {all outcomes}</span>
+    <span class="pill">event &sube; S</span>
+    <span class="pill">n<sub>1</sub> &middot; n<sub>2</sub> &middot; &hellip; &middot; n<sub>k</sub></span>
+    <span class="pill">k stages of n each: n<sup>k</sup></span>
+    <span class="pill">no repeats: n(n&minus;1)(n&minus;2)&hellip;</span>
+    <span class="pill">2 dice: 6 &middot; 6 = 36</span>
+    <span class="pill">c coins: 2<sup>c</sup></span>
+    <span class="pill">empty event: &empty;</span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes to avoid:</strong>
+    <ul style="margin:8px 0 0 20px">
+      <li>Adding the stages instead of multiplying them (4 + 5 + 2 = 11 instead of 4 &middot; 5 &middot; 2 = 40).</li>
+      <li>Treating <code>(R, B)</code> and <code>(B, R)</code> as the same outcome &mdash; position tells you the stage.</li>
+      <li>Counting the number of <em>objects</em> instead of the number of recorded <em>outcomes</em> (12 marbles but only 3 colours).</li>
+      <li>Calling "roll until a 6 appears" continuous. It is endless, but the outcomes can be counted &rarr; infinite <em>discrete</em>.</li>
+      <li>Saying two dice have 11 outcomes because the sums run 2 to 12. The sample space has 36 outcomes.</li>
+      <li>Forgetting that "without replacement" shrinks each later stage by one.</li>
+      <li>Listing a leaf of a tree without following the whole path &mdash; each outcome is the <em>complete</em> path from Start.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"Which term names the set of ALL possible outcomes of an experiment?",opts:["outcome","event","sample space","trial"],ans:2,exp:"An <b>outcome</b> is the result of one trial and an <b>event</b> is only a subset. The full collection of every possible outcome is the sample space, usually written S."},
+  {q:"A fair die is tossed once. How many outcomes are in the sample space?",opts:["5","6","12","36"],ans:1,exp:"S = {1, 2, 3, 4, 5, 6}, so there are 6 outcomes. 36 would be the count for <i>two</i> dice (6 &middot; 6)."},
+  {q:"A fair die is tossed once. How many outcomes are in the event &quot;a prime number&quot;?",opts:["3","2","4","6"],ans:0,exp:"The primes on a die are 2, 3 and 5, so S(prime) = {2, 3, 5} has 3 outcomes. 1 is not prime, and 4 and 6 are composite."},
+  {q:"A coin is tossed repeatedly until the first head appears. Its sample space is:",opts:["finite","infinite continuous","the empty set","infinite discrete"],ans:3,exp:"The outcomes H, TH, TTH, TTTH, &hellip; never run out, but they can be arranged in a sequence and counted off one by one &mdash; that is exactly what infinite discrete means. The word &quot;until&quot; is the give-away."},
+  {q:"The exact height of a thrown ball is recorded in inches. Its sample space is:",opts:["finite","infinite continuous","infinite discrete","the empty set"],ans:1,exp:"Height is a measurement: between any two heights there is always another, so the outcomes cannot be listed or sequenced at all. That is infinite continuous, not discrete."},
+  {q:"A three-stage experiment has 4 outcomes at the first stage, 5 at the second and 2 at the third. How many outcomes are in the sample space?",opts:["11","20","40","45"],ans:2,exp:"Multiply, do not add: 4 &middot; 5 &middot; 2 = 40. Adding gives 11, which is the classic trap. 20 comes from using only the first two stages."},
+  {q:"A coin is tossed 4 times. How many outcomes are in the sample space?",opts:["16","8","24","32"],ans:0,exp:"Each toss has 2 outcomes and there are 4 stages: 2 &middot; 2 &middot; 2 &middot; 2 = 2<sup>4</sup> = 16. Eight is the answer for 3 tosses, 32 for 5 tosses."},
+  {q:"Two fair dice are rolled once. How many outcomes are in the sample space?",opts:["12","21","30","36"],ans:3,exp:"6 &middot; 6 = 36. It is not 12 (that adds the dice) and not 11 (the number of possible <i>sums</i>, which are not equally likely)."},
+  {q:"Two fair dice are rolled once. How many outcomes give a sum of 8?",opts:["4","5","6","8"],ans:1,exp:"Read the diagonal of the table: (2,6), (3,5), (4,4), (5,3), (6,2) &mdash; that is 5 cells. (1,7) does not exist, so the count stops at 5."},
+  {q:"Two fair dice are rolled once. How many outcomes give an ODD sum?",opts:["12","15","18","20"],ans:2,exp:"A sum is odd only when one die is odd and the other is even: 3 &middot; 3 = 9 outcomes for (odd, even) plus 3 &middot; 3 = 9 for (even, odd), giving 18 &mdash; exactly half of the 36 outcomes."},
+  {q:"A tree diagram has 3 branches at the first stage, and every first-stage node splits into 4 branches. How many leaves does the tree have?",opts:["12","7","34","64"],ans:0,exp:"Every one of the 3 first-stage branches splits into 4, so there are 3 groups of 4 leaves: 3 &middot; 4 = 12. Adding gives 7, which counts branches, not complete paths."},
+  {q:"A code is 3 letters (A&ndash;Z) followed by 2 digits (0&ndash;9), with repeats allowed. How many codes are possible?",opts:["17,576","175,760","676,000","1,757,600"],ans:3,exp:"26<sup>3</sup> = 17,576 for the letters and 10<sup>2</sup> = 100 for the digits, so 17,576 &middot; 100 = 1,757,600. Choice A forgets the digits entirely; C uses only 2 letters."},
+  {q:"A spinner has five equal parts labelled A, B, C, D, E. How many outcomes are in the event &quot;lands on a vowel&quot;?",opts:["1","2","3","5"],ans:1,exp:"The vowels among A, B, C, D, E are A and E, so S(vowel) = {A, E} has 2 outcomes. Five would be the whole sample space, not the event."},
+  {q:"Three objects are removed one at a time, without replacement, from a box of 5 different objects. How many outcomes are possible?",opts:["15","25","60","125"],ans:2,exp:"The choices shrink by one each stage: 5 &middot; 4 &middot; 3 = 60. 125 = 5<sup>3</sup> would be the answer if each object were replaced before the next draw."},
+  {q:"A lock uses a 4-number combination with digits 0 through 9 and no digit repeated. How many combinations are possible?",opts:["210","720","4536","5040"],ans:3,exp:"10 &middot; 9 &middot; 8 &middot; 7 = 5040. With repeats allowed it would be 10<sup>4</sup> = 10,000, so 5040 being smaller is the expected check &mdash; banning repeats can only remove possibilities."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

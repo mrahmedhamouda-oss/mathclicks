@@ -1,0 +1,616 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Use the sine, cosine and tangent ratios &mdash; and their inverses &mdash; to find missing sides and angles in a right triangle.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>What trigonometry actually is</h3>
+    <p>The word <b>trigonometry</b> comes from the Greek <i>trigon</i> (triangle) and <i>metron</i> (measure) &mdash; literally "triangle measurement." A <b>trigonometric ratio</b> is a ratio of the lengths of two sides of a <em>right</em> triangle.</p>
+    <p>The whole subject rests on one fact from similarity: if two right triangles share an acute angle, they are similar (AA), so their corresponding sides are proportional. That means the ratio <code>opp/hyp</code> depends <strong>only on the angle</strong>, not on how big the triangle is. So we can give that ratio a name and put it in a calculator.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>trigonometry</b> &mdash; the study of the relationships between the sides and angles of triangles.</div>
+      <div class="vocab-item"><b>trigonometric ratio</b> &mdash; a ratio of the lengths of two sides of a right triangle.</div>
+      <div class="vocab-item"><b>solving a triangle</b> &mdash; finding every unknown side length and angle measure of a triangle.</div>
+      <div class="vocab-item"><b>inverse sine / cosine / tangent</b> &mdash; the operation that takes a ratio back to the angle that produced it.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Naming the sides: it depends on which angle you stand at</h3>
+    <p>Before you can write any ratio you must label the three sides <em>relative to a chosen acute angle</em>, called the <b>reference angle</b>.</p>
+    <ul>
+      <li>The <b>hypotenuse</b> is always the side across from the right angle. It never changes.</li>
+      <li>The <b>opposite</b> leg is the leg that does <em>not</em> touch the reference angle.</li>
+      <li>The <b>adjacent</b> leg is the leg that <em>does</em> touch the reference angle (and is not the hypotenuse).</li>
+    </ul>
+    <div class="warning-box"><strong>Watch out!</strong> "Opposite" and "adjacent" swap the moment you switch reference angles. In the same triangle, the leg that is opposite &ang;<i>A</i> is adjacent to &ang;<i>B</i>. See the two figures below &mdash; same triangle, opposite colours.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Key Concept &middot; Trigonometric Ratios</h3>
+    <div class="theorem">
+      <div class="theorem-head">Sine</div>
+      <div class="theorem-body">If &#9651;<i>ABC</i> is a right triangle, then the <b>sine</b> of each acute angle in &#9651;<i>ABC</i> is the ratio of the length of the leg opposite that angle to the length of the hypotenuse.
+      <div class="formula-box">sin&nbsp;<i>A</i> = opp / hyp = <i>a</i>/<i>c</i>&nbsp;&nbsp;&nbsp;&nbsp;sin&nbsp;<i>B</i> = opp / hyp = <i>b</i>/<i>c</i></div></div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Cosine</div>
+      <div class="theorem-body">If &#9651;<i>ABC</i> is a right triangle, then the <b>cosine</b> of each acute angle in &#9651;<i>ABC</i> is the ratio of the length of the leg adjacent to that angle to the length of the hypotenuse.
+      <div class="formula-box">cos&nbsp;<i>A</i> = adj / hyp = <i>b</i>/<i>c</i>&nbsp;&nbsp;&nbsp;&nbsp;cos&nbsp;<i>B</i> = adj / hyp = <i>a</i>/<i>c</i></div></div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Tangent</div>
+      <div class="theorem-body">If &#9651;<i>ABC</i> is a right triangle, then the <b>tangent</b> of each acute angle in &#9651;<i>ABC</i> is the ratio of the length of the leg opposite that angle to the length of the leg adjacent to that angle.
+      <div class="formula-box">tan&nbsp;<i>A</i> = opp / adj = <i>a</i>/<i>b</i>&nbsp;&nbsp;&nbsp;&nbsp;tan&nbsp;<i>B</i> = opp / adj = <i>b</i>/<i>a</i></div></div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; memorising the ratios:</strong> <b>SOH&#8209;CAH&#8209;TOA</b>. <b>S</b>ine = <b>O</b>pposite over <b>H</b>ypotenuse, <b>C</b>osine = <b>A</b>djacent over <b>H</b>ypotenuse, <b>T</b>angent = <b>O</b>pposite over <b>A</b>djacent. Take the first letter of each word in the ratio.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Key Concept &middot; Inverse Trigonometric Ratios</h3>
+    <p>A trig ratio turns an <em>angle</em> into a <em>number</em>. The inverse turns the <em>number</em> back into the <em>angle</em>.</p>
+    <table class="tbl">
+      <tr><th>Inverse Sine</th><th>Inverse Cosine</th><th>Inverse Tangent</th></tr>
+      <tr>
+        <td>If &ang;<i>A</i> is acute and the sine of <i>A</i> is <i>x</i>, then the <b>inverse sine</b> of <i>x</i> is the measure of &ang;<i>A</i>.</td>
+        <td>If &ang;<i>A</i> is acute and the cosine of <i>A</i> is <i>x</i>, then the <b>inverse cosine</b> of <i>x</i> is the measure of &ang;<i>A</i>.</td>
+        <td>If &ang;<i>A</i> is acute and the tangent of <i>A</i> is <i>x</i>, then the <b>inverse tangent</b> of <i>x</i> is the measure of &ang;<i>A</i>.</td>
+      </tr>
+      <tr>
+        <td><code>If sin&nbsp;A = x, then sin<sup>&minus;1</sup>x = m&ang;A</code></td>
+        <td><code>If cos&nbsp;A = x, then cos<sup>&minus;1</sup>x = m&ang;A</code></td>
+        <td><code>If tan&nbsp;A = x, then tan<sup>&minus;1</sup>x = m&ang;A</code></td>
+      </tr>
+    </table>
+    <div class="warning-box"><strong>Watch out!</strong> <code>sin<sup>&minus;1</sup>x</code> is read "the inverse sine of <i>x</i>". It is <strong>not</strong> a negative exponent: <code>sin<sup>&minus;1</sup>x &ne; 1/(sin&nbsp;x)</code>. The notation copies the inverse-function notation <code>f<sup>&minus;1</sup>(x)</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Solving a right triangle</h3>
+    <p>When you are given measurements and asked to find <em>every</em> unknown side and angle, that is called <b>solving a triangle</b>. To solve a right triangle you need to know either</p>
+    <div class="steps-list">
+      <div class="s">two side lengths, <strong>or</strong></div>
+      <div class="s">one side length and the measure of one acute angle.</div>
+    </div>
+    <p>From there the toolkit is: a trig ratio (for a side or an inverse for an angle), the fact that the two acute angles are complementary, and the Pythagorean Theorem.</p>
+    <div class="keyfact"><div class="ico">1</div><div class="txt">Choose your ratio by looking at <em>which two sides</em> are involved &mdash; the one you know and the one you want.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt">To find a <strong>side</strong>, use sin / cos / tan. To find an <strong>angle</strong>, use sin<sup>&minus;1</sup> / cos<sup>&minus;1</sup> / tan<sup>&minus;1</sup>.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt">The acute angles of a right triangle are complementary: <code>m&ang;A + m&ang;B = 90&deg;</code>. One inverse gives you both angles.</div></div>
+    <div class="keyfact"><div class="ico">4</div><div class="txt"><code>sin&nbsp;A = cos&nbsp;B</code> and <code>cos&nbsp;A = sin&nbsp;B</code> whenever <i>A</i> and <i>B</i> are complementary &mdash; the sine of an angle equals the cosine of its complement.</div></div>
+    <div class="keyfact"><div class="ico">5</div><div class="txt">Every trig ratio of an acute angle is a positive number, and sine and cosine are always <strong>less than 1</strong> (a leg is always shorter than the hypotenuse).</div></div>
+    <div class="info-box"><strong>Study Tip &mdash; graphing calculator:</strong> make sure the calculator is in <b>degree</b> mode, not radian mode. The inverse keys <span style="font-family:monospace">sin<sup>&minus;1</sup></span>, <span style="font-family:monospace">cos<sup>&minus;1</sup></span>, <span style="font-family:monospace">tan<sup>&minus;1</sup></span> are usually the second functions of the <span style="font-family:monospace">sin</span>, <span style="font-family:monospace">cos</span>, <span style="font-family:monospace">tan</span> keys.</div>
+    <div class="info-box"><strong>Study Tip &mdash; approximation:</strong> if you use a calculated measure to find another measure, do not round until the very last step. Rounding early snowballs.</div>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+  <p style="font-size:15px;line-height:1.7;margin-bottom:8px;">Click a chip under any figure to isolate that part. Click it again to bring everything back.</p>
+
+  <figure class="fig">
+    <div class="fig-title">Naming the sides from &ang;A</div>
+    <svg id="fig1" viewBox="0 0 400 300" width="400" role="img" aria-label="Right triangle with the right angle at C, reference angle theta at A; the vertical leg is opposite, the horizontal leg is adjacent, the slanted side is the hypotenuse">
+      <g data-part="adj" class="g-hot">
+        <line class="g-line" x1="60" y1="245" x2="280" y2="245"/>
+        <text class="g-meas-b g-halo" x="170" y="269" text-anchor="middle">adjacent</text>
+      </g>
+      <g data-part="opp" class="g-hot">
+        <line class="g-line" x1="280" y1="245" x2="280" y2="80"/>
+        <text class="g-grn g-halo" x="294" y="165">opposite</text>
+      </g>
+      <g data-part="hyp" class="g-hot">
+        <line class="g-line" x1="60" y1="245" x2="280" y2="80"/>
+        <text class="g-meas g-halo" x="150" y="140" text-anchor="middle">hypotenuse</text>
+      </g>
+      <g data-part="ref" class="g-hot">
+        <path class="g-angle-fill" d="M 102 245 A 42 42 0 0 0 93.6 219.8 L 60 245 Z"/>
+        <text class="g-meas g-halo" x="115" y="227" text-anchor="middle">&theta;</text>
+      </g>
+      <path class="g-right" d="M 266 245 L 266 231 L 280 231"/>
+      <circle class="g-pt" cx="60" cy="245" r="4.5"/>
+      <circle class="g-pt" cx="280" cy="245" r="4.5"/>
+      <circle class="g-pt" cx="280" cy="80" r="4.5"/>
+      <text class="g-lbl" x="50" y="266" text-anchor="end">A</text>
+      <text class="g-lbl" x="290" y="266">C</text>
+      <text class="g-lbl" x="290" y="74">B</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','ref')">Reference angle &theta;</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','opp')">Opposite</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','adj')">Adjacent</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','hyp')">Hypotenuse</button>
+    </div>
+    <figcaption>Reference angle &theta; = &ang;<i>A</i>. Legs are 3 : 4 and the hypotenuse is 5 units of the same scale, so sin&nbsp;&theta; = 3/5, cos&nbsp;&theta; = 4/5, tan&nbsp;&theta; = 3/4.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Same triangle, reference angle moved to &ang;B</div>
+    <svg id="fig2" viewBox="0 0 400 300" width="400" role="img" aria-label="The same right triangle with the reference angle now at B; opposite and adjacent have traded places">
+      <g data-part="opp" class="g-hot">
+        <line class="g-line" x1="60" y1="245" x2="280" y2="245"/>
+        <text class="g-grn g-halo" x="170" y="269" text-anchor="middle">opposite</text>
+      </g>
+      <g data-part="adj" class="g-hot">
+        <line class="g-line" x1="280" y1="245" x2="280" y2="80"/>
+        <text class="g-meas-b g-halo" x="294" y="165">adjacent</text>
+      </g>
+      <g data-part="hyp" class="g-hot">
+        <line class="g-line" x1="60" y1="245" x2="280" y2="80"/>
+        <text class="g-meas g-halo" x="150" y="140" text-anchor="middle">hypotenuse</text>
+      </g>
+      <g data-part="ref" class="g-hot">
+        <path class="g-angle-fill" d="M 280 122 A 42 42 0 0 1 246.4 105.2 L 280 80 Z"/>
+        <text class="g-meas g-halo" x="254" y="136" text-anchor="middle">&theta;</text>
+      </g>
+      <path class="g-right" d="M 266 245 L 266 231 L 280 231"/>
+      <circle class="g-pt" cx="60" cy="245" r="4.5"/>
+      <circle class="g-pt" cx="280" cy="245" r="4.5"/>
+      <circle class="g-pt" cx="280" cy="80" r="4.5"/>
+      <text class="g-lbl" x="50" y="266" text-anchor="end">A</text>
+      <text class="g-lbl" x="290" y="266">C</text>
+      <text class="g-lbl" x="290" y="74">B</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','ref')">Reference angle &theta;</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','opp')">Opposite</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','adj')">Adjacent</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','hyp')">Hypotenuse</button>
+    </div>
+    <figcaption>Nothing about the triangle changed &mdash; only the reference angle. Now sin&nbsp;&theta; = 4/5 and cos&nbsp;&theta; = 3/5, exactly the swap of the previous figure. This is why <code>sin&nbsp;A = cos&nbsp;B</code>.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">The 30&deg;&#8211;60&deg;&#8211;90&deg; triangle</div>
+    <svg id="fig3" viewBox="0 0 360 240" width="360" role="img" aria-label="A 30-60-90 right triangle with legs x and x root 3 and hypotenuse 2x">
+      <g data-part="short" class="g-hot">
+        <line class="g-line" x1="250.5" y1="185" x2="250.5" y2="75"/>
+        <text class="g-meas" x="264.5" y="135">x</text>
+      </g>
+      <g data-part="long" class="g-hot">
+        <line class="g-line" x1="60" y1="185" x2="250.5" y2="185"/>
+        <text class="g-meas-b" x="155" y="207" text-anchor="middle">x&radic;3</text>
+      </g>
+      <g data-part="hyp" class="g-hot">
+        <line class="g-line" x1="60" y1="185" x2="250.5" y2="75"/>
+        <text class="g-grn g-halo" x="143" y="112" text-anchor="middle">2x</text>
+      </g>
+      <g data-part="a30" class="g-hot">
+        <path class="g-angle" d="M 100 185 A 40 40 0 0 0 94.64 165"/>
+        <text class="g-meas g-halo" x="118" y="172">30&deg;</text>
+      </g>
+      <g data-part="a60" class="g-hot">
+        <path class="g-angle" d="M 250.5 115 A 40 40 0 0 1 215.86 135"/>
+        <text class="g-meas g-halo" x="221" y="130" text-anchor="middle">60&deg;</text>
+      </g>
+      <path class="g-right" d="M 236.5 185 L 236.5 171 L 250.5 171"/>
+      <text class="g-lbl" x="48" y="192" text-anchor="end">A</text>
+      <text class="g-lbl" x="258" y="205">C</text>
+      <text class="g-lbl" x="258" y="70">B</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','a30')">30&deg; angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','a60')">60&deg; angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','short')">Shorter leg <i>x</i></button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','long')">Longer leg <i>x</i>&radic;3</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','hyp')">Hypotenuse 2<i>x</i></button>
+    </div>
+    <figcaption>Drawn to exact ratio 1 : &radic;3 : 2. Reading from &ang;<i>A</i> = 30&deg;: sin&nbsp;30&deg; = x/2x = 1/2, cos&nbsp;30&deg; = x&radic;3/2x = &radic;3/2, tan&nbsp;30&deg; = x/(x&radic;3) = &radic;3/3.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">The 45&deg;&#8211;45&deg;&#8211;90&deg; triangle</div>
+    <svg id="fig4" viewBox="0 0 340 260" width="340" role="img" aria-label="A 45-45-90 right triangle with two legs x and hypotenuse x root 2">
+      <g data-part="legs" class="g-hot">
+        <line class="g-line" x1="60" y1="203" x2="210" y2="203"/>
+        <line class="g-line" x1="210" y1="203" x2="210" y2="53"/>
+        <text class="g-meas-b" x="135" y="225" text-anchor="middle">x</text>
+        <text class="g-meas-b" x="224" y="133">x</text>
+      </g>
+      <g data-part="hyp" class="g-hot">
+        <line class="g-line" x1="60" y1="203" x2="210" y2="53"/>
+        <text class="g-grn g-halo" x="118" y="111" text-anchor="middle">x&radic;2</text>
+      </g>
+      <g data-part="aA" class="g-hot">
+        <path class="g-angle" d="M 100 203 A 40 40 0 0 0 88.28 174.72"/>
+        <text class="g-meas g-halo" x="116" y="181">45&deg;</text>
+      </g>
+      <g data-part="aB" class="g-hot">
+        <path class="g-angle" d="M 210 93 A 40 40 0 0 1 181.72 81.28"/>
+        <text class="g-meas g-halo" x="188" y="111" text-anchor="middle">45&deg;</text>
+      </g>
+      <path class="g-right" d="M 196 203 L 196 189 L 210 189"/>
+      <text class="g-lbl" x="48" y="210" text-anchor="end">A</text>
+      <text class="g-lbl" x="218" y="223">C</text>
+      <text class="g-lbl" x="218" y="48">B</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','aA')">45&deg; at <i>A</i></button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','aB')">45&deg; at <i>B</i></button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','legs')">Congruent legs</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','hyp')">Hypotenuse</button>
+    </div>
+    <figcaption>Both legs are 150 px long, so the ratio is exactly 1 : 1 : &radic;2. sin&nbsp;45&deg; = cos&nbsp;45&deg; = x/(x&radic;2) = &radic;2/2, and tan&nbsp;45&deg; = x/x = 1.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Find trigonometric ratios</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">In right &#9651;<i>JKL</i>, &ang;<i>L</i> = 90&deg;, <i>KL</i> = 5, <i>LJ</i> = 12, <i>KJ</i> = 13. Find sin&nbsp;<i>J</i>, cos&nbsp;<i>J</i>, tan&nbsp;<i>J</i>, sin&nbsp;<i>K</i>, cos&nbsp;<i>K</i>, tan&nbsp;<i>K</i>. Express each ratio as a fraction and as a decimal to the nearest hundredth.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 340 250" width="340" role="img" aria-label="Right triangle JKL with right angle at L, legs 5 and 12, hypotenuse 13">
+          <line class="g-line" x1="60" y1="200" x2="276" y2="200"/>
+          <line class="g-line" x1="60" y1="200" x2="60" y2="110"/>
+          <line class="g-line" x1="60" y1="110" x2="276" y2="200"/>
+          <path class="g-right" d="M 74 200 L 74 186 L 60 186"/>
+          <circle class="g-pt" cx="60" cy="200" r="4.5"/>
+          <circle class="g-pt" cx="276" cy="200" r="4.5"/>
+          <circle class="g-pt" cx="60" cy="110" r="4.5"/>
+          <text class="g-lbl" x="50" y="102" text-anchor="end">K</text>
+          <text class="g-lbl" x="50" y="218" text-anchor="end">L</text>
+          <text class="g-lbl" x="288" y="214">J</text>
+          <text class="g-meas" x="46" y="160" text-anchor="end">5</text>
+          <text class="g-meas" x="168" y="222" text-anchor="middle">12</text>
+          <text class="g-meas g-halo" x="176" y="135" text-anchor="middle">13</text>
+        </svg>
+        <figcaption>Drawn to scale: the legs are 90&nbsp;px and 216&nbsp;px, ratio 5 : 12, and the hypotenuse measures 234&nbsp;px = 13 units.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">From &ang;J: opp = KL = 5, adj = LJ = 12, hyp = KJ = 13</span><span class="reason">name the sides</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin J = opp/hyp = 5/13 &asymp; 0.38</span><span class="reason">SOH</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">cos J = adj/hyp = 12/13 &asymp; 0.92</span><span class="reason">CAH</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">tan J = opp/adj = 5/12 &asymp; 0.42</span><span class="reason">TOA</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">From &ang;K: opp = LJ = 12, adj = KL = 5, hyp = 13</span><span class="reason">sides swap roles</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">sin K = 12/13 &asymp; 0.92&nbsp;&nbsp; cos K = 5/13 &asymp; 0.38&nbsp;&nbsp; tan K = 12/5 = 2.40</span><span class="reason">SOH-CAH-TOA at K</span></div>
+      <div class="answer-box">sin J = 5/13, cos J = 12/13, tan J = 5/12; sin K = 12/13, cos K = 5/13, tan K = 12/5</div>
+      <div class="check-box"><strong>Think about it:</strong> sin&nbsp;<i>J</i> = cos&nbsp;<i>K</i> and cos&nbsp;<i>J</i> = sin&nbsp;<i>K</i>. That is no accident &mdash; &ang;<i>J</i> and &ang;<i>K</i> are complementary, and tan&nbsp;<i>J</i> &middot; tan&nbsp;<i>K</i> = (5/12)(12/5) = 1.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Use a special right triangle to find a trig ratio</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Use a special right triangle to express the sine of 60&deg; as a fraction and as a decimal to the nearest hundredth.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">shorter leg = x, longer leg = x&radic;3, hyp = 2x</span><span class="reason">30&deg;-60&deg;-90&deg; Triangle Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin 60&deg; = opp/hyp</span><span class="reason">definition of sine ratio</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= x&radic;3 / 2x</span><span class="reason">substitution (opposite 60&deg; is the longer leg)</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= &radic;3 / 2 &asymp; 0.87</span><span class="reason">divide out x; use a calculator</span></div>
+      <div class="answer-box">sin 60&deg; = &radic;3/2 &asymp; 0.87</div>
+      <div class="warning-box"><strong>The trap:</strong> the side opposite the 60&deg; angle is the <em>longer</em> leg <i>x</i>&radic;3, not the shorter leg. Pairing 60&deg; with <i>x</i> gives 1/2, which is actually sin&nbsp;30&deg;. Always look at the picture (see the 30&#8211;60&#8211;90 figure above).</div>
+      <div class="check-box"><strong>Check:</strong> the <i>x</i> cancels, so the answer does not depend on the size of the triangle &mdash; exactly what similarity predicts.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Estimate a leg from an angle and the hypotenuse</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">In right &#9651;<i>ABC</i> the right angle is at <i>B</i>, the hypotenuse <i>AC</i> = 12 and m&ang;<i>A</i> = 4&deg;. Find the leg adjacent to &ang;<i>A</i> (call it <i>x</i>) and the leg opposite &ang;<i>A</i> (call it <i>y</i>). Round to the nearest hundredth.</div>
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>Find <i>x</i> (adjacent leg)</h4>
+          <div class="math">
+            cos&nbsp;<i>A</i> = adj / hyp<br>
+            cos&nbsp;4&deg; = <i>x</i> / 12<br>
+            12&nbsp;cos&nbsp;4&deg; = <i>x</i><br>
+            <i>x</i> &asymp; 11.97
+          </div>
+        </div>
+        <div class="case-box">
+          <h4>Find <i>y</i> (opposite leg)</h4>
+          <div class="math">
+            sin&nbsp;<i>A</i> = opp / hyp<br>
+            sin&nbsp;4&deg; = <i>y</i> / 12<br>
+            12&nbsp;sin&nbsp;4&deg; = <i>y</i><br>
+            <i>y</i> &asymp; 0.84
+          </div>
+        </div>
+      </div>
+      <div class="solution-step"><span class="num">1</span><span class="math">Known: hyp and one acute angle</span><span class="reason">choose cosine for adj, sine for opp</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Multiply each side by 12 to isolate the unknown</span><span class="reason">the unknown starts in the numerator</span></div>
+      <div class="answer-box">x &asymp; 11.97&nbsp;&nbsp;and&nbsp;&nbsp;y &asymp; 0.84</div>
+      <div class="check-box"><strong>Check:</strong> 11.97&sup2; + 0.84&sup2; = 143.28 + 0.71 = 143.99 &asymp; 12&sup2;. &#10003; A 4&deg; angle is tiny, so the adjacent leg should be almost the whole hypotenuse and the opposite leg almost nothing &mdash; and it is.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Find an angle measure using an inverse ratio</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">In right &#9651;<i>ABC</i> the right angle is at <i>C</i>, <i>AC</i> = 3 and <i>AB</i> = 15. Use a calculator to find m&ang;<i>A</i> to the nearest tenth.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 360 160" width="360" role="img" aria-label="Right triangle ABC with right angle at C, side AC equal to 3 and hypotenuse AB equal to 15">
+          <line class="g-line" x1="50" y1="111" x2="300" y2="111"/>
+          <line class="g-line" x1="300" y1="111" x2="300" y2="60"/>
+          <line class="g-line" x1="50" y1="111" x2="300" y2="60"/>
+          <path class="g-angle" d="M 300 94 A 34 34 0 0 1 266.7 66.8"/>
+          <text class="g-meas g-halo" x="268" y="103" text-anchor="middle">?</text>
+          <path class="g-right" d="M 286 111 L 286 97 L 300 97"/>
+          <circle class="g-pt" cx="50" cy="111" r="4.5"/>
+          <circle class="g-pt" cx="300" cy="111" r="4.5"/>
+          <circle class="g-pt" cx="300" cy="60" r="4.5"/>
+          <text class="g-lbl" x="38" y="105" text-anchor="end">B</text>
+          <text class="g-lbl" x="306" y="129">C</text>
+          <text class="g-lbl" x="312" y="54">A</text>
+          <text class="g-meas g-halo" x="171" y="70" text-anchor="middle">15</text>
+          <text class="g-meas" x="314" y="90">3</text>
+        </svg>
+        <figcaption>Drawn to scale: <span style="text-decoration:overline">AC</span> = 51&nbsp;px and <span style="text-decoration:overline">AB</span> = 255&nbsp;px, a true 1 : 5 ratio, so the marked angle really measures about 78.5&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">Given lengths are the leg adjacent to &ang;A and the hypotenuse</span><span class="reason">so use the cosine ratio</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">cos A = adj/hyp = 3/15 = 1/5</span><span class="reason">substitution and simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">cos<sup>&minus;1</sup>(1/5) = m&ang;A</span><span class="reason">use the inverse cosine function</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;A &asymp; 78.5&deg;</span><span class="reason">use a calculator (degree mode)</span></div>
+      <div class="answer-box">m&ang;A &asymp; 78.5&deg;</div>
+      <div class="check-box"><strong>Talk about it:</strong> another route is <i>BC</i> = &radic;(15&sup2; &minus; 3&sup2;) = &radic;216 &asymp; 14.7, then tan<sup>&minus;1</sup>(14.7/3) &asymp; 78.5&deg;. Same answer, more steps &mdash; and more rounding risk.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Solve a right triangle</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Solve right &#9651;<i>RST</i>: the right angle is at <i>S</i>, <i>ST</i> = 6 and <i>RT</i> = 9. Round side measures to the nearest tenth and angle measures to the nearest tenth of a degree.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 340 255" width="340" role="img" aria-label="Right triangle RST with right angle at S, side ST equal to 6 and hypotenuse RT equal to 9">
+          <line class="g-line" x1="60" y1="60" x2="234.4" y2="60"/>
+          <line class="g-line" x1="234.4" y1="60" x2="234.4" y2="216"/>
+          <line class="g-line" x1="60" y1="60" x2="234.4" y2="216"/>
+          <path class="g-angle" d="M 100 60 A 40 40 0 0 1 89.8 86.7"/>
+          <text class="g-meas g-halo" x="118" y="88">?</text>
+          <path class="g-right" d="M 220.4 60 L 220.4 74 L 234.4 74"/>
+          <circle class="g-pt" cx="60" cy="60" r="4.5"/>
+          <circle class="g-pt" cx="234.4" cy="60" r="4.5"/>
+          <circle class="g-pt" cx="234.4" cy="216" r="4.5"/>
+          <text class="g-lbl" x="48" y="54" text-anchor="end">R</text>
+          <text class="g-lbl" x="242" y="50">S</text>
+          <text class="g-lbl" x="244" y="226">T</text>
+          <text class="g-meas g-halo" x="132" y="158" text-anchor="middle">9</text>
+          <text class="g-meas" x="248" y="142">6</text>
+          <text class="g-meas-b" x="147" y="46" text-anchor="middle">?</text>
+        </svg>
+        <figcaption>Drawn to scale: <span style="text-decoration:overline">ST</span> = 156&nbsp;px and <span style="text-decoration:overline">RT</span> = 234&nbsp;px, a true 6 : 9 ratio, so &ang;<i>R</i> really measures about 41.8&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">sin R = opp/hyp = 6/9</span><span class="reason">definition of sine ratio</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin<sup>&minus;1</sup>(6/9) = m&ang;R</span><span class="reason">use the inverse sine function</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;R &asymp; 41.8&deg;</span><span class="reason">use a calculator</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;R + m&ang;T = 90&deg;</span><span class="reason">acute &ang;s of a rt &#9651; are complementary</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">41.8 + m&ang;T &asymp; 90&deg; &rarr; m&ang;T &asymp; 48.2&deg;</span><span class="reason">subtract 41.8 from each side</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">(RS)&sup2; + (ST)&sup2; = (RT)&sup2;</span><span class="reason">Pythagorean Theorem</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">(RS)&sup2; + 6&sup2; = 9&sup2; &rarr; (RS)&sup2; = 45</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">8</span><span class="math">RS = &radic;45 &asymp; 6.7</span><span class="reason">use a calculator</span></div>
+      <div class="answer-box">m&ang;R &asymp; 41.8&deg;, m&ang;T &asymp; 48.2&deg;, RS &asymp; 6.7</div>
+      <div class="info-box"><strong>Alternative methods:</strong> m&ang;<i>T</i> could have been found first with cos<sup>&minus;1</sup>(6/9), and once you know m&ang;<i>R</i> you could get <i>RS</i> from tan&nbsp;41.8&deg; = 6/<i>RS</i>. Using the Pythagorean Theorem is safer because it uses only the <em>given</em> numbers, not a rounded one.</div>
+      <div class="warning-box"><strong>Watch out!</strong> Do not use the rounded 41.8&deg; to compute <i>RS</i> and then round again &mdash; you would get 6.71&hellip; drifting off. Keep exact values until the final step.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">In right &#9651;<i>ABC</i> with right angle at <i>C</i>, <i>a</i> = 8, <i>b</i> = 15, <i>c</i> = 17. Find sin&nbsp;<i>A</i>, cos&nbsp;<i>A</i> and tan&nbsp;<i>A</i> as fractions.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">opp of &ang;A = a = 8, adj = b = 15, hyp = c = 17</span><span class="reason">lower-case letter faces its angle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin A = 8/17, cos A = 15/17, tan A = 8/15</span><span class="reason">SOH-CAH-TOA</span></div>
+      <div class="answer-box">sin A = 8/17 &asymp; 0.47, cos A = 15/17 &asymp; 0.88, tan A = 8/15 &asymp; 0.53</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">Use a special right triangle to express cos&nbsp;30&deg; and tan&nbsp;60&deg; exactly.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">legs x and x&radic;3, hyp 2x</span><span class="reason">30-60-90 Triangle Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">cos 30&deg; = adj/hyp = x&radic;3/2x = &radic;3/2</span><span class="reason">the longer leg touches the 30&deg; angle</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">tan 60&deg; = opp/adj = x&radic;3/x = &radic;3</span><span class="reason">the longer leg is opposite 60&deg;</span></div>
+      <div class="answer-box">cos 30&deg; = &radic;3/2 &asymp; 0.87&nbsp;&nbsp;&nbsp;tan 60&deg; = &radic;3 &asymp; 1.73</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">A right triangle has hypotenuse 20 and one acute angle of 36&deg;. Find the leg opposite that angle to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">sin 36&deg; = opp/20</span><span class="reason">opposite and hypotenuse &rarr; sine</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">opp = 20 sin 36&deg;</span><span class="reason">multiply each side by 20</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">opp &asymp; 20(0.5878) &asymp; 11.8</span><span class="reason">use a calculator in degree mode</span></div>
+      <div class="answer-box">opposite leg &asymp; 11.8</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">In right &#9651;<i>DEF</i> with right angle at <i>F</i>, <i>DF</i> = 7 and <i>EF</i> = 24. Find m&ang;<i>D</i> to the nearest tenth of a degree.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">From &ang;D: opp = EF = 24, adj = DF = 7</span><span class="reason">both legs are known &rarr; tangent</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">tan D = 24/7</span><span class="reason">TOA</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;D = tan<sup>&minus;1</sup>(24/7) &asymp; 73.7&deg;</span><span class="reason">use the inverse tangent function</span></div>
+      <div class="answer-box">m&ang;D &asymp; 73.7&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">Solve right &#9651;<i>PQR</i>: right angle at <i>Q</i>, m&ang;<i>P</i> = 32&deg;, <i>PQ</i> = 11. Find m&ang;<i>R</i>, <i>QR</i> and <i>PR</i>. Round to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;R = 90&deg; &minus; 32&deg; = 58&deg;</span><span class="reason">acute &ang;s of a rt &#9651; are complementary</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">tan 32&deg; = QR/11</span><span class="reason">QR is opposite &ang;P, PQ is adjacent</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">QR = 11 tan 32&deg; &asymp; 6.9</span><span class="reason">multiply each side by 11</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">cos 32&deg; = 11/PR &rarr; PR = 11/cos 32&deg; &asymp; 13.0</span><span class="reason">adjacent and hypotenuse &rarr; cosine</span></div>
+      <div class="answer-box">m&ang;R = 58&deg;, QR &asymp; 6.9, PR &asymp; 13.0</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6</h4>
+    <div class="prob">In right &#9651;<i>ABC</i> with right angle at <i>C</i>, sin&nbsp;<i>A</i> = 0.6428 and cos&nbsp;<i>A</i> = 0.7660. Find sin&nbsp;<i>B</i>, cos&nbsp;<i>B</i> and tan&nbsp;<i>A</i>.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&ang;A and &ang;B are complementary</span><span class="reason">acute &ang;s of a rt &#9651;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">The leg opposite &ang;A is adjacent to &ang;B, so sin A = cos B</span><span class="reason">the sides trade roles</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">sin B = cos A = 0.7660, cos B = sin A = 0.6428</span><span class="reason">cofunction relationship</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">tan A = sin A / cos A = 0.6428/0.7660 &asymp; 0.8391</span><span class="reason">(opp/hyp) &divide; (adj/hyp) = opp/adj</span></div>
+      <div class="answer-box">sin B = 0.7660, cos B = 0.6428, tan A &asymp; 0.84</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>What you are given</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>All three sides, want a ratio</td><td>Name opp / adj / hyp from the reference angle, then SOH-CAH-TOA</td><td>A fraction, then a decimal</td></tr>
+    <tr><td>Hypotenuse + an acute angle, want the opposite leg</td><td><code>opp = hyp &middot; sin&nbsp;&theta;</code></td><td>A side length</td></tr>
+    <tr><td>Hypotenuse + an acute angle, want the adjacent leg</td><td><code>adj = hyp &middot; cos&nbsp;&theta;</code></td><td>A side length</td></tr>
+    <tr><td>One leg + an acute angle, want the other leg</td><td><code>opp = adj &middot; tan&nbsp;&theta;</code></td><td>A side length</td></tr>
+    <tr><td>A leg + the hypotenuse, want the angle</td><td><code>sin<sup>&minus;1</sup></code> (opp) or <code>cos<sup>&minus;1</sup></code> (adj)</td><td>An angle measure</td></tr>
+    <tr><td>Both legs, want the angle</td><td><code>tan<sup>&minus;1</sup>(opp/adj)</code></td><td>An angle measure</td></tr>
+    <tr><td>One acute angle, want the other</td><td>Subtract from 90&deg;</td><td>The complement</td></tr>
+    <tr><td>Two sides, want the third</td><td>Pythagorean Theorem <code>a&sup2; + b&sup2; = c&sup2;</code></td><td>The missing side</td></tr>
+    <tr><td>30&deg;, 45&deg; or 60&deg;</td><td>Read the ratio off the special right triangle</td><td>An exact radical value</td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">sin &theta; = opp/hyp</span>
+    <span class="pill">cos &theta; = adj/hyp</span>
+    <span class="pill">tan &theta; = opp/adj</span>
+    <span class="pill">sin<sup>&minus;1</sup>x = m&ang;A</span>
+    <span class="pill">cos<sup>&minus;1</sup>x = m&ang;A</span>
+    <span class="pill">tan<sup>&minus;1</sup>x = m&ang;A</span>
+    <span class="pill">sin A = cos(90&deg;&minus;A)</span>
+    <span class="pill">tan &theta; = sin &theta; / cos &theta;</span>
+    <span class="pill">sin 30&deg; = 1/2</span>
+    <span class="pill">cos 30&deg; = &radic;3/2</span>
+    <span class="pill">tan 30&deg; = &radic;3/3</span>
+    <span class="pill">sin 45&deg; = &radic;2/2</span>
+    <span class="pill">cos 45&deg; = &radic;2/2</span>
+    <span class="pill">tan 45&deg; = 1</span>
+    <span class="pill">sin 60&deg; = &radic;3/2</span>
+    <span class="pill">cos 60&deg; = 1/2</span>
+    <span class="pill">tan 60&deg; = &radic;3</span>
+  </div>
+
+  <div class="warning-box">
+    <strong>Common mistakes to avoid</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8;">
+      <li>Labelling opp / adj from the wrong vertex. Always fix the reference angle <em>first</em>.</li>
+      <li>Reading <code>sin<sup>&minus;1</sup>x</code> as <code>1/sin x</code>. It is an inverse operation, not a reciprocal.</li>
+      <li>Leaving the calculator in radian mode. All the angles in this lesson are degrees.</li>
+      <li>Using sine or cosine when both known sides are legs &mdash; that situation calls for tangent.</li>
+      <li>Getting sin&nbsp;&theta; or cos&nbsp;&theta; greater than 1. A leg can never exceed the hypotenuse, so that answer is impossible.</li>
+      <li>Rounding an intermediate value and then using it. Round once, at the end.</li>
+      <li>Applying trig ratios to a triangle that is not right-angled. Every rule here needs a 90&deg; angle.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"In right &#9651;ABC with the right angle at C, sin A is equal to which ratio?",opts:["opp / hyp","adj / hyp","opp / adj","hyp / opp"],ans:0,exp:"SOH: Sine = Opposite over Hypotenuse. The other three describe cosine, tangent, and the reciprocal cosecant."},
+  {q:"In the mnemonic SOH-CAH-TOA, the block CAH tells you that:",opts:["cos = opp / hyp","cos = opp / adj","cos = adj / hyp","cot = adj / hyp"],ans:2,exp:"C-A-H reads Cosine = Adjacent over Hypotenuse. The letters are the first letters of the three words in the ratio, in order."},
+  {q:"In right &#9651;JKL below, &ang;L = 90&deg;, KL = 5, LJ = 12 and KJ = 13. Find sin J.",opts:["5/12","5/13","12/13","13/5"],ans:1,exp:"From &ang;J the opposite leg is KL = 5 and the hypotenuse is KJ = 13, so sin J = 5/13 &asymp; 0.38. 12/13 is cos J and 5/12 is tan J.",fig:'<svg viewBox="0 0 300 180" width="300" role="img" aria-label="Right triangle JKL with right angle at L, legs 5 and 12, hypotenuse 13"><line class="g-line" x1="50" y1="140" x2="230" y2="140"/><line class="g-line" x1="50" y1="140" x2="50" y2="65"/><line class="g-line" x1="50" y1="65" x2="230" y2="140"/><path class="g-right" d="M 64 140 L 64 126 L 50 126"/><text class="g-lbl" x="42" y="58" text-anchor="end">K</text><text class="g-lbl" x="42" y="158" text-anchor="end">L</text><text class="g-lbl" x="242" y="152">J</text><text class="g-meas" x="38" y="107" text-anchor="end">5</text><text class="g-meas" x="140" y="160" text-anchor="middle">12</text><text class="g-meas g-halo" x="148" y="84" text-anchor="middle">13</text></svg>'},
+  {q:"Using the same triangle (&ang;L = 90&deg;, KL = 5, LJ = 12, KJ = 13), find tan K.",opts:["5/12","5/13","12/13","12/5"],ans:3,exp:"From &ang;K the opposite leg is LJ = 12 and the adjacent leg is KL = 5, so tan K = 12/5 = 2.40. Reversing them gives tan J = 5/12."},
+  {q:"Using a 30&deg;-60&deg;-90&deg; triangle with legs x and x&radic;3 and hypotenuse 2x, cos 60&deg; =",opts:["1/2","&radic;3/2","&radic;3/3","2"],ans:0,exp:"The leg adjacent to the 60&deg; angle is the shorter leg x, so cos 60&deg; = x/(2x) = 1/2. Pairing 60&deg; with the longer leg would give &radic;3/2, which is sin 60&deg;."},
+  {q:"In the same 30&deg;-60&deg;-90&deg; triangle, sin 60&deg; =",opts:["1/2","&radic;3/2","&radic;2/2","&radic;3"],ans:1,exp:"The leg opposite 60&deg; is the longer leg x&radic;3, so sin 60&deg; = x&radic;3/(2x) = &radic;3/2 &asymp; 0.87. The x divides out, which is why the answer does not depend on the size of the triangle."},
+  {q:"tan 45&deg; =",opts:["&radic;2/2","&radic;2","1/2","1"],ans:3,exp:"A 45&deg;-45&deg;-90&deg; triangle has congruent legs, so tan 45&deg; = opp/adj = x/x = 1. &radic;2/2 is sin 45&deg; and cos 45&deg;."},
+  {q:"tan 30&deg; =",opts:["&radic;3","1/2","&radic;3/3","&radic;2/2"],ans:2,exp:"Opposite 30&deg; is the shorter leg x and adjacent is x&radic;3, so tan 30&deg; = x/(x&radic;3) = 1/&radic;3 = &radic;3/3 &asymp; 0.58. &radic;3 is tan 60&deg;, its reciprocal."},
+  {q:"cos 45&deg; =",opts:["1/2","&radic;2/2","&radic;3/2","1"],ans:1,exp:"In a 45&deg;-45&deg;-90&deg; triangle the adjacent leg is x and the hypotenuse is x&radic;2, so cos 45&deg; = x/(x&radic;2) = &radic;2/2 &asymp; 0.71. Sine gives the same value because the legs are congruent."},
+  {q:"In right &#9651;ABC with the right angle at C, sin A = 0.6428. What is cos B?",opts:["0.6428","0.7660","0.3572","1.5556"],ans:0,exp:"&ang;A and &ang;B are complementary, and the leg opposite &ang;A is the leg adjacent to &ang;B. Both ratios are that same leg over the same hypotenuse, so cos B = sin A = 0.6428."},
+  {q:"In right &#9651;ABC with the right angle at C, AC = 3 and AB = 15. Find m&ang;A to the nearest tenth of a degree.",opts:["11.5&deg;","1.5&deg;","81.4&deg;","78.5&deg;"],ans:3,exp:"AC is adjacent to &ang;A and AB is the hypotenuse, so cos A = 3/15 = 0.2 and m&ang;A = cos<sup>&minus;1</sup>(0.2) &asymp; 78.5&deg;. Choosing sin<sup>&minus;1</sup>(0.2) by mistake gives 11.5&deg;, the complement."},
+  {q:"A right triangle has hypotenuse 12 and an acute angle of 4&deg;. Find the leg opposite the 4&deg; angle, to the nearest hundredth.",opts:["11.97","0.07","0.84","171.6"],ans:2,exp:"sin 4&deg; = opp/12, so opp = 12 sin 4&deg; &asymp; 12(0.0698) &asymp; 0.84. The value 11.97 is 12 cos 4&deg;, the adjacent leg."},
+  {q:"In right &#9651;RST with the right angle at S, ST = 6 and RT = 9. Find m&ang;R to the nearest tenth of a degree.",opts:["41.8&deg;","48.2&deg;","33.6&deg;","56.3&deg;"],ans:0,exp:"ST is opposite &ang;R and RT is the hypotenuse, so sin R = 6/9 and m&ang;R = sin<sup>&minus;1</sup>(0.6667) &asymp; 41.8&deg;. 48.2&deg; is m&ang;T, the complement.",fig:'<svg viewBox="0 0 280 220" width="280" role="img" aria-label="Right triangle RST with right angle at S, leg ST equal to 6 and hypotenuse RT equal to 9"><line class="g-line" x1="45" y1="53" x2="179.2" y2="53"/><line class="g-line" x1="179.2" y1="53" x2="179.2" y2="173"/><line class="g-line" x1="45" y1="53" x2="179.2" y2="173"/><path class="g-angle" d="M 77 53 A 32 32 0 0 1 68.9 74.3"/><text class="g-meas g-halo" x="90" y="74" text-anchor="middle">?</text><path class="g-right" d="M 165.2 53 L 165.2 67 L 179.2 67"/><text class="g-lbl" x="33" y="48" text-anchor="end">R</text><text class="g-lbl" x="187" y="46">S</text><text class="g-lbl" x="189" y="183">T</text><text class="g-meas g-halo" x="99" y="128" text-anchor="middle">9</text><text class="g-meas" x="193" y="116">6</text></svg>'},
+  {q:"In that same &#9651;RST (right angle at S, ST = 6, RT = 9), find RS to the nearest tenth.",opts:["10.8","3.0","5.2","6.7"],ans:3,exp:"Use the Pythagorean Theorem on the given values: (RS)&sup2; + 6&sup2; = 9&sup2;, so (RS)&sup2; = 81 &minus; 36 = 45 and RS = &radic;45 &asymp; 6.7. Adding instead of subtracting gives the incorrect 10.8."},
+  {q:"&alpha; and &beta; are the acute angles of a right triangle. If sin &alpha; = 0.6428 and cos &alpha; = 0.7660, then sin &beta; =",opts:["0.6428","0.3572","0.7660","1.4088"],ans:2,exp:"&alpha; and &beta; are complementary, so the leg opposite &beta; is the leg adjacent to &alpha;. Dividing that same leg by the same hypotenuse gives sin &beta; = cos &alpha; = 0.7660."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

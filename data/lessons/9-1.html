@@ -1,0 +1,476 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Simplify rational expressions, state their excluded values, and multiply, divide, and reduce complex fractions by factoring and eliminating common factors.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. What a rational expression is</h3>
+    <p>A rational expression is nothing more exotic than a fraction whose top and bottom are polynomials instead of plain numbers. If you can write it as <code>polynomial &divide; polynomial</code>, it is rational.</p>
+    <div class="formula-box">
+      <b>Definition.</b> A <b>rational expression</b> is a ratio of two polynomial expressions:<br>
+      &nbsp;&nbsp;<code>P(x) / Q(x)</code> &nbsp; where <code>P</code> and <code>Q</code> are polynomials and <code>Q &ne; 0</code>.
+    </div>
+    <div class="vocab">
+      <div class="vocab-item"><b>rational expression</b> &mdash; a ratio of two polynomial expressions, e.g. <code>(x&sup2; &minus; 9)/(x + 4)</code>.</div>
+      <div class="vocab-item"><b>complex fraction</b> &mdash; a rational expression whose numerator and/or denominator is itself a rational expression.</div>
+    </div>
+    <p><strong>Not</strong> rational expressions: <code>(x + 1)/&radic;(x + 3)</code> (the bottom is not a polynomial), or anything with a variable exponent. But <code>(x&sup2; + 1)/3</code> <em>is</em> rational &mdash; a constant is a degree-0 polynomial.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Simplifying works exactly like reducing a numerical fraction</h3>
+    <p>To reduce <code>35/40</code> you divide top and bottom by the GCF. Rational expressions use the identical process &mdash; you just have to <em>factor first</em> to see what the GCF is.</p>
+    <div class="case-grid">
+      <div class="case-box">
+        <h4>Numbers</h4>
+        <div class="math">
+          35/40<br>
+          = (5 &middot; 7)/(5 &middot; 8)<br>
+          = 7/8 &nbsp; &nbsp; <span style="color:var(--sl-orange)">GCF = 5</span>
+        </div>
+      </div>
+      <div class="case-box">
+        <h4>Expressions</h4>
+        <div class="math">
+          (x&sup2; + 7x + 10)/(x&sup2; &minus; x &minus; 6)<br>
+          = [(x + 5)(x + 2)]/[(x &minus; 3)(x + 2)]<br>
+          = (x + 5)/(x &minus; 3) &nbsp; <span style="color:var(--sl-orange)">GCF = x + 2</span>
+        </div>
+      </div>
+    </div>
+    <div class="steps-list">
+      <div class="s">Factor the numerator completely (GCF first, then trinomial / difference of squares).</div>
+      <div class="s">Factor the denominator completely the same way.</div>
+      <div class="s"><b>Before cancelling</b>, read off the zeros of the ORIGINAL denominator &mdash; those are your excluded values.</div>
+      <div class="s">Eliminate every factor that appears in both top and bottom (each pair becomes 1).</div>
+      <div class="s">Write what is left. That is simplest form.</div>
+    </div>
+    <div class="warning-box"><strong>You may only cancel FACTORS, never terms.</strong> In <code>(x + 5)/(x + 3)</code> you cannot cross out the <code>x</code>'s &mdash; they are terms joined by <code>+</code>, not factors joined by <code>&middot;</code>. Cancelling is really dividing by 1, and <code>(x+5)/(x+3)</code> has no common factor to divide by.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Excluded values &mdash; the trap of this whole lesson</h3>
+    <p>Division by zero is undefined, so any value of the variable that makes a denominator zero must be thrown out. The subtlety: cancelling a factor <em>hides</em> a restriction, but it does not remove it.</p>
+    <div class="keyfact">
+      <div class="ico">!</div>
+      <div class="txt"><b>Excluded-Value Rule.</b> State restrictions from the <b>ORIGINAL denominator, in factored form, BEFORE you cancel anything.</b> Set every factor of that original denominator equal to 0 and solve. Every one of those values stays excluded, even if the factor disappears during simplification.</div>
+    </div>
+    <div class="formula-box">
+      If the original expression is <code>P/Q</code> and <code>Q = a&#8321;a&#8322;a&#8323;&hellip;</code> in factored form,<br>
+      then by the <b>Zero Product Property</b> the expression is undefined when<br>
+      &nbsp;&nbsp;<code>a&#8321; = 0</code> or <code>a&#8322; = 0</code> or <code>a&#8323; = 0</code> &hellip;
+    </div>
+    <div class="case-grid">
+      <div class="case-box">
+        <h4>Right &mdash; restrictions from the original</h4>
+        <div class="math">
+          (x&sup2; &minus; 4)/(x&sup2; &minus; x &minus; 6)<br>
+          = [(x&minus;2)(x+2)]/[(x&minus;3)(x+2)]<br>
+          <span style="color:var(--sl-green)">x &ne; 3 and x &ne; &minus;2</span><br>
+          = (x &minus; 2)/(x &minus; 3)
+        </div>
+      </div>
+      <div class="case-box">
+        <h4>Wrong &mdash; restrictions read after cancelling</h4>
+        <div class="math">
+          &hellip; = (x &minus; 2)/(x &minus; 3)<br>
+          <span style="color:var(--sl-orange)">x &ne; 3 only &nbsp;&#10007;</span><br>
+          The value x = &minus;2 has been lost. The<br>
+          original expression is 0/0 there.
+        </div>
+      </div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Checking:</strong> because you are only <em>simplifying</em>, the original and the answer must agree for every allowed value of <code>x</code>. Pick a convenient number that is not excluded, substitute into both, and confirm you get the same value.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Multiplying rational expressions</h3>
+    <p>Multiply straight across &mdash; numerator times numerator, denominator times denominator. In practice you factor first and cancel <em>before</em> multiplying, so the numbers never get large.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Multiplying Rational Expressions</div>
+      <div class="theorem-body">
+        <b>Words:</b> To multiply rational expressions, multiply the numerators and multiply the denominators.<br>
+        <b>Symbols:</b> For all rational expressions <code>a/b</code> and <code>c/d</code> with <code>b &ne; 0</code> and <code>d &ne; 0</code>,
+        <div class="formula-box" style="margin-top:8px">(a/b) &middot; (c/d) = ac/bd</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Dividing rational expressions</h3>
+    <p>Dividing by a fraction is multiplying by its reciprocal &mdash; flip the divisor, then follow the multiplication rule.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Dividing Rational Expressions</div>
+      <div class="theorem-body">
+        <b>Words:</b> To divide rational expressions, multiply the dividend by the reciprocal of the divisor.<br>
+        <b>Symbols:</b> For all rational expressions <code>a/b</code> and <code>c/d</code> with <code>b &ne; 0</code>, <code>c &ne; 0</code>, and <code>d &ne; 0</code>,
+        <div class="formula-box" style="margin-top:8px">(a/b) &divide; (c/d) = (a/b) &middot; (d/c) = ad/bc</div>
+      </div>
+    </div>
+    <div class="warning-box"><strong>Why division needs one extra restriction.</strong> Multiplication requires only <code>b &ne; 0</code> and <code>d &ne; 0</code>. Division also requires <code>c &ne; 0</code>, because <code>c</code> moves down into the denominator when you flip the divisor &mdash; and a divisor of 0 is meaningless in the first place.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>6. Factoring out &minus;1 &mdash; when two factors are opposites</h3>
+    <p>Expressions like <code>6x &minus; 5y</code> and <code>5y &minus; 6x</code> look different but are opposites. Pull a <code>&minus;1</code> out of one of them and a common factor appears.</p>
+    <div class="formula-box">
+      <code>a &minus; b = &minus;1(b &minus; a)</code> &nbsp; &there4; &nbsp; <code>(a &minus; b)/(b &minus; a) = &minus;1</code>
+    </div>
+    <p>So <code>(6x &minus; 5y) = &minus;1(5y &minus; 6x)</code>, and the pair cancels to leave a factor of <code>&minus;1</code> out front. It does not matter whether you factor the <code>&minus;1</code> out of the numerator or the denominator &mdash; the results are equivalent, since the single minus sign can be written in front of the whole fraction.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>7. Complex fractions</h3>
+    <p>A complex fraction is a fraction stacked on a fraction. The main fraction bar simply means &ldquo;divide.&rdquo; Rewrite it as a division problem and you are back to rule 5.</p>
+    <div class="formula-box">
+      &nbsp;&nbsp;(a/b)<br>
+      &minus;&minus;&minus;&minus;&nbsp; = &nbsp;(a/b) &divide; (c/d) = (a/b) &middot; (d/c) = ad/bc<br>
+      &nbsp;&nbsp;(c/d)
+    </div>
+    <div class="keyfact">
+      <div class="ico">&#9733;</div>
+      <div class="txt"><b>Three memorised moves:</b> (1) factor everything, (2) flip only the divisor &mdash; never the dividend, (3) restrictions come from the original bottoms, including the numerator of the divisor once it is flipped.</div>
+    </div>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Simplify a rational expression and state when it is undefined</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Simplify (x&sup2; &minus; 2x &minus; 24)/(2x&sup3; + 6x&sup2; &minus; 8x), and state when the original expression is undefined.</div>
+      <p style="font-weight:700;color:var(--sl-navy);margin-bottom:8px">Part A &mdash; Simplify.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">(x&sup2; &minus; 2x &minus; 24)/[2x(x&sup2; + 3x &minus; 4)]</span><span class="reason">Distributive Property (factor out 2x)</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= [(x + 4)(x &minus; 6)]/[2x(x + 4)(x &minus; 1)]</span><span class="reason">Factor the numerator and denominator</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (x &minus; 6)/[2x(x &minus; 1)] &middot; (x + 4)/(x + 4)</span><span class="reason">Eliminate common factors</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (x &minus; 6)/[2x(x &minus; 1)]</span><span class="reason">Simplify &mdash; (x + 4)/(x + 4) = 1</span></div>
+      <div class="answer-box">(x &minus; 6) / [2x(x &minus; 1)]</div>
+      <p style="font-weight:700;color:var(--sl-navy);margin:16px 0 8px">Part B &mdash; State when the expression is undefined.</p>
+      <div class="solution-step"><span class="num">5</span><span class="math">2x(x + 4)(x &minus; 1) = 0</span><span class="reason">use the ORIGINAL denominator, before cancelling</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">2x = 0 &nbsp;or&nbsp; x + 4 = 0 &nbsp;or&nbsp; x &minus; 1 = 0</span><span class="reason">Zero Product Property</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">x = 0, &nbsp; x = &minus;4, &nbsp; x = 1</span><span class="reason">solve each factor</span></div>
+      <div class="answer-box">Undefined when x = 0, x = &minus;4, and x = 1</div>
+      <div class="warning-box"><strong>The trap in this problem:</strong> the factor <code>(x + 4)</code> cancels, so the simplified form <code>(x &minus; 6)/[2x(x &minus; 1)]</code> is perfectly happy at <code>x = &minus;4</code>. The original is not &mdash; it gives <code>0/0</code>. Because the question asks about the <em>original</em>, <code>x = &minus;4</code> must be listed.</div>
+      <div class="check-box"><strong>Check:</strong> try x = 2. Original: (4 &minus; 4 &minus; 24)/(16 + 24 &minus; 16) = &minus;24/24 = &minus;1. Answer: (2 &minus; 6)/[2(2)(1)] = &minus;4/4 = &minus;1 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Simplify by using &minus;1</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify [(6x&sup2; &minus; 5xy)(x + 2y)] / [(x + y)(5y &minus; 6x)]</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= [x(6x &minus; 5y)(x + 2y)]/[(x + y)(5y &minus; 6x)]</span><span class="reason">Factor &mdash; GCF of x from 6x&sup2; &minus; 5xy</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">6x &minus; 5y = &minus;1(5y &minus; 6x)</span><span class="reason">the two binomials are opposites</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= [x(&minus;1)(5y &minus; 6x)(x + 2y)]/[(x + y)(5y &minus; 6x)]</span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= [(&minus;x)(x + 2y)]/(x + y)</span><span class="reason">eliminate (5y &minus; 6x)</span></div>
+      <div class="answer-box">(&minus;x)(x + 2y)/(x + y) &nbsp; or &nbsp; &minus;x(x + 2y)/(x + y)</div>
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>Factor &minus;1 out of the numerator</h4>
+          <div class="math">6x &minus; 5y = &minus;1(5y &minus; 6x)<br>&rarr; &minus;x(x + 2y)/(x + y)</div>
+        </div>
+        <div class="case-box">
+          <h4>Factor &minus;1 out of the denominator</h4>
+          <div class="math">5y &minus; 6x = &minus;1(6x &minus; 5y)<br>&rarr; x(x + 2y)/[&minus;(x + y)]<br>= &minus;x(x + 2y)/(x + y) &nbsp;&mdash; same</div>
+        </div>
+      </div>
+      <div class="info-box"><strong>Why they match:</strong> a single negative sign can live in the numerator, in the denominator, or in front of the whole fraction. <code>&minus;a/b = a/(&minus;b) = &minus;(a/b)</code>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3a</span>
+      <span class="example-title">Multiply rational expressions (monomials)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify (3x)/(8y) &middot; (12x&sup2;y)/(9xy&sup3;)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= (3 &middot; x &middot; 2 &middot; 2 &middot; 3 &middot; x &middot; x &middot; y)/(2 &middot; 2 &middot; 2 &middot; y &middot; 3 &middot; 3 &middot; x &middot; y &middot; y &middot; y)</span><span class="reason">Factor into prime factors</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">cancel 3, 3, 2, 2, x, y from top and bottom</span><span class="reason">Eliminate common factors</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (x &middot; x)/(2 &middot; y &middot; y &middot; y)</span><span class="reason">what survives</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= x&sup2;/(2y&sup3;)</span><span class="reason">Simplify &mdash; write using exponents</span></div>
+      <div class="answer-box">x&sup2; / (2y&sup3;)</div>
+      <div class="check-box"><strong>Check with exponent rules:</strong> (3&middot;12)/(8&middot;9) = 36/72 = 1/2; x&middot;x&sup2;/x = x&sup2;; y/y&sup3; = 1/y&sup2;. Product: x&sup2;/(2y&sup2;)&hellip; careful &mdash; the 1/2 contributes no y, so the bottom is 2y&sup3;&divide;y&nbsp;&middot;&nbsp;y = 2y&sup3;. Restrictions: x &ne; 0, y &ne; 0.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3b</span>
+      <span class="example-title">Divide rational expressions (monomials)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify (10d&#8309;)/(6cd) &divide; (30c&sup3;d&sup2;)/(4c)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= (10d&#8309;)/(6cd) &middot; (4c)/(30c&sup3;d&sup2;)</span><span class="reason">Multiply by the reciprocal of the divisor</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (2&middot;5&middot;d&middot;d&middot;d&middot;d&middot;d&middot;2&middot;2&middot;c)/(2&middot;3&middot;c&middot;d&middot;2&middot;3&middot;5&middot;c&middot;c&middot;c&middot;d&middot;d)</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">cancel 2, 2, 5, c, d, d</span><span class="reason">Eliminate common factors</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (d&middot;d&middot;2)/(3&middot;3&middot;c&middot;c&middot;c) = 2d&sup2;/(9c&sup3;)</span><span class="reason">Simplify &mdash; write using exponents</span></div>
+      <div class="answer-box">2d&sup2; / (9c&sup3;)</div>
+      <div class="warning-box"><strong>Watch out:</strong> flip <em>only</em> the divisor (the expression after the &divide; sign). Flipping the dividend by accident is the single most common error in this lesson. Also note the extra restriction <code>c &ne; 0</code> that appears because <code>30c&sup3;d&sup2;</code> moves to the bottom.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Multiply and divide polynomial expressions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify (x&sup2; + 15x + 50)/(x + 2) &divide; (x&sup2; + 30x + 200)/(x + 2)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= (x&sup2; + 15x + 50)/(x + 2) &middot; (x + 2)/(x&sup2; + 30x + 200)</span><span class="reason">Multiply by the reciprocal of the divisor</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= [(x + 5)(x + 10)]/(x + 2) &middot; (x + 2)/[(x + 10)(x + 20)]</span><span class="reason">Factor both trinomials</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">cancel (x + 10) and (x + 2)</span><span class="reason">Eliminate common factors</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (x + 5)/(x + 20)</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">(x + 5)/(x + 20)</div>
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>Factor step</h4>
+          <div class="math">x&sup2; + 15x + 50 = (x+5)(x+10)<br>x&sup2; + 30x + 200 = (x+10)(x+20)</div>
+        </div>
+        <div class="case-box">
+          <h4>Cancel step</h4>
+          <div class="math">(x+5)<s>(x+10)</s> &middot; <s>(x+2)</s><br>&divide; [<s>(x+2)</s> &middot; <s>(x+10)</s>(x+20)]</div>
+        </div>
+      </div>
+      <div class="info-box"><strong>Restrictions here:</strong> <code>x &ne; &minus;2</code> (original denominators), <code>x &ne; &minus;10</code> and <code>x &ne; &minus;20</code> (the divisor&rsquo;s numerator becomes a denominator after flipping).</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Simplify a complex fraction</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify [3x/(x &minus; y)] &divide; [6xy/(4x&sup2; &minus; 4y&sup2;)] &nbsp; (written as a complex fraction with 3x/(x&minus;y) over 6xy/(4x&sup2;&minus;4y&sup2;))</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= 3x/(x &minus; y) &divide; 6xy/(4x&sup2; &minus; 4y&sup2;)</span><span class="reason">Express as a division expression</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 3x/(x &minus; y) &middot; (4x&sup2; &minus; 4y&sup2;)/(6xy)</span><span class="reason">Multiply by the reciprocal</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 3x/(x &minus; y) &middot; 4(x&sup2; &minus; y&sup2;)/(6xy)</span><span class="reason">Distributive Property (factor out 4)</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 3x/(x &minus; y) &middot; [4(x + y)(x &minus; y)]/(6xy)</span><span class="reason">Factor the difference of squares</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">cancel 3x with 6xy (leaves 2y), and (x &minus; y)</span><span class="reason">Factor and eliminate factors</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= 4(x + y)/(2y) = 2(x + y)/y</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">2(x + y)/y</div>
+      <div class="warning-box"><strong>Trap:</strong> <code>x&sup2; &minus; y&sup2;</code> is <em>not</em> <code>(x &minus; y)&sup2;</code>. It factors as <code>(x + y)(x &minus; y)</code> &mdash; and only the <code>(x &minus; y)</code> half cancels. Restrictions: <code>x &ne; y</code>, <code>x &ne; &minus;y</code>, <code>x &ne; 0</code>, <code>y &ne; 0</code>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Problem 1</h4>
+    <div class="prob">Simplify (x&sup2; &minus; 5x &minus; 14)/(28 + 3x &minus; x&sup2;), and state the excluded values.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">numerator = (x &minus; 7)(x + 2)</span><span class="reason">factor the trinomial</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">28 + 3x &minus; x&sup2; = &minus;(x&sup2; &minus; 3x &minus; 28) = &minus;(x &minus; 7)(x + 4)</span><span class="reason">factor out &minus;1 first</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = 7, x = &minus;4</span><span class="reason">excluded values, from the original denominator</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (x + 2)/[&minus;(x + 4)]</span><span class="reason">eliminate (x &minus; 7)</span></div>
+      <div class="answer-box">&minus;(x + 2)/(x + 4); &nbsp; x &ne; 7, x &ne; &minus;4</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 2</h4>
+    <div class="prob">Simplify (16 &minus; c&sup2;)/(c&sup2; + c &minus; 20).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">16 &minus; c&sup2; = (4 &minus; c)(4 + c)</span><span class="reason">difference of squares</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">c&sup2; + c &minus; 20 = (c + 5)(c &minus; 4)</span><span class="reason">factor the trinomial</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">4 &minus; c = &minus;1(c &minus; 4)</span><span class="reason">opposites &mdash; factor out &minus;1</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= [&minus;1(c &minus; 4)(c + 4)]/[(c + 5)(c &minus; 4)]</span><span class="reason">substitute, then cancel (c &minus; 4)</span></div>
+      <div class="answer-box">&minus;(c + 4)/(c + 5); &nbsp; c &ne; 4, c &ne; &minus;5</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 3</h4>
+    <div class="prob">Simplify (x&sup2; + 9x + 20)/(8x + 16) &middot; (4x&sup2; + 16x + 16)/(x&sup2; &minus; 25).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">= [(x + 4)(x + 5)]/[8(x + 2)] &middot; [4(x + 2)&sup2;]/[(x + 5)(x &minus; 5)]</span><span class="reason">factor every piece</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">cancel (x + 5); 4/8 = 1/2; (x + 2)&sup2;/(x + 2) = (x + 2)</span><span class="reason">eliminate common factors</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= [(x + 4)(x + 2)]/[2(x &minus; 5)]</span><span class="reason">multiply what remains</span></div>
+      <div class="answer-box">(x + 4)(x + 2) / [2(x &minus; 5)]; &nbsp; x &ne; &minus;2, x &ne; 5, x &ne; &minus;5</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 4</h4>
+    <div class="prob">Simplify (3a&sup2; + 6a + 3)/(a&sup2; &minus; 3a &minus; 10) &divide; (12a&sup2; &minus; 12)/(a&sup2; &minus; 4).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">= [3(a + 1)&sup2;]/[(a &minus; 5)(a + 2)] &middot; [(a &minus; 2)(a + 2)]/[12(a &minus; 1)(a + 1)]</span><span class="reason">flip the divisor, then factor</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">3/12 = 1/4; cancel (a + 2); (a + 1)&sup2;/(a + 1) = (a + 1)</span><span class="reason">eliminate common factors</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= [(a + 1)(a &minus; 2)]/[4(a &minus; 5)(a &minus; 1)]</span><span class="reason">simplify</span></div>
+      <div class="answer-box">(a + 1)(a &minus; 2) / [4(a &minus; 5)(a &minus; 1)]</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 5</h4>
+    <div class="prob">Simplify the complex fraction [(x&sup2; &minus; 9y&sup2;)/(xy)] over [(2x + 6y)/x&sup2;].</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">= (x&sup2; &minus; 9y&sup2;)/(xy) &divide; (2x + 6y)/x&sup2;</span><span class="reason">the main bar means divide</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (x&sup2; &minus; 9y&sup2;)/(xy) &middot; x&sup2;/(2x + 6y)</span><span class="reason">multiply by the reciprocal</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= [(x + 3y)(x &minus; 3y)]/(xy) &middot; x&sup2;/[2(x + 3y)]</span><span class="reason">factor; difference of squares on top</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">cancel (x + 3y); x&sup2;/x = x</span><span class="reason">eliminate common factors</span></div>
+      <div class="answer-box">x(x &minus; 3y) / (2y); &nbsp; x &ne; 0, y &ne; 0, x &ne; &minus;3y</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 6</h4>
+    <div class="prob">Find the expression that makes this true for all x in the domain: (x &minus; 6)/(x + 3) &middot; ?/(x &minus; 6) = x &minus; 2.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">(x &minus; 6)/(x + 3) &middot; ?/(x &minus; 6) = ?/(x + 3)</span><span class="reason">the (x &minus; 6) factors cancel</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">?/(x + 3) = x &minus; 2</span><span class="reason">set equal to the target</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">? = (x &minus; 2)(x + 3)</span><span class="reason">multiply both sides by (x + 3)</span></div>
+      <div class="answer-box">? = (x &minus; 2)(x + 3) = x&sup2; + x &minus; 6</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Single rational expression</td><td>Factor top and bottom completely, cancel common <em>factors</em></td><td><code>(x+5)(x+2)/[(x&minus;3)(x+2)] = (x+5)/(x&minus;3)</code></td></tr>
+    <tr><td>Need excluded values</td><td>Set each factor of the <b>original</b> denominator to 0</td><td>list every solution, even cancelled ones</td></tr>
+    <tr><td>Multiplying</td><td>Factor, cancel across the multiplication, then multiply straight across</td><td><code>(a/b)(c/d) = ac/bd</code></td></tr>
+    <tr><td>Dividing</td><td>Flip the divisor only, then multiply</td><td><code>(a/b) &divide; (c/d) = ad/bc</code></td></tr>
+    <tr><td>Factors are opposites</td><td>Factor &minus;1 out of one of them</td><td><code>(a &minus; b)/(b &minus; a) = &minus;1</code></td></tr>
+    <tr><td>Complex fraction</td><td>Rewrite the main bar as &divide;, then multiply by the reciprocal</td><td><code>(a/b)/(c/d) = ad/bc</code></td></tr>
+    <tr><td>Want to check</td><td>Substitute a non-excluded value into the original and the answer</td><td>both must give the same number</td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">P(x)/Q(x), Q &ne; 0</span>
+    <span class="pill">(a/b)&middot;(c/d) = ac/bd</span>
+    <span class="pill">(a/b)&divide;(c/d) = ad/bc</span>
+    <span class="pill">a &minus; b = &minus;1(b &minus; a)</span>
+    <span class="pill">(a &minus; b)/(b &minus; a) = &minus;1</span>
+    <span class="pill">a&sup2; &minus; b&sup2; = (a+b)(a&minus;b)</span>
+    <span class="pill">Zero Product Property</span>
+  </div>
+
+  <div class="keyfact">
+    <div class="ico">&#9733;</div>
+    <div class="txt"><b>The one rule to carry out of this lesson:</b> restrictions come from the ORIGINAL denominator in factored form, stated before any cancelling. Simplifying changes the way an expression looks &mdash; it never changes which values are illegal.</div>
+  </div>
+
+  <div class="warning-box">
+    <strong>Common mistakes to avoid:</strong>
+    <ul style="margin:8px 0 0 20px">
+      <li>Cancelling terms instead of factors: <code>(x + 5)/(x + 3) &ne; 5/3</code>.</li>
+      <li>Reading restrictions off the <em>simplified</em> expression &mdash; cancelled factors still exclude values.</li>
+      <li>Flipping the dividend instead of the divisor when dividing.</li>
+      <li>Forgetting that dividing needs <code>c &ne; 0</code> as well as <code>b &ne; 0</code> and <code>d &ne; 0</code>.</li>
+      <li>Treating <code>a&sup2; &minus; b&sup2;</code> as <code>(a &minus; b)&sup2;</code>.</li>
+      <li>Missing that <code>a &minus; b</code> and <code>b &minus; a</code> are opposites, so they cancel to <code>&minus;1</code> &mdash; not to <code>1</code>.</li>
+      <li>Multiplying everything out before factoring &mdash; you lose the very factors you need to cancel.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"A rational expression is best described as which of the following?",opts:["A polynomial of degree 2 or higher","The ratio of two polynomial expressions","Any expression that contains a variable","A fraction whose numerator and denominator are both integers"],ans:1,exp:"By definition a rational expression is P/Q where P and Q are polynomials and Q &ne; 0 &mdash; exactly a ratio of two polynomials."},
+  {q:"Simplify: (x + 5)(x &minus; 2) / [(x &minus; 3)(x &minus; 2)]",opts:["(x + 5)/(x &minus; 3)","(x &minus; 2)/(x &minus; 3)","(x + 5)/(x &minus; 2)","1"],ans:0,exp:"The factor (x &minus; 2) appears in both top and bottom, so (x &minus; 2)/(x &minus; 2) = 1 and it drops out, leaving (x + 5)/(x &minus; 3)."},
+  {q:"For which values of x is (x&sup2; &minus; 2x &minus; 24)/(2x&sup3; + 6x&sup2; &minus; 8x) undefined?",opts:["x = 0 and x = 1 only","x = &minus;4 and x = 1 only","x = 0, x = &minus;4, and x = 1","x = 6 and x = &minus;4"],ans:2,exp:"The original denominator factors as 2x(x + 4)(x &minus; 1). Setting each factor to 0 gives x = 0, x = &minus;4, x = 1. Even though (x + 4) cancels, x = &minus;4 stays excluded because it makes the ORIGINAL denominator zero."},
+  {q:"Simplify: (x&sup2; &minus; 9)/(x&sup2; + 7x + 12)",opts:["(x + 3)/(x + 4)","(x &minus; 3)/(x &minus; 4)","(x &minus; 3)(x + 3)/(x + 4)","(x &minus; 3)/(x + 4)"],ans:3,exp:"x&sup2; &minus; 9 = (x &minus; 3)(x + 3) and x&sup2; + 7x + 12 = (x + 3)(x + 4). The (x + 3) factors cancel, leaving (x &minus; 3)/(x + 4)."},
+  {q:"Simplify: (6x &minus; 5y)/(5y &minus; 6x)",opts:["1","&minus;1","6x/5y","0"],ans:1,exp:"The two binomials are opposites: 6x &minus; 5y = &minus;1(5y &minus; 6x). Substituting gives &minus;1(5y &minus; 6x)/(5y &minus; 6x) = &minus;1. In general (a &minus; b)/(b &minus; a) = &minus;1."},
+  {q:"Simplify: (3x)/(8y) &middot; (12x&sup2;y)/(9xy&sup3;)",opts:["4x&sup2;/(3y&sup3;)","x&sup3;/(2y&sup3;)","x&sup2;/(2y&sup3;)","3x&sup2;/(8y&sup3;)"],ans:2,exp:"Multiply across: 36x&sup3;y/(72xy&#8308;). The coefficients reduce 36/72 = 1/2, x&sup3;/x = x&sup2;, and y/y&#8308; = 1/y&sup3;. Result: x&sup2;/(2y&sup3;)."},
+  {q:"Simplify: (10d&#8309;)/(6cd) &divide; (30c&sup3;d&sup2;)/(4c)",opts:["2d&sup3;/(9c&sup3;)","9c&sup3;/(2d&sup2;)","50d&sup3;/(3c&#8308;)","2d&sup2;/(9c&sup3;)"],ans:3,exp:"Flip the divisor: (10d&#8309;)/(6cd) &middot; (4c)/(30c&sup3;d&sup2;) = 40cd&#8309;/(180c&#8308;d&sup3;). Then 40/180 = 2/9, c/c&#8308; = 1/c&sup3;, d&#8309;/d&sup3; = d&sup2;, giving 2d&sup2;/(9c&sup3;)."},
+  {q:"Simplify the complex fraction: [3x/(x &minus; y)] over [6xy/(4x&sup2; &minus; 4y&sup2;)]",opts:["2(x + y)/y","(x + y)/(2y)","2y/(x + y)","2(x &minus; y)/y"],ans:0,exp:"Rewrite as division and flip: 3x/(x &minus; y) &middot; 4(x + y)(x &minus; y)/(6xy). The (x &minus; y) cancels and 3x/(6xy) = 1/(2y), leaving 4(x + y)/(2y) = 2(x + y)/y."},
+  {q:"Simplify: (x&sup2; + 15x + 50)/(x + 2) &divide; (x&sup2; + 30x + 200)/(x + 2)",opts:["(x + 10)/(x + 20)","(x + 5)/(x + 10)","(x + 5)/(x + 20)","(x + 2)/(x + 20)"],ans:2,exp:"Flip the divisor and factor: [(x+5)(x+10)]/(x+2) &middot; (x+2)/[(x+10)(x+20)]. Both (x + 2) and (x + 10) cancel, leaving (x + 5)/(x + 20)."},
+  {q:"Simplify: (x&sup2; &minus; 5x &minus; 14)/(28 + 3x &minus; x&sup2;)",opts:["(x + 2)/(x + 4)","&minus;(x + 2)/(x + 4)","(x &minus; 7)/(x + 4)","&minus;(x + 4)/(x + 2)"],ans:1,exp:"Top: (x &minus; 7)(x + 2). Bottom: 28 + 3x &minus; x&sup2; = &minus;(x&sup2; &minus; 3x &minus; 28) = &minus;(x &minus; 7)(x + 4). Cancelling (x &minus; 7) leaves (x + 2)/[&minus;(x + 4)] = &minus;(x + 2)/(x + 4)."},
+  {q:"Simplify: (16 &minus; c&sup2;)/(c&sup2; + c &minus; 20)",opts:["(c + 4)/(c + 5)","(4 &minus; c)/(c + 5)","&minus;(c + 5)/(c + 4)","&minus;(c + 4)/(c + 5)"],ans:3,exp:"16 &minus; c&sup2; = (4 &minus; c)(4 + c) and c&sup2; + c &minus; 20 = (c + 5)(c &minus; 4). Since 4 &minus; c = &minus;1(c &minus; 4), the (c &minus; 4) factors cancel and the &minus;1 survives: &minus;(c + 4)/(c + 5)."},
+  {q:"The expression (x&sup2; &minus; 4)/(x&sup2; &minus; x &minus; 6) simplifies to (x &minus; 2)/(x &minus; 3). Which restrictions must be stated?",opts:["x &ne; 3 and x &ne; &minus;2","x &ne; 3 only","x &ne; 2 and x &ne; &minus;2","x &ne; &minus;3 and x &ne; 2"],ans:0,exp:"The ORIGINAL denominator factors as (x &minus; 3)(x + 2), so both x = 3 and x = &minus;2 are excluded. The (x + 2) factor cancels during simplification, but the restriction it created does not disappear."},
+  {q:"Simplify: (3a&sup2; + 6a + 3)/(a&sup2; &minus; 3a &minus; 10) &divide; (12a&sup2; &minus; 12)/(a&sup2; &minus; 4)",opts:["(a + 1)(a + 2)/[4(a &minus; 5)(a &minus; 1)]","3(a + 1)(a &minus; 2)/[(a &minus; 5)(a &minus; 1)]","(a + 1)(a &minus; 2)/[4(a &minus; 5)(a &minus; 1)]","(a &minus; 2)/[4(a &minus; 5)]"],ans:2,exp:"Flip and factor: [3(a+1)&sup2;]/[(a&minus;5)(a+2)] &middot; [(a&minus;2)(a+2)]/[12(a&minus;1)(a+1)]. Cancel (a + 2), one (a + 1), and reduce 3/12 = 1/4 to get (a + 1)(a &minus; 2)/[4(a &minus; 5)(a &minus; 1)]."},
+  {q:"Which of these is NOT a rational expression?",opts:["1/(x &minus; 1)","(x&sup2; + 3x + 2)/(x &minus; 5)","(x&sup2; + 1)/3","(x + 1)/&radic;(x + 3)"],ans:3,exp:"A rational expression needs polynomials on top AND bottom. &radic;(x + 3) is a radical, not a polynomial, so (x + 1)/&radic;(x + 3) fails. Note (x&sup2; + 1)/3 is fine &mdash; the constant 3 is a degree-0 polynomial."},
+  {q:"Find the expression that makes (x &minus; 6)/(x + 3) &middot; ?/(x &minus; 6) = x &minus; 2 true for all x in the domain.",opts:["x&sup2; &minus; x &minus; 6","x&sup2; + x &minus; 6","x &minus; 2","(x &minus; 2)/(x + 3)"],ans:1,exp:"The (x &minus; 6) factors cancel, so the product is ?/(x + 3). Setting ?/(x + 3) = x &minus; 2 gives ? = (x &minus; 2)(x + 3) = x&sup2; + x &minus; 6."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

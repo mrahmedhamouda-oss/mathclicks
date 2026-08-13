@@ -1,107 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 5-2: Solving Polynomial Equations Algebraically</title>
-<style>
-  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
-  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#1a4fa0 55%,#e05c2a 100%);color:white;padding:48px 24px 32px;text-align:center;}
-  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
-  .hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;}
-  .hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto;}
-  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
-  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
-  nav a:hover{background:var(--navy);color:white;}
-  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
-  section{margin-bottom:48px;}
-  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
-  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
-  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
-  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
-  .concept-card ul{margin:8px 0 0 20px;}
-  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);line-height:1.9;}
-  .vocab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
-  @media(max-width:600px){.vocab{grid-template-columns:1fr;}}
-  .vocab-item{background:#fafafa;border:1px solid #e2e8f0;border-radius:6px;padding:10px 14px;font-size:14px;line-height:1.6;}
-  .vocab-item b{color:var(--orange);}
-  .steps-list{counter-reset:s;margin:10px 0;}
-  .steps-list .s{position:relative;padding:10px 12px 10px 44px;margin-bottom:8px;background:#fafafa;border-radius:6px;font-size:14px;line-height:1.6;}
-  .steps-list .s:before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
-  table.tbl{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
-  table.tbl th{background:var(--navy);color:white;padding:9px 12px;text-align:left;font-weight:600;}
-  table.tbl td{padding:9px 12px;border-bottom:1px solid #e2e8f0;}
-  table.tbl tr:nth-child(even) td{background:#f8faff;}
-  table.tbl code{font-family:'Courier New',monospace;color:var(--navy);}
-  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
-  .example-header{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
-  .example-header:hover{background:#f8faff;}
-  .example-label{font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;flex-shrink:0;}
-  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
-  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
-  .example-header.open .toggle-icon{transform:rotate(45deg);}
-  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
-  .example-body.open{display:block;}
-  .problem-stmt{background:#f8faff;border-left:4px solid var(--orange);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;font-family:'Courier New',monospace;}
-  .solution-step{display:flex;gap:12px;margin-bottom:8px;padding:9px 12px;border-radius:6px;background:#fafafa;align-items:baseline;flex-wrap:wrap;}
-  .solution-step .num{width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;min-width:180px;}
-  .solution-step .reason{font-size:13px;color:var(--orange);font-style:italic;min-width:160px;text-align:right;}
-  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
-  .check-box{background:var(--light-green);border:1px solid #86efac;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
-  .check-box strong{color:#15803d;}
-  .warning-box{background:var(--light-orange);border:1px solid #fdba74;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
-  .warning-box strong{color:var(--orange);}
-  .info-box{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7;}
-  .info-box strong{color:var(--blue);}
-  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
-  @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
-  .case-box{background:#fafafa;border:1px solid #e2e8f0;border-radius:8px;padding:14px;}
-  .case-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
-  .case-box .math{font-family:'Courier New',monospace;font-size:13px;line-height:1.9;}
-  .quiz-header{background:linear-gradient(135deg,#e05c2a,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
-  .quiz-header h2{color:white;border:none;font-size:20px;}
-  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
-  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
-  .q-num{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
-  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
-  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  @media(max-width:560px){.options{grid-template-columns:1fr;}}
-  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
-  .option-btn:hover:not(:disabled){border-color:var(--orange);background:#fff7f3;}
-  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
-  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
-  .option-btn:disabled{cursor:default;}
-  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;line-height:1.6;}
-  .feedback.show{display:block;}
-  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
-  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
-  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
-  .score-panel.show{display:block;}
-  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
-  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
-  .btn-retry{padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
-</style>
-</head>
-<body>
-
-<div class="hero">
-  <div class="module-badge">Module 5 &middot; Lesson 5-2</div>
-  <h1>Solving Polynomial Equations Algebraically</h1>
-  <p>Factor higher-degree polynomials, solve polynomial equations by factoring, and use quadratic form</p>
-</div>
-
-<nav>
-  <a href="#concepts">Concepts</a>
-  <a href="#examples">Step-by-Step Examples</a>
-  <a href="#summary">Summary</a>
-  <a href="#quiz">Practice Quiz</a>
-</nav>
-
-<main>
-
+<div class="sat-lesson">
+<p class="lesson-objective">Factor higher-degree polynomials, solve polynomial equations by factoring, and use quadratic form</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Step-by-Step Examples</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
 <section id="concepts">
   <h2>Key Concepts</h2>
 
@@ -157,7 +56,7 @@
 
 <section id="examples">
   <h2>Step-by-Step Worked Examples</h2>
-  <p style="font-size:14px;color:#64748b;margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
+  <p style="font-size:14px;color:var(--sl-muted);margin-bottom:16px">Click any example header to open or close it. Each step shows the algebra on the left and the reason on the right.</p>
 <div class="example-card">
   <button class="example-header open" onclick="toggleExample(this)">
     <span class="example-label">Example 1</span>
@@ -166,14 +65,14 @@
   </button>
   <div class="example-body open">
     <div class="problem-stmt">Factor each polynomial. If the polynomial cannot be factored, write prime.<br>a. 8x&sup3; + 125y&sup1;&sup2;&nbsp;&nbsp;&nbsp;&nbsp;b. 54x&#8309; &minus; 128x&sup2;y&sup3;</div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: 8x&sup3; + 125y&sup1;&sup2;</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part a: 8x&sup3; + 125y&sup1;&sup2;</p>
     <div class="solution-step"><span class="num">1</span><span class="math">8x&sup3; + 125y&sup1;&sup2;</span><span class="reason">Original expression</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">GCF of the terms is 1</span><span class="reason">Both terms are perfect cubes</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">= (2x)&sup3; + (5y&#8308;)&sup3;</span><span class="reason">(2x)&sup3; = 8x&sup3;; (5y&#8308;)&sup3; = 125y&sup1;&sup2;</span></div>
       <div class="solution-step"><span class="num">4</span><span class="math">= (2x + 5y&#8308;)[(2x)&sup2; &minus; (2x)(5y&#8308;) + (5y&#8308;)&sup2;]</span><span class="reason">Sum of two cubes</span></div>
       <div class="solution-step"><span class="num">5</span><span class="math">= (2x + 5y&#8308;)(4x&sup2; &minus; 10xy&#8308; + 25y&#8312;)</span><span class="reason">Simplify</span></div>
     <div class="answer-box">8x&sup3; + 125y&sup1;&sup2; = (2x + 5y&#8308;)(4x&sup2; &minus; 10xy&#8308; + 25y&#8312;)</div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: 54x&#8309; &minus; 128x&sup2;y&sup3;</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part b: 54x&#8309; &minus; 128x&sup2;y&sup3;</p>
     <div class="solution-step"><span class="num">1</span><span class="math">54x&#8309; &minus; 128x&sup2;y&sup3;</span><span class="reason">Original expression</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">= 2x&sup2;(27x&sup3; &minus; 64y&sup3;)</span><span class="reason">Factor out the GCF, 2x&sup2;</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">= 2x&sup2;[(3x)&sup3; &minus; (4y)&sup3;]</span><span class="reason">(3x)&sup3; = 27x&sup3;; (4y)&sup3; = 64y&sup3;</span></div>
@@ -267,17 +166,17 @@
   </button>
   <div class="example-body">
     <div class="problem-stmt">Write each expression in quadratic form, if possible.<br>a. 4x&sup2;&#8304; + 6x&sup1;&#8304; + 15&nbsp;&nbsp;&nbsp;&nbsp;b. 18x&#8308; + 180x&#8312; &minus; 28&nbsp;&nbsp;&nbsp;&nbsp;c. 9x&#8310; &minus; 4x&sup2; &minus; 12</div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part a: 4x&sup2;&#8304; + 6x&sup1;&#8304; + 15</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part a: 4x&sup2;&#8304; + 6x&sup1;&#8304; + 15</p>
     <div class="solution-step"><span class="num">1</span><span class="math">Examine the variable exponents: 20 and 10</span><span class="reason">20 = 2 &times; 10, so quadratic form is possible</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">(2x&sup1;&#8304;)&sup2; = 4x&sup2;&#8304;</span><span class="reason">Choose u = 2x&sup1;&#8304;</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">4x&sup2;&#8304; + 6x&sup1;&#8304; + 15 = (2x&sup1;&#8304;)&sup2; + 3(2x&sup1;&#8304;) + 15</span><span class="reason">Rewrite each term using u</span></div>
     <div class="answer-box">(2x&sup1;&#8304;)&sup2; + 3(2x&sup1;&#8304;) + 15&nbsp;&nbsp;&nbsp;[u = 2x&sup1;&#8304;]</div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part b: 18x&#8308; + 180x&#8312; &minus; 28</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part b: 18x&#8308; + 180x&#8312; &minus; 28</p>
     <div class="solution-step"><span class="num">1</span><span class="math">18x&#8308; + 180x&#8312; &minus; 28 = 180x&#8312; + 18x&#8308; &minus; 28</span><span class="reason">Write in standard form of a polynomial first</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">(6x&#8308;)&sup2; = 36x&#8312;</span><span class="reason">Choose u = 6x&#8308;</span></div>
       <div class="solution-step"><span class="num">3</span><span class="math">= 5(6x&#8308;)&sup2; + 3(6x&#8308;) &minus; 28</span><span class="reason">5(36x&#8312;) = 180x&#8312;; 3(6x&#8308;) = 18x&#8308;</span></div>
     <div class="answer-box">5(6x&#8308;)&sup2; + 3(6x&#8308;) &minus; 28&nbsp;&nbsp;&nbsp;[u = 6x&#8308;]</div>
-    <p style="font-weight:700;color:#0f2d6b;margin:14px 0 8px;font-size:15px">Part c: 9x&#8310; &minus; 4x&sup2; &minus; 12</p>
+    <p style="font-weight:700;color:var(--sl-navy);margin:14px 0 8px;font-size:15px">Part c: 9x&#8310; &minus; 4x&sup2; &minus; 12</p>
     <div class="solution-step"><span class="num">1</span><span class="math">Compare exponents: 6 and 2</span><span class="reason">Is 6 = 2 &times; 2? No &mdash; x&#8310; &ne; (x&sup2;)&sup2;</span></div>
       <div class="solution-step"><span class="num">2</span><span class="math">x&#8310; &ne; (x&sup2;)&sup2;</span><span class="reason">(x&sup2;)&sup2; = x&#8308;, not x&#8310;</span></div>
     <div class="answer-box">9x&#8310; &minus; 4x&sup2; &minus; 12 CANNOT be written in quadratic form</div>
@@ -348,11 +247,8 @@
     <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
   </div>
 </section>
-
-</main>
-
 <script>
-/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+/* scope guard: the SPA re-runs this script on every lesson view */
 (function(){
 const questions=[
   {q:"Factor x&sup3; + 8 completely.",opts:["(x + 2)(x&sup2; &minus; 2x + 4)","(x + 2)(x&sup2; + 2x + 4)","(x &minus; 2)(x&sup2; + 2x + 4)","(x + 2)&sup3;"],ans:0,exp:"Sum of two cubes with a = x, b = 2: a&sup3; + b&sup3; = (a + b)(a&sup2; &minus; ab + b&sup2;)."},
@@ -402,10 +298,10 @@ function showScore(){
   document.getElementById('scorePanel').classList.add('show');
   document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
 }
-function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
-window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+
 buildQuiz();
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
 })();
 </script>
-</body>
-</html>
+</div>

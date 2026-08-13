@@ -1,0 +1,730 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Recognize and apply the properties of rectangles, and decide whether a given parallelogram is a rectangle.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. What a rectangle actually is</h3>
+    <p>A rectangle is not a brand-new shape &mdash; it is a parallelogram that has been forced to
+    stand up straight. Every property a parallelogram owns, a rectangle inherits, and then it
+    adds one more of its own.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>rectangle</b> &mdash; a parallelogram with four right angles.</div>
+      <div class="vocab-item"><b>Consequence</b> &mdash; every rectangle <em>is</em> a parallelogram, but a parallelogram need not be a rectangle.</div>
+    </div>
+    <p>From the definition alone you already know all of the following:</p>
+    <ul>
+      <li>All four angles are right angles.</li>
+      <li>Opposite sides are parallel and congruent.</li>
+      <li>Opposite angles are congruent.</li>
+      <li>Consecutive angles are supplementary.</li>
+      <li>Diagonals bisect each other.</li>
+    </ul>
+    <p>In addition, the diagonals of a rectangle are <strong>congruent</strong>. That last fact is
+    the one that separates rectangles from ordinary parallelograms.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. The two theorems of this lesson</h3>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 7.13 &middot; Diagonals of a Rectangle</div>
+      <div class="theorem-body">If a parallelogram is a rectangle, then its diagonals are congruent.<br>
+      <span style="color:var(--sl-muted)">In symbols: if <code>&#9645;ABCD</code> is a rectangle, then
+      <code><span style="text-decoration:overline">AC</span> &cong; <span style="text-decoration:overline">BD</span></code>.</span></div>
+    </div>
+    <p><em>Why it works:</em> in a rectangle, <code>&#9651;ABC</code> and <code>&#9651;BAD</code> share
+    leg <code><span style="text-decoration:overline">AB</span></code>, have
+    <code><span style="text-decoration:overline">BC</span> &cong; <span style="text-decoration:overline">AD</span></code>
+    (opposite sides of a parallelogram) and both contain a right angle. By SAS the triangles are
+    congruent, so their hypotenuses
+    <code><span style="text-decoration:overline">AC</span></code> and
+    <code><span style="text-decoration:overline">BD</span></code> are congruent.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 7.14 &middot; Converse</div>
+      <div class="theorem-body">If the diagonals of a parallelogram are congruent, then the
+      parallelogram is a rectangle.</div>
+    </div>
+    <div class="info-box"><strong>Read the converse carefully.</strong> Theorem 7.14 only applies
+    to a <em>parallelogram</em>. Congruent diagonals inside a random quadrilateral prove nothing
+    &mdash; an isosceles trapezoid also has congruent diagonals and is definitely not a rectangle.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Half-diagonals: the four equal radii</h3>
+    <p>Diagonals of a rectangle are congruent <em>and</em> they bisect each other. Put those two
+    facts together and every one of the four half-diagonals has the same length.</p>
+    <div class="formula-box">
+      If <code>P</code> is the intersection of diagonals <code><span style="text-decoration:overline">AC</span></code> and <code><span style="text-decoration:overline">BD</span></code>:<br>
+      AP = PC = BP = PD = &frac12;AC = &frac12;BD
+    </div>
+    <p>So the four triangles formed by the diagonals are all isosceles, and the vertices of a
+    rectangle all lie the same distance from <code>P</code>.</p>
+    <div class="keyfact"><div class="ico">1</div><div class="txt">A whole diagonal is <strong>twice</strong> a half-diagonal: <code>AC = 2&middot;AP</code>.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt">The two whole diagonals are <strong>equal</strong>: <code>AC = BD</code>.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt">A diagonal splits a corner's right angle into two angles that add to <strong>90&deg;</strong>.</div></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Angles created by a diagonal</h3>
+    <p>Draw diagonal <code><span style="text-decoration:overline">AC</span></code> in rectangle
+    <code>ABCD</code>. At vertex <code>A</code> the 90&deg; corner <code>&ang;DAB</code> is cut into
+    <code>&ang;DAC</code> and <code>&ang;CAB</code>, so those two angles are complementary. The same
+    happens at every vertex.</p>
+    <div class="formula-box">m&ang;DAC + m&ang;CAB = 90&deg;&nbsp;&nbsp;&nbsp;m&ang;BAC + m&ang;ACB = 90&deg;</div>
+    <p>The second equation is the one that shows up most often: in right triangle
+    <code>ABC</code> the right angle is at <code>B</code>, so the two acute angles must add to 90&deg;.
+    Alternate interior angles give you a bonus: <code>&ang;ACD &cong; &ang;BAC</code>, because
+    <code><span style="text-decoration:overline">AB</span> &par; <span style="text-decoration:overline">DC</span></code>.</p>
+    <div class="warning-box"><strong>Watch out!</strong> Two angles formed at the <em>same</em>
+    vertex by a diagonal are complementary (sum 90&deg;). Two angles formed at <em>opposite</em>
+    ends of the same diagonal are congruent, not complementary. Identify which vertex each angle
+    lives at before you write an equation.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Proving a parallelogram is a rectangle</h3>
+    <div class="steps-list">
+      <div class="s">Show the quadrilateral is a <strong>parallelogram</strong> first &mdash; both pairs of opposite sides congruent, or both pairs parallel, or diagonals bisecting each other.</div>
+      <div class="s">Show the <strong>diagonals are congruent</strong>.</div>
+      <div class="s">Conclude &ldquo;rectangle&rdquo; by Theorem 7.14.</div>
+    </div>
+    <p>There is a shortcut that skips step 2 entirely:</p>
+    <div class="info-box"><strong>Study Tip &middot; Right Angles.</strong> Recall from Theorem 7.6
+    that if a parallelogram has <em>one</em> right angle, then it has four right angles. One
+    90&deg; corner in a parallelogram is already enough to call it a rectangle.</div>
+    <div class="info-box"><strong>Study Tip &middot; Rectangles and Parallelograms.</strong> All
+    rectangles are parallelograms, but all parallelograms are not necessarily rectangles.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>6. Rectangles on the coordinate plane</h3>
+    <p>Given four vertices, you can prove &ldquo;rectangle&rdquo; with nothing but algebra.</p>
+    <div class="formula-box">
+      Distance Formula:&nbsp; d = &radic;[(x<sub>2</sub> &minus; x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> &minus; y<sub>1</sub>)<sup>2</sup>]<br>
+      Slope Formula:&nbsp; m = (y<sub>2</sub> &minus; y<sub>1</sub>) / (x<sub>2</sub> &minus; x<sub>1</sub>)
+    </div>
+    <div class="two-col">
+      <div>
+        <p><strong>Distance-Formula route</strong></p>
+        <ul>
+          <li>Both pairs of opposite sides congruent &rarr; parallelogram.</li>
+          <li>Both diagonals congruent &rarr; rectangle.</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Slope-Formula route</strong></p>
+        <ul>
+          <li>Opposite sides have equal slopes &rarr; parallelogram.</li>
+          <li>Consecutive sides have slopes whose product is &minus;1 &rarr; right angle &rarr; rectangle.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warning-box"><strong>Common error.</strong> Showing only that the four sides are
+    congruent proves a <em>rhombus</em>, not a rectangle. Showing only that opposite sides are
+    congruent proves a <em>parallelogram</em>. You must add the diagonal or the slope check.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>7. Think About It</h3>
+    <p>The two diagonals of a rectangle create four right triangles &mdash; <code>&#9651;ABC</code>,
+    <code>&#9651;BCD</code>, <code>&#9651;CDA</code> and <code>&#9651;DAB</code> &mdash; each with legs
+    equal to the two sides of the rectangle and hypotenuse equal to a diagonal. All four are
+    congruent, so the number of congruent <em>pairs</em> you can list is
+    <code>C(4, 2) = 6</code>.</p>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 1 &middot; Properties of a Rectangle</div>
+    <svg id="fig1" viewBox="0 0 440 300" width="440" role="img" aria-label="Rectangle ABCD with right-angle marks at all four vertices, tick marks on opposite sides, parallel arrows, and both diagonals drawn">
+      <g data-part="sides">
+        <rect class="g-shape" x="70" y="60" width="300" height="180"/>
+        <line class="g-tick" x1="220" y1="53" x2="220" y2="67"/>
+        <line class="g-tick" x1="220" y1="233" x2="220" y2="247"/>
+        <line class="g-tick" x1="63" y1="145" x2="77" y2="145"/>
+        <line class="g-tick" x1="63" y1="155" x2="77" y2="155"/>
+        <line class="g-tick" x1="363" y1="145" x2="377" y2="145"/>
+        <line class="g-tick" x1="363" y1="155" x2="377" y2="155"/>
+        <polyline class="g-tick" fill="none" points="144,54 150,60 144,66"/>
+        <polyline class="g-tick" fill="none" points="144,234 150,240 144,246"/>
+        <polyline class="g-tick" fill="none" points="64,189 70,195 76,189"/>
+        <polyline class="g-tick" fill="none" points="64,199 70,205 76,199"/>
+        <polyline class="g-tick" fill="none" points="364,189 370,195 376,189"/>
+        <polyline class="g-tick" fill="none" points="364,199 370,205 376,199"/>
+      </g>
+      <g data-part="angles">
+        <path class="g-right" d="M 82 60 L 82 72 L 70 72"/>
+        <path class="g-right" d="M 358 60 L 358 72 L 370 72"/>
+        <path class="g-right" d="M 358 240 L 358 228 L 370 228"/>
+        <path class="g-right" d="M 82 240 L 82 228 L 70 228"/>
+        <text class="g-meas" x="92" y="82">90&deg;</text>
+        <text class="g-meas" x="348" y="82" text-anchor="end">90&deg;</text>
+        <text class="g-meas" x="348" y="224" text-anchor="end">90&deg;</text>
+        <text class="g-meas" x="92" y="224">90&deg;</text>
+      </g>
+      <g data-part="diag">
+        <line class="g-line" x1="70" y1="60" x2="370" y2="240"/>
+        <line class="g-line" x1="370" y1="60" x2="70" y2="240"/>
+        <circle class="g-pt" cx="220" cy="150" r="4.5"/>
+      </g>
+      <g data-part="verts">
+        <circle class="g-pt" cx="70" cy="60" r="4.5"/>
+        <circle class="g-pt" cx="370" cy="60" r="4.5"/>
+        <circle class="g-pt" cx="370" cy="240" r="4.5"/>
+        <circle class="g-pt" cx="70" cy="240" r="4.5"/>
+        <text class="g-lbl" x="58" y="54" text-anchor="end">A</text>
+        <text class="g-lbl" x="382" y="54">B</text>
+        <text class="g-lbl" x="382" y="258">C</text>
+        <text class="g-lbl" x="58" y="258" text-anchor="end">D</text>
+      </g>
+    </svg>
+    <figcaption>Rectangle <em>ABCD</em>. Single ticks mark <span style="text-decoration:overline">AB</span> &cong; <span style="text-decoration:overline">DC</span>, double ticks mark <span style="text-decoration:overline">AD</span> &cong; <span style="text-decoration:overline">BC</span>, and the matching arrowheads mark the two pairs of parallel sides.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','angles')">Four right angles</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','sides')">Opposite sides</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','diag')">Diagonals</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','verts')">Vertices</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 2 &middot; Theorem 7.13 &mdash; Diagonals Congruent and Bisecting</div>
+    <svg id="fig2" viewBox="0 0 440 300" width="440" role="img" aria-label="Rectangle ABCD with congruent diagonals AC and BD meeting at P, all four half diagonals tick-marked equal">
+      <g data-part="rect">
+        <rect class="g-shape" x="70" y="55" width="300" height="180"/>
+        <path class="g-right" d="M 82 55 L 82 67 L 70 67"/>
+        <path class="g-right" d="M 358 55 L 358 67 L 370 67"/>
+        <path class="g-right" d="M 358 235 L 358 223 L 370 223"/>
+        <path class="g-right" d="M 82 235 L 82 223 L 70 223"/>
+        <text class="g-lbl" x="58" y="49" text-anchor="end">A</text>
+        <text class="g-lbl" x="382" y="49">B</text>
+        <text class="g-lbl" x="382" y="253">C</text>
+        <text class="g-lbl" x="58" y="253" text-anchor="end">D</text>
+      </g>
+      <g data-part="dac">
+        <line class="g-line" x1="70" y1="55" x2="370" y2="235"/>
+        <line class="g-tick" x1="140.9" y1="106.9" x2="149.1" y2="93.1"/>
+        <line class="g-tick" x1="290.9" y1="196.9" x2="299.1" y2="183.1"/>
+      </g>
+      <g data-part="dbd">
+        <line class="g-line" x1="370" y1="55" x2="70" y2="235"/>
+        <line class="g-tick" x1="290.9" y1="93.1" x2="299.1" y2="106.9"/>
+        <line class="g-tick" x1="140.9" y1="183.1" x2="149.1" y2="196.9"/>
+      </g>
+      <g data-part="center">
+        <circle class="g-pt" cx="220" cy="145" r="5"/>
+        <text class="g-lbl g-halo" x="228" y="139">P</text>
+        <text class="g-grn g-halo" x="220" y="278" text-anchor="middle">AP = PC = BP = PD, so AC = BD</text>
+      </g>
+    </svg>
+    <figcaption>Because the diagonals are congruent <em>and</em> bisect each other, all four half-diagonals carry the same single tick: <span style="text-decoration:overline">AP</span> &cong; <span style="text-decoration:overline">PC</span> &cong; <span style="text-decoration:overline">BP</span> &cong; <span style="text-decoration:overline">PD</span>.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','rect')">Rectangle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','dac')">Diagonal AC</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','dbd')">Diagonal BD</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','center')">Midpoint P</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 3 &middot; Theorem 7.14 &mdash; Why Congruent Diagonals Force a Rectangle</div>
+    <svg id="fig3" viewBox="0 0 540 275" width="540" role="img" aria-label="Left: a slanted parallelogram whose diagonals have clearly different lengths. Right: a rectangle whose two diagonals are congruent and tick-marked">
+      <g data-part="para">
+        <polygon class="g-shape-alt" points="50,200 150,70 300,70 200,200"/>
+        <line class="g-line" x1="50" y1="200" x2="300" y2="70"/>
+        <line class="g-line" x1="150" y1="70" x2="200" y2="200"/>
+        <circle class="g-pt" cx="50" cy="200" r="4"/>
+        <circle class="g-pt" cx="150" cy="70" r="4"/>
+        <circle class="g-pt" cx="300" cy="70" r="4"/>
+        <circle class="g-pt" cx="200" cy="200" r="4"/>
+        <text class="g-lbl" x="42" y="216" text-anchor="end">W</text>
+        <text class="g-lbl" x="144" y="62" text-anchor="end">X</text>
+        <text class="g-lbl" x="308" y="62">Y</text>
+        <text class="g-lbl" x="208" y="216">Z</text>
+        <text class="g-meas" x="175" y="245" text-anchor="middle">WY &ne; XZ &rarr; not a rectangle</text>
+      </g>
+      <g data-part="rect">
+        <rect class="g-shape" x="330" y="70" width="160" height="130"/>
+        <line class="g-line" x1="330" y1="70" x2="490" y2="200"/>
+        <line class="g-line" x1="490" y1="70" x2="330" y2="200"/>
+        <line class="g-tick" x1="372.96" y1="115.21" x2="383.04" y2="102.79"/>
+        <line class="g-tick" x1="436.96" y1="102.79" x2="447.04" y2="115.21"/>
+        <path class="g-right" d="M 342 70 L 342 82 L 330 82"/>
+        <path class="g-right" d="M 478 70 L 478 82 L 490 82"/>
+        <path class="g-right" d="M 478 200 L 478 188 L 490 188"/>
+        <path class="g-right" d="M 342 200 L 342 188 L 330 188"/>
+        <text class="g-lbl" x="324" y="62" text-anchor="end">E</text>
+        <text class="g-lbl" x="496" y="62">F</text>
+        <text class="g-lbl" x="496" y="216">G</text>
+        <text class="g-lbl" x="324" y="216" text-anchor="end">H</text>
+        <text class="g-grn" x="410" y="245" text-anchor="middle">EG &cong; FH &rarr; rectangle</text>
+      </g>
+    </svg>
+    <figcaption>Both quadrilaterals are parallelograms. On the left the diagonals are visibly unequal and the corners are not square; on the right congruent diagonals force all four corners to 90&deg;.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','para')">Parallelogram only</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','rect')">Congruent diagonals</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 4 &middot; Rectangle GHJK on the Coordinate Plane</div>
+    <svg id="fig4" viewBox="0 0 400 300" width="400" role="img" aria-label="Coordinate grid with rectangle GHJK plotted at G(-3,0), H(3,2), J(4,-1), K(-2,-3), diagonals drawn">
+      <g data-part="grid">
+        <line class="g-grid" x1="50" y1="50" x2="50" y2="260"/>
+        <line class="g-grid" x1="80" y1="50" x2="80" y2="260"/>
+        <line class="g-grid" x1="110" y1="50" x2="110" y2="260"/>
+        <line class="g-grid" x1="140" y1="50" x2="140" y2="260"/>
+        <line class="g-grid" x1="200" y1="50" x2="200" y2="260"/>
+        <line class="g-grid" x1="230" y1="50" x2="230" y2="260"/>
+        <line class="g-grid" x1="260" y1="50" x2="260" y2="260"/>
+        <line class="g-grid" x1="290" y1="50" x2="290" y2="260"/>
+        <line class="g-grid" x1="320" y1="50" x2="320" y2="260"/>
+        <line class="g-grid" x1="50" y1="50" x2="320" y2="50"/>
+        <line class="g-grid" x1="50" y1="80" x2="320" y2="80"/>
+        <line class="g-grid" x1="50" y1="110" x2="320" y2="110"/>
+        <line class="g-grid" x1="50" y1="170" x2="320" y2="170"/>
+        <line class="g-grid" x1="50" y1="200" x2="320" y2="200"/>
+        <line class="g-grid" x1="50" y1="230" x2="320" y2="230"/>
+        <line class="g-grid" x1="50" y1="260" x2="320" y2="260"/>
+        <line class="g-axis" x1="44" y1="140" x2="330" y2="140"/>
+        <line class="g-axis" x1="170" y1="44" x2="170" y2="270"/>
+        <polyline class="g-axis" fill="none" points="324,135 330,140 324,145"/>
+        <polyline class="g-axis" fill="none" points="50,135 44,140 50,145"/>
+        <polyline class="g-axis" fill="none" points="165,50 170,44 175,50"/>
+        <polyline class="g-axis" fill="none" points="165,264 170,270 175,264"/>
+        <text class="g-lbl" x="336" y="145">x</text>
+        <text class="g-lbl" x="177" y="42">y</text>
+        <text class="g-lbl-sm" x="164" y="154" text-anchor="end">O</text>
+      </g>
+      <g data-part="sides">
+        <polygon class="g-shape" points="80,140 260,80 290,170 110,230"/>
+        <path class="g-right" d="M 247.67 84.11 L 251.78 96.44 L 264.11 92.33"/>
+      </g>
+      <g data-part="diag">
+        <line class="g-line" x1="80" y1="140" x2="290" y2="170"/>
+        <line class="g-line" x1="260" y1="80" x2="110" y2="230"/>
+        <circle class="g-pt" cx="185" cy="155" r="4"/>
+      </g>
+      <g data-part="verts">
+        <circle class="g-pt" cx="80" cy="140" r="5"/>
+        <circle class="g-pt" cx="260" cy="80" r="5"/>
+        <circle class="g-pt" cx="290" cy="170" r="5"/>
+        <circle class="g-pt" cx="110" cy="230" r="5"/>
+        <text class="g-lbl g-halo" x="72" y="134" text-anchor="end">G</text>
+        <text class="g-lbl g-halo" x="266" y="72">H</text>
+        <text class="g-lbl g-halo" x="298" y="176">J</text>
+        <text class="g-lbl g-halo" x="102" y="244" text-anchor="end">K</text>
+      </g>
+    </svg>
+    <figcaption><em>G</em>(&minus;3, 0), <em>H</em>(3, 2), <em>J</em>(4, &minus;1), <em>K</em>(&minus;2, &minus;3). Opposite sides measure &radic;40 and &radic;10; both diagonals measure &radic;50, so <em>GHJK</em> is a rectangle.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','grid')">Axes &amp; grid</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','sides')">Sides</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','diag')">Diagonals</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','verts')">Vertices</button>
+    </div>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Use properties of rectangles &mdash; find half a diagonal</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Rectangle BCDF has diagonals <span style="text-decoration:overline">FC</span> and <span style="text-decoration:overline">BD</span> meeting at G. If BC = 94 and FC = 106.5, find DG.</div>
+      <figure class="fig" style="box-shadow:none;border:none;padding:0">
+        <svg viewBox="0 0 460 300" width="460" role="img" aria-label="Rectangle BCDF with diagonals FC and BD intersecting at G">
+          <rect class="g-shape" x="60" y="58" width="340" height="182"/>
+          <path class="g-right" d="M 72 58 L 72 70 L 60 70"/>
+          <path class="g-right" d="M 388 58 L 388 70 L 400 70"/>
+          <path class="g-right" d="M 388 240 L 388 228 L 400 228"/>
+          <path class="g-right" d="M 72 240 L 72 228 L 60 228"/>
+          <line class="g-line" x1="60" y1="240" x2="400" y2="58"/>
+          <line class="g-line" x1="60" y1="58" x2="400" y2="240"/>
+          <circle class="g-pt" cx="230" cy="149" r="5"/>
+          <text class="g-lbl g-halo" x="238" y="143">G</text>
+          <text class="g-lbl" x="52" y="50" text-anchor="end">B</text>
+          <text class="g-lbl" x="408" y="50">C</text>
+          <text class="g-lbl" x="408" y="258">D</text>
+          <text class="g-lbl" x="52" y="258" text-anchor="end">F</text>
+          <text class="g-meas" x="230" y="46" text-anchor="middle">BC = 94 ft</text>
+          <text class="g-meas g-halo" x="150" y="212" text-anchor="middle">FC = 106.5 ft</text>
+          <text class="g-grn g-halo" x="322" y="212" text-anchor="middle">DG = ?</text>
+        </svg>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math"><span style="text-decoration:overline">FC</span> &cong; <span style="text-decoration:overline">BD</span></span><span class="reason">if a &#9645; is a rectangle, diag. are &cong;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">FC = BD</span><span class="reason">Definition of congruence</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">BD = 106.5</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">DG + BG = BD</span><span class="reason">Segment Addition Postulate</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">DG = BG (diagonals bisect)&nbsp;&rarr;&nbsp;DG + DG = BD</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">2DG = BD</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">DG = &frac12;BD = &frac12;(106.5)</span><span class="reason">Divide each side by 2</span></div>
+      <div class="answer-box">DG = 53.25 ft</div>
+      <div class="check-box"><strong>Check:</strong> 53.25 + 53.25 = 106.5 = BD = FC &nbsp;&#10003;</div>
+      <div class="warning-box"><strong>Notice:</strong> BC = 94 was never used. Half of a diagonal
+      depends only on that diagonal &mdash; the side length is a distractor here.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Use properties of rectangles and algebra</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Quadrilateral ABCD is a rectangle. If m&ang;BAC = (3x + 3)&deg; and m&ang;ACB = (5x &minus; 1)&deg;, find the value of x.</div>
+      <figure class="fig" style="box-shadow:none;border:none;padding:0">
+        <svg viewBox="0 0 440 320" width="440" role="img" aria-label="Rectangle ABCD with diagonals; angle BAC at vertex A measures 36 degrees and angle ACB at vertex C measures 54 degrees">
+          <rect class="g-shape" x="70" y="50" width="300" height="218"/>
+          <line class="g-line" x1="70" y1="50" x2="370" y2="268"/>
+          <line class="g-line" x1="370" y1="50" x2="70" y2="268"/>
+          <path class="g-right" d="M 82 50 L 82 62 L 70 62"/>
+          <path class="g-right" d="M 358 50 L 358 62 L 370 62"/>
+          <path class="g-angle" d="M 110 50 A 40 40 0 0 1 102.44 73.57"/>
+          <path class="g-angle" d="M 370 228 A 40 40 0 0 0 337.56 244.43"/>
+          <text class="g-meas g-halo" x="128" y="72">(3x + 3)&deg;</text>
+          <text class="g-meas-b g-halo" x="334" y="222" text-anchor="end">(5x &minus; 1)&deg;</text>
+          <circle class="g-pt" cx="220" cy="159" r="4"/>
+          <text class="g-lbl" x="58" y="44" text-anchor="end">A</text>
+          <text class="g-lbl" x="382" y="44">B</text>
+          <text class="g-lbl" x="382" y="286">C</text>
+          <text class="g-lbl" x="58" y="286" text-anchor="end">D</text>
+        </svg>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;DCB = 90&deg;</span><span class="reason">a rectangle has four right angles</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><span style="text-decoration:overline">AB</span> &par; <span style="text-decoration:overline">DC</span></span><span class="reason">opposite sides of a &#9645; are parallel</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&ang;ACD &cong; &ang;BAC</span><span class="reason">alternate interior angles are &cong;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;ACD + m&ang;ACB = 90</span><span class="reason">Angle Addition Postulate</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">m&ang;BAC + m&ang;ACB = 90</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">(3x + 3) + (5x &minus; 1) = 90</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">8x + 2 = 90 &rarr; 8x = 88</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">x = 11</div>
+      <div class="check-box"><strong>Check:</strong> m&ang;BAC = 3(11) + 3 = 36&deg; and m&ang;ACB = 5(11) &minus; 1 = 54&deg;. Then 36 + 54 = 90 &nbsp;&#10003; &mdash; exactly the acute angles of right triangle ABC. The figure is drawn with these true measures.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Prove rectangular relationships</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">If AB = 50, BC = 20, CD = 50, AD = 20, AC = 54 and BD = 54, prove that quadrilateral ABCD is a rectangle.</div>
+      <figure class="fig" style="box-shadow:none;border:none;padding:0">
+        <svg viewBox="0 0 440 235" width="440" role="img" aria-label="Rectangle ABCD with sides 50 and 20 and congruent diagonals of length 54 meeting at P">
+          <rect class="g-shape" x="60" y="50" width="320" height="128"/>
+          <line class="g-line" x1="60" y1="50" x2="380" y2="178"/>
+          <line class="g-line" x1="380" y1="50" x2="60" y2="178"/>
+          <path class="g-right" d="M 72 50 L 72 62 L 60 62"/>
+          <path class="g-right" d="M 368 50 L 368 62 L 380 62"/>
+          <path class="g-right" d="M 368 178 L 368 166 L 380 166"/>
+          <path class="g-right" d="M 72 178 L 72 166 L 60 166"/>
+          <circle class="g-pt" cx="220" cy="114" r="4.5"/>
+          <text class="g-lbl g-halo" x="227" y="107">P</text>
+          <text class="g-lbl" x="48" y="44" text-anchor="end">A</text>
+          <text class="g-lbl" x="392" y="44">B</text>
+          <text class="g-lbl" x="392" y="196">C</text>
+          <text class="g-lbl" x="48" y="196" text-anchor="end">D</text>
+          <text class="g-meas" x="220" y="40" text-anchor="middle">50</text>
+          <text class="g-meas" x="220" y="200" text-anchor="middle">50</text>
+          <text class="g-meas-b" x="50" y="118" text-anchor="end">20</text>
+          <text class="g-meas-b" x="390" y="118">20</text>
+          <text class="g-grn g-halo" x="150" y="84" text-anchor="middle">54</text>
+          <text class="g-grn g-halo" x="292" y="84" text-anchor="middle">54</text>
+        </svg>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">AB = CD, BC = AD, AC = BD</span><span class="reason">Given</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><span style="text-decoration:overline">AB</span> &cong; <span style="text-decoration:overline">CD</span>, <span style="text-decoration:overline">BC</span> &cong; <span style="text-decoration:overline">AD</span>, <span style="text-decoration:overline">AC</span> &cong; <span style="text-decoration:overline">BD</span></span><span class="reason">Definition of congruence</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">ABCD is a parallelogram</span><span class="reason">both pairs of opp. sides &cong;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math"><span style="text-decoration:overline">AC</span> and <span style="text-decoration:overline">BD</span> are congruent diagonals</span><span class="reason">from step 2</span></div>
+      <div class="answer-box">ABCD is a rectangle &nbsp;(Theorem 7.14)</div>
+      <div class="check-box"><strong>Check:</strong> a 50 by 20 rectangle has diagonal &radic;(50<sup>2</sup> + 20<sup>2</sup>) = &radic;2900 &asymp; 53.85 &asymp; 54 &nbsp;&#10003;</div>
+      <div class="warning-box"><strong>Order matters.</strong> Step 3 must come before the
+      conclusion. Theorem 7.14 needs a parallelogram; congruent diagonals in an arbitrary
+      quadrilateral are not enough.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Identify rectangles on the coordinate plane</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Quadrilateral GHJK has vertices G(&minus;3, 0), H(3, 2), J(4, &minus;1) and K(&minus;2, &minus;3). Determine whether GHJK is a rectangle by using the Distance Formula. (See Figure 4 above.)</div>
+      <p><strong>Step 1 &mdash; Determine whether opposite sides are congruent.</strong></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">GH = &radic;[(&minus;3 &minus; 3)<sup>2</sup> + (0 &minus; 2)<sup>2</sup>] = &radic;40</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">HJ = &radic;[(3 &minus; 4)<sup>2</sup> + (2 &minus; (&minus;1))<sup>2</sup>] = &radic;10</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">KJ = &radic;[(&minus;2 &minus; 4)<sup>2</sup> + (&minus;3 &minus; (&minus;1))<sup>2</sup>] = &radic;40</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">GK = &radic;[(&minus;3 &minus; (&minus;2))<sup>2</sup> + (0 &minus; (&minus;3))<sup>2</sup>] = &radic;10</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">GH = KJ and HJ = GK &rarr; GHJK is a parallelogram</span><span class="reason">both pairs of opp. sides &cong;</span></div>
+      <p><strong>Step 2 &mdash; Determine whether the diagonals are congruent.</strong></p>
+      <div class="solution-step"><span class="num">6</span><span class="math">GJ = &radic;[(&minus;3 &minus; 4)<sup>2</sup> + (0 &minus; (&minus;1))<sup>2</sup>] = &radic;50</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">KH = &radic;[(&minus;2 &minus; 3)<sup>2</sup> + (&minus;3 &minus; 2)<sup>2</sup>] = &radic;50</span><span class="reason">Distance Formula</span></div>
+      <div class="answer-box">GJ = KH, so &#9645;GHJK is a rectangle</div>
+      <div class="check-box"><strong>Another way:</strong> slope of <span style="text-decoration:overline">GH</span> = 2/6 = 1/3 and slope of <span style="text-decoration:overline">HJ</span> = (&minus;3)/1 = &minus;3. Since (1/3)(&minus;3) = &minus;1, the sides meet at a right angle &mdash; one right angle in a parallelogram is already enough (Theorem 7.6).</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">In rectangle ABCD the diagonals meet at P. If AP = 3x &minus; 4 and BD = 4x + 6, find AC.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">AC = BD</span><span class="reason">diagonals of a rectangle are &cong;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">AC = 2(AP) = 2(3x &minus; 4)</span><span class="reason">P bisects <span style="text-decoration:overline">AC</span></span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">2(3x &minus; 4) = 4x + 6</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">6x &minus; 8 = 4x + 6 &rarr; 2x = 14 &rarr; x = 7</span><span class="reason">Solve</span></div>
+      <div class="answer-box">AC = 4(7) + 6 = 34</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">EFGH is a rectangle with diagonals meeting at K. If m&ang;FEG = (2x + 5)&deg; and m&ang;GEH = (4x + 7)&deg;, find x and m&ang;GEH.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;FEH = 90&deg;</span><span class="reason">rectangle has four right angles</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">(2x + 5) + (4x + 7) = 90</span><span class="reason">Angle Addition Postulate</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">6x + 12 = 90 &rarr; 6x = 78 &rarr; x = 13</span><span class="reason">Solve</span></div>
+      <div class="answer-box">x = 13, m&ang;GEH = 4(13) + 7 = 59&deg;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">WXYZ is a rectangle with WY = 5x &minus; 3 and XZ = 3x + 11. Find WY.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">WY = XZ</span><span class="reason">Theorem 7.13</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">5x &minus; 3 = 3x + 11 &rarr; 2x = 14 &rarr; x = 7</span><span class="reason">Solve</span></div>
+      <div class="answer-box">WY = 5(7) &minus; 3 = 32</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">PQRT is a parallelogram with PR = x<sup>2</sup> &minus; 12 and QT = 4x. For which positive value of x is PQRT a rectangle, and how long is each diagonal?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">x<sup>2</sup> &minus; 12 = 4x</span><span class="reason">diagonals must be &cong; (Thm 7.14)</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x<sup>2</sup> &minus; 4x &minus; 12 = 0</span><span class="reason">Standard form</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">(x &minus; 6)(x + 2) = 0 &rarr; x = 6 or x = &minus;2</span><span class="reason">Factor</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x = &minus;2 gives QT = &minus;8, impossible</span><span class="reason">length must be positive</span></div>
+      <div class="answer-box">x = 6, and PR = QT = 24</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">A quadrilateral has vertices A(0, 0), B(4, 2), C(3, 4), D(&minus;1, 2). Use the Distance Formula to decide whether ABCD is a rectangle.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">AB = &radic;(4<sup>2</sup> + 2<sup>2</sup>) = &radic;20&nbsp;&nbsp;&nbsp;CD = &radic;((&minus;4)<sup>2</sup> + (&minus;2)<sup>2</sup>) = &radic;20</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">BC = &radic;((&minus;1)<sup>2</sup> + 2<sup>2</sup>) = &radic;5&nbsp;&nbsp;&nbsp;DA = &radic;(1<sup>2</sup> + (&minus;2)<sup>2</sup>) = &radic;5</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">Opposite sides &cong; &rarr; parallelogram</span><span class="reason">both pairs opp. sides &cong;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">AC = &radic;(3<sup>2</sup> + 4<sup>2</sup>) = 5&nbsp;&nbsp;&nbsp;BD = &radic;((&minus;5)<sup>2</sup> + 0<sup>2</sup>) = 5</span><span class="reason">Distance Formula</span></div>
+      <div class="answer-box">AC = BD = 5, so ABCD is a rectangle</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Given one diagonal of a rectangle, asked for the other</td><td>Use Theorem 7.13</td><td><code>AC = BD</code></td></tr>
+    <tr><td>Given a whole diagonal, asked for a half</td><td>Diagonals bisect each other</td><td><code>AP = &frac12;AC</code></td></tr>
+    <tr><td>Given a half-diagonal, asked for a whole diagonal</td><td>Double it, then use congruence</td><td><code>BD = AC = 2&middot;AP</code></td></tr>
+    <tr><td>Two angles at one vertex split by a diagonal</td><td>Set their sum equal to 90</td><td><code>(expr<sub>1</sub>) + (expr<sub>2</sub>) = 90</code></td></tr>
+    <tr><td>Angles at opposite ends of a diagonal</td><td>Alternate interior angles</td><td><code>&ang;BAC &cong; &ang;ACD</code></td></tr>
+    <tr><td>Expressions for opposite sides</td><td>Set them equal</td><td><code>EF = HG</code></td></tr>
+    <tr><td>Parallelogram, want &ldquo;rectangle&rdquo;</td><td>Show diagonals congruent</td><td>Theorem 7.14</td></tr>
+    <tr><td>Parallelogram with one 90&deg; angle</td><td>Theorem 7.6</td><td>All four angles are right &rarr; rectangle</td></tr>
+    <tr><td>Four vertices on a grid</td><td>Distance Formula on sides, then on diagonals</td><td>Opp. sides &cong; and diagonals &cong; &rarr; rectangle</td></tr>
+    <tr><td>Four vertices on a grid (alternative)</td><td>Slope Formula</td><td>Opp. slopes equal, consecutive slopes multiply to &minus;1</td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">AC = BD</span>
+    <span class="pill">AP = PC = BP = PD</span>
+    <span class="pill">AC = 2&middot;AP</span>
+    <span class="pill">m&ang;BAC + m&ang;ACB = 90&deg;</span>
+    <span class="pill">m&ang;DAC + m&ang;CAB = 90&deg;</span>
+    <span class="pill">d = &radic;[(&Delta;x)&sup2; + (&Delta;y)&sup2;]</span>
+    <span class="pill">m = &Delta;y / &Delta;x</span>
+    <span class="pill">m&#8321;&middot;m&#8322; = &minus;1 &rarr; &perp;</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:8px 0 0 20px">
+      <li>Using Theorem 7.14 without first establishing that the figure is a parallelogram.</li>
+      <li>Setting two angles <em>at opposite ends of a diagonal</em> equal to 90&deg;. They are congruent, not complementary.</li>
+      <li>Setting a half-diagonal equal to a whole diagonal &mdash; remember the factor of 2.</li>
+      <li>Concluding &ldquo;rectangle&rdquo; from four congruent sides. That is a rhombus.</li>
+      <li>Forgetting that the diagonals of a rectangle are <em>not</em> perpendicular and do <em>not</em> bisect the corner angles (unless the rectangle is a square).</li>
+      <li>Rejecting no solutions in an algebra problem &mdash; a negative length is not acceptable.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"A rectangle is defined as &mdash;",
+   opts:["a quadrilateral with two pairs of parallel sides","a parallelogram with four right angles","a parallelogram with four congruent sides","a quadrilateral whose diagonals bisect each other"],
+   ans:1,
+   exp:"The definition is <em>a parallelogram with four right angles</em>. Four congruent sides defines a rhombus, and the first and last choices are true of every parallelogram, rectangle or not."},
+
+  {q:"Which statement is true for EVERY rectangle but NOT true for every parallelogram?",
+   opts:["Opposite sides are congruent.","Diagonals bisect each other.","The diagonals are congruent.","Opposite angles are congruent."],
+   ans:2,
+   exp:"Congruent diagonals is the property that separates rectangles from general parallelograms (Theorem 7.13). The other three hold in any parallelogram."},
+
+  {q:"In rectangle ABCD, AC = 26. Find BD.",
+   opts:["13","26","52","Cannot be determined"],
+   ans:1,
+   exp:"AC and BD are the two diagonals, and the diagonals of a rectangle are congruent, so BD = AC = 26. 13 would be a half-diagonal and 52 would be double."},
+
+  {q:"In rectangle ABCD the diagonals intersect at P. If AC = 30, find AP.",
+   fig:"<svg viewBox='0 0 340 220' width='340' role='img' aria-label='Rectangle ABCD with diagonals meeting at P and diagonal AC labeled 30'><rect class='g-shape' x='45' y='40' width='250' height='140'/><line class='g-line' x1='45' y1='40' x2='295' y2='180'/><line class='g-line' x1='295' y1='40' x2='45' y2='180'/><path class='g-right' d='M 57 40 L 57 52 L 45 52'/><circle class='g-pt' cx='170' cy='110' r='4.5'/><text class='g-lbl g-halo' x='177' y='103'>P</text><text class='g-lbl' x='36' y='34' text-anchor='end'>A</text><text class='g-lbl' x='304' y='34'>B</text><text class='g-lbl' x='304' y='196'>C</text><text class='g-lbl' x='36' y='196' text-anchor='end'>D</text><text class='g-meas g-halo' x='106' y='66' text-anchor='middle'>AC = 30</text></svg>",
+   opts:["15","7.5","30","60"],
+   ans:0,
+   exp:"The diagonals of a rectangle bisect each other, so P is the midpoint of AC and AP = &frac12;(30) = 15."},
+
+  {q:"In rectangle JKLM the diagonals intersect at N. If MN = 3x + 1 and JL = 2x + 9, find MK.",
+   opts:["7","6.25","25","12.5"],
+   ans:3,
+   exp:"MN is half of diagonal MK, so MK = 2(3x + 1). Diagonals are congruent, so MK = JL: 6x + 2 = 2x + 9 &rarr; 4x = 7 &rarr; x = 1.75. Then MK = 2(1.75) + 9 = 12.5."},
+
+  {q:"ABCD is a rectangle with m&ang;BAC = (3x + 3)&deg; and m&ang;ACB = (5x &minus; 1)&deg;. Find x.",
+   opts:["8","10.75","11","12"],
+   ans:2,
+   exp:"&ang;ABC is a right angle, so &ang;BAC and &ang;ACB are the acute angles of right triangle ABC and must sum to 90&deg;: 8x + 2 = 90 &rarr; x = 11. (Then the angles are 36&deg; and 54&deg;.)"},
+
+  {q:"ABCD is a rectangle with m&ang;ADB = (4x + 8)&deg; and m&ang;DBA = (6x + 12)&deg;. Find x.",
+   opts:["7","6","8","9"],
+   ans:0,
+   exp:"Diagonal BD creates right triangle ABD whose right angle is at A, so the other two angles are complementary: (4x + 8) + (6x + 12) = 90 &rarr; 10x + 20 = 90 &rarr; x = 7."},
+
+  {q:"EFGH is a rectangle whose diagonals meet at K. If m&ang;FEG = 57&deg;, find m&ang;GEH.",
+   fig:"<svg viewBox='0 0 340 320' width='340' role='img' aria-label='Rectangle EFGH with diagonals meeting at K and a 57 degree angle FEG at vertex E'><rect class='g-shape' x='70' y='40' width='160' height='246'/><line class='g-line' x1='70' y1='40' x2='230' y2='286'/><line class='g-line' x1='230' y1='40' x2='70' y2='286'/><path class='g-right' d='M 82 40 L 82 52 L 70 52'/><path class='g-angle' d='M 108 40 A 38 38 0 0 1 90.7 71.9'/><text class='g-meas g-halo' x='116' y='65'>57&deg;</text><circle class='g-pt' cx='150' cy='163' r='4.5'/><text class='g-lbl g-halo' x='157' y='156'>K</text><text class='g-lbl' x='60' y='34' text-anchor='end'>E</text><text class='g-lbl' x='240' y='34'>F</text><text class='g-lbl' x='240' y='302'>G</text><text class='g-lbl' x='60' y='302' text-anchor='end'>H</text></svg>",
+   opts:["57&deg;","33&deg;","43&deg;","23&deg;"],
+   ans:1,
+   exp:"&ang;FEH is a corner of the rectangle, so it measures 90&deg;, and ray EG lies inside it. Therefore m&ang;GEH = 90 &minus; 57 = 33&deg;."},
+
+  {q:"EFGH is a rectangle. If m&ang;HGE = 13&deg;, find m&ang;FGE.",
+   opts:["13&deg;","167&deg;","90&deg;","77&deg;"],
+   ans:3,
+   exp:"Diagonal EG splits the right angle at G into &ang;HGE and &ang;FGE, so they are complementary: 90 &minus; 13 = 77&deg;. (167&deg; comes from wrongly using a supplement.)"},
+
+  {q:"EFGH is a rectangle whose diagonals meet at K. If FK = 32, find EG.",
+   opts:["16","32","64","128"],
+   ans:2,
+   exp:"FK is half of diagonal FH, so FH = 64. The diagonals of a rectangle are congruent, so EG = FH = 64. Two steps are needed: double, then transfer."},
+
+  {q:"EFGH is a rectangle with EF = 4x &minus; 6 and HG = x + 3. Find EF.",
+   opts:["6","3","9","12"],
+   ans:0,
+   exp:"EF and HG are opposite sides of a parallelogram, so they are congruent: 4x &minus; 6 = x + 3 &rarr; 3x = 9 &rarr; x = 3. Then EF = 4(3) &minus; 6 = 6. (Choice B is x, not EF.)"},
+
+  {q:"Quadrilateral GHJK has G(&minus;3, 0), H(3, 2), J(4, &minus;1), K(&minus;2, &minus;3) and is already known to be a parallelogram. Which computed pair finishes the proof that it is a rectangle?",
+   opts:["GH = &radic;40 and KJ = &radic;40","GJ = &radic;50 and KH = &radic;50","HJ = &radic;10 and GK = &radic;10","GH = &radic;40 and HJ = &radic;10"],
+   ans:1,
+   exp:"GJ and KH are the diagonals. Congruent diagonals in a parallelogram give a rectangle (Theorem 7.14). Choices A and C compare opposite sides, which are congruent in any parallelogram, and D compares two different sides."},
+
+  {q:"A quadrilateral has vertices A(2, 6), B(3, 7) and C(6, 4). Which point D makes ABCD a rectangle?",
+   opts:["D(4, 3)","D(6, 3)","D(5, 2)","D(5, 3)"],
+   ans:3,
+   exp:"AB = &lang;1, 1&rang; and BC = &lang;3, &minus;3&rang; are perpendicular since (1)(3) + (1)(&minus;3) = 0. For ABCD in order, AD must equal BC, so D = (2 + 3, 6 &minus; 3) = (5, 3)."},
+
+  {q:"The diagonals of parallelogram PQRT are congruent. What can you conclude?",
+   opts:["PQRT is a rhombus.","PQRT has exactly two right angles.","PQRT is a rectangle.","Nothing further can be concluded."],
+   ans:2,
+   exp:"That is exactly Theorem 7.14: if the diagonals of a parallelogram are congruent, the parallelogram is a rectangle. Congruent diagonals say nothing about side lengths, so rhombus is not forced."},
+
+  {q:"A parallelogram has one right angle. Which conclusion follows?",
+   opts:["All four angles are right angles, so it is a rectangle.","Exactly two of its angles are right angles.","Its diagonals bisect each other but need not be congruent.","Its four sides must be congruent."],
+   ans:0,
+   exp:"Opposite angles of a parallelogram are congruent and consecutive angles are supplementary, so a single 90&deg; angle forces the opposite angle to 90&deg; and the other two to 180 &minus; 90 = 90&deg; (Theorem 7.6). Its diagonals are then congruent as well."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

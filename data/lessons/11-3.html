@@ -1,0 +1,509 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Find the area of a circle, find the area of a sector, and work backward from a sector's area to the radius or the whole circle.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Area of a Circle</h3>
+    <p>Every point on a circle sits the same distance &mdash; the radius <code>r</code> &mdash; from the centre. The circumference formula <code>C = 2&pi;r</code> measures the <em>rim</em>; the area formula measures the <em>whole flat disk</em> inside that rim.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Area of a Circle</div>
+      <div class="theorem-body">
+        <b>Words:</b> The area <code>A</code> of a circle is equal to <code>&pi;</code> times the square of the radius <code>r</code>.<br>
+        <b>Symbols:</b> <code>A = &pi;r&sup2;</code>
+      </div>
+    </div>
+    <p>Why <code>r&sup2;</code>? Slice the disk into many thin pie wedges and re-arrange them into a near-rectangle. The rectangle's height is <code>r</code> and its base is half the circumference, <code>&frac12;(2&pi;r) = &pi;r</code>. So the area is <code>(&pi;r)(r) = &pi;r&sup2;</code>. That is exactly the regular-polygon idea <code>A = &frac12;Pa</code> pushed to infinitely many sides.</p>
+    <div class="formula-box">
+      A = &pi;r&sup2; &nbsp;&nbsp;|&nbsp;&nbsp; C = 2&pi;r &nbsp;&nbsp;|&nbsp;&nbsp; r = d/2<br>
+      In terms of the diameter: A = &pi;(d/2)&sup2; = &pi;d&sup2;/4
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Working Backward from the Area</h3>
+    <p>If you are handed the area and asked for <code>r</code> or <code>d</code>, just undo the formula one step at a time.</p>
+    <div class="steps-list">
+      <div class="s">Write <code>A = &pi;r&sup2;</code> and substitute the known area.</div>
+      <div class="s">Divide both sides by <code>&pi;</code> to isolate <code>r&sup2;</code>.</div>
+      <div class="s">Take the <b>positive</b> square root: <code>r = &radic;(A/&pi;)</code>.</div>
+      <div class="s">If the question asks for the diameter, double it: <code>d = 2r</code>.</div>
+    </div>
+    <div class="warning-box"><strong>Watch Out!</strong> A length can never be negative, so we discard the negative square root. And <code>&radic;(A/&pi;)</code> is <em>not</em> the same as <code>&radic;A / &pi;</code> &mdash; divide first, then take the root.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Sectors</h3>
+    <p>A <b>sector</b> is the "pizza slice" piece of a circle &mdash; the region bounded by a central angle and its intercepted arc. It is a fraction of the whole disk, and the fraction is decided entirely by the central angle.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>sector</b> &mdash; a region of a circle bounded by a central angle and its intercepted arc.</div>
+      <div class="vocab-item"><b>segment of a circle</b> &mdash; the region bounded by an arc and its <em>chord</em> (not by two radii).</div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Area of a Sector</div>
+      <div class="theorem-body">
+        The ratio of the area <code>A</code> of a sector to the area of the whole circle <code>&pi;r&sup2;</code> is equal to the ratio of the degree measure <code>x</code> of the intercepted arc to 360&deg;.<br><br>
+        <b>Proportion:</b> <code>A / (&pi;r&sup2;) = x&deg; / 360&deg;</code><br>
+        <b>Equation:</b> <code>A = (x&deg;/360&deg;) &middot; &pi;r&sup2;</code>
+      </div>
+    </div>
+    <p>Notice the family resemblance to arc length, <code>&#8467; = (x&deg;/360&deg;) &middot; 2&pi;r</code>. Same fraction, different "whole": length uses the circumference, area uses <code>&pi;r&sup2;</code>.</p>
+    <div class="info-box"><strong>Study Tip &middot; Units of Area.</strong> When you convert between units of area you must multiply or divide by the <em>square</em> of the length conversion. Since 1 yd = 3 ft, 1 yd&sup2; = (3 ft)(3 ft) = 9 ft&sup2;.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Reversing the Sector Formula</h3>
+    <p>Two backward questions show up constantly:</p>
+    <ul>
+      <li><b>Given a sector's area and arc, find the circle's area.</b> Since <code>A<sub>sector</sub> = (x/360)A<sub>circle</sub></code>, simply multiply: <code>A<sub>circle</sub> = A<sub>sector</sub> &middot; (360/x)</code>.</li>
+      <li><b>Given a sector's area and arc, find the radius.</b> Solve <code>r = &radic;( A<sub>sector</sub> &middot; (360/x) &middot; (1/&pi;) )</code>.</li>
+    </ul>
+    <div class="formula-box">
+      A<sub>circle</sub> = (360/x) &middot; A<sub>sector</sub><br>
+      r = &radic;( A<sub>sector</sub> (360/x)(1/&pi;) )
+    </div>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt"><code>A = &pi;r&sup2;</code> uses the <b>radius</b>. If the problem gives a diameter, halve it <em>first</em>.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt"><code>A<sub>sector</sub> = (x&deg;/360&deg;)&pi;r&sup2;</code>. The fraction <code>x/360</code> is the share of the circle you own.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt">A sector is bounded by <b>two radii and an arc</b>. A <b>segment</b> is bounded by a <b>chord and an arc</b>.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt">Area of a segment = area of its sector &minus; area of the triangle formed by the two radii and the chord.</div></div>
+  <div class="keyfact"><div class="ico">5</div><div class="txt">Area units are squared: ft&sup2;, cm&sup2;, in&sup2;. Converting ft&sup2; &rarr; yd&sup2; divides by 9, not 3.</div></div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Area of a Circle</div>
+    <svg id="fig1" viewBox="0 0 400 300" width="400" role="img" aria-label="Circle with centre O and radius r, area equals pi r squared">
+      <g data-part="area"><circle class="g-shape" cx="190" cy="150" r="110"/></g>
+      <g data-part="radius">
+        <line class="g-line" x1="190" y1="150" x2="285.26" y2="95"/>
+        <text class="g-meas g-halo" x="232" y="112" text-anchor="middle">r</text>
+      </g>
+      <g data-part="center">
+        <circle class="g-pt" cx="190" cy="150" r="4.5"/>
+        <text class="g-lbl" x="176" y="172" text-anchor="end">O</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','area')">Area (&pi;r&sup2;)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','radius')">Radius r</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','center')">Centre O</button>
+    </div>
+    <figcaption>The shaded disk is the area: <code>A = &pi;r&sup2;</code>. The blue outline is the circumference, <code>C = 2&pi;r</code>.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">A Sector &mdash; Central Angle 120&deg;</div>
+    <svg id="fig2" viewBox="0 0 400 300" width="400" role="img" aria-label="Circle O with a shaded sector AOB whose central angle is 120 degrees">
+      <circle class="g-line" cx="200" cy="160" r="110"/>
+      <g data-part="sector"><path class="g-shape-alt" d="M 200 160 L 295.26 105 A 110 110 0 0 0 104.74 105 Z"/></g>
+      <g data-part="radii">
+        <line class="g-line" x1="200" y1="160" x2="295.26" y2="105"/>
+        <line class="g-line" x1="200" y1="160" x2="104.74" y2="105"/>
+        <text class="g-meas g-halo" x="256" y="140">r</text>
+      </g>
+      <g data-part="arc"><path class="g-arc" d="M 295.26 105 A 110 110 0 0 0 104.74 105"/></g>
+      <g data-part="angle">
+        <path class="g-angle" d="M 229.44 143 A 34 34 0 0 0 170.56 143"/>
+        <text class="g-meas g-halo" x="200" y="120" text-anchor="middle">120&deg;</text>
+      </g>
+      <circle class="g-pt" cx="200" cy="160" r="4.5"/>
+      <circle class="g-pt" cx="295.26" cy="105" r="4.5"/>
+      <circle class="g-pt" cx="104.74" cy="105" r="4.5"/>
+      <text class="g-lbl" x="304" y="97">A</text>
+      <text class="g-lbl" x="96" y="97" text-anchor="end">B</text>
+      <text class="g-lbl" x="192" y="182" text-anchor="end">O</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','sector')">Sector region</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','radii')">Two radii</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','arc')">Intercepted arc</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','angle')">Central angle</button>
+    </div>
+    <figcaption>Sector <i>AOB</i> is exactly 120&deg;/360&deg; = &#8531; of the circle, so its area is <code>(1/3)&pi;r&sup2;</code>.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Sector vs. Segment</div>
+    <svg id="fig3" viewBox="0 0 400 320" width="400" role="img" aria-label="Circle O with chord AB and the shaded segment between the chord and the minor arc">
+      <circle class="g-line" cx="190" cy="170" r="110"/>
+      <g data-part="segment"><path class="g-shape-alt" d="M 105.74 99.29 A 110 110 0 0 1 274.26 99.29 Z"/></g>
+      <g data-part="chord">
+        <line class="g-line" x1="105.74" y1="99.29" x2="274.26" y2="99.29"/>
+        <text class="g-meas g-halo" x="190" y="93" text-anchor="middle">chord</text>
+      </g>
+      <g data-part="arc"><path class="g-arc" d="M 105.74 99.29 A 110 110 0 0 1 274.26 99.29"/></g>
+      <g data-part="radii">
+        <line class="g-aux" x1="190" y1="170" x2="105.74" y2="99.29"/>
+        <line class="g-aux" x1="190" y1="170" x2="274.26" y2="99.29"/>
+        <path class="g-angle" d="M 219.11 145.57 A 38 38 0 0 0 160.89 145.57"/>
+        <text class="g-meas g-halo" x="190" y="127" text-anchor="middle">100&deg;</text>
+      </g>
+      <circle class="g-pt" cx="190" cy="170" r="4.5"/>
+      <circle class="g-pt" cx="105.74" cy="99.29" r="4.5"/>
+      <circle class="g-pt" cx="274.26" cy="99.29" r="4.5"/>
+      <text class="g-lbl" x="97" y="90" text-anchor="end">A</text>
+      <text class="g-lbl" x="283" y="90">B</text>
+      <text class="g-lbl" x="190" y="192" text-anchor="middle">O</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','segment')">Segment</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','chord')">Chord</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','arc')">Arc</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','radii')">Sector (radii)</button>
+    </div>
+    <figcaption>The dashed radii and the arc bound the <b>sector</b>. The orange region above chord <span style="text-decoration:overline">AB</span> is the <b>segment</b>: segment = sector &minus; triangle <i>AOB</i>.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Ring (Annulus) &mdash; Subtracting Areas</div>
+    <svg id="fig4" viewBox="0 0 400 320" width="400" role="img" aria-label="Two concentric circles with the ring between them shaded">
+      <g data-part="ring"><path class="g-shape-alt" fill-rule="evenodd" d="M 80 165 A 110 110 0 1 0 300 165 A 110 110 0 1 0 80 165 M 128 165 A 62 62 0 1 0 252 165 A 62 62 0 1 0 128 165"/></g>
+      <g data-part="outer">
+        <circle class="g-line" cx="190" cy="165" r="110"/>
+        <line class="g-line" x1="190" y1="165" x2="112.22" y2="87.22"/>
+        <text class="g-meas g-halo" x="139" y="108" text-anchor="middle">R</text>
+      </g>
+      <g data-part="inner">
+        <circle class="g-line" cx="190" cy="165" r="62"/>
+        <line class="g-line" x1="190" y1="165" x2="233.84" y2="208.84"/>
+        <text class="g-meas-b g-halo" x="219" y="196" text-anchor="middle">r</text>
+      </g>
+      <circle class="g-pt" cx="190" cy="165" r="4.5"/>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','ring')">Ring region</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','outer')">Outer circle R</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','inner')">Inner circle r</button>
+    </div>
+    <figcaption>Shaded ring area <code>= &pi;R&sup2; &minus; &pi;r&sup2; = &pi;(R&sup2; &minus; r&sup2;)</code>. Note this is <b>not</b> <code>&pi;(R &minus; r)&sup2;</code>.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Area of a circle (and a unit conversion)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Part A. A circular region has a diameter of 24 feet. What is its area to the nearest square foot? Part B. Material costs $135 per square yard. About how much does the region cost to cover?</div>
+      <figure class="fig">
+        <svg viewBox="0 0 340 265" width="340" role="img" aria-label="Circle with a marked diameter of 24 feet">
+          <circle class="g-shape" cx="170" cy="130" r="100"/>
+          <line class="g-line" x1="70" y1="130" x2="270" y2="130"/>
+          <circle class="g-pt" cx="170" cy="130" r="4.5"/>
+          <text class="g-meas g-halo" x="170" y="150" text-anchor="middle">24 ft</text>
+          <text class="g-meas-b g-halo" x="220" y="122" text-anchor="middle">r = 12 ft</text>
+        </svg>
+        <figcaption>The 24 ft measurement runs through the centre, so it is the <b>diameter</b>.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &pi;r&sup2;</span><span class="reason">Area of a circle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">r = 24 &divide; 2 = 12</span><span class="reason">radius is half the diameter</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = &pi;(12)&sup2;</span><span class="reason">r = 12</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A = 144&pi; &asymp; 452.39</span><span class="reason">Simplify.</span></div>
+      <div class="answer-box">Part A: A = 144&pi; &asymp; 452 square feet</div>
+      <div class="solution-step"><span class="num">5</span><span class="math">(144&pi; ft&sup2;)(1 yd&sup2; / 9 ft&sup2;) = 16&pi; yd&sup2; &asymp; 50.27 yd&sup2;</span><span class="reason">1 yd&sup2; = 9 ft&sup2;</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">(16&pi; yd&sup2;)($135 / 1 yd&sup2;) &asymp; $6786</span><span class="reason">Solve.</span></div>
+      <div class="answer-box">Part B: about $6786</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The conversion factor for area is 9, not 3. Dividing 452.39 by 3 gives 150.8, which is wrong &mdash; a square yard holds nine square feet.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Use the area of a circle to find a missing measure</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the diameter of a circle with an area of 196&pi; square yards.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &pi;r&sup2;</span><span class="reason">Area of a circle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">196&pi; = &pi;r&sup2;</span><span class="reason">A = 196&pi;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">196 = r&sup2;</span><span class="reason">Divide each side by &pi;.</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">14 = r</span><span class="reason">Solve. Take the positive square root.</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">d = 2r = 2(14) = 28</span><span class="reason">The radius is half the diameter.</span></div>
+      <div class="answer-box">d = 28 yards</div>
+      <div class="check-box"><strong>Check:</strong> &pi;(14)&sup2; = 196&pi; &#10003; &mdash; and 28 is twice 14, so the diameter is consistent.</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Stopping at <code>r = 14</code> is the single most common error here. Re-read the question: it asked for the <b>diameter</b>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Area of a sector</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A circular piece with a diameter of 3.5 centimetres is divided into 6 congruent sectors. What is the area of one sector to the nearest hundredth?</div>
+      <figure class="fig">
+        <svg viewBox="0 0 330 280" width="330" role="img" aria-label="Circle divided into six congruent 60 degree sectors with one shaded">
+          <circle class="g-line" cx="165" cy="140" r="100"/>
+          <path class="g-shape-alt" d="M 165 140 L 265 140 A 100 100 0 0 0 215 53.4 Z"/>
+          <line class="g-line-thin" x1="65" y1="140" x2="265" y2="140"/>
+          <line class="g-line-thin" x1="115" y1="53.4" x2="215" y2="226.6"/>
+          <line class="g-line-thin" x1="215" y1="53.4" x2="115" y2="226.6"/>
+          <path class="g-angle" d="M 213 140 A 48 48 0 0 0 189 98.44"/>
+          <text class="g-meas g-halo" x="216" y="116" text-anchor="middle">60&deg;</text>
+          <circle class="g-pt" cx="165" cy="140" r="4.5"/>
+          <text class="g-meas-b g-halo" x="218" y="159" text-anchor="middle">1.75 cm</text>
+        </svg>
+        <figcaption>Six congruent sectors share 360&deg; equally, so each central angle is 60&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">x = 360 &divide; 6 = 60</span><span class="reason">Step 1: find the arc measure.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">r = 3.5 &divide; 2 = 1.75</span><span class="reason">radius is half the diameter</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = (x&deg;/360&deg;) &middot; &pi;r&sup2;</span><span class="reason">Step 2: area of a sector</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A = (60/360) &middot; &pi;(1.75)&sup2;</span><span class="reason">x = 60 and r = 1.75</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">A = (1/6)(3.0625&pi;) &asymp; 1.60</span><span class="reason">Solve.</span></div>
+      <div class="answer-box">A &asymp; 1.60 square centimetres</div>
+      <div class="check-box"><strong>Check:</strong> the whole circle is &pi;(1.75)&sup2; &asymp; 9.62 cm&sup2;, and 9.62 &divide; 6 &asymp; 1.60 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Use the area of a sector to find the area of the circle</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">One sector of a circle has an area of 42 square feet and an arc measure of 45&deg;. Find the area of the circle to the nearest square foot.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 360 305" width="360" role="img" aria-label="Circle with a shaded 45 degree sector of area 42 square feet">
+          <circle class="g-line" cx="160" cy="160" r="105"/>
+          <path class="g-shape-alt" d="M 160 160 L 265 160 A 105 105 0 0 0 234.25 85.75 Z"/>
+          <line class="g-line" x1="160" y1="160" x2="265" y2="160"/>
+          <line class="g-line" x1="160" y1="160" x2="234.25" y2="85.75"/>
+          <path class="g-angle" d="M 198 160 A 38 38 0 0 0 187.12 133.12"/>
+          <text class="g-meas g-halo" x="207" y="146">45&deg;</text>
+          <circle class="g-pt" cx="160" cy="160" r="4.5"/>
+          <text class="g-meas-b g-halo" x="212" y="180" text-anchor="middle">r = ?</text>
+          <text class="g-grn" x="160" y="292" text-anchor="middle">shaded sector area = 42 ft&sup2;</text>
+        </svg>
+        <figcaption>A 45&deg; sector is 45/360 = &#8539; of the circle, so the circle is 8 times the sector.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = (x&deg;/360&deg;) &middot; &pi;r&sup2;</span><span class="reason">Step 1: area of a sector</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">42 = (45/360) &middot; &pi;r&sup2;</span><span class="reason">A = 42 and x = 45</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">r = &radic;( 42 (360/45)(1/&pi;) ) &asymp; 10.34</span><span class="reason">Solve for r.</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A = &pi;r&sup2; = &pi;(10.34)&sup2;</span><span class="reason">Step 2: area of a circle</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">A = 336</span><span class="reason">Solve.</span></div>
+      <div class="answer-box">The area of the circle is 336 square feet.</div>
+      <div class="info-box"><strong>Shortcut.</strong> You never actually need <code>r</code>. Since the sector is 45/360 = &#8539; of the circle, multiply straight through: <code>42 &times; 8 = 336 ft&sup2;</code>. Same answer, no square roots.</div>
+      <div class="check-box"><strong>Check:</strong> (45/360)(336) = 0.125 &times; 336 = 42 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Find the error &mdash; diameter mistaken for radius</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A circle has a marked measure of 8 in. across through the centre, and a sector of arc measure 58&deg;. Ketria writes A = (58/360)&middot;&pi;(8)&sup2; = 32.4 in&sup2;. Colton writes A = (58/360)&middot;&pi;(4)&sup2; = 8.1 in&sup2;. Who is correct?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">8 in. spans the centre &there4; 8 = d</span><span class="reason">identify the given measure</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">r = 8 &divide; 2 = 4</span><span class="reason">radius is half the diameter</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A = (58/360) &middot; &pi;(4)&sup2; = (0.16111)(16&pi;)</span><span class="reason">area of a sector</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A &asymp; 8.1</span><span class="reason">Simplify.</span></div>
+      <div class="answer-box">Colton is correct: A &asymp; 8.1 in&sup2;</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Ketria squared the diameter. Because area depends on <code>r&sup2;</code>, using <code>d</code> instead of <code>r</code> makes the answer <b>4 times</b> too large &mdash; and indeed 32.4 = 4 &times; 8.1.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Try 1</h4>
+    <div class="prob">Find the <b>exact</b> area of a circle whose radius is 5&radic;2 units.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &pi;r&sup2; = &pi;(5&radic;2)&sup2;</span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">(5&radic;2)&sup2; = 25 &middot; 2 = 50</span><span class="reason">square both factors</span></div>
+      <div class="answer-box">A = 50&pi; square units</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try 2</h4>
+    <div class="prob">The area of a circle is 400&pi; m&sup2;. Find its circumference.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">400&pi; = &pi;r&sup2; &rarr; r&sup2; = 400</span><span class="reason">divide by &pi;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">r = 20</span><span class="reason">positive square root</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">C = 2&pi;r = 2&pi;(20)</span><span class="reason">circumference formula</span></div>
+      <div class="answer-box">C = 40&pi; &asymp; 125.7 m</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try 3</h4>
+    <div class="prob">Find the area of a 210&deg; sector of a circle of radius 9 cm. Round to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A = (210/360) &middot; &pi;(9)&sup2;</span><span class="reason">area of a sector</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (7/12)(81&pi;) = 47.25&pi;</span><span class="reason">simplify the fraction</span></div>
+      <div class="answer-box">A &asymp; 148.4 cm&sup2;</div>
+      <div class="check-box"><strong>Check:</strong> the full circle is 81&pi; &asymp; 254.5 cm&sup2;, and 210&deg; is a bit more than half, so an answer just under 60% of 254.5 is sensible. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try 4</h4>
+    <div class="prob">One sector of a circle has an area of 65 ft&sup2; and an arc measure of 270&deg;. Find the area of the whole circle to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">65 = (270/360) &middot; A</span><span class="reason">sector is 3/4 of the circle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = 65 &middot; (360/270) = 65 &middot; (4/3)</span><span class="reason">multiply by the reciprocal</span></div>
+      <div class="answer-box">A &asymp; 86.7 ft&sup2;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Try 5</h4>
+    <div class="prob">A circle has radius 10 in. A 90&deg; central angle cuts off a chord. Find the area of the <b>segment</b> between that chord and its minor arc. Round to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A<sub>sector</sub> = (90/360)&pi;(10)&sup2; = 25&pi; &asymp; 78.54</span><span class="reason">area of a sector</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">the two radii are &perp;, so the triangle is right</span><span class="reason">central angle = 90&deg;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A<sub>triangle</sub> = &frac12;(10)(10) = 50</span><span class="reason">legs are the radii</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A<sub>segment</sub> = 78.54 &minus; 50</span><span class="reason">segment = sector &minus; triangle</span></div>
+      <div class="answer-box">A<sub>segment</sub> &asymp; 28.5 in&sup2;</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Radius <code>r</code> is given</td><td>Square it, multiply by &pi;</td><td><code>A = &pi;r&sup2;</code></td></tr>
+    <tr><td>Diameter <code>d</code> is given</td><td>Halve it first, then square</td><td><code>A = &pi;(d/2)&sup2;</code></td></tr>
+    <tr><td>Area given, need <code>r</code></td><td>Divide by &pi;, take the positive root</td><td><code>r = &radic;(A/&pi;)</code></td></tr>
+    <tr><td>Area given, need <code>d</code></td><td>Find <code>r</code>, then double it</td><td><code>d = 2&radic;(A/&pi;)</code></td></tr>
+    <tr><td>Central angle <code>x</code> and <code>r</code> given</td><td>Take the fraction <code>x/360</code> of the disk</td><td><code>A = (x/360)&pi;r&sup2;</code></td></tr>
+    <tr><td>Sector area and <code>x</code> given, need the circle</td><td>Multiply by <code>360/x</code></td><td><code>A<sub>circle</sub> = (360/x)A<sub>sector</sub></code></td></tr>
+    <tr><td>Sector area and <code>x</code> given, need <code>r</code></td><td>Undo both the fraction and &pi;</td><td><code>r = &radic;(A(360/x)(1/&pi;))</code></td></tr>
+    <tr><td>Region between a chord and an arc</td><td>Subtract the triangle from the sector</td><td><code>A<sub>seg</sub> = A<sub>sec</sub> &minus; A<sub>&#9651;</sub></code></td></tr>
+    <tr><td>Region between two concentric circles</td><td>Subtract the small disk from the big one</td><td><code>A = &pi;(R&sup2; &minus; r&sup2;)</code></td></tr>
+    <tr><td>Convert ft&sup2; to yd&sup2;</td><td>Divide by 3&sup2;</td><td><code>1 yd&sup2; = 9 ft&sup2;</code></td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">A = &pi;r&sup2;</span>
+    <span class="pill">C = 2&pi;r</span>
+    <span class="pill">A = &pi;d&sup2;/4</span>
+    <span class="pill">r = &radic;(A/&pi;)</span>
+    <span class="pill">A/(&pi;r&sup2;) = x/360</span>
+    <span class="pill">A = (x/360)&middot;&pi;r&sup2;</span>
+    <span class="pill">A<sub>circle</sub> = (360/x)&middot;A<sub>sector</sub></span>
+    <span class="pill">&#8467; = (x/360)&middot;2&pi;r</span>
+    <span class="pill">A<sub>ring</sub> = &pi;(R&sup2;&minus;r&sup2;)</span>
+    <span class="pill">1 yd&sup2; = 9 ft&sup2;</span>
+  </div>
+
+  <div class="warning-box">
+    <strong>Common mistakes to avoid</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8">
+      <li>Substituting the <b>diameter</b> into <code>A = &pi;r&sup2;</code>. That makes the answer 4 times too big.</li>
+      <li>Answering with the radius when the question asked for the diameter (or vice versa).</li>
+      <li>Flipping the sector fraction &mdash; writing <code>(360/x)&pi;r&sup2;</code> when finding a sector's area.</li>
+      <li>Using the arc-length formula <code>(x/360)&middot;2&pi;r</code> when the question wants area. Areas need <code>&pi;r&sup2;</code>.</li>
+      <li>Confusing a <b>sector</b> (two radii + arc) with a <b>segment</b> (chord + arc).</li>
+      <li>Converting square units with the linear factor (dividing ft&sup2; by 3 instead of 9).</li>
+      <li>Rounding &pi; too early. Carry the exact value and round only at the last step.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"Find the exact area of a circle with radius 9 units.",opts:["81&pi; units&sup2;","18&pi; units&sup2;","9&pi; units&sup2;","162&pi; units&sup2;"],ans:0,exp:"A = &pi;r&sup2; = &pi;(9)&sup2; = 81&pi;. The value 18&pi; is the circumference 2&pi;(9), not the area."},
+  {q:"A circle has a diameter of 20 cm. Find its exact area.",opts:["400&pi; cm&sup2;","40&pi; cm&sup2;","100&pi; cm&sup2;","200&pi; cm&sup2;"],ans:2,exp:"Halve the diameter first: r = 10. Then A = &pi;(10)&sup2; = 100&pi;. Squaring the diameter instead gives 400&pi;, exactly 4 times too large."},
+  {q:"The area of a circle is 49&pi;. Find its radius.",opts:["r = 49","r = 24.5","r = 7","r = 14"],ans:2,exp:"Divide by &pi;: r&sup2; = 49, so r = 7. Choice D is the diameter, and choice B halves the area instead of taking a square root."},
+  {q:"Find the diameter of a circle with an area of 196&pi; square yards.",opts:["14 yd","28 yd","98 yd","392 yd"],ans:1,exp:"196&pi; = &pi;r&sup2; gives r&sup2; = 196 and r = 14. The question asks for the diameter, so d = 2(14) = 28 yd."},
+  {q:"Which equation gives the area A of a sector whose intercepted arc measures x&deg; in a circle of radius r?",opts:["A = (x/360)&middot;2&pi;r","A = (360/x)&middot;&pi;r&sup2;","A = (x/180)&middot;&pi;r&sup2;","A = (x/360)&middot;&pi;r&sup2;"],ans:3,exp:"A sector is the fraction x/360 of the whole disk &pi;r&sup2;. Choice A is the arc-length formula (a length, not an area) and choice B inverts the fraction, which would make the sector larger than the circle."},
+  {q:"Find the exact area of the shaded 120&deg; sector of a circle with radius 6.",opts:["4&pi;","12&pi;","24&pi;","36&pi;"],ans:1,exp:"A = (120/360)&middot;&pi;(6)&sup2; = (1/3)(36&pi;) = 12&pi;. Choice D is the area of the whole circle, and 4&pi; comes from taking one third of 12&pi; a second time.",fig:"<svg viewBox=\"0 0 280 250\" width=\"280\" role=\"img\" aria-label=\"circle with a shaded 120 degree sector of radius 6\"><circle class=\"g-line\" cx=\"140\" cy=\"120\" r=\"90\"/><path class=\"g-shape-alt\" d=\"M 140 120 L 217.94 75 A 90 90 0 0 0 62.06 75 Z\"/><line class=\"g-line\" x1=\"140\" y1=\"120\" x2=\"217.94\" y2=\"75\"/><line class=\"g-line\" x1=\"140\" y1=\"120\" x2=\"62.06\" y2=\"75\"/><path class=\"g-angle\" d=\"M 167.71 104 A 32 32 0 0 0 112.29 104\"/><text class=\"g-meas g-halo\" x=\"140\" y=\"84\" text-anchor=\"middle\">120&deg;</text><text class=\"g-meas-b g-halo\" x=\"190\" y=\"110\" text-anchor=\"middle\">6</text><circle class=\"g-pt\" cx=\"140\" cy=\"120\" r=\"4.5\"/></svg>"},
+  {q:"A sector of a circle of radius 10 has a central angle of 90&deg;. Find its exact area.",opts:["50&pi;","100&pi;","25&pi;","5&pi;"],ans:2,exp:"90/360 = 1/4, so A = (1/4)&pi;(10)&sup2; = 25&pi;. Choice B is the entire circle and choice A is a semicircle."},
+  {q:"A circle with diameter 3.5 cm is divided into 6 congruent sectors. Find the area of one sector to the nearest hundredth.",opts:["1.60 cm&sup2;","9.62 cm&sup2;","6.41 cm&sup2;","1.83 cm&sup2;"],ans:0,exp:"r = 1.75 and each central angle is 360 &divide; 6 = 60&deg;. A = (60/360)&pi;(1.75)&sup2; &asymp; 1.60. Choice B is the whole circle; choice C uses the diameter as the radius; choice D is the arc length, not an area."},
+  {q:"One sector of a circle has an area of 42 ft&sup2; and an arc measure of 45&deg;. Find the area of the whole circle.",opts:["189 ft&sup2;","336 ft&sup2;","420 ft&sup2;","5.25 ft&sup2;"],ans:1,exp:"45/360 = 1/8, so the circle is 8 times the sector: 42 &times; 8 = 336 ft&sup2;. Choice D divides by 8 instead of multiplying, shrinking the circle below its own sector."},
+  {q:"One sector of a circle has an area of 860 in&sup2; and an arc measure of 60&deg;. Find the area of the circle.",opts:["1720 in&sup2;","2580 in&sup2;","5160 in&sup2;","143.3 in&sup2;"],ans:2,exp:"Multiply by 360/60 = 6: 860 &times; 6 = 5160 in&sup2;. Choices A and B multiply by only 2 or 3, which would correspond to arcs of 180&deg; or 120&deg;."},
+  {q:"Find the exact area of a semicircle whose radius is 8.",opts:["8&pi;","16&pi;","64&pi;","32&pi;"],ans:3,exp:"A semicircle is a 180&deg; sector: A = (180/360)&pi;(8)&sup2; = (1/2)(64&pi;) = 32&pi;. Choice C forgets to halve; choice B is the semicircle's arc length 8&pi; doubled, not an area."},
+  {q:"Find the area of the shaded 243&deg; sector of a circle with radius 12.5 m. Round to the nearest tenth.",opts:["331.3 m&sup2;","159.5 m&sup2;","490.9 m&sup2;","53.0 m&sup2;"],ans:0,exp:"A = (243/360)&pi;(12.5)&sup2; = 0.675(156.25&pi;) &asymp; 331.3 m&sup2;. Choice B is the unshaded 117&deg; sector, choice C is the whole circle, and choice D is the arc length.",fig:"<svg viewBox=\"0 0 280 260\" width=\"280\" role=\"img\" aria-label=\"circle with a shaded 243 degree sector of radius 12.5 metres\"><circle class=\"g-line\" cx=\"140\" cy=\"125\" r=\"92\"/><path class=\"g-shape-alt\" d=\"M 140 125 L 171.46 38.55 A 92 92 0 1 0 202.74 192.29 Z\"/><line class=\"g-line\" x1=\"140\" y1=\"125\" x2=\"171.46\" y2=\"38.55\"/><line class=\"g-line\" x1=\"140\" y1=\"125\" x2=\"202.74\" y2=\"192.29\"/><text class=\"g-meas g-halo\" x=\"89\" y=\"140\" text-anchor=\"middle\">243&deg;</text><text class=\"g-meas-b g-halo\" x=\"128\" y=\"78\" text-anchor=\"end\">12.5 m</text><circle class=\"g-pt\" cx=\"140\" cy=\"125\" r=\"4.5\"/></svg>"},
+  {q:"Two circles share a centre. The outer radius is 10 and the inner radius is 6. Find the exact area of the ring between them.",opts:["16&pi;","136&pi;","8&pi;","64&pi;"],ans:3,exp:"Subtract the disks: &pi;(10)&sup2; &minus; &pi;(6)&sup2; = 100&pi; &minus; 36&pi; = 64&pi;. Choice A is &pi;(10 &minus; 6)&sup2;, which is wrong because squaring is not distributive over subtraction."},
+  {q:"The area of a sector is exactly 1/8 of the area of its circle. What is the measure of its central angle?",opts:["22.5&deg;","45&deg;","60&deg;","72&deg;"],ans:1,exp:"Set x/360 = 1/8, so x = 360/8 = 45&deg;. Choice A halves that (a 1/16 sector) and choice D corresponds to a 1/5 sector."},
+  {q:"A circle is marked with a measure of 8 in. drawn through its centre, and a sector has arc measure 58&deg;. Which computation of the sector's area is correct?",opts:["32.4 in&sup2;, using r = 8","16.2 in&sup2;","4.05 in&sup2;","8.1 in&sup2;, since 8 in. is the diameter so r = 4"],ans:3,exp:"A measure drawn through the centre is the diameter, so r = 4 and A = (58/360)&pi;(4)&sup2; &asymp; 8.1 in&sup2;. Using r = 8 gives 32.4 in&sup2;, which is 4 times too large because area depends on r&sup2;."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

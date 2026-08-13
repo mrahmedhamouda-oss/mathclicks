@@ -1,0 +1,558 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Use the Pythagorean Theorem to find missing side lengths in right triangles, and use its converse to classify a triangle as acute, right, or obtuse from its three side lengths.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. The Pythagorean Theorem</h3>
+    <p>In a right triangle the two short sides that form the right angle are called the <b>legs</b>, and the side <em>opposite</em> the right angle is the <b>hypotenuse</b>. The hypotenuse is always the longest side. The Pythagorean Theorem relates the lengths of the hypotenuse and legs of a right triangle.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 9.4 &middot; Pythagorean Theorem</div>
+      <div class="theorem-body">In a right triangle, the sum of the squares of the lengths of the legs is equal to the square of the length of the hypotenuse.</div>
+    </div>
+    <div class="formula-box">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup> &nbsp;&nbsp;&larr;&nbsp; <em>a</em>, <em>b</em> are legs &nbsp;&middot;&nbsp; <em>c</em> is the hypotenuse<br>
+    missing hypotenuse: c = &radic;(a<sup>2</sup> + b<sup>2</sup>)<br>
+    missing leg: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a = &radic;(c<sup>2</sup> &minus; b<sup>2</sup>)</div>
+    <p><strong>Why the two forms differ:</strong> the theorem is one equation, but where the unknown sits changes the arithmetic. If the unknown is the hypotenuse you <em>add</em> two squares; if the unknown is a leg you <em>subtract</em> the leg's square from the hypotenuse's square.</p>
+    <div class="warning-box"><strong>Watch Out!</strong> <em>c</em> is never "the last number given" &mdash; it is the side opposite the right angle. Find the right-angle mark first, then look straight across from it.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Pythagorean Triples</h3>
+    <p>A <b>Pythagorean triple</b> is a set of three nonzero whole numbers <em>a</em>, <em>b</em>, and <em>c</em> such that <code>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></code>. Recognising one lets you write down the missing side with no square roots at all.</p>
+    <table class="tbl">
+      <tr><th colspan="4">Common Pythagorean Triples</th></tr>
+      <tr><td><b>3, 4, 5</b></td><td><b>5, 12, 13</b></td><td><b>8, 15, 17</b></td><td><b>7, 24, 25</b></td></tr>
+      <tr><td>6, 8, 10</td><td>10, 24, 26</td><td>16, 30, 34</td><td>14, 48, 50</td></tr>
+      <tr><td>9, 12, 15</td><td>15, 36, 39</td><td>24, 45, 51</td><td>21, 72, 75</td></tr>
+      <tr><td><code>3x, 4x, 5x</code></td><td><code>5x, 12x, 13x</code></td><td><code>8x, 15x, 17x</code></td><td><code>7x, 24x, 25x</code></td></tr>
+    </table>
+    <p>Every row below the first is found by multiplying each number of the base triple by the same factor. That works because multiplying every side by <em>x</em> multiplies every square by <em>x</em><sup>2</sup>, and the equation stays balanced.</p>
+    <div class="info-box"><strong>Study Tip:</strong> to use a triple, divide the two known sides by their common factor. If <code>14</code> and <code>50</code> are given, both are 2 times something: <code>2&middot;7</code> and <code>2&middot;25</code>. Since 7, 24, 25 is a triple, the missing side is <code>2&middot;24 = 48</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. The Converse &mdash; testing for a right triangle</h3>
+    <p>The Pythagorean Theorem works in reverse too. If you know all three sides you can decide whether the triangle even <em>is</em> a right triangle.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 9.5 &middot; Converse of the Pythagorean Theorem</div>
+      <div class="theorem-body">If the sum of the squares of the lengths of the shortest sides of a triangle is equal to the square of the length of the longest side, then the triangle is a right triangle.</div>
+    </div>
+    <p>Side lengths also classify a triangle as acute or obtuse. In every case you compare <code>c<sup>2</sup></code> (longest side squared) with <code>a<sup>2</sup> + b<sup>2</sup></code>.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 9.6 &middot; Acute test</div>
+      <div class="theorem-body">If the square of the length of the longest side of a triangle is less than the sum of the squares of the lengths of the other two sides, then the triangle is an acute triangle.<br><span style="font-family:'Courier New',monospace">If c<sup>2</sup> &lt; a<sup>2</sup> + b<sup>2</sup>, then &#9651;ABC is acute.</span></div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 9.7 &middot; Obtuse test</div>
+      <div class="theorem-body">If the square of the length of the longest side of a triangle is greater than the sum of the squares of the lengths of the other two sides, then the triangle is an obtuse triangle.<br><span style="font-family:'Courier New',monospace">If c<sup>2</sup> &gt; a<sup>2</sup> + b<sup>2</sup>, then &#9651;ABC is obtuse.</span></div>
+    </div>
+    <div class="steps-list">
+      <div class="s">Order the three lengths and identify the <b>longest</b> side; call it <em>c</em>.</div>
+      <div class="s">Check the Triangle Inequality: the two shorter lengths must add to more than the longest, or no triangle exists at all.</div>
+      <div class="s">Compute <code>c<sup>2</sup></code> and <code>a<sup>2</sup> + b<sup>2</sup></code> separately.</div>
+      <div class="s">Compare: <code>=</code> &rarr; right, <code>&lt;</code> &rarr; acute, <code>&gt;</code> &rarr; obtuse.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Determining the Longest Side:</strong> if the sides are radicals, you may wish to use a calculator to decide which is longest. But keep the radicals when you square: <code>(&radic;13)<sup>2</sup> = 13</code> exactly, while 3.606<sup>2</sup> only rounds to 13.</div>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt"><code>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></code> holds <b>only</b> in a right triangle, and only when <em>c</em> is the hypotenuse.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt">Memorise 3-4-5, 5-12-13, 8-15-17 and 7-24-25 &mdash; and all of their multiples.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt">Take only the <b>positive</b> square root: a length can never be negative.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt">Bigger longest side than "right" allows &rarr; the opposite angle opens up &rarr; <b>obtuse</b>. Smaller &rarr; <b>acute</b>.</div></div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Why it is called "squaring": areas on the three sides</div>
+    <svg id="fig1" viewBox="10 0 360 320" width="380" role="img" aria-label="A 3-4-5 right triangle with a square drawn on each of its three sides, of areas 9, 16 and 25">
+      <g data-part="sqa">
+        <rect class="g-shape-alt" x="90" y="130" width="60" height="60"/>
+        <text class="g-meas" x="120" y="166" text-anchor="middle">a&sup2; = 9</text>
+      </g>
+      <g data-part="sqb">
+        <rect class="g-shape-alt" x="150" y="190" width="80" height="80"/>
+        <text class="g-meas" x="190" y="236" text-anchor="middle">b&sup2; = 16</text>
+      </g>
+      <g data-part="sqc">
+        <polygon class="g-shape" points="230,190 150,130 210,50 290,110"/>
+        <text class="g-meas-b" x="220" y="126" text-anchor="middle">c&sup2; = 25</text>
+      </g>
+      <g data-part="tri">
+        <polygon class="g-shape" points="150,190 230,190 150,130"/>
+        <path class="g-right" d="M150 178 L162 178 L162 190"/>
+        <text class="g-meas g-halo" x="150" y="163" text-anchor="middle">3</text>
+        <text class="g-meas g-halo" x="190" y="194" text-anchor="middle">4</text>
+        <text class="g-meas g-halo" x="193" y="157" text-anchor="middle">5</text>
+      </g>
+    </svg>
+    <figcaption>The legs measure 90 px and 120 px and the hypotenuse 150 px &mdash; an exact 3 : 4 : 5 triangle. The square built on each side has area equal to that side squared: 9 + 16 = 25 unit squares, which is exactly <code>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></code>.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','tri')">The triangle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','sqa')">a&sup2; = 9</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','sqb')">b&sup2; = 16</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','sqc')">c&sup2; = 25</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Two triples drawn true to scale</div>
+    <svg id="fig2" viewBox="0 0 400 200" width="400" role="img" aria-label="A 3-4-5 right triangle and a 5-12-13 right triangle drawn to exact scale">
+      <g data-part="t345">
+        <polygon class="g-shape" points="40,140 160,140 40,50"/>
+        <path class="g-right" d="M40 128 L52 128 L52 140"/>
+        <text class="g-meas" x="32" y="99" text-anchor="end">3</text>
+        <text class="g-meas" x="100" y="158" text-anchor="middle">4</text>
+        <text class="g-meas g-halo" x="110" y="85" text-anchor="middle">5</text>
+        <text class="g-lbl-sm" x="100" y="182" text-anchor="middle">3 , 4 , 5</text>
+      </g>
+      <g data-part="t51213">
+        <polygon class="g-shape" points="240,140 360,140 240,90"/>
+        <path class="g-right" d="M240 128 L252 128 L252 140"/>
+        <text class="g-meas" x="232" y="119" text-anchor="end">5</text>
+        <text class="g-meas" x="300" y="158" text-anchor="middle">12</text>
+        <text class="g-meas g-halo" x="306" y="100" text-anchor="middle">13</text>
+        <text class="g-lbl-sm" x="300" y="182" text-anchor="middle">5 , 12 , 13</text>
+      </g>
+    </svg>
+    <figcaption>Left: legs 90 px and 120 px, hypotenuse 150 px. Right: legs 50 px and 120 px, hypotenuse 130 px. Both are drawn at exactly 30 px and 10 px per unit, so the pictures really do satisfy 9 + 16 = 25 and 25 + 144 = 169.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','t345')">3-4-5</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','t51213')">5-12-13</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Naming the sides &mdash; orientation does not matter</div>
+    <svg id="fig3" viewBox="0 0 340 200" width="340" role="img" aria-label="A tilted right triangle with the two legs and the hypotenuse labelled">
+      <polygon class="g-shape" points="160,60 232,156 88,114"/>
+      <g data-part="legs">
+        <line class="g-line" x1="160" y1="60" x2="232" y2="156"/>
+        <line class="g-line" x1="160" y1="60" x2="88" y2="114"/>
+        <text class="g-lbl" x="109" y="80" text-anchor="end">a</text>
+        <text class="g-lbl" x="216" y="110" text-anchor="start">b</text>
+        <text class="g-lbl-sm" x="109" y="96" text-anchor="end">leg</text>
+        <text class="g-lbl-sm" x="216" y="126" text-anchor="start">leg</text>
+      </g>
+      <g data-part="hyp">
+        <line class="g-line" x1="88" y1="114" x2="232" y2="156" stroke="var(--sl-green)"/>
+        <text class="g-lbl" x="160" y="152" text-anchor="middle">c</text>
+        <text class="g-lbl-sm" x="160" y="172" text-anchor="middle">hypotenuse</text>
+      </g>
+      <g data-part="ra">
+        <path class="g-right" d="M167 70 L158 77 L150 67"/>
+      </g>
+    </svg>
+    <figcaption>The legs measure 120 px and 90 px and the hypotenuse 150 px. Even tilted, the hypotenuse is the side <em>opposite</em> the right-angle mark &mdash; and it is still the longest side.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','ra')">Right angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','legs')">Legs a and b</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','hyp')">Hypotenuse c</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Classifying by sides: acute vs. right vs. obtuse</div>
+    <svg id="fig4" viewBox="0 0 480 200" width="480" role="img" aria-label="Three triangles drawn to scale: an acute 5-5-6 triangle, a right 3-4-5 triangle, and an obtuse 4-5-8 triangle">
+      <g data-part="acute">
+        <text class="g-lbl-sm" x="78" y="46" text-anchor="middle">ACUTE</text>
+        <polygon class="g-shape" points="30,140 126,140 78,76"/>
+        <text class="g-meas" x="40" y="102" text-anchor="end">5</text>
+        <text class="g-meas" x="117" y="102" text-anchor="start">5</text>
+        <text class="g-meas" x="78" y="158" text-anchor="middle">6</text>
+        <text class="g-grn" x="78" y="180" text-anchor="middle">36 &lt; 25 + 25</text>
+      </g>
+      <g data-part="right">
+        <text class="g-lbl-sm" x="230" y="46" text-anchor="middle">RIGHT</text>
+        <polygon class="g-shape" points="190,140 270,140 190,80"/>
+        <path class="g-right" d="M190 128 L202 128 L202 140"/>
+        <text class="g-meas" x="182" y="114" text-anchor="end">3</text>
+        <text class="g-meas" x="230" y="158" text-anchor="middle">4</text>
+        <text class="g-meas g-halo" x="240" y="98" text-anchor="middle">5</text>
+        <text class="g-grn" x="230" y="180" text-anchor="middle">25 = 9 + 16</text>
+      </g>
+      <g data-part="obtuse">
+        <text class="g-lbl-sm" x="386" y="46" text-anchor="middle">OBTUSE</text>
+        <polygon class="g-shape" points="330,140 442,140 378.1,111.4"/>
+        <path class="g-angle" d="M362.6 120.6 A18 18 0 0 0 394.5 118.8"/>
+        <text class="g-meas" x="340" y="120" text-anchor="end">4</text>
+        <text class="g-meas" x="426" y="120" text-anchor="start">5</text>
+        <text class="g-meas" x="386" y="158" text-anchor="middle">8</text>
+        <text class="g-grn" x="386" y="180" text-anchor="middle">64 &gt; 16 + 25</text>
+      </g>
+    </svg>
+    <figcaption>All three are drawn to scale (14 px per unit on the left and right, 20 px per unit in the middle). As <code>c<sup>2</sup></code> grows past <code>a<sup>2</sup> + b<sup>2</sup></code>, the angle opposite the longest side opens from acute, through exactly 90&deg;, to obtuse.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','acute')">Acute: c&sup2; &lt; a&sup2; + b&sup2;</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','right')">Right: c&sup2; = a&sup2; + b&sup2;</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','obtuse')">Obtuse: c&sup2; &gt; a&sup2; + b&sup2;</button>
+    </div>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Find missing measures by using the Pythagorean Theorem</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Find the value of x. The two sides forming the right angle measure 17 and 7.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 300 150" width="300" role="img" aria-label="Right triangle with legs 17 and 7 and hypotenuse x">
+          <polygon class="g-shape" points="200,50 67,77 211,105"/>
+          <path class="g-right" d="M188 52 L191 64 L202 62"/>
+          <text class="g-meas" x="130" y="48" text-anchor="middle">17</text>
+          <text class="g-meas" x="222" y="75" text-anchor="start">7</text>
+          <text class="g-meas g-halo" x="136" y="107" text-anchor="middle">x</text>
+        </svg>
+        <figcaption>Sides 17 and 7 meet at the right angle, so <em>x</em> is the hypotenuse (drawn 136 px, 56 px and 147 px &mdash; a true 17 : 7 : 13&radic;2 triangle).</figcaption>
+      </figure>
+      <p>The side opposite the right angle is the hypotenuse, so <code>c = x</code>.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></span><span class="reason">Pythagorean Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">17<sup>2</sup> + 7<sup>2</sup> = x<sup>2</sup></span><span class="reason">a = 17, b = 7, and c = x</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">289 + 49 = x<sup>2</sup></span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">338 = x<sup>2</sup></span><span class="reason">Add</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">&radic;338 = x</span><span class="reason">Take the positive square root of each side</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">13&radic;2 = x</span><span class="reason">Simplify: 338 = 169 &middot; 2</span></div>
+      <div class="answer-box">x = 13&radic;2 &asymp; 18.38</div>
+      <div class="check-box"><strong>Check:</strong> (13&radic;2)<sup>2</sup> = 169 &middot; 2 = 338 = 289 + 49 &check; And 18.38 &gt; 17, so the hypotenuse really is the longest side.</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The largest number given (17) is <em>not</em> automatically the hypotenuse. Here both 17 and 7 touch the right angle, so both are legs and the unknown side is the longest one.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Use a Pythagorean triple</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Use a Pythagorean triple to find the value of x. The hypotenuse is 50 and one leg is 14.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 290 160" width="290" role="img" aria-label="Right triangle with leg 14, hypotenuse 50 and unknown leg x">
+          <polygon class="g-shape" points="50,110 242,110 50,54"/>
+          <path class="g-right" d="M50 98 L62 98 L62 110"/>
+          <text class="g-meas" x="42" y="86" text-anchor="end">14</text>
+          <text class="g-meas" x="146" y="128" text-anchor="middle">x</text>
+          <text class="g-meas g-halo" x="150" y="67" text-anchor="middle">50</text>
+        </svg>
+        <figcaption>Drawn 56 px, 192 px and 200 px &mdash; exactly 14 : 48 : 50.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">14 = 2 &middot; 7&nbsp;&nbsp;and&nbsp;&nbsp;50 = 2 &middot; 25</span><span class="reason">factor out the common factor 2</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">7, 24, 25 is a Pythagorean triple</span><span class="reason">from the table of triples</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = 2 &middot; 24</span><span class="reason">multiply the missing member by the same factor</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x = 48</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">x = 48</div>
+      <div class="check-box"><strong>Check with the theorem:</strong> 14<sup>2</sup> + 48<sup>2</sup> = 196 + 2304 = 2500 = 50<sup>2</sup> &check;</div>
+      <div class="info-box"><strong>Alternate method:</strong> you never <em>have</em> to use a triple. Solving 14<sup>2</sup> + x<sup>2</sup> = 50<sup>2</sup> gives x<sup>2</sup> = 2500 &minus; 196 = 2304 and x = 48. The triple simply skips the arithmetic.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Use the Pythagorean Theorem (zip line)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A summer camp is building a new zip lining course. The designer wants the last zip line to start at a platform 450 meters above the ground and end 775 meters away from the base of the platform. How long must the zip line be?</div>
+      <p><strong>Step 1 &mdash; Visualize and describe the situation.</strong> The base of the platform and the ground are perpendicular. The zip line is the hypotenuse of the right triangle.</p>
+      <figure class="fig">
+        <svg viewBox="0 0 300 190" width="300" role="img" aria-label="Right triangle with vertical leg 450 meters, horizontal leg 775 meters and hypotenuse x">
+          <polygon class="g-shape" points="50,150 236,150 50,42"/>
+          <path class="g-right" d="M50 138 L62 138 L62 150"/>
+          <text class="g-meas" x="44" y="100" text-anchor="end">450 m</text>
+          <text class="g-meas" x="143" y="170" text-anchor="middle">775 m</text>
+          <text class="g-meas g-halo" x="152" y="80" text-anchor="middle">x</text>
+        </svg>
+        <figcaption>Drawn 108 px by 186 px &mdash; the same 450 : 775 ratio as the real course.</figcaption>
+      </figure>
+      <p><strong>Step 2 &mdash; Find the length of the zip line.</strong></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></span><span class="reason">Pythagorean Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">450<sup>2</sup> + 775<sup>2</sup> = x<sup>2</sup></span><span class="reason">a = 450, b = 775, c = x</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">202,500 + 600,625 = x<sup>2</sup></span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">803,125 = x<sup>2</sup></span><span class="reason">Add</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">&radic;803,125 = x</span><span class="reason">Take the positive square root of each side</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">25&radic;1285 = x</span><span class="reason">803,125 = 625 &middot; 1285</span></div>
+      <div class="answer-box">x = 25&radic;1285 &asymp; 896.17 meters</div>
+      <div class="check-box"><strong>Is the answer reasonable?</strong> The hypotenuse must be longer than 775 but shorter than 450 + 775 = 1225. Since 775 &lt; 896.17 &lt; 1225, the answer is sensible.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Classify triangles from coordinates</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Determine whether the points A(2, 2), B(5, 7), and C(10, 6) can be the vertices of a triangle. If so, classify the triangle as acute, right, or obtuse. Justify your answer.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 330 230" width="330" role="img" aria-label="Coordinate plane showing triangle with vertices at (2,2), (5,7) and (10,6)">
+          <path class="g-grid" d="M40 8V200M64 8V200M88 8V200M112 8V200M136 8V200M160 8V200M184 8V200M208 8V200M232 8V200M256 8V200M280 8V200M304 8V200"/>
+          <path class="g-grid" d="M40 8H304M40 32H304M40 56H304M40 80H304M40 104H304M40 128H304M40 152H304M40 176H304"/>
+          <line class="g-axis" x1="34" y1="200" x2="314" y2="200"/>
+          <polygon fill="var(--sl-ink-2)" points="318,200 308,195 308,205"/>
+          <line class="g-axis" x1="40" y1="206" x2="40" y2="6"/>
+          <polygon fill="var(--sl-ink-2)" points="40,2 35,12 45,12"/>
+          <text class="g-lbl-sm" x="88" y="215" text-anchor="middle">2</text>
+          <text class="g-lbl-sm" x="136" y="215" text-anchor="middle">4</text>
+          <text class="g-lbl-sm" x="184" y="215" text-anchor="middle">6</text>
+          <text class="g-lbl-sm" x="232" y="215" text-anchor="middle">8</text>
+          <text class="g-lbl-sm" x="280" y="215" text-anchor="middle">10</text>
+          <text class="g-lbl-sm" x="32" y="157" text-anchor="end">2</text>
+          <text class="g-lbl-sm" x="32" y="109" text-anchor="end">4</text>
+          <text class="g-lbl-sm" x="32" y="61" text-anchor="end">6</text>
+          <text class="g-lbl-sm" x="32" y="13" text-anchor="end">8</text>
+          <text class="g-lbl-sm" x="33" y="215" text-anchor="end">O</text>
+          <polygon class="g-shape" points="88,152 160,32 280,56"/>
+          <circle class="g-pt" cx="88" cy="152" r="4.5"/>
+          <circle class="g-pt" cx="160" cy="32" r="4.5"/>
+          <circle class="g-pt" cx="280" cy="56" r="4.5"/>
+          <text class="g-lbl" x="80" y="168" text-anchor="end">A</text>
+          <text class="g-lbl" x="155" y="26" text-anchor="end">B</text>
+          <text class="g-lbl" x="290" y="52" text-anchor="start">C</text>
+          <text class="g-meas g-halo" x="108" y="88" text-anchor="end">&radic;34</text>
+          <text class="g-meas g-halo" x="220" y="34" text-anchor="middle">&radic;26</text>
+          <text class="g-meas g-halo" x="196" y="112" text-anchor="start">4&radic;5</text>
+        </svg>
+        <figcaption>Each grid square is 1 unit (24 px), so the plotted triangle is drawn to exact scale.</figcaption>
+      </figure>
+      <p><strong>Step 1 &mdash; Calculate the measures of the sides</strong> using the Distance Formula.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">AB = &radic;((5&minus;2)<sup>2</sup> + (7&minus;2)<sup>2</sup>) = &radic;(3<sup>2</sup>+5<sup>2</sup>) = &radic;34</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">BC = &radic;((10&minus;5)<sup>2</sup> + (6&minus;7)<sup>2</sup>) = &radic;(5<sup>2</sup>+(&minus;1)<sup>2</sup>) = &radic;26</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">AC = &radic;((10&minus;2)<sup>2</sup> + (6&minus;2)<sup>2</sup>) = &radic;(8<sup>2</sup>+4<sup>2</sup>) = &radic;80 = 4&radic;5</span><span class="reason">Distance Formula</span></div>
+      <p>Approximating: <code>AB &asymp; 5.83</code>, <code>BC &asymp; 5.10</code>, <code>AC &asymp; 8.94</code>.</p>
+      <p><strong>Step 2 &mdash; Determine whether the measures can form a triangle</strong> (Triangle Inequality Theorem).</p>
+      <div class="formula-box">5.83 + 5.10 &gt; 8.94 &nbsp;&check;&nbsp;&nbsp;&nbsp; 5.83 + 8.94 &gt; 5.10 &nbsp;&check;&nbsp;&nbsp;&nbsp; 5.10 + 8.94 &gt; 5.83 &nbsp;&check;</div>
+      <p>The side lengths <em>do</em> form a triangle.</p>
+      <p><strong>Step 3 &mdash; Classify the triangle</strong> by comparing the square of the longest side to the sum of the squares of the other two.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">c<sup>2</sup> &nbsp;?&nbsp; a<sup>2</sup> + b<sup>2</sup></span><span class="reason">Compare c<sup>2</sup> and a<sup>2</sup> + b<sup>2</sup></span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">(4&radic;5)<sup>2</sup> &nbsp;?&nbsp; (&radic;34)<sup>2</sup> + (&radic;26)<sup>2</sup></span><span class="reason">c = 4&radic;5, a = &radic;34, b = &radic;26</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">80 &gt; 34 + 26 = 60</span><span class="reason">Simplify and compare</span></div>
+      <div class="answer-box">Because c<sup>2</sup> &gt; a<sup>2</sup> + b<sup>2</sup>, &#9651;ABC is obtuse</div>
+      <div class="info-box"><strong>Study Tip &mdash; Approximations:</strong> decimals are fine for deciding which side is longest, but square the <em>radical</em> forms when you classify. <code>(4&radic;5)<sup>2</sup> = 80</code> exactly, while 8.94<sup>2</sup> = 79.9 only.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">A right triangle has legs of length 20 and 21. Find the hypotenuse.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">20<sup>2</sup> + 21<sup>2</sup> = c<sup>2</sup></span><span class="reason">Pythagorean Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">400 + 441 = 841 = c<sup>2</sup></span><span class="reason">Simplify and add</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">c = &radic;841 = 29</span><span class="reason">positive square root</span></div>
+      <div class="answer-box">c = 29 &nbsp;(20, 21, 29 is another Pythagorean triple)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">The hypotenuse of a right triangle is 41 and one leg is 9. Find the other leg.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">9<sup>2</sup> + b<sup>2</sup> = 41<sup>2</sup></span><span class="reason">the unknown is a leg</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b<sup>2</sup> = 1681 &minus; 81 = 1600</span><span class="reason">Subtract 81 from each side</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">b = 40</span><span class="reason">positive square root</span></div>
+      <div class="answer-box">b = 40 &nbsp;(9, 40, 41 is a Pythagorean triple)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">Use a Pythagorean triple to find the hypotenuse of a right triangle with legs 24 and 45.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">24 = 3 &middot; 8&nbsp; and&nbsp; 45 = 3 &middot; 15</span><span class="reason">common factor 3</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">8, 15, 17 is a triple</span><span class="reason">from the table</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">c = 3 &middot; 17 = 51</span><span class="reason">multiply by the same factor</span></div>
+      <div class="answer-box">c = 51 &nbsp;&nbsp;Check: 576 + 2025 = 2601 = 51<sup>2</sup> &check;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">A right triangle has a leg of 48 and a leg of 20. Find the hypotenuse x.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">48 = 4 &middot; 12&nbsp; and&nbsp; 20 = 4 &middot; 5</span><span class="reason">common factor 4</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">5, 12, 13 is a triple</span><span class="reason">from the table</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = 4 &middot; 13 = 52</span><span class="reason">multiply by the same factor</span></div>
+      <div class="answer-box">x = 52 &nbsp;&nbsp;Check: 2304 + 400 = 2704 = 52<sup>2</sup> &check;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">Determine whether 7, 8, 9 can be the sides of a triangle. If so, classify it as acute, right, or obtuse.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">7 + 8 = 15 &gt; 9</span><span class="reason">Triangle Inequality &mdash; a triangle exists</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">c<sup>2</sup> = 9<sup>2</sup> = 81</span><span class="reason">9 is the longest side</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">a<sup>2</sup> + b<sup>2</sup> = 49 + 64 = 113</span><span class="reason">the two shorter sides</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">81 &lt; 113</span><span class="reason">c<sup>2</sup> &lt; a<sup>2</sup> + b<sup>2</sup> &rarr; Theorem 9.6</span></div>
+      <div class="answer-box">acute triangle</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6</h4>
+    <div class="prob">Classify the triangle with sides &radic;3, 3, and &radic;12.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&radic;3 &asymp; 1.73, &radic;12 &asymp; 3.46</span><span class="reason">&radic;12 is the longest side</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">1.73 + 3 &gt; 3.46</span><span class="reason">a triangle exists</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">(&radic;12)<sup>2</sup> = 12&nbsp;&nbsp;and&nbsp;&nbsp;(&radic;3)<sup>2</sup> + 3<sup>2</sup> = 3 + 9 = 12</span><span class="reason">square the exact radicals</span></div>
+      <div class="answer-box">12 = 12, so the triangle is a right triangle</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 7</h4>
+    <div class="prob">Determine whether J(1, 6), K(3, 2), and L(5, 3) are the vertices of a triangle. If so, classify it.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">JK = &radic;(2<sup>2</sup>+(&minus;4)<sup>2</sup>) = &radic;20</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">KL = &radic;(2<sup>2</sup>+1<sup>2</sup>) = &radic;5</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">JL = &radic;(4<sup>2</sup>+(&minus;3)<sup>2</sup>) = &radic;25 = 5</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">4.47 + 2.24 &gt; 5</span><span class="reason">a triangle exists; JL = 5 is longest</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">5<sup>2</sup> = 25&nbsp; and&nbsp; 20 + 5 = 25</span><span class="reason">compare</span></div>
+      <div class="answer-box">c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>, so &#9651;JKL is a right triangle</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Two legs known, hypotenuse missing</td><td>Add the squares, then take the positive square root</td><td><code>c = &radic;(a<sup>2</sup>+b<sup>2</sup>)</code></td></tr>
+    <tr><td>Hypotenuse and one leg known</td><td>Subtract the known leg's square from c<sup>2</sup></td><td><code>a = &radic;(c<sup>2</sup>&minus;b<sup>2</sup>)</code></td></tr>
+    <tr><td>Both known sides share a common factor</td><td>Divide out the factor, match a triple, multiply back</td><td>whole-number answer, no radicals</td></tr>
+    <tr><td>All three sides known, <code>c<sup>2</sup> = a<sup>2</sup>+b<sup>2</sup></code></td><td>Apply Theorem 9.5 (the converse)</td><td><b>right</b> triangle</td></tr>
+    <tr><td>All three sides known, <code>c<sup>2</sup> &lt; a<sup>2</sup>+b<sup>2</sup></code></td><td>Apply Theorem 9.6</td><td><b>acute</b> triangle</td></tr>
+    <tr><td>All three sides known, <code>c<sup>2</sup> &gt; a<sup>2</sup>+b<sup>2</sup></code></td><td>Apply Theorem 9.7</td><td><b>obtuse</b> triangle</td></tr>
+    <tr><td>Two shorter sides do not exceed the longest</td><td>Triangle Inequality fails</td><td>no triangle exists</td></tr>
+    <tr><td>Vertices given as coordinates</td><td>Distance Formula for all three sides, then classify</td><td>keep answers in radical form</td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">a&sup2; + b&sup2; = c&sup2;</span>
+    <span class="pill">c = &radic;(a&sup2;+b&sup2;)</span>
+    <span class="pill">a = &radic;(c&sup2;&minus;b&sup2;)</span>
+    <span class="pill">c&sup2; &lt; a&sup2;+b&sup2; &rarr; acute</span>
+    <span class="pill">c&sup2; = a&sup2;+b&sup2; &rarr; right</span>
+    <span class="pill">c&sup2; &gt; a&sup2;+b&sup2; &rarr; obtuse</span>
+    <span class="pill">3, 4, 5</span>
+    <span class="pill">5, 12, 13</span>
+    <span class="pill">8, 15, 17</span>
+    <span class="pill">7, 24, 25</span>
+    <span class="pill">d = &radic;((x&#8322;&minus;x&#8321;)&sup2;+(y&#8322;&minus;y&#8321;)&sup2;)</span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:6px 0 0 20px;line-height:1.8">
+      <li>Calling the largest given number the hypotenuse. The hypotenuse is opposite the right angle &mdash; it may be the unknown.</li>
+      <li>Adding when you should subtract: if the unknown is a <em>leg</em>, the missing square is subtracted, not added.</li>
+      <li>Writing <code>a + b = c</code> instead of <code>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></code>.</li>
+      <li>Forgetting to take the square root at the end &mdash; <code>x<sup>2</sup> = 338</code> is not the answer.</li>
+      <li>Keeping the negative root. Lengths are positive, so discard &minus;&radic;.</li>
+      <li>Classifying before checking the Triangle Inequality: 3, 4, 8 satisfies nothing because it is not a triangle at all.</li>
+      <li>Squaring rounded decimals when classifying &mdash; square exact radicals instead.</li>
+      <li>Assuming the converse works on any triangle: it tests <em>whether</em> a triangle is right; it does not assume it.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"In a right triangle with legs a and b and hypotenuse c, which equation is the Pythagorean Theorem?",opts:["a + b = c","a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>","a<sup>2</sup> + c<sup>2</sup> = b<sup>2</sup>","(a + b)<sup>2</sup> = c<sup>2</sup>"],ans:1,exp:"The squares of the two legs add to the square of the hypotenuse. Note (a+b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup>, which is not the same thing."},
+  {q:"A right triangle has legs of length 9 and 12. Find the hypotenuse.",opts:["15","21","13","3&radic;7"],ans:0,exp:"9<sup>2</sup> + 12<sup>2</sup> = 81 + 144 = 225, and &radic;225 = 15. This is the 3-4-5 triple multiplied by 3."},
+  {q:"In the right triangle shown, the hypotenuse is 26 and one leg is 10. Find x.",opts:["16","18","20","24"],ans:3,exp:"x<sup>2</sup> = 26<sup>2</sup> &minus; 10<sup>2</sup> = 676 &minus; 100 = 576, so x = 24. Faster: 10 and 26 are 2&middot;5 and 2&middot;13, so this is the 5-12-13 triple doubled and x = 2&middot;12 = 24.",fig:"<svg viewBox='0 0 210 160' width='210' role='img' aria-label='Right triangle with leg 10, hypotenuse 26 and unknown leg x'><polygon class='g-shape' points='40,120 160,120 40,70'/><path class='g-right' d='M40 108 L52 108 L52 120'/><text class='g-meas' x='32' y='99' text-anchor='end'>10</text><text class='g-meas' x='100' y='138' text-anchor='middle'>x</text><text class='g-meas g-halo' x='106' y='80' text-anchor='middle'>26</text></svg>"},
+  {q:"Which set of numbers is a Pythagorean triple?",opts:["6, 8, 11","5, 12, 14","8, 15, 17","9, 40, 42"],ans:2,exp:"64 + 225 = 289 = 17<sup>2</sup>. The others fail: 36 + 64 = 100 &ne; 121, 25 + 144 = 169 &ne; 196, and 81 + 1600 = 1681 &ne; 1764."},
+  {q:"A right triangle has two legs each equal to 6. Find the hypotenuse in simplest radical form.",opts:["12","6&radic;2","&radic;12","36"],ans:1,exp:"6<sup>2</sup> + 6<sup>2</sup> = 72, and &radic;72 = &radic;(36&middot;2) = 6&radic;2 &asymp; 8.49. It must be more than 6 but less than 12."},
+  {q:"Two sides that form the right angle measure 17 and 7. Find the length of the third side.",opts:["13&radic;2","&radic;240","2&radic;13","18"],ans:0,exp:"Both given sides touch the right angle, so both are legs and the third side is the hypotenuse: 289 + 49 = 338, and &radic;338 = &radic;(169&middot;2) = 13&radic;2."},
+  {q:"In the triangle shown the hypotenuse is 50 and one leg is 14. Use a Pythagorean triple to find x.",opts:["36","24","48","2&radic;154"],ans:2,exp:"14 = 2&middot;7 and 50 = 2&middot;25, so this is the 7-24-25 triple doubled: x = 2&middot;24 = 48. Check: 196 + 2304 = 2500 = 50<sup>2</sup>.",fig:"<svg viewBox='0 0 230 150' width='230' role='img' aria-label='Right triangle with leg 14, hypotenuse 50 and unknown leg x'><polygon class='g-shape' points='30,110 203,110 30,60'/><path class='g-right' d='M30 98 L42 98 L42 110'/><text class='g-meas' x='22' y='88' text-anchor='end'>14</text><text class='g-meas' x='116' y='130' text-anchor='middle'>x</text><text class='g-meas g-halo' x='121' y='70' text-anchor='middle'>50</text></svg>"},
+  {q:"Classify a triangle whose sides measure 9, 40, and 41.",opts:["acute","obtuse","not a triangle","right"],ans:3,exp:"The longest side is 41: 41<sup>2</sup> = 1681 and 9<sup>2</sup> + 40<sup>2</sup> = 81 + 1600 = 1681. Since c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>, the converse of the Pythagorean Theorem makes it a right triangle."},
+  {q:"Classify a triangle whose sides measure 4, 5, and 6.",opts:["right","acute","obtuse","not a triangle"],ans:1,exp:"6<sup>2</sup> = 36 while 4<sup>2</sup> + 5<sup>2</sup> = 41. Because 36 &lt; 41, c<sup>2</sup> &lt; a<sup>2</sup> + b<sup>2</sup> and Theorem 9.6 makes the triangle acute."},
+  {q:"Classify a triangle whose sides measure 5, 7, and 9.",opts:["obtuse","acute","right","not a triangle"],ans:0,exp:"9<sup>2</sup> = 81 while 5<sup>2</sup> + 7<sup>2</sup> = 25 + 49 = 74. Because 81 &gt; 74, Theorem 9.7 applies and the triangle is obtuse. (5 + 7 = 12 &gt; 9, so it is a triangle.)"},
+  {q:"Classify a triangle whose sides measure &radic;5, &radic;12, and &radic;13.",opts:["right","obtuse","acute","not a triangle"],ans:2,exp:"&radic;13 is longest: (&radic;13)<sup>2</sup> = 13 and (&radic;5)<sup>2</sup> + (&radic;12)<sup>2</sup> = 5 + 12 = 17. Since 13 &lt; 17, the triangle is acute. Squaring the exact radicals avoids rounding error."},
+  {q:"Classify a triangle whose sides measure 2, &radic;8, and &radic;12.",opts:["acute","obtuse","not a triangle","right"],ans:3,exp:"&radic;12 &asymp; 3.46 is longest: (&radic;12)<sup>2</sup> = 12 and 2<sup>2</sup> + (&radic;8)<sup>2</sup> = 4 + 8 = 12. The two are equal, so the triangle is right."},
+  {q:"The sides of a triangle measure x, x + 5, and 25, and 25 is the longest side. What value of x makes the triangle a right triangle?",opts:["15","20","12","10"],ans:0,exp:"x<sup>2</sup> + (x+5)<sup>2</sup> = 625 gives 2x<sup>2</sup> + 10x + 25 = 625, so x<sup>2</sup> + 5x &minus; 300 = 0 and (x + 20)(x &minus; 15) = 0. Only x = 15 is positive, giving sides 15, 20, 25."},
+  {q:"Can 3, 4, and 8 be the side lengths of a triangle, and if so how is it classified?",opts:["right","not a triangle","obtuse","acute"],ans:1,exp:"Check the Triangle Inequality first: 3 + 4 = 7, which is not greater than 8. No triangle exists, so there is nothing to classify &mdash; never jump straight to comparing squares."},
+  {q:"A right triangle has legs x and &radic;2 and hypotenuse x + 1. Find x.",opts:["1","2","1/2","3/2"],ans:2,exp:"x<sup>2</sup> + (&radic;2)<sup>2</sup> = (x + 1)<sup>2</sup> gives x<sup>2</sup> + 2 = x<sup>2</sup> + 2x + 1. The x<sup>2</sup> terms cancel, leaving 2 = 2x + 1, so x = 1/2."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

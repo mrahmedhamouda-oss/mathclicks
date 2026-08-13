@@ -1,116 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 4-1: Polynomial Functions</title>
+<div class="sat-lesson">
 <style>
-  :root{--navy:#0f2d6b;--blue:#1a4fa0;--orange:#e05c2a;--green:#16a34a;--teal:#0891b2;--light-blue:#e8f0fb;--light-orange:#fff3ee;--light-green:#f0fdf4;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f5f7fb;color:#1e293b;}
-  .hero{background:linear-gradient(135deg,#0f2d6b 0%,#0891b2 60%,#1a4fa0 100%);color:white;padding:48px 24px 32px;text-align:center;}
-  .module-badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 16px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
-  .hero h1{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:10px;}
-  .hero p{font-size:16px;opacity:.85;max-width:600px;margin:0 auto;}
-  nav{position:sticky;top:0;z-index:100;background:white;border-bottom:2px solid #e2e8f0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
-  nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;transition:all .2s;}
-  nav a:hover{background:var(--navy);color:white;}
-  main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
-  section{margin-bottom:48px;}
-  h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block;}
-  .concept-card{background:white;border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07);}
-  .concept-card h3{color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px;}
-  .concept-card p,.concept-card li{font-size:15px;line-height:1.7;}
-  .formula-box{background:var(--light-blue);border:1px solid #bfd3f5;border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:14px;color:var(--navy);}
-  .end-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-  .end-table th{background:var(--navy);color:white;padding:10px 12px;text-align:left;}
-  .end-table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;font-family:'Courier New',monospace;}
-  .end-table tr:nth-child(even) td{background:var(--light-blue);}
-  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px;}
-  .vocab-item{background:var(--light-blue);border:1px solid #93c5fd;border-radius:6px;padding:10px 14px;}
-  .vocab-item strong{color:var(--blue);display:block;font-size:13px;margin-bottom:3px;}
-  .vocab-item span{font-size:13px;color:#475569;}
-  .example-card{background:white;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden;}
-  .example-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:white;border:none;width:100%;text-align:left;}
-  .example-header:hover{background:#f8faff;}
-  .example-label{font-size:11px;font-weight:700;color:white;background:var(--teal);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0;}
-  .example-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;}
-  .toggle-icon{font-size:20px;color:#94a3b8;transition:transform .3s;}
-  .example-header.open .toggle-icon{transform:rotate(45deg);}
-  .example-body{display:none;padding:20px 24px;border-top:1px solid #e2e8f0;}
-  .example-body.open{display:block;}
-  .problem-stmt{background:#f8faff;border-left:4px solid var(--teal);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;}
-  .solution-step{display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:#fafafa;}
-  .solution-step .math{font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;}
-  .solution-step .reason{font-size:13px;color:var(--teal);font-style:italic;min-width:180px;text-align:right;}
-  .answer-box{background:#ecfdf5;border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:#065f46;font-weight:700;text-align:center;}
-  .info-box{background:#f0fdfa;border:1px solid #5eead4;border-radius:6px;padding:12px 16px;margin:10px 0;}
-  .info-box strong{color:var(--teal);}
-  .end-cases{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
-  @media(max-width:600px){.end-cases{grid-template-columns:1fr;}}
-  .end-case{border:1px solid #bfd3f5;border-radius:8px;padding:14px;background:white;}
-  .end-case h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;}
-  .end-case p{font-size:13px;font-family:'Courier New',monospace;color:#475569;margin:2px 0;}
-
-  /* Grapher */
-  .grapher-section{background:white;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09);}
-  .grapher-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:flex-end;}
-  .ctrl-group{display:flex;flex-direction:column;gap:4px;}
-  .ctrl-group label{font-size:12px;font-weight:600;color:var(--navy);}
-  .ctrl-group input{padding:8px 10px;border:2px solid #cbd5e1;border-radius:6px;font-size:14px;width:80px;outline:none;transition:border-color .2s;}
-  .ctrl-group input:focus{border-color:var(--blue);}
-  .btn{padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
-  .btn-primary{background:var(--navy);color:white;}
-  .btn-primary:hover{background:var(--blue);}
-  .btn-orange{background:var(--orange);color:white;margin-top:4px;}
-  .graph-canvas-wrap{position:relative;overflow:hidden;border-radius:8px;border:2px solid #e2e8f0;}
-  canvas{display:block;width:100%;}
-  .graph-info{margin-top:12px;background:var(--light-blue);border-radius:6px;padding:12px 16px;font-size:14px;line-height:1.8;font-family:'Courier New',monospace;color:var(--navy);}
-  .poly-inputs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;}
-  .poly-label{font-size:14px;font-weight:600;color:var(--navy);}
-
-  /* Quiz */
-  .quiz-header{background:linear-gradient(135deg,#0891b2,#0f2d6b);color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center;}
-  .quiz-header h2{color:white;border:none;font-size:20px;}
-  .quiz-header p{opacity:.9;font-size:14px;margin-top:6px;}
-  .q-card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);}
-  .q-num{font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:8px;}
-  .q-text{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace;}
-  .options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  @media(max-width:500px){.options{grid-template-columns:1fr;}}
-  .option-btn{padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;background:white;font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace;}
-  .option-btn:hover:not(:disabled){border-color:var(--teal);background:#f0fdfa;}
-  .option-btn.correct{border-color:var(--green);background:var(--light-green);color:#065f46;}
-  .option-btn.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
-  .option-btn:disabled{cursor:default;}
-  .feedback{margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;}
-  .feedback.show{display:block;}
-  .feedback.correct{background:var(--light-green);color:#065f46;border:1px solid #86efac;}
-  .feedback.wrong{background:#fef2f2;color:#7f1d1d;border:1px solid #fca5a5;}
-  .score-panel{display:none;background:white;border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px;}
-  .score-panel.show{display:block;}
-  .score-big{font-size:56px;font-weight:800;color:var(--navy);}
-  .score-msg{font-size:18px;color:#64748b;margin:8px 0 20px;}
-  .btn-retry{padding:12px 32px;background:var(--teal);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;}
+.sat-lesson { --navy:var(--sl-navy);--blue:var(--sl-blue);--orange:var(--sl-orange);--green:var(--sl-green);--teal:#0891b2;--light-blue:var(--sl-blue-soft);--light-orange:var(--sl-orange-soft);--light-green:var(--sl-green-soft) }
+.sat-lesson section { margin-bottom:48px }
+.sat-lesson h2 { font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block }
+.sat-lesson .concept-card { background:var(--sl-surface);border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07) }
+.sat-lesson .concept-card h3 { color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px }
+.sat-lesson .concept-card p, .sat-lesson .concept-card li { font-size:15px;line-height:1.7 }
+.sat-lesson .formula-box { background:var(--light-blue);border:1px solid var(--sl-blue-line);border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:14px;color:var(--navy) }
+.sat-lesson .end-table { width:100%;border-collapse:collapse;margin:14px 0;font-size:13px }
+.sat-lesson .end-table th { background:var(--navy);color:white;padding:10px 12px;text-align:left }
+.sat-lesson .end-table td { padding:10px 12px;border-bottom:1px solid var(--sl-line);font-family:'Courier New',monospace }
+.sat-lesson .end-table tr:nth-child(even) td { background:var(--light-blue) }
+.sat-lesson .vocab-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px }
+.sat-lesson .vocab-item { background:var(--light-blue);border:1px solid var(--sl-blue-line);border-radius:6px;padding:10px 14px }
+.sat-lesson .vocab-item strong { color:var(--blue);display:block;font-size:13px;margin-bottom:3px }
+.sat-lesson .vocab-item span { font-size:13px;color:var(--sl-ink-2) }
+.sat-lesson .example-card { background:var(--sl-surface);border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden }
+.sat-lesson .example-header { display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;background:var(--sl-surface);border:none;width:100%;text-align:left }
+.sat-lesson .example-header:hover { background:var(--sl-surface-3) }
+.sat-lesson .example-label { font-size:11px;font-weight:700;color:white;background:var(--teal);padding:3px 10px;border-radius:12px;text-transform:uppercase;margin-right:10px;flex-shrink:0 }
+.sat-lesson .example-title { font-size:15px;font-weight:600;color:var(--navy);flex:1 }
+.sat-lesson .toggle-icon { font-size:20px;color:var(--sl-muted-2);transition:transform .3s }
+.sat-lesson .example-header.open .toggle-icon { transform:rotate(45deg) }
+.sat-lesson .example-body { display:none;padding:20px 24px;border-top:1px solid var(--sl-line) }
+.sat-lesson .example-body.open { display:block }
+.sat-lesson .problem-stmt { background:var(--sl-surface-3);border-left:4px solid var(--teal);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px }
+.sat-lesson .solution-step { display:flex;gap:12px;margin-bottom:10px;padding:8px 12px;border-radius:6px;background:var(--sl-surface-2) }
+.sat-lesson .solution-step .math { font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1 }
+.sat-lesson .solution-step .reason { font-size:13px;color:var(--teal);font-style:italic;min-width:180px;text-align:right }
+.sat-lesson .answer-box { background:var(--sl-green-soft);border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:var(--sl-green-ink);font-weight:700;text-align:center }
+.sat-lesson .info-box { background:#f0fdfa;border:1px solid #5eead4;border-radius:6px;padding:12px 16px;margin:10px 0 }
+.sat-lesson .info-box strong { color:var(--teal) }
+.sat-lesson .end-cases { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 }
+@media(max-width:600px) {
+  .sat-lesson .end-cases { grid-template-columns:1fr }
+}
+.sat-lesson .end-case { border:1px solid var(--sl-blue-line);border-radius:8px;padding:14px;background:var(--sl-surface) }
+.sat-lesson .end-case h4 { font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px }
+.sat-lesson .end-case p { font-size:13px;font-family:'Courier New',monospace;color:var(--sl-ink-2);margin:2px 0 }
+.sat-lesson .grapher-section { background:var(--sl-surface);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.09) }
+.sat-lesson .grapher-controls { display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:flex-end }
+.sat-lesson .ctrl-group { display:flex;flex-direction:column;gap:4px }
+.sat-lesson .ctrl-group label { font-size:12px;font-weight:600;color:var(--navy) }
+.sat-lesson .ctrl-group input { padding:8px 10px;border:2px solid var(--sl-line-3);border-radius:6px;font-size:14px;width:80px;outline:none;transition:border-color .2s }
+.sat-lesson .ctrl-group input:focus { border-color:var(--blue) }
+.sat-lesson .btn { padding:9px 20px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s }
+.sat-lesson .btn-primary { background:var(--navy);color:white }
+.sat-lesson .btn-primary:hover { background:var(--blue) }
+.sat-lesson .btn-orange { background:var(--orange);color:white;margin-top:4px }
+.sat-lesson .graph-canvas-wrap { position:relative;overflow:hidden;border-radius:8px;border:2px solid var(--sl-line) }
+.sat-lesson canvas { display:block;width:100% }
+.sat-lesson .graph-info { margin-top:12px;background:var(--light-blue);border-radius:6px;padding:12px 16px;font-size:14px;line-height:1.8;font-family:'Courier New',monospace;color:var(--navy) }
+.sat-lesson .poly-inputs { display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px }
+.sat-lesson .poly-label { font-size:14px;font-weight:600;color:var(--navy) }
+.sat-lesson .quiz-header { background:linear-gradient(135deg,#0891b2,var(--sl-navy));color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center }
+.sat-lesson .quiz-header h2 { color:white;border:none;font-size:20px }
+.sat-lesson .quiz-header p { opacity:.9;font-size:14px;margin-top:6px }
+.sat-lesson .q-card { background:var(--sl-surface);border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08) }
+.sat-lesson .q-num { font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;margin-bottom:8px }
+.sat-lesson .q-text { font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace }
+.sat-lesson .options { display:grid;grid-template-columns:1fr 1fr;gap:8px }
+@media(max-width:500px) {
+  .sat-lesson .options { grid-template-columns:1fr }
+}
+.sat-lesson .option-btn { padding:10px 14px;border:2px solid var(--sl-line-3);border-radius:8px;background:var(--sl-surface);font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace }
+.sat-lesson .option-btn:hover:not(:disabled) { border-color:var(--teal);background:#f0fdfa }
+.sat-lesson .option-btn.correct { border-color:var(--green);background:var(--light-green);color:var(--sl-green-ink) }
+.sat-lesson .option-btn.wrong { border-color:var(--sl-bad);background:var(--sl-bad-soft);color:var(--sl-bad-ink) }
+.sat-lesson .option-btn:disabled { cursor:default }
+.sat-lesson .feedback { margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none }
+.sat-lesson .feedback.show { display:block }
+.sat-lesson .feedback.correct { background:var(--light-green);color:var(--sl-green-ink);border:1px solid var(--sl-green-line) }
+.sat-lesson .feedback.wrong { background:var(--sl-bad-soft);color:var(--sl-bad-ink);border:1px solid var(--sl-bad-line) }
+.sat-lesson .score-panel { display:none;background:var(--sl-surface);border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px }
+.sat-lesson .score-panel.show { display:block }
+.sat-lesson .score-big { font-size:56px;font-weight:800;color:var(--navy) }
+.sat-lesson .score-msg { font-size:18px;color:var(--sl-muted);margin:8px 0 20px }
+.sat-lesson .btn-retry { padding:12px 32px;background:var(--teal);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer }
 </style>
-</head>
-<body>
-
-<div class="hero">
-  <div class="module-badge">Module 4 · Lesson 4-1</div>
-  <h1>Polynomial Functions</h1>
-  <p>Graph power functions and polynomial functions — understand end behavior, degree, and zeros</p>
-</div>
-
-<nav>
-  <a href="#concepts">Concepts</a>
-  <a href="#examples">Examples</a>
-  <a href="#grapher">Graph It</a>
-  <a href="#quiz">Practice Quiz</a>
-</nav>
-
-<main>
-
+<p class="lesson-objective">Graph power functions and polynomial functions — understand end behavior, degree, and zeros</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Examples</a><a data-jump="grapher">Graph It</a><a data-jump="quiz">Practice Quiz</a></nav>
 <section id="concepts">
   <h2>Key Concepts</h2>
 
@@ -137,25 +106,25 @@
         <h4>📈 Even degree, positive a</h4>
         <p>As x → −∞, f(x) → +∞</p>
         <p>As x → +∞, f(x) → +∞</p>
-        <p style="margin-top:6px;color:#16a34a;font-style:italic">Both ends go UP ↑↑</p>
+        <p style="margin-top:6px;color:var(--sl-green);font-style:italic">Both ends go UP ↑↑</p>
       </div>
       <div class="end-case">
         <h4>📉 Even degree, negative a</h4>
         <p>As x → −∞, f(x) → −∞</p>
         <p>As x → +∞, f(x) → −∞</p>
-        <p style="margin-top:6px;color:#e05c2a;font-style:italic">Both ends go DOWN ↓↓</p>
+        <p style="margin-top:6px;color:var(--sl-orange);font-style:italic">Both ends go DOWN ↓↓</p>
       </div>
       <div class="end-case">
         <h4>↗ Odd degree, positive a</h4>
         <p>As x → −∞, f(x) → −∞</p>
         <p>As x → +∞, f(x) → +∞</p>
-        <p style="margin-top:6px;color:#1a4fa0;font-style:italic">Rises right, falls left ↓↑</p>
+        <p style="margin-top:6px;color:var(--sl-blue);font-style:italic">Rises right, falls left ↓↑</p>
       </div>
       <div class="end-case">
         <h4>↙ Odd degree, negative a</h4>
         <p>As x → −∞, f(x) → +∞</p>
         <p>As x → +∞, f(x) → −∞</p>
-        <p style="margin-top:6px;color:#7c3aed;font-style:italic">Falls right, rises left ↑↓</p>
+        <p style="margin-top:6px;color:var(--sl-purple);font-style:italic">Falls right, rises left ↑↓</p>
       </div>
     </div>
     <div class="info-box"><strong>📌 Key facts on zeros:</strong><br>
@@ -260,7 +229,7 @@
 <section id="grapher">
   <h2>Polynomial Function Grapher</h2>
   <div class="grapher-section">
-    <p style="margin-bottom:12px;font-size:14px;color:#64748b;">Enter coefficients for <strong>f(x) = ax⁵ + bx⁴ + cx³ + dx² + ex + f</strong>. Leave unused terms as 0.</p>
+    <p style="margin-bottom:12px;font-size:14px;color:var(--sl-muted);">Enter coefficients for <strong>f(x) = ax⁵ + bx⁴ + cx³ + dx² + ex + f</strong>. Leave unused terms as 0.</p>
     <div class="poly-inputs">
       <span class="poly-label">f(x) =</span>
       <div class="ctrl-group"><label>a (x⁵)</label><input type="number" id="c5" value="0" step="0.5"></div>
@@ -298,10 +267,8 @@
     <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
   </div>
 </section>
-</main>
-
 <script>
-/* embedded-lesson scope guard: isolate globals so SPA navigation between lessons cannot redeclare them */
+/* scope guard: the SPA re-runs this script on every lesson view */
 (function(){
 function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
 
@@ -476,11 +443,9 @@ function showScore(){
   document.getElementById('scorePanel').classList.add('show');
   document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
 }
-function resetQuiz(){buildQuiz();window.scrollTo({top:document.getElementById('quiz').offsetTop,behavior:'smooth'});}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
 buildQuiz();
-
-window.toggleExample=toggleExample;window.drawPoly=drawPoly;window.presetPoly=presetPoly;window.pick=pick;window.resetQuiz=resetQuiz;
+window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
 })();
 </script>
-</body>
-</html>
+</div>

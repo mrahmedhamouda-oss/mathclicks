@@ -1,0 +1,709 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Find the lateral area and surface area of prisms, cylinders, pyramids, cones, spheres, and composite solids.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>What "surface area" actually means</h3>
+    <p>Imagine cutting a solid along its edges and flattening it onto a table. The flat shape you get is
+    called a <b>net</b>, and the total area of that net is the <b>surface area</b> of the solid. So surface
+    area is never a new idea &mdash; it is always just <em>areas of flat polygons and circles, added up</em>.</p>
+    <p>Every solid in this lesson splits into two pieces:</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>lateral faces</b> &mdash; the faces that join the bases of a solid (the "sides").</div>
+      <div class="vocab-item"><b>lateral area (L)</b> &mdash; the sum of the areas of the lateral faces. Bases are <em>not</em> included.</div>
+      <div class="vocab-item"><b>altitude of a prism or cylinder</b> &mdash; the segment perpendicular to the bases that joins the planes of the bases. Its length is the <b>height h</b>.</div>
+      <div class="vocab-item"><b>altitude of a pyramid or cone</b> &mdash; the segment perpendicular to the base with the vertex as one endpoint and a point in the plane of the base as the other.</div>
+      <div class="vocab-item"><b>regular pyramid</b> &mdash; a pyramid whose base is a regular polygon.</div>
+      <div class="vocab-item"><b>composite solid</b> &mdash; a three-dimensional solid built out of simpler solids.</div>
+    </div>
+    <div class="formula-box">Surface area = lateral area + area of the base(s)<br>S = L + 2B&nbsp;&nbsp;(two bases: prism, cylinder)&nbsp;&nbsp;&middot;&nbsp;&nbsp;S = L + B&nbsp;&nbsp;(one base: pyramid, cone)</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Prisms and cylinders</h3>
+    <p>Unroll the sides of a right prism and you get one long rectangle. Its height is <code>h</code> and its
+    width is the whole way around the base &mdash; the perimeter <code>P</code>. That is the entire reason
+    <code>L = Ph</code> works. A cylinder is the same story with <code>P = 2&pi;r</code>.</p>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Lateral Area of a Right Prism</div>
+      <div class="theorem-body">The lateral area <code>L</code> of a right prism is <code>L = Ph</code>, where <code>h</code> is the height of the prism and <code>P</code> is the perimeter of a base.</div></div>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Lateral Area of a Right Cylinder</div>
+      <div class="theorem-body">The lateral area <code>L</code> of a right cylinder is <code>L = 2&pi;rh</code>, where <code>r</code> is the radius of a base and <code>h</code> is the height of the cylinder.</div></div>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Surface Area of a Right Prism</div>
+      <div class="theorem-body">The surface area <code>S</code> of a right prism is <code>S = L + 2B</code>, where <code>L</code> is the lateral area and <code>B</code> is the area of a base. Substituting <code>L = Ph</code> gives
+      <code>S = Ph + 2B</code>.</div></div>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Surface Area of a Right Cylinder</div>
+      <div class="theorem-body">The surface area <code>S</code> of a right cylinder is <code>S = L + 2B</code>. Substituting <code>L = 2&pi;rh</code> and <code>B = &pi;r<sup>2</sup></code> gives
+      <code>S = 2&pi;rh + 2&pi;r<sup>2</sup></code>.</div></div>
+    <div class="info-box"><strong>Study Tip &middot; Right Solids and Oblique Solids.</strong> A solid is a
+    <em>right solid</em> if the segment connecting the centers of the bases (prisms and cylinders) or the center
+    of the base to the vertex (pyramids and cones) is perpendicular to the base(s). Otherwise it is an
+    <em>oblique solid</em>. Every formula in this lesson assumes a <strong>right</strong> solid.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Pyramids and cones</h3>
+    <p>The lateral faces of a regular pyramid are <em>congruent triangles</em>. Each one has base <code>s</code>
+    (a base edge) and height <code>&#8467;</code>, the <b>slant height</b>. With <code>n</code> faces,
+    <code>L = n &middot; &frac12;s&#8467; = &frac12;(ns)&#8467; = &frac12;P&#8467;</code>. A cone is the limit of that idea, and
+    <code>&frac12;(2&pi;r)&#8467; = &pi;r&#8467;</code>.</p>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Lateral Area of a Regular Pyramid</div>
+      <div class="theorem-body">The lateral area <code>L</code> of a regular pyramid is <code>L = &frac12;P&#8467;</code>, where <code>&#8467;</code> is the slant height and <code>P</code> is the perimeter of the base.</div></div>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Lateral Area of a Right Cone</div>
+      <div class="theorem-body">The lateral area <code>L</code> of a right circular cone is <code>L = &pi;r&#8467;</code>, where <code>r</code> is the radius of the base and <code>&#8467;</code> is the slant height.</div></div>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Surface Area of a Regular Pyramid / Right Cone</div>
+      <div class="theorem-body">Pyramid: <code>S = L + B = &frac12;P&#8467; + B</code>.<br>
+      Cone: <code>S = L + B = &pi;r&#8467; + &pi;r<sup>2</sup></code>.<br>
+      A pyramid or cone has only <strong>one</strong> base, so you add <code>B</code> once, not twice.</div></div>
+    <div class="warning-box"><strong>Watch Out! Slant height &ne; height.</strong> The height <code>h</code> runs
+    from the vertex straight down to the <em>center</em> of the base; the slant height <code>&#8467;</code> runs from
+    the vertex down the <em>face</em> to the midpoint of a base edge (or to the edge of the circle). They form a
+    right triangle with the apothem <code>a</code> of the base:
+    <code>&#8467;<sup>2</sup> = h<sup>2</sup> + a<sup>2</sup></code> for a pyramid and
+    <code>&#8467;<sup>2</sup> = h<sup>2</sup> + r<sup>2</sup></code> for a cone.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Spheres</h3>
+    <p>A <b>sphere</b> is the set of all points in space that are a given distance from a given point called the
+    <b>center</b>. A sphere has no bases and no lateral faces &mdash; only one curved surface. A <em>great
+    circle</em> is the cross-section made by a plane through the center; its radius and circumference are the
+    radius and circumference of the sphere.</p>
+    <div class="theorem"><div class="theorem-head">Key Concept &middot; Surface Area of a Sphere</div>
+      <div class="theorem-body">The surface area <code>S</code> of a sphere is <code>S = 4&pi;r<sup>2</sup></code>, where <code>r</code> is the radius. Equivalently, the surface of a sphere equals exactly four of its great circles.</div></div>
+    <figure class="fig">
+      <div class="fig-title">Sphere and its great circle</div>
+      <svg viewBox="0 0 320 285" width="320" role="img" aria-label="Sphere of radius 7.1 millimeters with a dashed great circle and a radius drawn from the center">
+        <circle cx="160" cy="140" r="95" class="g-shape" fill-opacity=".55"/>
+        <ellipse cx="160" cy="140" rx="95" ry="34" class="g-aux"/>
+        <line x1="160" y1="140" x2="233" y2="79" class="g-line-thin"/>
+        <circle cx="160" cy="140" r="4" class="g-pt"/>
+        <circle cx="233" cy="79" r="4" class="g-pt"/>
+        <text x="203" y="103" class="g-meas g-halo" text-anchor="middle">r = 7.1 mm</text>
+        <text x="160" y="192" class="g-lbl-sm g-halo" text-anchor="middle">great circle</text>
+        <text x="160" y="264" class="g-meas-b" text-anchor="middle">S = 4&pi;r&sup2; = 4&pi;(7.1)&sup2; &asymp; 633.5 mm&sup2;</text>
+      </svg>
+      <figcaption>Every radius of the sphere has the same length. The dashed ellipse is the great circle seen edge-on.</figcaption>
+    </figure>
+  </div>
+
+  <div class="concept-card">
+    <h3>How to attack any surface-area problem</h3>
+    <div class="steps-list">
+      <div class="s">Name the solid and decide how many bases it has (2, 1, or 0).</div>
+      <div class="s">Find the base: its perimeter <code>P</code> (or circumference) and its area <code>B</code>. For a regular polygon, <code>B = &frac12;Pa</code>, where <code>a</code> is the apothem.</div>
+      <div class="s">Find the missing right-triangle piece if needed &mdash; use the Pythagorean Theorem or a trigonometric ratio to get <code>a</code>, <code>h</code>, or <code>&#8467;</code>.</div>
+      <div class="s">Compute the lateral area <code>L</code> with the matching formula.</div>
+      <div class="s">Add the base(s): <code>S = L + 2B</code> or <code>S = L + B</code>. Keep &pi; exact until the last step, then round.</div>
+    </div>
+    <div class="keyfact"><div class="ico">1</div><div class="txt"><code>L = Ph</code> and <code>L = 2&pi;rh</code> &mdash; two bases, so <code>S = L + 2B</code>.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt"><code>L = &frac12;P&#8467;</code> and <code>L = &pi;r&#8467;</code> &mdash; one base, so <code>S = L + B</code>.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt"><code>S = 4&pi;r<sup>2</sup></code> for a sphere &mdash; no bases at all.</div></div>
+    <div class="keyfact"><div class="ico">4</div><div class="txt">Area of a regular polygon: <code>B = &frac12;Pa</code>, with apothem <code>a</code> found from a central angle of <code>360&deg;/n</code>.</div></div>
+    <div class="keyfact"><div class="ico">5</div><div class="txt">For a <b>composite solid</b>, add the exposed pieces and <em>subtract</em> or omit any face that is hidden where two solids meet.</div></div>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 1 &middot; Right rectangular prism</div>
+    <svg id="fig1" viewBox="0 0 400 275" width="400" role="img" aria-label="Oblique drawing of a right rectangular prism 12 inches by 5 inches by 8 inches with hidden edges dashed">
+      <g data-part="height">
+        <line x1="234" y1="215" x2="234" y2="120" class="g-line-thin"/>
+        <line x1="228" y1="215" x2="240" y2="215" class="g-line-thin"/>
+        <line x1="228" y1="120" x2="240" y2="120" class="g-line-thin"/>
+        <text x="244" y="172" class="g-meas" text-anchor="start">h = 8 in</text>
+      </g>
+      <g class="g-aux">
+        <line x1="70" y1="215" x2="112" y2="185"/>
+        <line x1="112" y1="185" x2="262" y2="185"/>
+        <line x1="112" y1="185" x2="112" y2="90"/>
+      </g>
+      <g data-part="base">
+        <polygon points="70,215 220,215 262,185 112,185" class="g-shape-alt" fill-opacity=".55"/>
+        <polygon points="70,120 220,120 262,90 112,90" class="g-shape-alt" fill-opacity=".55"/>
+      </g>
+      <g data-part="lateral">
+        <polygon points="70,120 220,120 220,215 70,215" class="g-shape" fill-opacity=".55"/>
+        <polygon points="220,120 262,90 262,185 220,215" class="g-shape" fill-opacity=".55"/>
+      </g>
+      <g class="g-line">
+        <polyline points="70,120 220,120 220,215 70,215 70,120" fill="none"/>
+        <polyline points="220,120 262,90 262,185 220,215" fill="none"/>
+        <line x1="70" y1="120" x2="112" y2="90"/>
+        <line x1="112" y1="90" x2="262" y2="90"/>
+      </g>
+      <g data-part="base">
+        <text x="145" y="236" class="g-meas g-halo" text-anchor="middle">12 in</text>
+        <text x="252" y="212" class="g-meas g-halo" text-anchor="start">5 in</text>
+        <text x="176" y="262" class="g-meas-b" text-anchor="middle">P = 2(12 + 5) = 34 in&nbsp;&nbsp;&middot;&nbsp;&nbsp;B = 12(5) = 60 in&sup2;</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','base')">The two bases</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','lateral')">Lateral faces</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','height')">Height h</button>
+    </div>
+    <figcaption>L = Ph = 34(8) = 272 in&sup2;, and S = L + 2B = 272 + 2(60) = 392 in&sup2;. Dashed grey edges are hidden behind the solid.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 2 &middot; Net of that prism (drawn to scale)</div>
+    <svg id="fig2" viewBox="0 0 380 240" width="380" role="img" aria-label="Net of a 12 by 5 by 8 rectangular prism: a strip of four rectangles with two 12 by 5 bases attached">
+      <g data-part="lateral">
+        <rect x="46" y="75" width="108" height="72" class="g-shape" fill-opacity=".55"/>
+        <rect x="154" y="75" width="45" height="72" class="g-shape" fill-opacity=".55"/>
+        <rect x="199" y="75" width="108" height="72" class="g-shape" fill-opacity=".55"/>
+        <rect x="307" y="75" width="45" height="72" class="g-shape" fill-opacity=".55"/>
+        <text x="100" y="116" class="g-lbl-sm" text-anchor="middle">12 &times; 8</text>
+        <text x="176" y="116" class="g-lbl-sm" text-anchor="middle">5&times;8</text>
+        <text x="253" y="116" class="g-lbl-sm" text-anchor="middle">12 &times; 8</text>
+        <text x="329" y="116" class="g-lbl-sm" text-anchor="middle">5&times;8</text>
+      </g>
+      <g data-part="bases">
+        <rect x="46" y="30" width="108" height="45" class="g-shape-alt" fill-opacity=".55"/>
+        <rect x="46" y="147" width="108" height="45" class="g-shape-alt" fill-opacity=".55"/>
+        <text x="100" y="57" class="g-lbl-sm" text-anchor="middle">12 &times; 5</text>
+        <text x="100" y="174" class="g-lbl-sm" text-anchor="middle">12 &times; 5</text>
+      </g>
+      <g class="g-aux">
+        <line x1="154" y1="75" x2="154" y2="147"/>
+        <line x1="199" y1="75" x2="199" y2="147"/>
+        <line x1="307" y1="75" x2="307" y2="147"/>
+        <line x1="46" y1="75" x2="154" y2="75"/>
+        <line x1="46" y1="147" x2="154" y2="147"/>
+      </g>
+      <g data-part="dims">
+        <text x="100" y="208" class="g-meas" text-anchor="middle">12 in</text>
+        <text x="40" y="117" class="g-meas" text-anchor="end">8 in</text>
+        <text x="40" y="174" class="g-meas" text-anchor="end">5 in</text>
+        <text x="190" y="230" class="g-meas-b" text-anchor="middle">S = 34(8) + 2(60) = 392 in&sup2;</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','lateral')">Lateral strip (L = Ph)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','bases')">The 2 bases (2B)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','dims')">Dimensions</button>
+    </div>
+    <figcaption>The four side faces form one rectangle of width 12 + 5 + 12 + 5 = 34 = P and height h = 8. That is exactly why L = Ph.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 3 &middot; Right cylinder</div>
+    <svg id="fig3" viewBox="0 0 360 270" width="360" role="img" aria-label="Right cylinder of radius 5 inches and height 9 inches, with the hidden half of the bottom ellipse dashed">
+      <path d="M98,215 A52,19 0 0 1 202,215" class="g-aux"/>
+      <g data-part="lateral">
+        <path d="M98,75 L98,215 A52,19 0 0 0 202,215 L202,75 A52,19 0 0 1 98,75 Z" class="g-shape" fill-opacity=".55"/>
+      </g>
+      <g data-part="bases">
+        <ellipse cx="150" cy="75" rx="52" ry="19" class="g-shape-alt" fill-opacity=".55"/>
+        <path d="M98,215 A52,19 0 0 0 202,215" class="g-line"/>
+      </g>
+      <line x1="98" y1="75" x2="98" y2="215" class="g-line"/>
+      <line x1="202" y1="75" x2="202" y2="215" class="g-line"/>
+      <g data-part="radius">
+        <line x1="150" y1="75" x2="202" y2="75" class="g-line-thin"/>
+        <circle cx="150" cy="75" r="3.5" class="g-pt"/>
+        <text x="176" y="66" class="g-meas g-halo" text-anchor="middle">r = 5 in</text>
+      </g>
+      <g data-part="height">
+        <line x1="222" y1="75" x2="222" y2="215" class="g-line-thin"/>
+        <line x1="216" y1="75" x2="228" y2="75" class="g-line-thin"/>
+        <line x1="216" y1="215" x2="228" y2="215" class="g-line-thin"/>
+        <text x="232" y="149" class="g-meas" text-anchor="start">h = 9 in</text>
+      </g>
+      <text x="150" y="258" class="g-meas-b" text-anchor="middle">S = 2&pi;rh + 2&pi;r&sup2;</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','bases')">Circular bases</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','lateral')">Lateral surface</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','radius')">Radius r</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','height')">Height h</button>
+    </div>
+    <figcaption>The far half of the bottom rim is hidden, so it is drawn as a dashed grey arc. L = 2&pi;(5)(9) = 90&pi; &asymp; 282.7 in&sup2;.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 4 &middot; Regular square pyramid</div>
+    <svg id="fig4" viewBox="0 0 400 252" width="400" role="img" aria-label="Regular square pyramid with base edge 6 feet, height 4 feet and slant height 5 feet">
+      <g class="g-aux">
+        <line x1="80" y1="200" x2="122" y2="170"/>
+        <line x1="122" y1="170" x2="272" y2="170"/>
+        <line x1="176" y1="70" x2="122" y2="170"/>
+      </g>
+      <g data-part="base">
+        <polygon points="80,200 230,200 272,170 122,170" class="g-shape-alt" fill-opacity=".55"/>
+      </g>
+      <g data-part="lateral">
+        <polygon points="176,70 80,200 230,200" class="g-shape" fill-opacity=".55"/>
+        <polygon points="176,70 230,200 272,170" class="g-shape" fill-opacity=".55"/>
+      </g>
+      <g class="g-line">
+        <line x1="176" y1="70" x2="80" y2="200"/>
+        <line x1="176" y1="70" x2="230" y2="200"/>
+        <line x1="176" y1="70" x2="272" y2="170"/>
+        <line x1="80" y1="200" x2="230" y2="200"/>
+        <line x1="230" y1="200" x2="272" y2="170"/>
+      </g>
+      <g data-part="height">
+        <line x1="176" y1="70" x2="176" y2="185" class="g-aux"/>
+        <circle cx="176" cy="185" r="3.5" class="g-pt"/>
+        <text x="183" y="130" class="g-meas-b g-halo" text-anchor="start">h = 4 ft</text>
+      </g>
+      <g data-part="slant">
+        <line x1="176" y1="70" x2="155" y2="200" class="g-dash"/>
+        <line x1="176" y1="185" x2="155" y2="200" class="g-line-thin"/>
+        <text x="152" y="146" class="g-meas g-halo" text-anchor="end">&#8467; = 5 ft</text>
+        <text x="196" y="196" class="g-lbl-sm g-halo" text-anchor="start">a = 3 ft</text>
+      </g>
+      <g data-part="base">
+        <text x="140" y="220" class="g-meas g-halo" text-anchor="middle">6 ft</text>
+        <text x="256" y="196" class="g-meas g-halo" text-anchor="start">6 ft</text>
+        <text x="372" y="234" class="g-meas-b" text-anchor="end">P = 4(6) = 24 ft&nbsp;&middot;&nbsp;B = 36 ft&sup2;</text>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','base')">Base (one only)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','lateral')">Lateral faces</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','slant')">Slant height &#8467;</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','height')">Height h</button>
+    </div>
+    <figcaption>h, the apothem a, and &#8467; form a right triangle inside the pyramid: 4&sup2; + 3&sup2; = 5&sup2;. Here L = &frac12;(24)(5) = 60 ft&sup2; and S = 60 + 36 = 96 ft&sup2;.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 5 &middot; Right circular cone</div>
+    <svg id="fig5" viewBox="0 0 360 270" width="360" role="img" aria-label="Right circular cone with radius 3 centimeters, height 4 centimeters and slant height 5 centimeters">
+      <path d="M100,215 A60,22 0 0 1 220,215" class="g-aux"/>
+      <g data-part="lateral">
+        <path d="M100,215 A60,22 0 0 0 220,215 L160,75 Z" class="g-shape" fill-opacity=".55"/>
+      </g>
+      <g data-part="base">
+        <path d="M100,215 A60,22 0 0 0 220,215" class="g-line"/>
+      </g>
+      <line x1="100" y1="215" x2="160" y2="75" class="g-line"/>
+      <g data-part="slant">
+        <line x1="220" y1="215" x2="160" y2="75" class="g-line"/>
+        <text x="228" y="140" class="g-meas" text-anchor="start">&#8467; = 5 cm</text>
+      </g>
+      <g data-part="height">
+        <line x1="160" y1="75" x2="160" y2="215" class="g-aux"/>
+        <text x="167" y="150" class="g-meas-b g-halo" text-anchor="start">h = 4 cm</text>
+      </g>
+      <g data-part="base">
+        <line x1="160" y1="215" x2="220" y2="215" class="g-line-thin"/>
+        <circle cx="160" cy="215" r="3.5" class="g-pt"/>
+        <path d="M172 215 L172 203 L160 203" class="g-right"/>
+        <text x="196" y="234" class="g-meas g-halo" text-anchor="middle">r = 3 cm</text>
+      </g>
+      <text x="160" y="258" class="g-meas-b" text-anchor="middle">S = &pi;r&#8467; + &pi;r&sup2;</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig5','base')">Base circle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','lateral')">Lateral surface</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','slant')">Slant height &#8467;</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','height')">Height h</button>
+    </div>
+    <figcaption>The radius and the altitude meet at a right angle, so &#8467;&sup2; = h&sup2; + r&sup2;: 3-4-5. L = &pi;(3)(5) = 15&pi; and S = 15&pi; + 9&pi; = 24&pi; &asymp; 75.4 cm&sup2;.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Lateral Area and Surface Area of a Prism</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Find the lateral area and surface area of the regular octagonal prism. Round to the nearest tenth, if necessary. (base edge 6 in., height 11 in.)</div>
+      <figure class="fig">
+        <svg viewBox="0 0 340 260" width="340" role="img" aria-label="Regular octagonal prism with base edge 6 inches and height 11 inches">
+          <g class="g-aux">
+            <line x1="117.5" y1="97.4" x2="117.5" y2="142.6"/>
+            <line x1="117.5" y1="142.6" x2="149.4" y2="174.5"/>
+            <line x1="149.4" y1="174.5" x2="194.6" y2="174.5"/>
+            <line x1="75.5" y1="127.4" x2="117.5" y2="97.4"/>
+            <line x1="75.5" y1="172.6" x2="117.5" y2="142.6"/>
+            <line x1="107.4" y1="204.5" x2="149.4" y2="174.5"/>
+          </g>
+          <polygon points="226.5,97.4 194.6,65.5 149.4,65.5 117.5,97.4 117.5,142.6 149.4,174.5 194.6,174.5 226.5,142.6" class="g-shape" fill-opacity=".35"/>
+          <g class="g-line">
+            <polyline points="194.6,174.5 226.5,142.6 226.5,97.4 194.6,65.5 149.4,65.5 117.5,97.4" fill="none"/>
+            <line x1="184.5" y1="127.4" x2="226.5" y2="97.4"/>
+            <line x1="152.6" y1="95.5" x2="194.6" y2="65.5"/>
+            <line x1="107.4" y1="95.5" x2="149.4" y2="65.5"/>
+            <line x1="184.5" y1="172.6" x2="226.5" y2="142.6"/>
+            <line x1="152.6" y1="204.5" x2="194.6" y2="174.5"/>
+          </g>
+          <polygon points="184.5,127.4 152.6,95.5 107.4,95.5 75.5,127.4 75.5,172.6 107.4,204.5 152.6,204.5 184.5,172.6" class="g-shape" fill-opacity=".55"/>
+          <line x1="130" y1="150" x2="130" y2="204.5" class="g-dash"/>
+          <path d="M130 192.5 L142 192.5 L142 204.5" class="g-right"/>
+          <circle cx="130" cy="150" r="3.5" class="g-pt"/>
+          <text x="137" y="182" class="g-meas g-halo" text-anchor="start">a</text>
+          <text x="130" y="222" class="g-meas g-halo" text-anchor="middle">6 in.</text>
+          <text x="214" y="106" class="g-meas" text-anchor="start">11 in.</text>
+        </svg>
+        <figcaption>A regular octagon has 8 sides, so P = 8(6) = 48 in.</figcaption>
+      </figure>
+      <p><strong>Part A &mdash; Find the lateral area.</strong></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">L = Ph</span><span class="reason">lateral area of a prism</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">L = (8 &times; 6)11</span><span class="reason">the base has 8 sides</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">L = 48(11) = 528</span><span class="reason">solve</span></div>
+      <div class="answer-box">The lateral area is 528 in&sup2;</div>
+      <p style="margin-top:14px"><strong>Part B &mdash; Find the surface area.</strong> <em>Step 1: find the area of the base.</em></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">central angle = 360&deg;/8 = 45&deg;, so half is 22.5&deg;</span><span class="reason">split the octagon into 8 triangles</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">tan 22.5&deg; = 3/a</span><span class="reason">trig ratio for the apothem</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">a = 3 / tan 22.5&deg; &asymp; 7.24</span><span class="reason">solve for a</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">B = &frac12;Pa = &frac12;(48)(7.24) &asymp; 173.8</span><span class="reason">area of a regular polygon</span></div>
+      <p><em>Step 2: find the surface area.</em></p>
+      <div class="solution-step"><span class="num">5</span><span class="math">S = L + 2B</span><span class="reason">surface area of a right prism</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">S &asymp; 528 + 2(173.8)</span><span class="reason">L = 528 and B &asymp; 173.8</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">S &asymp; 875.6</span><span class="reason">simplify</span></div>
+      <div class="answer-box">S &asymp; 875.6 in&sup2;</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The apothem is the distance from the center to the
+      <em>midpoint of a side</em>, so the leg of the little right triangle is half of 6, not 6.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Lateral Area and Surface Area of a Cylinder</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the lateral area and surface area of a cylinder with diameter 10 in. and height 9 in. Round to the nearest tenth.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 400 330" width="400" role="img" aria-label="Net of a cylinder: two circles of radius 5 inches and a rectangle 10 pi inches by 9 inches">
+          <rect x="75" y="120" width="283" height="81" class="g-shape" fill-opacity=".55"/>
+          <circle cx="216" cy="75" r="45" class="g-shape-alt" fill-opacity=".55"/>
+          <circle cx="216" cy="246" r="45" class="g-shape-alt" fill-opacity=".55"/>
+          <line x1="75" y1="120" x2="358" y2="120" class="g-aux"/>
+          <line x1="75" y1="201" x2="358" y2="201" class="g-aux"/>
+          <line x1="216" y1="75" x2="261" y2="75" class="g-line-thin"/>
+          <circle cx="216" cy="75" r="3.5" class="g-pt"/>
+          <text x="238" y="67" class="g-meas g-halo" text-anchor="middle">r = 5</text>
+          <text x="216" y="166" class="g-lbl-sm" text-anchor="middle">2&pi;r = 10&pi; &asymp; 31.4 in.</text>
+          <text x="67" y="166" class="g-meas" text-anchor="end">h = 9 in.</text>
+          <text x="216" y="315" class="g-meas-b" text-anchor="middle">S = 2&pi;rh + 2&pi;r&sup2;</text>
+        </svg>
+        <figcaption>Unrolled, the curved side of a cylinder is a rectangle of width 2&pi;r and height h.</figcaption>
+      </figure>
+      <p><strong>Part A &mdash; Find the lateral area.</strong></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">L = 2&pi;rh</span><span class="reason">lateral area of a cylinder</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">L = 2&pi;(5)(9) = 90&pi;</span><span class="reason">substitution, r = 10 &divide; 2 = 5</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">L &asymp; 282.7</span><span class="reason">solve</span></div>
+      <div class="answer-box">The lateral area is about 282.7 in&sup2;</div>
+      <p style="margin-top:14px"><strong>Part B &mdash; Find the surface area.</strong></p>
+      <div class="solution-step"><span class="num">4</span><span class="math">S = 2&pi;rh + 2&pi;r<sup>2</sup></span><span class="reason">surface area of a cylinder</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">S &asymp; 282.7 + 2&pi;(5)<sup>2</sup></span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">S &asymp; 282.7 + 157.1 &asymp; 439.8</span><span class="reason">solve</span></div>
+      <div class="answer-box">S &asymp; 439.8 in&sup2;</div>
+      <div class="info-box"><strong>Study Tip.</strong> Exact form is <code>90&pi; + 50&pi; = 140&pi;</code>. Rounding
+      only at the very end avoids a build-up of error.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Lateral Area and Surface Area of a Regular Pyramid</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the lateral area and surface area of a regular pyramid whose base is an equilateral triangle with side 6 ft and whose slant height is 8 ft. Round to the nearest tenth.</div>
+      <p><strong>Part A &mdash; Find the lateral area.</strong></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">P = 6 &times; 3 = 18</span><span class="reason">perimeter of the equilateral base</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">L = &frac12;P&#8467;</span><span class="reason">lateral area of a regular pyramid</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">L = &frac12;(18)(8) = 72</span><span class="reason">P = 18 and &#8467; = 8</span></div>
+      <div class="answer-box">The lateral area is 72 ft&sup2;</div>
+      <p style="margin-top:14px"><strong>Part B &mdash; Find the surface area.</strong> <em>Step 1: height of the triangular base.</em></p>
+      <div class="solution-step"><span class="num">4</span><span class="math">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></span><span class="reason">Pythagorean Theorem</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">a<sup>2</sup> = 6<sup>2</sup> &minus; 3<sup>2</sup> = 27</span><span class="reason">c = 6 and b = 3</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">a = &radic;27 &asymp; 5.196</span><span class="reason">solve</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">B = &frac12;bh = &frac12;(6)(&radic;27) &asymp; 15.6</span><span class="reason">area of a triangle</span></div>
+      <p><em>Step 2: surface area of the pyramid.</em></p>
+      <div class="solution-step"><span class="num">8</span><span class="math">S = L + B &asymp; 72 + 15.6</span><span class="reason">surface area of a regular pyramid</span></div>
+      <div class="solution-step"><span class="num">9</span><span class="math">S &asymp; 87.6</span><span class="reason">simplify</span></div>
+      <div class="answer-box">S &asymp; 87.6 ft&sup2;</div>
+      <div class="warning-box"><strong>Watch Out!</strong> A pyramid has <em>one</em> base, so it is
+      <code>S = L + B</code>, never <code>L + 2B</code>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Lateral Area and Surface Area of a Right Cone</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the lateral area and surface area of a cone with radius 0.8 mm and slant height 2.2 mm. Round to the nearest tenth.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">L = &pi;r&#8467;</span><span class="reason">lateral area of a cone</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">L = &pi;(0.8)(2.2) = 1.76&pi;</span><span class="reason">substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">L &asymp; 5.5</span><span class="reason">solve</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">S = &pi;r&#8467; + &pi;r<sup>2</sup></span><span class="reason">surface area of a cone</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">S &asymp; 5.5 + &pi;(0.8)<sup>2</sup> &asymp; 5.5 + 2.0</span><span class="reason">substitution</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">S &asymp; 7.5</span><span class="reason">solve</span></div>
+      <div class="answer-box">L &asymp; 5.5 mm&sup2;&nbsp;&nbsp;and&nbsp;&nbsp;S &asymp; 7.5 mm&sup2;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">Surface Area of a Pyramid in Terms of x</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A regular triangular pyramid has base edge 2x and slant height 4x &minus; 4. (a) Find S in terms of x. (b) Evaluate S when x = 6.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">P = 3(2x) = 6x</span><span class="reason">perimeter of the equilateral base</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">height of base = x&radic;3</span><span class="reason">30&deg;-60&deg;-90&deg; triangle: legs x and x&radic;3</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">B = &frac12;(2x)(x&radic;3) = &radic;3x<sup>2</sup></span><span class="reason">area of a triangle</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">S = &frac12;P&#8467; + B</span><span class="reason">surface area of a regular pyramid</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">S = &frac12;(6x)(4x &minus; 4) + &radic;3x<sup>2</sup></span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">S = 12x<sup>2</sup> &minus; 12x + &radic;3x<sup>2</sup> = (12 + &radic;3)x<sup>2</sup> &minus; 12x</span><span class="reason">combine like terms</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">S = (12 + &radic;3)6<sup>2</sup> &minus; 12(6)</span><span class="reason">x = 6</span></div>
+      <div class="solution-step"><span class="num">8</span><span class="math">S &asymp; 494.4 &minus; 72 &asymp; 422.4</span><span class="reason">solve</span></div>
+      <div class="answer-box">S = (12 + &radic;3)x&sup2; &minus; 12x&nbsp;&nbsp;&middot;&nbsp;&nbsp;S &asymp; 422.4 square units when x = 6</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Examples 7 &amp; 8</span>
+      <span class="example-title">Surface Area of a Sphere &mdash; numeric and symbolic</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">(7) Find the surface area of a sphere of radius 7.1 mm to the nearest tenth. (8) If the circumference of a sphere is C = 3&pi;x<sup>2</sup>, find the surface area in terms of x and &pi;.</div>
+      <div class="case-grid">
+        <div class="case-box"><h4>Example 7 &mdash; from the radius</h4>
+          <div class="math">S = 4&pi;r<sup>2</sup><br>S = 4&pi;(7.1)<sup>2</sup><br>S = 4&pi;(50.41) = 201.64&pi;<br>S &asymp; 633.5 mm<sup>2</sup></div></div>
+        <div class="case-box"><h4>Example 8 &mdash; from the circumference</h4>
+          <div class="math">C = 2&pi;r<br>3&pi;x<sup>2</sup> = 2&pi;r<br>r = (3/2)x<sup>2</sup><br>S = 4&pi;[(3/2)x<sup>2</sup>]<sup>2</sup> = 4&pi;(9/4)x<sup>4</sup><br>S = 9&pi;x<sup>4</sup></div></div>
+      </div>
+      <div class="answer-box">S &asymp; 633.5 mm&sup2;&nbsp;&nbsp;&middot;&nbsp;&nbsp;S = 9&pi;x&#8308;</div>
+      <div class="check-box"><strong>Check:</strong> squaring <code>(3/2)x<sup>2</sup></code> squares
+      <em>both</em> the coefficient and the power: <code>(3/2)<sup>2</sup> = 9/4</code> and
+      <code>(x<sup>2</sup>)<sup>2</sup> = x<sup>4</sup></code>. Then <code>4 &middot; 9/4 = 9</code>. &check;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 9</span>
+      <span class="example-title">Surface Area of a Composite Solid</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A solid is modeled by a square prism 7 in. by 7 in. by 12 in. with no top face, capped by half of a cylinder of radius 3.5 in. and length 12 in. Find the surface area.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">prism: 3 rectangles 12 &times; 7 and 2 squares 7 &times; 7</span><span class="reason">the top face is missing</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">half cylinder: rectangle 12 &times; 3.5&pi; and two half circles r = 3.5</span><span class="reason">half of 2&pi;r is 3.5&pi;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S = 3(12 &times; 7) + 2(7 &times; 7) + (12 &times; 3.5&pi;) + &pi;(3.5)<sup>2</sup></span><span class="reason">add every exposed piece</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">S = 252 + 98 + 42&pi; + 12.25&pi; = 350 + 54.25&pi;</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">S &asymp; 520.4</span><span class="reason">solve</span></div>
+      <div class="answer-box">S &asymp; 520.4 in&sup2;</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Two half circles make one whole circle, so their combined
+      area is <code>&pi;(3.5)<sup>2</sup></code>, not <code>2&pi;(3.5)<sup>2</sup></code>. And the face where the two
+      solids meet is <em>not</em> part of the surface at all.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box"><h4>Problem 1</h4>
+    <div class="prob">A right prism has a rectangular base 8 units by 3 units and height 15 units. Find L and S.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">P = 2(8 + 3) = 22, B = 8(3) = 24</span><span class="reason">base perimeter and area</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">L = Ph = 22(15) = 330</span><span class="reason">L = Ph</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S = 330 + 2(24) = 378</span><span class="reason">S = L + 2B</span></div>
+      <div class="answer-box">L = 330 units&sup2;, S = 378 units&sup2;</div>
+    </div>
+  </div>
+
+  <div class="try-box"><h4>Problem 2</h4>
+    <div class="prob">A right cylinder has r = 4 cm and h = 10 cm. Find L and S in exact form and to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">L = 2&pi;(4)(10) = 80&pi; &asymp; 251.3</span><span class="reason">L = 2&pi;rh</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">2B = 2&pi;(4)<sup>2</sup> = 32&pi;</span><span class="reason">two circular bases</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S = 80&pi; + 32&pi; = 112&pi; &asymp; 351.9</span><span class="reason">S = L + 2B</span></div>
+      <div class="answer-box">L = 80&pi; &asymp; 251.3 cm&sup2;, S = 112&pi; &asymp; 351.9 cm&sup2;</div>
+    </div>
+  </div>
+
+  <div class="try-box"><h4>Problem 3</h4>
+    <div class="prob">A regular square pyramid has base edge 10 m and slant height 13 m. Find S.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">P = 4(10) = 40, B = 10<sup>2</sup> = 100</span><span class="reason">square base</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">L = &frac12;(40)(13) = 260</span><span class="reason">L = &frac12;P&#8467;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S = 260 + 100 = 360</span><span class="reason">S = L + B (one base)</span></div>
+      <div class="answer-box">S = 360 m&sup2;</div>
+    </div>
+  </div>
+
+  <div class="try-box"><h4>Problem 4</h4>
+    <div class="prob">A right cone has r = 6 in. and altitude h = 8 in. Find the surface area in exact form.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&#8467;<sup>2</sup> = 6<sup>2</sup> + 8<sup>2</sup> = 100, so &#8467; = 10</span><span class="reason">Pythagorean Theorem (r, h, &#8467;)</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">L = &pi;(6)(10) = 60&pi;</span><span class="reason">L = &pi;r&#8467;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S = 60&pi; + &pi;(6)<sup>2</sup> = 96&pi; &asymp; 301.6</span><span class="reason">S = &pi;r&#8467; + &pi;r<sup>2</sup></span></div>
+      <div class="answer-box">S = 96&pi; &asymp; 301.6 in&sup2;</div>
+    </div>
+  </div>
+
+  <div class="try-box"><h4>Problem 5</h4>
+    <div class="prob">A great circle of a sphere has circumference 12&pi; units. Find the surface area of the sphere.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">2&pi;r = 12&pi;</span><span class="reason">circumference of a great circle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">r = 6</span><span class="reason">divide by 2&pi;</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S = 4&pi;(6)<sup>2</sup> = 144&pi; &asymp; 452.4</span><span class="reason">S = 4&pi;r<sup>2</sup></span></div>
+      <div class="answer-box">S = 144&pi; &asymp; 452.4 units&sup2;</div>
+    </div>
+  </div>
+
+  <div class="try-box"><h4>Problem 6 &mdash; work backwards</h4>
+    <div class="prob">A cylinder has lateral area 120&pi; m&sup2; and height 7 m. Find the radius to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">L = 2&pi;rh &rarr; 120&pi; = 2&pi;r(7)</span><span class="reason">substitute what you know</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">120&pi; = 14&pi;r</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">r = 120/14 = 60/7 &asymp; 8.6</span><span class="reason">divide by 14&pi;</span></div>
+      <div class="answer-box">r &asymp; 8.6 m</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>If the solid is&hellip;</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Right prism</td><td>Find P and B of a base; two bases</td><td><code>L = Ph</code>, <code>S = Ph + 2B</code></td></tr>
+    <tr><td>Right cylinder</td><td>Unroll the side into a 2&pi;r by h rectangle</td><td><code>L = 2&pi;rh</code>, <code>S = 2&pi;rh + 2&pi;r<sup>2</sup></code></td></tr>
+    <tr><td>Regular pyramid</td><td>Use the slant height &#8467;; one base</td><td><code>L = &frac12;P&#8467;</code>, <code>S = &frac12;P&#8467; + B</code></td></tr>
+    <tr><td>Right cone</td><td>Get &#8467; from <code>&#8467;<sup>2</sup> = h<sup>2</sup> + r<sup>2</sup></code> if only h is given</td><td><code>L = &pi;r&#8467;</code>, <code>S = &pi;r&#8467; + &pi;r<sup>2</sup></code></td></tr>
+    <tr><td>Sphere</td><td>Get r (from C = 2&pi;r if needed); no bases</td><td><code>S = 4&pi;r<sup>2</sup></code></td></tr>
+    <tr><td>Regular polygon base</td><td>Apothem from <code>tan(180&deg;/n) = (s/2)/a</code></td><td><code>B = &frac12;Pa</code></td></tr>
+    <tr><td>Composite solid</td><td>Add every exposed piece; drop hidden/joined faces</td><td>sum of the parts</td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">L = Ph</span>
+    <span class="pill">S = Ph + 2B</span>
+    <span class="pill">L = 2&pi;rh</span>
+    <span class="pill">S = 2&pi;rh + 2&pi;r&sup2;</span>
+    <span class="pill">L = &frac12;P&#8467;</span>
+    <span class="pill">S = &frac12;P&#8467; + B</span>
+    <span class="pill">L = &pi;r&#8467;</span>
+    <span class="pill">S = &pi;r&#8467; + &pi;r&sup2;</span>
+    <span class="pill">S = 4&pi;r&sup2;</span>
+    <span class="pill">B = &frac12;Pa</span>
+    <span class="pill">&#8467;&sup2; = h&sup2; + r&sup2;</span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:6px 0 0 20px;line-height:1.8">
+      <li>Using the height <code>h</code> where the slant height <code>&#8467;</code> belongs (pyramids and cones).</li>
+      <li>Adding <code>2B</code> for a pyramid or cone &mdash; they have only one base.</li>
+      <li>Forgetting to halve a diameter before using <code>r</code>.</li>
+      <li>Writing <code>4&pi;r<sup>2</sup></code> for a circle's area or <code>&pi;r<sup>2</sup></code> for a sphere &mdash; keep them straight.</li>
+      <li>Using the side length instead of the apothem in <code>B = &frac12;Pa</code>.</li>
+      <li>Counting a face that is covered where two solids are joined in a composite solid.</li>
+      <li>Rounding <code>&pi;</code> early, then rounding again &mdash; carry exact values to the last step.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"Which formula gives the lateral area L of a right prism?",opts:["L = &frac12;P&#8467;","L = Ph","L = 2&pi;r&sup2;","L = Ph + 2B"],ans:1,exp:"The lateral faces unroll into one rectangle whose width is the base perimeter P and whose height is h, so L = Ph. Choice D is the full surface area, and choice A belongs to a pyramid."},
+  {q:"A right prism has base perimeter P = 30 cm and height h = 7 cm. Find the lateral area.",opts:["210 cm&sup2;","105 cm&sup2;","420 cm&sup2;","237 cm&sup2;"],ans:0,exp:"L = Ph = 30(7) = 210 cm&sup2;. Halving (105) would be the pyramid formula, and 420 doubles it for no reason."},
+  {q:"A right prism has a rectangular base 9 by 4 and height 6. Find the surface area S.",opts:["156","216","228","264"],ans:2,exp:"P = 2(9 + 4) = 26 and B = 9(4) = 36. So L = 26(6) = 156 and S = L + 2B = 156 + 72 = 228. Choice A stops at the lateral area."},
+  {q:"A right cylinder has r = 3 and h = 10. Find the lateral area to the nearest tenth.",opts:["94.2","141.3","244.9","188.5"],ans:3,exp:"L = 2&pi;rh = 2&pi;(3)(10) = 60&pi; &asymp; 188.5. Choice A is 30&pi;, which forgets the factor of 2."},
+  {q:"A right cylinder has r = 4 and h = 6. Find the surface area in exact form.",opts:["48&pi;","80&pi;","96&pi;","112&pi;"],ans:1,exp:"L = 2&pi;(4)(6) = 48&pi; and 2B = 2&pi;(4)&sup2; = 32&pi;. So S = 48&pi; + 32&pi; = 80&pi;. Choice A leaves out both bases."},
+  {q:"A regular pyramid has base perimeter 36 and slant height 10. Find the lateral area.",opts:["180","360","90","46"],ans:0,exp:"L = &frac12;P&#8467; = &frac12;(36)(10) = 180. Choice B forgets the &frac12; that comes from the triangular faces."},
+  {q:"A regular square pyramid has base edge 8 and slant height 5. Find the surface area.",opts:["80","104","144","208"],ans:2,exp:"P = 4(8) = 32 so L = &frac12;(32)(5) = 80, and B = 8&sup2; = 64. S = L + B = 80 + 64 = 144. Choice D wrongly adds 2B."},
+  {q:"A right cone has r = 5 and &#8467; = 13. Find the lateral area to the nearest tenth.",opts:["78.5","102.1","408.4","204.2"],ans:3,exp:"L = &pi;r&#8467; = &pi;(5)(13) = 65&pi; &asymp; 204.2. Choice A is the base area &pi;r&sup2;, not the lateral area."},
+  {q:"A right cone has r = 6 and altitude h = 8. Find the surface area in exact form.",opts:["96&pi;","84&pi;","60&pi;","132&pi;"],ans:0,exp:"First &#8467; = &radic;(6&sup2; + 8&sup2;) = 10. Then L = &pi;(6)(10) = 60&pi; and B = 36&pi;, so S = 96&pi;. Choice B mistakenly uses h = 8 as the slant height."},
+  {q:"Find the surface area of a sphere of radius 3 to the nearest tenth.",opts:["28.3","113.1","37.7","452.4"],ans:1,exp:"S = 4&pi;r&sup2; = 4&pi;(9) = 36&pi; &asymp; 113.1. Choice A is &pi;r&sup2;, the area of a great circle, which is only one fourth of the sphere's surface."},
+  {q:"A great circle of a sphere has circumference 10&pi;. Find the surface area of the sphere.",opts:["25&pi;","50&pi;","100&pi;","400&pi;"],ans:2,exp:"From 2&pi;r = 10&pi;, r = 5. Then S = 4&pi;(5)&sup2; = 100&pi;. Choice A is the area of the great circle itself."},
+  {q:"The circumference of a sphere is C = 6&pi;x&sup2;. Find the surface area in terms of x and &pi;.",opts:["12&pi;x&sup2;","9&pi;x&#8308;","18&pi;x&#8308;","36&pi;x&#8308;"],ans:3,exp:"2&pi;r = 6&pi;x&sup2; gives r = 3x&sup2;. Then S = 4&pi;(3x&sup2;)&sup2; = 4&pi;(9x&#8308;) = 36&pi;x&#8308;. Squaring must be applied to the 3 and to x&sup2; both."},
+  {q:"A cylinder has lateral area 120&pi; m&sup2; and height 7 m. Find the radius to the nearest tenth.",opts:["8.6 m","17.1 m","5.5 m","2.9 m"],ans:0,exp:"120&pi; = 2&pi;r(7) = 14&pi;r, so r = 120/14 = 60/7 &asymp; 8.6 m. Choice B forgets to divide by 2."},
+  {q:"A regular hexagonal pyramid has base edge 6 mm and slant height 9 mm. Find the lateral area.",opts:["108 mm&sup2;","162 mm&sup2;","324 mm&sup2;","54 mm&sup2;"],ans:1,exp:"A hexagon has 6 sides, so P = 6(6) = 36. Then L = &frac12;(36)(9) = 162 mm&sup2;. Choice C forgets the factor of &frac12;."},
+  {q:"A cylinder and a cone each have r = 4 and h = 3. How much greater is the cylinder's lateral area than the cone's?",opts:["8&pi;","24&pi;","20&pi;","4&pi;"],ans:3,exp:"Cylinder: L = 2&pi;(4)(3) = 24&pi;. Cone: &#8467; = &radic;(4&sup2; + 3&sup2;) = 5, so L = &pi;(4)(5) = 20&pi;. The difference is 24&pi; &minus; 20&pi; = 4&pi;. Using h instead of &#8467; for the cone would give the wrong gap."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

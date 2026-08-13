@@ -88,7 +88,8 @@ const moduleSlug = (name) =>
   name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const domainSlug = moduleSlug;
 
-const qCount = (t) => t.questions.length;
+// lessonQuiz counts the self-marking quiz built into an embedded lesson page.
+const qCount = (t) => t.questions.length || t.lessonQuiz || 0;
 const pastPaperCount = (t) =>
   (t.pastPapers || []).reduce((s, p) => s + (p.items ? p.items.length : 0), 0);
 const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
@@ -969,13 +970,22 @@ function videoCard(v) {
 }
 
 function wireLesson(root) {
-  root.querySelectorAll(".example-card").forEach((card) => {
+  // Embedded SAT lesson pages ship their own toggles and section links.
+  root.querySelectorAll(".sat-lesson [data-jump]").forEach((a) =>
+    a.addEventListener("click", () => {
+      const target = root.querySelector("#" + CSS.escape(a.dataset.jump));
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    })
+  );
+
+  const cards = [...root.querySelectorAll(".example-card")]
+    .filter((card) => !card.closest(".sat-lesson"));
+  cards.forEach((card) => {
     card.querySelector(".example-header").addEventListener("click", () =>
       card.classList.toggle("open")
     );
   });
-  const first = root.querySelector(".example-card");
-  if (first) first.classList.add("open");
+  if (cards.length) cards[0].classList.add("open");
   root.querySelectorAll(".vocab-card").forEach((c) =>
     c.addEventListener("click", () => c.classList.toggle("flipped"))
   );
@@ -1139,6 +1149,8 @@ function renderTopic(id) {
     const holder = el("div");
     main.appendChild(holder);
     showQuestion(quiz, holder);
+  } else if (t.lessonQuiz) {
+    // The lesson page ends with its own self-marking quiz — no placeholder needed.
   } else if (!t.pastPapers || !t.pastPapers.length) {
     main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
     main.appendChild(el("div", "empty-note", t.lessonHtml

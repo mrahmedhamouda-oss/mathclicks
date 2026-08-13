@@ -1,0 +1,568 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Find the geometric mean of two numbers and use the altitude and leg theorems to find missing lengths in right triangles.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. What a geometric mean is</h3>
+    <p>The <b>arithmetic mean</b> of two numbers is what you get by <em>adding</em> and dividing. The <b>geometric mean</b> is what you get by <em>multiplying</em> and taking a root &mdash; it is the number that sits in the middle of a <em>proportion</em> instead of in the middle of a sum.</p>
+    <p style="margin-top:8px">Formally: the geometric mean of a set of <em>n</em> numbers is the <em>n</em>th root of their product. So the geometric mean of <b>two</b> numbers is the positive square root of their product.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>geometric mean</b> &mdash; the positive number <code>x</code> between <code>a</code> and <code>b</code> such that <code>a/x = x/b</code>.</div>
+      <div class="vocab-item"><b>altitude to the hypotenuse</b> &mdash; the segment from the right-angle vertex, &perp; to the hypotenuse.</div>
+    </div>
+    <div class="formula-box">
+      <b>Key Concept &middot; Geometric Mean</b><br>
+      The geometric mean of two positive numbers <code>a</code> and <code>b</code> is <code>x</code> such that<br>
+      &nbsp;&nbsp;<code>a / x = x / b</code>&nbsp;&nbsp;&rarr;&nbsp;&nbsp;<code>x&sup2; = ab</code>&nbsp;&nbsp;&rarr;&nbsp;&nbsp;<code>x = &radic;(ab)</code>
+    </div>
+    <p><em>Why the cross-multiplication works:</em> <code>a/x = x/b</code> means the two ratios are equal, so <code>x &middot; x = a &middot; b</code>. Notice <code>x</code> appears in <b>both middle positions</b> of the proportion &mdash; that is the signature of a geometric mean. Whenever you see a variable sitting in both means of a proportion, you are looking at a geometric mean.</p>
+    <div class="info-box"><strong>Study Tip:</strong> Geometric mean of 4 and 9 is <code>&radic;36 = 6</code>. Arithmetic mean of 4 and 9 is <code>6.5</code>. They are different numbers &mdash; and they are equal <em>only</em> when the two numbers are equal.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Splitting a right triangle with its altitude</h3>
+    <p>Drop the altitude from the right angle of a right triangle onto the hypotenuse. You now have three right triangles &mdash; the original one and two smaller ones &mdash; and remarkably, all three have exactly the same shape.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 9.1</div>
+      <div class="theorem-body">If the altitude is drawn to the hypotenuse of a right triangle, then the two triangles formed are <b>similar to the original triangle</b> and <b>to each other</b>.</div>
+    </div>
+    <p><em>Why:</em> the small triangle on the left shares &ang;<em>A</em> with the big triangle, and both have a right angle &mdash; so they are similar by AA. The same argument on the right gives the second pair. Similar to the same triangle &there4; similar to each other.</p>
+    <div class="warning-box"><strong>Watch Out!</strong> Similarity statements must list vertices in <b>corresponding order</b>. Do not write &#9651;<em>ADC</em> &sim; &#9651;<em>BDC</em> just because the letters look convenient &mdash; match equal angles: right angle to right angle, and the shared acute angle to its twin.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. The two geometric mean theorems</h3>
+    <p>Because those three triangles are similar, proportions between their sides appear everywhere. Two of those proportions are used so often that they get their own names.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 9.2 &middot; Geometric Mean (Altitude) Theorem</div>
+      <div class="theorem-body">
+        <b>Words:</b> The altitude drawn to the hypotenuse of a right triangle separates the hypotenuse into two segments. The length of this altitude is the <b>geometric mean between the lengths of these two segments</b>.<br>
+        <b>Symbols:</b> if <span style="text-decoration:overline">CD</span> is the altitude to hypotenuse <span style="text-decoration:overline">AB</span> of right &#9651;<em>ABC</em>, with <code>AD = x</code> and <code>DB = y</code>, then
+        <div class="formula-box"><code>x / h = h / y</code>&nbsp;&nbsp;&rarr;&nbsp;&nbsp;<code>h&sup2; = xy</code>&nbsp;&nbsp;&rarr;&nbsp;&nbsp;<code>h = &radic;(xy)</code></div>
+      </div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 9.3 &middot; Geometric Mean (Leg) Theorem</div>
+      <div class="theorem-body">
+        <b>Words:</b> The altitude drawn to the hypotenuse of a right triangle separates the hypotenuse into two segments. The length of a <b>leg</b> of the triangle is the geometric mean between the length of the <b>hypotenuse</b> and the length of the <b>segment of the hypotenuse adjacent to that leg</b>.<br>
+        <b>Symbols:</b> with <code>AD = x</code>, <code>DB = y</code>, <code>AB = c</code>, leg <code>b = AC</code>, leg <code>a = CB</code>,
+        <div class="formula-box"><code>c / b = b / x</code>&nbsp;&nbsp;&rarr;&nbsp;&nbsp;<code>b = &radic;(xc)</code><br><code>c / a = a / y</code>&nbsp;&nbsp;&rarr;&nbsp;&nbsp;<code>a = &radic;(yc)</code></div>
+      </div>
+    </div>
+    <div class="keyfact"><div class="ico">1</div><div class="txt"><b>Altitude</b> pairs with the <b>two pieces</b> of the hypotenuse: <code>h = &radic;(x&middot;y)</code>.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt"><b>Leg</b> pairs with the <b>whole hypotenuse</b> and the <b>piece touching that leg</b>: <code>leg = &radic;(piece &middot; whole)</code>.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt">The piece "adjacent to a leg" is the one that shares an endpoint with that leg. Leg <span style="text-decoration:overline">AC</span> touches <em>A</em>, so its piece is <span style="text-decoration:overline">AD</span>.</div></div>
+    <div class="warning-box"><strong>Watch Out!</strong> The most common error is putting the whole hypotenuse into the altitude formula. <code>h = &radic;(x&middot;y)</code> uses the <b>two pieces only</b>, never <code>c</code>. And <code>b = &radic;(x&middot;c)</code> uses the <b>whole</b> <code>c</code>, never the far piece <code>y</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. A reliable procedure</h3>
+    <div class="steps-list">
+      <div class="s">Redraw or mentally separate the three triangles so you can see which sides correspond.</div>
+      <div class="s">Label the two hypotenuse pieces <code>x</code> and <code>y</code>, the whole hypotenuse <code>c = x + y</code>, the altitude <code>h</code>, and the legs <code>a</code>, <code>b</code>.</div>
+      <div class="s">Decide what you are solving for. Altitude &rarr; use <code>h = &radic;(xy)</code>. A leg &rarr; use <code>leg = &radic;(adjacent piece &middot; c)</code>.</div>
+      <div class="s">Substitute, then simplify the radical (pull out perfect-square factors) before reaching for a calculator.</div>
+      <div class="s">Check with the Pythagorean Theorem: <code>a&sup2; + b&sup2;</code> must equal <code>c&sup2;</code>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">The Anatomy of the Altitude Figure</div>
+    <svg id="fig1" viewBox="0 0 470 265" width="470" role="img" aria-label="Right triangle ABC with right angle at C and altitude CD drawn to hypotenuse AB, splitting it into x and y">
+      <polygon class="g-shape" points="40,220 430,220 160,40"/>
+      <path class="g-right" d="M 152.2 51.6 L 163.9 59.4 L 171.7 47.8"/>
+      <text class="g-lbl" x="26" y="238" text-anchor="middle">A</text>
+      <text class="g-lbl" x="446" y="238" text-anchor="middle">B</text>
+      <text class="g-lbl" x="160" y="26" text-anchor="middle">C</text>
+      <g data-part="alt">
+        <line class="g-line" x1="160" y1="220" x2="160" y2="40"/>
+        <path class="g-right" d="M 172 220 L 172 208 L 160 208"/>
+        <circle class="g-pt" cx="160" cy="220" r="4.5"/>
+        <text class="g-lbl" x="160" y="240" text-anchor="middle">D</text>
+        <text class="g-meas g-halo" x="172" y="132" text-anchor="start">h</text>
+      </g>
+      <g data-part="segs">
+        <line class="g-tick" x1="40" y1="226" x2="40" y2="234"/>
+        <line class="g-tick" x1="160" y1="226" x2="160" y2="234"/>
+        <line class="g-tick" x1="430" y1="226" x2="430" y2="234"/>
+        <text class="g-meas" x="100" y="248" text-anchor="middle">x</text>
+        <text class="g-meas" x="295" y="248" text-anchor="middle">y</text>
+      </g>
+      <g data-part="legs">
+        <text class="g-meas-b g-halo" x="88" y="122" text-anchor="end">b</text>
+        <text class="g-meas-b g-halo" x="304" y="118" text-anchor="start">a</text>
+        <circle class="g-pt" cx="40" cy="220" r="4.5"/>
+        <circle class="g-pt" cx="430" cy="220" r="4.5"/>
+        <circle class="g-pt" cx="160" cy="40" r="4.5"/>
+      </g>
+    </svg>
+    <figcaption><span style="text-decoration:overline">CD</span> &perp; <span style="text-decoration:overline">AB</span> is the altitude to the hypotenuse. It cuts <span style="text-decoration:overline">AB</span> into <code>x = AD</code> and <code>y = DB</code>. Here <code>x = 4, y = 9, h = 6</code>, and the drawing is to scale.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','alt')">Altitude h</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','segs')">Hypotenuse pieces x, y</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','legs')">Legs a, b</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Theorem 9.1 &mdash; The Three Similar Triangles, Pulled Apart</div>
+    <svg id="fig2" viewBox="0 0 560 245" width="560" role="img" aria-label="The three similar right triangles ABC, ADC and CDB separated and drawn in the same orientation">
+      <g data-part="t1">
+        <polygon class="g-shape" points="18,190 206.5,190 76,103"/>
+        <path class="g-right" d="M 69.9 112.2 L 79.1 118.3 L 85.2 109.1"/>
+        <text class="g-lbl" x="12" y="208">A</text>
+        <text class="g-lbl" x="204" y="208">B</text>
+        <text class="g-lbl" x="76" y="94" text-anchor="middle">C</text>
+        <text class="g-meas" x="112" y="208" text-anchor="middle">13</text>
+        <text class="g-meas-b" x="36" y="142" text-anchor="end">&radic;52</text>
+        <text class="g-meas-b" x="150" y="142" text-anchor="start">&radic;117</text>
+        <text class="g-lbl-sm" x="112" y="230" text-anchor="middle">&#9651;ABC</text>
+      </g>
+      <g data-part="t2">
+        <polygon class="g-shape-alt" points="238,190 342.6,190 270.2,141.7"/>
+        <path class="g-right" d="M 264.1 150.9 L 273.3 157.0 L 279.4 147.8"/>
+        <text class="g-lbl" x="232" y="208">A</text>
+        <text class="g-lbl" x="340" y="208">C</text>
+        <text class="g-lbl" x="270" y="132" text-anchor="middle">D</text>
+        <text class="g-meas" x="292" y="208" text-anchor="middle">&radic;52</text>
+        <text class="g-meas-b" x="245" y="164" text-anchor="end">4</text>
+        <text class="g-meas-b" x="317" y="164" text-anchor="start">6</text>
+        <text class="g-lbl-sm" x="292" y="230" text-anchor="middle">&#9651;ADC</text>
+      </g>
+      <g data-part="t3">
+        <polygon class="g-shape-alt" points="374,190 530.8,190 422.3,117.6"/>
+        <path class="g-right" d="M 416.2 126.8 L 425.4 132.9 L 431.5 123.7"/>
+        <text class="g-lbl" x="368" y="208">C</text>
+        <text class="g-lbl" x="528" y="208">B</text>
+        <text class="g-lbl" x="422" y="108" text-anchor="middle">D</text>
+        <text class="g-meas" x="455" y="208" text-anchor="middle">&radic;117</text>
+        <text class="g-meas-b" x="389" y="152" text-anchor="end">6</text>
+        <text class="g-meas-b" x="489" y="152" text-anchor="start">9</text>
+        <text class="g-lbl-sm" x="452" y="230" text-anchor="middle">&#9651;CDB</text>
+      </g>
+    </svg>
+    <figcaption>All three are drawn in the same orientation: right angle on top, longest side (the hypotenuse of that triangle) along the bottom. &#9651;<em>ABC</em> &sim; &#9651;<em>ADC</em> &sim; &#9651;<em>CDB</em>. The scale factor from the big one to the middle one is <code>&radic;52 / 13 = 0.5547</code>, and every side shrinks by exactly that factor.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','t1')">Original &#9651;ABC</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','t2')">Left piece &#9651;ADC</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','t3')">Right piece &#9651;CDB</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Theorem 9.3 &mdash; Each Leg and Its Own Piece</div>
+    <svg id="fig3" viewBox="0 0 470 290" width="470" role="img" aria-label="Right triangle with altitude showing leg b matched with segment x and leg a matched with segment y over the whole hypotenuse c">
+      <polygon class="g-shape" points="40,220 430,220 160,40"/>
+      <path class="g-right" d="M 152.2 51.6 L 163.9 59.4 L 171.7 47.8"/>
+      <line class="g-aux" x1="160" y1="220" x2="160" y2="40"/>
+      <path class="g-right" d="M 172 220 L 172 208 L 160 208"/>
+      <text class="g-lbl" x="26" y="238" text-anchor="middle">A</text>
+      <text class="g-lbl" x="446" y="238" text-anchor="middle">B</text>
+      <text class="g-lbl" x="160" y="26" text-anchor="middle">C</text>
+      <text class="g-lbl" x="160" y="240" text-anchor="middle">D</text>
+      <g data-part="legb">
+        <line class="g-line" x1="40" y1="220" x2="160" y2="40" stroke="var(--sl-blue)" stroke-width="4"/>
+        <line class="g-arc" x1="40" y1="212" x2="160" y2="212"/>
+        <text class="g-meas-b g-halo" x="86" y="120" text-anchor="end">b</text>
+        <text class="g-grn" x="100" y="204" text-anchor="middle">x</text>
+      </g>
+      <g data-part="lega">
+        <line class="g-line" x1="160" y1="40" x2="430" y2="220" stroke="var(--sl-blue)" stroke-width="4"/>
+        <line class="g-arc" x1="160" y1="212" x2="430" y2="212"/>
+        <text class="g-meas-b g-halo" x="306" y="116" text-anchor="start">a</text>
+        <text class="g-grn" x="295" y="204" text-anchor="middle">y</text>
+      </g>
+      <g data-part="hyp">
+        <line class="g-tick" x1="40" y1="246" x2="40" y2="258"/>
+        <line class="g-tick" x1="430" y1="246" x2="430" y2="258"/>
+        <line class="g-tick" x1="40" y1="252" x2="430" y2="252"/>
+        <text class="g-meas" x="235" y="274" text-anchor="middle">c = x + y</text>
+      </g>
+    </svg>
+    <figcaption>Leg <code>b</code> touches <em>A</em>, so it is paired with the piece <span style="text-decoration:overline">AD</span> = <code>x</code>: <code>b = &radic;(x&middot;c)</code>. Leg <code>a</code> touches <em>B</em>, so it is paired with <span style="text-decoration:overline">DB</span> = <code>y</code>: <code>a = &radic;(y&middot;c)</code>. Both formulas use the <b>whole</b> hypotenuse <code>c</code>.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','legb')">b and its piece x</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','lega')">a and its piece y</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','hyp')">Whole hypotenuse c</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Why h = &radic;(xy): The Semicircle Picture</div>
+    <svg id="fig4" viewBox="0 0 420 250" width="420" role="img" aria-label="Semicircle on diameter AB with point C on the arc and altitude CD equal to the geometric mean of AD and DB">
+      <g data-part="circle">
+        <path class="g-arc" d="M 40 200 A 169 169 0 0 1 378 200"/>
+        <line class="g-aux" x1="40" y1="200" x2="378" y2="200"/>
+        <line class="g-aux" x1="209" y1="200" x2="144" y2="44"/>
+        <circle class="g-pt" cx="209" cy="200" r="4"/>
+        <text class="g-lbl" x="209" y="222" text-anchor="middle">O</text>
+      </g>
+      <polyline class="g-line" points="40,200 144,44 378,200"/>
+      <path class="g-right" d="M 136.8 54.8 L 147.6 62.0 L 154.8 51.2"/>
+      <text class="g-lbl" x="30" y="222" text-anchor="middle">A</text>
+      <text class="g-lbl" x="388" y="222" text-anchor="middle">B</text>
+      <text class="g-lbl" x="144" y="32" text-anchor="middle">C</text>
+      <g data-part="alt">
+        <line class="g-line" x1="144" y1="200" x2="144" y2="44" stroke="var(--sl-green)"/>
+        <path class="g-right" d="M 156 200 L 156 188 L 144 188"/>
+        <circle class="g-pt" cx="144" cy="200" r="4.5"/>
+        <text class="g-lbl" x="144" y="222" text-anchor="middle">D</text>
+        <text class="g-grn g-halo" x="156" y="126" text-anchor="start">h = 6</text>
+      </g>
+      <g data-part="segs">
+        <text class="g-meas" x="90" y="222" text-anchor="middle">4</text>
+        <text class="g-meas" x="265" y="222" text-anchor="middle">9</text>
+      </g>
+    </svg>
+    <figcaption>Any point <em>C</em> on a semicircle sees the diameter at a right angle, so &#9651;<em>ABC</em> is right-angled at <em>C</em> and <span style="text-decoration:overline">CD</span> is its altitude. With <code>AD = 4</code> and <code>DB = 9</code>, the altitude is exactly <code>&radic;(4&middot;9) = 6</code> &mdash; the geometric mean.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','circle')">Semicircle &amp; radius</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','alt')">Altitude = geometric mean</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','segs')">The two pieces</button>
+    </div>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Find a Geometric Mean</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Find the geometric mean between 5 and 45.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">x = &radic;(ab)</span><span class="reason">definition of geometric mean</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x = &radic;(5 &middot; 45)</span><span class="reason">a = 5 and b = 45</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = &radic;225</span><span class="reason">multiply</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x = 15</span><span class="reason">simplify</span></div>
+      <div class="answer-box">The geometric mean between 5 and 45 is 15.</div>
+      <div class="check-box"><strong>Check:</strong> the proportion must hold: <code>5/15 = 15/45</code> &rarr; <code>1/3 = 1/3</code> &check;</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Do not average. <code>(5 + 45)/2 = 25</code>, which is <b>not</b> the geometric mean.</div>
+      <div class="check-box"><strong>Your turn:</strong> geometric mean between 12 and 15 &rarr; <code>&radic;180 = &radic;(36&middot;5) = 6&radic;5 &asymp; 13.4</code></div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Identify Similar Right Triangles</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Write a similarity statement identifying the three similar right triangles in the figure.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 360 200" width="360" role="img" aria-label="Right triangle QSR with right angle at S and altitude ST drawn to hypotenuse QR">
+          <polygon class="g-shape" points="40,55 280,55 280,155"/>
+          <line class="g-line" x1="280" y1="55" x2="244.5" y2="140.2"/>
+          <path class="g-right" d="M 267 55 L 267 68 L 280 68"/>
+          <path class="g-right" d="M 249.1 129.1 L 260.2 133.7 L 255.6 144.8"/>
+          <circle class="g-pt" cx="40" cy="55" r="4.5"/>
+          <circle class="g-pt" cx="280" cy="55" r="4.5"/>
+          <circle class="g-pt" cx="280" cy="155" r="4.5"/>
+          <circle class="g-pt" cx="244.5" cy="140.2" r="4.5"/>
+          <text class="g-lbl" x="30" y="48" text-anchor="middle">Q</text>
+          <text class="g-lbl" x="290" y="48" text-anchor="middle">S</text>
+          <text class="g-lbl" x="292" y="168" text-anchor="middle">R</text>
+          <text class="g-lbl" x="228" y="150" text-anchor="end">T</text>
+        </svg>
+        <figcaption>&ang;<em>QSR</em> is the right angle; <span style="text-decoration:overline">ST</span> is the altitude to hypotenuse <span style="text-decoration:overline">QR</span>.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">Big triangle: &#9651;QSR, right angle at S</span><span class="reason">identify the original</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&#9651;STR shares &ang;R with &#9651;QSR; both have a right angle</span><span class="reason">AA similarity</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">S &harr; Q, T &harr; S, R &harr; R &rarr; &#9651;STR &sim; &#9651;QSR</span><span class="reason">order the vertices by equal angles</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">&#9651;QTS shares &ang;Q with &#9651;QSR; Q &harr; Q, T &harr; S, S &harr; R</span><span class="reason">AA similarity again</span></div>
+      <div class="answer-box">&#9651;STR &sim; &#9651;QTS &sim; &#9651;QSR</div>
+      <div class="check-box"><strong>Check the ordering:</strong> the right-angle vertices <em>T</em>, <em>T</em>, <em>S</em> all sit in the <b>second</b> position, and the shared acute vertices line up. That is what makes the statement correct rather than just plausible.</div>
+      <div class="check-box"><strong>Your turn:</strong> in &#9651;<em>KLM</em> with the right angle at <em>M</em> and altitude <span style="text-decoration:overline">MP</span> to <span style="text-decoration:overline">KL</span>: <code>&#9651;KPM &sim; &#9651;MPL &sim; &#9651;KML</code></div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Use the Geometric Mean with Right Triangles</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the values of x, y, and z.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 460 265" width="460" role="img" aria-label="Right triangle ABC with right angle at B, hypotenuse AC split by D into 8 and 25, altitude BD equal to z, legs x and y">
+          <polygon class="g-shape" points="36,42 405.8,127.4 89,221.1"/>
+          <line class="g-line" x1="89" y1="221.1" x2="125.6" y2="62.7"/>
+          <path class="g-right" d="M 85.3 208.6 L 97.8 204.9 L 101.5 217.4"/>
+          <path class="g-right" d="M 122.9 74.4 L 134.6 77.1 L 137.3 65.4"/>
+          <circle class="g-pt" cx="36" cy="42" r="4.5"/>
+          <circle class="g-pt" cx="405.8" cy="127.4" r="4.5"/>
+          <circle class="g-pt" cx="89" cy="221.1" r="4.5"/>
+          <circle class="g-pt" cx="125.6" cy="62.7" r="4.5"/>
+          <text class="g-lbl" x="26" y="34" text-anchor="middle">A</text>
+          <text class="g-lbl" x="140" y="52" text-anchor="middle">D</text>
+          <text class="g-lbl" x="418" y="134" text-anchor="middle">C</text>
+          <text class="g-lbl" x="76" y="238" text-anchor="middle">B</text>
+          <text class="g-meas" x="84" y="40" text-anchor="middle">8</text>
+          <text class="g-meas" x="269" y="82" text-anchor="middle">25</text>
+          <text class="g-meas-b g-halo" x="121" y="148" text-anchor="start">z</text>
+          <text class="g-meas-b" x="47" y="136" text-anchor="end">x</text>
+          <text class="g-meas-b" x="252" y="192" text-anchor="middle">y</text>
+        </svg>
+        <figcaption><span style="text-decoration:overline">BD</span> is the altitude to hypotenuse <span style="text-decoration:overline">AC</span>, so <code>AC = 8 + 25 = 33</code>. Drawn to scale.</figcaption>
+      </figure>
+      <p style="font-size:14.5px;line-height:1.7"><b>Find x.</b> <code>x</code> is leg <span style="text-decoration:overline">AB</span>, so it is the geometric mean of <code>AD</code> (the piece touching it) and <code>AC</code> (the whole hypotenuse).</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">x = &radic;(AD &middot; AC)</span><span class="reason">Geometric Mean (Leg) Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x = &radic;(8 &middot; 33)</span><span class="reason">substitution, AC = 8 + 25</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = &radic;264 = &radic;(4 &middot; 66) = 2&radic;66 &asymp; 16.2</span><span class="reason">simplify the radical</span></div>
+      <p style="font-size:14.5px;line-height:1.7;margin-top:10px"><b>Find y.</b> <code>y</code> is leg <span style="text-decoration:overline">BC</span>, paired with <code>DC = 25</code>.</p>
+      <div class="solution-step"><span class="num">4</span><span class="math">y = &radic;(DC &middot; AC) = &radic;(25 &middot; 33)</span><span class="reason">Geometric Mean (Leg) Theorem</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">y = &radic;825 = 5&radic;33 &asymp; 28.7</span><span class="reason">simplify the radical</span></div>
+      <p style="font-size:14.5px;line-height:1.7;margin-top:10px"><b>Find z.</b> <code>z</code> is the altitude, so it uses the two <b>pieces</b> only.</p>
+      <div class="solution-step"><span class="num">6</span><span class="math">z = &radic;(AD &middot; DC) = &radic;(8 &middot; 25)</span><span class="reason">Geometric Mean (Altitude) Theorem</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">z = &radic;200 = 10&radic;2 &asymp; 14.1</span><span class="reason">simplify the radical</span></div>
+      <div class="answer-box">x = 2&radic;66 &asymp; 16.2&nbsp;&nbsp;&middot;&nbsp;&nbsp;y = 5&radic;33 &asymp; 28.7&nbsp;&nbsp;&middot;&nbsp;&nbsp;z = 10&radic;2 &asymp; 14.1</div>
+      <div class="check-box"><strong>Check:</strong> <code>x&sup2; + y&sup2; = 264 + 825 = 1089</code> and <code>33&sup2; = 1089</code> &check; The Pythagorean Theorem confirms all three at once.</div>
+      <div class="warning-box"><strong>Watch Out!</strong> For <code>z</code> it is tempting to write <code>&radic;(8 &middot; 33)</code>. The altitude never uses the whole hypotenuse &mdash; only the two pieces it created.</div>
+      <div class="check-box"><strong>Your turn:</strong> a hypotenuse is split into <code>x</code> and 9 by an altitude of 12, and the legs are <code>y</code> and <code>z</code> (with <code>z</code> adjacent to 9). Then <code>12 = &radic;(9x)</code> &rarr; <code>x = 16</code>, hypotenuse <code>= 25</code>, <code>y = &radic;(16&middot;25) = 20</code>, <code>z = &radic;(9&middot;25) = 15</code>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Use Indirect Measurement</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A half-pipe ramp is measured by sighting from eye level 5.5 ft above the ground, standing 6 ft from the ramp, so that the top and bottom of the ramp line up with the edges of a book. How tall is the ramp, to the nearest foot?</div>
+      <figure class="fig">
+        <svg viewBox="0 0 300 290" width="300" role="img" aria-label="Vertical ramp AB of height about 12 feet with a horizontal altitude of 6 feet from point D to the observer at P, and 5.5 feet below D">
+          <polygon class="g-shape" points="120,49 220.2,158.1 120,250"/>
+          <line class="g-line" x1="120" y1="158.1" x2="220.2" y2="158.1"/>
+          <path class="g-right" d="M 211.4 148.5 L 201.8 157.3 L 210.6 166.9"/>
+          <path class="g-right" d="M 132 158.1 L 132 146.1 L 120 146.1"/>
+          <circle class="g-pt" cx="120" cy="49" r="4.5"/>
+          <circle class="g-pt" cx="120" cy="250" r="4.5"/>
+          <circle class="g-pt" cx="120" cy="158.1" r="4.5"/>
+          <circle class="g-pt" cx="220.2" cy="158.1" r="4.5"/>
+          <text class="g-lbl" x="120" y="38" text-anchor="middle">A</text>
+          <text class="g-lbl" x="120" y="270" text-anchor="middle">B</text>
+          <text class="g-lbl" x="106" y="164" text-anchor="end">D</text>
+          <text class="g-lbl" x="234" y="164" text-anchor="start">P</text>
+          <text class="g-meas" x="110" y="103" text-anchor="end">x</text>
+          <text class="g-meas" x="110" y="209" text-anchor="end">5.5</text>
+          <text class="g-meas g-halo" x="170" y="150" text-anchor="middle">6</text>
+        </svg>
+        <figcaption>The ramp <span style="text-decoration:overline">AB</span> is the hypotenuse, the sight distance <span style="text-decoration:overline">DP</span> = 6 is the altitude to it, and eye level splits the ramp into 5.5 and <code>x</code>.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">6 = &radic;(5.5 &middot; x)</span><span class="reason">Geometric Mean (Altitude) Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">36 = 5.5x</span><span class="reason">square each side</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x &asymp; 6.55</span><span class="reason">divide each side by 5.5</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">AB = 6.55 + 5.5 = 12.05</span><span class="reason">the hypotenuse is the whole ramp</span></div>
+      <div class="answer-box">The ramp is about 12 feet tall.</div>
+      <div class="warning-box"><strong>Watch Out!</strong> <code>x</code> is only the <b>upper piece</b>. Stopping at 6.55 forgets the 5.5 ft below eye level.</div>
+      <div class="check-box"><strong>Your turn:</strong> eye level 5.4 ft, standing 11 ft from a wall: <code>11 = &radic;(5.4x)</code> &rarr; <code>x &asymp; 22.4</code>, so the wall is about <code>22.4 + 5.4 &asymp; 28</code> ft.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Problem 1</h4>
+    <div class="prob">Find the geometric mean between 6 and 24.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">x = &radic;(6 &middot; 24) = &radic;144</span><span class="reason">definition</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x = 12</span><span class="reason">simplify</span></div>
+      <div class="answer-box">12</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 2</h4>
+    <div class="prob">Find the geometric mean between 4 and 10 in simplest radical form.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">x = &radic;(4 &middot; 10) = &radic;40</span><span class="reason">definition</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&radic;40 = &radic;(4 &middot; 10) = 2&radic;10 &asymp; 6.3</span><span class="reason">pull out the perfect square</span></div>
+      <div class="answer-box">2&radic;10 &asymp; 6.3</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 3</h4>
+    <div class="prob">An altitude to the hypotenuse splits it into segments of 9 and 16. Find the altitude and both legs.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">h = &radic;(9 &middot; 16) = &radic;144 = 12</span><span class="reason">Altitude Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">c = 9 + 16 = 25</span><span class="reason">whole hypotenuse</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">leg&#8321; = &radic;(9 &middot; 25) = 15</span><span class="reason">Leg Theorem</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">leg&#8322; = &radic;(16 &middot; 25) = 20</span><span class="reason">Leg Theorem</span></div>
+      <div class="answer-box">h = 12, legs 15 and 20</div>
+      <div class="check-box"><strong>Check:</strong> <code>15&sup2; + 20&sup2; = 225 + 400 = 625 = 25&sup2;</code> &check;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 4</h4>
+    <div class="prob">In a right triangle the hypotenuse is 20 and the altitude to it cuts off a segment of 4. Find both legs in simplest radical form.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">other piece = 20 &minus; 4 = 16</span><span class="reason">the pieces add to the hypotenuse</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b = &radic;(4 &middot; 20) = &radic;80 = 4&radic;5</span><span class="reason">Leg Theorem with the 4-piece</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">a = &radic;(16 &middot; 20) = &radic;320 = 8&radic;5</span><span class="reason">Leg Theorem with the 16-piece</span></div>
+      <div class="answer-box">4&radic;5 &asymp; 8.9 and 8&radic;5 &asymp; 17.9</div>
+      <div class="check-box"><strong>Check:</strong> <code>80 + 320 = 400 = 20&sup2;</code> &check;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 5</h4>
+    <div class="prob">The altitude to the hypotenuse measures 6 and one segment of the hypotenuse measures 4. Find the other segment and the hypotenuse.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">6 = &radic;(4y)</span><span class="reason">Altitude Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">36 = 4y</span><span class="reason">square each side</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">y = 9</span><span class="reason">divide by 4</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">c = 4 + 9 = 13</span><span class="reason">add the pieces</span></div>
+      <div class="answer-box">other segment 9, hypotenuse 13</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 6</h4>
+    <div class="prob">The geometric mean of a number and four times that number is 22. What is the number?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&radic;(n &middot; 4n) = 22</span><span class="reason">definition</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&radic;(4n&sup2;) = 2n = 22</span><span class="reason">n &gt; 0, so &radic;(4n&sup2;) = 2n</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">n = 11</span><span class="reason">divide by 2</span></div>
+      <div class="answer-box">n = 11</div>
+      <div class="check-box"><strong>Check:</strong> <code>&radic;(11 &middot; 44) = &radic;484 = 22</code> &check;</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Find the geometric mean of two numbers <code>a, b</code></td><td>Multiply, then take the positive square root</td><td><code>x = &radic;(ab)</code></td></tr>
+    <tr><td>Altitude <code>h</code> is unknown; both hypotenuse pieces known</td><td>Multiply the two <b>pieces</b> only</td><td><code>h = &radic;(xy)</code></td></tr>
+    <tr><td>A <b>leg</b> is unknown</td><td>Multiply the whole hypotenuse by the piece <b>touching that leg</b></td><td><code>leg = &radic;(piece &middot; c)</code></td></tr>
+    <tr><td>One hypotenuse piece unknown, altitude known</td><td>Set up <code>h&sup2; = xy</code> and solve for the missing piece</td><td><code>y = h&sup2; / x</code></td></tr>
+    <tr><td>Naming the three triangles</td><td>Match right angle to right angle, shared acute angle to its twin</td><td>&#9651;<em>ABC</em> &sim; &#9651;<em>ADC</em> &sim; &#9651;<em>CDB</em></td></tr>
+    <tr><td>Verify all answers at the end</td><td>Apply the Pythagorean Theorem to the original triangle</td><td><code>a&sup2; + b&sup2; = c&sup2;</code></td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">a/x = x/b</span>
+    <span class="pill">x = &radic;(ab)</span>
+    <span class="pill">h = &radic;(xy)</span>
+    <span class="pill">b = &radic;(xc)</span>
+    <span class="pill">a = &radic;(yc)</span>
+    <span class="pill">c = x + y</span>
+    <span class="pill">a&sup2; + b&sup2; = c&sup2;</span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:8px 0 0 20px;">
+      <li>Averaging instead of multiplying &mdash; the geometric mean of 4 and 9 is 6, not 6.5.</li>
+      <li>Using the whole hypotenuse inside the <b>altitude</b> formula. It takes the two pieces only.</li>
+      <li>Using the far piece inside the <b>leg</b> formula. A leg is paired with the piece it touches, times the <b>whole</b> hypotenuse.</li>
+      <li>Reporting a hypotenuse piece as the whole hypotenuse &mdash; remember to add both pieces.</li>
+      <li>Leaving radicals unsimplified: write <code>2&radic;66</code>, not <code>&radic;264</code>.</li>
+      <li>Writing a similarity statement with the vertices out of correspondence.</li>
+      <li>Accepting a negative root &mdash; lengths and geometric means are positive.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"What is the geometric mean between 4 and 9?",opts:["6","6.5","13","36"],ans:0,exp:"The geometric mean is &radic;(ab), not the average. &radic;(4&middot;9) = &radic;36 = 6. The value 6.5 is the arithmetic mean, and 36 is the product before taking the root."},
+  {q:"Find the geometric mean between 3 and 24 in simplest radical form.",opts:["4&radic;3","6&radic;2","12","8&radic;2"],ans:1,exp:"&radic;(3&middot;24) = &radic;72. Since 72 = 36&middot;2, &radic;72 = 6&radic;2 &asymp; 8.49. Pull out the largest perfect-square factor to simplify."},
+  {q:"The geometric mean between 5 and 45 equals which value?",opts:["&radic;50","25","15","&radic;10"],ans:2,exp:"&radic;(5&middot;45) = &radic;225 = 15. Check the defining proportion: 5/15 = 15/45 becomes 1/3 = 1/3, which is true."},
+  {q:"An altitude to the hypotenuse of a right triangle splits it into segments of 4 and 9. How long is the altitude?",opts:["13","&radic;13","6.5","6"],ans:3,exp:"The Altitude Theorem uses the two pieces only: h = &radic;(4&middot;9) = &radic;36 = 6. The value 13 is the whole hypotenuse and 6.5 is the arithmetic mean of the pieces."},
+  {q:"An altitude to a hypotenuse measures 12 and one hypotenuse segment measures 9. What is the other segment?",opts:["16","15","18","20"],ans:0,exp:"h&sup2; = xy, so 144 = 9y, giving y = 16. Note the hypotenuse is then 9 + 16 = 25, and the legs come out to 15 and 20."},
+  {q:"A right triangle has hypotenuse 25, and the altitude to it cuts off a segment of 9 next to one leg. How long is that leg?",opts:["&radic;34","12","15","20"],ans:2,exp:"The Leg Theorem pairs a leg with the piece it touches and the WHOLE hypotenuse: leg = &radic;(9&middot;25) = &radic;225 = 15. Using 9 and 16 instead would give the altitude, not the leg."},
+  {q:"In the figure, the altitude divides the hypotenuse into 3 and 12. Find h.",opts:["4.5","6","7.5","&radic;15"],ans:1,exp:"h = &radic;(3&middot;12) = &radic;36 = 6. The value 7.5 is the arithmetic mean of 3 and 12, which is not what the Altitude Theorem gives.",fig:"<svg viewBox='0 0 350 180' width='350' role='img' aria-label='Right triangle with altitude splitting the hypotenuse into 3 and 12'><polygon class='g-shape' points='20,150 320,150 80,30'/><path class='g-right' d='M 74.6 38.9 L 85.3 45.3 L 91.3 34.6'/><line class='g-line' x1='80' y1='150' x2='80' y2='30'/><path class='g-right' d='M 92 150 L 92 138 L 80 138'/><text class='g-meas' x='50' y='170' text-anchor='middle'>3</text><text class='g-meas' x='200' y='170' text-anchor='middle'>12</text><text class='g-meas-b g-halo' x='92' y='96' text-anchor='start'>h</text></svg>"},
+  {q:"In right &#9651;ABC the right angle is at C, and altitude CD is drawn to hypotenuse AB with AD = x, DB = y and CD = h. Which proportion is correct?",opts:["x/h = y/h","x/y = h/y","h/x = h/y","x/h = h/y"],ans:3,exp:"A geometric mean sits in BOTH middle positions of the proportion. x/h = h/y cross-multiplies to h&sup2; = xy, which is the Altitude Theorem. Each other choice forces x = y or x = h, which is not generally true."},
+  {q:"A right triangle has legs 6 and 8. How long is the altitude drawn to the hypotenuse?",opts:["4.8","5","7","&radic;48"],ans:0,exp:"The hypotenuse is 10. The area can be written two ways: (1/2)(6)(8) = (1/2)(10)(h), so h = 48/10 = 4.8. Equivalently the pieces are 3.6 and 6.4, and &radic;(3.6&middot;6.4) = &radic;23.04 = 4.8."},
+  {q:"A right triangle has legs 6 and 8. What is the hypotenuse segment adjacent to the leg of length 6?",opts:["4.8","3.6","6.4","4"],ans:1,exp:"By the Leg Theorem, 6 = &radic;(10x), so 36 = 10x and x = 3.6. The segment 6.4 is the one adjacent to the leg of length 8, and 3.6 + 6.4 = 10 as required."},
+  {q:"The geometric mean of a number n and 4n is 22. Find n.",opts:["5.5","44","11","22"],ans:2,exp:"&radic;(n&middot;4n) = &radic;(4n&sup2;) = 2n for positive n. Setting 2n = 22 gives n = 11. Check: &radic;(11&middot;44) = &radic;484 = 22."},
+  {q:"In the figure, the altitude divides the hypotenuse into 4 and 5. Find the leg x adjacent to the segment of length 4.",opts:["&radic;41","2&radic;5","4.5","6"],ans:3,exp:"The whole hypotenuse is 4 + 5 = 9, so x = &radic;(4&middot;9) = &radic;36 = 6. Choosing 2&radic;5 means you used the two pieces (that is the altitude), and &radic;41 comes from a misplaced Pythagorean step.",fig:"<svg viewBox='0 0 290 180' width='290' role='img' aria-label='Right triangle with altitude splitting the hypotenuse into 4 and 5, leg x adjacent to the segment of 4'><polygon class='g-shape' points='24,150 258,150 128,33.7'/><path class='g-right' d='M 122.2 43.4 L 132.6 48.9 L 138.1 38.5'/><line class='g-aux' x1='128' y1='150' x2='128' y2='33.7'/><path class='g-right' d='M 140 150 L 140 138 L 128 138'/><text class='g-meas' x='76' y='170' text-anchor='middle'>4</text><text class='g-meas' x='193' y='170' text-anchor='middle'>5</text><text class='g-meas-b g-halo' x='68' y='86' text-anchor='end'>x</text></svg>"},
+  {q:"In right &#9651;ABC with the right angle at C, altitude CD is drawn to hypotenuse AB. Complete the similarity statement &#9651;ADC &sim; ___",opts:["&#9651;BDC","&#9651;DBC","&#9651;CDB","&#9651;BCD"],ans:2,exp:"Match equal angles in order. &ang;A = &ang;DCB (both equal 90&deg; &minus; &ang;B), the right angles &ang;ADC and &ang;CDB correspond, and &ang;ACD = &ang;DBC. So A &harr; C, D &harr; D, C &harr; B, giving &#9651;CDB."},
+  {q:"For two positive numbers, the geometric mean equals the arithmetic mean exactly when:",opts:["one of them is 0","the two numbers are equal","one of them is 1","this never happens"],ans:1,exp:"If a = b then &radic;(ab) = a and (a + b)/2 = a. Otherwise &radic;(ab) is strictly less than (a + b)/2, since (&radic;a &minus; &radic;b)&sup2; &gt; 0 rearranges to a + b &gt; 2&radic;(ab)."},
+  {q:"An altitude divides a hypotenuse of length 18 into two segments whose lengths are in the ratio 1:2. Find the altitude.",opts:["6&radic;2","9","&radic;18","6&radic;3"],ans:0,exp:"The pieces are 6 and 12 since 6 + 12 = 18 and 6:12 = 1:2. Then h = &radic;(6&middot;12) = &radic;72 = 6&radic;2 &asymp; 8.49. The value 9 would be half the hypotenuse, which is not the altitude here."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

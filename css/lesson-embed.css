@@ -1,0 +1,344 @@
+/* Embedded SAT lesson pages (data/lessons/*.html).
+   Generated from the standalone lesson stylesheet, scoped to .sat-lesson
+   so nothing leaks into the rest of the site. */
+
+/* Palette for embedded SAT lesson pages. Light values match the original
+   standalone pages; the dark block below re-points them at the site's theme. */
+.sat-lesson {
+  --sl-navy: #0f2d6b;
+  --sl-blue: #1a4fa0;
+  --sl-orange: #e05c2a;
+  --sl-green: #16a34a;
+  --sl-blue-soft: #e8f0fb;
+  --sl-orange-soft: #fff3ee;
+  --sl-green-soft: #f0fdf4;
+  --sl-blue-line: #bfd3f5;
+  --sl-orange-line: #fdba74;
+  --sl-green-line: #86efac;
+  --sl-green-ink: #065f46;
+  --sl-bad: #ef4444;
+  --sl-bad-soft: #fef2f2;
+  --sl-bad-line: #fca5a5;
+  --sl-bad-ink: #7f1d1d;
+  --sl-warm-1: #fff7ed;
+  --sl-warm-2: #fef3c7;
+  --sl-amber: #fbbf24;
+  --sl-amber-ink: #d97706;
+  --sl-purple: #7c3aed;
+  --sl-crimson: #be123c;
+  --sl-surface: #ffffff;
+  --sl-surface-2: #fafafa;
+  --sl-surface-3: #f8faff;
+  --sl-line: #e2e8f0;
+  --sl-line-2: #dbe4f0;
+  --sl-line-3: #cbd5e1;
+  --sl-ink: #1e293b;
+  --sl-ink-2: #475569;
+  --sl-muted: #64748b;
+  --sl-muted-2: #94a3b8;
+  color: var(--sl-ink);
+}
+
+[data-theme="dark"] .sat-lesson {
+  --sl-navy: #A9B8F0;
+  --sl-blue: #8FB4F5;
+  --sl-orange: #FFA94D;
+  --sl-green: #4BD6AC;
+  --sl-blue-soft: #1B2547;
+  --sl-orange-soft: #3B2A18;
+  --sl-green-soft: #14322B;
+  --sl-blue-line: #33427A;
+  --sl-orange-line: #7A4A1D;
+  --sl-green-line: #1E5A48;
+  --sl-green-ink: #86EFC4;
+  --sl-bad: #f87171;
+  --sl-bad-soft: #381D1D;
+  --sl-bad-line: #5A2727;
+  --sl-bad-ink: #FCA5A5;
+  --sl-warm-1: #2C2314;
+  --sl-warm-2: #3B2F14;
+  --sl-amber: #FFD673;
+  --sl-amber-ink: #FFC062;
+  --sl-purple: #B197FC;
+  --sl-crimson: #FF8FAB;
+  --sl-surface: #182043;
+  --sl-surface-2: #1C2450;
+  --sl-surface-3: #1C2450;
+  --sl-line: #2B3563;
+  --sl-line-2: #2B3563;
+  --sl-line-3: #3A4573;
+  --sl-ink: #E4E9F7;
+  --sl-ink-2: #C4CCE8;
+  --sl-muted: #9AA6C8;
+  --sl-muted-2: #8590B5;
+}
+
+/* These class names exist in both style.css and the lesson pages. Inside a
+   lesson the page's own rules win; everything the site would contribute is
+   reverted first so no site component styling leaks in. */
+.sat-lesson .active,
+.sat-lesson .bad,
+.sat-lesson .badge,
+.sat-lesson .big,
+.sat-lesson .btn,
+.sat-lesson .btn-primary,
+.sat-lesson .card,
+.sat-lesson .case-box,
+.sat-lesson .cases-grid,
+.sat-lesson .check-box,
+.sat-lesson .concept-card,
+.sat-lesson .correct,
+.sat-lesson .example-body,
+.sat-lesson .example-card,
+.sat-lesson .example-header,
+.sat-lesson .feedback,
+.sat-lesson .good,
+.sat-lesson .green,
+.sat-lesson .hero,
+.sat-lesson .ineq-table,
+.sat-lesson .msg,
+.sat-lesson .num,
+.sat-lesson .open,
+.sat-lesson .q-card,
+.sat-lesson .reveal-btn,
+.sat-lesson .step,
+.sat-lesson .steps-list,
+.sat-lesson .toggle-icon,
+.sat-lesson .vocab-grid,
+.sat-lesson .warning-box {
+  display: revert;
+  flex: revert;
+  flex-direction: revert;
+  align-items: revert;
+  justify-content: revert;
+  gap: revert;
+  grid-template-columns: revert;
+  position: revert;
+  inset: revert;
+  float: revert;
+  width: revert;
+  height: revert;
+  min-width: revert;
+  max-width: revert;
+  padding: revert;
+  margin: revert;
+  border: revert;
+  border-radius: revert;
+  background: revert;
+  color: revert;
+  box-shadow: revert;
+  text-align: revert;
+  text-decoration: revert;
+  text-transform: revert;
+  letter-spacing: revert;
+  line-height: revert;
+  overflow: revert;
+  cursor: revert;
+  transition: revert;
+  transform: revert;
+  opacity: revert;
+  content: revert;
+}
+
+.sat-lesson button, .sat-lesson input, .sat-lesson select { font: inherit; }
+
+.sat-lesson { --navy:var(--sl-navy);--blue:var(--sl-blue);--orange:var(--sl-orange);--green:var(--sl-green);--light-blue:var(--sl-blue-soft);--light-orange:var(--sl-orange-soft);--light-green:var(--sl-green-soft) }
+.sat-lesson section { margin-bottom:48px }
+.sat-lesson h2 { font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid var(--orange);display:inline-block }
+.sat-lesson .concept-card { background:var(--sl-surface);border-left:5px solid var(--blue);border-radius:8px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07) }
+.sat-lesson .concept-card h3 { color:var(--blue);font-size:16px;font-weight:700;margin-bottom:10px }
+.sat-lesson .concept-card p, .sat-lesson .concept-card li { font-size:15px;line-height:1.7 }
+.sat-lesson .concept-card ul { margin:8px 0 0 20px }
+.sat-lesson .formula-box { background:var(--light-blue);border:1px solid var(--sl-blue-line);border-radius:6px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:15px;color:var(--navy);line-height:1.9 }
+.sat-lesson .vocab { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 }
+@media(max-width:600px) {
+  .sat-lesson .vocab { grid-template-columns:1fr }
+}
+.sat-lesson .vocab-item { background:var(--sl-surface-2);border:1px solid var(--sl-line);border-radius:6px;padding:10px 14px;font-size:14px;line-height:1.6 }
+.sat-lesson .vocab-item b { color:var(--orange) }
+.sat-lesson .steps-list { counter-reset:s;margin:10px 0 }
+.sat-lesson .steps-list .s { position:relative;padding:10px 12px 10px 44px;margin-bottom:8px;background:var(--sl-surface-2);border-radius:6px;font-size:14px;line-height:1.6 }
+.sat-lesson .steps-list .s:before { counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center }
+.sat-lesson table.tbl { width:100%;border-collapse:collapse;margin:12px 0;font-size:14px }
+.sat-lesson table.tbl th { background:var(--navy);color:white;padding:9px 12px;text-align:left;font-weight:600 }
+.sat-lesson table.tbl td { padding:9px 12px;border-bottom:1px solid var(--sl-line) }
+.sat-lesson table.tbl tr:nth-child(even) td { background:var(--sl-surface-3) }
+.sat-lesson table.tbl code { font-family:'Courier New',monospace;color:var(--navy) }
+.sat-lesson .example-card { background:var(--sl-surface);border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.09);margin-bottom:16px;overflow:hidden }
+.sat-lesson .example-header { display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;background:var(--sl-surface);border:none;width:100%;text-align:left }
+.sat-lesson .example-header:hover { background:var(--sl-surface-3) }
+.sat-lesson .example-label { font-size:11px;font-weight:700;color:white;background:var(--orange);padding:3px 10px;border-radius:12px;text-transform:uppercase;flex-shrink:0 }
+.sat-lesson .example-title { font-size:15px;font-weight:600;color:var(--navy);flex:1 }
+.sat-lesson .toggle-icon { font-size:20px;color:var(--sl-muted-2);transition:transform .3s }
+.sat-lesson .example-header.open .toggle-icon { transform:rotate(45deg) }
+.sat-lesson .example-body { display:none;padding:20px 24px;border-top:1px solid var(--sl-line) }
+.sat-lesson .example-body.open { display:block }
+.sat-lesson .problem-stmt { background:var(--sl-surface-3);border-left:4px solid var(--orange);border-radius:4px;padding:12px 16px;margin-bottom:16px;font-weight:600;font-size:15px;font-family:'Courier New',monospace }
+.sat-lesson .solution-step { display:flex;gap:12px;margin-bottom:8px;padding:9px 12px;border-radius:6px;background:var(--sl-surface-2);align-items:baseline;flex-wrap:wrap }
+.sat-lesson .solution-step .num { width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0 }
+.sat-lesson .solution-step .math { font-family:'Courier New',monospace;font-size:14px;color:var(--navy);flex:1;min-width:180px }
+.sat-lesson .solution-step .reason { font-size:13px;color:var(--orange);font-style:italic;min-width:160px;text-align:right }
+.sat-lesson .answer-box { background:var(--sl-green-soft);border:2px solid var(--green);border-radius:8px;padding:12px 18px;margin-top:14px;font-family:'Courier New',monospace;font-size:15px;color:var(--sl-green-ink);font-weight:700;text-align:center }
+.sat-lesson .check-box { background:var(--light-green);border:1px solid var(--sl-green-line);border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7 }
+.sat-lesson .check-box strong { color:var(--sl-green-ink) }
+.sat-lesson .warning-box { background:var(--light-orange);border:1px solid var(--sl-orange-line);border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7 }
+.sat-lesson .warning-box strong { color:var(--orange) }
+.sat-lesson .info-box { background:var(--light-blue);border:1px solid var(--sl-blue-line);border-radius:6px;padding:12px 16px;margin:10px 0;font-size:14px;line-height:1.7 }
+.sat-lesson .info-box strong { color:var(--blue) }
+.sat-lesson .case-grid { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 }
+@media(max-width:600px) {
+  .sat-lesson .case-grid { grid-template-columns:1fr }
+}
+.sat-lesson .case-box { background:var(--sl-surface-2);border:1px solid var(--sl-line);border-radius:8px;padding:14px }
+.sat-lesson .case-box h4 { font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px }
+.sat-lesson .case-box .math { font-family:'Courier New',monospace;font-size:13px;line-height:1.9 }
+.sat-lesson .quiz-header { background:linear-gradient(135deg,var(--sl-orange),var(--sl-navy));color:white;border-radius:10px;padding:20px 24px;margin-bottom:20px;text-align:center }
+.sat-lesson .quiz-header h2 { color:white;border:none;font-size:20px }
+.sat-lesson .quiz-header p { opacity:.9;font-size:14px;margin-top:6px }
+.sat-lesson .q-card { background:var(--sl-surface);border-radius:10px;padding:20px 24px;margin-bottom:14px;box-shadow:0 1px 5px rgba(0,0,0,.08) }
+.sat-lesson .q-num { font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;margin-bottom:8px }
+.sat-lesson .q-text { font-size:15px;font-weight:600;color:var(--navy);margin-bottom:14px;font-family:'Courier New',monospace }
+.sat-lesson .options { display:grid;grid-template-columns:1fr 1fr;gap:8px }
+@media(max-width:560px) {
+  .sat-lesson .options { grid-template-columns:1fr }
+}
+.sat-lesson .option-btn { padding:10px 14px;border:2px solid var(--sl-line-3);border-radius:8px;background:var(--sl-surface);font-size:14px;cursor:pointer;text-align:left;transition:all .2s;font-family:'Courier New',monospace }
+.sat-lesson .option-btn:hover:not(:disabled) { border-color:var(--orange);background:var(--sl-orange-soft) }
+.sat-lesson .option-btn.correct { border-color:var(--green);background:var(--light-green);color:var(--sl-green-ink) }
+.sat-lesson .option-btn.wrong { border-color:var(--sl-bad);background:var(--sl-bad-soft);color:var(--sl-bad-ink) }
+.sat-lesson .option-btn:disabled { cursor:default }
+.sat-lesson .feedback { margin-top:10px;padding:8px 14px;border-radius:6px;font-size:14px;display:none;line-height:1.6 }
+.sat-lesson .feedback.show { display:block }
+.sat-lesson .feedback.correct { background:var(--light-green);color:var(--sl-green-ink);border:1px solid var(--sl-green-line) }
+.sat-lesson .feedback.wrong { background:var(--sl-bad-soft);color:var(--sl-bad-ink);border:1px solid var(--sl-bad-line) }
+.sat-lesson .score-panel { display:none;background:var(--sl-surface);border-radius:12px;padding:32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.1);margin-top:20px }
+.sat-lesson .score-panel.show { display:block }
+.sat-lesson .score-big { font-size:56px;font-weight:800;color:var(--navy) }
+.sat-lesson .score-msg { font-size:18px;color:var(--sl-muted);margin:8px 0 20px }
+.sat-lesson .btn-retry { padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer }
+.sat-lesson .fig { background:var(--sl-surface);border:1px solid var(--sl-line-2);border-radius:10px;padding:18px 16px 14px;margin:16px 0;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06) }
+.sat-lesson .fig svg { max-width:100%;height:auto;display:block;margin:0 auto;overflow:visible }
+.sat-lesson .fig figcaption { font-size:13px;color:var(--sl-muted);margin-top:10px;font-style:italic;line-height:1.5 }
+.sat-lesson .fig-title { font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px }
+.sat-lesson .g-shape { fill:var(--sl-blue-soft);stroke:var(--sl-blue);stroke-width:2.4;stroke-linejoin:round }
+.sat-lesson .g-shape-alt { fill:var(--sl-orange-soft);stroke:var(--sl-orange);stroke-width:2.4;stroke-linejoin:round }
+.sat-lesson .g-line { stroke:var(--sl-navy);stroke-width:2.4;fill:none;stroke-linecap:round }
+.sat-lesson .g-line-thin { stroke:var(--sl-ink-2);stroke-width:1.4;fill:none }
+.sat-lesson .g-dash { stroke:var(--sl-orange);stroke-width:2;fill:none;stroke-dasharray:6 5;stroke-linecap:round }
+.sat-lesson .g-aux { stroke:var(--sl-muted-2);stroke-width:1.3;fill:none;stroke-dasharray:4 4 }
+.sat-lesson .g-arc { fill:none;stroke:var(--sl-green);stroke-width:2.4;stroke-linecap:round }
+.sat-lesson .g-angle { fill:none;stroke:var(--sl-orange);stroke-width:2 }
+.sat-lesson .g-angle-fill { fill:rgba(224,92,42,.16);stroke:var(--sl-orange);stroke-width:1.6 }
+.sat-lesson .g-pt { fill:var(--sl-navy);stroke:var(--sl-surface);stroke-width:1.6 }
+.sat-lesson .g-pt-o { fill:var(--sl-surface);stroke:var(--sl-navy);stroke-width:2.2 }
+.sat-lesson .g-lbl { font-family:'Times New Roman',Georgia,serif;font-style:italic;font-size:16px;font-weight:600;fill:var(--sl-navy) }
+.sat-lesson .g-lbl-sm { font-family:system-ui,sans-serif;font-size:12.5px;font-weight:600;fill:var(--sl-ink-2);font-style:normal }
+.sat-lesson .g-meas { font-family:system-ui,sans-serif;font-size:13px;font-weight:700;fill:var(--sl-orange);font-style:normal }
+.sat-lesson .g-meas-b { font-family:system-ui,sans-serif;font-size:13px;font-weight:700;fill:var(--sl-blue);font-style:normal }
+.sat-lesson .g-grn { font-family:system-ui,sans-serif;font-size:13px;font-weight:700;fill:var(--sl-green);font-style:normal }
+.sat-lesson .g-halo { stroke:var(--sl-surface);stroke-width:4.5;paint-order:stroke }
+.sat-lesson .g-tick { stroke:var(--sl-orange);stroke-width:2.2;stroke-linecap:round }
+.sat-lesson .g-right { fill:none;stroke:var(--sl-orange);stroke-width:2 }
+.sat-lesson .g-grid { stroke:var(--sl-line);stroke-width:1 }
+.sat-lesson .g-axis { stroke:var(--sl-ink-2);stroke-width:1.8 }
+.sat-lesson .g-hot { cursor:pointer;transition:all .18s ease }
+.sat-lesson .g-hot:hover { filter:drop-shadow(0 0 5px rgba(224,92,42,.75)) }
+.sat-lesson .g-fade { opacity:.22;transition:opacity .25s }
+.sat-lesson .fig-legend { display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px }
+.sat-lesson .fig-chip { font-size:12px;font-weight:600;padding:4px 12px;border-radius:14px;border:1.5px solid var(--sl-line-3);background:var(--sl-surface);cursor:pointer;transition:all .18s;color:var(--sl-ink-2) }
+.sat-lesson .fig-chip:hover { border-color:var(--orange);color:var(--orange) }
+.sat-lesson .fig-chip.on { background:var(--orange);border-color:var(--orange);color:white }
+.sat-lesson .reveal-btn { margin-top:12px;padding:9px 20px;border:2px dashed var(--blue);background:var(--light-blue);color:var(--navy);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s }
+.sat-lesson .reveal-btn:hover { background:var(--blue);color:white;border-style:solid }
+.sat-lesson .reveal-body { display:none;margin-top:12px }
+.sat-lesson .reveal-body.open { display:block;animation:fadeIn .3s }
+@keyframes fadeIn {from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+.sat-lesson .tabs { display:flex;gap:6px;border-bottom:2px solid var(--sl-line);margin-bottom:14px;flex-wrap:wrap }
+.sat-lesson .tab-btn { padding:8px 16px;border:none;background:none;font-size:13.5px;font-weight:700;color:var(--sl-muted-2);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s }
+.sat-lesson .tab-btn:hover { color:var(--blue) }
+.sat-lesson .tab-btn.on { color:var(--navy);border-bottom-color:var(--orange) }
+.sat-lesson .tab-pane { display:none }
+.sat-lesson .tab-pane.on { display:block;animation:fadeIn .25s }
+.sat-lesson .try-box { background:linear-gradient(135deg,var(--sl-warm-1),var(--sl-warm-2));border:1px solid var(--sl-orange-line);border-radius:8px;padding:14px 18px;margin:12px 0 }
+.sat-lesson .try-box h4 { font-size:13px;font-weight:800;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px }
+.sat-lesson .try-box .prob { font-family:'Courier New',monospace;font-size:15px;color:var(--navy);font-weight:600 }
+.sat-lesson .keyfact { display:flex;gap:12px;align-items:flex-start;background:var(--sl-surface);border:1px solid var(--sl-line);border-left:5px solid var(--green);border-radius:8px;padding:14px 18px;margin:10px 0 }
+.sat-lesson .keyfact .ico { width:28px;height:28px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0 }
+.sat-lesson .keyfact .txt { font-size:14.5px;line-height:1.7 }
+.sat-lesson .theorem { background:var(--sl-surface);border:2px solid var(--navy);border-radius:10px;padding:0;margin:14px 0;overflow:hidden }
+.sat-lesson .theorem-head { background:var(--navy);color:white;padding:8px 18px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.7px }
+.sat-lesson .theorem-body { padding:16px 18px;font-size:15px;line-height:1.75 }
+.sat-lesson .two-col { display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start }
+@media(max-width:700px) {
+  .sat-lesson .two-col { grid-template-columns:1fr }
+}
+.sat-lesson .pill-row { display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 }
+.sat-lesson .pill { background:var(--light-blue);border:1px solid var(--sl-blue-line);color:var(--navy);border-radius:16px;padding:5px 14px;font-size:13px;font-weight:600;font-family:'Courier New',monospace }
+.sat-lesson .slider-box { background:var(--sl-surface-3);border:1px solid var(--sl-line-2);border-radius:8px;padding:14px 18px;margin:12px 0 }
+.sat-lesson .slider-box label { font-size:13px;font-weight:700;color:var(--navy);display:block;margin-bottom:8px }
+.sat-lesson .slider-box input[type=range] { width:100%;accent-color:var(--orange) }
+.sat-lesson .slider-out { font-family:'Courier New',monospace;font-size:15px;font-weight:700;color:var(--orange);margin-top:8px;display:block }
+
+/* ---- fragment chrome (replaces the standalone page's hero + sticky nav) ---- */
+.sat-lesson { display: block; }
+.sat-lesson > section:last-child { margin-bottom: 0; }
+
+.lesson-objective {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--sl-ink-2);
+  background: var(--sl-blue-soft);
+  border: 1px solid var(--sl-blue-line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.lesson-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.lesson-jump a {
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--sl-navy);
+  background: var(--sl-surface);
+  border: 1px solid var(--sl-line);
+  border-radius: 16px;
+  padding: 5px 13px;
+  cursor: pointer;
+  transition: all .18s;
+}
+.lesson-jump a:hover {
+  border-color: var(--sl-orange);
+  color: var(--sl-orange);
+}
+
+/* The site owns the page background, so lesson cards sit on it directly. */
+.sat-lesson h2 { scroll-margin-top: 5rem; }
+.sat-lesson section { scroll-margin-top: 5rem; }
+
+/* Buttons do not inherit colour from their container. */
+.sat-lesson .option-btn { color: var(--sl-ink); }
+
+/* In dark mode the accent tokens become light tints, so anything printed on
+   top of one needs dark ink instead of white. */
+[data-theme="dark"] .sat-lesson .steps-list .s:before,
+[data-theme="dark"] .sat-lesson table.tbl th,
+[data-theme="dark"] .sat-lesson .solution-step .num,
+[data-theme="dark"] .sat-lesson .example-label,
+[data-theme="dark"] .sat-lesson .theorem-head,
+[data-theme="dark"] .sat-lesson .keyfact .ico,
+[data-theme="dark"] .sat-lesson .fig-chip.on,
+[data-theme="dark"] .sat-lesson .btn-retry,
+[data-theme="dark"] .sat-lesson .reveal-btn:hover { color: #10152B; }
+
+/* The quiz banner keeps a deep gradient rather than inverting to a pale one. */
+[data-theme="dark"] .sat-lesson .quiz-header {
+  background: linear-gradient(135deg, #7A3F1C 0%, #1B2547 100%);
+  color: #fff;
+}
+[data-theme="dark"] .sat-lesson .quiz-header h2 { color: #fff; }

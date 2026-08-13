@@ -1,0 +1,609 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Use the Polygon Interior Angles Sum Theorem and the Polygon Exterior Angles Sum Theorem to find missing angle measures and to identify a polygon from one of its angles.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+<h2>Core Concepts</h2>
+
+<div class="concept-card">
+<h3>1. Diagonals: the tool that turns a polygon into triangles</h3>
+<p>A polygon is a closed figure made of straight segments. You already know the angles of a triangle add to 180&deg;. Every other polygon can be <em>cut into triangles</em>, and that single idea gives you every formula in this lesson.</p>
+<div class="vocab">
+  <div class="vocab-item"><b>Diagonal</b> &mdash; a segment that connects any two <em>nonconsecutive</em> vertices of a polygon.</div>
+  <div class="vocab-item"><b>Consecutive vertices</b> &mdash; two vertices joined by a side. You cannot draw a diagonal between them; that segment is already a side.</div>
+  <div class="vocab-item"><b>Convex polygon</b> &mdash; no interior angle is greater than 180&deg;; every diagonal stays inside the figure.</div>
+  <div class="vocab-item"><b>Regular polygon</b> &mdash; all sides congruent <em>and</em> all angles congruent.</div>
+</div>
+<p>In polygon <code>PQRST</code>, the vertices <em>not</em> consecutive with <em>P</em> are <em>R</em> and <em>S</em>. Drawing <span style="text-decoration:overline">PR</span> and <span style="text-decoration:overline">PS</span> separates the pentagon into <strong>three</strong> triangles &mdash; and the five interior angles of the pentagon are exactly the nine angles of those three triangles, regrouped.</p>
+<div class="info-box"><strong>Study Tip &mdash; Naming polygons.</strong> A polygon with <em>n</em> sides is an <em>n</em>-gon, but several have special names: 3 triangle, 4 quadrilateral, 5 pentagon, 6 hexagon, 7 heptagon, 8 octagon, 9 nonagon, 10 decagon, 11 hendecagon, 12 dodecagon.</div>
+</div>
+
+<div class="concept-card">
+<h3>2. The interior angle sum</h3>
+<p>From one vertex of a convex <em>n</em>-gon you can reach every vertex except itself and its two neighbours, so you draw <code>n &minus; 3</code> diagonals. Those diagonals slice the polygon into <code>n &minus; 2</code> triangles. Each triangle contributes 180&deg;.</p>
+<div class="theorem">
+  <div class="theorem-head">Theorem 7.1 &middot; Polygon Interior Angles Sum Theorem</div>
+  <div class="theorem-body">The sum of the interior angle measures of an <em>n</em>-sided convex polygon is <code>(n &minus; 2) &middot; 180&deg;</code>.</div>
+</div>
+<div class="formula-box">
+S = (n &minus; 2) &middot; 180&deg;<br>
+n = 4 &rarr; 2 &middot; 180&deg; = 360&deg;&nbsp;&nbsp;&nbsp;n = 5 &rarr; 3 &middot; 180&deg; = 540&deg;<br>
+n = 6 &rarr; 4 &middot; 180&deg; = 720&deg;&nbsp;&nbsp;&nbsp;n = 8 &rarr; 6 &middot; 180&deg; = 1080&deg;
+</div>
+<p>The formula runs both ways. Given <em>n</em>, multiply. Given the sum <em>S</em>, solve <code>(n &minus; 2) &middot; 180 = S</code> for <em>n</em>.</p>
+</div>
+
+<div class="concept-card">
+<h3>3. One interior angle of a <em>regular</em> polygon</h3>
+<p>If the polygon is regular, all <em>n</em> interior angles are congruent, so share the total equally.</p>
+<div class="formula-box">
+each interior angle = (n &minus; 2) &middot; 180&deg; / n
+</div>
+<p>Reverse it to identify a polygon from one angle. If each interior angle is <code>a&deg;</code>, then the total is <code>a &middot; n</code>, so solve <code>a &middot; n = (n &minus; 2) &middot; 180</code>.</p>
+<div class="steps-list">
+  <div class="s">Write <code>a &middot; n = (n &minus; 2) &middot; 180</code>.</div>
+  <div class="s">Distribute: <code>an = 180n &minus; 360</code>.</div>
+  <div class="s">Collect: <code>360 = 180n &minus; an = n(180 &minus; a)</code>.</div>
+  <div class="s">Solve: <code>n = 360 / (180 &minus; a)</code>. Notice <code>180 &minus; a</code> is the exterior angle.</div>
+</div>
+</div>
+
+<div class="concept-card">
+<h3>4. The exterior angle sum &mdash; always 360&deg;</h3>
+<p>Extend one side at each vertex. The angle between that extension and the next side is an <strong>exterior angle</strong>. Walk once around the polygon and you turn through every exterior angle; when you get back to the start you are facing the way you began, so you have turned one full circle.</p>
+<div class="theorem">
+  <div class="theorem-head">Theorem 7.2 &middot; Polygon Exterior Angles Sum Theorem</div>
+  <div class="theorem-body">The sum of the exterior angle measures of a convex polygon, <strong>one angle at each vertex</strong>, is 360&deg;.<br><code>m&ang;1 + m&ang;2 + m&ang;3 + m&ang;4 + m&ang;5 + m&ang;6 = 360&deg;</code></div>
+</div>
+<p>This total does <em>not</em> depend on <em>n</em>. A triangle, a decagon and a 65-gon all have exterior angle sum 360&deg;.</p>
+<div class="formula-box">
+each exterior angle of a <em>regular</em> n-gon = 360&deg; / n<br>
+interior angle + exterior angle = 180&deg;&nbsp;&nbsp;(linear pair)
+</div>
+</div>
+
+<div class="keyfact"><div class="ico">1</div><div class="txt"><code>(n &minus; 2) &middot; 180&deg;</code> &mdash; interior angle sum of any convex <em>n</em>-gon.</div></div>
+<div class="keyfact"><div class="ico">2</div><div class="txt"><code>360&deg;</code> &mdash; exterior angle sum of <em>every</em> convex polygon.</div></div>
+<div class="keyfact"><div class="ico">3</div><div class="txt"><code>360&deg; / n</code> &mdash; each exterior angle of a regular <em>n</em>-gon; <code>(n &minus; 2)180&deg; / n</code> &mdash; each interior angle.</div></div>
+<div class="keyfact"><div class="ico">4</div><div class="txt">An interior angle and its exterior angle at the same vertex form a linear pair: they add to 180&deg;.</div></div>
+
+<div class="warning-box"><strong>Watch Out!</strong> The <em>number of triangles</em> is <code>n &minus; 2</code>, not <em>n</em>. The <em>number of diagonals from one vertex</em> is <code>n &minus; 3</code>. And "360&deg;" is the exterior <em>sum</em> &mdash; only divide by <em>n</em> when the polygon is <strong>regular</strong>.</div>
+</section>
+
+<section id="figures">
+<h2>Key Figures</h2>
+
+<figure class="fig">
+  <div class="fig-title">Why the sum is (n &minus; 2) &middot; 180&deg;</div>
+  <svg id="fig1" viewBox="0 0 420 330" width="420" role="img" aria-label="Pentagon PQRST split into three triangles by the two diagonals from vertex P">
+    <g data-part="sides">
+      <polygon class="g-shape" points="90,85 220,70 350,165 215,280 80,175"/>
+    </g>
+    <g data-part="triangles">
+      <polygon class="g-shape-alt" fill-opacity=".45" points="90,85 220,70 350,165"/>
+      <polygon class="g-shape-alt" fill-opacity=".28" points="90,85 350,165 215,280"/>
+      <polygon class="g-shape-alt" fill-opacity=".45" points="90,85 215,280 80,175"/>
+      <text class="g-meas g-halo" x="220" y="111" text-anchor="middle">180&deg;</text>
+      <text class="g-meas g-halo" x="218" y="181" text-anchor="middle">180&deg;</text>
+      <text class="g-meas g-halo" x="128" y="184" text-anchor="middle">180&deg;</text>
+    </g>
+    <g data-part="diagonals">
+      <line class="g-dash" x1="90" y1="85" x2="350" y2="165"/>
+      <line class="g-dash" x1="90" y1="85" x2="215" y2="280"/>
+    </g>
+    <g data-part="vertices">
+      <circle class="g-pt" cx="90" cy="85" r="4.5"/>
+      <circle class="g-pt" cx="220" cy="70" r="4.5"/>
+      <circle class="g-pt" cx="350" cy="165" r="4.5"/>
+      <circle class="g-pt" cx="215" cy="280" r="4.5"/>
+      <circle class="g-pt" cx="80" cy="175" r="4.5"/>
+      <text class="g-lbl" x="78" y="72" text-anchor="end">P</text>
+      <text class="g-lbl" x="220" y="56" text-anchor="middle">Q</text>
+      <text class="g-lbl" x="366" y="170" text-anchor="start">R</text>
+      <text class="g-lbl" x="215" y="302" text-anchor="middle">S</text>
+      <text class="g-lbl" x="64" y="180" text-anchor="end">T</text>
+    </g>
+  </svg>
+  <figcaption>The two diagonals from <em>P</em> (to the nonconsecutive vertices <em>R</em> and <em>S</em>) cut pentagon <em>PQRST</em> into 3 triangles. 3 &middot; 180&deg; = 540&deg;, and 5 &minus; 2 = 3.</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig1','sides')">Sides</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','diagonals')">Diagonals from P</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','triangles')">3 triangles</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','vertices')">Vertices</button>
+  </div>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Triangulation for n = 4, 5, 6</div>
+  <svg id="fig2" viewBox="-26 0 592 240" width="592" role="img" aria-label="A quadrilateral, pentagon and hexagon each split into triangles from one vertex">
+    <g data-part="quad">
+      <polygon class="g-shape" points="30,45 125,30 145,145 45,155"/>
+      <line class="g-dash" x1="30" y1="45" x2="145" y2="145"/>
+      <text class="g-lbl-sm" x="87" y="196" text-anchor="middle">n = 4, from 1 vertex: 1 diagonal</text>
+      <text class="g-meas" x="87" y="214" text-anchor="middle">2 &times; 180&deg; = 360&deg;</text>
+    </g>
+    <g data-part="pent">
+      <polygon class="g-shape" points="245,28 176.5,77.8 202.7,158.3 287.3,158.3 313.5,77.8"/>
+      <line class="g-dash" x1="245" y1="28" x2="202.7" y2="158.3"/>
+      <line class="g-dash" x1="245" y1="28" x2="287.3" y2="158.3"/>
+      <text class="g-lbl-sm" x="245" y="196" text-anchor="middle">n = 5, from 1 vertex: 2 diagonals</text>
+      <text class="g-meas" x="245" y="214" text-anchor="middle">3 &times; 180&deg; = 540&deg;</text>
+    </g>
+    <g data-part="hex">
+      <polygon class="g-shape" points="450,28 387.7,64 387.7,136 450,172 512.4,136 512.4,64"/>
+      <line class="g-dash" x1="450" y1="28" x2="387.7" y2="136"/>
+      <line class="g-dash" x1="450" y1="28" x2="450" y2="172"/>
+      <line class="g-dash" x1="450" y1="28" x2="512.4" y2="136"/>
+      <text class="g-lbl-sm" x="450" y="196" text-anchor="middle">n = 6, from 1 vertex: 3 diagonals</text>
+      <text class="g-meas" x="450" y="214" text-anchor="middle">4 &times; 180&deg; = 720&deg;</text>
+    </g>
+  </svg>
+  <figcaption>Each extra side adds exactly one more triangle, so the sum grows by 180&deg; each time: <code>n &minus; 3</code> diagonals give <code>n &minus; 2</code> triangles.</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig2','quad')">Quadrilateral</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','pent')">Pentagon</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','hex')">Hexagon</button>
+  </div>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Regular pentagon: each interior angle is 108&deg;</div>
+  <svg id="fig3" viewBox="0 0 350 300" width="350" role="img" aria-label="Regular pentagon with all five interior angles marked 108 degrees">
+    <g data-part="poly">
+      <polygon class="g-shape" points="175,45 65.6,124.5 107.4,253 242.6,253 284.4,124.5"/>
+      <text class="g-lbl" x="175" y="27" text-anchor="middle">A</text>
+      <text class="g-lbl" x="44.7" y="118" text-anchor="end">B</text>
+      <text class="g-lbl" x="93.9" y="276" text-anchor="end">C</text>
+      <text class="g-lbl" x="256.1" y="276" text-anchor="start">D</text>
+      <text class="g-lbl" x="305.3" y="118" text-anchor="start">E</text>
+    </g>
+    <g data-part="angles">
+      <path class="g-angle" d="M 150.7 62.6 A 30 30 0 0 0 199.3 62.6"/>
+      <path class="g-angle" transform="rotate(-72 175 160)" d="M 150.7 62.6 A 30 30 0 0 0 199.3 62.6"/>
+      <path class="g-angle" transform="rotate(-144 175 160)" d="M 150.7 62.6 A 30 30 0 0 0 199.3 62.6"/>
+      <path class="g-angle" transform="rotate(-216 175 160)" d="M 150.7 62.6 A 30 30 0 0 0 199.3 62.6"/>
+      <path class="g-angle" transform="rotate(-288 175 160)" d="M 150.7 62.6 A 30 30 0 0 0 199.3 62.6"/>
+      <text class="g-meas" x="175" y="97" text-anchor="middle">108&deg;</text>
+      <text class="g-meas" x="111.3" y="143" text-anchor="middle">108&deg;</text>
+      <text class="g-meas" x="135.6" y="218" text-anchor="middle">108&deg;</text>
+      <text class="g-meas" x="214.4" y="218" text-anchor="middle">108&deg;</text>
+      <text class="g-meas" x="238.7" y="143" text-anchor="middle">108&deg;</text>
+    </g>
+    <g data-part="sum">
+      <text class="g-grn g-halo" x="175" y="169" text-anchor="middle">5 &times; 108&deg; = 540&deg;</text>
+    </g>
+  </svg>
+  <figcaption>Sum = (5 &minus; 2) &middot; 180&deg; = 540&deg;. Divided among 5 congruent angles: 540&deg; &divide; 5 = 108&deg;.</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig3','poly')">The pentagon</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','angles')">Interior angles</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','sum')">The sum</button>
+  </div>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Exterior angles always total 360&deg;</div>
+  <svg id="fig4" viewBox="0 0 350 320" width="350" role="img" aria-label="Regular pentagon with one exterior angle of 72 degrees drawn at each vertex">
+    <defs><marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--sl-orange)"/></marker></defs>
+    <g data-part="poly">
+      <polygon class="g-shape" points="185,65 89.89,134.1 126.22,245.9 243.78,245.9 280.11,134.1"/>
+      <text class="g-lbl" x="185" y="90" text-anchor="middle">A</text>
+      <text class="g-lbl" x="110.8" y="146" text-anchor="middle">B</text>
+      <text class="g-lbl" x="139.1" y="228" text-anchor="middle">C</text>
+      <text class="g-lbl" x="230.7" y="228" text-anchor="middle">D</text>
+      <text class="g-lbl" x="259.2" y="146" text-anchor="middle">E</text>
+    </g>
+    <g data-part="rays">
+      <line class="g-dash" marker-end="url(#ah4)" x1="89.89" y1="134.1" x2="53.48" y2="160.55"/>
+      <line class="g-dash" marker-end="url(#ah4)" transform="rotate(-72 185 165)" x1="89.89" y1="134.1" x2="53.48" y2="160.55"/>
+      <line class="g-dash" marker-end="url(#ah4)" transform="rotate(-144 185 165)" x1="89.89" y1="134.1" x2="53.48" y2="160.55"/>
+      <line class="g-dash" marker-end="url(#ah4)" transform="rotate(-216 185 165)" x1="89.89" y1="134.1" x2="53.48" y2="160.55"/>
+      <line class="g-dash" marker-end="url(#ah4)" transform="rotate(-288 185 165)" x1="89.89" y1="134.1" x2="53.48" y2="160.55"/>
+    </g>
+    <g data-part="angles">
+      <path class="g-angle" d="M 68.86 149.38 A 26 26 0 0 0 97.92 158.83"/>
+      <path class="g-angle" transform="rotate(-72 185 165)" d="M 68.86 149.38 A 26 26 0 0 0 97.92 158.83"/>
+      <path class="g-angle" transform="rotate(-144 185 165)" d="M 68.86 149.38 A 26 26 0 0 0 97.92 158.83"/>
+      <path class="g-angle" transform="rotate(-216 185 165)" d="M 68.86 149.38 A 26 26 0 0 0 97.92 158.83"/>
+      <path class="g-angle" transform="rotate(-288 185 165)" d="M 68.86 149.38 A 26 26 0 0 0 97.92 158.83"/>
+      <text class="g-meas" x="76.9" y="178" text-anchor="middle">72&deg;</text>
+      <text class="g-meas" x="160.2" y="274" text-anchor="middle">72&deg;</text>
+      <text class="g-meas" x="277.8" y="225" text-anchor="middle">72&deg;</text>
+      <text class="g-meas" x="267.1" y="98" text-anchor="middle">72&deg;</text>
+      <text class="g-meas" x="143" y="69" text-anchor="middle">72&deg;</text>
+    </g>
+    <g data-part="sum">
+      <text class="g-grn g-halo" x="185" y="172" text-anchor="middle">5 &times; 72&deg; = 360&deg;</text>
+    </g>
+  </svg>
+  <figcaption>One exterior angle at each vertex. Walking once around the pentagon turns you through 360&deg; in total &mdash; true for every convex polygon, no matter how many sides.</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig4','poly')">The pentagon</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','rays')">Extended sides</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','angles')">Exterior angles</button>
+    <button class="fig-chip" onclick="figHi(this,'fig4','sum')">The sum</button>
+  </div>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Interior + exterior = 180&deg; (regular octagon)</div>
+  <svg id="fig5" viewBox="0 0 400 320" width="400" role="img" aria-label="Regular octagon with interior angle 135 degrees and exterior angle 45 degrees at one vertex">
+    <defs><marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--sl-orange)"/></marker></defs>
+    <g data-part="poly">
+      <polygon class="g-shape" points="281.63,117.91 222.09,58.37 137.91,58.37 78.37,117.91 78.37,202.09 137.91,261.63 222.09,261.63 281.63,202.09"/>
+      <circle class="g-pt" cx="281.63" cy="117.91" r="4.5"/>
+      <text class="g-lbl" x="296" y="104" text-anchor="start">V</text>
+    </g>
+    <g data-part="ray">
+      <line class="g-dash" marker-end="url(#ah5)" x1="281.63" y1="117.91" x2="320.5" y2="156.8"/>
+    </g>
+    <g data-part="interior">
+      <path class="g-angle" d="M 260.42 96.7 A 30 30 0 0 0 281.63 147.91"/>
+      <text class="g-meas" x="239.1" y="140" text-anchor="middle">135&deg;</text>
+    </g>
+    <g data-part="exterior">
+      <path class="g-angle" d="M 300.02 136.3 A 26 26 0 0 1 281.63 143.91"/>
+      <text class="g-meas" x="303" y="166" text-anchor="start">45&deg;</text>
+    </g>
+    <g data-part="sum">
+      <text class="g-grn g-halo" x="170" y="196" text-anchor="middle">135&deg; + 45&deg; = 180&deg;</text>
+    </g>
+  </svg>
+  <figcaption>At vertex <em>V</em> the interior angle and the exterior angle form a linear pair. Regular octagon: exterior = 360&deg; &divide; 8 = 45&deg;, so interior = 180&deg; &minus; 45&deg; = 135&deg;.</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig5','poly')">The octagon</button>
+    <button class="fig-chip" onclick="figHi(this,'fig5','ray')">Extended side</button>
+    <button class="fig-chip" onclick="figHi(this,'fig5','interior')">Interior angle</button>
+    <button class="fig-chip" onclick="figHi(this,'fig5','exterior')">Exterior angle</button>
+    <button class="fig-chip" onclick="figHi(this,'fig5','sum')">Linear pair</button>
+  </div>
+</figure>
+</section>
+
+<section id="examples">
+<h2>Worked Examples</h2>
+
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Find the Interior Angles Sum of a Polygon</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">Find the measure of each interior angle of pentagon HJKLM.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 340 245" width="340" role="img" aria-label="Pentagon HJKLM with interior angles labelled 2x, 142 degrees, 2x, 3x+14 and 3x+14">
+        <polygon class="g-shape" points="80,120 174,86 264,115 214,190 132,191"/>
+        <text class="g-lbl" x="65" y="118" text-anchor="end">H</text>
+        <text class="g-lbl" x="174" y="72" text-anchor="middle">J</text>
+        <text class="g-lbl" x="279" y="113" text-anchor="start">K</text>
+        <text class="g-lbl" x="223" y="212" text-anchor="start">L</text>
+        <text class="g-lbl" x="123" y="213" text-anchor="end">M</text>
+        <text class="g-meas" x="112.5" y="134" text-anchor="middle">2x&deg;</text>
+        <text class="g-meas" x="174.5" y="122" text-anchor="middle">142&deg;</text>
+        <text class="g-meas" x="232" y="130" text-anchor="middle">2x&deg;</text>
+        <text class="g-meas" x="205" y="154" text-anchor="middle">(3x + 14)&deg;</text>
+        <text class="g-meas" x="160" y="182" text-anchor="middle">(3x + 14)&deg;</text>
+      </svg>
+      <figcaption>&ang;H and &ang;K measure 2x&deg;; &ang;L and &ang;M measure (3x + 14)&deg;; &ang;J = 142&deg;.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">A pentagon has n = 5 sides</span><span class="reason">Step 1: find the sum</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">m&ang;H + m&ang;J + m&ang;K + m&ang;L + m&ang;M = (n &minus; 2) &middot; 180&deg;</span><span class="reason">Polygon Interior Angles Sum Thm.</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">= (5 &minus; 2) &middot; 180&deg;</span><span class="reason">Substitute</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">= 540&deg;</span><span class="reason">Solve</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">2x + 2x + (3x + 14) + (3x + 14) + 142 = 540</span><span class="reason">Step 2: write an equation</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">10x + 170 = 540</span><span class="reason">Combine like terms</span></div>
+    <div class="solution-step"><span class="num">7</span><span class="math">10x = 370, so x = 37</span><span class="reason">Solve</span></div>
+    <div class="solution-step"><span class="num">8</span><span class="math">m&ang;H = 2(37) = 74&deg;&nbsp;&nbsp;m&ang;K = 2(37) = 74&deg;</span><span class="reason">Step 3: back-substitute</span></div>
+    <div class="solution-step"><span class="num">9</span><span class="math">m&ang;L = 3(37) + 14 = 125&deg;&nbsp;&nbsp;m&ang;M = 125&deg;</span><span class="reason">Back-substitute</span></div>
+    <div class="answer-box">m&ang;H = 74&deg;, m&ang;J = 142&deg;, m&ang;K = 74&deg;, m&ang;L = 125&deg;, m&ang;M = 125&deg;</div>
+    <div class="check-box"><strong>Check:</strong> 74 + 142 + 74 + 125 + 125 = 540 &#10003; &mdash; equal to (5 &minus; 2) &middot; 180&deg;.</div>
+    <div class="warning-box"><strong>Watch Out!</strong> <em>x</em> = 37 is <strong>not</strong> an angle measure. The question asks for the angles, so you must substitute back into every expression.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Find a Single Angle of a Hexagon</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">In hexagon ABCDEF the interior angles are (x + 2)&deg;, (x &minus; 8)&deg;, (x + 7)&deg;, (x &minus; 3)&deg;, (x + 6)&deg; and (x &minus; 4)&deg;. Find m&ang;E.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 340 270" width="340" role="img" aria-label="Convex hexagon ABCDEF with interior angles given as expressions in x">
+        <polygon class="g-shape" points="110,75 220,75 251.8,153.8 210.6,222.4 105.9,215.1 64.2,148.3"/>
+        <text class="g-lbl" x="97.5" y="62" text-anchor="end">A</text>
+        <text class="g-lbl" x="233.9" y="62" text-anchor="start">B</text>
+        <text class="g-lbl" x="273.8" y="160" text-anchor="start">C</text>
+        <text class="g-lbl" x="224.1" y="247" text-anchor="start">D</text>
+        <text class="g-lbl" x="90.7" y="239" text-anchor="end">E</text>
+        <text class="g-lbl" x="42.2" y="153" text-anchor="end">F</text>
+        <text class="g-meas" x="127.5" y="110" text-anchor="middle">(x + 2)&deg;</text>
+        <text class="g-meas" x="199.9" y="109" text-anchor="middle">(x &minus; 8)&deg;</text>
+        <text class="g-meas" x="211.9" y="155" text-anchor="middle">(x + 7)&deg;</text>
+        <text class="g-meas" x="192.1" y="191" text-anchor="middle">(x &minus; 3)&deg;</text>
+        <text class="g-meas" x="126.5" y="185" text-anchor="middle">(x + 6)&deg;</text>
+        <text class="g-meas" x="104.2" y="152" text-anchor="middle">(x &minus; 4)&deg;</text>
+      </svg>
+      <figcaption>A convex hexagon: n = 6, so the six interior angles must total 720&deg;.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">S = (6 &minus; 2) &middot; 180&deg; = 720&deg;</span><span class="reason">Polygon Interior Angles Sum Thm.</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">(x+2)+(x&minus;8)+(x+7)+(x&minus;3)+(x+6)+(x&minus;4) = 720</span><span class="reason">Write an equation</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">6x + (2 &minus; 8 + 7 &minus; 3 + 6 &minus; 4) = 720</span><span class="reason">Group the constants</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">6x + 0 = 720</span><span class="reason">The constants cancel</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">x = 120</span><span class="reason">Divide by 6</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">m&ang;E = x + 6 = 120 + 6</span><span class="reason">Substitute into &ang;E only</span></div>
+    <div class="answer-box">m&ang;E = 126&deg;</div>
+    <div class="check-box"><strong>Check:</strong> 122 + 112 + 127 + 117 + 126 + 116 = 720 &#10003;</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Identify the Polygon Given the Interior Angle Measure</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">The measure of an interior angle of a regular polygon is 144&deg;. Find the number of sides in the polygon.</div>
+    <p style="font-size:15px;line-height:1.7;margin-bottom:10px">Let <em>n</em> = the number of sides. Because all angles of a regular polygon are congruent, the sum of the interior angle measures is <code>144n&deg;</code>. By the Polygon Interior Angles Sum Theorem that same sum is <code>(n &minus; 2) &middot; 180&deg;</code>. Set the two expressions equal.</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">144n = (n &minus; 2) &middot; 180</span><span class="reason">Write an equation</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">144n = 180n &minus; 360</span><span class="reason">Distribute</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">&minus;36n = &minus;360</span><span class="reason">Subtract 180n from each side</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">n = 10</span><span class="reason">Solve</span></div>
+    <div class="answer-box">n = 10 &mdash; the polygon is a regular decagon</div>
+    <div class="check-box"><strong>Check:</strong> (10 &minus; 2) &middot; 180&deg; = 1440&deg;, and 1440&deg; &divide; 10 = 144&deg; &#10003;</div>
+    <div class="info-box"><strong>Faster route.</strong> The exterior angle is 180&deg; &minus; 144&deg; = 36&deg;, and each exterior angle of a regular <em>n</em>-gon is 360&deg;/<em>n</em>. So <code>n = 360 &divide; 36 = 10</code> in one step.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Find Missing Values Using Exterior Angles</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Find the value of x.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 340 270" width="340" role="img" aria-label="Convex quadrilateral with exterior angles 139 degrees, 6x, 9x and 2x">
+        <polygon class="g-shape" points="100,75 212.8,116 203,185.4 134.6,137.5"/>
+        <line class="g-dash" x1="212.8" y1="116" x2="259.7" y2="133.1"/>
+        <line class="g-dash" x1="203" y1="185.4" x2="196" y2="234.9"/>
+        <line class="g-dash" x1="134.6" y1="137.5" x2="93.6" y2="108.8"/>
+        <line class="g-dash" x1="100" y1="75" x2="75.8" y2="31.3"/>
+        <path class="g-angle" d="M 235.3 124.2 A 24 24 0 0 1 209.4 139.8"/>
+        <path class="g-angle" d="M 199.7 209.2 A 24 24 0 0 1 183.4 171.6"/>
+        <path class="g-angle" d="M 115.0 123.7 A 24 24 0 0 1 123.0 116.5"/>
+        <path class="g-angle" d="M 88.4 54.0 A 24 24 0 0 1 122.6 83.2"/>
+        <text class="g-meas" x="233.4" y="154" text-anchor="middle">6x&deg;</text>
+        <text class="g-meas" x="164.5" y="206" text-anchor="middle">9x&deg;</text>
+        <text class="g-meas" x="106.5" y="110" text-anchor="middle">2x&deg;</text>
+        <text class="g-meas" x="128.6" y="45" text-anchor="middle">139&deg;</text>
+        <text class="g-lbl" x="85" y="70" text-anchor="end">P</text>
+        <text class="g-lbl" x="228" y="110" text-anchor="start">Q</text>
+        <text class="g-lbl" x="216" y="196" text-anchor="start">R</text>
+        <text class="g-lbl" x="116" y="145" text-anchor="end">S</text>
+      </svg>
+      <figcaption>One exterior angle is drawn at each of the four vertices, so the four marked angles must total 360&deg;.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">6x + 9x + 2x + 139 = 360</span><span class="reason">Polygon Exterior Angles Sum Thm.</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">17x + 139 = 360</span><span class="reason">Combine like terms</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">17x = 221</span><span class="reason">Subtract 139 from each side</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">x = 13</span><span class="reason">Divide each side by 17</span></div>
+    <div class="answer-box">x = 13</div>
+    <div class="check-box"><strong>Check:</strong> 6(13) + 9(13) + 2(13) + 139 = 78 + 117 + 26 + 139 = 360 &#10003;<br>The interior angles are 102&deg;, 63&deg;, 154&deg;, 41&deg; and they total 360&deg; = (4 &minus; 2) &middot; 180&deg; &#10003;</div>
+    <div class="warning-box"><strong>Watch Out!</strong> Use 360&deg; here, not (n &minus; 2) &middot; 180&deg;. The marked angles sit <em>outside</em> the polygon between an extended side and the next side &mdash; they are exterior angles.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 5</span>
+    <span class="example-title">Find Exterior Angle Measures of a Regular Polygon</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Find the measure of each exterior angle of a regular dodecagon.</div>
+    <p style="font-size:15px;line-height:1.7;margin-bottom:10px">A regular dodecagon has 12 congruent sides and 12 congruent interior angles. The exterior angles are also congruent, because angles supplementary to congruent angles are congruent. Let <em>n</em> = the measure of each exterior angle.</p>
+    <div class="solution-step"><span class="num">1</span><span class="math">12n = 360</span><span class="reason">Polygon Exterior Angles Sum Thm.</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">n = 30</span><span class="reason">Divide each side by 12</span></div>
+    <div class="answer-box">Each exterior angle of a regular dodecagon measures 30&deg;</div>
+    <div class="check-box"><strong>Check:</strong> the interior angle is 180&deg; &minus; 30&deg; = 150&deg;, and (12 &minus; 2) &middot; 180&deg; &divide; 12 = 1800&deg; &divide; 12 = 150&deg; &#10003;</div>
+  </div>
+</div>
+</section>
+
+<section id="practice">
+<h2>Try It Yourself</h2>
+
+<div class="try-box">
+  <h4>Problem 1</h4>
+  <div class="prob">Find the sum of the interior angle measures of a convex 15-gon.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">S = (n &minus; 2) &middot; 180&deg;</span><span class="reason">Interior Angles Sum Thm.</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">S = (15 &minus; 2) &middot; 180&deg; = 13 &middot; 180&deg;</span><span class="reason">Substitute n = 15</span></div>
+    <div class="answer-box">S = 2340&deg;</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 2</h4>
+  <div class="prob">A convex pentagon has interior angles (2x + 10)&deg;, (3x &minus; 5)&deg;, (x + 40)&deg;, 4x&deg; and (2x + 15)&deg;. Find x and the largest angle.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">(2x+10)+(3x&minus;5)+(x+40)+4x+(2x+15) = 540</span><span class="reason">Sum = (5 &minus; 2)180&deg;</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">12x + 60 = 540</span><span class="reason">Combine like terms</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">12x = 480, so x = 40</span><span class="reason">Solve</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">90&deg;, 115&deg;, 80&deg;, 160&deg;, 95&deg;</span><span class="reason">Substitute back</span></div>
+    <div class="answer-box">x = 40; the largest angle is 4x = 160&deg;&nbsp;&nbsp;(90+115+80+160+95 = 540 &#10003;)</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 3</h4>
+  <div class="prob">The measure of an interior angle of a regular polygon is 156&deg;. Find the number of sides.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">exterior = 180&deg; &minus; 156&deg; = 24&deg;</span><span class="reason">Linear pair</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">n &middot; 24 = 360</span><span class="reason">Exterior Angles Sum Thm.</span></div>
+    <div class="answer-box">n = 15 sides</div>
+    <div class="check-box"><strong>Check with the long method:</strong> 156n = (n &minus; 2)180 &rarr; 156n = 180n &minus; 360 &rarr; 24n = 360 &rarr; n = 15 &#10003;</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 4</h4>
+  <div class="prob">The exterior angles of a convex quadrilateral, one at each vertex, measure 3x&deg;, 4x&deg;, 5x&deg; and 6x&deg;. Find x and each exterior angle.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">3x + 4x + 5x + 6x = 360</span><span class="reason">Exterior Angles Sum Thm.</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">18x = 360, so x = 20</span><span class="reason">Solve</span></div>
+    <div class="answer-box">x = 20; the exterior angles are 60&deg;, 80&deg;, 100&deg;, 120&deg;</div>
+    <div class="check-box"><strong>Check:</strong> the interior angles are 120&deg;, 100&deg;, 80&deg;, 60&deg; and total 360&deg; = (4 &minus; 2)180&deg; &#10003;</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 5</h4>
+  <div class="prob">In a regular polygon, each interior angle is 100&deg; greater than each exterior angle. Find n.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">i &minus; e = 100 and i + e = 180</span><span class="reason">Given; linear pair</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">2i = 280, so i = 140 and e = 40</span><span class="reason">Add the equations</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">n = 360 &divide; 40</span><span class="reason">Each exterior angle = 360&deg;/n</span></div>
+    <div class="answer-box">n = 9 &mdash; a regular nonagon</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Problem 6</h4>
+  <div class="prob">Find the measure of each exterior angle and each interior angle of a regular 7-gon (heptagon). Round to the nearest tenth.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">exterior = 360&deg; &divide; 7 &asymp; 51.4&deg;</span><span class="reason">Exterior Angles Sum Thm.</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">interior = 180&deg; &minus; 51.43&deg; &asymp; 128.6&deg;</span><span class="reason">Linear pair</span></div>
+    <div class="answer-box">exterior &asymp; 51.4&deg;, interior &asymp; 128.6&deg;</div>
+    <div class="check-box"><strong>Check:</strong> (7 &minus; 2) &middot; 180&deg; &divide; 7 = 900&deg; &divide; 7 &asymp; 128.6&deg; &#10003;</div>
+  </div>
+</div>
+</section>
+
+<section id="summary">
+<h2>Summary</h2>
+<table class="tbl">
+  <tr><th>When you see&hellip;</th><th>What to do</th><th>Result</th></tr>
+  <tr><td>"Sum of the interior angles of an <em>n</em>-gon"</td><td>Substitute into <code>(n &minus; 2) &middot; 180&deg;</code></td><td>One number, e.g. n = 8 &rarr; 1080&deg;</td></tr>
+  <tr><td>Interior angle sum given, <em>n</em> unknown</td><td>Solve <code>(n &minus; 2)180 = S</code></td><td><code>n = S/180 + 2</code></td></tr>
+  <tr><td>Interior angles given as expressions</td><td>Add them, set equal to <code>(n &minus; 2)180</code>, solve for <em>x</em>, then substitute back</td><td>Every angle measure</td></tr>
+  <tr><td>"Each interior angle of a <strong>regular</strong> <em>n</em>-gon"</td><td>Divide the sum by <em>n</em></td><td><code>(n &minus; 2)180&deg;/n</code></td></tr>
+  <tr><td>Angles drawn <em>outside</em> at extended sides</td><td>Add them and set equal to 360&deg;</td><td>Exterior Angles Sum Thm.</td></tr>
+  <tr><td>"Each exterior angle of a <strong>regular</strong> <em>n</em>-gon"</td><td>Divide 360&deg; by <em>n</em></td><td><code>360&deg;/n</code></td></tr>
+  <tr><td>One interior angle <em>a</em> of a regular polygon, find <em>n</em></td><td>Exterior = <code>180 &minus; a</code>, then divide into 360</td><td><code>n = 360/(180 &minus; a)</code></td></tr>
+</table>
+
+<div class="pill-row">
+  <span class="pill">S = (n &minus; 2) &middot; 180&deg;</span>
+  <span class="pill">interior (regular) = (n &minus; 2)180&deg;/n</span>
+  <span class="pill">exterior sum = 360&deg;</span>
+  <span class="pill">exterior (regular) = 360&deg;/n</span>
+  <span class="pill">interior + exterior = 180&deg;</span>
+  <span class="pill">n = 360&deg;/exterior</span>
+  <span class="pill">diagonals from 1 vertex = n &minus; 3</span>
+  <span class="pill">triangles formed = n &minus; 2</span>
+</div>
+
+<div class="warning-box"><strong>Common mistakes to avoid</strong>
+<ul style="margin:8px 0 0 20px;line-height:1.8">
+<li>Using <code>n &middot; 180&deg;</code> instead of <code>(n &minus; 2) &middot; 180&deg;</code>.</li>
+<li>Dividing the interior sum by <em>n</em> when the polygon is <strong>not</strong> regular &mdash; that only gives an average, not an angle.</li>
+<li>Stopping at <em>x</em> when the question asks for an angle measure.</li>
+<li>Adding exterior angles to <code>(n &minus; 2)180&deg;</code>; the exterior sum is always 360&deg;.</li>
+<li>Counting more than one exterior angle at the same vertex &mdash; the theorem uses exactly one per vertex.</li>
+<li>Forgetting that <code>360/(180 &minus; a)</code> must come out to a whole number &ge; 3; if it does not, no such regular polygon exists.</li>
+</ul></div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"What is the sum of the interior angle measures of a convex octagon?",opts:["900&deg;","1080&deg;","1260&deg;","1440&deg;"],ans:1,exp:"An octagon has n = 8, so the sum is (8 &minus; 2) &middot; 180&deg; = 6 &middot; 180&deg; = 1080&deg;. The 900&deg; answer comes from using n = 7, and 1440&deg; from n = 10."},
+  {q:"The interior angles of a convex polygon sum to 1440&deg;. How many sides does it have?",opts:["8","9","10","12"],ans:2,exp:"Solve (n &minus; 2) &middot; 180 = 1440. Divide first: n &minus; 2 = 1440/180 = 8, so n = 10. Always add the 2 back at the end."},
+  {q:"Find the measure of each interior angle of the regular pentagon shown.",opts:["108&deg;","72&deg;","120&deg;","540&deg;"],ans:0,exp:"The sum is (5 &minus; 2) &middot; 180&deg; = 540&deg;. Because the pentagon is regular, all five angles are congruent: 540&deg; &divide; 5 = 108&deg;. The 72&deg; choice is the <em>exterior</em> angle and 540&deg; is the whole sum.",fig:"<svg viewBox='0 0 260 230' width='260' role='img' aria-label='regular pentagon with one interior angle marked'><polygon class='g-shape' points='130,35 49.17,93.73 80.04,188.77 179.96,188.77 210.83,93.73'/><path class='g-angle' d='M 105.74 52.63 A 30 30 0 0 0 154.26 52.63'/><text class='g-meas' x='130' y='87' text-anchor='middle'>?</text><text class='g-lbl-sm' x='130' y='215' text-anchor='middle'>regular pentagon</text></svg>"},
+  {q:"What is the sum of the exterior angle measures, one at each vertex, of a convex 65-gon?",opts:["65&deg;","11340&deg;","5.54&deg;","360&deg;"],ans:3,exp:"The Polygon Exterior Angles Sum Theorem gives 360&deg; for <em>every</em> convex polygon, no matter how many sides. 11340&deg; is the <em>interior</em> sum (63 &middot; 180&deg;), and 5.54&deg; would be one exterior angle if it were regular."},
+  {q:"Find the measure of each exterior angle of a regular dodecagon.",opts:["12&deg;","24&deg;","30&deg;","150&deg;"],ans:2,exp:"A dodecagon has 12 sides, so 12n = 360 and n = 30&deg;. The 150&deg; choice is each <em>interior</em> angle, which checks: 150&deg; + 30&deg; = 180&deg;."},
+  {q:"The measure of an interior angle of a regular polygon is 144&deg;. Find n.",opts:["8","10","12","20"],ans:1,exp:"The exterior angle is 180&deg; &minus; 144&deg; = 36&deg;, and n = 360 &divide; 36 = 10. Long way: 144n = (n &minus; 2)180 &rarr; 36n = 360 &rarr; n = 10."},
+  {q:"Find the value of x in the quadrilateral shown.",opts:["80","90","100","120"],ans:0,exp:"The four marked angles are exterior angles, one per vertex, so x + 100 + 85 + 95 = 360. That gives x + 280 = 360, so x = 80.",fig:"<svg viewBox='0 0 280 260' width='280' role='img' aria-label='quadrilateral with exterior angles x, 100, 85 and 95 degrees'><polygon class='g-shape' points='90,100 190,100 176.1,178.8 77.6,170.2'/><line class='g-dash' x1='90' y1='100' x2='98.7' y2='50.8'/><line class='g-dash' x1='190' y1='100' x2='240' y2='100'/><line class='g-dash' x1='176.1' y1='178.8' x2='167.4' y2='228'/><line class='g-dash' x1='77.6' y1='170.2' x2='27.8' y2='165.8'/><text class='g-meas' x='119.1' y='80' text-anchor='middle'>x&deg;</text><text class='g-meas' x='214.4' y='133' text-anchor='middle'>100&deg;</text><text class='g-meas' x='144.4' y='207' text-anchor='middle'>85&deg;</text><text class='g-meas' x='53.2' y='142' text-anchor='middle'>95&deg;</text></svg>"},
+  {q:"Each exterior angle of a regular polygon measures 24&deg;. How many sides does it have?",opts:["10","12","14","15"],ans:3,exp:"Each exterior angle of a regular n-gon is 360&deg;/n, so 24n = 360 and n = 15. Check: each interior angle is 156&deg;, and 15 &middot; 156&deg; = 2340&deg; = (15 &minus; 2) &middot; 180&deg;."},
+  {q:"A convex hexagon has interior angles x&deg;, x&deg;, x&deg;, (x + 30)&deg;, (x + 30)&deg; and (x + 30)&deg;. Find x.",opts:["100","105","110","120"],ans:1,exp:"The sum must be (6 &minus; 2) &middot; 180&deg; = 720&deg;. So 6x + 90 = 720, giving 6x = 630 and x = 105. The angles are 105&deg;, 105&deg;, 105&deg;, 135&deg;, 135&deg;, 135&deg;, which total 720&deg;."},
+  {q:"Find the measure of each interior angle of a regular 20-gon.",opts:["162&deg;","158&deg;","168&deg;","3240&deg;"],ans:0,exp:"Fastest: each exterior angle is 360&deg;/20 = 18&deg;, so each interior angle is 180&deg; &minus; 18&deg; = 162&deg;. Long way: (20 &minus; 2) &middot; 180&deg; = 3240&deg;, and 3240&deg; &divide; 20 = 162&deg;."},
+  {q:"In a regular polygon, each interior angle is exactly 3 times each exterior angle. Find n.",opts:["6","7","8","9"],ans:2,exp:"Let e be the exterior angle; then the interior angle is 3e and they form a linear pair: 3e + e = 180, so 4e = 180 and e = 45&deg;. Then n = 360 &divide; 45 = 8, a regular octagon."},
+  {q:"The interior angles of a convex polygon sum to 2340&deg;. How many sides does it have?",opts:["12","13","14","15"],ans:3,exp:"(n &minus; 2) &middot; 180 = 2340 &rarr; n &minus; 2 = 13 &rarr; n = 15. Choosing 13 is the classic slip: 13 is the number of <em>triangles</em>, not the number of sides."},
+  {q:"A convex quadrilateral has exterior angles, one at each vertex, of 6x&deg;, 9x&deg;, 2x&deg; and 139&deg;. Find x.",opts:["11","13","15","17"],ans:1,exp:"6x + 9x + 2x + 139 = 360, so 17x = 221 and x = 13. The exterior angles are 78&deg;, 117&deg;, 26&deg; and 139&deg;, which total 360&deg;."},
+  {q:"Which value could NOT be the sum of the interior angle measures of a convex polygon?",opts:["1080&deg;","1260&deg;","1000&deg;","1440&deg;"],ans:2,exp:"Every valid sum is a multiple of 180&deg;: 1080/180 = 6, 1260/180 = 7 and 1440/180 = 8 all give whole numbers (n = 8, 9, 10). But 1000/180 &asymp; 5.56 is not a whole number, so no polygon has that sum."},
+  {q:"In a regular polygon, each interior angle measures 24 more than 38 times each exterior angle. Find n.",opts:["36","45","72","90"],ans:3,exp:"Let e be the exterior angle. Then the interior angle is 38e + 24, and the linear pair gives (38e + 24) + e = 180. So 39e = 156 and e = 4&deg;. Then n = 360 &divide; 4 = 90 sides."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

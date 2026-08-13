@@ -1,0 +1,658 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Find excluded values and asymptotes, then graph y = a/(x &minus; h) + k as a transformation of the parent reciprocal function y = 1/x.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. What a reciprocal function is</h3>
+    <p>A <b>reciprocal function</b> is one where the variable lives in the <em>denominator</em> &mdash; you are dividing a fixed number by a changing expression.</p>
+    <div class="formula-box">f(x) = n / b(x)<br><span style="font-size:13px">where <b>n</b> is a real number and <b>b(x)</b> is a linear expression that cannot equal 0</span></div>
+    <p>The simplest one &mdash; the <b>parent function</b> &mdash; is <code>f(x) = 1/x</code>. Its graph is a two-piece curve called a <b>hyperbola</b>.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>Reciprocal function</b> &mdash; a function of the form f(x) = n/b(x), n real, b(x) linear and nonzero.</div>
+      <div class="vocab-item"><b>Hyperbola</b> &mdash; the two-branch curve formed by a reciprocal function.</div>
+      <div class="vocab-item"><b>Excluded value</b> &mdash; a value of x for which the function is <em>not</em> defined (it would make the denominator 0).</div>
+      <div class="vocab-item"><b>Vertical asymptote</b> &mdash; a vertical line the graph approaches but never touches.</div>
+      <div class="vocab-item"><b>Horizontal asymptote</b> &mdash; a horizontal line the graph approaches but never touches.</div>
+      <div class="vocab-item"><b>Domain</b> &mdash; all inputs that are allowed; the excluded values are thrown out.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Alternative Notation:</strong> the parent reciprocal function can also be written <code>f(x) = x<sup>&minus;1</sup></code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Key Concept &middot; The Parent Reciprocal Function</h3>
+    <table class="tbl">
+      <tr><th>Feature</th><th>Value for f(x) = 1/x</th></tr>
+      <tr><td>Parent function</td><td><code>f(x) = 1/x</code></td></tr>
+      <tr><td>Type of graph</td><td>hyperbola</td></tr>
+      <tr><td>Domain and range</td><td>all nonzero real numbers</td></tr>
+      <tr><td>Asymptotes</td><td><code>x = 0</code> and <code>f(x) = 0</code></td></tr>
+      <tr><td>Intercepts</td><td>none</td></tr>
+      <tr><td>Not defined</td><td><code>x = 0</code></td></tr>
+    </table>
+    <p>Why no intercepts? Setting <code>x = 0</code> divides by zero, so there is no y&#8209;intercept; and <code>1/x</code> can never equal 0 no matter how big x gets, so there is no x&#8209;intercept.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Finding the two asymptotes</h3>
+    <p>Every reciprocal function has two asymptotes, and each one comes from a different question.</p>
+    <div class="steps-list">
+      <div class="s"><b>Vertical asymptote &mdash; from the excluded value.</b> Set the denominator equal to 0 and solve. If <code>b(x) = 0</code> at <code>x = c</code>, the vertical asymptote is <code>x = c</code> and the domain is {x | x &ne; c}.</div>
+      <div class="s"><b>Horizontal asymptote &mdash; from the value f(x) can never reach.</b> For <code>f(x) = n/b(x)</code> the horizontal asymptote is <code>f(x) = 0</code>, because no value of x makes <code>n/b(x)</code> equal 0.</div>
+      <div class="s"><b>If a constant k is added</b>, everything slides up by k. For <code>f(x) = n/b(x) + k</code> the horizontal asymptote is <code>f(x) = k</code> and the range is {f(x) | f(x) &ne; k}.</div>
+    </div>
+    <div class="keyfact"><div class="ico">1</div><div class="txt"><b>Vertical asymptote &harr; domain.</b> The excluded value is exactly the x&#8209;value of the vertical asymptote.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt"><b>Horizontal asymptote &harr; range.</b> The value the graph can never output is exactly the y&#8209;value of the horizontal asymptote.</div></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Key Concept &middot; Transformations of Reciprocal Functions</h3>
+    <div class="formula-box">g(x) = a / (x &minus; h) + k</div>
+    <table class="tbl">
+      <tr><th>Parameter</th><th>Effect on the graph of f(x) = 1/x</th></tr>
+      <tr><td><b>h</b> &mdash; horizontal translation</td><td>If <code>h &gt; 0</code>, translated <b>h units right</b>. If <code>h &lt; 0</code>, translated <b>|h| units left</b>. The <em>vertical asymptote</em> is at <code>x = h</code>.</td></tr>
+      <tr><td><b>k</b> &mdash; vertical translation</td><td>If <code>k &gt; 0</code>, translated <b>k units up</b>. If <code>k &lt; 0</code>, translated <b>|k| units down</b>. The <em>horizontal asymptote</em> is at <code>f(x) = k</code>.</td></tr>
+      <tr><td><b>a</b> &mdash; orientation and shape</td><td>If <code>|a| &gt; 1</code>, stretched vertically. If <code>0 &lt; |a| &lt; 1</code>, compressed vertically. If <code>a &lt; 0</code>, also reflected in the x&#8209;axis.</td></tr>
+    </table>
+    <div class="warning-box"><strong>Watch Out &mdash; the sign of h:</strong> the form is <code>x &minus; h</code>. So <code>1/(x + 3)</code> means <code>x &minus; (&minus;3)</code>, giving <code>h = &minus;3</code> and a vertical asymptote at <code>x = &minus;3</code> &mdash; three units <em>left</em>, not right.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Symmetry, end behaviour and scaling</h3>
+    <div class="warning-box"><strong>Watch Out &mdash; Symmetry:</strong> the two pieces of a reciprocal graph always sit in <em>opposite</em> regions around the asymptote crossing point. A function with asymptotes <code>y = 0</code> and <code>x = 0</code> is graphed in Quadrants I and III (when a &gt; 0) or Quadrants II and IV (when a &lt; 0).</div>
+    <div class="info-box"><strong>Study Tip &mdash; Scaling:</strong> when graphing transformations you may need a larger coordinate plane, or you may need to scale the axes. A larger plane makes the asymptotes far more obvious.</div>
+    <p><b>End behaviour.</b> As <code>x &rarr; &plusmn;&infin;</code>, the fraction <code>a/(x &minus; h)</code> shrinks toward 0, so <code>g(x) &rarr; k</code>. As <code>x &rarr; h</code>, the denominator shrinks toward 0, so <code>|g(x)| &rarr; &infin;</code>.</p>
+    <div class="keyfact"><div class="ico">3</div><div class="txt"><b>Never draw through an asymptote.</b> Plot points on <em>each side</em> of the excluded value and connect them with two separate smooth curves.</div></div>
+    <div class="keyfact"><div class="ico">4</div><div class="txt"><b>Quadratic denominators can give two vertical asymptotes.</b> <code>f(x) = 3/(x&sup2; &minus; x &minus; 12) = 3/((x &minus; 4)(x + 3))</code> is undefined at <code>x = 4</code> and <code>x = &minus;3</code>.</div></div>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 1 &middot; The parent function y = 1/x</div>
+    <svg id="fig1" viewBox="0 0 420 360" width="420" role="img" aria-label="Graph of y equals one over x with asymptotes at x equals 0 and y equals 0">
+      <path class="g-grid" d="M30 30V330 M60 30V330 M90 30V330 M120 30V330 M150 30V330 M180 30V330 M210 30V330 M240 30V330 M270 30V330 M300 30V330 M330 30V330 M360 30V330 M390 30V330 M30 30H390 M30 60H390 M30 90H390 M30 120H390 M30 150H390 M30 180H390 M30 210H390 M30 240H390 M30 270H390 M30 300H390 M30 330H390"/>
+      <g data-part="ha">
+        <line class="g-axis" x1="24" y1="180" x2="396" y2="180"/>
+        <path d="M402 180 l-10 -5 v10 z" fill="var(--sl-ink-2)"/>
+        <path d="M18 180 l10 -5 v10 z" fill="var(--sl-ink-2)"/>
+        <text class="g-meas g-halo" x="352" y="218" text-anchor="middle">y = 0 (HA)</text>
+      </g>
+      <g data-part="va">
+        <line class="g-axis" x1="210" y1="336" x2="210" y2="24"/>
+        <path d="M210 18 l-5 10 h10 z" fill="var(--sl-ink-2)"/>
+        <path d="M210 342 l-5 -10 h10 z" fill="var(--sl-ink-2)"/>
+        <text class="g-meas-b g-halo" x="216" y="52" text-anchor="start">x = 0 (VA)</text>
+      </g>
+      <text class="g-lbl" x="404" y="172" text-anchor="middle">x</text>
+      <text class="g-lbl" x="222" y="34" text-anchor="middle">y</text>
+      <text class="g-lbl-sm g-halo" x="203" y="195" text-anchor="end">O</text>
+      <text class="g-lbl-sm g-halo" x="30" y="196" text-anchor="middle">&minus;6</text>
+      <text class="g-lbl-sm g-halo" x="90" y="196" text-anchor="middle">&minus;4</text>
+      <text class="g-lbl-sm g-halo" x="150" y="196" text-anchor="middle">&minus;2</text>
+      <text class="g-lbl-sm g-halo" x="270" y="196" text-anchor="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="330" y="196" text-anchor="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="390" y="196" text-anchor="middle">6</text>
+      <text class="g-lbl-sm g-halo" x="203" y="60" text-anchor="end" dominant-baseline="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="203" y="120" text-anchor="end" dominant-baseline="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="203" y="240" text-anchor="end" dominant-baseline="middle">&minus;2</text>
+      <text class="g-lbl-sm g-halo" x="203" y="300" text-anchor="end" dominant-baseline="middle">&minus;4</text>
+      <g data-part="rb" class="g-hot">
+        <polyline class="g-line" points="216,30 216.6,43.6 217.5,60 218.4,72.9 219.6,86.3 220.8,96.7 222,105 223.5,113.3 225,120 226.5,125.5 228,130 231,137.1 234,142.5 237,146.7 240,150 246,155 252,158.6 258,161.25 264,163.3 270,165 285,168 300,170 315,171.4 330,172.5 360,174 390,175"/>
+        <circle class="g-pt" cx="240" cy="150" r="4.5"/>
+        <circle class="g-pt" cx="270" cy="165" r="4.5"/>
+        <circle class="g-pt" cx="225" cy="120" r="4.5"/>
+        <text class="g-grn g-halo" x="248" y="142" text-anchor="start">(1, 1)</text>
+        <text class="g-grn g-halo" x="278" y="160" text-anchor="start">(2, 0.5)</text>
+        <text class="g-grn g-halo" x="232" y="114" text-anchor="start">(0.5, 2)</text>
+      </g>
+      <g data-part="lb" class="g-hot">
+        <polyline class="g-line" points="30,185 60,186 90,187.5 105,188.6 120,190 135,192 150,195 156,196.7 162,198.75 168,201.4 174,205 180,210 183,213.3 186,217.5 189,222.9 192,230 193.5,234.5 195,240 196.5,246.7 198,255 199.2,263.3 200.4,273.7 201.6,287.1 202.5,300 203.4,316.4 204,330"/>
+        <circle class="g-pt" cx="180" cy="210" r="4.5"/>
+        <text class="g-grn g-halo" x="172" y="222" text-anchor="end">(&minus;1, &minus;1)</text>
+      </g>
+    </svg>
+    <figcaption>Two separate branches. The branch in Quadrant I never joins the branch in Quadrant III &mdash; the axes are asymptotes, not part of the curve.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','rb')">Branch in Quadrant I</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','lb')">Branch in Quadrant III</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','va')">Vertical asymptote x = 0</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','ha')">Horizontal asymptote y = 0</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 2 &middot; y = 1/(x &minus; 2) + 1 &mdash; h and k move the asymptotes</div>
+    <svg id="fig2" viewBox="0 0 420 360" width="420" role="img" aria-label="Graph of y equals one over x minus 2 plus 1 with asymptotes x equals 2 and y equals 1">
+      <path class="g-grid" d="M30 30V330 M60 30V330 M90 30V330 M120 30V330 M150 30V330 M180 30V330 M210 30V330 M240 30V330 M270 30V330 M300 30V330 M330 30V330 M360 30V330 M390 30V330 M30 30H390 M30 60H390 M30 90H390 M30 120H390 M30 150H390 M30 180H390 M30 210H390 M30 240H390 M30 270H390 M30 300H390 M30 330H390"/>
+      <line class="g-axis" x1="24" y1="180" x2="396" y2="180"/>
+      <path d="M402 180 l-10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <path d="M18 180 l10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <line class="g-axis" x1="210" y1="336" x2="210" y2="24"/>
+      <path d="M210 18 l-5 10 h10 z" fill="var(--sl-ink-2)"/>
+      <path d="M210 342 l-5 -10 h10 z" fill="var(--sl-ink-2)"/>
+      <text class="g-lbl" x="404" y="172" text-anchor="middle">x</text>
+      <text class="g-lbl" x="198" y="34" text-anchor="middle">y</text>
+      <text class="g-lbl-sm g-halo" x="203" y="195" text-anchor="end">O</text>
+      <text class="g-lbl-sm g-halo" x="90" y="196" text-anchor="middle">&minus;4</text>
+      <text class="g-lbl-sm g-halo" x="150" y="196" text-anchor="middle">&minus;2</text>
+      <text class="g-lbl-sm g-halo" x="330" y="196" text-anchor="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="390" y="196" text-anchor="middle">6</text>
+      <text class="g-lbl-sm g-halo" x="203" y="60" text-anchor="end" dominant-baseline="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="203" y="120" text-anchor="end" dominant-baseline="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="203" y="240" text-anchor="end" dominant-baseline="middle">&minus;2</text>
+      <text class="g-lbl-sm g-halo" x="203" y="300" text-anchor="end" dominant-baseline="middle">&minus;4</text>
+      <g data-part="shift">
+        <line class="g-dash" x1="212" y1="178" x2="264" y2="152"/>
+        <path d="M270 149 l-12 0.6 l5 7 z" fill="var(--sl-orange)"/>
+        <text class="g-meas g-halo" x="238" y="176" text-anchor="middle">h = 2, k = 1</text>
+      </g>
+      <g data-part="va">
+        <line class="g-aux" x1="270" y1="30" x2="270" y2="330" stroke-dasharray="7 5"/>
+        <text class="g-meas-b g-halo" x="276" y="52" text-anchor="start">x = 2 (VA)</text>
+      </g>
+      <g data-part="ha">
+        <line class="g-aux" x1="30" y1="150" x2="390" y2="150" stroke-dasharray="7 5"/>
+        <text class="g-meas g-halo" x="60" y="142" text-anchor="start">y = 1 (HA)</text>
+      </g>
+      <g data-part="rb" class="g-hot">
+        <polyline class="g-line" points="277.5,30 278.4,42.9 279.6,56.25 280.8,66.7 282,75 283.5,83.3 285,90 286.5,95.5 288,100 291,107.1 294,112.5 297,116.7 300,120 306,125 312,128.6 318,131.25 324,133.3 330,135 342,137.5 354,139.3 366,140.6 378,141.7 390,142.5"/>
+        <circle class="g-pt" cx="300" cy="120" r="4.5"/>
+        <text class="g-grn g-halo" x="308" y="114" text-anchor="start">(3, 2)</text>
+      </g>
+      <g data-part="lb" class="g-hot">
+        <polyline class="g-line" points="30,153.75 60,154.3 90,155 120,156 150,157.5 165,158.6 180,160 195,162 210,165 216,166.7 222,168.75 228,171.4 234,175 240,180 243,183.3 246,187.5 249,192.9 252,200 253.5,204.5 255,210 256.5,216.7 258,225 259.2,233.3 260.4,243.75 261.6,257.1 262.5,270 263.4,286.4 264,300 264.6,316.7 265,330"/>
+      </g>
+      <g data-part="int">
+        <circle class="g-pt" cx="240" cy="180" r="4.5"/>
+        <circle class="g-pt" cx="210" cy="165" r="4.5"/>
+        <text class="g-grn g-halo" x="236" y="199" text-anchor="middle">(1, 0)</text>
+        <text class="g-grn g-halo" x="150" y="140" text-anchor="middle">(0, 0.5)</text>
+      </g>
+    </svg>
+    <figcaption>Same shape as y = 1/x, but the whole picture has slid 2 right and 1 up. The crossing point of the asymptotes moved from (0, 0) to (2, 1).</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','shift')">The translation (h, k)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','va')">VA x = 2</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','ha')">HA y = 1</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','rb')">Right branch</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','lb')">Left branch</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','int')">Intercepts</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 3 &middot; Example 2 &mdash; g(x) = 1/(2x &minus; 5) + 2</div>
+    <svg id="fig3" viewBox="0 0 360 300" width="360" role="img" aria-label="Graph of g of x equals one over quantity two x minus five plus two">
+      <path class="g-grid" d="M30 30V270 M60 30V270 M90 30V270 M120 30V270 M150 30V270 M180 30V270 M210 30V270 M240 30V270 M270 30V270 M300 30V270 M330 30V270 M30 30H330 M30 60H330 M30 90H330 M30 120H330 M30 150H330 M30 180H330 M30 210H330 M30 240H330 M30 270H330"/>
+      <line class="g-axis" x1="24" y1="210" x2="336" y2="210"/>
+      <path d="M342 210 l-10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <path d="M18 210 l10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <line class="g-axis" x1="90" y1="276" x2="90" y2="24"/>
+      <path d="M90 18 l-5 10 h10 z" fill="var(--sl-ink-2)"/>
+      <path d="M90 282 l-5 -10 h10 z" fill="var(--sl-ink-2)"/>
+      <text class="g-lbl" x="344" y="202" text-anchor="middle">x</text>
+      <text class="g-lbl" x="78" y="34" text-anchor="middle">y</text>
+      <text class="g-lbl-sm g-halo" x="83" y="225" text-anchor="end">O</text>
+      <text class="g-lbl-sm g-halo" x="30" y="226" text-anchor="middle">&minus;2</text>
+      <text class="g-lbl-sm g-halo" x="150" y="226" text-anchor="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="210" y="226" text-anchor="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="270" y="226" text-anchor="middle">6</text>
+      <text class="g-lbl-sm g-halo" x="330" y="226" text-anchor="middle">8</text>
+      <text class="g-lbl-sm g-halo" x="84" y="90" text-anchor="end" dominant-baseline="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="84" y="60" text-anchor="end" dominant-baseline="middle">5</text>
+      <text class="g-lbl-sm g-halo" x="84" y="240" text-anchor="end" dominant-baseline="middle">&minus;1</text>
+      <g data-part="va">
+        <line class="g-aux" x1="165" y1="30" x2="165" y2="270" stroke-dasharray="7 5"/>
+        <text class="g-meas-b g-halo" x="171" y="48" text-anchor="start">x = 5/2</text>
+      </g>
+      <g data-part="ha">
+        <line class="g-aux" x1="30" y1="150" x2="330" y2="150" stroke-dasharray="7 5"/>
+        <text class="g-meas g-halo" x="290" y="142" text-anchor="middle">g(x) = 2</text>
+      </g>
+      <g data-part="rb" class="g-hot">
+        <polyline class="g-line" points="168.75,30 169.2,42.9 169.8,56.25 170.4,66.7 171,75 171.75,83.3 172.5,90 174,100 175.5,107.1 177,112.5 180,120 183,125 186,128.6 189,131.25 195,135 202.5,138 210,140 225,142.5 240,144 255,145 270,145.7 285,146.25 300,146.7 315,147 330,147.3"/>
+        <circle class="g-pt" cx="180" cy="120" r="4.5"/>
+        <text class="g-grn g-halo" x="188" y="114" text-anchor="start">(3, 3)</text>
+      </g>
+      <g data-part="lb" class="g-hot">
+        <polyline class="g-line" points="30,153.3 45,153.75 60,154.3 75,155 90,156 105,157.5 120,160 127.5,162 135,165 141,168.75 144,171.4 147,175 150,180 153,187.5 154.5,192.9 156,200 157.5,210 158.25,216.7 159,225 159.6,233.3 160.2,243.75 160.8,257.1 161.25,270"/>
+      </g>
+      <g data-part="int">
+        <circle class="g-pt" cx="90" cy="156" r="4.5"/>
+        <circle class="g-pt" cx="157.5" cy="210" r="4.5"/>
+        <text class="g-grn g-halo" x="96" y="172" text-anchor="start">(0, 1.8)</text>
+        <text class="g-grn g-halo" x="152" y="200" text-anchor="end">(9/4, 0)</text>
+      </g>
+    </svg>
+    <figcaption>2x &minus; 5 = 0 gives the vertical asymptote x = 5/2; the &ldquo;+ 2&rdquo; gives the horizontal asymptote g(x) = 2. Domain {x | x &ne; 5/2}, range {g(x) | g(x) &ne; 2}.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','va')">VA x = 5/2</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','ha')">HA g(x) = 2</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','rb')">Right branch</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','lb')">Left branch</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','int')">Intercepts</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 4 &middot; Example 4 &mdash; g(x) = &minus;4/(x + 1) &minus; 2</div>
+    <svg id="fig4" viewBox="0 0 480 480" width="480" role="img" aria-label="Graph of g of x equals negative four over x plus one minus two">
+      <path class="g-grid" d="M30 30V450 M60 30V450 M90 30V450 M120 30V450 M150 30V450 M180 30V450 M210 30V450 M240 30V450 M270 30V450 M300 30V450 M330 30V450 M360 30V450 M390 30V450 M420 30V450 M450 30V450 M30 30H450 M30 60H450 M30 90H450 M30 120H450 M30 150H450 M30 180H450 M30 210H450 M30 240H450 M30 270H450 M30 300H450 M30 330H450 M30 360H450 M30 390H450 M30 420H450 M30 450H450"/>
+      <line class="g-axis" x1="24" y1="180" x2="456" y2="180"/>
+      <path d="M462 180 l-10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <path d="M18 180 l10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <line class="g-axis" x1="270" y1="456" x2="270" y2="24"/>
+      <path d="M270 18 l-5 10 h10 z" fill="var(--sl-ink-2)"/>
+      <path d="M270 462 l-5 -10 h10 z" fill="var(--sl-ink-2)"/>
+      <text class="g-lbl" x="464" y="172" text-anchor="middle">x</text>
+      <text class="g-lbl" x="258" y="34" text-anchor="middle">y</text>
+      <text class="g-lbl-sm g-halo" x="263" y="195" text-anchor="end">O</text>
+      <text class="g-lbl-sm g-halo" x="30" y="196" text-anchor="middle">&minus;8</text>
+      <text class="g-lbl-sm g-halo" x="90" y="196" text-anchor="middle">&minus;6</text>
+      <text class="g-lbl-sm g-halo" x="150" y="196" text-anchor="middle">&minus;4</text>
+      <text class="g-lbl-sm g-halo" x="330" y="196" text-anchor="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="390" y="196" text-anchor="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="450" y="196" text-anchor="middle">6</text>
+      <text class="g-lbl-sm g-halo" x="263" y="60" text-anchor="end" dominant-baseline="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="263" y="120" text-anchor="end" dominant-baseline="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="263" y="300" text-anchor="end" dominant-baseline="middle">&minus;4</text>
+      <text class="g-lbl-sm g-halo" x="263" y="360" text-anchor="end" dominant-baseline="middle">&minus;6</text>
+      <text class="g-lbl-sm g-halo" x="263" y="420" text-anchor="end" dominant-baseline="middle">&minus;8</text>
+      <g data-part="va">
+        <line class="g-aux" x1="240" y1="30" x2="240" y2="450" stroke-dasharray="7 5"/>
+        <text class="g-meas-b g-halo" x="234" y="48" text-anchor="end">x = &minus;1</text>
+      </g>
+      <g data-part="ha">
+        <line class="g-aux" x1="30" y1="240" x2="450" y2="240" stroke-dasharray="7 5"/>
+        <text class="g-meas g-halo" x="400" y="232" text-anchor="middle">g(x) = &minus;2</text>
+      </g>
+      <g data-part="lb" class="g-hot">
+        <polyline class="g-line" points="30,222.9 45,221.5 60,220 75,218.2 90,216 105,213.3 120,210 132,206.7 144,202.5 156,197.1 168,190 180,180 186,173.3 192,165 198,154.3 204,140 210,120 213,106.7 216,90 219,68.6 220.5,55.4 222,40 222.9,30"/>
+        <circle class="g-pt" cx="210" cy="120" r="4.5"/>
+        <text class="g-grn g-halo" x="204" y="112" text-anchor="end">(&minus;2, 2)</text>
+      </g>
+      <g data-part="rb" class="g-hot">
+        <polyline class="g-line" points="257.1,450 258,440 259.5,424.6 261,411.4 264,390 267,373.3 270,360 276,340 282,325.7 288,315 294,306.7 300,300 312,290 324,282.9 336,277.5 348,273.3 360,270 375,266.7 390,264 405,261.8 420,260 435,258.5 450,257.1"/>
+        <circle class="g-pt" cx="300" cy="300" r="4.5"/>
+        <text class="g-grn g-halo" x="308" y="304" text-anchor="start">(1, &minus;4)</text>
+      </g>
+      <g data-part="int">
+        <circle class="g-pt" cx="180" cy="180" r="4.5"/>
+        <circle class="g-pt" cx="270" cy="360" r="4.5"/>
+        <text class="g-grn g-halo" x="174" y="172" text-anchor="end">(&minus;3, 0)</text>
+        <text class="g-grn g-halo" x="278" y="372" text-anchor="start">(0, &minus;6)</text>
+      </g>
+    </svg>
+    <figcaption>a = &minus;4 reflects the graph in the x&#8209;axis and stretches it; h = &minus;1 slides it 1 unit left; k = &minus;2 slides it 2 units down. Because a &lt; 0, the branches sit in the regions opposite to the parent&rsquo;s.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','va')">VA x = &minus;1 (from h)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','ha')">HA g(x) = &minus;2 (from k)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','lb')">Upper-left branch</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','rb')">Lower-right branch</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','int')">Intercepts</button>
+    </div>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 5 &middot; Example 5 &mdash; reading a, h, k off a graph</div>
+    <svg id="fig5" viewBox="0 0 480 480" width="480" role="img" aria-label="Graph with asymptotes x equals negative four and y equals negative two passing through the point negative three comma three">
+      <path class="g-grid" d="M30 30V450 M60 30V450 M90 30V450 M120 30V450 M150 30V450 M180 30V450 M210 30V450 M240 30V450 M270 30V450 M300 30V450 M330 30V450 M360 30V450 M390 30V450 M420 30V450 M450 30V450 M30 30H450 M30 60H450 M30 90H450 M30 120H450 M30 150H450 M30 180H450 M30 210H450 M30 240H450 M30 270H450 M30 300H450 M30 330H450 M30 360H450 M30 390H450 M30 420H450 M30 450H450"/>
+      <line class="g-axis" x1="24" y1="210" x2="456" y2="210"/>
+      <path d="M462 210 l-10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <path d="M18 210 l10 -5 v10 z" fill="var(--sl-ink-2)"/>
+      <line class="g-axis" x1="330" y1="456" x2="330" y2="24"/>
+      <path d="M330 18 l-5 10 h10 z" fill="var(--sl-ink-2)"/>
+      <path d="M330 462 l-5 -10 h10 z" fill="var(--sl-ink-2)"/>
+      <text class="g-lbl" x="464" y="202" text-anchor="middle">x</text>
+      <text class="g-lbl" x="318" y="34" text-anchor="middle">y</text>
+      <text class="g-lbl-sm g-halo" x="323" y="225" text-anchor="end">O</text>
+      <text class="g-lbl-sm g-halo" x="30" y="226" text-anchor="middle">&minus;10</text>
+      <text class="g-lbl-sm g-halo" x="90" y="226" text-anchor="middle">&minus;8</text>
+      <text class="g-lbl-sm g-halo" x="150" y="226" text-anchor="middle">&minus;6</text>
+      <text class="g-lbl-sm g-halo" x="270" y="226" text-anchor="middle">&minus;2</text>
+      <text class="g-lbl-sm g-halo" x="390" y="226" text-anchor="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="450" y="226" text-anchor="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="323" y="90" text-anchor="end" dominant-baseline="middle">4</text>
+      <text class="g-lbl-sm g-halo" x="323" y="150" text-anchor="end" dominant-baseline="middle">2</text>
+      <text class="g-lbl-sm g-halo" x="323" y="330" text-anchor="end" dominant-baseline="middle">&minus;4</text>
+      <text class="g-lbl-sm g-halo" x="323" y="390" text-anchor="end" dominant-baseline="middle">&minus;6</text>
+      <g data-part="va">
+        <line class="g-aux" x1="210" y1="30" x2="210" y2="450" stroke-dasharray="7 5"/>
+        <text class="g-meas-b g-halo" x="204" y="48" text-anchor="end">x = &minus;4 &rarr; h = &minus;4</text>
+      </g>
+      <g data-part="ha">
+        <line class="g-aux" x1="30" y1="270" x2="450" y2="270" stroke-dasharray="7 5"/>
+        <text class="g-meas g-halo" x="90" y="262" text-anchor="middle">y = &minus;2 &rarr; k = &minus;2</text>
+      </g>
+      <g data-part="rb" class="g-hot">
+        <polyline class="g-line" points="228.75,30 231,55.7 234,82.5 237,103.3 240,120 246,145 252,162.9 258,176.25 264,186.7 270,195 282,207.5 294,216.4 306,223.1 318,228.3 330,232.5 345,236.7 360,240 375,242.7 390,245 405,246.9 420,248.6 435,250 450,251.25"/>
+      </g>
+      <g data-part="lb" class="g-hot">
+        <polyline class="g-line" points="30,295 45,297.3 60,300 75,303.3 90,307.5 102,311.7 114,316.9 126,323.6 138,332.5 150,345 156,353.3 162,363.75 168,377.1 174,395 177,406.4 180,420 181.5,427.9 183,436.7 183.9,442.4 185,450"/>
+      </g>
+      <g data-part="pt">
+        <circle class="g-pt" cx="240" cy="120" r="4.5"/>
+        <text class="g-grn g-halo" x="250" y="112" text-anchor="start">(&minus;3, 3)</text>
+      </g>
+    </svg>
+    <figcaption>The asymptotes give h = &minus;4 and k = &minus;2. Substituting the point (&minus;3, 3) into g(x) = a/(x &minus; h) + k gives 3 = a/1 &minus; 2, so a = 5 and g(x) = 5/(x + 4) &minus; 2.</figcaption>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig5','va')">Read h from the VA</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','ha')">Read k from the HA</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','pt')">Use a point to find a</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','rb')">Upper branch</button>
+      <button class="fig-chip" onclick="figHi(this,'fig5','lb')">Lower branch</button>
+    </div>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Limitations on the domains of reciprocal functions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Determine the excluded value of x for each function.<br>a. g(x) = 6/x &nbsp;&nbsp; b. g(x) = 2/(x &minus; 7) &nbsp;&nbsp; c. g(x) = &minus;5/(3x + 4)</div>
+      <div class="case-grid">
+        <div class="case-box"><h4>Part a &mdash; g(x) = 6/x</h4><div class="math">Denominator: x<br>x = 0<br>The function is undefined for <b>x = 0</b>.</div></div>
+        <div class="case-box"><h4>Part b &mdash; g(x) = 2/(x &minus; 7)</h4><div class="math">x &minus; 7 = 0<br>x = 7<br>The function is undefined for <b>x = 7</b>.</div></div>
+      </div>
+      <div class="solution-step"><span class="num">1</span><span class="math">3x + 4 = 0</span><span class="reason">set the denominator equal to 0</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">3x = &minus;4</span><span class="reason">subtract 4 from each side</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = &minus;4/3</span><span class="reason">divide each side by 3</span></div>
+      <div class="answer-box">a. x = 0 &nbsp;&middot;&nbsp; b. x = 7 &nbsp;&middot;&nbsp; c. x = &minus;4/3</div>
+      <div class="warning-box"><strong>Watch Out:</strong> the excluded value comes from the <em>denominator only</em>. The numerator (6, 2, &minus;5) never affects the domain.</div>
+      <div class="check-box"><strong>Check yourself:</strong> 9/(17x) is undefined at x = 0; 3/(x &minus; 11) at x = 11; 1/(2x + 8) at x = &minus;4.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Graph a reciprocal function by using a table</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Consider g(x) = 1/(2x &minus; 5) + 2.<br>Part A: identify the asymptotes, domain and range. Part B: graph it and find the intercepts.</div>
+      <p><b>Part A &mdash; key features.</b></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">2x &minus; 5 = 0</span><span class="reason">set the denominator equal to 0</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x = 5/2</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">VA: x = 5/2, domain {x | x &ne; 5/2}</span><span class="reason">excluded value</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">form is n/b(x) + k with k = 2</span><span class="reason">compare to the general form</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">HA: g(x) = 2, range {g(x) | g(x) &ne; 2}</span><span class="reason">horizontal asymptote is g(x) = k</span></div>
+      <p><b>Part B &mdash; graph and intercepts.</b> Draw both asymptotes as dashed lines, then build a table using x&#8209;values on <em>both</em> sides of 5/2.</p>
+      <table class="tbl">
+        <tr><th>x</th><td>&minus;1</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+        <tr><th>g(x)</th><td>1.86</td><td>1.8</td><td>1.67</td><td>1</td><td>3</td><td>2.33</td><td>2.2</td><td>2.14</td></tr>
+      </table>
+      <div class="solution-step"><span class="num">1</span><span class="math">0 = 1/(2x &minus; 5) + 2</span><span class="reason">substitute 0 for g(x)</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&minus;2 = 1/(2x &minus; 5)</span><span class="reason">subtract 2 from each side</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&minus;2(2x &minus; 5) = 1</span><span class="reason">multiply each side by 2x &minus; 5</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">&minus;4x + 10 = 1</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">x = 9/4</span><span class="reason">solve for x</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">g(0) = 1/(2(0) &minus; 5) + 2 = &minus;0.2 + 2 = 1.8</span><span class="reason">substitute 0 for x</span></div>
+      <div class="answer-box">VA x = 5/2 &nbsp;&middot;&nbsp; HA g(x) = 2 &nbsp;&middot;&nbsp; x&#8209;intercept 9/4 &nbsp;&middot;&nbsp; y&#8209;intercept 1.8</div>
+      <p>See <b>Figure 3</b> above for the finished graph.</p>
+      <div class="check-box"><strong>Check:</strong> for g(x) = 3/x + 1 &rarr; VA x = 0, HA y = 1, domain {x | x &ne; 0}, range {g(x) | g(x) &ne; 1}, x&#8209;intercept &minus;3, no y&#8209;intercept.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Analyze a reciprocal function (Ohm&rsquo;s law)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Ohm&rsquo;s law: I = V/R. For a 110&#8209;volt circuit, analyze the current I as a function of the resistance R.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">I = 110/R</span><span class="reason">substitute V = 110</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">R = 0 is excluded &rarr; VA: R = 0</span><span class="reason">denominator equals 0</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">no k term &rarr; HA: I = 0</span><span class="reason">form n/b(R) with k = 0</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">domain {R | R &ne; 0}, range {I | I &ne; 0}</span><span class="reason">asymptotes give domain and range</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">I &gt; 0 when R &gt; 0; I &lt; 0 when R &lt; 0</span><span class="reason">sign of a quotient</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">as R &rarr; &minus;&infin;, I &rarr; 0; as R &rarr; &infin;, I &rarr; 0</span><span class="reason">end behaviour toward the HA</span></div>
+      <div class="answer-box">I = 110/R &nbsp;&middot;&nbsp; asymptotes R = 0 and I = 0 &nbsp;&middot;&nbsp; no intercepts &nbsp;&middot;&nbsp; symmetric about the origin</div>
+      <div class="info-box"><strong>Note:</strong> the graph has the same shape as the parent y = 1/x, only stretched by a factor of 110. Algebraically that is a = 110, h = 0, k = 0.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Graph a transformation of a reciprocal function</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Graph g(x) = &minus;4/(x + 1) &minus; 2. State the domain and range.</div>
+      <p>Compare with <code>g(x) = a/(x &minus; h) + k</code>. Rewrite <code>x + 1</code> as <code>x &minus; (&minus;1)</code>.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">a = &minus;4</span><span class="reason">reflected in the x&#8209;axis and stretched vertically</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">h = &minus;1</span><span class="reason">translated 1 unit left; VA is x = &minus;1</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">k = &minus;2</span><span class="reason">translated 2 units down; HA is g(x) = &minus;2</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">domain {x | x &ne; &minus;1}</span><span class="reason">exclude the vertical asymptote</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">range {g(x) | g(x) &ne; &minus;2}</span><span class="reason">exclude the horizontal asymptote</span></div>
+      <div class="answer-box">Reflected, stretched by 4, 1 unit left, 2 units down &mdash; see Figure 4</div>
+      <div class="warning-box"><strong>Trap:</strong> &ldquo;x + 1&rdquo; makes h = <b>&minus;1</b>, not +1. The vertical asymptote is at x = &minus;1, so the graph moves <em>left</em>.</div>
+      <div class="check-box"><strong>Check:</strong> g(0) = &minus;4/1 &minus; 2 = &minus;6 and g(&minus;2) = &minus;4/(&minus;1) &minus; 2 = 2. Both points appear on Figure 4.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Write a reciprocal function from a graph</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Identify the values of a, h and k for the graph in Figure 5, then write a function of the form g(x) = a/(x &minus; h) + k.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">asymptotes: x = &minus;4 and y = &minus;2</span><span class="reason">read the dashed lines</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">h = &minus;4 and k = &minus;2</span><span class="reason">VA gives h, HA gives k</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">3 = a/((&minus;3) &minus; (&minus;4)) + (&minus;2)</span><span class="reason">use the point (&minus;3, 3)</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">3 = a &minus; 2</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">a = 5</span><span class="reason">add 2 to each side</span></div>
+      <div class="answer-box">g(x) = 5/(x + 4) &minus; 2</div>
+      <div class="check-box"><strong>Check:</strong> g(&minus;3) = 5/(&minus;3 + 4) &minus; 2 = 5 &minus; 2 = 3 &#10003; and g(1) = 5/5 &minus; 2 = &minus;1, which matches the shape of the graph.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">Determine the excluded value of f(x) = 10/(x &minus; 3) and of g(x) = 5/(7x &minus; 9).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">x &minus; 3 = 0 &rarr; x = 3</span><span class="reason">denominator equal to 0</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">7x &minus; 9 = 0 &rarr; 7x = 9 &rarr; x = 9/7</span><span class="reason">solve the linear equation</span></div>
+      <div class="answer-box">x = 3 &nbsp;&middot;&nbsp; x = 9/7</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">State the asymptotes, domain and range of f(x) = &minus;3/(x + 7) &minus; 1.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">x + 7 = x &minus; (&minus;7) &rarr; h = &minus;7</span><span class="reason">match a/(x &minus; h) + k</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">VA: x = &minus;7</span><span class="reason">vertical asymptote is x = h</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">k = &minus;1 &rarr; HA: f(x) = &minus;1</span><span class="reason">horizontal asymptote is f(x) = k</span></div>
+      <div class="answer-box">VA x = &minus;7, HA f(x) = &minus;1, domain {x | x &ne; &minus;7}, range {f(x) | f(x) &ne; &minus;1}</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">Find the x&#8209;intercept and the y&#8209;intercept of f(x) = 6/(x &minus; 1) + 2.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">0 = 6/(x &minus; 1) + 2</span><span class="reason">substitute 0 for f(x)</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&minus;2(x &minus; 1) = 6</span><span class="reason">subtract 2, then multiply by x &minus; 1</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">&minus;2x + 2 = 6 &rarr; x = &minus;2</span><span class="reason">solve for x</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">f(0) = 6/(&minus;1) + 2 = &minus;4</span><span class="reason">substitute 0 for x</span></div>
+      <div class="answer-box">x&#8209;intercept (&minus;2, 0) &nbsp;&middot;&nbsp; y&#8209;intercept (0, &minus;4)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">Describe every transformation that maps f(x) = 1/x onto h(x) = 2/(x &minus; 4) &minus; 5.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">a = 2, |a| &gt; 1</span><span class="reason">vertical stretch by a factor of 2</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">h = 4 &gt; 0</span><span class="reason">translated 4 units right; VA x = 4</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">k = &minus;5 &lt; 0</span><span class="reason">translated 5 units down; HA y = &minus;5</span></div>
+      <div class="answer-box">Stretched vertically by 2, then 4 units right and 5 units down</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">Determine all values of x for which f(x) = 4/(x&sup2; &minus; 2x &minus; 3) is undefined, and state the asymptotes.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">x&sup2; &minus; 2x &minus; 3 = 0</span><span class="reason">set the denominator equal to 0</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">(x &minus; 3)(x + 1) = 0</span><span class="reason">factor</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = 3 or x = &minus;1</span><span class="reason">Zero Product Property</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">no k term &rarr; HA y = 0</span><span class="reason">the fraction can never equal 0</span></div>
+      <div class="answer-box">Undefined at x = 3 and x = &minus;1 &nbsp;&middot;&nbsp; VAs x = 3, x = &minus;1 &nbsp;&middot;&nbsp; HA y = 0</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6</h4>
+    <div class="prob">Write a reciprocal function whose graph has a vertical asymptote at x = &minus;4 and a horizontal asymptote at f(x) = 6.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">VA x = &minus;4 &rarr; h = &minus;4</span><span class="reason">denominator must be x &minus; (&minus;4) = x + 4</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">HA f(x) = 6 &rarr; k = 6</span><span class="reason">add 6 to the fraction</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">choose any a &ne; 0, e.g. a = 1</span><span class="reason">a changes shape, not the asymptotes</span></div>
+      <div class="answer-box">f(x) = 1/(x + 4) + 6 &nbsp;(also 2/(x + 4) + 6, &minus;3/(x + 4) + 6, &hellip;)</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Find the excluded value</td><td>Set the denominator = 0 and solve</td><td><code>x = c</code>; domain {x | x &ne; c}</td></tr>
+    <tr><td>Find the vertical asymptote</td><td>Same excluded value</td><td><code>x = h</code></td></tr>
+    <tr><td>Find the horizontal asymptote</td><td>Read the constant added outside the fraction</td><td><code>f(x) = k</code>; range {f(x) | f(x) &ne; k}</td></tr>
+    <tr><td>Find the y&#8209;intercept</td><td>Substitute <code>x = 0</code></td><td><code>(0, f(0))</code>, or none if 0 is excluded</td></tr>
+    <tr><td>Find the x&#8209;intercept</td><td>Set <code>f(x) = 0</code>, clear the fraction, solve</td><td>one value, or none if k = 0</td></tr>
+    <tr><td>Graph the function</td><td>Dash both asymptotes, table points on each side, two smooth curves</td><td>a hyperbola with two branches</td></tr>
+    <tr><td>Write a function from a graph</td><td>h from the VA, k from the HA, then a point to get a</td><td><code>g(x) = a/(x &minus; h) + k</code></td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">f(x) = n/b(x)</span>
+    <span class="pill">parent: f(x) = 1/x</span>
+    <span class="pill">g(x) = a/(x &minus; h) + k</span>
+    <span class="pill">VA: x = h</span>
+    <span class="pill">HA: f(x) = k</span>
+    <span class="pill">domain {x | x &ne; h}</span>
+    <span class="pill">range {g(x) | g(x) &ne; k}</span>
+    <span class="pill">f(x) = x<sup>&minus;1</sup></span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes</strong>
+    <ul style="margin:8px 0 0 18px">
+      <li>Reading <code>1/(x + 3)</code> as a shift <em>right</em>. It is <code>x &minus; (&minus;3)</code>, so h = &minus;3 and the shift is 3 units <b>left</b>.</li>
+      <li>Saying the horizontal asymptote is always y = 0. It is y = 0 only when there is no <code>+ k</code>.</li>
+      <li>Connecting the two branches through the vertical asymptote. Never draw across it.</li>
+      <li>Using the numerator to find the excluded value. Only the denominator matters.</li>
+      <li>Forgetting that a quadratic denominator can produce <em>two</em> vertical asymptotes.</li>
+      <li>Claiming a reciprocal function has no x&#8209;intercept when <code>k &ne; 0</code> &mdash; it does.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"What is the excluded value of f(x) = 7/(x + 5)?",opts:["x = 5","x = &minus;5","x = 7","x = &minus;7"],ans:1,exp:"Set the denominator equal to 0: x + 5 = 0, so x = &minus;5. The numerator 7 has no effect on the domain."},
+  {q:"For the parent function f(x) = 1/x, the asymptotes are:",opts:["x = 1 and y = 1","x = 0 and y = 1","x = &minus;1 and y = 0","x = 0 and y = 0"],ans:3,exp:"The denominator x is 0 at x = 0, giving the vertical asymptote x = 0. Since 1/x can never output 0, the horizontal asymptote is y = 0."},
+  {q:"What is the excluded value of g(x) = &minus;5/(3x + 4)?",opts:["x = &minus;4/3","x = 4/3","x = &minus;3/4","x = 5/3"],ans:0,exp:"3x + 4 = 0 gives 3x = &minus;4, so x = &minus;4/3. Watch the order: you divide by 3 after subtracting 4, not before."},
+  {q:"What is the vertical asymptote of g(x) = 1/(2x &minus; 5) + 2?",opts:["x = 2","x = 5","x = 5/2","x = &minus;5/2"],ans:2,exp:"Only the denominator 2x &minus; 5 matters: 2x &minus; 5 = 0 gives x = 5/2. The + 2 shifts the graph vertically and cannot move a vertical asymptote."},
+  {q:"What is the horizontal asymptote of g(x) = 1/(2x &minus; 5) + 2?",opts:["g(x) = 0","g(x) = 2","g(x) = 5/2","g(x) = &minus;2"],ans:1,exp:"The fraction 1/(2x &minus; 5) approaches 0 as x grows, so g(x) approaches 0 + 2 = 2. In the form n/b(x) + k the horizontal asymptote is always g(x) = k."},
+  {q:"What is the range of f(x) = 3/(x + 7) &minus; 4?",opts:["{f(x) | f(x) &ne; 7}","{f(x) | f(x) &ne; 3}","{f(x) | f(x) &ne; &minus;7}","{f(x) | f(x) &ne; &minus;4}"],ans:3,exp:"The range excludes the horizontal asymptote. Here k = &minus;4, so f(x) can be any real number except &minus;4. (&minus;7 is excluded from the domain, not the range.)"},
+  {q:"What is the domain of f(x) = 6/(x &minus; 1) + 2?",opts:["{x | x &ne; 2}","{x | x &ne; 1}","{x | x &ne; &minus;1}","{x | x &ne; 6}"],ans:1,exp:"x &minus; 1 = 0 gives the excluded value x = 1. The domain excludes only the vertical asymptote; the + 2 affects the range instead."},
+  {q:"How is the graph of g(x) = 1/(x + 3) related to the graph of f(x) = 1/x?",opts:["translated 3 units up","translated 3 units right","translated 3 units left","translated 3 units down"],ans:2,exp:"Write x + 3 as x &minus; (&minus;3), so h = &minus;3. A negative h means the graph moves |h| = 3 units left, putting the vertical asymptote at x = &minus;3."},
+  {q:"Which list correctly describes g(x) = &minus;4/(x + 1) &minus; 2 as a transformation of f(x) = 1/x?",opts:["stretched by 4, 1 unit right, 2 units up","compressed by 4, 1 unit left, 2 units down","reflected in the y&#8209;axis, 1 unit right, 2 units down","reflected in the x&#8209;axis and stretched by 4, 1 unit left, 2 units down"],ans:3,exp:"a = &minus;4: the negative reflects the graph in the x&#8209;axis and |a| = 4 &gt; 1 stretches it vertically. h = &minus;1 moves it 1 unit left and k = &minus;2 moves it 2 units down."},
+  {q:"What is the y&#8209;intercept of g(x) = 1/(2x &minus; 5) + 2?",opts:["1.8","2.2","&minus;0.2","2"],ans:0,exp:"Substitute x = 0: g(0) = 1/(2(0) &minus; 5) + 2 = 1/(&minus;5) + 2 = &minus;0.2 + 2 = 1.8. The &minus;0.2 alone is only the fraction, not the whole function value."},
+  {q:"What is the x&#8209;intercept of g(x) = 1/(2x &minus; 5) + 2?",opts:["x = 5/2","x = 9/4","x = &minus;9/4","x = 2"],ans:1,exp:"Set g(x) = 0: &minus;2 = 1/(2x &minus; 5), so &minus;2(2x &minus; 5) = 1, giving &minus;4x + 10 = 1 and x = 9/4. Note 5/2 is the asymptote, where the function is undefined."},
+  {q:"A graph of the form g(x) = a/(x &minus; h) + k has asymptotes x = &minus;4 and y = &minus;2 and passes through (&minus;3, 3). What is the function?",opts:["g(x) = 5/(x &minus; 4) &minus; 2","g(x) = 3/(x + 4) &minus; 2","g(x) = 5/(x + 4) &minus; 2","g(x) = 5/(x + 4) + 2"],ans:2,exp:"h = &minus;4 gives the denominator x &minus; (&minus;4) = x + 4 and k = &minus;2. Substituting (&minus;3, 3): 3 = a/1 &minus; 2, so a = 5."},
+  {q:"What are all the asymptotes of f(x) = 3/(x&sup2; &minus; x &minus; 12)?",opts:["x = &minus;4, x = 3, y = 0","x = 4, x = &minus;3, y = 3","x = 3, x = &minus;4, y = 0","x = 4, x = &minus;3, y = 0"],ans:3,exp:"Factor: x&sup2; &minus; x &minus; 12 = (x &minus; 4)(x + 3), which is 0 at x = 4 and x = &minus;3. There is no constant added outside the fraction, so the horizontal asymptote is y = 0."},
+  {q:"Which function has a vertical asymptote at x = &minus;4 and a horizontal asymptote at f(x) = 6?",opts:["f(x) = 1/(x + 4) + 6","f(x) = 1/(x &minus; 4) + 6","f(x) = 1/(x + 6) + 4","f(x) = 1/(x + 4) &minus; 6"],ans:0,exp:"The vertical asymptote x = &minus;4 forces the denominator x &minus; (&minus;4) = x + 4, and the horizontal asymptote 6 forces the constant + 6."},
+  {q:"Which function is NOT a reciprocal function of the form n/b(x)?",opts:["f(x) = 3/(x + 1)","f(x) = 20/(x &minus; 7)","f(x) = (x + 2)/(x&sup2; + 1)","f(x) = &minus;5/(3x + 4)"],ans:2,exp:"A reciprocal function needs a constant numerator over a linear denominator. Here the numerator x + 2 contains a variable and the denominator is quadratic, so it fails both tests."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

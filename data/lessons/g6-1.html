@@ -1,0 +1,735 @@
+<div class="sat-lesson">
+<p class="lesson-objective">By the end of this page you will be able to use the Perpendicular Bisector Theorem and its converse to solve for unknown lengths, and locate the circumcenter of a triangle.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+<h2>Core Concepts</h2>
+
+<div class="concept-card">
+  <h3>1. What a perpendicular bisector is</h3>
+  <p>A perpendicular bisector is a line that does <em>two jobs at once</em>: it cuts a segment exactly in half, <strong>and</strong> it crosses that segment at a right angle. Miss either job and it is not a perpendicular bisector.</p>
+  <div class="vocab">
+    <div class="vocab-item"><b>perpendicular bisector</b> &mdash; a line, segment, or ray that passes through the <em>midpoint</em> of a segment and is <em>perpendicular</em> to that segment.</div>
+    <div class="vocab-item"><b>concurrent lines</b> &mdash; three or more lines that intersect at one common point.</div>
+    <div class="vocab-item"><b>point of concurrency</b> &mdash; the single point where concurrent lines meet.</div>
+    <div class="vocab-item"><b>circumcenter</b> &mdash; the point of concurrency of the three perpendicular bisectors of the sides of a triangle.</div>
+  </div>
+  <div class="formula-box">
+    If line <em>&#8467;</em> is the &perp; bisector of <span style="text-decoration:overline">AB</span> meeting it at <em>M</em>, then<br>
+    &nbsp;&nbsp;AM = MB&nbsp;&nbsp;&nbsp;and&nbsp;&nbsp;&nbsp;&#8467; &perp; <span style="text-decoration:overline">AB</span>&nbsp;&nbsp;(m&ang;AM&#8467; = 90&deg;)
+  </div>
+  <div class="info-box"><strong>Study Tip &mdash; Circum&ndash;</strong> The prefix <em>circum</em>&ndash; means "about" or "around." The circum<em>center</em> is the center of a circle drawn <em>around</em> a triangle so that the circle contains all three vertices.</div>
+</div>
+
+<div class="concept-card">
+  <h3>2. The two theorems that do all the work</h3>
+  <p>These two statements are converses of each other. One turns "on the bisector" into "equal distances." The other turns "equal distances" into "on the bisector." Almost every problem in this lesson is one of these two moves.</p>
+
+  <div class="theorem">
+    <div class="theorem-head">Theorem 6.1 &mdash; Perpendicular Bisector Theorem</div>
+    <div class="theorem-body">
+      <strong>Words:</strong> If a point is on the perpendicular bisector of a segment, then it is equidistant from the endpoints of the segment.<br>
+      <strong>Symbols:</strong> If <span style="text-decoration:overline">CD</span> is a &perp; bisector of <span style="text-decoration:overline">AB</span>, then <code>AC = BC</code>.
+    </div>
+  </div>
+
+  <div class="theorem">
+    <div class="theorem-head">Theorem 6.2 &mdash; Converse of the Perpendicular Bisector Theorem</div>
+    <div class="theorem-body">
+      <strong>Words:</strong> If a point is equidistant from the endpoints of a segment, then it is on the perpendicular bisector of the segment.<br>
+      <strong>Symbols:</strong> If <code>AC = BC</code>, then <em>C</em> lies on the &perp; bisector of <span style="text-decoration:overline">AB</span>.
+    </div>
+  </div>
+
+  <p><strong>Why Theorem 6.1 works:</strong> drop the point <em>C</em> onto the midpoint <em>D</em>. Then <span style="text-decoration:overline">AD</span> &cong; <span style="text-decoration:overline">DB</span> (midpoint), &ang;ADC and &ang;BDC are both right angles, and <span style="text-decoration:overline">CD</span> &cong; <span style="text-decoration:overline">CD</span>. By SAS, &#9651;ADC &cong; &#9651;BDC, so <span style="text-decoration:overline">AC</span> &cong; <span style="text-decoration:overline">BC</span> by CPCTC.</p>
+
+  <div class="warning-box"><strong>Watch Out!</strong> One equal-length mark is not enough. To use the <em>converse</em> and conclude that a whole <em>line</em> is the perpendicular bisector, you need <strong>two different points</strong> that are each equidistant from the endpoints. Two such points determine the bisector line.</div>
+</div>
+
+<div class="concept-card">
+  <h3>3. Perpendicular bisectors of a triangle</h3>
+  <p>A triangle has three sides, so it has three perpendicular bisectors. Remarkably, they always meet at one point &mdash; they are concurrent. That point of concurrency is the circumcenter.</p>
+  <div class="theorem">
+    <div class="theorem-head">Theorem 6.3 &mdash; Circumcenter Theorem</div>
+    <div class="theorem-body">The perpendicular bisectors of a triangle intersect at a point called the <strong>circumcenter</strong> that is <strong>equidistant from the vertices</strong> of the triangle.</div>
+  </div>
+  <p>So if <em>P</em> is the circumcenter of &#9651;ABC, then <code>PA = PB = PC</code>. That common distance is the radius of the <strong>circumcircle</strong> &mdash; the unique circle passing through all three vertices.</p>
+  <div class="warning-box"><strong>Watch Out!</strong> The circumcenter is equidistant from the <em>vertices</em>, not from the sides. (The point equidistant from the three <em>sides</em> is the incenter, from angle bisectors &mdash; a different lesson.)</div>
+</div>
+
+<div class="concept-card">
+  <h3>4. The right-triangle trick you will use constantly</h3>
+  <p>Draw a perpendicular bisector from the circumcenter <em>P</em> to a side. It hits the side at its midpoint and makes a right angle. That creates a right triangle whose legs are the distance <em>P</em>-to-side and half the side, with hypotenuse a radius.</p>
+  <div class="formula-box">
+    (half a side)<sup>2</sup> + (distance from center to that side)<sup>2</sup> = (radius)<sup>2</sup>
+  </div>
+  <div class="steps-list">
+    <div class="s">Use the perpendicular bisector to halve the known side.</div>
+    <div class="s">Apply the Pythagorean Theorem to get the radius <em>r</em> (a distance from the center to a vertex).</div>
+    <div class="s">By the Circumcenter Theorem, that same <em>r</em> reaches every vertex.</div>
+    <div class="s">Apply the Pythagorean Theorem again on a second side to find the missing half-length.</div>
+  </div>
+</div>
+
+<div class="keyfact"><div class="ico">1</div><div class="txt"><strong>Midpoint + right angle.</strong> Both conditions, always. A line through the midpoint that is not perpendicular is only a bisector; a perpendicular line that misses the midpoint is only a perpendicular.</div></div>
+<div class="keyfact"><div class="ico">2</div><div class="txt"><strong>On the bisector &rArr; equidistant.</strong> Every point of the &perp; bisector of <span style="text-decoration:overline">AB</span> is the same distance from <em>A</em> as from <em>B</em>.</div></div>
+<div class="keyfact"><div class="ico">3</div><div class="txt"><strong>Equidistant &rArr; on the bisector.</strong> The converse holds too, so the &perp; bisector <em>is</em> the set of all points equidistant from the two endpoints.</div></div>
+<div class="keyfact"><div class="ico">4</div><div class="txt"><strong>Circumcenter:</strong> where the three &perp; bisectors of a triangle meet; <code>PA = PB = PC</code>.</div></div>
+<div class="keyfact"><div class="ico">5</div><div class="txt"><strong>Setting up equations:</strong> two expressions for distances to the two endpoints are <em>equal</em>. Set them equal, solve, then substitute back &mdash; the question almost never asks for the variable itself.</div></div>
+</section>
+
+<section id="figures">
+<h2>Key Figures</h2>
+<p style="font-size:15px;line-height:1.7;margin-bottom:6px;">Click a chip under any diagram to isolate that part of the figure. Click it again to bring everything back.</p>
+
+<figure class="fig">
+  <div class="fig-title">Figure 1 &mdash; Perpendicular Bisector Theorem</div>
+  <svg id="fig1" viewBox="0 0 440 300" width="440" role="img" aria-label="Line CD is the perpendicular bisector of segment AB, and AC equals BC">
+    <defs><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--sl-navy)"/></marker></defs>
+    <g data-part="segment">
+      <line class="g-line" x1="50" y1="190" x2="390" y2="190" marker-start="url(#m1)" marker-end="url(#m1)"/>
+      <line class="g-tick" x1="155" y1="182" x2="155" y2="198"/>
+      <line class="g-tick" x1="285" y1="182" x2="285" y2="198"/>
+      <circle class="g-pt" cx="90" cy="190" r="5"/>
+      <circle class="g-pt" cx="350" cy="190" r="5"/>
+      <text class="g-lbl" x="80" y="196" text-anchor="end">A</text>
+      <text class="g-lbl" x="360" y="196" text-anchor="start">B</text>
+    </g>
+    <g data-part="bisector">
+      <line class="g-line" x1="220" y1="45" x2="220" y2="255" marker-start="url(#m1)" marker-end="url(#m1)"/>
+      <path class="g-right" d="M 232 190 L 232 178 L 220 178"/>
+      <circle class="g-pt" cx="220" cy="190" r="5"/>
+      <circle class="g-pt" cx="220" cy="80" r="5"/>
+      <text class="g-lbl g-halo" x="212" y="210" text-anchor="end">D</text>
+      <text class="g-lbl" x="232" y="74" text-anchor="start">C</text>
+    </g>
+    <g data-part="equal">
+      <line class="g-arc" x1="90" y1="190" x2="220" y2="80"/>
+      <line class="g-arc" x1="350" y1="190" x2="220" y2="80"/>
+      <line class="g-tick" x1="145.2" y1="132.8" x2="155.6" y2="145.0"/>
+      <line class="g-tick" x1="154.4" y1="125.0" x2="164.8" y2="137.2"/>
+      <line class="g-tick" x1="284.4" y1="145.0" x2="294.8" y2="132.8"/>
+      <line class="g-tick" x1="275.2" y1="137.2" x2="285.6" y2="125.0"/>
+      <text class="g-grn" x="220" y="278" text-anchor="middle">AC = BC</text>
+    </g>
+  </svg>
+  <figcaption><em>D</em> is the midpoint of <span style="text-decoration:overline">AB</span> (single ticks) and <span style="text-decoration:overline">CD</span> &perp; <span style="text-decoration:overline">AB</span>, so every point of line <em>CD</em> &mdash; including <em>C</em> &mdash; is equidistant from <em>A</em> and <em>B</em> (double ticks).</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig1','segment')">Segment &amp; midpoint</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','bisector')">Perpendicular bisector</button>
+    <button class="fig-chip" onclick="figHi(this,'fig1','equal')">Equal distances</button>
+  </div>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Figure 2 &mdash; Converse: equidistant points determine the bisector</div>
+  <svg id="fig2" viewBox="0 0 440 300" width="440" role="img" aria-label="W and Y are each equidistant from X and Z, so line WY is the perpendicular bisector of segment XZ">
+    <defs><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--sl-navy)"/></marker></defs>
+    <g data-part="given">
+      <line class="g-arc" x1="110" y1="150" x2="300" y2="70"/>
+      <line class="g-arc" x1="110" y1="150" x2="300" y2="230"/>
+      <line class="g-tick" x1="196.4" y1="104.9" x2="202.6" y2="119.7"/>
+      <line class="g-tick" x1="207.4" y1="100.3" x2="213.6" y2="115.1"/>
+      <line class="g-tick" x1="202.6" y1="180.3" x2="196.4" y2="195.1"/>
+      <line class="g-tick" x1="213.6" y1="184.9" x2="207.4" y2="199.7"/>
+      <circle class="g-pt" cx="110" cy="150" r="5"/>
+      <circle class="g-pt" cx="300" cy="70" r="5"/>
+      <circle class="g-pt" cx="300" cy="230" r="5"/>
+      <text class="g-lbl" x="100" y="156" text-anchor="end">W</text>
+      <text class="g-lbl" x="308" y="62" text-anchor="start">X</text>
+      <text class="g-lbl" x="308" y="244" text-anchor="start">Z</text>
+      <text class="g-grn" x="150" y="122" text-anchor="middle">WX = WZ</text>
+    </g>
+    <g data-part="result">
+      <line class="g-line" x1="70" y1="150" x2="400" y2="150" marker-start="url(#m2)" marker-end="url(#m2)"/>
+      <path class="g-right" d="M 288 150 L 288 138 L 300 138"/>
+      <line class="g-tick" x1="292" y1="110" x2="308" y2="110"/>
+      <line class="g-tick" x1="292" y1="190" x2="308" y2="190"/>
+      <circle class="g-pt" cx="300" cy="150" r="5"/>
+      <text class="g-lbl g-halo" x="292" y="172" text-anchor="end">Y</text>
+      <text class="g-grn" x="360" y="118" text-anchor="middle">XY = YZ</text>
+    </g>
+  </svg>
+  <figcaption>Because <em>W</em> is equidistant from <em>X</em> and <em>Z</em>, and <em>Y</em> is too, line <em>WY</em> must be the perpendicular bisector of <span style="text-decoration:overline">XZ</span>: it hits the midpoint at 90&deg;.</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig2','given')">Given: WX = WZ</button>
+    <button class="fig-chip" onclick="figHi(this,'fig2','result')">Conclusion: line WY</button>
+  </div>
+</figure>
+
+<figure class="fig">
+  <div class="fig-title">Figure 3 &mdash; Circumcenter and circumcircle</div>
+  <svg id="fig3" viewBox="0 0 380 360" width="380" role="img" aria-label="The three perpendicular bisectors of triangle ABC meet at circumcenter P, the center of the circle through A, B and C">
+    <g data-part="circle">
+      <circle class="g-line-thin" cx="210" cy="173" r="123" stroke-dasharray="7 5"/>
+      <line class="g-dash" x1="210" y1="173" x2="100" y2="228"/>
+      <line class="g-dash" x1="210" y1="173" x2="232" y2="52"/>
+      <line class="g-dash" x1="210" y1="173" x2="320" y2="228"/>
+      <text class="g-meas g-halo" x="151" y="206" text-anchor="middle">r</text>
+      <text class="g-meas g-halo" x="227" y="112" text-anchor="middle">r</text>
+      <text class="g-meas g-halo" x="269" y="206" text-anchor="middle">r</text>
+    </g>
+    <g data-part="triangle">
+      <polygon class="g-shape" points="100,228 232,52 320,228" fill-opacity=".45"/>
+      <circle class="g-pt" cx="100" cy="228" r="5"/>
+      <circle class="g-pt" cx="232" cy="52" r="5"/>
+      <circle class="g-pt" cx="320" cy="228" r="5"/>
+      <text class="g-lbl" x="88" y="244" text-anchor="end">A</text>
+      <text class="g-lbl" x="232" y="38" text-anchor="middle">B</text>
+      <text class="g-lbl" x="332" y="244" text-anchor="start">C</text>
+    </g>
+    <g data-part="bisectors">
+      <line class="g-arc" x1="210" y1="244" x2="210" y2="120"/>
+      <line class="g-arc" x1="158" y1="134" x2="246" y2="200"/>
+      <line class="g-arc" x1="284.9" y1="135.5" x2="169.8" y2="193.1"/>
+      <path class="g-right" d="M 222 228 L 222 216 L 210 216"/>
+      <path class="g-right" d="M 173.2 130.4 L 182.8 137.6 L 175.6 147.2"/>
+      <path class="g-right" d="M 281.4 150.7 L 270.6 156.1 L 265.3 145.4"/>
+      <line class="g-tick" x1="155" y1="220" x2="155" y2="236"/>
+      <line class="g-tick" x1="265" y1="220" x2="265" y2="236"/>
+      <line class="g-tick" x1="126.6" y1="179.2" x2="139.4" y2="188.8"/>
+      <line class="g-tick" x1="192.6" y1="91.2" x2="205.4" y2="100.8"/>
+      <line class="g-tick" x1="246.8" y1="99.6" x2="261.2" y2="92.4"/>
+      <line class="g-tick" x1="290.8" y1="187.6" x2="305.2" y2="180.4"/>
+      <text class="g-lbl-sm" x="152" y="136" text-anchor="end">G</text>
+      <text class="g-lbl-sm" x="290" y="136" text-anchor="start">F</text>
+      <text class="g-lbl-sm" x="222" y="248" text-anchor="start">E</text>
+    </g>
+    <g data-part="center">
+      <circle class="g-pt" cx="210" cy="173" r="5.5"/>
+      <text class="g-lbl g-halo" x="196" y="166" text-anchor="end">P</text>
+      <text class="g-grn" x="210" y="330" text-anchor="middle">PA = PB = PC = r</text>
+    </g>
+  </svg>
+  <figcaption>Vertices <em>A</em>(0,&nbsp;0), <em>B</em>(6,&nbsp;8), <em>C</em>(10,&nbsp;0) give circumcenter <em>P</em>(5,&nbsp;2.5) and radius <em>r</em> = &radic;31.25 &asymp; 5.59. <em>E</em>, <em>F</em>, <em>G</em> are the midpoints of the sides; the circle passes exactly through <em>A</em>, <em>B</em>, and <em>C</em>.</figcaption>
+  <div class="fig-legend">
+    <button class="fig-chip" onclick="figHi(this,'fig3','triangle')">Triangle</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','bisectors')">Three &perp; bisectors</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','center')">Circumcenter</button>
+    <button class="fig-chip" onclick="figHi(this,'fig3','circle')">Circumcircle</button>
+  </div>
+</figure>
+</section>
+
+<section id="examples">
+<h2>Worked Examples</h2>
+
+<div class="example-card">
+  <button class="example-header open" onclick="toggleExample(this)">
+    <span class="example-label">Example 1</span>
+    <span class="example-title">Use the Perpendicular Bisector Theorem to find EF</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body open">
+    <div class="problem-stmt">Line <em>FG</em> is the perpendicular bisector of <span style="text-decoration:overline">EH</span>. If EF = 4a &minus; 15 and HF = a + 12, find EF.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 350 240" width="350" role="img" aria-label="FG is the perpendicular bisector of EH with EF equal to 4a minus 15 and HF equal to a plus 12">
+        <defs><marker id="me1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--sl-navy)"/></marker></defs>
+        <line class="g-line" x1="170" y1="35" x2="170" y2="215" marker-start="url(#me1)" marker-end="url(#me1)"/>
+        <line class="g-line" x1="60" y1="125" x2="330" y2="125" marker-start="url(#me1)" marker-end="url(#me1)"/>
+        <line class="g-arc" x1="170" y1="55" x2="300" y2="125"/>
+        <line class="g-arc" x1="170" y1="195" x2="300" y2="125"/>
+        <path class="g-right" d="M 182 125 L 182 113 L 170 113"/>
+        <line class="g-tick" x1="162" y1="90" x2="178" y2="90"/>
+        <line class="g-tick" x1="162" y1="160" x2="178" y2="160"/>
+        <circle class="g-pt" cx="170" cy="55" r="5"/>
+        <circle class="g-pt" cx="170" cy="195" r="5"/>
+        <circle class="g-pt" cx="170" cy="125" r="5"/>
+        <circle class="g-pt" cx="300" cy="125" r="5"/>
+        <text class="g-lbl" x="170" y="44" text-anchor="middle">E</text>
+        <text class="g-lbl" x="170" y="212" text-anchor="middle">H</text>
+        <text class="g-lbl g-halo" x="162" y="144" text-anchor="end">G</text>
+        <text class="g-lbl" x="308" y="120" text-anchor="start">F</text>
+        <text class="g-meas" x="242" y="76" text-anchor="start">4a &minus; 15</text>
+        <text class="g-meas" x="242" y="180" text-anchor="start">a + 12</text>
+      </svg>
+      <figcaption><em>G</em> is the midpoint of <span style="text-decoration:overline">EH</span> and &ang;EGF is a right angle.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">EF = HF</span><span class="reason">Perpendicular Bisector Theorem</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">4a &minus; 15 = a + 12</span><span class="reason">Substitution</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">3a &minus; 15 = 12</span><span class="reason">Subtract a from each side</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">3a = 27&nbsp;&nbsp;&rarr;&nbsp;&nbsp;a = 9</span><span class="reason">Add 15, then divide by 3</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">EF = 4(9) &minus; 15 = 36 &minus; 15</span><span class="reason">Substitute a = 9</span></div>
+    <div class="answer-box">EF = 21</div>
+    <div class="check-box"><strong>Check:</strong> HF = 9 + 12 = 21, and 21 = 21 &#10003;. The two distances match, exactly as the theorem promises.</div>
+    <div class="warning-box"><strong>Watch Out!</strong> The question asks for <em>EF</em>, not <em>a</em>. Stopping at <code>a = 9</code> is the most common lost mark on this type.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2</span>
+    <span class="example-title">Use the Converse of the Perpendicular Bisector Theorem to find XY</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">WX = WZ = 25.3, line <em>WY</em> &perp; <span style="text-decoration:overline">XZ</span>, and ZY = 22.4. Find XY.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 420 300" width="420" role="img" aria-label="W is equidistant from X and Z so line WY is the perpendicular bisector of XZ">
+        <defs><marker id="me2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--sl-navy)"/></marker></defs>
+        <line class="g-line" x1="30" y1="220" x2="390" y2="220" marker-start="url(#me2)" marker-end="url(#me2)"/>
+        <line class="g-line" x1="210" y1="105" x2="210" y2="272" marker-start="url(#me2)" marker-end="url(#me2)"/>
+        <line class="g-arc" x1="210" y1="143" x2="64" y2="220"/>
+        <line class="g-arc" x1="210" y1="143" x2="356" y2="220"/>
+        <path class="g-right" d="M 222 220 L 222 208 L 210 208"/>
+        <line class="g-tick" x1="137" y1="212" x2="137" y2="228"/>
+        <line class="g-tick" x1="283" y1="212" x2="283" y2="228"/>
+        <circle class="g-pt" cx="64" cy="220" r="5"/>
+        <circle class="g-pt" cx="356" cy="220" r="5"/>
+        <circle class="g-pt" cx="210" cy="220" r="5"/>
+        <circle class="g-pt" cx="210" cy="143" r="5"/>
+        <text class="g-lbl" x="54" y="234" text-anchor="end">X</text>
+        <text class="g-lbl" x="366" y="234" text-anchor="start">Z</text>
+        <text class="g-lbl g-halo" x="202" y="242" text-anchor="end">Y</text>
+        <text class="g-lbl" x="210" y="132" text-anchor="middle">W</text>
+        <text class="g-meas" x="126" y="172" text-anchor="end">25.3</text>
+        <text class="g-meas" x="294" y="172" text-anchor="start">25.3</text>
+        <text class="g-meas" x="283" y="246" text-anchor="middle">22.4</text>
+        <text class="g-grn" x="137" y="246" text-anchor="middle">XY = ?</text>
+      </svg>
+      <figcaption>Drawn to scale: WX = WZ = 25.3 and XY = YZ = 22.4, so WY = &radic;(25.3<sup>2</sup> &minus; 22.4<sup>2</sup>) &asymp; 11.8.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">WX = WZ (both 25.3)</span><span class="reason">Given</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">W is equidistant from X and Z</span><span class="reason">Definition of equidistant</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">line WY is the &perp; bisector of XZ</span><span class="reason">Converse of the &perp; Bisector Theorem, with WY &perp; XZ</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">XY = YZ</span><span class="reason">Definition of segment bisector</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">XY = 22.4</span><span class="reason">Substitution (ZY = 22.4)</span></div>
+    <div class="answer-box">XY = 22.4</div>
+    <div class="info-box"><strong>Think about it:</strong> the 25.3 values never enter the arithmetic. Their only job is to prove that <em>W</em> is equidistant from the endpoints, which is what licenses the converse.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 2 &mdash; Check</span>
+    <span class="example-title">Find WY when XW = XZ = 9 and YZ = 3</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">In &#9651;XWZ, XW = XZ = 9, <span style="text-decoration:overline">XY</span> &perp; <span style="text-decoration:overline">WZ</span>, and YZ = 3. Find WY.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 360 300" width="360" role="img" aria-label="Isosceles triangle XWZ with altitude XY, XW equals XZ equals 9 and YZ equals 3">
+        <polygon class="g-shape" points="180,70 120,240 240,240" fill-opacity=".4"/>
+        <line class="g-line" x1="180" y1="70" x2="180" y2="240"/>
+        <path class="g-right" d="M 192 240 L 192 228 L 180 228"/>
+        <line class="g-tick" x1="150" y1="232" x2="150" y2="248"/>
+        <line class="g-tick" x1="210" y1="232" x2="210" y2="248"/>
+        <circle class="g-pt" cx="180" cy="70" r="5"/>
+        <circle class="g-pt" cx="120" cy="240" r="5"/>
+        <circle class="g-pt" cx="240" cy="240" r="5"/>
+        <circle class="g-pt" cx="180" cy="240" r="5"/>
+        <text class="g-lbl" x="180" y="58" text-anchor="middle">X</text>
+        <text class="g-lbl" x="112" y="262" text-anchor="end">W</text>
+        <text class="g-lbl" x="248" y="262" text-anchor="start">Z</text>
+        <text class="g-lbl g-halo" x="174" y="264" text-anchor="end">Y</text>
+        <text class="g-meas" x="136" y="160" text-anchor="end">9</text>
+        <text class="g-meas" x="224" y="160" text-anchor="start">9</text>
+        <text class="g-meas" x="212" y="264" text-anchor="start">3</text>
+      </svg>
+      <figcaption>Drawn to scale with XY = &radic;(9<sup>2</sup> &minus; 3<sup>2</sup>) = &radic;72 &asymp; 8.49.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">XW = XZ</span><span class="reason">Given &mdash; X is equidistant from W and Z</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">XY is the &perp; bisector of WZ</span><span class="reason">Converse of the &perp; Bisector Theorem</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">WY = YZ</span><span class="reason">Y is the midpoint of WZ</span></div>
+    <div class="answer-box">WY = 3</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3</span>
+    <span class="example-title">Use the Circumcenter Theorem to find BF</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">D is the circumcenter of &#9651;ABC, AC = 9, DE = 1.83, and DF = 1.53. Find BF.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 400 280" width="400" role="img" aria-label="D is the circumcenter of triangle ABC with feet E on AC, F on BC and G on AB">
+        <polygon class="g-shape" points="65,225 124.6,45.3 335,225" fill-opacity=".4"/>
+        <line class="g-arc" x1="200" y1="225" x2="200" y2="170"/>
+        <line class="g-arc" x1="229.8" y1="135.1" x2="200" y2="170"/>
+        <line class="g-arc" x1="94.8" y1="135.1" x2="200" y2="170"/>
+        <line class="g-dash" x1="200" y1="170" x2="335" y2="225"/>
+        <line class="g-dash" x1="200" y1="170" x2="124.6" y2="45.3"/>
+        <path class="g-right" d="M 212 225 L 212 213 L 200 213"/>
+        <path class="g-right" d="M 238.9 142.9 L 231.1 152.0 L 222.0 144.2"/>
+        <path class="g-right" d="M 98.6 123.7 L 110.0 127.5 L 106.2 138.9"/>
+        <line class="g-tick" x1="132" y1="217" x2="132" y2="233"/>
+        <line class="g-tick" x1="268" y1="217" x2="268" y2="233"/>
+        <circle class="g-pt" cx="65" cy="225" r="5"/>
+        <circle class="g-pt" cx="124.6" cy="45.3" r="5"/>
+        <circle class="g-pt" cx="335" cy="225" r="5"/>
+        <circle class="g-pt" cx="200" cy="170" r="5.5"/>
+        <circle class="g-pt" cx="200" cy="225" r="4"/>
+        <circle class="g-pt" cx="229.8" cy="135.1" r="4"/>
+        <circle class="g-pt" cx="94.8" cy="135.1" r="4"/>
+        <text class="g-lbl" x="55" y="242" text-anchor="end">A</text>
+        <text class="g-lbl" x="124" y="34" text-anchor="middle">B</text>
+        <text class="g-lbl" x="345" y="242" text-anchor="start">C</text>
+        <text class="g-lbl g-halo" x="192" y="164" text-anchor="end">D</text>
+        <text class="g-lbl-sm g-halo" x="192" y="244" text-anchor="end">E</text>
+        <text class="g-lbl-sm" x="242" y="130" text-anchor="start">F</text>
+        <text class="g-lbl-sm" x="84" y="130" text-anchor="end">G</text>
+        <text class="g-meas g-halo" x="208" y="202" text-anchor="start">1.83</text>
+        <text class="g-meas g-halo" x="196" y="128" text-anchor="end">1.53</text>
+        <text class="g-meas-b" x="268" y="252" text-anchor="middle">AC = 9</text>
+      </svg>
+      <figcaption>Drawn to scale: <span style="text-decoration:overline">DE</span>, <span style="text-decoration:overline">DF</span>, <span style="text-decoration:overline">DG</span> are the perpendicular bisectors of the sides, so <em>E</em>, <em>F</em>, <em>G</em> are midpoints and each meeting is a right angle.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">DE bisects AC, so EC = &frac12;(AC)</span><span class="reason">D is the circumcenter</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">EC = &frac12;(9) = 4.5</span><span class="reason">Substitution</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">DC&sup2; = DE&sup2; + EC&sup2;</span><span class="reason">Pythagorean Theorem in right &#9651;DEC</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">DC&sup2; = 1.83&sup2; + 4.5&sup2; = 3.35 + 20.25 = 23.60</span><span class="reason">Simplify and add</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">DC = &radic;23.60 &asymp; 4.86</span><span class="reason">Positive square root (length)</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">DB = DC &asymp; 4.86</span><span class="reason">Circumcenter Theorem</span></div>
+    <div class="solution-step"><span class="num">7</span><span class="math">DF&sup2; + BF&sup2; = DB&sup2;</span><span class="reason">Pythagorean Theorem in right &#9651;DFB</span></div>
+    <div class="solution-step"><span class="num">8</span><span class="math">1.53&sup2; + BF&sup2; = 4.86&sup2;</span><span class="reason">Substitution</span></div>
+    <div class="solution-step"><span class="num">9</span><span class="math">BF&sup2; = 23.62 &minus; 2.34 = 21.28</span><span class="reason">Subtract</span></div>
+    <div class="answer-box">BF = &radic;21.28 &asymp; 4.61</div>
+    <div class="check-box"><strong>Check:</strong> 1.53<sup>2</sup> + 4.61<sup>2</sup> = 2.34 + 21.25 = 23.59 &asymp; 4.86<sup>2</sup> &#10003;</div>
+    <div class="warning-box"><strong>Watch Out!</strong> The bridge between the two right triangles is <code>DB = DC</code>. Without the Circumcenter Theorem there is nothing connecting side <span style="text-decoration:overline">AC</span> to side <span style="text-decoration:overline">BC</span>.</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 3 &mdash; Check</span>
+    <span class="example-title">Find SV when S is the circumcenter of &#9651;QPR</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">S is the circumcenter of &#9651;QPR, QR = 7.79, PS = 4.25, and <span style="text-decoration:overline">SV</span> &perp; <span style="text-decoration:overline">QR</span>. Find SV to the nearest tenth.</div>
+    <div class="solution-step"><span class="num">1</span><span class="math">SQ = SP = SR = 4.25</span><span class="reason">Circumcenter Theorem</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">V is the midpoint of QR, so VR = &frac12;(7.79) = 3.895</span><span class="reason">SV is the &perp; bisector of QR</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">SV&sup2; + VR&sup2; = SR&sup2;</span><span class="reason">Pythagorean Theorem</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">SV&sup2; = 4.25&sup2; &minus; 3.895&sup2; = 18.0625 &minus; 15.171</span><span class="reason">Substitute and simplify</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">SV = &radic;2.8915 &asymp; 1.70</span><span class="reason">Positive square root</span></div>
+    <div class="answer-box">SV &asymp; 1.7</div>
+  </div>
+</div>
+
+<div class="example-card">
+  <button class="example-header" onclick="toggleExample(this)">
+    <span class="example-label">Example 4</span>
+    <span class="example-title">Locate the circumcenter on a coordinate plane</span>
+    <span class="toggle-icon">+</span>
+  </button>
+  <div class="example-body">
+    <div class="problem-stmt">Find the point equidistant from P(&minus;8, 2), Q(0, 12), and R(8, 2) &mdash; that is, the circumcenter of &#9651;PQR.</div>
+    <figure class="fig">
+      <svg viewBox="0 0 470 380" width="470" role="img" aria-label="Triangle PQR on a coordinate plane with circumcenter at 0 comma 3.8">
+        <defs><marker id="me4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--sl-ink-2)"/></marker></defs>
+        <g>
+          <line class="g-grid" x1="35" y1="40" x2="35" y2="345"/>
+          <line class="g-grid" x1="75" y1="40" x2="75" y2="345"/>
+          <line class="g-grid" x1="115" y1="40" x2="115" y2="345"/>
+          <line class="g-grid" x1="155" y1="40" x2="155" y2="345"/>
+          <line class="g-grid" x1="195" y1="40" x2="195" y2="345"/>
+          <line class="g-grid" x1="275" y1="40" x2="275" y2="345"/>
+          <line class="g-grid" x1="315" y1="40" x2="315" y2="345"/>
+          <line class="g-grid" x1="355" y1="40" x2="355" y2="345"/>
+          <line class="g-grid" x1="395" y1="40" x2="395" y2="345"/>
+          <line class="g-grid" x1="435" y1="40" x2="435" y2="345"/>
+          <line class="g-grid" x1="30" y1="340" x2="440" y2="340"/>
+          <line class="g-grid" x1="30" y1="260" x2="440" y2="260"/>
+          <line class="g-grid" x1="30" y1="220" x2="440" y2="220"/>
+          <line class="g-grid" x1="30" y1="180" x2="440" y2="180"/>
+          <line class="g-grid" x1="30" y1="140" x2="440" y2="140"/>
+          <line class="g-grid" x1="30" y1="100" x2="440" y2="100"/>
+          <line class="g-grid" x1="30" y1="60" x2="440" y2="60"/>
+        </g>
+        <line class="g-axis" x1="25" y1="300" x2="445" y2="300" marker-start="url(#me4)" marker-end="url(#me4)"/>
+        <line class="g-axis" x1="235" y1="352" x2="235" y2="45" marker-start="url(#me4)" marker-end="url(#me4)"/>
+        <text class="g-lbl-sm" x="228" y="316" text-anchor="end">O</text>
+        <text class="g-lbl-sm" x="75" y="316" text-anchor="middle">&minus;8</text>
+        <text class="g-lbl-sm" x="155" y="316" text-anchor="middle">&minus;4</text>
+        <text class="g-lbl-sm" x="315" y="316" text-anchor="middle">4</text>
+        <text class="g-lbl-sm" x="395" y="316" text-anchor="middle">8</text>
+        <text class="g-lbl-sm" x="226" y="264" text-anchor="end">2</text>
+        <text class="g-lbl-sm" x="226" y="184" text-anchor="end">6</text>
+        <text class="g-lbl-sm" x="226" y="104" text-anchor="end">10</text>
+        <text class="g-lbl-sm" x="226" y="64" text-anchor="end">12</text>
+        <polygon class="g-shape" points="75,260 235,60 395,260" fill-opacity=".4"/>
+        <line class="g-arc" x1="235" y1="272" x2="235" y2="200"/>
+        <line class="g-arc" x1="139.4" y1="147.5" x2="254.5" y2="239.6"/>
+        <line class="g-arc" x1="330.6" y1="147.5" x2="215.5" y2="239.6"/>
+        <path class="g-right" d="M 247 260 L 247 248 L 235 248"/>
+        <path class="g-right" d="M 162.5 150.6 L 171.9 158.1 L 164.4 167.5"/>
+        <path class="g-right" d="M 322.5 169.4 L 313.1 176.9 L 305.6 167.5"/>
+        <line class="g-dash" x1="235" y1="224" x2="75" y2="260"/>
+        <line class="g-dash" x1="235" y1="224" x2="235" y2="60"/>
+        <line class="g-dash" x1="235" y1="224" x2="395" y2="260"/>
+        <circle class="g-pt" cx="75" cy="260" r="5"/>
+        <circle class="g-pt" cx="235" cy="60" r="5"/>
+        <circle class="g-pt" cx="395" cy="260" r="5"/>
+        <circle class="g-pt" cx="235" cy="224" r="5.5"/>
+        <text class="g-lbl" x="66" y="278" text-anchor="end">P(&minus;8, 2)</text>
+        <text class="g-lbl" x="245" y="52" text-anchor="start">Q(0, 12)</text>
+        <text class="g-lbl" x="404" y="278" text-anchor="start">R(8, 2)</text>
+        <text class="g-grn g-halo" x="248" y="216" text-anchor="start">(0, 3.8)</text>
+      </svg>
+      <figcaption>Each dashed radius has length 8.2: from (0,&nbsp;3.8) to P, Q and R the distances are &radic;(8<sup>2</sup>+1.8<sup>2</sup>) = 8.2, 12 &minus; 3.8 = 8.2, and &radic;(8<sup>2</sup>+1.8<sup>2</sup>) = 8.2.</figcaption>
+    </figure>
+    <div class="solution-step"><span class="num">1</span><span class="math">P(&minus;8, 2) and R(8, 2) share y = 2</span><span class="reason">PR is horizontal; its midpoint is (0, 2)</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">&perp; bisector of PR is the vertical line x = 0</span><span class="reason">Perpendicular to a horizontal segment</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">Center is (0, y); set (0,y)P = (0,y)Q</span><span class="reason">Circumcenter is equidistant from vertices</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">8&sup2; + (y &minus; 2)&sup2; = (y &minus; 12)&sup2;</span><span class="reason">Distance formula, squared</span></div>
+    <div class="solution-step"><span class="num">5</span><span class="math">64 + y&sup2; &minus; 4y + 4 = y&sup2; &minus; 24y + 144</span><span class="reason">Expand</span></div>
+    <div class="solution-step"><span class="num">6</span><span class="math">68 &minus; 4y = &minus;24y + 144&nbsp;&nbsp;&rarr;&nbsp;&nbsp;20y = 76</span><span class="reason">Collect like terms</span></div>
+    <div class="answer-box">Circumcenter = (0, 3.8)</div>
+    <div class="check-box"><strong>Check:</strong> distance to P = &radic;(8<sup>2</sup> + 1.8<sup>2</sup>) = &radic;67.24 = 8.2; distance to Q = |12 &minus; 3.8| = 8.2; distance to R = 8.2 &#10003;</div>
+    <div class="info-box"><strong>Shortcut:</strong> if two vertices share an <em>x</em>-value, the &perp; bisector of that side is a horizontal line <code>y = average of the two y-values</code>. If two vertices share a <em>y</em>-value, the &perp; bisector is the vertical line <code>x = average of the two x-values</code>. Use those two easy lines first.</div>
+  </div>
+</div>
+</section>
+
+<section id="practice">
+<h2>Try It Yourself</h2>
+
+<div class="try-box">
+  <h4>Practice 1</h4>
+  <div class="prob">Line <em>SR</em> is the perpendicular bisector of <span style="text-decoration:overline">QT</span>. If QR = 2x + 3 and TR = 4x &minus; 7, find RT.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">QR = TR</span><span class="reason">&perp; Bisector Theorem</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">2x + 3 = 4x &minus; 7</span><span class="reason">Substitution</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">10 = 2x&nbsp;&nbsp;&rarr;&nbsp;&nbsp;x = 5</span><span class="reason">Solve</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">RT = 4(5) &minus; 7 = 13</span><span class="reason">Substitute back</span></div>
+    <div class="answer-box">RT = 13</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 2</h4>
+  <div class="prob">Line <em>AD</em> is the perpendicular bisector of <span style="text-decoration:overline">BC</span>, with BD = 3y &minus; 4 and DC = y + 10. Find BC.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">BD = DC</span><span class="reason">D is the midpoint of BC</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">3y &minus; 4 = y + 10&nbsp;&nbsp;&rarr;&nbsp;&nbsp;2y = 14&nbsp;&nbsp;&rarr;&nbsp;&nbsp;y = 7</span><span class="reason">Solve</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">BD = 3(7) &minus; 4 = 17</span><span class="reason">Substitute</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">BC = 2(17) = 34</span><span class="reason">BC is twice a half</span></div>
+    <div class="answer-box">BC = 34</div>
+    <div class="warning-box"><strong>Trap:</strong> the question asks for the whole segment <em>BC</em>, not the half <em>BD</em>. Double it.</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 3</h4>
+  <div class="prob">P is the circumcenter of &#9651;XYZ. If PX = 5t + 2 and PY = 8t &minus; 7, find PZ.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">PX = PY = PZ</span><span class="reason">Circumcenter Theorem</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">5t + 2 = 8t &minus; 7</span><span class="reason">Substitution</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">9 = 3t&nbsp;&nbsp;&rarr;&nbsp;&nbsp;t = 3</span><span class="reason">Solve</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">PX = 5(3) + 2 = 17, so PZ = 17</span><span class="reason">All three radii are equal</span></div>
+    <div class="answer-box">PZ = 17</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 4</h4>
+  <div class="prob">D is the circumcenter of &#9651;ABC. M is the midpoint of <span style="text-decoration:overline">AB</span>, AB = 16, and DM = 6. Find DA and DC.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">AM = &frac12;(16) = 8</span><span class="reason">M is the midpoint</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">&ang;DMA = 90&deg;</span><span class="reason">DM lies on the &perp; bisector of AB</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">DA&sup2; = 8&sup2; + 6&sup2; = 64 + 36 = 100</span><span class="reason">Pythagorean Theorem</span></div>
+    <div class="solution-step"><span class="num">4</span><span class="math">DA = 10, and DC = DA</span><span class="reason">Circumcenter Theorem</span></div>
+    <div class="answer-box">DA = DC = 10</div>
+  </div>
+</div>
+
+<div class="try-box">
+  <h4>Practice 5</h4>
+  <div class="prob">Find the coordinates of the circumcenter of the triangle with vertices A(&minus;3, 1), B(5, 1), and C(5, 7).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="reveal-body">
+    <div class="solution-step"><span class="num">1</span><span class="math">A and B share y = 1 &rarr; &perp; bisector of AB is x = (&minus;3 + 5)/2 = 1</span><span class="reason">Vertical bisector of a horizontal side</span></div>
+    <div class="solution-step"><span class="num">2</span><span class="math">B and C share x = 5 &rarr; &perp; bisector of BC is y = (1 + 7)/2 = 4</span><span class="reason">Horizontal bisector of a vertical side</span></div>
+    <div class="solution-step"><span class="num">3</span><span class="math">The two bisectors meet at (1, 4)</span><span class="reason">Point of concurrency</span></div>
+    <div class="answer-box">Circumcenter = (1, 4)</div>
+    <div class="check-box"><strong>Check:</strong> to A: &radic;(4<sup>2</sup>+3<sup>2</sup>) = 5; to B: &radic;(4<sup>2</sup>+3<sup>2</sup>) = 5; to C: &radic;(4<sup>2</sup>+3<sup>2</sup>) = 5 &#10003; Note the triangle is right-angled at B, and the circumcenter landed on the midpoint of the hypotenuse <span style="text-decoration:overline">AC</span> &mdash; that always happens for a right triangle.</div>
+  </div>
+</div>
+</section>
+
+<section id="summary">
+<h2>Summary</h2>
+<table class="tbl">
+  <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+  <tr><td>Told a line is the &perp; bisector of a segment, asked for a distance to an endpoint</td><td>Set the two endpoint distances equal, solve, substitute back</td><td><code>AC = BC</code></td></tr>
+  <tr><td>Told a line is the &perp; bisector, asked for a piece of the segment itself</td><td>The two halves are equal; double a half to get the whole</td><td><code>AD = DB = &frac12;AB</code></td></tr>
+  <tr><td>Given a point with equal distances to two endpoints</td><td>Apply the converse &mdash; that point lies on the &perp; bisector</td><td>Point is on the bisector</td></tr>
+  <tr><td>Two different points each equidistant from the endpoints</td><td>The line through them <em>is</em> the &perp; bisector</td><td>Line is the &perp; bisector</td></tr>
+  <tr><td>Given the circumcenter and one radius</td><td>All three vertex distances are that same radius</td><td><code>PA = PB = PC</code></td></tr>
+  <tr><td>Given a side length and the center-to-side distance</td><td>Half the side, then Pythagorean Theorem</td><td><code>r&sup2; = (&frac12;s)&sup2; + d&sup2;</code></td></tr>
+  <tr><td>Vertices given as coordinates</td><td>Use the two easiest &perp; bisectors (of a horizontal and a vertical side) and intersect them</td><td>Circumcenter (x, y)</td></tr>
+</table>
+
+<div class="pill-row">
+  <span class="pill">AC = BC</span>
+  <span class="pill">AD = DB</span>
+  <span class="pill">PA = PB = PC</span>
+  <span class="pill">r&sup2; = (&frac12;s)&sup2; + d&sup2;</span>
+  <span class="pill">d = &radic;((x&#8322;&minus;x&#8321;)&sup2; + (y&#8322;&minus;y&#8321;)&sup2;)</span>
+  <span class="pill">x = (x&#8321;+x&#8322;)/2</span>
+  <span class="pill">y = (y&#8321;+y&#8322;)/2</span>
+</div>
+
+<div class="warning-box"><strong>Common mistakes to avoid</strong>
+<ul style="margin:8px 0 0 20px;line-height:1.8;">
+  <li>Solving for the variable and stopping &mdash; the question usually wants a length.</li>
+  <li>Reporting a half-segment when the whole segment was asked for (or the reverse).</li>
+  <li>Claiming a line is a &perp; bisector from a right angle alone, or from a midpoint alone. You need <em>both</em>.</li>
+  <li>Using only one equidistant point to conclude a whole line is the bisector &mdash; you need two.</li>
+  <li>Saying the circumcenter is equidistant from the <em>sides</em>. It is equidistant from the <em>vertices</em>.</li>
+  <li>Forgetting to take the positive square root only &mdash; lengths are never negative.</li>
+  <li>Rounding too early in a two-step Pythagorean problem; keep extra digits until the final answer.</li>
+</ul>
+</div>
+</section>
+
+<section id="quiz">
+<div class="quiz-header">
+  <h2>Practice Quiz</h2>
+  <p>15 questions &middot; click an answer to check it instantly</p>
+</div>
+<div id="quiz-container"></div>
+<div class="score-panel" id="scorePanel">
+  <div class="score-big" id="scoreBig">0/15</div>
+  <div class="score-msg" id="scoreMsg"></div>
+  <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+</div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+{q:"Complete the Perpendicular Bisector Theorem: &quot;If a point is on the perpendicular bisector of a segment, then it is ___.&quot;",
+ opts:["the midpoint of the segment","equidistant from the endpoints of the segment","perpendicular to the segment","the vertex of a right angle"],
+ ans:1,
+ exp:"Being on the bisector guarantees equal distances to the two endpoints; the point itself need not be the midpoint or lie on the segment at all."},
+
+{q:"Line &#8467; is the &perp; bisector of <span style='text-decoration:overline'>AB</span> and meets it at M. If AB = 26, find AM.",
+ opts:["13","26","6.5","52"],
+ ans:0,
+ exp:"A perpendicular bisector passes through the midpoint, so AM is half of AB: 26 &divide; 2 = 13."},
+
+{q:"<span style='text-decoration:overline'>CD</span> is the &perp; bisector of <span style='text-decoration:overline'>AB</span>, AC = 3x + 5, and BC = 5x &minus; 11. Find x.",
+ opts:["4","6","16","8"],
+ ans:3,
+ exp:"AC = BC gives 3x + 5 = 5x &minus; 11, so 16 = 2x and x = 8.",
+ fig:"<svg viewBox='0 0 340 200' width='340' role='img' aria-label='CD is the perpendicular bisector of AB with AC equal to 3x plus 5 and BC equal to 5x minus 11'><defs><marker id='qa1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0 L10 5 L0 10 z' fill='var(--sl-navy)'/></marker></defs><line class='g-line' x1='170' y1='25' x2='170' y2='180' marker-start='url(#qa1)' marker-end='url(#qa1)'/><line class='g-line' x1='35' y1='140' x2='305' y2='140' marker-start='url(#qa1)' marker-end='url(#qa1)'/><line class='g-arc' x1='60' y1='140' x2='170' y2='55'/><line class='g-arc' x1='280' y1='140' x2='170' y2='55'/><path class='g-right' d='M 182 140 L 182 128 L 170 128'/><line class='g-tick' x1='115' y1='132' x2='115' y2='148'/><line class='g-tick' x1='225' y1='132' x2='225' y2='148'/><circle class='g-pt' cx='60' cy='140' r='5'/><circle class='g-pt' cx='280' cy='140' r='5'/><circle class='g-pt' cx='170' cy='140' r='5'/><circle class='g-pt' cx='170' cy='55' r='5'/><text class='g-lbl' x='52' y='148' text-anchor='end'>A</text><text class='g-lbl' x='288' y='148' text-anchor='start'>B</text><text class='g-lbl' x='180' y='50' text-anchor='start'>C</text><text class='g-lbl g-halo' x='164' y='160' text-anchor='end'>D</text><text class='g-meas' x='104' y='92' text-anchor='end'>3x + 5</text><text class='g-meas' x='236' y='92' text-anchor='start'>5x &minus; 11</text></svg>"},
+
+{q:"Using the same figure and values (AC = 3x + 5, BC = 5x &minus; 11 with x = 8), find AC.",
+ opts:["24","14","29","58"],
+ ans:2,
+ exp:"AC = 3(8) + 5 = 29, and BC = 5(8) &minus; 11 = 29 confirms it."},
+
+{q:"Line FG is the &perp; bisector of <span style='text-decoration:overline'>EH</span>, EF = 4a &minus; 15, and HF = a + 12. Find a.",
+ opts:["3","9","27","12"],
+ ans:1,
+ exp:"EF = HF gives 4a &minus; 15 = a + 12, so 3a = 27 and a = 9.",
+ fig:"<svg viewBox='0 0 350 230' width='350' role='img' aria-label='FG is the perpendicular bisector of EH with EF equal to 4a minus 15 and HF equal to a plus 12'><defs><marker id='qa2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0 L10 5 L0 10 z' fill='var(--sl-navy)'/></marker></defs><line class='g-line' x1='170' y1='30' x2='170' y2='210' marker-start='url(#qa2)' marker-end='url(#qa2)'/><line class='g-line' x1='60' y1='120' x2='330' y2='120' marker-start='url(#qa2)' marker-end='url(#qa2)'/><line class='g-arc' x1='170' y1='50' x2='300' y2='120'/><line class='g-arc' x1='170' y1='190' x2='300' y2='120'/><path class='g-right' d='M 182 120 L 182 108 L 170 108'/><line class='g-tick' x1='162' y1='85' x2='178' y2='85'/><line class='g-tick' x1='162' y1='155' x2='178' y2='155'/><circle class='g-pt' cx='170' cy='50' r='5'/><circle class='g-pt' cx='170' cy='190' r='5'/><circle class='g-pt' cx='170' cy='120' r='5'/><circle class='g-pt' cx='300' cy='120' r='5'/><text class='g-lbl' x='170' y='40' text-anchor='middle'>E</text><text class='g-lbl' x='170' y='208' text-anchor='middle'>H</text><text class='g-lbl g-halo' x='162' y='138' text-anchor='end'>G</text><text class='g-lbl' x='308' y='115' text-anchor='start'>F</text><text class='g-meas' x='243' y='78' text-anchor='start'>4a &minus; 15</text><text class='g-meas' x='243' y='166' text-anchor='start'>a + 12</text></svg>"},
+
+{q:"With a = 9 in the previous problem (EF = 4a &minus; 15), find EF.",
+ opts:["9","12","15","21"],
+ ans:3,
+ exp:"EF = 4(9) &minus; 15 = 36 &minus; 15 = 21. Note HF = 9 + 12 = 21 as well, as the theorem requires."},
+
+{q:"WX = WZ and YX = YZ, where W and Y are two distinct points. What must be true?",
+ opts:["Line WY is the &perp; bisector of <span style='text-decoration:overline'>XZ</span>","Line XZ is the &perp; bisector of <span style='text-decoration:overline'>WY</span>","W is the midpoint of <span style='text-decoration:overline'>XZ</span>","Nothing can be concluded"],
+ ans:0,
+ exp:"By the converse, each of W and Y lies on the &perp; bisector of XZ; two distinct points determine that line, so line WY is the bisector."},
+
+{q:"In the figure, WX = WZ = 25.3, line WY &perp; <span style='text-decoration:overline'>XZ</span>, and ZY = 22.4. Find XY.",
+ opts:["25.3","12.65","22.4","44.8"],
+ ans:2,
+ exp:"W is equidistant from X and Z, so WY is the &perp; bisector of XZ; therefore Y is the midpoint and XY = ZY = 22.4.",
+ fig:"<svg viewBox='0 0 360 230' width='360' role='img' aria-label='W equidistant from X and Z with perpendicular WY meeting XZ at Y'><defs><marker id='qa3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0 L10 5 L0 10 z' fill='var(--sl-navy)'/></marker></defs><line class='g-line' x1='25' y1='160' x2='335' y2='160' marker-start='url(#qa3)' marker-end='url(#qa3)'/><line class='g-line' x1='180' y1='55' x2='180' y2='205' marker-start='url(#qa3)' marker-end='url(#qa3)'/><line class='g-arc' x1='180' y1='97' x2='59' y2='160'/><line class='g-arc' x1='180' y1='97' x2='301' y2='160'/><path class='g-right' d='M 192 160 L 192 148 L 180 148'/><line class='g-tick' x1='119.5' y1='152' x2='119.5' y2='168'/><line class='g-tick' x1='240.5' y1='152' x2='240.5' y2='168'/><circle class='g-pt' cx='59' cy='160' r='5'/><circle class='g-pt' cx='301' cy='160' r='5'/><circle class='g-pt' cx='180' cy='160' r='5'/><circle class='g-pt' cx='180' cy='97' r='5'/><text class='g-lbl' x='51' y='174' text-anchor='end'>X</text><text class='g-lbl' x='309' y='174' text-anchor='start'>Z</text><text class='g-lbl g-halo' x='174' y='180' text-anchor='end'>Y</text><text class='g-lbl' x='180' y='88' text-anchor='middle'>W</text><text class='g-meas' x='108' y='122' text-anchor='end'>25.3</text><text class='g-meas' x='252' y='122' text-anchor='start'>25.3</text><text class='g-meas' x='245' y='184' text-anchor='middle'>22.4</text><text class='g-grn' x='112' y='184' text-anchor='middle'>XY = ?</text></svg>"},
+
+{q:"The point where the three perpendicular bisectors of a triangle intersect is called the:",
+ opts:["incenter","circumcenter","centroid","orthocenter"],
+ ans:1,
+ exp:"Perpendicular bisectors of the sides are concurrent at the circumcenter; angle bisectors meet at the incenter, medians at the centroid, altitudes at the orthocenter."},
+
+{q:"By the Circumcenter Theorem, the circumcenter of a triangle is equidistant from the triangle's:",
+ opts:["vertices","sides","medians","angle bisectors"],
+ ans:0,
+ exp:"Each perpendicular bisector is the set of points equidistant from the two endpoints of a side, so their common point is the same distance from all three vertices."},
+
+{q:"D is the circumcenter of &#9651;ABC and DA = 4.86. What is DB?",
+ opts:["2.43","9.72","It cannot be determined","4.86"],
+ ans:3,
+ exp:"The circumcenter is equidistant from all three vertices, so DB = DA = DC = 4.86 &mdash; this is the radius of the circumcircle."},
+
+{q:"D is the circumcenter of &#9651;ABC, E is the midpoint of <span style='text-decoration:overline'>AC</span>, AC = 9, and DE = 1.83. Find DC to the nearest hundredth.",
+ opts:["5.13","4.50","4.86","2.36"],
+ ans:2,
+ exp:"EC = &frac12;(9) = 4.5 and &ang;DEC = 90&deg;, so DC&sup2; = 1.83&sup2; + 4.5&sup2; = 3.35 + 20.25 = 23.60 and DC = &radic;23.60 &asymp; 4.86.",
+ fig:"<svg viewBox='0 0 380 270' width='380' role='img' aria-label='D is the circumcenter of triangle ABC with E the midpoint of AC'><polygon class='g-shape' points='64,211 119.6,43.6 316,211' fill-opacity='.4'/><line class='g-arc' x1='190' y1='211' x2='190' y2='160'/><line class='g-arc' x1='217.8' y1='127.4' x2='190' y2='160'/><line class='g-dash' x1='190' y1='160' x2='316' y2='211'/><path class='g-right' d='M 202 211 L 202 199 L 190 199'/><path class='g-right' d='M 226.9 135.2 L 219.1 144.3 L 210.0 136.5'/><line class='g-tick' x1='127' y1='203' x2='127' y2='219'/><line class='g-tick' x1='253' y1='203' x2='253' y2='219'/><circle class='g-pt' cx='64' cy='211' r='5'/><circle class='g-pt' cx='119.6' cy='43.6' r='5'/><circle class='g-pt' cx='316' cy='211' r='5'/><circle class='g-pt' cx='190' cy='160' r='5.5'/><circle class='g-pt' cx='190' cy='211' r='4'/><circle class='g-pt' cx='217.8' cy='127.4' r='4'/><text class='g-lbl' x='54' y='228' text-anchor='end'>A</text><text class='g-lbl' x='119' y='34' text-anchor='middle'>B</text><text class='g-lbl' x='326' y='228' text-anchor='start'>C</text><text class='g-lbl g-halo' x='182' y='154' text-anchor='end'>D</text><text class='g-lbl-sm g-halo' x='184' y='230' text-anchor='end'>E</text><text class='g-lbl-sm' x='230' y='122' text-anchor='start'>F</text><text class='g-meas g-halo' x='198' y='190' text-anchor='start'>1.83</text><text class='g-meas-b' x='253' y='236' text-anchor='middle'>AC = 9</text></svg>"},
+
+{q:"Continuing: DB &asymp; 4.86, F is the midpoint of <span style='text-decoration:overline'>BC</span>, and DF = 1.53. Find BF to the nearest hundredth.",
+ opts:["4.61","3.33","6.40","9.23"],
+ ans:0,
+ exp:"&ang;DFB = 90&deg;, so BF&sup2; = DB&sup2; &minus; DF&sup2; = 23.62 &minus; 2.34 = 21.28 and BF = &radic;21.28 &asymp; 4.61."},
+
+{q:"Find the circumcenter of the triangle with vertices A(0, 0), B(0, 6), and C(10, 0).",
+ opts:["(5, 6)","(5, 3)","(3, 5)","(0, 3)"],
+ ans:1,
+ exp:"<span style='text-decoration:overline'>AB</span> is vertical so its &perp; bisector is y = 3; <span style='text-decoration:overline'>AC</span> is horizontal so its &perp; bisector is x = 5. They meet at (5, 3), which is &radic;34 from each vertex."},
+
+{q:"Find the circumcenter of the triangle with vertices J(5, 0), K(5, &minus;8), and L(0, 0).",
+ opts:["(5, &minus;4)","(2.5, 4)","(0, &minus;4)","(2.5, &minus;4)"],
+ ans:3,
+ exp:"<span style='text-decoration:overline'>JL</span> is horizontal so its &perp; bisector is x = 2.5; <span style='text-decoration:overline'>JK</span> is vertical so its &perp; bisector is y = &minus;4. The intersection (2.5, &minus;4) is &radic;22.25 &asymp; 4.72 from each vertex."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

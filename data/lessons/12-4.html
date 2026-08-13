@@ -1,0 +1,699 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Decide whether order matters, then use <sub>n</sub>P<sub>r</sub> or <sub>n</sub>C<sub>r</sub> to count favorable and possible outcomes and compute the probability.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Probability is still just favorable &divide; possible</h3>
+    <p>Nothing about probability changes in this lesson. The only new thing is <em>how you count</em>
+    the two numbers. When the outcomes are arrangements or selections, you count them with
+    factorials, permutations, or combinations.</p>
+    <div class="formula-box">
+      P(event) = (number of favorable outcomes) / (number of possible outcomes)
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Randomness:</strong> When outcomes are decided at
+    random, they are equally likely to occur, so their probabilities can be calculated using
+    permutations and combinations.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>Permutation</b> &mdash; an arrangement of objects in which
+      <em>order is important</em>. Shuffling 7 songs into the order Track&nbsp;5, 7, 1, 2, 6, 4, 3 is
+      one permutation of the playlist.</div>
+      <div class="vocab-item"><b>Factorial</b> &mdash; the factorial of a positive integer <em>n</em>
+      is the product of the positive integers less than or equal to <em>n</em>, written <code>n!</code>.</div>
+      <div class="vocab-item"><b>Combination</b> &mdash; a selection of objects in which
+      <em>order is not important</em>. Choosing 3 people for a committee is a combination.</div>
+      <div class="vocab-item"><b>Fundamental Counting Principle</b> &mdash; if one stage has
+      <em>a</em> outcomes and the next has <em>b</em>, the pair of stages has <code>a &times; b</code>
+      outcomes. Everything below is built from this.</div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Factorial</div>
+      <div class="theorem-body">
+        <strong>Words:</strong> The factorial of a positive integer <em>n</em> is the product of the
+        positive integers less than or equal to <em>n</em>, and is written <code>n!</code>.<br>
+        <strong>Symbols:</strong> <code>n! = n &middot; (n &minus; 1) &middot; (n &minus; 2) &middot; &hellip; &middot; 2 &middot; 1</code>,
+        &nbsp;where&nbsp;<code>0! = 1</code>
+      </div>
+    </div>
+    <div class="formula-box">
+      1! = 1&nbsp;&nbsp;&nbsp; 2! = 2&nbsp;&nbsp;&nbsp; 3! = 6&nbsp;&nbsp;&nbsp; 4! = 24&nbsp;&nbsp;&nbsp; 5! = 120<br>
+      6! = 720&nbsp;&nbsp;&nbsp; 7! = 5040&nbsp;&nbsp;&nbsp; 8! = 40,320&nbsp;&nbsp;&nbsp; 9! = 362,880
+    </div>
+    <div class="warning-box"><strong>Watch Out!</strong> <code>0! = 1</code>, not 0. It is
+    <em>defined</em> that way so that the permutation and combination formulas keep working at the
+    edges (for example <code><sub>n</sub>P<sub>n</sub> = n!/0! = n!</code>).</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. The one decision that drives this whole lesson</h3>
+    <p>Before you compute anything, ask a single question: <strong>if I swap two of the chosen
+    objects, do I get a different outcome?</strong> If yes, order matters and you are counting
+    permutations. If no, order does not matter and you are counting combinations.</p>
+
+    <figure class="fig">
+      <div class="fig-title">Does Order Matter? &mdash; the decision map</div>
+      <svg id="figDec" viewBox="0 0 520 378" width="520" role="img" aria-label="Decision flowchart: from n distinct objects choose r, ask whether order matters; no leads to combination nCr, yes leads to permutation nPr">
+        <g data-part="start">
+          <rect class="g-shape" x="140" y="28" width="240" height="42" rx="8"/>
+          <text class="g-lbl-sm" x="260" y="49" text-anchor="middle" dominant-baseline="middle">Choose r objects from n distinct objects</text>
+          <path class="g-line" d="M 260 70 L 260 88"/>
+          <path class="g-line" d="M 254 81 L 260 90 L 266 81"/>
+        </g>
+        <g data-part="decide">
+          <polygon class="g-shape-alt" points="260,90 390,134 260,178 130,134"/>
+          <text class="g-meas" x="260" y="128" text-anchor="middle" dominant-baseline="middle">Does ORDER</text>
+          <text class="g-meas" x="260" y="148" text-anchor="middle" dominant-baseline="middle">matter?</text>
+        </g>
+        <g data-part="comb">
+          <path class="g-line" d="M 130 134 L 100 134 L 100 214"/>
+          <path class="g-line" d="M 94 213 L 100 222 L 106 213"/>
+          <text class="g-grn" x="112" y="122" text-anchor="middle">NO</text>
+          <rect class="g-shape" x="28" y="224" width="214" height="100" rx="8"/>
+          <text class="g-meas-b" x="135" y="250" text-anchor="middle">COMBINATION</text>
+          <text class="g-lbl-sm" x="135" y="276" text-anchor="middle">nCr = n! / ((n &minus; r)! &middot; r!)</text>
+          <text class="g-lbl-sm" x="135" y="302" text-anchor="middle">AB and BA are the SAME</text>
+        </g>
+        <g data-part="perm">
+          <path class="g-line" d="M 390 134 L 420 134 L 420 214"/>
+          <path class="g-line" d="M 414 213 L 420 222 L 426 213"/>
+          <text class="g-grn" x="408" y="122" text-anchor="middle">YES</text>
+          <rect class="g-shape" x="278" y="224" width="214" height="100" rx="8"/>
+          <text class="g-meas-b" x="385" y="250" text-anchor="middle">PERMUTATION</text>
+          <text class="g-lbl-sm" x="385" y="276" text-anchor="middle">nPr = n! / (n &minus; r)!</text>
+          <text class="g-lbl-sm" x="385" y="302" text-anchor="middle">AB and BA are DIFFERENT</text>
+        </g>
+        <g data-part="link">
+          <path class="g-dash" d="M 242 300 L 278 300"/>
+          <text class="g-grn" x="260" y="350" text-anchor="middle">nCr = nPr &divide; r!&nbsp;&nbsp;&mdash;&nbsp;&nbsp;divide out the r! orderings</text>
+        </g>
+      </svg>
+      <figcaption>One question decides everything. Combinations are permutations with the
+      duplicate orderings divided away.</figcaption>
+      <div class="fig-legend">
+        <button class="fig-chip" onclick="figHi(this,'figDec','start')">Setup</button>
+        <button class="fig-chip" onclick="figHi(this,'figDec','decide')">The Question</button>
+        <button class="fig-chip" onclick="figHi(this,'figDec','perm')">Order Matters</button>
+        <button class="fig-chip" onclick="figHi(this,'figDec','comb')">Order Doesn't</button>
+        <button class="fig-chip" onclick="figHi(this,'figDec','link')">The Link</button>
+      </div>
+    </figure>
+
+    <div class="case-grid">
+      <div class="case-box">
+        <h4>Order MATTERS &rarr; permutation</h4>
+        <div class="math">
+          &bull; first, second, third place<br>
+          &bull; president, then vice&#8209;president<br>
+          &bull; seat C11 vs seat C12<br>
+          &bull; a password / a phone number<br>
+          &bull; &quot;in that order&quot;, &quot;first from the left&quot;
+        </div>
+      </div>
+      <div class="case-box">
+        <h4>Order does NOT matter &rarr; combination</h4>
+        <div class="math">
+          &bull; a committee of 3<br>
+          &bull; 4 flavors on one cone<br>
+          &bull; which 6 people replied<br>
+          &bull; a set of 3 points<br>
+          &bull; &quot;in any order&quot;, &quot;a group of&quot;, &quot;chosen&quot;
+        </div>
+      </div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Permutations and Combinations:</strong> Use
+    permutations when the order of an arrangement is important, and use combinations when the order
+    is not important.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Permutations of <em>n</em> objects taken <em>r</em> at a time</h3>
+    <p>Line up 7 songs and play only 4 of them. By the Fundamental Counting Principle there are
+    <code>7 &middot; 6 &middot; 5 &middot; 4 = 840</code> playlists. The formula is just a compact way
+    of writing that falling product: start at <em>n</em> and take <em>r</em> factors.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Permutations</div>
+      <div class="theorem-body">
+        <strong>Words:</strong> The number of permutations of <em>n</em> distinct objects taken
+        <em>r</em> at a time is denoted by <code><sub>n</sub>P<sub>r</sub></code> and given by
+        <code><sub>n</sub>P<sub>r</sub> = n! / (n &minus; r)!</code>.<br>
+        <strong>Symbols:</strong> The number of permutations of 7 objects taken 4 at a time is
+        <code><sub>7</sub>P<sub>4</sub> = 7!/(7 &minus; 4)! = (7&middot;6&middot;5&middot;4&middot;3&middot;2&middot;1)/(3&middot;2&middot;1) = 840</code>.
+      </div>
+    </div>
+    <div class="keyfact"><div class="ico">!</div><div class="txt">
+      <code><sub>n</sub>P<sub>r</sub></code> is just <em>r</em> descending factors starting at
+      <em>n</em>. <code><sub>12</sub>P<sub>4</sub> = 12&middot;11&middot;10&middot;9 = 11,880</code>.
+      You almost never need to expand the whole factorial.</div></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Combinations &mdash; and why <sub>n</sub>C<sub>r</sub> = <sub>n</sub>P<sub>r</sub> &divide; r!</h3>
+    <p>A combination of <em>n</em> objects taken <em>r</em> at a time is calculated by dividing the
+    number of permutations <code><sub>n</sub>P<sub>r</sub></code> by the number of arrangements
+    containing the same elements, <code>r!</code>. Every group of <em>r</em> objects was counted
+    <code>r!</code> times by <code><sub>n</sub>P<sub>r</sub></code> &mdash; once for each of its own
+    orderings &mdash; so divide that duplication away.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Combinations</div>
+      <div class="theorem-body">
+        <strong>Symbols:</strong> The number of combinations of <em>n</em> distinct objects taken
+        <em>r</em> at a time is denoted by <code><sub>n</sub>C<sub>r</sub></code> and given by
+        <code><sub>n</sub>C<sub>r</sub> = n! / ((n &minus; r)! &middot; r!)</code>.<br>
+        <strong>Example:</strong> <code><sub>7</sub>C<sub>3</sub> = 7!/((7&minus;3)!&middot;3!) = 7!/(4!&middot;3!) = (7&middot;6&middot;5&middot;4!)/(4!&middot;6) = 35</code>.
+      </div>
+    </div>
+
+    <p><strong>Same numbers, side by side.</strong> Take <em>n</em> = 7, <em>r</em> = 3.</p>
+    <div class="case-grid">
+      <div class="case-box">
+        <h4>Permutation &mdash; <sub>7</sub>P<sub>3</sub></h4>
+        <div class="math">
+          <sub>7</sub>P<sub>3</sub> = 7!/(7 &minus; 3)!<br>
+          = 7!/4!<br>
+          = (7&middot;6&middot;5&middot;<span style="text-decoration:overline">4!</span>)/<span style="text-decoration:overline">4!</span><br>
+          = 7&middot;6&middot;5<br>
+          <strong>= 210 ordered triples</strong>
+        </div>
+      </div>
+      <div class="case-box">
+        <h4>Combination &mdash; <sub>7</sub>C<sub>3</sub></h4>
+        <div class="math">
+          <sub>7</sub>C<sub>3</sub> = 7!/((7 &minus; 3)!&middot;3!)<br>
+          = 7!/(4!&middot;3!)<br>
+          = (7&middot;6&middot;5)/(3&middot;2&middot;1)<br>
+          = 210/6<br>
+          <strong>= 35 unordered groups</strong>
+        </div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <sub>7</sub>P<sub>3</sub> &divide; 3! = 210 &divide; 6 = 35 = <sub>7</sub>C<sub>3</sub>
+      &nbsp;&nbsp;&there4;&nbsp;&nbsp; r! &middot; <sub>n</sub>C<sub>r</sub> = <sub>n</sub>P<sub>r</sub>
+    </div>
+
+    <p><strong>Make it concrete.</strong> Choose 2 letters from {A, B, C}.
+    <code><sub>3</sub>P<sub>2</sub> = 3&middot;2 = 6</code> but
+    <code><sub>3</sub>C<sub>2</sub> = 6/2! = 3</code>. Here is every single outcome:</p>
+    <table class="tbl">
+      <tr><th>#</th><th>Ordered pair (permutation)</th><th>Same two letters as&hellip;</th><th>Counts as combination</th></tr>
+      <tr><td>1</td><td><code>A B</code></td><td>&mdash;</td><td><code>{A, B}</code></td></tr>
+      <tr><td>2</td><td><code>B A</code></td><td>row 1</td><td>already counted</td></tr>
+      <tr><td>3</td><td><code>A C</code></td><td>&mdash;</td><td><code>{A, C}</code></td></tr>
+      <tr><td>4</td><td><code>C A</code></td><td>row 3</td><td>already counted</td></tr>
+      <tr><td>5</td><td><code>B C</code></td><td>&mdash;</td><td><code>{B, C}</code></td></tr>
+      <tr><td>6</td><td><code>C B</code></td><td>row 5</td><td>already counted</td></tr>
+      <tr><td colspan="2"><strong>6 permutations</strong></td><td>&divide; 2! = 2 each</td><td><strong>3 combinations</strong></td></tr>
+    </table>
+
+    <figure class="fig">
+      <div class="fig-title">6 Permutations Collapse Into 3 Combinations</div>
+      <svg id="figCollapse" viewBox="0 0 460 220" width="460" role="img" aria-label="Six ordered pairs of A B C grouped in pairs, each pair mapping to one unordered set">
+        <g data-part="perm">
+          <text class="g-meas-b" x="124" y="32" text-anchor="middle">3P2 = 6 permutations</text>
+          <rect class="g-shape" x="28" y="48" width="192" height="40" rx="7"/>
+          <text class="g-lbl" x="85" y="68" text-anchor="middle" dominant-baseline="middle">AB</text>
+          <text class="g-lbl" x="163" y="68" text-anchor="middle" dominant-baseline="middle">BA</text>
+          <path class="g-aux" d="M 124 56 L 124 80"/>
+          <rect class="g-shape" x="28" y="100" width="192" height="40" rx="7"/>
+          <text class="g-lbl" x="85" y="120" text-anchor="middle" dominant-baseline="middle">AC</text>
+          <text class="g-lbl" x="163" y="120" text-anchor="middle" dominant-baseline="middle">CA</text>
+          <path class="g-aux" d="M 124 108 L 124 132"/>
+          <rect class="g-shape" x="28" y="152" width="192" height="40" rx="7"/>
+          <text class="g-lbl" x="85" y="172" text-anchor="middle" dominant-baseline="middle">BC</text>
+          <text class="g-lbl" x="163" y="172" text-anchor="middle" dominant-baseline="middle">CB</text>
+          <path class="g-aux" d="M 124 160 L 124 184"/>
+        </g>
+        <g data-part="map">
+          <path class="g-line" d="M 228 68 L 266 68"/>
+          <path class="g-line" d="M 257 62 L 266 68 L 257 74"/>
+          <path class="g-line" d="M 228 120 L 266 120"/>
+          <path class="g-line" d="M 257 114 L 266 120 L 257 126"/>
+          <path class="g-line" d="M 228 172 L 266 172"/>
+          <path class="g-line" d="M 257 166 L 266 172 L 257 178"/>
+        </g>
+        <g data-part="comb">
+          <text class="g-meas-b" x="352" y="32" text-anchor="middle">3C2 = 3 combinations</text>
+          <rect class="g-shape-alt" x="272" y="48" width="160" height="40" rx="7"/>
+          <text class="g-lbl" x="352" y="68" text-anchor="middle" dominant-baseline="middle">{A, B}</text>
+          <rect class="g-shape-alt" x="272" y="100" width="160" height="40" rx="7"/>
+          <text class="g-lbl" x="352" y="120" text-anchor="middle" dominant-baseline="middle">{A, C}</text>
+          <rect class="g-shape-alt" x="272" y="152" width="160" height="40" rx="7"/>
+          <text class="g-lbl" x="352" y="172" text-anchor="middle" dominant-baseline="middle">{B, C}</text>
+        </g>
+      </svg>
+      <figcaption>Each unordered set on the right was counted 2! = 2 times on the left.
+      That factor of r! is the entire difference between <sub>n</sub>P<sub>r</sub> and <sub>n</sub>C<sub>r</sub>.</figcaption>
+      <div class="fig-legend">
+        <button class="fig-chip" onclick="figHi(this,'figCollapse','perm')">Permutations</button>
+        <button class="fig-chip" onclick="figHi(this,'figCollapse','map')">Grouping</button>
+        <button class="fig-chip" onclick="figHi(this,'figCollapse','comb')">Combinations</button>
+      </div>
+    </figure>
+  </div>
+
+  <div class="concept-card">
+    <h3>6. Permutations with repetition</h3>
+    <p>If some of the objects are identical, swapping two identical objects does not create a new
+    arrangement. So you take the <code>n!</code> arrangements you would get if everything were
+    distinct, and divide by <code>r<sub>1</sub>!</code> for the first repeated object,
+    <code>r<sub>2</sub>!</code> for the second, and so on.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Permutations with Repetition</div>
+      <div class="theorem-body">
+        The number of distinguishable permutations of <em>n</em> objects in which one object is
+        repeated <em>r</em><sub>1</sub> times, another is repeated <em>r</em><sub>2</sub> times, and
+        so on, is<br>
+        <code>n! / (r<sub>1</sub>! &middot; r<sub>2</sub>! &middot; &hellip; &middot; r<sub>k</sub>!)</code>
+      </div>
+    </div>
+    <div class="formula-box">
+      Digits 2, 2, 5, 5, 8 &rarr; n = 5, two 2s, two 5s, one 8<br>
+      5! / (2! &middot; 2! &middot; 1!) = 120 / 4 = 30 distinguishable arrangements
+    </div>
+    <div class="warning-box"><strong>Watch Out!</strong> Only divide by the factorial of counts that
+    are 2 or more &mdash; but dividing by <code>1!</code> is harmless since <code>1! = 1</code>. The
+    numerator is always <code>n!</code> where <em>n</em> is the <em>total</em> number of objects,
+    not the number of distinct types.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>7. The selection procedure &mdash; use this every time</h3>
+    <div class="steps-list">
+      <div class="s"><strong>Read for the order clue.</strong> Words like <em>first, second, in that
+      order, arranged, lined up, ranked</em> mean order matters. Words like <em>chosen, selected,
+      a group of, in any order</em> mean it does not.</div>
+      <div class="s"><strong>Count the possible outcomes (the denominator).</strong> Order matters
+      &rarr; <code><sub>n</sub>P<sub>r</sub></code>. Order does not &rarr;
+      <code><sub>n</sub>C<sub>r</sub></code>. Identical objects present &rarr;
+      <code>n!/(r<sub>1</sub>!&middot;r<sub>2</sub>!&middot;&hellip;)</code>.</div>
+      <div class="s"><strong>Count the favorable outcomes (the numerator)</strong> with the
+      <em>same</em> kind of counting. If the specified objects may appear in any order among
+      themselves, the numerator is <code>r!</code>; if their order is pinned down, it is 1.</div>
+      <div class="s"><strong>Divide and simplify.</strong> Cancel factorials before multiplying &mdash;
+      <code>30!/32! = 1/(32&middot;31)</code> is far easier than computing 32!.</div>
+      <div class="s"><strong>Sanity-check.</strong> The answer must be between 0 and 1, and the
+      denominator you used must be at least as large as the numerator.</div>
+    </div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt">
+      Two shortcuts worth memorising:
+      <code><sub>n</sub>C<sub>n&minus;r</sub> = <sub>n</sub>C<sub>r</sub></code> (choosing which
+      <em>r</em> to take is the same as choosing which <em>n&minus;r</em> to leave), and
+      <code><sub>n</sub>C<sub>0</sub> = <sub>n</sub>C<sub>n</sub> = 1</code>.</div></div>
+    <div class="keyfact"><div class="ico">=</div><div class="txt">
+      <code><sub>n</sub>P<sub>r</sub> = <sub>n</sub>C<sub>r</sub></code> is <em>sometimes</em> true
+      &mdash; exactly when <code>r! = 1</code>, i.e. <code>r = 0</code> or <code>r = 1</code>. For
+      every <code>r &ge; 2</code>, <code><sub>n</sub>P<sub>r</sub> &gt; <sub>n</sub>C<sub>r</sub></code>.</div></div>
+    <div class="keyfact"><div class="ico">n</div><div class="txt">
+      <code><sub>n</sub>P<sub>n</sub> = n!/0! = n!</code> and
+      <code><sub>n</sub>P<sub>n&minus;1</sub> = n!/1! = n!</code> &mdash; they are equal. Arranging all
+      <em>n</em> objects is the same as arranging <em>n</em>&minus;1 of them, because the last object
+      has no choice left.</div></div>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Probability and permutations of <em>n</em> objects</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">32 performers are assigned all 32 slots at random. What is the
+      probability that a specified performer takes slot 1 and a second specified performer takes
+      slot 2?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">possible = 32!</span><span class="reason">all 32 orders are equally likely</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">favorable = (32 &minus; 2)! = 30!</span><span class="reason">slots 1, 2 fixed; arrange the other 30</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">P = 30! / 32!</span><span class="reason">favorable &divide; possible</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 30! / (32 &middot; 31 &middot; 30!)</span><span class="reason">expand 32! and divide out 30!</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 1 / 992</span><span class="reason">simplify (32 &middot; 31 = 992)</span></div>
+      <div class="answer-box">P = 1/992 &asymp; 0.001 = about 0.1%</div>
+      <div class="warning-box"><strong>Trap:</strong> Do not reach for
+      <code><sub>32</sub>P<sub>2</sub></code> and <code><sub>30</sub>P<sub>30</sub></code> separately
+      unless you are consistent. Either count full arrangements top and bottom (30!/32!) or count only
+      the first two slots (1/<sub>32</sub>P<sub>2</sub> = 1/992). Both give 1/992 &mdash; mixing them
+      does not.</div>
+      <div class="check-box"><strong>Check:</strong> 1/<sub>32</sub>P<sub>2</sub> = 1/(32&middot;31) = 1/992 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Probability and permutations with no repetition</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A slideshow plays 12 distinct photographs in random order with no
+      repeats. Three are of the whole family, three of a brother, two of the subject, and four of a
+      sister. What is the probability that the first four pictures shown are the four sister photos?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">order matters &rarr; permutations</span><span class="reason">the photos will not repeat and position counts</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">possible = <sub>12</sub>P<sub>4</sub> = 12!/(12 &minus; 4)! = 12!/8!</span><span class="reason">12 photos taken 4 at a time</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (12 &middot; 11 &middot; 10 &middot; 9 &middot; 8!)/8! = 11,880</span><span class="reason">divide out 8!</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">favorable = 4! = 24</span><span class="reason">the 4 sister photos in any order</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">P = 24 / 11,880</span><span class="reason">favorable &divide; possible</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= 1 / 495</span><span class="reason">divide numerator and denominator by 24</span></div>
+      <div class="answer-box">P = 1/495 &asymp; 0.002</div>
+      <div class="check-box"><strong>Check:</strong> Same answer as a combination:
+      the 4 sister photos are one specific group out of <sub>12</sub>C<sub>4</sub> = 11,880/4! = 495
+      possible groups, so P = 1/495 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Probability and permutations with repetition</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Five number tiles showing 2, 2, 5, 5, and 8 are arranged at random
+      in a row. What is the probability that the row reads 2&nbsp;5&nbsp;8&nbsp;5&nbsp;2?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">n = 5; the digit 2 occurs 2 times, 5 occurs 2 times, 8 occurs 1 time</span><span class="reason">identify the repeats</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">possible = 5! / (2! &middot; 2!)</span><span class="reason">distinguishable permutations</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 120 / 4 = 30</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">favorable = 1</span><span class="reason">only one arrangement is the target</span></div>
+      <div class="answer-box">P = 1/30 &asymp; 0.033</div>
+      <div class="warning-box"><strong>Trap:</strong> The denominator is <strong>not</strong> 5! = 120.
+      Swapping the two 2s produces a row that looks identical, so those 120 arrangements only give
+      30 <em>distinguishable</em> outcomes.</div>
+      <div class="check-box"><strong>Check:</strong> Choose which 2 of the 5 positions hold the 2s
+      (<sub>5</sub>C<sub>2</sub> = 10), then which 2 of the remaining 3 hold the 5s
+      (<sub>3</sub>C<sub>2</sub> = 3): 10 &middot; 3 = 30 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Probability and combinations</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Ten points are named on pentagon <em>ACEGJ</em>: the 5 vertices
+      <em>A, C, E, G, J</em> and the 5 side midpoints <em>B, D, F, H, K</em>. If three of the ten
+      points are chosen at random, what is the probability that all three lie on the same line
+      segment?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">order does not matter &rarr; combinations</span><span class="reason">a set of 3 points is a set, not a list</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">possible = <sub>10</sub>C<sub>3</sub> = 10!/((10 &minus; 3)! &middot; 3!)</span><span class="reason">10 points taken 3 at a time</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (10 &middot; 9 &middot; 8 &middot; 7!)/(7! &middot; 3!) = 720/6 = 120</span><span class="reason">divide out 7!</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">favorable = 5</span><span class="reason">the 5 sides <span style="text-decoration:overline">AC</span>, <span style="text-decoration:overline">CE</span>, <span style="text-decoration:overline">EG</span>, <span style="text-decoration:overline">GJ</span>, <span style="text-decoration:overline">JA</span> each carry 3 named points</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">P = 5/120 = 1/24</span><span class="reason">simplify</span></div>
+      <div class="answer-box">P = 1/24 &asymp; 0.042</div>
+      <div class="check-box"><strong>Check:</strong> Each side holds exactly 3 named points (two
+      vertices and its midpoint), so it contributes exactly <sub>3</sub>C<sub>3</sub> = 1 favorable
+      set. 5 sides &times; 1 = 5 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Same problem, both ways &mdash; &quot;in any order&quot; vs. &quot;in that order&quot;</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Seven finalists give speeches in a random order. Three of them are
+      specified in advance. (a) P(those three give the first three speeches, in any order)?
+      (b) P(they give speeches 1, 2, 3 in one specified order)?</div>
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>(a) In ANY order</h4>
+          <div class="math">
+            possible = <sub>7</sub>P<sub>3</sub> = 7&middot;6&middot;5 = 210<br>
+            favorable = 3! = 6<br>
+            P = 6/210 = <strong>1/35</strong><br><br>
+            Or by combinations:<br>
+            possible = <sub>7</sub>C<sub>3</sub> = 35, favorable = 1<br>
+            P = <strong>1/35</strong> &#10003;
+          </div>
+        </div>
+        <div class="case-box">
+          <h4>(b) In THAT order</h4>
+          <div class="math">
+            possible = <sub>7</sub>P<sub>3</sub> = 210<br>
+            favorable = 1<br>
+            P = <strong>1/210</strong><br><br>
+            Combinations are <em>not</em> usable here &mdash;<br>
+            the order is part of the event.
+          </div>
+        </div>
+      </div>
+      <div class="solution-step"><span class="num">1</span><span class="math">(a) &divide; (b) = (1/35) &divide; (1/210) = 6 = 3!</span><span class="reason">exactly the r! factor</span></div>
+      <div class="answer-box">(a) 1/35 &nbsp;&nbsp;&nbsp; (b) 1/210 &nbsp;&nbsp;&nbsp; ratio = 3! = 6</div>
+      <div class="warning-box"><strong>Trap:</strong> &quot;In any order&quot; makes the numerator
+      <code>r!</code> (or lets you switch to combinations). &quot;In that order&quot; makes the
+      numerator 1. Misreading this phrase is the single most common error in this lesson.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">A ratio of two combinations</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A set contains 15 objects of type G and 15 objects of type B
+      (30 total). Four objects are drawn at random with no regard to order. What is the probability
+      that all four are of type G?</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">possible = <sub>30</sub>C<sub>4</sub> = (30&middot;29&middot;28&middot;27)/(4&middot;3&middot;2&middot;1)</span><span class="reason">order does not matter</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 657,720/24 = 27,405</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">favorable = <sub>15</sub>C<sub>4</sub> = (15&middot;14&middot;13&middot;12)/24 = 32,760/24 = 1365</span><span class="reason">all four from the 15 type-G objects</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">P = 1365/27,405</span><span class="reason">favorable &divide; possible</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 13/261</span><span class="reason">divide both by 105</span></div>
+      <div class="answer-box">P = 13/261 &asymp; 0.0498</div>
+      <div class="warning-box"><strong>Trap:</strong> The answer is <em>not</em>
+      (15/30)<sup>4</sup> = 1/16. Once an object is drawn it is gone, so the draws are not
+      independent &mdash; that is exactly why you count with combinations instead of multiplying
+      probabilities.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">Evaluate <sub>9</sub>P<sub>3</sub> and <sub>9</sub>C<sub>3</sub>, then verify
+    that their quotient is 3!.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math"><sub>9</sub>P<sub>3</sub> = 9 &middot; 8 &middot; 7 = 504</span><span class="reason">3 descending factors from 9</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math"><sub>9</sub>C<sub>3</sub> = 504/3! = 504/6 = 84</span><span class="reason">divide out the orderings</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">504 &divide; 84 = 6 = 3!</span><span class="reason">verified</span></div>
+      <div class="answer-box"><sub>9</sub>P<sub>3</sub> = 504,&nbsp; <sub>9</sub>C<sub>3</sub> = 84,&nbsp; quotient = 3! = 6</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">The digits 7, 7, 7, 2, 2 are arranged at random in a row. What is the
+    probability that the row reads 7&nbsp;2&nbsp;7&nbsp;2&nbsp;7?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">n = 5, with 7 repeated 3 times and 2 repeated 2 times</span><span class="reason">count the repeats</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">possible = 5!/(3! &middot; 2!) = 120/12 = 10</span><span class="reason">permutations with repetition</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">favorable = 1</span><span class="reason">one target arrangement</span></div>
+      <div class="answer-box">P = 1/10 = 0.1</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">Six distinct objects are placed in a random order. What is the probability
+    that two specified objects occupy positions 1 and 2, in that order?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">possible = 6! = 720</span><span class="reason">all arrangements equally likely</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">favorable = 4! = 24</span><span class="reason">positions 1, 2 fixed; arrange the other 4</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">P = 24/720 = 1/30</span><span class="reason">simplify</span></div>
+      <div class="answer-box">P = 1/30</div>
+      <div class="check-box"><strong>Check:</strong> 1/<sub>6</sub>P<sub>2</sub> = 1/(6&middot;5) = 1/30 &#10003;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">Four objects are selected at random from a set of 10 distinct objects, order
+    irrelevant. What is the probability that one specified group of four is the one selected?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">possible = <sub>10</sub>C<sub>4</sub> = (10 &middot; 9 &middot; 8 &middot; 7)/(4 &middot; 3 &middot; 2 &middot; 1)</span><span class="reason">order does not matter</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 5040/24 = 210</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">favorable = 1</span><span class="reason">exactly one group qualifies</span></div>
+      <div class="answer-box">P = 1/210</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">Solve for <em>n</em>: <sub>n</sub>P<sub>2</sub> = 56.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math"><sub>n</sub>P<sub>2</sub> = n(n &minus; 1)</span><span class="reason">two descending factors</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">n<sup>2</sup> &minus; n = 56</span><span class="reason">set equal to 56</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">n<sup>2</sup> &minus; n &minus; 56 = 0 &rarr; (n &minus; 8)(n + 7) = 0</span><span class="reason">factor</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">n = 8 or n = &minus;7; reject n = &minus;7</span><span class="reason"><em>n</em> must be a positive integer</span></div>
+      <div class="answer-box">n = 8&nbsp;&nbsp; (8 &middot; 7 = 56 &#10003;)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6</h4>
+    <div class="prob">From 12 distinct objects, 3 are chosen at random. Find P(three specified
+    objects are the ones chosen) and compare it with P(those three are chosen as 1st, 2nd, 3rd in a
+    specified order).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math"><sub>12</sub>C<sub>3</sub> = (12 &middot; 11 &middot; 10)/6 = 1320/6 = 220</span><span class="reason">order irrelevant</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">P(unordered) = 1/220</span><span class="reason">one favorable group</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><sub>12</sub>P<sub>3</sub> = 12 &middot; 11 &middot; 10 = 1320</span><span class="reason">order matters</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">P(ordered) = 1/1320</span><span class="reason">one favorable arrangement</span></div>
+      <div class="answer-box">1/220 and 1/1320 &nbsp;&mdash;&nbsp; the ratio is 3! = 6</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Arrange all <em>n</em> distinct objects</td><td>Use <code>n!</code></td><td><code><sub>n</sub>P<sub>n</sub> = n!</code></td></tr>
+    <tr><td>Arrange <em>r</em> of <em>n</em> distinct objects (order matters)</td><td>Use <code><sub>n</sub>P<sub>r</sub></code></td><td><code>n!/(n &minus; r)!</code></td></tr>
+    <tr><td>Select <em>r</em> of <em>n</em> distinct objects (order irrelevant)</td><td>Use <code><sub>n</sub>C<sub>r</sub></code></td><td><code>n!/((n &minus; r)! &middot; r!)</code></td></tr>
+    <tr><td>Arrange <em>n</em> objects, some identical</td><td>Divide <code>n!</code> by each repeat count factorial</td><td><code>n!/(r<sub>1</sub>! &middot; r<sub>2</sub>! &middot; &hellip;)</code></td></tr>
+    <tr><td>Specified objects in specified positions</td><td>Numerator = 1 (or (n&minus;r)! if you use full arrangements)</td><td><code>1/<sub>n</sub>P<sub>r</sub></code></td></tr>
+    <tr><td>Specified objects in the first <em>r</em> slots, any order</td><td>Numerator = <code>r!</code></td><td><code>r!/<sub>n</sub>P<sub>r</sub> = 1/<sub>n</sub>C<sub>r</sub></code></td></tr>
+    <tr><td>One specified group of <em>r</em> is chosen</td><td>Numerator = 1 over combinations</td><td><code>1/<sub>n</sub>C<sub>r</sub></code></td></tr>
+    <tr><td>All <em>r</em> chosen from a sub-pool of <em>k</em></td><td>Ratio of two combinations</td><td><code><sub>k</sub>C<sub>r</sub> / <sub>n</sub>C<sub>r</sub></code></td></tr>
+    <tr><td>One specified arrangement of repeated objects</td><td>1 over distinguishable permutations</td><td><code>(r<sub>1</sub>!&middot;r<sub>2</sub>!&middot;&hellip;)/n!</code></td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">n! = n(n&minus;1)&hellip;2&middot;1</span>
+    <span class="pill">0! = 1</span>
+    <span class="pill">nPr = n!/(n&minus;r)!</span>
+    <span class="pill">nCr = n!/((n&minus;r)!r!)</span>
+    <span class="pill">nCr = nPr &divide; r!</span>
+    <span class="pill">r!&middot;nCr = nPr</span>
+    <span class="pill">nC(n&minus;r) = nCr</span>
+    <span class="pill">nC0 = nCn = 1</span>
+    <span class="pill">nPn = nP(n&minus;1) = n!</span>
+    <span class="pill">n!/(r1!&middot;r2!&middot;&hellip;)</span>
+    <span class="pill">P = favorable/possible</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8">
+      <li>Writing <code>0! = 0</code>. It equals <strong>1</strong>.</li>
+      <li>Using <code><sub>n</sub>C<sub>r</sub></code> when the problem says &quot;first&quot;,
+      &quot;second&quot;, or &quot;in that order&quot; &mdash; those need
+      <code><sub>n</sub>P<sub>r</sub></code>.</li>
+      <li>Using <code><sub>n</sub>P<sub>r</sub></code> for a group with no ranking &mdash; that
+      overcounts by a factor of <code>r!</code>.</li>
+      <li>Forgetting to divide by the repeat factorials, so 2,&nbsp;2,&nbsp;5,&nbsp;5,&nbsp;8 gets a
+      denominator of 120 instead of 30.</li>
+      <li>Counting the numerator one way and the denominator another (permutations on top,
+      combinations on the bottom).</li>
+      <li>Multiplying single-draw probabilities such as <code>(15/30)<sup>4</sup></code> when objects
+      are removed and not replaced.</li>
+      <li>Expanding huge factorials instead of cancelling &mdash; <code>30!/32!</code> is
+      <code>1/(32&middot;31)</code>, no calculator required.</li>
+      <li>Assuming <code><sub>n</sub>P<sub>r</sub> = <sub>n</sub>C<sub>r</sub></code>. That is true
+      only for <code>r = 0</code> or <code>r = 1</code>.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"Evaluate 6!",opts:["30","36","720","120"],ans:2,exp:"6! = 6&middot;5&middot;4&middot;3&middot;2&middot;1 = 720. (120 is 5! and 30 is only 6&middot;5.)"},
+  {q:"What is the value of 0! ?",opts:["1","0","undefined","10"],ans:0,exp:"0! is defined to equal 1. That definition is what makes nPn = n!/0! = n! come out right."},
+  {q:"Evaluate <sub>8</sub>P<sub>3</sub>",opts:["56","336","512","40,320"],ans:1,exp:"nPr is r descending factors starting at n: 8&middot;7&middot;6 = 336. 56 is <sub>8</sub>C<sub>3</sub> and 40,320 is 8!."},
+  {q:"Evaluate <sub>8</sub>C<sub>3</sub>",opts:["336","24","6720","56"],ans:3,exp:"<sub>8</sub>C<sub>3</sub> = <sub>8</sub>P<sub>3</sub>/3! = 336/6 = 56. Dividing by 3! removes the 6 orderings of each group."},
+  {q:"Evaluate <sub>10</sub>C<sub>3</sub>",opts:["120","720","30","1000"],ans:0,exp:"(10&middot;9&middot;8)/(3&middot;2&middot;1) = 720/6 = 120. Note 720 is <sub>10</sub>P<sub>3</sub>, the ordered count."},
+  {q:"For n = 7 and r = 4, what is <sub>n</sub>P<sub>r</sub> &divide; <sub>n</sub>C<sub>r</sub> ?",opts:["4","7","24","35"],ans:2,exp:"The quotient is always r! = 4! = 24. Concretely 840/35 = 24. The quotient never depends on n."},
+  {q:"How many distinguishable permutations are there of the digits 2, 2, 5, 5, 8 ?",opts:["120","60","20","30"],ans:3,exp:"n = 5 with two 2s and two 5s, so 5!/(2!&middot;2!) = 120/4 = 30. Swapping identical digits does not create a new row."},
+  {q:"Evaluate <sub>12</sub>P<sub>4</sub>",opts:["495","11,880","20,736","1980"],ans:1,exp:"12&middot;11&middot;10&middot;9 = 11,880. Dividing by 4! would give 495, which is <sub>12</sub>C<sub>4</sub>."},
+  {q:"Five tiles reading 2, 2, 5, 5, 8 are placed in a random row. P(the row reads 2 5 8 5 2) = ?",opts:["1/120","1/5","1/24","1/30"],ans:3,exp:"There are 5!/(2!&middot;2!) = 30 distinguishable rows and exactly 1 is the target, so P = 1/30. Using 5! = 120 double-counts identical tiles."},
+  {q:"Three of the 10 points named on pentagon ACEGJ are chosen at random. If exactly 5 of the possible sets of three are collinear, what is the probability of choosing a collinear set?",opts:["1/24","1/12","5/12","1/120"],ans:0,exp:"Order is irrelevant, so possible = <sub>10</sub>C<sub>3</sub> = 120. Then P = 5/120 = 1/24."},
+  {q:"32 distinct objects are arranged at random. P(a specified object is 1st and a second specified object is 2nd) = ?",opts:["1/1024","1/992","1/32","1/496"],ans:1,exp:"P = 30!/32! = 1/(32&middot;31) = 1/992. The 1/1024 answer wrongly treats the two positions as independent 1/32 draws."},
+  {q:"Solve for n: <sub>n</sub>C<sub>2</sub> = 15",opts:["5","15","6","7"],ans:2,exp:"<sub>n</sub>C<sub>2</sub> = n(n&minus;1)/2 = 15 gives n&sup2; &minus; n &minus; 30 = 0, so (n&minus;6)(n+5) = 0 and n = 6."},
+  {q:"A 5-digit string is formed at random from the digits 1 through 9 with no digit repeated. P(the string is 54321) = ?",opts:["1/59,049","1/126","1/3024","1/15,120"],ans:3,exp:"Order matters and there are no repeats, so possible = <sub>9</sub>P<sub>5</sub> = 9&middot;8&middot;7&middot;6&middot;5 = 15,120, and exactly one string qualifies."},
+  {q:"Seven distinct objects are ordered at random. P(three specified objects occupy the first three positions, in any order) = ?",opts:["1/210","1/35","1/7","6/7"],ans:1,exp:"Favorable = 3! = 6 and possible = <sub>7</sub>P<sub>3</sub> = 210, so P = 6/210 = 1/35 &mdash; equivalently 1/<sub>7</sub>C<sub>3</sub>. Pinning the order down instead would give 1/210."},
+  {q:"A set has 15 objects of type G and 15 of type B. Four are drawn at random, order irrelevant. P(all four are type G) = ?",opts:["1/16","1/2","13/261","4/29"],ans:2,exp:"<sub>15</sub>C<sub>4</sub>/<sub>30</sub>C<sub>4</sub> = 1365/27,405 = 13/261 &asymp; 0.05. It is not (15/30)&#8308; = 1/16 because objects are not replaced."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

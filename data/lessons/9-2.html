@@ -1,0 +1,657 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Add and subtract rational expressions by building a least common denominator, and simplify complex fractions.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. The whole lesson in one sentence</h3>
+    <p>You already know that <code>1/2 + 1/3</code> is not <code>2/5</code> &mdash; you have to rewrite both
+    fractions over <code>6</code> first. Rational expressions work exactly the same way. The only new part is
+    that the denominators are polynomials, so &ldquo;finding the common denominator&rdquo; means
+    <strong>factoring</strong> instead of listing multiples.</p>
+    <div class="formula-box">
+      1/2 + 1/3 = 3/6 + 2/6 = 5/6<br>
+      1/x + 1/y = y/(xy) + x/(xy) = (y + x)/(xy)
+    </div>
+    <p>Same move, different alphabet.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Key Concept &middot; Adding Rational Expressions</h3>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Adding Rational Expressions</div>
+      <div class="theorem-body">
+        <p><strong>Words:</strong> To add rational expressions, find the least common denominator.
+        Rewrite each expression with the LCD. Then add.</p>
+        <p><strong>Symbols:</strong> For all rational expressions <code>a/b</code> and <code>c/d</code>
+        with <code>b &ne; 0</code> and <code>d &ne; 0</code>,</p>
+        <div class="formula-box">a/b + c/d = ad/(bd) + bc/(bd) = (ad + bc)/(bd)</div>
+      </div>
+    </div>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Subtracting Rational Expressions</div>
+      <div class="theorem-body">
+        <p><strong>Words:</strong> To subtract rational expressions, find the least common denominator.
+        Rewrite each expression with the LCD. Then subtract.</p>
+        <p><strong>Symbols:</strong> For all rational expressions <code>a/b</code> and <code>c/d</code>
+        with <code>b &ne; 0</code> and <code>d &ne; 0</code>,</p>
+        <div class="formula-box">a/b &minus; c/d = ad/(bd) &minus; bc/(bd) = (ad &minus; bc)/(bd)</div>
+      </div>
+    </div>
+    <div class="info-box"><strong>Study Tip:</strong> The formula <code>(ad &plusmn; bc)/(bd)</code> always works,
+    but <code>bd</code> is often bigger than it needs to be. Using the <em>least</em> common denominator keeps the
+    numbers small and usually leaves the answer already in lowest terms.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>Least common multiple (LCM)</b> &mdash; the smallest expression that every
+      given expression divides into evenly. To find it, factor each expression; the LCM contains each factor
+      the <em>greatest</em> number of times it appears in any one of them.</div>
+      <div class="vocab-item"><b>Least common denominator (LCD)</b> &mdash; the LCM of the denominators.
+      This is the denominator you rewrite every term over before you add or subtract.</div>
+      <div class="vocab-item"><b>Missing factor</b> &mdash; what one denominator is lacking compared with the
+      LCD. You multiply that fraction&rsquo;s numerator <em>and</em> denominator by the missing factor, which is
+      the same as multiplying by 1.</div>
+      <div class="vocab-item"><b>Complex fraction</b> &mdash; a fraction whose numerator, denominator, or both
+      contain a fraction, such as <code>(x/y + 1) / (y/x &minus; 1/y)</code>.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. The LCD procedure</h3>
+    <p>Follow these five steps every single time. Skipping step 1 is the number one reason students get stuck.</p>
+    <div class="steps-list">
+      <div class="s"><strong>Factor every denominator completely.</strong> Pull out GCFs, factor trinomials,
+      factor differences of squares. Example: <code>x&sup2; + 2x &minus; 15 = (x &minus; 3)(x + 5)</code> and
+      <code>5x &minus; 15 = 5(x &minus; 3)</code>.</div>
+      <div class="s"><strong>Build the LCD.</strong> Take every distinct factor that appears anywhere, each
+      raised to the highest power it reaches in any one denominator. From the pair above the LCD is
+      <code>5(x &minus; 3)(x + 5)</code>.</div>
+      <div class="s"><strong>Find each missing factor</strong> and multiply that fraction&rsquo;s numerator and
+      denominator by it. The first fraction is missing <code>5</code>; the second is missing
+      <code>(x + 5)</code>.</div>
+      <div class="s"><strong>Add or subtract the numerators</strong> over the single common denominator.
+      Distribute carefully &mdash; especially the subtraction sign.</div>
+      <div class="s"><strong>Simplify.</strong> Combine like terms, factor the new numerator, and cancel any
+      factor it shares with the denominator. Then state the excluded values.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Rewriting the two fractions side by side</h3>
+    <p>Steps 2 and 3 are easiest to see when you write the two fractions in parallel columns. Here is
+    <code>(2x + 1)/(x&sup2; + 2x &minus; 15) &minus; 7/(5x &minus; 15)</code>:</p>
+    <div class="case-grid">
+      <div class="case-box">
+        <h4>First fraction</h4>
+        <div class="math">
+          (2x + 1)/(x&sup2; + 2x &minus; 15)<br>
+          = (2x + 1)/[(x &minus; 3)(x + 5)]<br>
+          LCD needs one more factor of 5<br>
+          &rarr; 5(2x + 1)/[5(x &minus; 3)(x + 5)]
+        </div>
+      </div>
+      <div class="case-box">
+        <h4>Second fraction</h4>
+        <div class="math">
+          7/(5x &minus; 15)<br>
+          = 7/[5(x &minus; 3)]<br>
+          LCD needs one more factor of (x + 5)<br>
+          &rarr; 7(x + 5)/[5(x &minus; 3)(x + 5)]
+        </div>
+      </div>
+    </div>
+    <p>Both fractions now sit over <code>5(x &minus; 3)(x + 5)</code>, so the numerators can finally be combined.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>6. Opposite factors: <code>(a &minus; b)</code> and <code>(b &minus; a)</code></h3>
+    <p>These two look like different factors, but they differ only by a sign:</p>
+    <div class="formula-box">a &minus; b = &minus;(b &minus; a)&nbsp;&nbsp;&nbsp;&nbsp;&there4;&nbsp;&nbsp;
+      1/(a &minus; b) = &minus;1/(b &minus; a)</div>
+    <p>So <code>k/(k &minus; n)</code> and <code>k/(n &minus; k)</code> already share a denominator once you
+    factor <code>&minus;1</code> out of one of them. Never build a giant LCD of
+    <code>(k &minus; n)(n &minus; k)</code> &mdash; that is doing four times the work for the same answer.</p>
+    <div class="warning-box"><strong>Watch Out!</strong> Only <strong>binomials</strong> flip like this.
+    <code>(x + 3)</code> and <code>(3 + x)</code> are <em>identical</em> (addition commutes), not opposites.
+    The sign trick applies to subtraction only.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>7. Complex fractions</h3>
+    <p>A complex fraction is just a division problem in disguise. Two reliable methods:</p>
+    <div class="case-grid">
+      <div class="case-box">
+        <h4>Method A &middot; different LCDs</h4>
+        <div class="math">
+          1. Combine the numerator into one fraction.<br>
+          2. Combine the denominator into one fraction.<br>
+          3. Rewrite as a division.<br>
+          4. Multiply by the reciprocal of the divisor.<br>
+          5. Cancel common factors.
+        </div>
+      </div>
+      <div class="case-box">
+        <h4>Method B &middot; one shared LCD</h4>
+        <div class="math">
+          1. Find the LCD of <em>all</em> the little denominators.<br>
+          2. Multiply the whole complex fraction (top and bottom) by that LCD.<br>
+          3. Distribute &mdash; every small denominator cancels at once.<br>
+          4. Simplify the result.
+        </div>
+      </div>
+    </div>
+    <div class="formula-box">
+      (a/b) / (c/d) = (a/b) &middot; (d/c) = ad/(bc)&nbsp;&nbsp;&nbsp;(b, c, d &ne; 0)
+    </div>
+    <p>Method B is usually faster when there are three or more small denominators.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>8. Must-memorise facts</h3>
+    <div class="keyfact"><div class="ico">1</div><div class="txt">
+      <strong>Excluded values come from the ORIGINAL denominators, not the final one.</strong> Any value that
+      makes any denominator zero &mdash; at any stage of the work &mdash; is excluded, even if the factor
+      cancels later. For <code>3/(w &minus; 3) &minus; 2/(w&sup2; &minus; 9)</code> you must write
+      <code>w &ne; 3</code> and <code>w &ne; &minus;3</code>.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt">
+      <strong>Never add denominators.</strong> <code>a/b + c/d &ne; (a + c)/(b + d)</code>. Denominators are
+      matched, not combined.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt">
+      <strong>Factor first, always.</strong> You cannot see the LCD of
+      <code>x&sup2; &minus; 6x &minus; 16</code> and <code>x&sup2; &minus; 3x &minus; 40</code> until you see
+      <code>(x &minus; 8)(x + 2)</code> and <code>(x &minus; 8)(x + 5)</code>.</div></div>
+    <div class="keyfact"><div class="ico">4</div><div class="txt">
+      <strong>Cancel factors, never terms.</strong> In <code>(3x &minus; 30)/[5(x &minus; 3)(x + 5)]</code> you
+      may factor the top as <code>3(x &minus; 10)</code>, but <code>(x &minus; 10)</code> matches nothing
+      below, so nothing cancels.</div></div>
+    <div class="keyfact"><div class="ico">5</div><div class="txt">
+      <strong>The set of rational expressions is closed</strong> under addition, subtraction and
+      multiplication &mdash; the sum, difference, or product of two rational expressions is always another
+      rational expression.</div></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>9. The two classic traps</h3>
+    <div class="warning-box"><strong>Trap 1 &mdash; the subtraction sign only hits the first term.</strong>
+    When you subtract, the minus sign applies to the <em>entire</em> second numerator, so put it in
+    parentheses before you distribute.
+    <div class="formula-box">WRONG:&nbsp; 10x + 5 &minus; 7x + 35<br>
+      RIGHT:&nbsp;&nbsp; 10x + 5 &minus; (7x + 35) = 10x + 5 &minus; 7x &minus; 35 = 3x &minus; 30</div>
+    A dropped sign here changes <code>3x &minus; 30</code> into <code>3x + 40</code> &mdash; a completely
+    different answer.</div>
+    <div class="warning-box"><strong>Trap 2 &mdash; missing that <code>(a &minus; b)</code> and
+    <code>(b &minus; a)</code> are opposites.</strong> Students see <code>3t/(2 &minus; x)</code> and
+    <code>5/(x &minus; 2)</code> and multiply the denominators together. Instead factor out
+    <code>&minus;1</code>:
+    <div class="formula-box">3t/(2 &minus; x) = 3t/[&minus;(x &minus; 2)] = &minus;3t/(x &minus; 2)</div>
+    Now both terms sit over <code>(x &minus; 2)</code> with no extra work at all.</div>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1a</span>
+      <span class="example-title">Monomial denominators: 7a/(4b) + 4c&sup2;/10</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Simplify&nbsp; 7a/(4b) + 4c&sup2;/10</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">4b = 2&sup2; &middot; b&nbsp;&nbsp;and&nbsp;&nbsp;10 = 2 &middot; 5</span><span class="reason">factor the denominators</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">LCD = 2&sup2; &middot; 5 &middot; b = 20b</span><span class="reason">highest power of each factor</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">7a/(4b) &middot; 5/5 + 4c&sup2;/10 &middot; (2b)/(2b)</span><span class="reason">multiply by the missing factors</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 35a/(20b) + 8bc&sup2;/(20b)</span><span class="reason">multiply</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (35a + 8bc&sup2;)/(20b)</span><span class="reason">add the numerators</span></div>
+      <div class="answer-box">(35a + 8bc&sup2;)/(20b),&nbsp; b &ne; 0</div>
+      <div class="check-box"><strong>Check:</strong> the numerator <code>35a + 8bc&sup2;</code> has no common
+      factor with <code>20b</code> (the terms share nothing), so the expression is already in simplest form.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 1b</span>
+      <span class="example-title">Monomial denominators: 2x/(9y) &minus; 7y/(6z)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify&nbsp; 2x/(9y) &minus; 7y/(6z)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">9y = 3&sup2; &middot; y&nbsp;&nbsp;and&nbsp;&nbsp;6z = 2 &middot; 3 &middot; z</span><span class="reason">factor the denominators</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">LCD = 2 &middot; 3&sup2; &middot; y &middot; z = 18yz</span><span class="reason">each factor, highest power</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">2x/(9y) &middot; (2z)/(2z) &minus; 7y/(6z) &middot; (3y)/(3y)</span><span class="reason">multiply by the missing factors</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 4xz/(18yz) &minus; 21y&sup2;/(18yz)</span><span class="reason">multiply</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (4xz &minus; 21y&sup2;)/(18yz)</span><span class="reason">subtract</span></div>
+      <div class="answer-box">(4xz &minus; 21y&sup2;)/(18yz),&nbsp; y &ne; 0, z &ne; 0</div>
+      <div class="info-box"><strong>Think About It:</strong> if you had used <code>9y &middot; 6z = 54yz</code>
+      instead of the LCD, you would get <code>(12xz &minus; 63y&sup2;)/(54yz)</code> &mdash; still
+      <em>correct</em>, but every term carries a hidden factor of 3 that you must cancel at the end. The LCD
+      just saves you that step.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Polynomial denominators: (2x + 1)/(x&sup2; + 2x &minus; 15) &minus; 7/(5x &minus; 15)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify&nbsp; (2x + 1)/(x&sup2; + 2x &minus; 15) &minus; 7/(5x &minus; 15)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= (2x + 1)/[(x &minus; 3)(x + 5)] &minus; 7/[5(x &minus; 3)]</span><span class="reason">factor the denominators</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">LCD = 5(x &minus; 3)(x + 5)</span><span class="reason">every distinct factor once</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 5(2x + 1)/[5(x &minus; 3)(x + 5)] &minus; 7(x + 5)/[5(x &minus; 3)(x + 5)]</span><span class="reason">multiply by the missing factors</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= [10x + 5 &minus; (7x + 35)]/[5(x &minus; 3)(x + 5)]</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (10x + 5 &minus; 7x &minus; 35)/[5(x &minus; 3)(x + 5)]</span><span class="reason">distribute the minus sign</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= (3x &minus; 30)/[5(x &minus; 3)(x + 5)]</span><span class="reason">subtract</span></div>
+      <div class="answer-box">(3x &minus; 30)/[5(x &minus; 3)(x + 5)],&nbsp; x &ne; 3, x &ne; &minus;5</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The numerator factors as
+      <code>3(x &minus; 10)</code>. It is tempting to cancel that <code>(x &minus; 10)</code> against
+      something below &mdash; but the denominator only contains <code>(x &minus; 3)</code> and
+      <code>(x + 5)</code>. Nothing cancels. Also note the two fractions are <em>not</em> both multiplied by
+      <code>(x &minus; 3)/(x &minus; 3)</code>: that factor is already present in both denominators, so
+      multiplying by it again would overshoot the LCD.</div>
+      <div class="check-box"><strong>Check with x = 1:</strong> original gives
+      <code>3/(1 + 2 &minus; 15) &minus; 7/(5 &minus; 15) = 3/(&minus;12) + 7/10 = &minus;0.25 + 0.7 = 0.45</code>.
+      Answer gives <code>(3 &minus; 30)/[5(&minus;2)(6)] = &minus;27/(&minus;60) = 0.45</code> &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Unlike denominators with no shared factors: 20/x + 200x/(3x&sup2; + 20)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify&nbsp; 20/x + 200x/(3x&sup2; + 20)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">x&nbsp;and&nbsp;(3x&sup2; + 20) share no factor</span><span class="reason">3x&sup2; + 20 will not factor</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">LCD = x(3x&sup2; + 20)</span><span class="reason">product of the two denominators</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 20(3x&sup2; + 20)/[x(3x&sup2; + 20)] + 200x(x)/[(3x&sup2; + 20)(x)]</span><span class="reason">multiply by the missing factors</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (60x&sup2; + 400 + 200x&sup2;)/(3x&sup3; + 20x)</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (260x&sup2; + 400)/(3x&sup3; + 20x)</span><span class="reason">add like terms</span></div>
+      <div class="answer-box">(260x&sup2; + 400)/(3x&sup3; + 20x),&nbsp; x &ne; 0</div>
+      <div class="info-box"><strong>Study Tip:</strong> when the denominators are relatively prime (no common
+      factor), the LCD really is just their product &mdash; there is nothing smaller available.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Complex fraction using DIFFERENT LCDs: (x/y + 1)/(y/x &minus; 1/y)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify&nbsp; (x/y + 1) / (y/x &minus; 1/y)</div>
+      <p><strong>Step 1 &mdash; Determine the LCDs.</strong></p>
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>Numerator</h4>
+          <div class="math">x/y + 1<br>denominators: y and 1<br><strong>LCD of the numerator = y</strong></div>
+        </div>
+        <div class="case-box">
+          <h4>Denominator</h4>
+          <div class="math">y/x &minus; 1/y<br>denominators: x and y<br><strong>LCD of the denominator = xy</strong></div>
+        </div>
+      </div>
+      <p><strong>Step 2 &mdash; Simplify.</strong></p>
+      <div class="solution-step"><span class="num">1</span><span class="math">= (x/y + y/y) / (y&sup2;/(xy) &minus; x/(xy))</span><span class="reason">rewrite each part over its own LCD</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= [(x + y)/y] / [(y&sup2; &minus; x)/(xy)]</span><span class="reason">simplify top and bottom</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (x + y)/y &divide; (y&sup2; &minus; x)/(xy)</span><span class="reason">write as a division expression</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (x + y)/y &middot; xy/(y&sup2; &minus; x)</span><span class="reason">multiply by the reciprocal of the divisor</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (x + y) &middot; x/(y&sup2; &minus; x)</span><span class="reason">eliminate the common factor y</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= x(x + y)/(y&sup2; &minus; x)</span><span class="reason">multiply</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">= (x&sup2; + xy)/(y&sup2; &minus; x)</span><span class="reason">Distributive Property</span></div>
+      <div class="answer-box">(x&sup2; + xy)/(y&sup2; &minus; x),&nbsp; x &ne; 0, y &ne; 0, y&sup2; &ne; x</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The big fraction bar means divide. You cannot
+      cancel the <code>y</code> in <code>x/y</code> against the <code>y</code> in <code>y/x</code> while they
+      are still on separate levels &mdash; only <em>after</em> you have flipped the divisor and are looking at
+      one single multiplication.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Complex fraction using the SAME LCD: (x/y + 2/x)/(x/2 &minus; y/x)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify&nbsp; (x/y + 2/x) / (x/2 &minus; y/x)</div>
+      <p><strong>Step 1 &mdash; Determine the LCD.</strong> The denominators of the terms in the numerator and
+      denominator are <code>2</code>, <code>x</code>, and <code>y</code>. So the LCM of all of the
+      denominators is <code>2xy</code>.</p>
+      <p><strong>Step 2 &mdash; Simplify.</strong> Multiply the whole complex fraction, top and bottom, by
+      <code>2xy</code>.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">= [(x/y + 2/x) &middot; 2xy] / [(x/2 &minus; y/x) &middot; 2xy]</span><span class="reason">the LCD is 2xy</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= [(x/y)(2xy) + (2/x)(2xy)] / [(x/2)(2xy) &minus; (y/x)(2xy)]</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (2x&sup2; + 4y)/(x&sup2;y &minus; 2y&sup2;)</span><span class="reason">multiply; every small denominator cancels</span></div>
+      <div class="answer-box">(2x&sup2; + 4y)/(x&sup2;y &minus; 2y&sup2;),&nbsp; x &ne; 0, y &ne; 0</div>
+      <div class="check-box"><strong>Check with x = 2, y = 1:</strong> original is
+      <code>(2/1 + 2/2)/(2/2 &minus; 1/2) = 3/0.5 = 6</code>. Answer is
+      <code>(8 + 4)/(4 &minus; 2) = 12/2 = 6</code> &#10003;</div>
+      <div class="info-box"><strong>Which method?</strong> Example 4 combined each level separately (two small
+      LCDs, then divide). Example 5 multiplied everything by one big LCD. Both are always valid &mdash; the
+      one-LCD method (this one) is usually faster when there are three or more small denominators.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">Opposite denominators: k/(k &minus; n) &minus; k/(n &minus; k)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify&nbsp; k/(k &minus; n) &minus; k/(n &minus; k)</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">n &minus; k = &minus;(k &minus; n)</span><span class="reason">the denominators are opposites</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= k/(k &minus; n) &minus; k/[&minus;(k &minus; n)]</span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= k/(k &minus; n) + k/(k &minus; n)</span><span class="reason">minus a negative is plus</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 2k/(k &minus; n)</span><span class="reason">add; denominators already match</span></div>
+      <div class="answer-box">2k/(k &minus; n),&nbsp; k &ne; n</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Two sign changes happen at once here: the
+      <code>&minus;1</code> pulled out of the denominator, and the subtraction already in the problem. They
+      combine into addition. Students who only apply one of the two get <code>0</code> &mdash; a very common
+      wrong answer.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1 &middot; Monomial denominators</h4>
+    <div class="prob">Simplify&nbsp; 2/(a + 2) &minus; 3/(2a)</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">LCD = 2a(a + 2)</span><span class="reason">no shared factors</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 2(2a)/[2a(a + 2)] &minus; 3(a + 2)/[2a(a + 2)]</span><span class="reason">missing factors</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= [4a &minus; (3a + 6)]/[2a(a + 2)]</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (4a &minus; 3a &minus; 6)/[2a(a + 2)]</span><span class="reason">distribute the minus sign</span></div>
+      <div class="answer-box">(a &minus; 6)/[2a(a + 2)],&nbsp; a &ne; 0, a &ne; &minus;2</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2 &middot; Two-variable monomials</h4>
+    <div class="prob">Simplify&nbsp; 5/(3b + d) &minus; 2/(3bd)</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">LCD = 3bd(3b + d)</span><span class="reason">(3b + d) is prime; no overlap</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 5(3bd)/[3bd(3b + d)] &minus; 2(3b + d)/[3bd(3b + d)]</span><span class="reason">missing factors</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (15bd &minus; 6b &minus; 2d)/[3bd(3b + d)]</span><span class="reason">distribute and subtract</span></div>
+      <div class="answer-box">(15bd &minus; 6b &minus; 2d)/[3bd(3b + d)],&nbsp; b &ne; 0, d &ne; 0, 3b + d &ne; 0</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3 &middot; Higher-power monomials</h4>
+    <div class="prob">Simplify&nbsp; 4b/(15x&sup3;y&sup2;) &minus; 3b/(35x&sup2;y&#8308;z)</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">15 = 3 &middot; 5,&nbsp; 35 = 5 &middot; 7&nbsp;&rarr;&nbsp;numeric LCM = 105</span><span class="reason">factor the coefficients</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">variables: x&sup3;, y&#8308;, z (highest power of each)</span><span class="reason">LCD = 105x&sup3;y&#8308;z</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 4b(7y&sup2;z)/(105x&sup3;y&#8308;z) &minus; 3b(3x)/(105x&sup3;y&#8308;z)</span><span class="reason">missing factors 7y&sup2;z and 3x</span></div>
+      <div class="answer-box">(28by&sup2;z &minus; 9bx)/(105x&sup3;y&#8308;z)&nbsp; = &nbsp;b(28y&sup2;z &minus; 9x)/(105x&sup3;y&#8308;z)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4 &middot; Factor first</h4>
+    <div class="prob">Simplify&nbsp; 12/(3y&sup2; &minus; 10y &minus; 8) &minus; 3/(y&sup2; &minus; 6y + 8)</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">3y&sup2; &minus; 10y &minus; 8 = (3y + 2)(y &minus; 4)</span><span class="reason">factor</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">y&sup2; &minus; 6y + 8 = (y &minus; 2)(y &minus; 4)</span><span class="reason">factor</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">LCD = (3y + 2)(y &minus; 4)(y &minus; 2)</span><span class="reason">(y &minus; 4) is shared &mdash; use it once</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= [12(y &minus; 2) &minus; 3(3y + 2)]/[(3y + 2)(y &minus; 4)(y &minus; 2)]</span><span class="reason">missing factors</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (12y &minus; 24 &minus; 9y &minus; 6)/[(3y + 2)(y &minus; 4)(y &minus; 2)]</span><span class="reason">distribute both signs</span></div>
+      <div class="answer-box">(3y &minus; 30)/[(3y + 2)(y &minus; 4)(y &minus; 2)]&nbsp; = &nbsp;3(y &minus; 10)/[(3y + 2)(y &minus; 4)(y &minus; 2)]</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5 &middot; Repeated factor in the LCD</h4>
+    <div class="prob">Simplify&nbsp; 1/(x&sup2; + 2x + 1) + x/(x + 1)</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">x&sup2; + 2x + 1 = (x + 1)&sup2;</span><span class="reason">perfect square trinomial</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">LCD = (x + 1)&sup2;</span><span class="reason">highest power of (x + 1) is 2</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 1/(x + 1)&sup2; + x(x + 1)/(x + 1)&sup2;</span><span class="reason">missing factor (x + 1)</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (1 + x&sup2; + x)/(x + 1)&sup2;</span><span class="reason">add the numerators</span></div>
+      <div class="answer-box">(x&sup2; + x + 1)/(x + 1)&sup2;,&nbsp; x &ne; &minus;1</div>
+      <div class="warning-box"><strong>Careful:</strong> the LCD is <code>(x + 1)&sup2;</code>, not
+      <code>(x + 1)&sup3;</code>. You take the highest power that appears in <em>any one</em> denominator,
+      not the sum of the powers.</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6 &middot; Complex fraction</h4>
+    <div class="prob">Simplify&nbsp; [2/(a &minus; 1) + 3/(a &minus; 4)] / [6/(a&sup2; &minus; 5a + 4)]</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">a&sup2; &minus; 5a + 4 = (a &minus; 1)(a &minus; 4)</span><span class="reason">factor</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">LCD of all small denominators = (a &minus; 1)(a &minus; 4)</span><span class="reason">use the one-LCD method</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">numerator &middot; LCD = 2(a &minus; 4) + 3(a &minus; 1)</span><span class="reason">distribute</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 2a &minus; 8 + 3a &minus; 3 = 5a &minus; 11</span><span class="reason">combine like terms</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">denominator &middot; LCD = 6</span><span class="reason">the factored denominator cancels entirely</span></div>
+      <div class="answer-box">(5a &minus; 11)/6,&nbsp; a &ne; 1, a &ne; 4</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr>
+      <td>Denominators already identical</td>
+      <td>Add or subtract the numerators; keep the denominator</td>
+      <td><code>3/x + 5/x = 8/x</code></td>
+    </tr>
+    <tr>
+      <td>Monomial denominators</td>
+      <td>LCM of coefficients &times; each variable to its highest power</td>
+      <td><code>4b, 10 &rarr; LCD 20b</code></td>
+    </tr>
+    <tr>
+      <td>Polynomial denominators</td>
+      <td>Factor each, then take every distinct factor to its highest power</td>
+      <td><code>(x &minus; 3)(x + 5), 5(x &minus; 3) &rarr; 5(x &minus; 3)(x + 5)</code></td>
+    </tr>
+    <tr>
+      <td>Denominators are opposites</td>
+      <td>Factor <code>&minus;1</code> out of one: <code>b &minus; a = &minus;(a &minus; b)</code></td>
+      <td><code>k/(k &minus; n) &minus; k/(n &minus; k) = 2k/(k &minus; n)</code></td>
+    </tr>
+    <tr>
+      <td>Denominators share no factor</td>
+      <td>LCD is simply their product</td>
+      <td><code>x, 3x&sup2; + 20 &rarr; x(3x&sup2; + 20)</code></td>
+    </tr>
+    <tr>
+      <td>Repeated factor, e.g. <code>(x + 1)</code> and <code>(x + 1)&sup2;</code></td>
+      <td>Use the highest power only</td>
+      <td><code>LCD = (x + 1)&sup2;</code></td>
+    </tr>
+    <tr>
+      <td>Complex fraction, few denominators</td>
+      <td>Combine top, combine bottom, then multiply by the reciprocal</td>
+      <td><code>(x/y + 1)/(y/x &minus; 1/y) = (x&sup2; + xy)/(y&sup2; &minus; x)</code></td>
+    </tr>
+    <tr>
+      <td>Complex fraction, many denominators</td>
+      <td>Multiply top and bottom by the LCD of <em>all</em> of them</td>
+      <td><code>(x/y + 2/x)/(x/2 &minus; y/x) = (2x&sup2; + 4y)/(x&sup2;y &minus; 2y&sup2;)</code></td>
+    </tr>
+    <tr>
+      <td>Stating the domain</td>
+      <td>Exclude every value that zeroes any <em>original</em> denominator</td>
+      <td><code>3/(w &minus; 3) &minus; 2/(w&sup2; &minus; 9): w &ne; &plusmn;3</code></td>
+    </tr>
+  </table>
+
+  <h3 style="color:var(--sl-navy);font-size:15px;margin:18px 0 6px">Every rule from this lesson</h3>
+  <div class="pill-row">
+    <span class="pill">a/b + c/d = (ad + bc)/(bd)</span>
+    <span class="pill">a/b &minus; c/d = (ad &minus; bc)/(bd)</span>
+    <span class="pill">LCD = LCM of the denominators</span>
+    <span class="pill">a &minus; b = &minus;(b &minus; a)</span>
+    <span class="pill">(a/b) / (c/d) = ad/(bc)</span>
+    <span class="pill">c/d &middot; k/k = ck/(dk)</span>
+    <span class="pill">b &ne; 0, d &ne; 0 always</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid:</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8">
+      <li>Adding the denominators: <code>a/b + c/d &ne; (a + c)/(b + d)</code>.</li>
+      <li>Distributing the subtraction to only the first term of the second numerator. Bracket it:
+      <code>&minus;(7x + 35) = &minus;7x &minus; 35</code>.</li>
+      <li>Failing to see that <code>(a &minus; b)</code> and <code>(b &minus; a)</code> are opposites, and
+      building a needlessly huge LCD.</li>
+      <li>Multiplying a fraction by a factor its denominator already contains &mdash; that overshoots the LCD
+      and forces extra cancelling later.</li>
+      <li>Cancelling <em>terms</em> instead of <em>factors</em>: in <code>(3x &minus; 30)/[5(x &minus; 3)]</code>
+      you may not cancel the <code>3</code>s or the <code>x</code>s.</li>
+      <li>Forgetting excluded values that vanish when a factor cancels &mdash; they still count.</li>
+      <li>Cancelling across the levels of a complex fraction before rewriting it as a single multiplication.</li>
+      <li>Leaving the answer unfactored, so you miss a common factor that would simplify it.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"What is the LCD of 7a/(4b) and 4c&sup2;/10 ?",
+   opts:["40b","20b","20","4b"],ans:1,
+   exp:"Factor: 4b = 2&sup2;&middot;b and 10 = 2&middot;5. The LCM takes 2&sup2;, 5 and b, giving 2&sup2;&middot;5&middot;b = 20b. The product 40b works too, but it is not the LEAST common denominator."},
+
+  {q:"Simplify 3/x + 5/y.",
+   opts:["(3y + 5x)/(xy)","8/(x + y)","(3x + 5y)/(xy)","15/(xy)"],ans:0,
+   exp:"The LCD is xy. Multiply 3/x by y/y to get 3y/(xy), and 5/y by x/x to get 5x/(xy). Adding the numerators gives (3y + 5x)/(xy). Note the cross pattern: each numerator picks up the OTHER denominator."},
+
+  {q:"Simplify 2x/(9y) &minus; 7y/(6z).",
+   opts:["(2x &minus; 7y)/(9y &minus; 6z)","(4xz + 21y&sup2;)/(18yz)","(4xz &minus; 21y&sup2;)/(18yz)","(4xz &minus; 21y&sup2;)/(54yz)"],ans:2,
+   exp:"9y = 3&sup2;&middot;y and 6z = 2&middot;3&middot;z, so the LCD is 2&middot;3&sup2;&middot;y&middot;z = 18yz. Multiply the first by 2z/2z to get 4xz/(18yz) and the second by 3y/3y to get 21y&sup2;/(18yz). Using 54yz instead would leave a hidden common factor of 3."},
+
+  {q:"Simplify (2x + 1)/(x&sup2; + 2x &minus; 15) &minus; 7/(5x &minus; 15).",
+   opts:["(10x + 40)/[5(x &minus; 3)(x + 5)]","(2x &minus; 6)/[5(x &minus; 3)(x + 5)]","(3x &minus; 30)/[5(x &minus; 3)(x &minus; 5)]","(3x &minus; 30)/[5(x &minus; 3)(x + 5)]"],ans:3,
+   exp:"Factor to (x &minus; 3)(x + 5) and 5(x &minus; 3), so the LCD is 5(x &minus; 3)(x + 5). The numerator becomes 5(2x + 1) &minus; 7(x + 5) = 10x + 5 &minus; 7x &minus; 35 = 3x &minus; 30. Option A is what you get if you forget to distribute the minus sign to the 35."},
+
+  {q:"Simplify k/(k &minus; n) &minus; k/(n &minus; k).",
+   opts:["0","2k/(k &minus; n)","2k/(n &minus; k)","k/(k &minus; n)"],ans:1,
+   exp:"Since n &minus; k = &minus;(k &minus; n), the second fraction is &minus;k/(k &minus; n). Subtracting a negative gives k/(k &minus; n) + k/(k &minus; n) = 2k/(k &minus; n). Answering 0 means you treated the two denominators as identical instead of opposite."},
+
+  {q:"Simplify 3/(w &minus; 3) &minus; 2/(w&sup2; &minus; 9).",
+   opts:["(3w &minus; 7)/(w&sup2; &minus; 9)","1/(w&sup2; &minus; 9)","(3w + 7)/(w&sup2; &minus; 9)","(3w + 9)/(w&sup2; &minus; 9)"],ans:2,
+   exp:"w&sup2; &minus; 9 = (w &minus; 3)(w + 3), so the LCD is (w &minus; 3)(w + 3). The first fraction needs the factor (w + 3): [3(w + 3) &minus; 2]/(w&sup2; &minus; 9) = (3w + 9 &minus; 2)/(w&sup2; &minus; 9) = (3w + 7)/(w&sup2; &minus; 9)."},
+
+  {q:"Simplify 3t/(2 &minus; x) + 5/(x &minus; 2).",
+   opts:["(5 &minus; 3t)/(x &minus; 2)","(3t + 5)/(x &minus; 2)","(3t + 5)/(2 &minus; x)","(3t &minus; 5)/(x &minus; 2)"],ans:0,
+   exp:"The denominators are opposites: 2 &minus; x = &minus;(x &minus; 2), so 3t/(2 &minus; x) = &minus;3t/(x &minus; 2). Now both terms sit over (x &minus; 2): &minus;3t/(x &minus; 2) + 5/(x &minus; 2) = (5 &minus; 3t)/(x &minus; 2)."},
+
+  {q:"State the excluded values for 4z/(z &minus; 4) + (z + 4)/(z + 1).",
+   opts:["z &ne; 4","z &ne; &minus;1","z &ne; 4 and z &ne; &minus;1","z &ne; &minus;4 and z &ne; 1"],ans:2,
+   exp:"Set each ORIGINAL denominator equal to zero: z &minus; 4 = 0 gives z = 4, and z + 1 = 0 gives z = &minus;1. Both must be excluded. Watch the signs &mdash; the zero of z + 1 is &minus;1, not 1."},
+
+  {q:"Simplify 3/(8p&sup2;r) + 5/(4p&sup2;r).",
+   opts:["8/(12p&#8308;r&sup2;)","13/(4p&sup2;r)","8/(8p&sup2;r)","13/(8p&sup2;r)"],ans:3,
+   exp:"4p&sup2;r divides into 8p&sup2;r, so the LCD is simply 8p&sup2;r &mdash; the larger denominator itself. Multiply the second fraction by 2/2 to get 10/(8p&sup2;r), then 3 + 10 = 13, giving 13/(8p&sup2;r)."},
+
+  {q:"Simplify (2c &minus; 7)/3 + 4.",
+   opts:["(2c + 5)/3","(2c &minus; 3)/3","(2c + 5)/12","(6c &minus; 7)/3"],ans:0,
+   exp:"Write 4 as 12/3 so both terms share the denominator 3. Then (2c &minus; 7 + 12)/3 = (2c + 5)/3. A whole number always has an invisible denominator of 1, so it just needs the LCD as its missing factor."},
+
+  {q:"Simplify 12/(5y&sup2;) &minus; 2/(5yz).",
+   opts:["10/(5y&sup2;z)","(12z &minus; 2y)/(5y&sup2;z)","(12z &minus; 2y)/(25y&sup3;z)","(12 &minus; 2y)/(5y&sup2;z)"],ans:1,
+   exp:"5y&sup2; and 5yz share the factor 5y, so the LCD is 5y&sup2;z, not their product 25y&sup3;z. Multiply the first by z/z and the second by y/y: (12z &minus; 2y)/(5y&sup2;z)."},
+
+  {q:"Simplify n/(n &minus; 3) + (2n + 2)/(n&sup2; &minus; 2n &minus; 3).",
+   opts:["(3n + 2)/(n &minus; 3)","(n + 2)/(n + 1)","(n + 2)/(n &minus; 3)","(n&sup2; + 2)/(n &minus; 3)"],ans:2,
+   exp:"n&sup2; &minus; 2n &minus; 3 = (n &minus; 3)(n + 1), so the LCD is (n &minus; 3)(n + 1). The numerator becomes n(n + 1) + 2n + 2 = n&sup2; + 3n + 2 = (n + 1)(n + 2). The factor (n + 1) cancels, leaving (n + 2)/(n &minus; 3) with n &ne; 3 and n &ne; &minus;1 still excluded."},
+
+  {q:"Simplify the complex fraction (x/y + 1) / (y/x &minus; 1/y).",
+   opts:["(x + y)/(y&sup2; &minus; x)","(x&sup2; + y)/(y&sup2; &minus; x)","(x + xy)/(y&sup2; &minus; x)","(x&sup2; + xy)/(y&sup2; &minus; x)"],ans:3,
+   exp:"The numerator over its LCD y is (x + y)/y; the denominator over its LCD xy is (y&sup2; &minus; x)/(xy). Dividing means multiplying by the reciprocal: [(x + y)/y]&middot;[xy/(y&sup2; &minus; x)] = x(x + y)/(y&sup2; &minus; x) = (x&sup2; + xy)/(y&sup2; &minus; x)."},
+
+  {q:"Simplify the complex fraction (x/y + 2/x) / (x/2 &minus; y/x).",
+   opts:["(2x&sup2; + 4y)/(x&sup2;y &minus; 2y&sup2;)","(x&sup2; + 2y)/(x&sup2;y &minus; 2y&sup2;)","(2x&sup2; + 4y)/(x&sup2; &minus; 2y&sup2;)","(2x + 4y)/(x&sup2;y &minus; 2y&sup2;)"],ans:0,
+   exp:"The small denominators are 2, x and y, so their LCM is 2xy. Multiplying every term by 2xy clears them all: the top becomes 2x&sup2; + 4y and the bottom becomes x&sup2;y &minus; 2y&sup2;. Forgetting to multiply the y/x term by the full 2xy is what produces option C."},
+
+  {q:"Simplify 8/(x&sup2; &minus; 6x &minus; 16) + 9/(x&sup2; &minus; 3x &minus; 40).",
+   opts:["17/(x&sup2; &minus; 6x &minus; 16)","(17x + 58)/[(x &minus; 8)(x + 2)(x + 5)]","(17x + 58)/[(x &minus; 8)&sup2;(x + 2)(x + 5)]","(17x + 22)/[(x &minus; 8)(x + 2)(x + 5)]"],ans:1,
+   exp:"Factor to (x &minus; 8)(x + 2) and (x &minus; 8)(x + 5). The shared factor (x &minus; 8) appears once in the LCD, giving (x &minus; 8)(x + 2)(x + 5). The numerator is 8(x + 5) + 9(x + 2) = 8x + 40 + 9x + 18 = 17x + 58."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

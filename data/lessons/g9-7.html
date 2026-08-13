@@ -1,0 +1,705 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Use the Law of Sines to find missing sides and angles in any triangle, and decide whether SSA data gives 0, 1, or 2 triangles.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Why we need a new tool</h3>
+    <p>Right-triangle trigonometry (SOH-CAH-TOA) only works when a triangle has a 90&deg; angle.
+    Most triangles do not. The <b>Law of Sines</b> is the rule that lets you set up a proportion in
+    <i>any</i> triangle &mdash; right or oblique &mdash; as long as you can pair up an angle with the side
+    directly across from it.</p>
+    <div class="info-box"><strong>Naming convention.</strong> In &#9651;<i>ABC</i>, the lowercase letter
+    always names the side <em>opposite</em> the matching capital letter: side <code>a</code> is opposite
+    &ang;<i>A</i>, side <code>b</code> is opposite &ang;<i>B</i>, side <code>c</code> is opposite &ang;<i>C</i>.
+    Every Law of Sines problem starts by finding these <b>angle&ndash;side pairs</b>.</p></div>
+  </div>
+
+  <div class="theorem">
+    <div class="theorem-head">Theorem 9.10 &middot; Law of Sines</div>
+    <div class="theorem-body">
+      If &#9651;<i>ABC</i> has lengths <i>a</i>, <i>b</i>, and <i>c</i>, representing the lengths of the
+      sides opposite the angles with measures <i>A</i>, <i>B</i>, and <i>C</i>, then
+      <div class="formula-box">sin&nbsp;<i>A</i> / <i>a</i> &nbsp;=&nbsp; sin&nbsp;<i>B</i> / <i>b</i> &nbsp;=&nbsp; sin&nbsp;<i>C</i> / <i>c</i></div>
+      Because these are equal ratios, you may flip all three at once and use the equally valid form
+      <div class="formula-box"><i>a</i> / sin&nbsp;<i>A</i> &nbsp;=&nbsp; <i>b</i> / sin&nbsp;<i>B</i> &nbsp;=&nbsp; <i>c</i> / sin&nbsp;<i>C</i></div>
+      Use the first form when you are solving for an <b>angle</b> (the unknown lands in the numerator);
+      use the second form when you are solving for a <b>side</b>.
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. When can you use it?</h3>
+    <p>You can solve a triangle with the Law of Sines whenever you know <b>two angles and any side</b>
+    (AAS or ASA), or <b>two sides and an angle opposite one of them</b> (SSA).</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>AAS</b> &mdash; two angles and a <i>non-included</i> side.
+      Exactly one triangle. Pair the known side with its own angle, then cross-multiply.</div>
+      <div class="vocab-item"><b>ASA</b> &mdash; two angles and the <i>included</i> side.
+      Exactly one triangle. First use the Triangle Angle-Sum Theorem to get the third angle, which
+      turns the problem into AAS.</div>
+      <div class="vocab-item"><b>SSA</b> &mdash; two sides and an angle opposite one of them.
+      This is the <b>ambiguous case</b>: 0, 1, or 2 triangles are possible.</div>
+      <div class="vocab-item"><b>SSS / SAS</b> &mdash; <i>cannot</i> be started with the Law of Sines,
+      because no angle&ndash;side pair is complete. Those need the Law of Cosines.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. The method, step by step</h3>
+    <div class="steps-list">
+      <div class="s">Label the triangle so every lowercase side sits opposite its capital angle.</div>
+      <div class="s">Find one <b>complete</b> angle&ndash;side pair (an angle whose opposite side you know).
+      That pair is the ratio you can actually evaluate.</div>
+      <div class="s">Set that ratio equal to the ratio containing the unknown. Use only two ratios at a time.</div>
+      <div class="s">Cross multiply, then divide to isolate the unknown.</div>
+      <div class="s">If the unknown is an angle, finish with sin<sup>&minus;1</sup>. If it is a side, just
+      evaluate. Keep the calculator in <b>degree mode</b>.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>ambiguous case</b> &mdash; the SSA situation, in which the given
+      measures of two sides and a non-included angle may produce zero, one, or two different triangles.</div>
+      <div class="vocab-item"><b>altitude <i>h</i></b> &mdash; the minimum distance from &ang;<i>C</i> to
+      <span style="text-decoration:overline">AB</span> when &ang;<i>A</i> is acute. Since
+      sin&nbsp;<i>A</i> = <i>h</i>/<i>b</i>, we get <code>h = b&nbsp;sin&nbsp;A</code>. Comparing
+      <i>a</i> to <i>h</i> is what decides the ambiguous case.</div>
+    </div>
+  </div>
+
+  <div class="theorem">
+    <div class="theorem-head">Postulate 9.1 &middot; Sine of an Obtuse Angle</div>
+    <div class="theorem-body">
+      <b>Words:</b> The sine of an obtuse angle is defined to be the sine of its supplement.<br>
+      <b>Symbols:</b> If <i>m</i>&ang;<i>A</i> &gt; 90&deg; and <i>x</i> = sin&nbsp;<i>A</i>,
+      then <i>x</i> = sin&nbsp;(180&deg; &minus; <i>A</i>).
+      <div class="formula-box">sin&nbsp;141&deg; = sin&nbsp;39&deg; &nbsp;&nbsp;&nbsp; sin&nbsp;109&deg; = sin&nbsp;71&deg;</div>
+      This is exactly why SSA is ambiguous: <b>two</b> different angles &mdash; one acute, one obtuse &mdash;
+      share the same sine, so sin<sup>&minus;1</sup> only ever hands you the acute one. You must check the
+      obtuse partner yourself.
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Key Concept &middot; Possible Triangles in the SSA Case</h3>
+    <p>You are given <i>a</i>, <i>b</i>, and <i>m</i>&ang;<i>A</i>; let <code>h = b&nbsp;sin&nbsp;A</code>
+    be the altitude. Compare <i>a</i> with <i>h</i> and with <i>b</i>.</p>
+    <p style="margin-top:10px"><b>&ang;<i>A</i> is acute:</b></p>
+    <table class="tbl">
+      <tr><th>Comparison</th><th>Number of triangles</th><th>Why</th></tr>
+      <tr><td><code>a &lt; h</code></td><td><b>no solution</b></td><td>side <i>a</i> is too short to reach the base</td></tr>
+      <tr><td><code>a = h</code></td><td><b>one solution</b></td><td><i>a</i> just touches &mdash; a right triangle</td></tr>
+      <tr><td><code>h &lt; a &lt; b</code></td><td><b>two solutions</b></td><td><i>a</i> crosses the base twice</td></tr>
+      <tr><td><code>a &ge; b</code></td><td><b>one solution</b></td><td>one crossing lands behind vertex <i>A</i>, so it is rejected</td></tr>
+    </table>
+    <p style="margin-top:10px"><b>&ang;<i>A</i> is right or obtuse:</b></p>
+    <table class="tbl">
+      <tr><th>Comparison</th><th>Number of triangles</th><th>Why</th></tr>
+      <tr><td><code>a &le; b</code></td><td><b>no solution</b></td><td>the side opposite the largest angle must be the largest side</td></tr>
+      <tr><td><code>a &gt; b</code></td><td><b>one solution</b></td><td>&ang;<i>B</i> must be acute, so only one value works</td></tr>
+    </table>
+    <div class="info-box"><strong>Study Tip &middot; &ang;A is acute.</strong> The altitude <i>h</i> is
+    compared to <i>a</i> because <i>h</i> is the <b>minimum</b> distance from &ang;<i>C</i> to
+    <span style="text-decoration:overline">AB</span>. Anything shorter than <i>h</i> simply cannot reach.
+    Remember sin&nbsp;<i>A</i> = opposite / hypotenuse = <i>h</i>/<i>b</i>.</div>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt">Always work with a <b>complete pair</b>: an angle and the side opposite it.</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt">AAS and ASA always give <b>exactly one</b> triangle. Only SSA is ambiguous.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt"><code>h = b&nbsp;sin&nbsp;A</code> is the gatekeeper of the ambiguous case.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt">sin&nbsp;&theta; = sin&nbsp;(180&deg; &minus; &theta;), so every acute answer has a possible obtuse twin.</div></div>
+  <div class="keyfact"><div class="ico">5</div><div class="txt">Reject any second angle that makes the three angles exceed 180&deg;.</div></div>
+
+  <div class="warning-box"><strong>Watch Out! &middot; Rounding Errors.</strong> To avoid a rounding error,
+  use the most accurate approximation you can at each step, using the numbers stored in the calculator.
+  For example, use the unrounded value of <i>m</i>&ang;<i>P</i> from Step 1 when you find
+  <i>m</i>&ang;<i>M</i> in Step 2 &mdash; then round only the final answer.</div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">The three angle&ndash;side pairs</div>
+    <svg id="fig1" viewBox="0 0 420 250" width="420" role="img" aria-label="Triangle ABC with angles 58, 87 and 35 degrees and sides a, b, c opposite them">
+      <g data-part="pc">
+        <line class="g-line" x1="60" y1="200" x2="145.1" y2="63.8"/>
+        <path class="g-angle" d="M94 200 A34 34 0 0 0 78 171.2"/>
+        <text class="g-meas" x="105.5" y="174.8" text-anchor="middle">58&deg;</text>
+        <text class="g-lbl" x="88" y="121" text-anchor="end">c</text>
+      </g>
+      <g data-part="pa">
+        <line class="g-line" x1="145.1" y1="63.8" x2="339.6" y2="200"/>
+        <path class="g-angle" d="M129.2 89.2 A30 30 0 0 0 169.7 81"/>
+        <text class="g-meas" x="154.7" y="110.8" text-anchor="middle">87&deg;</text>
+        <text class="g-lbl" x="253.8" y="115.5" text-anchor="start">a</text>
+      </g>
+      <g data-part="pb">
+        <line class="g-line" x1="60" y1="200" x2="339.6" y2="200"/>
+        <path class="g-angle" d="M311.75 180.5 A34 34 0 0 0 305.6 200"/>
+        <text class="g-meas" x="288" y="184.3" text-anchor="end">35&deg;</text>
+        <text class="g-lbl" x="199.8" y="222" text-anchor="middle">b</text>
+      </g>
+      <circle class="g-pt" cx="60" cy="200" r="4.5"/>
+      <circle class="g-pt" cx="145.1" cy="63.8" r="4.5"/>
+      <circle class="g-pt" cx="339.6" cy="200" r="4.5"/>
+      <text class="g-lbl" x="46" y="214" text-anchor="end">A</text>
+      <text class="g-lbl" x="145" y="48" text-anchor="middle">B</text>
+      <text class="g-lbl" x="352" y="214" text-anchor="start">C</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','pa')">Pair A &amp; a</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','pb')">Pair B &amp; b</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','pc')">Pair C &amp; c</button>
+    </div>
+    <figcaption>Each angle is drawn to its stated measure (58&deg; + 87&deg; + 35&deg; = 180&deg;) and each side
+    is drawn proportional to the sine of the angle across from it. Click a chip to isolate one
+    angle&ndash;side pair &mdash; that pair is one ratio of the Law of Sines.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">The altitude h = b&nbsp;sin&nbsp;A</div>
+    <svg id="fig2" viewBox="0 0 440 260" width="440" role="img" aria-label="Acute angle A of 32 degrees with side b and perpendicular altitude h to the base ray">
+      <g data-part="base">
+        <line class="g-line" x1="60" y1="210" x2="400" y2="210"/>
+        <path class="g-line" d="M400 210 l-10 -5 M400 210 l-10 5"/>
+      </g>
+      <g data-part="ang">
+        <path class="g-angle" d="M96 210 A36 36 0 0 0 90.53 190.92"/>
+        <text class="g-meas" x="111.9" y="195.1" text-anchor="middle">32&deg;</text>
+      </g>
+      <g data-part="b">
+        <line class="g-line" x1="60" y1="210" x2="243.2" y2="95.5"/>
+        <text class="g-lbl" x="139.9" y="134.1" text-anchor="end">b</text>
+      </g>
+      <g data-part="h">
+        <line class="g-dash" x1="243.2" y1="95.5" x2="243.2" y2="210"/>
+        <path class="g-right" d="M231.2 210 L231.2 198 L243.2 198"/>
+        <text class="g-meas" x="252" y="153" text-anchor="start">h = b sin A</text>
+      </g>
+      <circle class="g-pt" cx="60" cy="210" r="4.5"/>
+      <circle class="g-pt" cx="243.2" cy="95.5" r="4.5"/>
+      <text class="g-lbl" x="50" y="224" text-anchor="end">A</text>
+      <text class="g-lbl" x="243" y="84" text-anchor="middle">C</text>
+      <text class="g-lbl-sm" x="243" y="230" text-anchor="middle">D</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','ang')">Given angle A</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','b')">Given side b</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','h')">Altitude h</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','base')">Base ray</button>
+    </div>
+    <figcaption>In right &#9651;<i>ACD</i>, sin&nbsp;<i>A</i> = <i>h</i>/<i>b</i>, so <i>h</i> = <i>b</i>&nbsp;sin&nbsp;<i>A</i>.
+    Here <i>b</i> = 18 and <i>A</i> = 32&deg;, so <i>h</i> &asymp; 9.5 &mdash; the shortest possible third side.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Ambiguous case &mdash; two triangles from the same data</div>
+    <svg id="fig3" viewBox="0 0 460 350" width="460" role="img" aria-label="One 32 degree angle with side 18 and a swing arc of radius 15 meeting the base at two points, forming two different triangles">
+      <g data-part="given">
+        <line class="g-line" x1="60" y1="250" x2="420" y2="250"/>
+        <path class="g-line" d="M420 250 l-10 -5 M420 250 l-10 5"/>
+        <line class="g-line" x1="60" y1="250" x2="243.2" y2="135.5"/>
+        <path class="g-angle" d="M96 250 A36 36 0 0 0 90.53 230.92"/>
+        <text class="g-meas" x="111.9" y="235.1" text-anchor="middle">32&deg;</text>
+        <text class="g-lbl" x="135.7" y="167.3" text-anchor="end">b = 18</text>
+      </g>
+      <g data-part="swing">
+        <path class="g-aux" d="M104.3 250 A180 180 0 0 0 382.1 250"/>
+        <text class="g-lbl-sm" x="243" y="332" text-anchor="middle">swing arc: every point is 15 units from C</text>
+      </g>
+      <g data-part="t1">
+        <line class="g-line" x1="243.2" y1="135.5" x2="382.1" y2="250"/>
+        <path class="g-angle" d="M358.96 230.91 A30 30 0 0 0 352.1 250"/>
+        <text class="g-meas g-halo" x="334" y="233.8" text-anchor="end">39&deg;</text>
+        <text class="g-meas" x="325.4" y="177.4" text-anchor="start">a = 15</text>
+        <text class="g-grn" x="300" y="272" text-anchor="middle">c &asymp; 26.8</text>
+        <circle class="g-pt" cx="382.1" cy="250" r="4.5"/>
+        <text class="g-lbl" x="392" y="244" text-anchor="start">B<tspan font-size="11" dy="4">1</tspan></text>
+      </g>
+      <g data-part="t2">
+        <line class="g-arc" x1="243.2" y1="135.5" x2="104.3" y2="250"/>
+        <path class="g-angle" d="M124.4 233.5 A26 26 0 0 0 78.3 250"/>
+        <text class="g-meas g-halo" x="89.4" y="208.6" text-anchor="middle">141&deg;</text>
+        <text class="g-meas g-halo" x="185" y="207" text-anchor="middle">15</text>
+        <text class="g-grn g-halo" x="85" y="274" text-anchor="middle">c &asymp; 3.4</text>
+        <circle class="g-pt" cx="104.3" cy="250" r="4.5"/>
+        <text class="g-lbl g-halo" x="120" y="272" text-anchor="start">B<tspan font-size="11" dy="4">2</tspan></text>
+      </g>
+      <circle class="g-pt" cx="60" cy="250" r="4.5"/>
+      <circle class="g-pt" cx="243.2" cy="135.5" r="4.5"/>
+      <text class="g-lbl" x="46" y="244" text-anchor="end">A</text>
+      <text class="g-lbl" x="243" y="124" text-anchor="middle">C</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','given')">Given: 32&deg; and b = 18</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','swing')">Swing arc a = 15</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','t1')">Triangle 1 (B &asymp; 39&deg;)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','t2')">Triangle 2 (B &asymp; 141&deg;)</button>
+    </div>
+    <figcaption><i>m</i>&ang;<i>A</i> = 32&deg;, <i>a</i> = 15, <i>b</i> = 18, and <i>h</i> = 18&nbsp;sin&nbsp;32&deg; &asymp; 9.5.
+    Because <i>h</i> &lt; <i>a</i> &lt; <i>b</i>, the arc of radius 15 centred at <i>C</i> cuts the base ray twice
+    &mdash; at <i>B</i><sub>1</sub> and at <i>B</i><sub>2</sub> &mdash; giving two genuinely different triangles.
+    Notice 39&deg; and 141&deg; are supplementary.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Ambiguous case &mdash; no triangle at all</div>
+    <svg id="fig4" viewBox="0 0 440 300" width="440" role="img" aria-label="Obtuse 95 degree angle at R with side 12 to T and an arc of radius 10 that never reaches ray RS">
+      <g data-part="ray">
+        <line class="g-line" x1="150" y1="70" x2="400" y2="70"/>
+        <path class="g-line" d="M400 70 l-10 -5 M400 70 l-10 5"/>
+        <text class="g-lbl-sm" x="396" y="58" text-anchor="end">ray RS</text>
+      </g>
+      <g data-part="given">
+        <line class="g-line" x1="150" y1="70" x2="135.4" y2="237.4"/>
+        <path class="g-angle" d="M147.04 103.87 A34 34 0 0 0 184 70"/>
+        <text class="g-meas" x="185.2" y="108.4" text-anchor="start">95&deg;</text>
+        <text class="g-lbl" x="120.7" y="151.7" text-anchor="end">s = 12</text>
+      </g>
+      <g data-part="arc">
+        <path class="g-aux" d="M215.7 122.7 A140 140 0 0 0 55.1 122.7"/>
+        <line class="g-dash" x1="135.4" y1="237.4" x2="215.7" y2="122.7"/>
+        <text class="g-meas" x="193.6" y="192.7" text-anchor="start">r = 10</text>
+        <text class="g-grn" x="310" y="165" text-anchor="middle">arc never reaches the ray</text>
+      </g>
+      <circle class="g-pt" cx="150" cy="70" r="4.5"/>
+      <circle class="g-pt" cx="135.4" cy="237.4" r="4.5"/>
+      <text class="g-lbl" x="140" y="58" text-anchor="end">R</text>
+      <text class="g-lbl" x="128" y="255" text-anchor="end">T</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig4','given')">Given: 95&deg; and s = 12</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','arc')">Swing arc r = 10</button>
+      <button class="fig-chip" onclick="figHi(this,'fig4','ray')">Ray RS</button>
+    </div>
+    <figcaption>&ang;<i>R</i> is obtuse and <i>r</i> = 10 &lt; <i>s</i> = 12. The side opposite the largest
+    angle must be the largest side, so no vertex <i>S</i> exists: the arc of radius 10 stops short of ray
+    <i>RS</i>. Zero triangles.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">The Law of Sines (AAS)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Find the value of x to the nearest tenth.<br>
+      m&ang;A = 58&deg;, a = 9, m&ang;C = 35&deg;, c = x</div>
+      <figure class="fig">
+        <svg viewBox="0 0 420 250" width="400" role="img" aria-label="Triangle ABC with 58 degrees at A, 35 degrees at C, side 9 opposite A and side x opposite C">
+          <polygon class="g-shape" points="60,200 145.1,63.8 339.6,200"/>
+          <path class="g-angle" d="M94 200 A34 34 0 0 0 78 171.2"/>
+          <text class="g-meas" x="105.5" y="174.8" text-anchor="middle">58&deg;</text>
+          <path class="g-angle" d="M311.75 180.5 A34 34 0 0 0 305.6 200"/>
+          <text class="g-meas" x="288" y="184.3" text-anchor="end">35&deg;</text>
+          <text class="g-meas-b" x="253.8" y="115.5" text-anchor="start">9</text>
+          <text class="g-grn" x="88" y="121" text-anchor="end">x</text>
+          <text class="g-lbl" x="199.8" y="222" text-anchor="middle">b</text>
+          <text class="g-lbl" x="46" y="214" text-anchor="end">A</text>
+          <text class="g-lbl" x="145" y="48" text-anchor="middle">B</text>
+          <text class="g-lbl" x="352" y="214" text-anchor="start">C</text>
+        </svg>
+        <figcaption>Two angles and a non-included side &rarr; AAS.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">sin A / a = sin C / c</span><span class="reason">Law of Sines</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin 58&deg; / 9 = sin 35&deg; / x</span><span class="reason">m&ang;A = 58&deg;, a = 9, m&ang;C = 35&deg;, c = x</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x sin 58&deg; = 9 sin 35&deg;</span><span class="reason">Multiplication Property of Equality</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x = (9 sin 35&deg;) / sin 58&deg;</span><span class="reason">Divide each side by sin 58&deg;</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">x &asymp; 5.1622 / 0.8480 &asymp; 6.0872</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">x &asymp; 6.1</div>
+      <div class="check-box"><strong>Check:</strong> 35&deg; &lt; 58&deg;, so the side opposite 35&deg; must be
+      shorter than the side opposite 58&deg;. Indeed 6.1 &lt; 9 &#10003;</div>
+      <div class="warning-box"><strong>Trap:</strong> do not pair 9 with 35&deg;. The 9 sits opposite
+      &ang;<i>A</i>, so it belongs in the ratio with sin&nbsp;58&deg;.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Ex 1 Check</span>
+      <span class="example-title">Find d to the nearest tenth (&#9651;CDF)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">In &#9651;CDF, m&ang;C = 37&deg;, m&ang;D = 59&deg;, and side DF = 98.4. Find d = CF.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">d is opposite &ang;D; 98.4 is opposite &ang;C</span><span class="reason">identify the pairs</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">d / sin 59&deg; = 98.4 / sin 37&deg;</span><span class="reason">Law of Sines (side form)</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">d = (98.4 sin 59&deg;) / sin 37&deg;</span><span class="reason">Multiply each side by sin 59&deg;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">d &asymp; 84.345 / 0.60182</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">d &asymp; 140.2</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">The Law of Sines (ASA)</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the value of x to the nearest tenth.<br>
+      m&ang;D = 60&deg;, m&ang;F = 55&deg;, g = DF = 73, x = d = FG</div>
+      <figure class="fig">
+        <svg viewBox="0 0 420 320" width="400" role="img" aria-label="Triangle DFG with 60 degrees at D, 55 degrees at F, 65 degrees at G, side 73 between D and F and side x opposite D">
+          <polygon class="g-shape" points="70,60 330,60 187.5,263.5"/>
+          <path class="g-angle" d="M86 87.71 A32 32 0 0 0 102 60"/>
+          <text class="g-meas" x="113.3" y="85" text-anchor="start">60&deg;</text>
+          <path class="g-angle" d="M298 60 A32 32 0 0 0 311.65 86.21"/>
+          <text class="g-meas" x="285.7" y="83.1" text-anchor="end">55&deg;</text>
+          <path class="g-angle" d="M204.7 238.9 A30 30 0 0 0 172.5 237.5"/>
+          <text class="g-grn" x="189.6" y="215.6" text-anchor="middle">65&deg;</text>
+          <text class="g-meas-b g-halo" x="200" y="46" text-anchor="middle">73</text>
+          <text class="g-grn" x="275.1" y="173.2" text-anchor="start">x</text>
+          <text class="g-lbl" x="111.5" y="171.8" text-anchor="end">f</text>
+          <text class="g-lbl" x="58" y="52" text-anchor="end">D</text>
+          <text class="g-lbl" x="342" y="52" text-anchor="start">F</text>
+          <text class="g-lbl" x="183" y="288" text-anchor="middle">G</text>
+        </svg>
+        <figcaption>73 is the <i>included</i> side between the two known angles &rarr; ASA.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;G = 180&deg; &minus; (60&deg; + 55&deg;) = 65&deg;</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin D / d = sin G / g</span><span class="reason">Law of Sines</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">sin 60&deg; / x = sin 65&deg; / 73</span><span class="reason">m&ang;D = 60&deg;, g = 73, m&ang;G = 65&deg;, d = x</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">73 sin 60&deg; = x sin 65&deg;</span><span class="reason">Multiplication Property of Equality</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">x = (73 sin 60&deg;) / sin 65&deg; &asymp; 63.220 / 0.90631</span><span class="reason">Divide each side by sin 65&deg;</span></div>
+      <div class="answer-box">x &asymp; 69.8</div>
+      <div class="info-box"><strong>Think About It!</strong> Could you use sin&nbsp;<i>D</i>/<i>d</i> =
+      sin&nbsp;<i>F</i>/<i>f</i> to find <i>x</i>? No &mdash; that proportion contains <b>two</b> unknowns
+      (<i>d</i> and <i>f</i>). You need a pair whose angle <em>and</em> side are both known, which is why
+      finding <i>m</i>&ang;<i>G</i> first is essential.</div>
+      <div class="check-box"><strong>Check (multiple choice):</strong> a triangle has angles 18&deg; and 141&deg;
+      with the side between them equal to 13; find x, the side opposite 141&deg;.<br>
+      Third angle = 180&deg; &minus; (18&deg; + 141&deg;) = 21&deg;, so 13 is opposite 21&deg;.<br>
+      x = (13 sin 141&deg;) / sin 21&deg; &asymp; 8.181 / 0.35837 &asymp; <b>22.8</b> &rarr; choice D.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Indirect measurement with the Law of Sines</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A survey triangle has a 106&deg; angle opposite the 146.9-ft side and a
+      24&deg; angle opposite the unknown side x. Find x to the nearest tenth.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">sin 106&deg; / 146.9 = sin 24&deg; / x</span><span class="reason">Law of Sines</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x sin 106&deg; = 146.9 sin 24&deg;</span><span class="reason">Multiplication Property of Equality</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = (146.9 sin 24&deg;) / sin 106&deg; &asymp; 59.750 / 0.96126</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">x &asymp; 62.2</div>
+      <div class="info-box"><strong>Note.</strong> sin&nbsp;106&deg; is perfectly legal &mdash; by Postulate 9.1
+      it equals sin&nbsp;74&deg;. The Law of Sines works in obtuse triangles too.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">The ambiguous case with ONE solution</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">In &#9651;MNP, m&ang;N = 32&deg;, n = 7, and p = 4. Determine whether
+      &#9651;MNP has no solution, one solution, or two solutions. Then solve the triangle.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 420 260" width="400" role="img" aria-label="Triangle MNP with 32 degrees at N, side 4 from N to M, side 7 from M to P and side m along the base">
+          <polygon class="g-shape" points="60,210 161.8,146.4 362,210"/>
+          <path class="g-angle" d="M94 210 A34 34 0 0 0 88.83 191.98"/>
+          <text class="g-meas" x="110" y="195.7" text-anchor="middle">32&deg;</text>
+          <path class="g-angle" d="M139.75 160.18 A26 26 0 0 0 186.58 154.27"/>
+          <text class="g-grn" x="167.1" y="188.1" text-anchor="middle">130&deg;</text>
+          <path class="g-angle" d="M325.78 198.49 A38 38 0 0 0 324 210"/>
+          <text class="g-grn g-halo" x="304.7" y="201.1" text-anchor="end">18&deg;</text>
+          <text class="g-meas-b" x="99.2" y="159.5" text-anchor="end">4</text>
+          <text class="g-meas-b" x="268.6" y="157.2" text-anchor="start">7</text>
+          <text class="g-grn" x="211" y="232" text-anchor="middle">m &asymp; 10.1</text>
+          <text class="g-lbl" x="50" y="226" text-anchor="end">N</text>
+          <text class="g-lbl" x="158" y="136" text-anchor="middle">M</text>
+          <text class="g-lbl" x="372" y="218" text-anchor="start">P</text>
+        </svg>
+        <figcaption>&ang;<i>N</i> is acute and <i>n</i> = 7 &gt; <i>p</i> = 4, so exactly one triangle exists.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">&ang;N acute and n &gt; p</span><span class="reason">one solution exists</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin 32&deg; / 7 = sin P / 4</span><span class="reason">Law of Sines</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">(4 sin 32&deg;) / 7 = sin P &asymp; 0.30281</span><span class="reason">Multiply each side by 4</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;P = sin&#8315;&sup1;(0.30281) &asymp; 17.627&deg;</span><span class="reason">Use the sin&#8315;&sup1; function</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">m&ang;M = 180&deg; &minus; (32&deg; + 17.627&deg;) &asymp; 130.373&deg;</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">m = (7 sin 130.373&deg;) / sin 32&deg; &asymp; 5.333 / 0.52992</span><span class="reason">Law of Sines, solve for m</span></div>
+      <div class="answer-box">m&ang;P &asymp; 18&deg;, &nbsp; m&ang;M &asymp; 130&deg;, &nbsp; m &asymp; 10.1</div>
+      <div class="warning-box"><strong>Why is the obtuse partner rejected?</strong> The obtuse twin of 17.627&deg;
+      is 162.373&deg;, and 32&deg; + 162.373&deg; = 194.373&deg; &gt; 180&deg;. Impossible &mdash; so only one triangle survives.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">The ambiguous case with NO solution</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">In &#9651;RST, m&ang;R = 95&deg;, r = 10, and s = 12. Determine whether
+      &#9651;RST has no solution, one solution, or two solutions.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">&ang;R is obtuse, so &ang;R is the largest angle</span><span class="reason">only one angle can be &ge; 90&deg;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">the largest angle must face the longest side</span><span class="reason">Angle-Side Relationships</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">but r = 10 &lt; 12 = s</span><span class="reason">contradiction</span></div>
+      <div class="answer-box">Because &ang;R is obtuse and 10 &lt; 12, there is <u>no solution</u>.</div>
+      <div class="check-box"><strong>Algebraic check:</strong> sin&nbsp;S = (12&nbsp;sin&nbsp;95&deg;)/10 &asymp; 1.1954.
+      A sine can never exceed 1, so no such angle <i>S</i> exists &#10003; (See the figure above: the arc of
+      radius 10 never reaches ray <i>RS</i>.)</div>
+      <div class="info-box"><strong>Think About It!</strong> If &ang;<i>R</i> were <em>acute</em> and
+      <i>r</i> &lt; <i>s</i>, you could no longer answer instantly &mdash; you would compute
+      <i>h</i> = <i>s</i>&nbsp;sin&nbsp;<i>R</i> and compare it with <i>r</i> to get 0, 1, or 2 triangles.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">The ambiguous case with MORE THAN ONE solution</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">In &#9651;ABC, m&ang;A = 32&deg;, a = 15, and b = 18. Determine whether
+      &#9651;ABC has no solution, one solution, or two solutions. Then solve the triangle.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">h = b sin A = 18 sin 32&deg;</span><span class="reason">b = 18 and m&ang;A = 32&deg;</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">h &asymp; 9.5</span><span class="reason">Use a calculator</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">9.5 &lt; 15 &lt; 18, so h &lt; a &lt; b</span><span class="reason">there are TWO solutions</span></div>
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>Case 1 &mdash; &ang;B is acute</h4>
+          <div class="math">
+            sin B / 18 = sin 32&deg; / 15<br>
+            sin B = (18 sin 32&deg;) / 15<br>
+            sin B &asymp; 0.6359<br>
+            m&ang;B &asymp; 39.487&deg; &rarr; <b>39&deg;</b><br><br>
+            m&ang;C &asymp; 180&deg; &minus; (32&deg; + 39&deg;) = <b>109&deg;</b><br><br>
+            sin C / c = sin 32&deg; / 15<br>
+            c = (15 sin 109&deg;) / sin 32&deg;<br>
+            c &asymp; <b>26.8</b>
+          </div>
+        </div>
+        <div class="case-box">
+          <h4>Case 2 &mdash; &ang;B is obtuse</h4>
+          <div class="math">
+            Find an obtuse B with sin B &asymp; 0.6359.<br>
+            m&ang;B &asymp; 180&deg; &minus; 39&deg; = <b>141&deg;</b><br>
+            <i>(Postulate 9.1)</i><br><br>
+            m&ang;C &asymp; 180&deg; &minus; (32&deg; + 141&deg;) = <b>7&deg;</b><br><br>
+            sin C / c = sin 32&deg; / 15<br>
+            c = (15 sin 7&deg;) / sin 32&deg;<br>
+            c &asymp; <b>3.4</b>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box">One solution: m&ang;B &asymp; 39&deg;, m&ang;C &asymp; 109&deg;, c &asymp; 26.8<br>
+      Another solution: m&ang;B &asymp; 141&deg;, m&ang;C &asymp; 7&deg;, c &asymp; 3.4</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The calculator's sin<sup>&minus;1</sup> returns only
+      39&deg;. It will <em>never</em> tell you about 141&deg;. Whenever you are in the SSA case and
+      <i>h</i> &lt; <i>a</i> &lt; <i>b</i>, you must add the second case by hand.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1 &middot; AAS</h4>
+    <div class="prob">In &#9651;ABC, m&ang;A = 72&deg;, m&ang;B = 43&deg;, and a = 25. Find b to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">b / sin 43&deg; = 25 / sin 72&deg;</span><span class="reason">Law of Sines</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">b = (25 sin 43&deg;) / sin 72&deg; &asymp; 17.050 / 0.95106</span><span class="reason">Multiply, then divide</span></div>
+      <div class="answer-box">b &asymp; 17.9</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2 &middot; ASA</h4>
+    <div class="prob">In &#9651;PQR, m&ang;P = 28&deg;, m&ang;R = 105&deg;, and q = 30. Find p to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;Q = 180&deg; &minus; (28&deg; + 105&deg;) = 47&deg;</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">p / sin 28&deg; = 30 / sin 47&deg;</span><span class="reason">now it is AAS</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">p = (30 sin 28&deg;) / sin 47&deg; &asymp; 14.084 / 0.73135</span><span class="reason">Use a calculator</span></div>
+      <div class="answer-box">p &asymp; 19.3</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3 &middot; SSA classification</h4>
+    <div class="prob">In &#9651;ABC, m&ang;A = 24&deg;, a = 3, and b = 8. How many triangles are possible?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">h = b sin A = 8 sin 24&deg; &asymp; 3.25</span><span class="reason">&ang;A is acute, so compute h</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">a = 3 and 3 &lt; 3.25, so a &lt; h</span><span class="reason">side a cannot reach the base</span></div>
+      <div class="answer-box">No solution &mdash; 0 triangles</div>
+      <div class="check-box"><strong>Check:</strong> sin&nbsp;B = (8&nbsp;sin&nbsp;24&deg;)/3 &asymp; 1.085 &gt; 1, impossible &#10003;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4 &middot; SSA with two solutions</h4>
+    <div class="prob">In &#9651;ABC, m&ang;A = 30&deg;, a = 6, and b = 10. Solve the triangle completely.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">h = 10 sin 30&deg; = 5</span><span class="reason">altitude test</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">5 &lt; 6 &lt; 10, so h &lt; a &lt; b</span><span class="reason">two solutions</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">sin B = (10 sin 30&deg;) / 6 &asymp; 0.8333</span><span class="reason">Law of Sines</span></div>
+      <div class="case-grid">
+        <div class="case-box"><h4>Case 1 &mdash; B acute</h4><div class="math">
+          m&ang;B &asymp; 56&deg;<br>m&ang;C &asymp; 180&deg; &minus; (30&deg; + 56&deg;) = 94&deg;<br>
+          c = (6 sin 94&deg;) / sin 30&deg; &asymp; <b>12.0</b></div></div>
+        <div class="case-box"><h4>Case 2 &mdash; B obtuse</h4><div class="math">
+          m&ang;B &asymp; 180&deg; &minus; 56&deg; = 124&deg;<br>m&ang;C &asymp; 180&deg; &minus; (30&deg; + 124&deg;) = 26&deg;<br>
+          c = (6 sin 26&deg;) / sin 30&deg; &asymp; <b>5.3</b></div></div>
+      </div>
+      <div class="answer-box">B &asymp; 56&deg;, C &asymp; 94&deg;, c &asymp; 12.0 &nbsp;&nbsp;OR&nbsp;&nbsp; B &asymp; 124&deg;, C &asymp; 26&deg;, c &asymp; 5.3</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5 &middot; SSA with an obtuse given angle</h4>
+    <div class="prob">In &#9651;ABC, m&ang;A = 109&deg;, a = 24, and b = 13. Solve the triangle.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&ang;A obtuse and a = 24 &gt; 13 = b</span><span class="reason">exactly one solution</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin B = (13 sin 109&deg;) / 24 &asymp; 0.5122</span><span class="reason">Law of Sines</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">m&ang;B &asymp; 30.8&deg; &rarr; 31&deg;</span><span class="reason">Use sin&#8315;&sup1;; the obtuse twin is rejected</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">m&ang;C &asymp; 180&deg; &minus; (109&deg; + 31&deg;) = 40&deg;</span><span class="reason">Triangle Angle-Sum Theorem</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">c = (24 sin 40&deg;) / sin 109&deg; &asymp; 15.427 / 0.94552</span><span class="reason">Law of Sines</span></div>
+      <div class="answer-box">m&ang;B &asymp; 31&deg;, &nbsp; m&ang;C &asymp; 40&deg;, &nbsp; c &asymp; 16.3</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>AAS (two angles, non-included side)</td><td>Pair the known side with its own angle; cross multiply</td><td>Exactly 1 triangle</td></tr>
+    <tr><td>ASA (two angles, included side)</td><td>Find the third angle first, then treat as AAS</td><td>Exactly 1 triangle</td></tr>
+    <tr><td>SSA, &ang;A acute, <code>a &lt; h</code></td><td>Compute h = b sin A and compare</td><td>0 triangles</td></tr>
+    <tr><td>SSA, &ang;A acute, <code>a = h</code></td><td>Compute h = b sin A and compare</td><td>1 right triangle</td></tr>
+    <tr><td>SSA, &ang;A acute, <code>h &lt; a &lt; b</code></td><td>Solve for B, then also use 180&deg; &minus; B</td><td>2 triangles</td></tr>
+    <tr><td>SSA, &ang;A acute, <code>a &ge; b</code></td><td>Only the acute B works</td><td>1 triangle</td></tr>
+    <tr><td>SSA, &ang;A right or obtuse, <code>a &le; b</code></td><td>Largest angle must face longest side</td><td>0 triangles</td></tr>
+    <tr><td>SSA, &ang;A right or obtuse, <code>a &gt; b</code></td><td>B must be acute</td><td>1 triangle</td></tr>
+    <tr><td>SSS or SAS</td><td>No complete angle&ndash;side pair exists</td><td>Use the Law of Cosines instead</td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">sin A / a = sin B / b = sin C / c</span>
+    <span class="pill">a / sin A = b / sin B = c / sin C</span>
+    <span class="pill">h = b sin A</span>
+    <span class="pill">sin A = h / b</span>
+    <span class="pill">sin A = sin (180&deg; &minus; A)</span>
+    <span class="pill">A + B + C = 180&deg;</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes</strong>
+    <ul style="margin:6px 0 0 20px;line-height:1.8">
+      <li>Pairing a side with the wrong angle &mdash; always use the angle <em>opposite</em> the side.</li>
+      <li>Forgetting the obtuse case when <code>h &lt; a &lt; b</code>. sin<sup>&minus;1</sup> hides it.</li>
+      <li>Keeping the obtuse case when the three angles would exceed 180&deg;.</li>
+      <li>Calculator in radian mode instead of degree mode.</li>
+      <li>Rounding an intermediate angle and then propagating the error into the next step.</li>
+      <li>Trying to start an SSS or SAS problem with the Law of Sines.</li>
+      <li>Accepting a result with sin&nbsp;B &gt; 1 &mdash; that is the algebraic signal of "no triangle".</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"The Law of Sines for &#9651;ABC states that:",opts:["sin A / A = sin B / B = sin C / C","a / sin B = b / sin C = c / sin A","sin A / a = sin B / b = sin C / c","a &middot; sin A = b &middot; sin B = c &middot; sin C"],ans:2,exp:"Each ratio pairs an angle with the side <em>opposite</em> it. Option B mismatches the pairs, and options A and D are not proportions of the theorem."},
+  {q:"Which set of given measures can NOT be solved with the Law of Sines alone?",opts:["SSS","AAS","ASA","SSA"],ans:0,exp:"With SSS you know no angles at all, so no ratio sin A / a can ever be evaluated. You need the Law of Cosines to find a first angle."},
+  {q:"In &#9651;ABC, m&ang;A = 40&deg;, m&ang;B = 65&deg;, and a = 10. Find b to the nearest tenth.",opts:["7.1","14.1","11.0","9.4"],ans:1,exp:"b / sin 65&deg; = 10 / sin 40&deg;, so b = 10 sin 65&deg; / sin 40&deg; &asymp; 9.063 / 0.6428 &asymp; 14.1. Choice A comes from flipping the ratio; since 65&deg; &gt; 40&deg;, b must be longer than 10."},
+  {q:"Find x to the nearest tenth.",opts:["8.0","12.7","18.0","16.9"],ans:2,exp:"The 12 sits opposite the 40&deg; angle and x sits opposite the 75&deg; angle, so x = 12 sin 75&deg; / sin 40&deg; &asymp; 11.591 / 0.6428 &asymp; 18.0. Choice D (16.9) is the third side, opposite the 65&deg; angle.",fig:"<svg viewBox='0 0 350 245' width='340' role='img' aria-label='Triangle with 40 degrees at A, 75 degrees at B, side 12 opposite A and side x opposite B'><polygon class='g-shape' points='52,202 233.5,49.7 304.4,202'/><path class='g-angle' d='M82 202 A30 30 0 0 0 74.98 182.72'/><text class='g-meas' x='95.2' y='186.3' text-anchor='middle'>40&deg;</text><path class='g-angle' d='M213.58 66.41 A26 26 0 0 0 244.49 73.26'/><text class='g-meas' x='224' y='92.7' text-anchor='middle'>75&deg;</text><text class='g-meas-b' x='287.1' y='117.4' text-anchor='start'>12</text><text class='g-grn' x='178' y='224' text-anchor='middle'>x</text><text class='g-lbl' x='44' y='216' text-anchor='end'>A</text><text class='g-lbl' x='230' y='40' text-anchor='middle'>B</text><text class='g-lbl' x='312' y='216' text-anchor='start'>C</text></svg>"},
+  {q:"In &#9651;ABC, m&ang;A = 60&deg;, a = 12, and b = 9. Find sin B.",opts:["0.6495","1.1547","0.7698","0.5774"],ans:0,exp:"sin B / 9 = sin 60&deg; / 12, so sin B = 9 sin 60&deg; / 12 &asymp; 7.794 / 12 &asymp; 0.6495. Choice B is what you get by inverting the ratio, and a sine can never exceed 1."},
+  {q:"In &#9651;DEF, m&ang;D = 45&deg;, m&ang;E = 75&deg;, and f = 20. Find d to the nearest tenth.",opts:["24.5","22.3","12.2","16.3"],ans:3,exp:"First m&ang;F = 180&deg; &minus; (45&deg; + 75&deg;) = 60&deg;. Then d = 20 sin 45&deg; / sin 60&deg; &asymp; 14.142 / 0.8660 &asymp; 16.3. Choice B is side e, and choice A comes from flipping the ratio."},
+  {q:"By Postulate 9.1, sin 130&deg; is equal to",opts:["sin 40&deg;","sin 50&deg;","&minus;sin 50&deg;","sin 230&deg;"],ans:1,exp:"The sine of an obtuse angle equals the sine of its supplement: 180&deg; &minus; 130&deg; = 50&deg;. Choice A uses the complement, not the supplement."},
+  {q:"In &#9651;ABC, m&ang;A = 50&deg;, a = 34, and b = 40. How many triangles are possible?",opts:["0","1","2","3"],ans:2,exp:"&ang;A is acute, so compute h = 40 sin 50&deg; &asymp; 30.6. Since 30.6 &lt; 34 &lt; 40, we have h &lt; a &lt; b, which is exactly the two-triangle case."},
+  {q:"In &#9651;ABC, m&ang;A = 125&deg;, a = 22, and b = 15. How many triangles are possible?",opts:["0","1","2","cannot be determined"],ans:1,exp:"&ang;A is obtuse, so it is the largest angle and must face the longest side. Here a = 22 &gt; b = 15, which is consistent, so exactly one triangle exists. No altitude test is needed when &ang;A is obtuse."},
+  {q:"In &#9651;ABC, m&ang;A = 30&deg;, a = 1, and b = 4. How many triangles are possible?",opts:["0","1","2","4"],ans:0,exp:"h = 4 sin 30&deg; = 2. Since a = 1 &lt; 2 = h, side a is shorter than the altitude and can never reach the base. Algebraically sin B = 4 sin 30&deg; / 1 = 2 &gt; 1, which is impossible."},
+  {q:"In &#9651;ABC, m&ang;A = 30&deg;, a = 2, and b = 4. Which statement is true?",opts:["No triangle exists.","Two triangles exist.","Exactly one triangle exists, and it is obtuse.","Exactly one triangle exists, and it is a right triangle."],ans:3,exp:"h = 4 sin 30&deg; = 2, and a = 2, so a = h exactly. The side lands right on the foot of the altitude, giving m&ang;B = 90&deg; &mdash; one right triangle, the boundary between 0 and 2 solutions."},
+  {q:"In &#9651;ABC, m&ang;A = 32&deg;, a = 15, and b = 18, so sin B &asymp; 0.6359. The two possible values of m&ang;B to the nearest degree are",opts:["39&deg; and 51&deg;","32&deg; and 141&deg;","39&deg; and 148&deg;","39&deg; and 141&deg;"],ans:3,exp:"sin&#8315;&sup1;(0.6359) &asymp; 39&deg;, and its obtuse partner is 180&deg; &minus; 39&deg; = 141&deg;. Choice A uses the complement (90&deg; &minus; 39&deg;), not the supplement. Both 39&deg; and 141&deg; keep the angle sum under 180&deg;, so both survive."},
+  {q:"Find x to the nearest tenth.",opts:["35.6","7.2","26.8","40.0"],ans:0,exp:"The 16 is opposite the 25&deg; angle and x is opposite the 110&deg; angle, so x = 16 sin 110&deg; / sin 25&deg; &asymp; 15.035 / 0.4226 &asymp; 35.6. Choice B inverts the ratio; choice C is the remaining side, opposite the 45&deg; angle.",fig:"<svg viewBox='0 0 380 245' width='370' role='img' aria-label='Triangle PQR with 25 degrees at Q, 110 degrees at P, side 16 opposite Q and side x opposite P'><polygon class='g-shape' points='50,200 244.13,109.47 334.6,200'/><path class='g-angle' d='M82 200 A32 32 0 0 0 79 186.5'/><text class='g-meas' x='98.8' y='189.2' text-anchor='middle'>25&deg;</text><path class='g-angle' d='M222.38 119.61 A24 24 0 0 0 261.1 126.44'/><text class='g-meas' x='236.8' y='150.8' text-anchor='middle'>110&deg;</text><text class='g-meas-b' x='303.5' y='140.6' text-anchor='start'>16</text><text class='g-grn' x='192' y='222' text-anchor='middle'>x</text><text class='g-lbl' x='42' y='214' text-anchor='end'>Q</text><text class='g-lbl' x='242' y='99' text-anchor='middle'>P</text><text class='g-lbl' x='344' y='214' text-anchor='start'>R</text></svg>"},
+  {q:"In &#9651;ABC, m&ang;A = 38&deg;, a = 10, and b = 9. Find m&ang;B to the nearest degree.",opts:["43&deg;","56&deg;","34&deg;","146&deg;"],ans:2,exp:"sin B = 9 sin 38&deg; / 10 &asymp; 0.5541, so m&ang;B &asymp; 34&deg;. Because a &gt; b, &ang;B must be smaller than &ang;A, so the obtuse partner 146&deg; is rejected (38&deg; + 146&deg; &gt; 180&deg;)."},
+  {q:"In &#9651;ABC, m&ang;A = 45&deg;, a = 8, and b = 8&radic;2. Which statement is true?",opts:["No triangle exists.","Exactly one triangle exists, and m&ang;B = 90&deg;.","Two triangles exist.","Exactly one triangle exists, and m&ang;B = 45&deg;."],ans:1,exp:"h = b sin A = 8&radic;2 &middot; (&radic;2/2) = 8, which equals a exactly. When a = h the swing arc is tangent to the base, so there is a single right triangle with the right angle at B. Note sin B = 8&radic;2 &middot; sin 45&deg; / 8 = 1, confirming m&ang;B = 90&deg;."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

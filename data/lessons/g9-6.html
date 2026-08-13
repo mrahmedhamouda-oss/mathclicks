@@ -1,0 +1,653 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Use angles of elevation and depression to measure distances indirectly, and find the area of a triangle from two sides and their included angle.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Indirect measurement &mdash; measuring what you cannot reach</h3>
+    <p>Sometimes you cannot put a tape measure on the thing you want to measure &mdash; a drone in the sky, the top of a cliff, the far side of a canyon. <strong>Indirect measurement</strong> means measuring something you <em>can</em> reach (a distance along the ground, your own eye height, an angle) and then using similar figures, proportions, or trigonometry to find the thing you cannot reach.</p>
+    <p>In this lesson the tool is trigonometry: build a right triangle whose angle you know and whose one side you know, then use sine, cosine, or tangent &mdash; or an inverse ratio &mdash; to get the missing part.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>indirect measurement</b> &mdash; finding a measure by using similar figures, proportions, or trigonometric ratios instead of measuring the object directly.</div>
+      <div class="vocab-item"><b>angle of elevation</b> &mdash; the angle formed by a horizontal line and an observer's line of sight to an object <em>above</em> the horizontal line.</div>
+      <div class="vocab-item"><b>angle of depression</b> &mdash; the angle formed by a horizontal line and an observer's line of sight to an object <em>below</em> the horizontal line.</div>
+      <div class="vocab-item"><b>line of sight</b> &mdash; the straight segment from the observer's eye to the object. In the right triangle it is always the <em>hypotenuse</em>.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Both angles start at a HORIZONTAL line</h3>
+    <p>This is the single most common place to lose points. An angle of elevation and an angle of depression are always measured from a <strong>horizontal</strong> line &mdash; never from a vertical wall, pole, or building.</p>
+    <div class="formula-box">
+      elevation &nbsp;&rarr;&nbsp; you look UP from the horizontal<br>
+      depression &nbsp;&rarr;&nbsp; you look DOWN from the horizontal
+    </div>
+    <div class="warning-box"><strong>Watch Out!</strong> If a problem says "the angle between the pole and the line of sight is 62&deg;", that is <em>not</em> an angle of elevation. The angle of elevation would be 90&deg; &minus; 62&deg; = 28&deg;, because the pole is vertical and the elevation angle is measured from the horizontal.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Elevation and depression are equal (alternate interior angles)</h3>
+    <p>Look at the observer's horizontal line and the object's horizontal line. Both are horizontal, so they are <strong>parallel</strong>. The line of sight is a transversal cutting them. Therefore the angle of elevation from the lower point and the angle of depression from the upper point are alternate interior angles &mdash; and alternate interior angles are congruent.</p>
+    <div class="theorem">
+      <div class="theorem-head">Alternate Interior Angles Theorem (applied here)</div>
+      <div class="theorem-body">Because the two horizontal lines are parallel and the line of sight is a transversal, <code>m&ang;(elevation) = m&ang;(depression)</code>. You may transfer a depression angle down to the object as an equal elevation angle &mdash; and that is usually the move that puts the angle <em>inside</em> your right triangle where you can use it.</div>
+    </div>
+    <div class="keyfact"><div class="ico">!</div><div class="txt">A depression angle marked at the top of a figure is almost never inside the triangle. Slide it down: the equal elevation angle at the bottom vertex <em>is</em> inside the triangle.</div></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Choosing the right ratio</h3>
+    <p>Label the right triangle from the angle you know: the side across from it is <em>opposite</em>, the side touching it (that is not the hypotenuse) is <em>adjacent</em>, and the line of sight is the <em>hypotenuse</em>.</p>
+    <div class="formula-box">
+      sin &theta; = opposite / hypotenuse<br>
+      cos &theta; = adjacent / hypotenuse<br>
+      tan &theta; = opposite / adjacent
+    </div>
+    <div class="steps-list">
+      <div class="s">Draw the figure. Put in the horizontal dashed line at the observer.</div>
+      <div class="s">Mark the known angle and the known side; call the unknown <code>x</code>.</div>
+      <div class="s">Decide which two sides are involved (opp, adj, hyp) &rarr; that picks sin, cos, or tan.</div>
+      <div class="s">Write the equation, then solve. If <code>x</code> is in the denominator, multiply by <code>x</code> first, then divide.</div>
+      <div class="s">If the <em>angle</em> is unknown, use an inverse: <code>&theta; = tan<sup>&minus;1</sup>(opp/adj)</code>, etc.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; Units of Measure.</strong> Convert everything to one unit before you compute. 66 in. must become 5.5 ft before you add it to a distance measured in feet.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Eye height matters</h3>
+    <p>The right triangle sits on the observer's <em>eye-level</em> horizontal, not on the ground. If an object is 102 ft above the ground and the observer's eyes are 6 ft above the ground, the vertical leg of the triangle is <code>102 &minus; 6 = 96</code> ft. At the end, add the eye height back if the question asks for a height above the ground.</p>
+    <div class="keyfact"><div class="ico">&#8730;</div><div class="txt">Subtract eye height going in; add eye height coming out.</div></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>6. Area of a triangle from two sides and the included angle</h3>
+    <p>The usual area formula needs a height. When you do not know the height but you know two sides and the angle <em>between</em> them, trigonometry supplies the height for you.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Area of a Triangle</div>
+      <div class="theorem-body">To find the area of a triangle when the height is not known, you can use <code>Area = &frac12;ab&nbsp;sin&nbsp;C</code>, where <code>a</code> and <code>b</code> are side lengths and <code>C</code> is the <strong>included angle</strong>.</div>
+    </div>
+    <p><strong>Why it works:</strong> drop the height <code>h</code> from the vertex where side <code>a</code> meets the third side. In that right triangle, <code>sin C = h/a</code>, so <code>h = a&nbsp;sin&nbsp;C</code>. Then <code>Area = &frac12;&middot;b&middot;h = &frac12;&middot;b&middot;(a&nbsp;sin&nbsp;C) = &frac12;ab&nbsp;sin&nbsp;C</code>.</p>
+    <div class="warning-box"><strong>Watch Out!</strong> The angle must be <em>between</em> the two sides you multiply. If you are given two sides and a non-included angle, first find the included angle using <code>180&deg; &minus; (sum of the other two angles)</code>.</div>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Elevation = Depression (Alternate Interior Angles)</div>
+    <svg id="fig1" viewBox="0 0 480 300" width="480" role="img" aria-label="Observer at A on a horizontal line sights object B on a parallel horizontal line; the 30 degree angle of elevation at A equals the 30 degree angle of depression at B">
+      <g data-part="hz">
+        <line class="g-dash" x1="40" y1="230" x2="440" y2="230"/>
+        <line class="g-dash" x1="150" y1="80" x2="440" y2="80"/>
+        <path class="g-line-thin" d="M194 224 L200 230 L194 236"/>
+        <path class="g-line-thin" d="M194 74 L200 80 L194 86"/>
+        <text class="g-lbl-sm" x="404" y="222" text-anchor="middle">horizontal</text>
+        <text class="g-lbl-sm" x="404" y="72" text-anchor="middle">horizontal</text>
+      </g>
+      <g data-part="tri">
+        <line class="g-aux" x1="330" y1="80" x2="330" y2="230"/>
+        <path class="g-right" d="M316 230 L316 216 L330 216"/>
+      </g>
+      <g data-part="sight">
+        <line class="g-line" x1="70" y1="230" x2="330" y2="80"/>
+        <text class="g-lbl-sm g-halo" x="188" y="136" text-anchor="middle">line of sight</text>
+      </g>
+      <g data-part="elev">
+        <path class="g-angle" d="M122 230 A52 52 0 0 0 115 204"/>
+        <text class="g-meas" x="137" y="216">30&deg;</text>
+      </g>
+      <g data-part="depr">
+        <path class="g-angle" d="M278 80 A52 52 0 0 0 285 106"/>
+        <text class="g-meas" x="258" y="102" text-anchor="end">30&deg;</text>
+      </g>
+      <circle class="g-pt" cx="70" cy="230" r="4.5"/>
+      <circle class="g-pt" cx="330" cy="80" r="4.5"/>
+      <text class="g-lbl" x="60" y="226" text-anchor="end">A</text>
+      <text class="g-lbl" x="330" y="66" text-anchor="middle">B</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','hz')">Parallel horizontals</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','sight')">Line of sight</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','elev')">Angle of elevation</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','depr')">Angle of depression</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','tri')">Right triangle</button>
+    </div>
+    <figcaption>The two dashed lines are both horizontal, so they are parallel; the line of sight is the transversal. The 30&deg; elevation at <em>A</em> and the 30&deg; depression at <em>B</em> are alternate interior angles, so they are congruent. Drawn to scale: the vertical leg is 150 units and the horizontal leg is 260 units, and 150/260 = tan&nbsp;30&deg;.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Naming the Sides From the Angle</div>
+    <svg id="fig2" viewBox="0 0 400 290" width="400" role="img" aria-label="Right triangle with a 40 degree angle at A; the horizontal leg is adjacent, the vertical leg is opposite, and the line of sight is the hypotenuse">
+      <polygon class="g-shape" points="60,240 259.2,240 259.2,72.9"/>
+      <g data-part="adj">
+        <line class="g-line" x1="60" y1="240" x2="259.2" y2="240"/>
+        <text class="g-meas-b" x="160" y="262" text-anchor="middle">adjacent</text>
+      </g>
+      <g data-part="opp">
+        <line class="g-line" x1="259.2" y1="240" x2="259.2" y2="72.9"/>
+        <text class="g-meas-b" x="270" y="160">opposite</text>
+      </g>
+      <g data-part="hyp">
+        <line class="g-line" x1="60" y1="240" x2="259.2" y2="72.9"/>
+        <text class="g-meas g-halo" x="140" y="138" text-anchor="middle">hypotenuse</text>
+      </g>
+      <g data-part="ang">
+        <path class="g-angle" d="M106 240 A46 46 0 0 0 95.2 210.4"/>
+        <text class="g-meas" x="118" y="226">40&deg;</text>
+      </g>
+      <path class="g-right" d="M246.2 240 L246.2 227 L259.2 227"/>
+      <text class="g-lbl" x="50" y="252" text-anchor="end">A</text>
+      <text class="g-lbl" x="250" y="64" text-anchor="end">B</text>
+      <text class="g-lbl" x="268" y="252">C</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','ang')">The known angle</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','opp')">Opposite leg</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','adj')">Adjacent leg</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','hyp')">Hypotenuse</button>
+    </div>
+    <figcaption>Everything is named <em>relative to the 40&deg; angle</em>. Horizontal leg 199.2, vertical leg 167.1, and 167.1/199.2 = tan&nbsp;40&deg;, so the drawing really is a 40&deg; angle. Know opp &amp; adj &rarr; tangent; opp &amp; hyp &rarr; sine; adj &amp; hyp &rarr; cosine.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Why Area = &frac12;ab&nbsp;sin&nbsp;C</div>
+    <svg id="fig3" viewBox="0 0 380 290" width="380" role="img" aria-label="Triangle ABC with included angle C of 52 degrees, side a from C to B, side b from C to A, and the height h dropped from B perpendicular to b">
+      <polygon class="g-shape" points="54,240 175.3,106 280,240"/>
+      <g data-part="sa">
+        <line class="g-line" x1="280" y1="240" x2="175.3" y2="106"/>
+        <text class="g-meas-b" x="242" y="162">a</text>
+      </g>
+      <g data-part="sb">
+        <line class="g-line" x1="54" y1="240" x2="280" y2="240"/>
+        <text class="g-meas-b" x="112" y="260" text-anchor="middle">b</text>
+      </g>
+      <g data-part="hh">
+        <line class="g-aux" x1="175.3" y1="106" x2="175.3" y2="240"/>
+        <path class="g-right" d="M162.3 240 L162.3 227 L175.3 227"/>
+        <text class="g-meas g-halo" x="182" y="180">h</text>
+      </g>
+      <g data-part="ang">
+        <path class="g-angle" d="M252.9 205.3 A44 44 0 0 0 236 240"/>
+        <text class="g-meas" x="224" y="217" text-anchor="middle">52&deg;</text>
+      </g>
+      <text class="g-lbl" x="46" y="252" text-anchor="end">A</text>
+      <text class="g-lbl" x="169" y="98" text-anchor="end">B</text>
+      <text class="g-lbl" x="290" y="252">C</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','sa')">Side a</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','sb')">Side b (base)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','ang')">Included angle C</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','hh')">Height h = a sin C</button>
+    </div>
+    <figcaption>Drawn with <em>a</em> = 170 units, <em>b</em> = 226 units and &ang;C = 52&deg;; the height comes out 170&nbsp;sin&nbsp;52&deg; = 134 units, exactly as drawn. Since <code>Area = &frac12;bh</code> and <code>h = a&nbsp;sin&nbsp;C</code>, we get <code>Area = &frac12;ab&nbsp;sin&nbsp;C</code>.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Angle of Elevation</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">DRONES &nbsp;Rakeem is flying his drone at the park. He spots the drone at an angle of elevation that he estimates to be 30&deg;. The remote control tells Rakeem that his drone is 102 feet above the ground. If Rakeem is 6 feet tall, how far is he from the drone to the nearest foot?</div>
+      <figure class="fig">
+        <svg viewBox="0 0 450 300" width="450" role="img" aria-label="Right triangle A B C with a 30 degree angle of elevation at A, vertical leg BC of 96 feet, and hypotenuse x; the drone B is 102 feet above the ground and A is 6 feet above the ground">
+          <line class="g-line-thin" x1="30" y1="239" x2="425" y2="239"/>
+          <line class="g-dash" x1="70" y1="230" x2="319.4" y2="230"/>
+          <line class="g-line" x1="70" y1="230" x2="319.4" y2="86"/>
+          <line class="g-line" x1="319.4" y1="86" x2="319.4" y2="230"/>
+          <line class="g-aux" x1="319.4" y1="230" x2="319.4" y2="239"/>
+          <line class="g-aux" x1="70" y1="230" x2="70" y2="239"/>
+          <path class="g-right" d="M306.4 230 L306.4 217 L319.4 217"/>
+          <path class="g-angle" d="M118 230 A48 48 0 0 0 111.6 206"/>
+          <text class="g-meas" x="128" y="217">30&deg;</text>
+          <text class="g-meas-b g-halo" x="186" y="142" text-anchor="middle">x</text>
+          <text class="g-meas" x="327" y="150">96 ft</text>
+          <line class="g-line-thin" x1="382" y1="86" x2="382" y2="239"/>
+          <line class="g-line-thin" x1="376" y1="86" x2="388" y2="86"/>
+          <line class="g-line-thin" x1="376" y1="239" x2="388" y2="239"/>
+          <text class="g-meas-b" x="392" y="170">102 ft</text>
+          <text class="g-lbl-sm" x="64" y="236" text-anchor="end">6 ft</text>
+          <circle class="g-pt" cx="70" cy="230" r="4"/>
+          <circle class="g-pt" cx="319.4" cy="86" r="4"/>
+          <text class="g-lbl" x="58" y="228" text-anchor="end">A</text>
+          <text class="g-lbl" x="312" y="80" text-anchor="end">B</text>
+          <text class="g-lbl" x="306" y="250" text-anchor="end">C</text>
+        </svg>
+        <figcaption>The triangle sits on Rakeem's eye-level horizontal, 6 ft above the ground, so <code>BC = 102 &minus; 6 = 96</code>.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">BC = 102 &minus; 6 = 96</span><span class="reason">subtract eye height</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin A = BC / AB</span><span class="reason">sin = opposite / hypotenuse</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">sin 30&deg; = 96 / x</span><span class="reason">m&ang;A = 30&deg;, BC = 96, AB = x</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">x &middot; sin 30&deg; = 96</span><span class="reason">multiply each side by x</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">x = 96 / sin 30&deg; = 96 / 0.5</span><span class="reason">divide each side by sin 30&deg;</span></div>
+      <div class="answer-box">x = 192 &nbsp;&rarr;&nbsp; Rakeem is 192 feet from his drone</div>
+      <div class="check-box"><strong>Check:</strong> 192 &middot; sin&nbsp;30&deg; = 192(0.5) = 96 &#10003; &nbsp;The hypotenuse (192) is longer than both legs, as it must be.</div>
+      <div class="warning-box"><strong>Trap:</strong> using 102 instead of 96 gives 204 ft. The 6 ft of Rakeem's height is <em>below</em> the horizontal line of sight, so it is not part of the triangle.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Angle of Depression</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">SIGHTSEEING &nbsp;Pedro looks out a window 30 feet from the ground and spots a fire hydrant on the ground at an estimated angle of depression of 40&deg;. What is the horizontal distance from Pedro to the hydrant to the nearest foot?</div>
+      <figure class="fig">
+        <svg viewBox="0 0 360 280" width="360" role="img" aria-label="Point A at a window 30 feet up with a horizontal dashed ray to B; the line of sight from A down to hydrant C makes a 40 degree angle of depression, equal to angle ACD at the ground">
+          <line class="g-line-thin" x1="40" y1="220" x2="330" y2="220"/>
+          <line class="g-dash" x1="50" y1="70" x2="305" y2="70"/>
+          <line class="g-line" x1="80" y1="70" x2="80" y2="220"/>
+          <line class="g-line" x1="80" y1="70" x2="258.8" y2="220"/>
+          <line class="g-line" x1="80" y1="220" x2="258.8" y2="220"/>
+          <path class="g-right" d="M93 220 L93 207 L80 207"/>
+          <path class="g-angle" d="M130 70 A50 50 0 0 1 118.3 102.1"/>
+          <text class="g-meas" x="142" y="97">40&deg;</text>
+          <path class="g-angle" d="M223.6 190.4 A46 46 0 0 0 212.8 220"/>
+          <text class="g-meas" x="200" y="203" text-anchor="end">40&deg;</text>
+          <text class="g-meas-b" x="72" y="150" text-anchor="end">30 ft</text>
+          <text class="g-meas-b" x="169" y="240" text-anchor="middle">x</text>
+          <circle class="g-pt" cx="80" cy="70" r="4"/>
+          <circle class="g-pt" cx="258.8" cy="220" r="4"/>
+          <text class="g-lbl" x="70" y="64" text-anchor="end">A</text>
+          <text class="g-lbl" x="312" y="74">B</text>
+          <text class="g-lbl" x="70" y="236" text-anchor="end">D</text>
+          <text class="g-lbl" x="266" y="238">C</text>
+        </svg>
+        <figcaption>The vertical leg is 150 units and the horizontal leg is 178.8 units; 150/178.8 = tan&nbsp;40&deg;, so both marked angles really measure 40&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math"><span style="text-decoration:overline">AB</span> &par; <span style="text-decoration:overline">DC</span>, so m&ang;BAC = m&ang;ACD</span><span class="reason">Alternate Interior Angles Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m&ang;ACD = 40&deg;</span><span class="reason">definition of congruent angles</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">tan C = AD / DC</span><span class="reason">tan = opposite / adjacent</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">tan 40&deg; = 30 / x</span><span class="reason">m&ang;C = 40&deg;, AD = 30, DC = x</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">x &middot; tan 40&deg; = 30</span><span class="reason">multiply each side by x</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">x = 30 / tan 40&deg; &asymp; 30 / 0.8391 &asymp; 35.75</span><span class="reason">divide each side by tan 40&deg;</span></div>
+      <div class="answer-box">x &asymp; 36 feet</div>
+      <div class="check-box"><strong>Check:</strong> 35.75 &middot; tan&nbsp;40&deg; &asymp; 30.0 &#10003; &nbsp;Since 40&deg; &lt; 45&deg;, the horizontal leg should be <em>longer</em> than the vertical leg &mdash; and 35.75 &gt; 30. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Use Two Angles of Elevation or Depression</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">MALL &nbsp;Wei is estimating the height of the second floor in the mall. She sights the second floor at a 10&deg; angle of elevation. She then steps forward 50 feet, until she is 5.5 feet from the wall, and sights the second floor again. If Wei's line of sight is 66 inches above the ground, at what angle of elevation does she sight the second floor?</div>
+      <figure class="fig">
+        <svg viewBox="0 0 400 300" width="400" role="img" aria-label="From D the angle of elevation to A is 10 degrees; after walking 50 feet forward to C, 5.5 feet from the wall, the angle of elevation is y degrees">
+          <line class="g-line-thin" x1="40" y1="247.5" x2="350" y2="247.5"/>
+          <line class="g-line" x1="330" y1="247.5" x2="330" y2="140"/>
+          <line class="g-dash" x1="45" y1="220" x2="345" y2="220"/>
+          <line class="g-line" x1="52.5" y1="220" x2="330" y2="171.1"/>
+          <line class="g-line" x1="302.5" y1="220" x2="330" y2="171.1"/>
+          <line class="g-aux" x1="52.5" y1="220" x2="52.5" y2="247.5"/>
+          <line class="g-aux" x1="302.5" y1="220" x2="302.5" y2="247.5"/>
+          <path class="g-right" d="M317 220 L317 207 L330 207"/>
+          <path class="g-angle" d="M96.5 220 A44 44 0 0 0 95.8 212.4"/>
+          <text class="g-meas" x="104" y="212">10&deg;</text>
+          <path class="g-angle" d="M322.5 220 A20 20 0 0 0 312.3 202.6"/>
+          <text class="g-meas" x="296" y="206" text-anchor="end">y&deg;</text>
+          <text class="g-meas-b" x="338" y="196">x ft</text>
+          <line class="g-line-thin" x1="52.5" y1="252" x2="52.5" y2="262"/>
+          <line class="g-line-thin" x1="302.5" y1="252" x2="302.5" y2="262"/>
+          <line class="g-line-thin" x1="330" y1="252" x2="330" y2="262"/>
+          <line class="g-line-thin" x1="52.5" y1="258" x2="302.5" y2="258"/>
+          <line class="g-line-thin" x1="302.5" y1="258" x2="330" y2="258"/>
+          <text class="g-lbl-sm" x="177" y="276" text-anchor="middle">50 ft</text>
+          <text class="g-lbl-sm" x="316" y="276" text-anchor="middle">5.5 ft</text>
+          <text class="g-lbl-sm" x="46" y="238" text-anchor="end">66 in.</text>
+          <circle class="g-pt" cx="330" cy="171.1" r="4"/>
+          <text class="g-lbl" x="338" y="166">A</text>
+          <text class="g-lbl" x="46" y="214" text-anchor="end">D</text>
+          <text class="g-lbl" x="292" y="240" text-anchor="end">C</text>
+          <text class="g-lbl" x="340" y="228">B</text>
+        </svg>
+        <figcaption>Drawn to scale at 5 px per foot: <code>BD</code> = 277.5 px = 55.5 ft, <code>BC</code> = 27.5 px = 5.5 ft, <code>AB</code> = 48.9 px = 9.79 ft. Both marked angles match those lengths exactly.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">66 in. = 5.5 ft</span><span class="reason">convert to one unit</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">BD = 50 + 5.5 = 55.5</span><span class="reason">she stepped 50 ft closer</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">tan 10&deg; = AB / BD = AB / 55.5</span><span class="reason">tan = opposite / adjacent in &#9651;ABD</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">55.5 &middot; tan 10&deg; = AB</span><span class="reason">multiply each side by 55.5</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">tan y&deg; = AB / BC = AB / 5.5</span><span class="reason">tan = opposite / adjacent in &#9651;ABC</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">5.5 &middot; tan y&deg; = AB</span><span class="reason">multiply each side by 5.5</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">5.5 &middot; tan y&deg; = 55.5 &middot; tan 10&deg;</span><span class="reason">both equal AB &mdash; substitute</span></div>
+      <div class="solution-step"><span class="num">8</span><span class="math">tan y&deg; = (55.5 &middot; tan 10&deg;) / 5.5 &asymp; 1.7793</span><span class="reason">divide each side by 5.5</span></div>
+      <div class="solution-step"><span class="num">9</span><span class="math">y = tan<sup>&minus;1</sup>(1.7793) &asymp; 60.66</span><span class="reason">inverse tangent</span></div>
+      <div class="answer-box">y &asymp; 60.66&deg;</div>
+      <div class="check-box"><strong>Follow-up:</strong> <code>AB = 5.5&nbsp;tan&nbsp;60.66&deg; &asymp; 9.8</code> ft, so the second floor is about <code>9.8 + 5.5 = 15.3</code>, about <strong>15 feet</strong> above the ground. Remember to add Wei's 5.5 ft eye height back in.</div>
+      <div class="info-box"><strong>The big idea:</strong> two different triangles share the same unknown side <code>AB</code>. Write an expression for <code>AB</code> from each triangle, set them equal, and the shared side disappears.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Find the Area of a Triangle When Given the Included Angle</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Use trigonometry to find the area of &#9651;ABC to the nearest tenth. &nbsp;(BC = 11.1, AC = 14.1, m&ang;C = 47&deg;)</div>
+      <figure class="fig">
+        <svg viewBox="0 0 380 290" width="380" role="img" aria-label="Triangle ABC with AC of 14.1, BC of 11.1 and included angle C of 47 degrees">
+          <polygon class="g-shape" points="54.4,240 158.9,110.1 280,240"/>
+          <path class="g-angle" d="M250 207.8 A44 44 0 0 0 236 240"/>
+          <text class="g-meas" x="223" y="219" text-anchor="middle">47&deg;</text>
+          <text class="g-meas-b" x="167" y="260" text-anchor="middle">14.1</text>
+          <text class="g-meas-b" x="232" y="172">11.1</text>
+          <text class="g-lbl" x="44" y="252" text-anchor="end">A</text>
+          <text class="g-lbl" x="152" y="102" text-anchor="end">B</text>
+          <text class="g-lbl" x="290" y="252">C</text>
+        </svg>
+        <figcaption>Drawn at 16 px per unit: <code>AC</code> = 225.6 px, <code>CB</code> = 177.6 px, and the angle at <em>C</em> is exactly 47&deg;.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">Area = &frac12;ab sin C</span><span class="reason">area of a triangle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= &frac12;(11.1)(14.1) sin 47&deg;</span><span class="reason">substitute the two sides that form &ang;C</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &frac12;(156.51)(0.73135)</span><span class="reason">multiply and evaluate sin 47&deg;</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">&asymp; 57.229</span><span class="reason">use a calculator</span></div>
+      <div class="answer-box">Area &asymp; 57.2 units<sup>2</sup></div>
+      <div class="check-box"><strong>Check:</strong> the height from <em>B</em> is <code>11.1&nbsp;sin&nbsp;47&deg; &asymp; 8.12</code>, so <code>Area = &frac12;(14.1)(8.12) &asymp; 57.2</code> &#10003;</div>
+      <div class="warning-box"><strong>Trap:</strong> 47&deg; is the angle <em>between</em> the sides 11.1 and 14.1, so those are the two sides you multiply. Never multiply a side by a side that is not adjacent to the given angle.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Find the Area of Any Triangle</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Use trigonometry to find the area of &#9651;DEF to the nearest tenth. &nbsp;(m&ang;D = 58&deg;, m&ang;E = 34&deg;, EF = 6.7, DF = 5.7)</div>
+      <div class="info-box"><strong>Read the figure carefully.</strong> The angle you are given, <em>D</em> and <em>E</em>, are <strong>not</strong> between the two sides you were given. The side lengths 6.7 and 5.7 both touch vertex <em>F</em> &mdash; so the included angle is &ang;F, which you must find first.</div>
+      <figure class="fig">
+        <svg viewBox="0 0 290 320" width="290" role="img" aria-label="Triangle DEF with EF of 6.7, DF of 5.7 and included angle F of 88 degrees">
+          <polygon class="g-shape" points="130.2,103.1 240,180 171.4,271"/>
+          <path class="g-angle" d="M207.2 157.1 A40 40 0 0 0 215.9 212"/>
+          <text class="g-meas" x="183" y="193" text-anchor="middle">88&deg;</text>
+          <text class="g-meas-b" x="196" y="127">6.7</text>
+          <text class="g-meas-b" x="221" y="237">5.7</text>
+          <text class="g-lbl" x="122" y="96" text-anchor="end">E</text>
+          <text class="g-lbl" x="163" y="290" text-anchor="middle">D</text>
+          <text class="g-lbl" x="250" y="178">F</text>
+        </svg>
+        <figcaption>Drawn to scale from the side&ndash;angle&ndash;side data: <code>FE</code> = 134 px (6.7 units), <code>FD</code> = 114 px (5.7 units) at 20 px per unit, with exactly 88&deg; between them.</figcaption>
+      </figure>
+      <div class="solution-step"><span class="num">1</span><span class="math">m&ang;F = 180&deg; &minus; (58&deg; + 34&deg;)</span><span class="reason">Triangle Angle Sum Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">m&ang;F = 180&deg; &minus; 92&deg; = 88&deg;</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">Area = &frac12;de sin F</span><span class="reason">area of a triangle</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= &frac12;(6.7)(5.7) sin 88&deg;</span><span class="reason">d = EF = 6.7, e = DF = 5.7</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= &frac12;(38.19)(0.99939) &asymp; 19.083</span><span class="reason">use a calculator</span></div>
+      <div class="answer-box">Area &asymp; 19.1 units<sup>2</sup></div>
+      <div class="check-box"><strong>Check:</strong> 88&deg; is nearly a right angle, so the area should be close to <code>&frac12;(6.7)(5.7) = 19.095</code> &mdash; and 19.083 is just under it. &#10003;</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1 &middot; pick the ratio</h4>
+    <div class="prob">In right &#9651;ABC the right angle is at <em>C</em>, m&ang;A = 25&deg;, and BC = 14. Find AB to the nearest hundredth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">BC is opposite &ang;A; AB is the hypotenuse</span><span class="reason">use sine</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sin 25&deg; = 14 / AB</span><span class="reason">substitute</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">AB = 14 / sin 25&deg; = 14 / 0.42262</span><span class="reason">solve for AB</span></div>
+      <div class="answer-box">AB &asymp; 33.13</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2 &middot; solve the equation</h4>
+    <div class="prob">Solve <code>tan 62&deg; = x / 18</code> for <code>x</code> to the nearest hundredth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">18 &middot; tan 62&deg; = x</span><span class="reason">multiply each side by 18</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x = 18(1.88073)</span><span class="reason">evaluate tan 62&deg;</span></div>
+      <div class="answer-box">x &asymp; 33.85</div>
+      <div class="warning-box"><strong>Note:</strong> here <code>x</code> was in the <em>numerator</em>, so you multiply. Compare with Example 2, where <code>x</code> was in the denominator and you had to divide by the tangent.</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3 &middot; depression angle</h4>
+    <div class="prob">From a point 40 units above a horizontal line, the angle of depression to a point on that line is 38&deg;. Find the horizontal distance to the nearest hundredth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">the 38&deg; depression = 38&deg; elevation at the lower point</span><span class="reason">alternate interior angles</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">tan 38&deg; = 40 / x</span><span class="reason">opposite 40, adjacent x</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x = 40 / tan 38&deg; = 40 / 0.78129</span><span class="reason">solve for x</span></div>
+      <div class="answer-box">x &asymp; 51.20 units</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4 &middot; find the angle</h4>
+    <div class="prob">In a right triangle, the leg opposite &theta; is 27 and the leg adjacent to &theta; is 63. Find m&theta; to the nearest tenth of a degree.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">tan &theta; = 27 / 63 &asymp; 0.42857</span><span class="reason">tan = opposite / adjacent</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">&theta; = tan<sup>&minus;1</sup>(0.42857)</span><span class="reason">inverse tangent</span></div>
+      <div class="answer-box">&theta; &asymp; 23.2&deg;</div>
+      <div class="check-box"><strong>Check:</strong> opposite &lt; adjacent, so &theta; must be less than 45&deg;. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5 &middot; area from two sides and the included angle</h4>
+    <div class="prob">&#9651;PQR has PQ = 9.4, PR = 12.6 and m&ang;P = 73&deg;. Find the area to the nearest tenth.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&ang;P is between PQ and PR</span><span class="reason">it is the included angle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Area = &frac12;(9.4)(12.6) sin 73&deg;</span><span class="reason">Area = &frac12;ab sin C</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &frac12;(118.44)(0.95630) &asymp; 56.633</span><span class="reason">use a calculator</span></div>
+      <div class="answer-box">Area &asymp; 56.6 units<sup>2</sup></div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6 &middot; two triangles, one shared side</h4>
+    <div class="prob">Solve <code>6 tan y&deg; = 46 tan 15&deg;</code> for <code>y</code> to the nearest tenth of a degree.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">46 tan 15&deg; = 46(0.26795) &asymp; 12.3257</span><span class="reason">evaluate the right side</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">tan y&deg; = 12.3257 / 6 &asymp; 2.05428</span><span class="reason">divide each side by 6</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">y = tan<sup>&minus;1</sup>(2.05428)</span><span class="reason">inverse tangent</span></div>
+      <div class="answer-box">y &asymp; 64.0&deg;</div>
+      <div class="check-box"><strong>Makes sense:</strong> the same vertical side is seen from much closer (6 instead of 46), so the angle must be much steeper. &#10003;</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Object is above you</td><td>Draw the horizontal at your eye; mark the angle of elevation between it and your line of sight</td><td>A right triangle whose hypotenuse is the line of sight</td></tr>
+    <tr><td>Object is below you</td><td>Draw the horizontal at your eye; the angle of depression equals the elevation angle at the object</td><td>Move the angle into the triangle, then solve</td></tr>
+    <tr><td>Know angle + hypotenuse, want a leg</td><td><code>leg = hyp &middot; sin&theta;</code> (opposite) or <code>hyp &middot; cos&theta;</code> (adjacent)</td><td>Multiply</td></tr>
+    <tr><td>Know angle + one leg, want the other leg</td><td><code>tan&theta; = opp / adj</code></td><td>Multiply or divide by tan&theta;</td></tr>
+    <tr><td>Unknown is in the denominator</td><td>Multiply both sides by the unknown, then divide by the ratio</td><td><code>x = side / ratio</code></td></tr>
+    <tr><td>Know two sides, want the angle</td><td>Use an inverse: <code>sin<sup>&minus;1</sup>, cos<sup>&minus;1</sup>, tan<sup>&minus;1</sup></code></td><td>A degree measure</td></tr>
+    <tr><td>Two angles from two positions</td><td>Write the shared side from each triangle, set the two expressions equal</td><td>One equation, one unknown</td></tr>
+    <tr><td>Object height above the ground</td><td>Subtract eye height first; add it back at the end</td><td>Correct final height</td></tr>
+    <tr><td>Area, two sides + included angle</td><td><code>Area = &frac12;ab sin C</code></td><td>Square units</td></tr>
+    <tr><td>Area, two sides + two angles</td><td>Find the included angle: <code>180&deg; &minus; (other two)</code>, then use <code>&frac12;ab sin C</code></td><td>Square units</td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">sin &theta; = opp / hyp</span>
+    <span class="pill">cos &theta; = adj / hyp</span>
+    <span class="pill">tan &theta; = opp / adj</span>
+    <span class="pill">&theta; = tan<sup>&minus;1</sup>(opp/adj)</span>
+    <span class="pill">m&ang;elev = m&ang;depr</span>
+    <span class="pill">Area = &frac12;ab sin C</span>
+    <span class="pill">m&ang;C = 180&deg; &minus; (A + B)</span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:6px 0 0 20px">
+      <li>Measuring the angle of elevation or depression from a <em>vertical</em> line instead of the horizontal.</li>
+      <li>Putting the depression angle inside the triangle without moving it &mdash; it lives outside the triangle, at the top.</li>
+      <li>Forgetting to subtract the observer's eye height from the object's height above the ground.</li>
+      <li>Mixing units: 66 in. is 5.5 ft, not 66 ft.</li>
+      <li>Multiplying when the unknown is in the denominator (<code>tan 40&deg; = 30/x</code> gives <code>x = 30 / tan 40&deg;</code>, not <code>30 &middot; tan 40&deg;</code>).</li>
+      <li>Using a non-included angle in <code>&frac12;ab sin C</code>.</li>
+      <li>Leaving the calculator in radian mode &mdash; it must be in degree mode.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+ {q:"An angle of elevation is always measured from which line?",
+  opts:["The vertical line through the observer","The horizontal line through the observer","The line of sight itself","The vertical line through the object"],
+  ans:1,
+  exp:"Both elevation and depression angles are formed by a HORIZONTAL line and the line of sight. If an angle is given from a vertical pole instead, subtract it from 90&deg; first."},
+
+ {q:"In right &#9651;ABC the right angle is at C, m&ang;A = 30&deg;, and BC = 96. Find AB.",
+  opts:["48","110.9","192","166.3"],
+  ans:2,
+  exp:"BC is opposite &ang;A and AB is the hypotenuse, so sin 30&deg; = 96/AB. Then AB = 96 / 0.5 = 192. Choice A multiplies instead of divides, and 166.3 is 96/tan 30&deg;, the adjacent leg.",
+  fig:"<svg viewBox='0 0 260 190' width='260' role='img' aria-label='Right triangle A B C with a 30 degree angle at A, vertical leg B C of 96 and hypotenuse x'><polygon class='g-shape' points='30,150 212.9,150 212.9,44.4'/><path class='g-right' d='M199.9 150 L199.9 137 L212.9 137'/><path class='g-angle' d='M70 150 A40 40 0 0 0 64.6 130'/><text class='g-meas' x='78' y='140'>30&deg;</text><text class='g-meas-b' x='220' y='102'>96</text><text class='g-meas-b g-halo' x='113' y='88' text-anchor='middle'>x</text><text class='g-lbl' x='24' y='160' text-anchor='end'>A</text><text class='g-lbl' x='218' y='40'>B</text><text class='g-lbl' x='218' y='164'>C</text></svg>"},
+
+ {q:"Solve tan 40&deg; = 30 / x for x, to the nearest tenth.",
+  opts:["25.2","35.8","46.7","19.3"],
+  ans:1,
+  exp:"The unknown is in the denominator, so multiply both sides by x to get x&middot;tan 40&deg; = 30, then divide: x = 30 / 0.8391 &asymp; 35.8. Choice A is 30&middot;tan 40&deg;, the classic reversal error."},
+
+ {q:"In right &#9651;PQR the right angle is at R, m&ang;P = 25&deg;, and the hypotenuse PQ = 30. Find QR to the nearest tenth.",
+  opts:["12.7","27.2","14.0","71.0"],
+  ans:0,
+  exp:"QR is opposite the 25&deg; angle and PQ is the hypotenuse, so QR = 30&middot;sin 25&deg; &asymp; 12.7. Choice B is 30&middot;cos 25&deg; (the adjacent leg) and 71.0 is 30/sin 25&deg;, which is larger than the hypotenuse and therefore impossible."},
+
+ {q:"You know the leg ADJACENT to a 55&deg; angle and you want the leg OPPOSITE it. Which ratio should you use?",
+  opts:["sine","cosine","tangent","none of these"],
+  ans:2,
+  exp:"Tangent is the only ratio that relates the two legs: tan 55&deg; = opposite / adjacent. Sine and cosine each involve the hypotenuse, which is not given here."},
+
+ {q:"In right &#9651;ABC the right angle is at C, BC = 15, and AC = 20. Find m&ang;A to the nearest tenth of a degree.",
+  opts:["36.9&deg;","48.6&deg;","53.1&deg;","41.4&deg;"],
+  ans:0,
+  exp:"From &ang;A, BC = 15 is opposite and AC = 20 is adjacent, so tan A = 15/20 = 0.75 and A = tan&#8315;&#185;(0.75) &asymp; 36.9&deg;. Choice B uses sin&#8315;&#185;(0.75) by mistake; 53.1&deg; is m&ang;B, the other acute angle."},
+
+ {q:"&#9651;ABC has AB = 8, AC = 14 and m&ang;A = 48&deg;. Find the area to the nearest tenth.",
+  opts:["41.6","37.5","83.2","56.0"],
+  ans:0,
+  exp:"&ang;A is the included angle for AB and AC, so Area = &#189;(8)(14) sin 48&deg; = 56(0.74314) &asymp; 41.6. Choice B uses cosine, 83.2 forgets the &#189;, and 56.0 leaves out the sine entirely.",
+  fig:"<svg viewBox='0 0 290 195' width='290' role='img' aria-label='Triangle A B C with side A B of 8, side A C of 14 and included angle A of 48 degrees'><polygon class='g-shape' points='40,160 236,160 114.9,76.8'/><path class='g-angle' d='M76 160 A36 36 0 0 0 64.1 133.2'/><text class='g-meas' x='88' y='143' text-anchor='middle'>48&deg;</text><text class='g-meas-b' x='64' y='108' text-anchor='end'>8</text><text class='g-meas-b' x='138' y='180' text-anchor='middle'>14</text><text class='g-lbl' x='32' y='170' text-anchor='end'>A</text><text class='g-lbl' x='110' y='68' text-anchor='end'>B</text><text class='g-lbl' x='244' y='170'>C</text></svg>"},
+
+ {q:"In &#9651;DEF, m&ang;D = 58&deg;, m&ang;E = 34&deg;, DF = 5.7 and EF = 6.7. Which expression gives the area?",
+  opts:["&#189;(5.7)(6.7) sin 58&deg;","&#189;(5.7)(6.7) sin 88&deg;","&#189;(5.7)(6.7) sin 34&deg;","(5.7)(6.7) sin 88&deg;"],
+  ans:1,
+  exp:"Both given sides meet at F, so the INCLUDED angle is &ang;F = 180&deg; &minus; (58&deg; + 34&deg;) = 88&deg;. Choices A and C use non-included angles, and D forgets the factor of &#189;."},
+
+ {q:"The angle of depression from a point P down to a point Q is always equal to which angle?",
+  opts:["The complement of the angle of elevation from Q to P","The angle of elevation from Q up to P","90&deg; minus the angle of elevation from Q to P","Twice the angle of elevation from Q to P"],
+  ans:1,
+  exp:"The horizontal at P and the horizontal at Q are parallel, and line PQ is a transversal, so the two angles are alternate interior angles and therefore congruent &mdash; not complementary."},
+
+ {q:"Solve 5.5 tan y&deg; = 55.5 tan 10&deg; for y, to the nearest hundredth of a degree.",
+  opts:["60.66","29.34","79.02","10.00"],
+  ans:0,
+  exp:"55.5&middot;tan 10&deg; &asymp; 9.7862, so tan y&deg; = 9.7862 / 5.5 &asymp; 1.7793 and y = tan&#8315;&#185;(1.7793) &asymp; 60.66. Choice B is the complement 90 &minus; 60.66, a common slip."},
+
+ {q:"An object sits 102 units above a horizontal ground line and the observer's eye is 6 units above that same line. What is the length of the vertical leg of the right triangle whose hypotenuse is the line of sight?",
+  opts:["102","108","96","6"],
+  ans:2,
+  exp:"The triangle rests on the eye-level horizontal, not on the ground, so the vertical leg is 102 &minus; 6 = 96. Using 102 is the single most common error in elevation problems."},
+
+ {q:"In right &#9651;ABC the right angle is at B, m&ang;A = 60&deg;, and AB = 45. Find BC to the nearest hundredth.",
+  opts:["25.98","90.00","51.96","77.94"],
+  ans:3,
+  exp:"AB is adjacent to the 60&deg; angle and BC is opposite it, so tan 60&deg; = BC/45 and BC = 45&middot;tan 60&deg; &asymp; 77.94. Choice A divides instead of multiplying; 90.00 is the hypotenuse 45/cos 60&deg;."},
+
+ {q:"In the right triangle formed by a horizontal line, a vertical line, and an observer's line of sight, the line of sight is the",
+  opts:["leg opposite the angle","leg adjacent to the angle","hypotenuse","altitude to the hypotenuse"],
+  ans:2,
+  exp:"The right angle sits where the vertical meets the horizontal, so the side across from it &mdash; the line of sight &mdash; is the hypotenuse. That is why sine and cosine are the ratios that involve it."},
+
+ {q:"&#9651;JKL has JK = 6, KL = 10.5, m&ang;J = 83&deg; and m&ang;L = 35&deg;. Find the area to the nearest tenth.",
+  opts:["18.1","31.3","55.6","27.8"],
+  ans:3,
+  exp:"The sides JK and KL meet at K, so use &ang;K = 180&deg; &minus; (83&deg; + 35&deg;) = 62&deg;. Area = &#189;(6)(10.5) sin 62&deg; = 31.5(0.88295) &asymp; 27.8. Choices A and B use the non-included angles 35&deg; and 83&deg;."},
+
+ {q:"Which set of information lets you apply Area = &#189;ab sin C directly?",
+  opts:["The three side lengths","The three angle measures","Two angles and a side that is not between them","Two side lengths and the angle between them"],
+  ans:3,
+  exp:"The formula needs two sides and their INCLUDED angle, because the height it builds is h = a sin C on base b. Three angles alone fix only the shape, never the size, so no area is determined."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

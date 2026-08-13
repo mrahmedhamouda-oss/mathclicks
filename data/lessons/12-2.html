@@ -1,0 +1,560 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Describe events as subsets of a sample space using intersections, unions and complements, and count outcomes to find their probabilities.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Outcomes, sample spaces and events</h3>
+    <p>Probability starts with <em>counting</em>. Before you can find a probability you must know two numbers: how many results the experiment can produce in total, and how many of those results you actually want.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>Outcome</b> &mdash; one single result of an experiment (rolling a 4).</div>
+      <div class="vocab-item"><b>Sample space <code>S</code></b> &mdash; the set of <i>all</i> possible outcomes. For one die, <code>S = {1, 2, 3, 4, 5, 6}</code>.</div>
+      <div class="vocab-item"><b>Event</b> &mdash; any subset of the sample space, such as <code>A = {rolling an odd number} = {1, 3, 5}</code>.</div>
+      <div class="vocab-item"><b><code>n(A)</code></b> &mdash; the <i>number of outcomes</i> in event <code>A</code>. So <code>n(A) = 3</code> above.</div>
+    </div>
+    <div class="formula-box">P(A) = n(A) / n(S) = (number of outcomes in A) / (total number of possible outcomes)</div>
+    <p>When outcomes are <b>equally likely</b> (a fair die, a fair coin, a spinner with equal sections, a well-shuffled deck), probability is nothing more than a count divided by a count.</p>
+    <p style="margin-top:12px"><b>A sample-space grid.</b> Rolling two dice gives 6 &times; 6 = 36 equally likely outcomes. The grid below shows the <i>sum</i> for each one, so you can count events by reading the table.</p>
+    <table class="tbl">
+      <tr><th>+</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+      <tr><th>1</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+      <tr><th>2</th><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+      <tr><th>3</th><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+      <tr><th>4</th><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+      <tr><th>5</th><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+      <tr><th>6</th><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+    </table>
+    <p>Counting 7s in the grid gives 6 cells, so <code>P(sum = 7) = 6/36 = 1/6</code>.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Intersection &mdash; the outcomes in <i>both</i> events</h3>
+    <p>The <b>intersection of <i>A</i> and <i>B</i></b> is the set of all outcomes in the sample space of event <i>A</i> that are <i>also</i> in the sample space of event <i>B</i>. In a Venn diagram it is the overlap.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Probability Rule for Intersections</div>
+      <div class="theorem-body">
+        The probability of the intersection of two events <i>A</i> and <i>B</i> occurring is the ratio of the number of outcomes in both <i>A</i> and <i>B</i> to the total number of possible outcomes.
+        <div class="formula-box">P(A &cap; B) = (number of outcomes in A and B) / (total number of possible outcomes)</div>
+      </div>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-title">Intersection, union and the outside region</div>
+      <svg id="fig1" viewBox="0 0 460 320" width="460" role="img" aria-label="Venn diagram of two overlapping circles A and B inside a rectangle, with the lens-shaped overlap shaded">
+        <g data-part="uni">
+          <rect class="g-line-thin" x="24" y="40" width="412" height="232" rx="6"/>
+          <text class="g-lbl-sm" x="36" y="58">S (all outcomes)</text>
+        </g>
+        <g data-part="a">
+          <circle class="g-shape" cx="185" cy="156" r="88" style="fill-opacity:.55"/>
+          <text class="g-lbl" x="152" y="60" text-anchor="middle">A</text>
+        </g>
+        <g data-part="b">
+          <circle class="g-shape-alt" cx="275" cy="156" r="88" style="fill-opacity:.55"/>
+          <text class="g-lbl" x="308" y="60" text-anchor="middle">B</text>
+        </g>
+        <g data-part="inter">
+          <path class="g-arc" style="fill:rgba(22,163,74,.32)" d="M 230 80.4 A 88 88 0 0 1 230 231.6 A 88 88 0 0 1 230 80.4 Z"/>
+          <text class="g-grn g-halo" x="230" y="161" text-anchor="middle">A &cap; B</text>
+        </g>
+        <text class="g-lbl-sm" x="230" y="300" text-anchor="middle">A &cup; B is everything inside either circle</text>
+      </svg>
+      <figcaption>Click a chip to isolate one part of the picture. The green lens belongs to <i>both</i> circles &mdash; that is why it is counted only once in a union.</figcaption>
+      <div class="fig-legend">
+        <button class="fig-chip" onclick="figHi(this,'fig1','uni')">Sample space S</button>
+        <button class="fig-chip" onclick="figHi(this,'fig1','a')">Event A</button>
+        <button class="fig-chip" onclick="figHi(this,'fig1','b')">Event B</button>
+        <button class="fig-chip" onclick="figHi(this,'fig1','inter')">A &cap; B</button>
+      </div>
+    </figure>
+
+    <div class="info-box"><strong>Study Tip &mdash; Intersection:</strong> the symbol for intersection is <code>&cap;</code>, and it is associated with the word <b>and</b>. <code>P(A &cap; B)</code> is read as <i>the probability of A and B</i>. The symbol looks like an <b>A</b> without its bar &mdash; <b>A</b> for <b>and</b>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Union &mdash; the outcomes in <i>either</i> event</h3>
+    <p>The <b>union of <i>A</i> and <i>B</i></b> is the set of all outcomes in the sample space of event <i>A</i> combined with all outcomes in the sample space of event <i>B</i>. An outcome only has to belong to one of them to join the union &mdash; but if it belongs to both, you still list it <b>once</b>.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Union of Two Events</div>
+      <div class="theorem-body">
+        The number of elements in the union of two events <i>A</i> and <i>B</i> is the number of outcomes in both event <i>A</i> and <i>B</i> minus the number of outcomes in their intersection.
+        <div class="formula-box">n(A &cup; B) = n(A) + n(B) &minus; n(A &cap; B)</div>
+      </div>
+    </div>
+    <p><b>Why subtract?</b> When you add <code>n(A) + n(B)</code>, every outcome sitting in the green lens has been counted twice &mdash; once as a member of <i>A</i> and once as a member of <i>B</i>. Subtracting <code>n(A &cap; B)</code> removes exactly one of those two copies.</p>
+    <p>If the two events share nothing, then <code>n(A &cap; B) = 0</code>, <code>A &cap; B = &empty;</code>, and the rule collapses to plain addition.</p>
+    <div class="info-box"><strong>Study Tip &mdash; Union:</strong> the symbol for union is <code>&cup;</code>, and it is associated with the word <b>or</b>. <code>n(A &cup; B)</code> is read as <i>the number of elements in A or B</i>. The cup <code>&cup;</code> is open at the top &mdash; it holds everything.</p></div>
+
+    <figure class="fig">
+      <div class="fig-title">Spinner with eight equal sections</div>
+      <svg viewBox="0 0 300 300" width="300" role="img" aria-label="Circular spinner divided into eight equal sections labelled 1 green, 3 green, 5 green, 7 blue, 9 red, 11 red, 13 purple, 15 blue">
+        <path class="g-line" style="fill:var(--sl-green-line)" d="M150 150 L 72.22 72.22 A110 110 0 0 1 150 40 Z"/>
+        <path class="g-line" style="fill:var(--sl-green-line)" d="M150 150 L 150 40 A110 110 0 0 1 227.78 72.22 Z"/>
+        <path class="g-line" style="fill:var(--sl-green-line)" d="M150 150 L 227.78 72.22 A110 110 0 0 1 260 150 Z"/>
+        <path class="g-line" style="fill:var(--sl-blue-line)" d="M150 150 L 260 150 A110 110 0 0 1 227.78 227.78 Z"/>
+        <path class="g-line" style="fill:var(--sl-bad-line)" d="M150 150 L 227.78 227.78 A110 110 0 0 1 150 260 Z"/>
+        <path class="g-line" style="fill:var(--sl-bad-line)" d="M150 150 L 150 260 A110 110 0 0 1 72.22 227.78 Z"/>
+        <path class="g-line" style="fill:#d8b4fe" d="M150 150 L 72.22 227.78 A110 110 0 0 1 40 150 Z"/>
+        <path class="g-line" style="fill:var(--sl-blue-line)" d="M150 150 L 40 150 A110 110 0 0 1 72.22 72.22 Z"/>
+        <text class="g-lbl-sm" x="122.4" y="80" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">1</text>
+        <text class="g-lbl-sm" x="122.4" y="94" text-anchor="middle" style="font-size:9.5px">GREEN</text>
+        <text class="g-lbl-sm" x="177.6" y="80" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">3</text>
+        <text class="g-lbl-sm" x="177.6" y="94" text-anchor="middle" style="font-size:9.5px">GREEN</text>
+        <text class="g-lbl-sm" x="216.5" y="119" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">5</text>
+        <text class="g-lbl-sm" x="216.5" y="133" text-anchor="middle" style="font-size:9.5px">GREEN</text>
+        <text class="g-lbl-sm" x="216.5" y="174" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">7</text>
+        <text class="g-lbl-sm" x="216.5" y="188" text-anchor="middle" style="font-size:9.5px">BLUE</text>
+        <text class="g-lbl-sm" x="177.6" y="213" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">9</text>
+        <text class="g-lbl-sm" x="177.6" y="227" text-anchor="middle" style="font-size:9.5px">RED</text>
+        <text class="g-lbl-sm" x="122.4" y="213" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">11</text>
+        <text class="g-lbl-sm" x="122.4" y="227" text-anchor="middle" style="font-size:9.5px">RED</text>
+        <text class="g-lbl-sm" x="83.5" y="174" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">13</text>
+        <text class="g-lbl-sm" x="83.5" y="188" text-anchor="middle" style="font-size:9.5px">PURPLE</text>
+        <text class="g-lbl-sm" x="83.5" y="119" text-anchor="middle" style="font-size:14px;fill:var(--sl-navy)">15</text>
+        <text class="g-lbl-sm" x="83.5" y="133" text-anchor="middle" style="font-size:9.5px">BLUE</text>
+        <circle class="g-line" cx="150" cy="150" r="110" style="fill:none"/>
+        <line class="g-line" x1="150" y1="150" x2="245.3" y2="95" stroke-width="3.5"/>
+        <circle class="g-pt" cx="150" cy="150" r="6.5"/>
+      </svg>
+      <figcaption>Eight equal sections, so every section has probability <code>1/8</code>. Blue sections: <code>{7, 15}</code>. Numbers divisible by 3: <code>{3, 9, 15}</code>. Section 15 belongs to both.</figcaption>
+    </figure>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Complement &mdash; everything the event is <i>not</i></h3>
+    <p>The <b>complement of <i>A</i></b> consists of all the outcomes in the sample space that are <i>not</i> included as outcomes of event <i>A</i>. It is written <code>A&prime;</code>.</p>
+    <p>Rolling a die and getting a 3 has probability <code>1/6</code>. There are 5 outcomes for <i>not</i> getting a 3 &mdash; 1, 2, 4, 5, 6 &mdash; so <code>P(not 3) = 5/6</code>. Notice that this is also <code>1 &minus; 1/6</code>. Every outcome is either in <i>A</i> or in <i>A&prime;</i>, never both and never neither, so the two probabilities must add to 1.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Probability of the Complement of an Event</div>
+      <div class="theorem-body">
+        <table class="tbl">
+          <tr><th style="width:110px">Words</th><td>The probability that an event will <i>not</i> occur is equal to 1 minus the probability that the event <i>will</i> occur.</td></tr>
+          <tr><th>Symbols</th><td>For an event <i>A</i>, <code>P(A&prime;) = 1 &minus; P(A)</code>, and therefore <code>P(A) + P(A&prime;) = 1</code>.</td></tr>
+        </table>
+      </div>
+    </div>
+    <figure class="fig">
+      <div class="fig-title">The complement of A</div>
+      <svg viewBox="0 0 360 250" width="360" role="img" aria-label="Rectangle representing the sample space with one shaded circle A inside; the region outside the circle is labelled A prime">
+        <rect class="g-line-thin" x="24" y="34" width="312" height="180" rx="6" style="fill:var(--sl-orange-soft)"/>
+        <circle class="g-shape" cx="150" cy="124" r="66" style="fill-opacity:.75"/>
+        <text class="g-lbl" x="150" y="130" text-anchor="middle">A</text>
+        <text class="g-lbl-sm" x="36" y="52">S</text>
+        <line class="g-line-thin" x1="300" y1="70" x2="278" y2="104"/>
+        <text class="g-meas" x="304" y="64" text-anchor="middle">A&prime;</text>
+        <text class="g-lbl-sm" x="180" y="238" text-anchor="middle">shaded orange region = every outcome not in A</text>
+      </svg>
+      <figcaption>The blue circle and the orange region together fill the whole sample space: <code>n(A) + n(A&prime;) = n(S)</code>.</figcaption>
+    </figure>
+    <div class="warning-box"><strong>Watch Out!</strong> The complement is <code>1 &minus; P(A)</code>, not <code>1 &divide; P(A)</code>. If <code>P(A) = 2/5</code> then <code>P(A&prime;) = 3/5</code>, never <code>5/2</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Counting outcomes with a tree diagram</h3>
+    <p>When an experiment happens in stages, a <b>tree diagram</b> lists the whole sample space without missing anything. Read one path from left to right and you get one outcome; count the leaves and you get <code>n(S)</code>.</p>
+    <figure class="fig">
+      <div class="fig-title">Tossing a coin twice</div>
+      <svg id="fig2" viewBox="0 0 440 300" width="440" role="img" aria-label="Tree diagram with two branches H and T at the first toss, each splitting into H and T at the second toss, giving outcomes HH, HT, TH and TT">
+        <text class="g-lbl-sm" x="125" y="20" text-anchor="middle">Toss 1</text>
+        <text class="g-lbl-sm" x="265" y="20" text-anchor="middle">Toss 2</text>
+        <text class="g-lbl-sm" x="375" y="20" text-anchor="middle">Outcome</text>
+        <g data-part="s1">
+          <line class="g-line" x1="55" y1="150" x2="195" y2="80"/>
+          <line class="g-line" x1="55" y1="150" x2="195" y2="220"/>
+          <circle class="g-pt" cx="55" cy="150" r="5"/>
+          <text class="g-meas" x="122" y="108" text-anchor="middle">H</text>
+          <text class="g-meas" x="122" y="198" text-anchor="middle">T</text>
+        </g>
+        <g data-part="s2">
+          <line class="g-line" x1="195" y1="80" x2="335" y2="45"/>
+          <line class="g-line" x1="195" y1="80" x2="335" y2="115"/>
+          <line class="g-line" x1="195" y1="220" x2="335" y2="185"/>
+          <line class="g-line" x1="195" y1="220" x2="335" y2="255"/>
+          <circle class="g-pt" cx="195" cy="80" r="5"/>
+          <circle class="g-pt" cx="195" cy="220" r="5"/>
+          <text class="g-meas-b" x="265" y="54" text-anchor="middle">H</text>
+          <text class="g-meas-b" x="265" y="110" text-anchor="middle">T</text>
+          <text class="g-meas-b" x="265" y="194" text-anchor="middle">H</text>
+          <text class="g-meas-b" x="265" y="250" text-anchor="middle">T</text>
+        </g>
+        <g data-part="out">
+          <circle class="g-pt" cx="335" cy="45" r="5"/>
+          <circle class="g-pt" cx="335" cy="115" r="5"/>
+          <circle class="g-pt" cx="335" cy="185" r="5"/>
+          <circle class="g-pt" cx="335" cy="255" r="5"/>
+          <text class="g-lbl-sm" x="352" y="50">HH</text>
+          <text class="g-lbl-sm" x="352" y="120">HT</text>
+          <text class="g-lbl-sm" x="352" y="190">TH</text>
+          <text class="g-lbl-sm" x="352" y="260">TT</text>
+        </g>
+      </svg>
+      <figcaption>Four equally likely outcomes, so each has probability <code>1/4</code>. Reading the leaves, <code>P(exactly one head) = 2/4 = 1/2</code>.</figcaption>
+      <div class="fig-legend">
+        <button class="fig-chip" onclick="figHi(this,'fig2','s1')">First toss</button>
+        <button class="fig-chip" onclick="figHi(this,'fig2','s2')">Second toss</button>
+        <button class="fig-chip" onclick="figHi(this,'fig2','out')">Outcomes</button>
+      </div>
+    </figure>
+    <p>You do not always have to draw every branch. If stage 1 has <code>n<sub>1</sub></code> choices and stage 2 has <code>n<sub>2</sub></code> choices, the tree ends with <code>n<sub>1</sub> &times; n<sub>2</sub></code> leaves.</p>
+    <div class="formula-box">n(S) = n<sub>1</sub> &times; n<sub>2</sub> &times; n<sub>3</sub> &times; &hellip;&nbsp;&nbsp;(one factor per stage)</div>
+    <figure class="fig">
+      <div class="fig-title">Toss a coin, then roll a die</div>
+      <svg viewBox="0 0 420 360" width="420" role="img" aria-label="Tree diagram: two coin branches H and T, each splitting into six die branches, giving twelve outcomes">
+        <text class="g-lbl-sm" x="110" y="18" text-anchor="middle">Coin</text>
+        <text class="g-lbl-sm" x="240" y="18" text-anchor="middle">Die</text>
+        <text class="g-lbl-sm" x="325" y="18" text-anchor="middle">Outcome</text>
+        <line class="g-line" x1="50" y1="183" x2="170" y2="105"/>
+        <line class="g-line" x1="50" y1="183" x2="170" y2="261"/>
+        <circle class="g-pt" cx="50" cy="183" r="5"/>
+        <text class="g-meas" x="104" y="136" text-anchor="middle">H</text>
+        <text class="g-meas" x="104" y="236" text-anchor="middle">T</text>
+        <line class="g-line" x1="170" y1="105" x2="290" y2="40"/>
+        <line class="g-line" x1="170" y1="105" x2="290" y2="66"/>
+        <line class="g-line" x1="170" y1="105" x2="290" y2="92"/>
+        <line class="g-line" x1="170" y1="105" x2="290" y2="118"/>
+        <line class="g-line" x1="170" y1="105" x2="290" y2="144"/>
+        <line class="g-line" x1="170" y1="105" x2="290" y2="170"/>
+        <line class="g-line" x1="170" y1="261" x2="290" y2="196"/>
+        <line class="g-line" x1="170" y1="261" x2="290" y2="222"/>
+        <line class="g-line" x1="170" y1="261" x2="290" y2="248"/>
+        <line class="g-line" x1="170" y1="261" x2="290" y2="274"/>
+        <line class="g-line" x1="170" y1="261" x2="290" y2="300"/>
+        <line class="g-line" x1="170" y1="261" x2="290" y2="326"/>
+        <circle class="g-pt" cx="170" cy="105" r="5"/>
+        <circle class="g-pt" cx="170" cy="261" r="5"/>
+        <circle class="g-pt" cx="290" cy="40" r="4"/><circle class="g-pt" cx="290" cy="66" r="4"/><circle class="g-pt" cx="290" cy="92" r="4"/>
+        <circle class="g-pt" cx="290" cy="118" r="4"/><circle class="g-pt" cx="290" cy="144" r="4"/><circle class="g-pt" cx="290" cy="170" r="4"/>
+        <circle class="g-pt" cx="290" cy="196" r="4"/><circle class="g-pt" cx="290" cy="222" r="4"/><circle class="g-pt" cx="290" cy="248" r="4"/>
+        <circle class="g-pt" cx="290" cy="274" r="4"/><circle class="g-pt" cx="290" cy="300" r="4"/><circle class="g-pt" cx="290" cy="326" r="4"/>
+        <text class="g-lbl-sm" x="305" y="45">H1</text><text class="g-lbl-sm" x="305" y="71">H2</text><text class="g-lbl-sm" x="305" y="97">H3</text>
+        <text class="g-lbl-sm" x="305" y="123">H4</text><text class="g-lbl-sm" x="305" y="149">H5</text><text class="g-lbl-sm" x="305" y="175">H6</text>
+        <text class="g-lbl-sm" x="305" y="201">T1</text><text class="g-lbl-sm" x="305" y="227">T2</text><text class="g-lbl-sm" x="305" y="253">T3</text>
+        <text class="g-lbl-sm" x="305" y="279">T4</text><text class="g-lbl-sm" x="305" y="305">T5</text><text class="g-lbl-sm" x="305" y="331">T6</text>
+      </svg>
+      <figcaption>2 coin results &times; 6 die results = <b>12</b> outcomes, and the tree has exactly 12 leaves.</figcaption>
+    </figure>
+  </div>
+
+  <div class="concept-card">
+    <h3>6. Two-way tables organise a deck (or any survey)</h3>
+    <p>A two-way table sorts the same 52 cards by two features at once. Every intersection question is then just one cell, and every union question is a row plus a column minus the shared cell.</p>
+    <table class="tbl">
+      <tr><th>Standard deck</th><th>Number card (2&ndash;10)</th><th>Face card (J, Q, K)</th><th>Ace</th><th>Total</th></tr>
+      <tr><th>Red (&hearts; &diams;)</th><td>18</td><td>6</td><td>2</td><td><b>26</b></td></tr>
+      <tr><th>Black (&spades; &clubs;)</th><td>18</td><td>6</td><td>2</td><td><b>26</b></td></tr>
+      <tr><th>Total</th><td><b>36</b></td><td><b>12</b></td><td><b>4</b></td><td><b>52</b></td></tr>
+    </table>
+    <p><code>P(red &cap; face) = 6/52 = 3/26</code>. &nbsp; <code>n(red &cup; face) = 26 + 12 &minus; 6 = 32</code>, so <code>P(red &cup; face) = 32/52 = 8/13</code>.</p>
+  </div>
+
+  <div class="keyfact"><div class="ico">1</div><div class="txt"><code>&cap;</code> means <b>and</b> (overlap, fewer outcomes). <code>&cup;</code> means <b>or</b> (combine, more outcomes).</div></div>
+  <div class="keyfact"><div class="ico">2</div><div class="txt"><code>P(A &cap; B) = n(A &cap; B) / n(S)</code> &mdash; count the outcomes that satisfy <i>both</i> conditions, then divide by the total.</div></div>
+  <div class="keyfact"><div class="ico">3</div><div class="txt"><code>n(A &cup; B) = n(A) + n(B) &minus; n(A &cap; B)</code> &mdash; add, then remove the double count.</div></div>
+  <div class="keyfact"><div class="ico">4</div><div class="txt"><code>P(A&prime;) = 1 &minus; P(A)</code> &mdash; when &ldquo;not&rdquo;, &ldquo;at least one&rdquo; or &ldquo;fails to&rdquo; appears, the complement is usually the shortcut.</div></div>
+  <div class="keyfact"><div class="ico">5</div><div class="txt">A multi-stage experiment has <code>n<sub>1</sub> &times; n<sub>2</sub> &times; &hellip;</code> outcomes &mdash; the number of leaves on its tree diagram.</div></div>
+
+  <div class="warning-box"><strong>Watch Out!</strong> In a union, an outcome in both events is listed <b>once</b>. For a die with <code>A = {1, 2, 3, 4}</code> and <code>B = {2, 4, 6}</code>, the union is <code>{1, 2, 3, 4, 6}</code> &mdash; 2 and 4 appear a single time each, so <code>n(A &cup; B) = 5</code>, not 7.</div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Find intersections</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">A fair die is rolled once. Let A be the event of rolling an odd number, and let B be the event of rolling a number greater than 3. Find A &cap; B.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">S = {1, 2, 3, 4, 5, 6}</span><span class="reason">sample space of one die</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = {1, 3, 5}</span><span class="reason">the odd numbers on a die</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">B = {4, 5, 6}</span><span class="reason">the numbers greater than 3</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A &cap; B contains the outcomes in both A and B</span><span class="reason">definition of intersection</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">only 5 appears in both lists</span><span class="reason">compare element by element</span></div>
+      <div class="answer-box">A &cap; B = {5}, so n(A &cap; B) = 1 and P(A &cap; B) = 1/6</div>
+      <div class="check-box"><strong>Check:</strong> 5 is odd &check; and 5 &gt; 3 &check;. The number 3 is odd but not greater than 3, and 4 and 6 are greater than 3 but not odd, so neither belongs.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Find the probability of an intersection</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A card is selected from a standard deck of cards. What is the probability that the card is a queen <i>and</i> is red?</div>
+      <p>Let <i>A</i> be the event of choosing a queen, and let <i>B</i> be the event of choosing a red card. The total number of outcomes is the total number of cards in a deck, or 52.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">n(A) = 4 &nbsp;(Q&spades;, Q&hearts;, Q&diams;, Q&clubs;)</span><span class="reason">one queen per suit</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">n(B) = 26 &nbsp;(all hearts and diamonds)</span><span class="reason">half the deck is red</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A &cap; B = {Q&hearts;, Q&diams;}, so n(A &cap; B) = 2</span><span class="reason">queens that are also red</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">P(A &cap; B) = n(A &cap; B) / 52</span><span class="reason">Probability Rule for Intersections</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 2/52</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= 1/26</span><span class="reason">Simplify</span></div>
+      <div class="answer-box">P(queen &cap; red) = 1/26 &asymp; 0.038, or about 3.8%</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The denominator is 52, the size of the <i>whole</i> sample space. A common error is dividing by 26 (only the red cards) or by 4 (only the queens).</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Find unions</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A fair die is rolled once. Let A be the event of rolling a number less than 5, and let B be the event of rolling a multiple of 2. Find A &cup; B.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">A = {1, 2, 3, 4}</span><span class="reason">numbers on a die less than 5</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">B = {2, 4, 6}</span><span class="reason">multiples of 2 on a die</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">A &cup; B contains outcomes in either sample space</span><span class="reason">definition of union</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A &cup; B = {1, 2, 3, 4, 6}</span><span class="reason">list each outcome once</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">n(A &cup; B) = 4 + 3 &minus; 2 = 5</span><span class="reason">n(A) + n(B) &minus; n(A &cap; B)</span></div>
+      <div class="answer-box">A &cup; B = {1, 2, 3, 4, 6}, n(A &cup; B) = 5, P(A &cup; B) = 5/6</div>
+      <div class="check-box"><strong>Why are 2 and 4 only listed once?</strong> They belong to both events, but a union is a <i>set</i> of outcomes &mdash; rolling a 2 is a single outcome no matter how many events describe it. That is exactly the <code>&minus; n(A &cap; B)</code> in the formula, since <code>A &cap; B = {2, 4}</code>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Complementary events</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A streaming program randomly picks one movie from a list of favourites, sorted by genre as shown. What is the probability that a comedy will <i>not</i> be chosen?</div>
+      <table class="tbl">
+        <tr><th>Genre</th><th>Number of movies</th><th>Genre</th><th>Number of movies</th></tr>
+        <tr><td>Action</td><td>44</td><td>Documentaries</td><td>13</td></tr>
+        <tr><td>Anime</td><td>109</td><td>Dramas</td><td>30</td></tr>
+        <tr><td>Children&rsquo;s</td><td>8</td><td>Foreign</td><td>5</td></tr>
+        <tr><td>Comedies</td><td>112</td><td>Horror</td><td>29</td></tr>
+      </table>
+      <p>Let event <i>A</i> represent selecting a comedy. Then find the probability of the complement of <i>A</i>.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">n(A) = 112</span><span class="reason">comedy movies in the list</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">n(S) = 44+109+8+112+13+30+5+29 = 350</span><span class="reason">total movies in the list</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">P(A&prime;) = 1 &minus; P(A)</span><span class="reason">Probability of a complement</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 1 &minus; 112/350</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 238/350 = 17/25</span><span class="reason">Subtract and simplify</span></div>
+      <div class="answer-box">P(A&prime;) = 17/25 = 0.68, or 68%</div>
+      <div class="check-box"><strong>Check:</strong> counting directly, 350 &minus; 112 = 238 non-comedies, and 238/350 = 17/25 &check;. Also <code>112/350 + 238/350 = 1</code> &check;.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Intersection and union on the spinner</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Use the eight-section spinner above. Let A be the event of landing on a blue section, and let B be the event of landing on a section whose number is divisible by 3. Find A, B, A &cap; B and A &cup; B.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">S = {1, 3, 5, 7, 9, 11, 13, 15}, n(S) = 8</span><span class="reason">eight equal sections</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A = {7, 15}</span><span class="reason">the two blue sections</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">B = {3, 9, 15}</span><span class="reason">3 = 3&middot;1, 9 = 3&middot;3, 15 = 3&middot;5</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">A &cap; B = {15}</span><span class="reason">15 is blue and divisible by 3</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">n(A &cup; B) = 2 + 3 &minus; 1 = 4</span><span class="reason">Union of Two Events</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">A &cup; B = {3, 7, 9, 15}</span><span class="reason">list to confirm the count</span></div>
+      <div class="case-grid">
+        <div class="case-box"><h4>Intersection</h4><div class="math">A &cap; B = {15}<br>P(A &cap; B) = 1/8 = 0.125</div></div>
+        <div class="case-box"><h4>Union</h4><div class="math">A &cup; B = {3, 7, 9, 15}<br>P(A &cup; B) = 4/8 = 1/2</div></div>
+      </div>
+      <div class="answer-box">A &cap; B = {15} &nbsp;&nbsp;and&nbsp;&nbsp; A &cup; B = {3, 7, 9, 15}</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Adding 2 + 3 = 5 would count section 15 twice. Always subtract the intersection.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Problem 1</h4>
+    <div class="prob">A fair die is rolled once. Let A be the event of rolling a multiple of 3, and let B be the event of rolling a number greater than 2. Find A &cap; B and A &cup; B.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A = {3, 6}, &nbsp; B = {3, 4, 5, 6}</span><span class="reason">list each event</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A &cap; B = {3, 6}</span><span class="reason">both 3 and 6 are &gt; 2</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">n(A &cup; B) = 2 + 4 &minus; 2 = 4</span><span class="reason">Union of Two Events</span></div>
+      <div class="answer-box">A &cap; B = {3, 6}; &nbsp; A &cup; B = {3, 4, 5, 6}; &nbsp; P(A &cup; B) = 4/6 = 2/3</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 2</h4>
+    <div class="prob">A card is selected from a standard deck. Find P(the card is a face card and is black).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">face cards per suit: J, Q, K &rarr; 3</span><span class="reason">definition of a face card</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">black suits: &spades; and &clubs; &rarr; 2 suits</span><span class="reason">3 &times; 2 = 6 outcomes in the overlap</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">P = 6/52</span><span class="reason">Probability Rule for Intersections</span></div>
+      <div class="answer-box">P(face &cap; black) = 6/52 = 3/26 &asymp; 0.115</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 3</h4>
+    <div class="prob">For two events, n(A) = 15, n(B) = 11 and n(A &cup; B) = 20. Find n(A &cap; B).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">n(A &cup; B) = n(A) + n(B) &minus; n(A &cap; B)</span><span class="reason">Union of Two Events</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">20 = 15 + 11 &minus; n(A &cap; B)</span><span class="reason">Substitution</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">20 = 26 &minus; n(A &cap; B)</span><span class="reason">Simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">n(A &cap; B) = 6</span><span class="reason">Solve</span></div>
+      <div class="answer-box">n(A &cap; B) = 6</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 4</h4>
+    <div class="prob">A spinner has 8 equal sections numbered 1 through 8. Find the probability of <i>not</i> landing on a multiple of 3.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">A = {3, 6}, so n(A) = 2</span><span class="reason">multiples of 3 from 1 to 8</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">P(A) = 2/8 = 1/4</span><span class="reason">equally likely sections</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">P(A&prime;) = 1 &minus; 1/4</span><span class="reason">Probability of a complement</span></div>
+      <div class="answer-box">P(A&prime;) = 3/4 = 0.75</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 5</h4>
+    <div class="prob">A coin is tossed three times. How many outcomes are in the sample space, and what is P(exactly two heads)?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">n(S) = 2 &times; 2 &times; 2 = 8</span><span class="reason">three stages, 2 choices each</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}</span><span class="reason">read the leaves of the tree</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">exactly two heads: HHT, HTH, THH &rarr; 3 outcomes</span><span class="reason">count the favourable leaves</span></div>
+      <div class="answer-box">n(S) = 8 and P(exactly two heads) = 3/8 = 0.375</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Problem 6</h4>
+    <div class="prob">Two fair dice are rolled. Use the sum grid to find P(sum &le; 4).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">n(S) = 6 &times; 6 = 36</span><span class="reason">two stages of six</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">sum 2: (1,1) &rarr; 1 cell</span><span class="reason">read the grid</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">sum 3: (1,2), (2,1) &rarr; 2 cells</span><span class="reason">read the grid</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">sum 4: (1,3), (2,2), (3,1) &rarr; 3 cells</span><span class="reason">read the grid</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">P = (1 + 2 + 3)/36 = 6/36</span><span class="reason">add the favourable cells</span></div>
+      <div class="answer-box">P(sum &le; 4) = 6/36 = 1/6 &asymp; 0.167</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Both <i>A</i> <b>and</b> <i>B</i> must happen</td><td>Count only the outcomes that satisfy both conditions, then divide by <code>n(S)</code></td><td><code>P(A &cap; B) = n(A &cap; B)/n(S)</code></td></tr>
+    <tr><td><i>A</i> <b>or</b> <i>B</i> (or both) happens</td><td>Add the two counts, then subtract the shared outcomes</td><td><code>n(A &cup; B) = n(A) + n(B) &minus; n(A &cap; B)</code></td></tr>
+    <tr><td><i>A</i> does <b>not</b> happen</td><td>Find <code>P(A)</code> and subtract from 1</td><td><code>P(A&prime;) = 1 &minus; P(A)</code></td></tr>
+    <tr><td>The events share no outcomes</td><td>Nothing to remove</td><td><code>A &cap; B = &empty;</code> and <code>n(A &cup; B) = n(A) + n(B)</code></td></tr>
+    <tr><td>The experiment happens in stages</td><td>Draw a tree diagram or multiply the number of choices at each stage</td><td><code>n(S) = n<sub>1</sub> &times; n<sub>2</sub> &times; &hellip;</code></td></tr>
+    <tr><td>Two features sort the same objects</td><td>Build a two-way table; an intersection is one cell</td><td>row total + column total &minus; cell</td></tr>
+  </table>
+  <div class="pill-row">
+    <span class="pill">P(A) = n(A)/n(S)</span>
+    <span class="pill">P(A &cap; B) = n(A &cap; B)/n(S)</span>
+    <span class="pill">n(A &cup; B) = n(A) + n(B) &minus; n(A &cap; B)</span>
+    <span class="pill">P(A&prime;) = 1 &minus; P(A)</span>
+    <span class="pill">P(A) + P(A&prime;) = 1</span>
+    <span class="pill">n(S) = n<sub>1</sub> &times; n<sub>2</sub></span>
+  </div>
+  <div class="warning-box"><strong>Common mistakes to avoid</strong>
+    <ul style="margin:6px 0 0 20px">
+      <li>Adding <code>n(A) + n(B)</code> for a union without subtracting the overlap.</li>
+      <li>Swapping the symbols: <code>&cap;</code> is <b>and</b> (smaller set), <code>&cup;</code> is <b>or</b> (larger set).</li>
+      <li>Using the wrong denominator &mdash; with cards it is always 52, not 13 or 26.</li>
+      <li>Writing the complement as <code>1 &divide; P(A)</code> instead of <code>1 &minus; P(A)</code>.</li>
+      <li>Listing a shared outcome twice inside a union set.</li>
+      <li>Forgetting that an empty intersection is <code>&empty;</code>, a set with <code>n = 0</code>, not the number 0 itself.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"A fair die is rolled once. Let A be the event of rolling an even number and B the event of rolling a number greater than 3. Find A &cap; B.",opts:["{4, 6}","{2, 4, 6}","{4, 5, 6}","{2, 4, 5, 6}"],ans:0,exp:"A = {2, 4, 6} and B = {4, 5, 6}. The intersection keeps only outcomes in BOTH lists: 4 and 6. The value 2 is even but not greater than 3, and 5 is greater than 3 but not even."},
+  {q:"A fair die is rolled once. Let A be the event of rolling an odd number and B the event of rolling a multiple of 3. Find A &cup; B.",opts:["{3}","{1, 3, 5}","{1, 3, 5, 6}","{1, 2, 3, 5, 6}"],ans:2,exp:"A = {1, 3, 5} and B = {3, 6}. The union collects every outcome in either set, listing 3 only once: {1, 3, 5, 6}. Note n(A &cup; B) = 3 + 2 &minus; 1 = 4, which matches."},
+  {q:"The Venn diagram shows how many outcomes lie in each region. Find n(A &cup; B).",fig:"<svg viewBox='0 0 330 200' width='330' role='img' aria-label='Two overlapping circles labelled A and B with 8 in the left region, 4 in the overlap and 5 in the right region'><circle class='g-shape' cx='125' cy='108' r='62' style='fill-opacity:.55'/><circle class='g-shape-alt' cx='205' cy='108' r='62' style='fill-opacity:.55'/><text class='g-lbl' x='84' y='34' text-anchor='middle'>A</text><text class='g-lbl' x='246' y='34' text-anchor='middle'>B</text><text class='g-meas-b g-halo' x='97' y='114' text-anchor='middle'>8</text><text class='g-grn g-halo' x='165' y='114' text-anchor='middle'>4</text><text class='g-meas g-halo' x='233' y='114' text-anchor='middle'>5</text></svg>",opts:["13","17","25","12"],ans:1,exp:"Simply add the three regions: 8 + 4 + 5 = 17. Using the rule instead, n(A) = 8 + 4 = 12 and n(B) = 4 + 5 = 9, so n(A &cup; B) = 12 + 9 &minus; 4 = 17."},
+  {q:"If P(A) = 3/8, find P(A&prime;).",opts:["1/8","3/8","8/5","5/8"],ans:3,exp:"P(A&prime;) = 1 &minus; P(A) = 8/8 &minus; 3/8 = 5/8. Check: 3/8 + 5/8 = 1, as every outcome is either in A or in A&prime;."},
+  {q:"A card is drawn from a standard 52-card deck. Find P(the card is a queen and is red).",opts:["1/13","1/26","2/13","1/52"],ans:1,exp:"There are 4 queens; two of them (Q&hearts; and Q&diams;) are red, so n(A &cap; B) = 2. Then P = 2/52 = 1/26 &asymp; 0.038. The denominator stays 52 because that is the whole sample space."},
+  {q:"A card is drawn from a standard 52-card deck. Find P(the card is a diamond and is a seven).",opts:["1/13","1/26","1/52","4/13"],ans:2,exp:"Only one card is both a diamond and a seven: the 7&diams;. So P = 1/52. Answer 1/13 would be P(diamond) and 1/13 is also P(seven) &mdash; but the intersection is a single card."},
+  {q:"A card is drawn from a standard 52-card deck. Find P(the card is black and shows a number divisible by 2).",opts:["5/26","5/52","10/13","1/2"],ans:0,exp:"Number cards divisible by 2 are 2, 4, 6, 8 and 10 &mdash; five per suit. The black suits are &spades; and &clubs;, so 5 &times; 2 = 10 cards qualify: P = 10/52 = 5/26."},
+  {q:"A card is drawn from a standard 52-card deck. Find P(the card is not a spade).",opts:["1/4","1/2","2/3","3/4"],ans:3,exp:"P(spade) = 13/52 = 1/4, so the complement is P(not a spade) = 1 &minus; 1/4 = 3/4. Counting directly, 52 &minus; 13 = 39 cards and 39/52 = 3/4."},
+  {q:"A coin is tossed twice. How many outcomes are in the sample space?",opts:["2","3","8","4"],ans:3,exp:"Each toss has 2 results, so n(S) = 2 &times; 2 = 4. The tree diagram ends in four leaves: HH, HT, TH and TT. There are three outcomes only if you group HT and TH together, which the sample space does not do."},
+  {q:"A coin is tossed twice. Find P(at least one head).",opts:["3/4","1/2","1/4","1/3"],ans:0,exp:"Use the complement: the only outcome with no head is TT, so P(no head) = 1/4 and P(at least one head) = 1 &minus; 1/4 = 3/4. Direct count: HH, HT and TH are 3 of the 4 outcomes."},
+  {q:"A coin is tossed and then a fair die is rolled. How many outcomes are in the sample space?",opts:["8","12","36","6"],ans:1,exp:"Multiply the choices at each stage: 2 &times; 6 = 12 outcomes (H1 through H6 and T1 through T6). Adding 2 + 6 = 8 counts branches, not complete paths through the tree."},
+  {q:"Two fair dice are rolled. Find P(the sum is 7).",opts:["1/12","5/36","7/36","1/6"],ans:3,exp:"There are 6 &times; 6 = 36 equally likely outcomes. Six of them sum to 7: (1,6), (2,5), (3,4), (4,3), (5,2) and (6,1). So P = 6/36 = 1/6."},
+  {q:"Two fair dice are rolled. Let A be the event that the sum is 5 and B the event that the two dice show the same number. Find n(A &cup; B).",opts:["10","9","11","4"],ans:0,exp:"n(A) = 4 for (1,4), (2,3), (3,2) and (4,1); n(B) = 6 for the six doubles. A double always gives an even sum, so A &cap; B = &empty; and n(A &cup; B) = 4 + 6 &minus; 0 = 10."},
+  {q:"A random integer from 1 to 20 is generated. Let C be the event of getting a multiple of 5 and D the event of getting a number less than 12. Find n(C &cup; D).",opts:["15","13","11","17"],ans:1,exp:"C = {5, 10, 15, 20} so n(C) = 4; D = {1, 2, &hellip;, 11} so n(D) = 11; C &cap; D = {5, 10} so n(C &cap; D) = 2. Then n(C &cup; D) = 4 + 11 &minus; 2 = 13."},
+  {q:"A fair die is rolled once. Let A be the event of rolling an odd number and B the event of rolling an even number. Find A &cap; B.",opts:["{1, 3, 5}","{2, 4, 6}","&empty;","{1, 2, 3, 4, 5, 6}"],ans:2,exp:"No number on a die is both odd and even, so the intersection is the empty set &empty; with n(A &cap; B) = 0. That is why n(A &cup; B) = 3 + 3 &minus; 0 = 6, the entire sample space."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

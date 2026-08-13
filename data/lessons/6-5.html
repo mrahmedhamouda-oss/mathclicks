@@ -1,0 +1,632 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Simplify, add, subtract, multiply, and divide radical expressions of any index, including rationalizing denominators with conjugates.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>Where we are going</h3>
+    <p>Everything you already know about square roots &mdash; splitting them apart, pulling perfect squares
+    out, combining like terms &mdash; works exactly the same way for cube roots, fourth roots, and every
+    other <i>n</i>th root. This lesson takes those square-root rules and extends them to radicals with
+    <b>any index</b>.</p>
+    <div class="vocab">
+      <div class="vocab-item"><b>like radical expressions</b> &mdash; two radicals are <i>like</i> when
+      <b>both</b> the index <i>and</i> the radicand are the same. Only like radicals can be added or
+      subtracted. <code>3<sup>3</sup>&radic;(5x)</code> and <code>8<sup>3</sup>&radic;(5x)</code> are like;
+      <code>&radic;5</code> and <code><sup>3</sup>&radic;5</code> are not.</div>
+      <div class="vocab-item"><b>conjugates</b> &mdash; the pair <code>a&radic;b + c&radic;d</code> and
+      <code>a&radic;b &minus; c&radic;d</code>, where <i>a</i>, <i>b</i>, <i>c</i>, <i>d</i> are rational.
+      Their product is always rational, which is what kills a radical in a denominator.</div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Splitting a radical across a product</h3>
+    <p>A radical of a product is the product of the radicals &mdash; that is what lets you peel a perfect
+    <i>n</i>th power out of a radicand and leave the rest inside.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Product Property of Radicals</div>
+      <div class="theorem-body">
+        <b>Words:</b> For any real numbers <i>a</i> and <i>b</i> and any integer <i>n</i> &gt; 1,
+        <div class="formula-box"><sup>n</sup>&radic;(ab) = <sup>n</sup>&radic;a &middot; <sup>n</sup>&radic;b,
+        &nbsp; if <i>n</i> is even and <i>a</i> &ge; 0, <i>b</i> &ge; 0, or if <i>n</i> is odd.</div>
+        <b>Examples:</b> <code>&radic;12 &middot; &radic;3 = &radic;36 = 6</code> &nbsp;and&nbsp;
+        <code><sup>3</sup>&radic;4 &middot; <sup>3</sup>&radic;16 = <sup>3</sup>&radic;64 = 4</code>
+      </div>
+    </div>
+    <p><b>Why the condition on <i>n</i>?</b> If <i>n</i> is even, an <i>n</i>th root of a negative number is
+    not a real number, so both factors must be non-negative before you are allowed to split. If <i>n</i> is
+    odd, negatives are fine &mdash; <code><sup>3</sup>&radic;(&minus;8) = &minus;2</code>.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>Splitting a radical across a quotient</h3>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Quotient Property of Radicals</div>
+      <div class="theorem-body">
+        <b>Words:</b> For any real numbers <i>a</i> and <i>b</i> &ne; 0 and any integer <i>n</i> &gt; 1,
+        <div class="formula-box"><sup>n</sup>&radic;(a/b) = <sup>n</sup>&radic;a &divide; <sup>n</sup>&radic;b,
+        &nbsp; if all of the roots are defined.</div>
+        <b>Examples:</b> <code>&radic;(x<sup>4</sup>/25) = &radic;x<sup>4</sup> &divide; &radic;25 =
+        x<sup>2</sup>/5</code> &nbsp;and&nbsp;
+        <code><sup>3</sup>&radic;(27/8) = <sup>3</sup>&radic;27 &divide; <sup>3</sup>&radic;8 = 3/2</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <h3>What &ldquo;simplest form&rdquo; means</h3>
+    <p>A radical expression is not finished until all four of these are true.</p>
+    <div class="theorem">
+      <div class="theorem-head">Key Concept &middot; Simplest Form of Radical Expressions</div>
+      <div class="theorem-body">
+        A radical expression is in simplest form when the following conditions are met.
+        <ul style="margin:8px 0 0 20px;line-height:1.8">
+          <li>The index <i>n</i> is as small as possible.</li>
+          <li>The radicand contains no factors (other than 1) that are <i>n</i>th powers of an integer or
+          polynomial.</li>
+          <li>The radicand contains no fractions.</li>
+          <li>No radicals appear in the denominator.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="keyfact"><div class="ico">1</div><div class="txt">To simplify <code><sup>n</sup>&radic;(radicand)</code>,
+    factor the radicand into <b>perfect <i>n</i>th powers times leftovers</b>. Perfect <i>n</i>th powers walk
+    out of the radical; leftovers stay in.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt">A variable power is a perfect <i>n</i>th power
+    exactly when its exponent is a multiple of <i>n</i>: <code>y<sup>12</sup> = (y<sup>3</sup>)<sup>4</sup></code>
+    is a perfect 4th power, so <code><sup>4</sup>&radic;(y<sup>12</sup>) = |y<sup>3</sup>|</code>.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt">Divide the exponent by the index: quotient =
+    how many come out, remainder = how many stay in. <code><sup>3</sup>&radic;(b<sup>14</sup>)</code> &rarr;
+    14 &divide; 3 = 4 r 2 &rarr; <code>b<sup>4</sup><sup>3</sup>&radic;(b<sup>2</sup>)</code>.</div></div>
+
+    <div class="info-box"><strong>Study Tip &middot; Absolute value.</strong> Use absolute value bars when an
+    <b>even</b> root of an <b>even</b> power produces an <b>odd</b> power outside. But if the radicand itself
+    already forces the variable to be non-negative, the bars are unnecessary. In
+    <code>&radic;(75x<sup>12</sup>y<sup>7</sup>)</code> the factor <code>y<sup>7</sup></code> must be
+    non-negative for the square root to be real, so <i>y</i> &ge; 0 and <code>y<sup>3</sup></code> needs no
+    bars.</div>
+
+    <div class="info-box"><strong>Study Tip &middot; Negative radicands.</strong> If a radicand has a negative
+    constant, factor out <code>&minus;1</code> first. Then <code><sup>n</sup>&radic;(&minus;1) = &minus;1</code>
+    when <i>n</i> is odd, and <code>= i</code> when <i>n</i> is even.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Adding and subtracting radicals</h3>
+    <p>Radicals combine exactly the way monomials do: <code>3q + 8q = 11q</code> becomes
+    <code>3&radic;5 + 8&radic;5 = 11&radic;5</code>. The radical is just the &ldquo;variable part.&rdquo;</p>
+    <div class="formula-box">a&middot;<sup>n</sup>&radic;c &plusmn; b&middot;<sup>n</sup>&radic;c =
+    (a &plusmn; b)&middot;<sup>n</sup>&radic;c</div>
+    <p>Two radicals such as <code>&radic;18</code> and <code>&radic;32</code> may <i>look</i> unlike, but
+    after simplifying, <code>&radic;18 = 3&radic;2</code> and <code>&radic;32 = 4&radic;2</code>. So they are
+    like radical expressions after all and can be combined.</p>
+    <div class="steps-list">
+      <div class="s">Simplify every radical completely first.</div>
+      <div class="s">Group terms that now have the same index and the same radicand.</div>
+      <div class="s">Add or subtract the coefficients only. The radical never changes.</div>
+      <div class="s">Leave unlike radicals side by side &mdash; that is a finished answer.</div>
+    </div>
+    <div class="warning-box"><strong>Watch Out!</strong> <code>&radic;a + &radic;b &ne; &radic;(a+b)</code>.
+    Check: <code>&radic;9 + &radic;16 = 3 + 4 = 7</code>, but <code>&radic;25 = 5</code>. Addition never goes
+    inside a radical.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Multiplying radicals</h3>
+    <p>Radicals with the <b>same index</b> multiply using the Product Property: multiply the coefficients,
+    then multiply the radicands, then simplify what comes out.</p>
+    <div class="formula-box">c&middot;<sup>n</sup>&radic;a &middot; d&middot;<sup>n</sup>&radic;b =
+    cd&middot;<sup>n</sup>&radic;(ab)</div>
+    <p>For products with more than one term, use the Distributive Property or FOIL, exactly as with binomials:</p>
+    <div class="formula-box">(<sup>3</sup>&radic;6 + 1)(<sup>3</sup>&radic;2 &minus; <sup>3</sup>&radic;7) =
+    <sup>3</sup>&radic;12 &minus; <sup>3</sup>&radic;42 + <sup>3</sup>&radic;2 &minus; <sup>3</sup>&radic;7</div>
+    <div class="warning-box"><strong>Watch Out!</strong> You may only merge radicands when the <b>indices
+    match</b>. <code>&radic;2 &middot; <sup>3</sup>&radic;2</code> is <b>not</b> <code>&radic;4</code> or
+    <code><sup>3</sup>&radic;4</code>; it must be rewritten with rational exponents first.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>Rationalizing the denominator</h3>
+    <p>A radical in the denominator is not simplest form. Multiply the numerator and denominator by whatever
+    makes the radicand an <b>exact <i>n</i>th power</b> &mdash; that is multiplying by 1, so the value never
+    changes.</p>
+    <table class="tbl">
+      <tr><th>If the denominator is&hellip;</th><th>Multiply numerator and denominator by&hellip;</th><th>Example</th></tr>
+      <tr>
+        <td><code>&radic;b</code></td>
+        <td><code>&radic;b</code></td>
+        <td><code>4/&radic;7 = (4&middot;&radic;7)/(&radic;7&middot;&radic;7) = 4&radic;7/7</code></td>
+      </tr>
+      <tr>
+        <td><code><sup>n</sup>&radic;(b<sup>x</sup>)</code></td>
+        <td><code><sup>n</sup>&radic;(b<sup>n&minus;x</sup>)</code></td>
+        <td><code>3/<sup>5</sup>&radic;2 = 3&middot;<sup>5</sup>&radic;(2<sup>4</sup>)/<sup>5</sup>&radic;(2<sup>5</sup>)
+        = 3<sup>5</sup>&radic;16/2</code></td>
+      </tr>
+      <tr>
+        <td><code>a&radic;b + c&radic;d</code> (two terms)</td>
+        <td>its conjugate <code>a&radic;b &minus; c&radic;d</code></td>
+        <td><code>1/(&radic;5+2) = (&radic;5&minus;2)/(5&minus;4) = &radic;5 &minus; 2</code></td>
+      </tr>
+    </table>
+    <p><b>Why conjugates work:</b> they are a difference of squares.
+    <code>(a&radic;b + c&radic;d)(a&radic;b &minus; c&radic;d) = a<sup>2</sup>b &minus; c<sup>2</sup>d</code>,
+    and every radical is gone because each one got squared.</p>
+    <div class="warning-box"><strong>Watch Out! &middot; Rationalizing the Denominator.</strong> When deciding
+    what to multiply by, make sure you raise the <b>entire term</b> under the radical to the power
+    <code>n &minus; x</code>. For <code><sup>3</sup>&radic;(7a)</code> you must multiply by
+    <code><sup>3</sup>&radic;(7<sup>2</sup>a<sup>2</sup>)</code>, not just <code><sup>3</sup>&radic;(a<sup>2</sup>)</code>.</div>
+  </div>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Simplify Expressions with the Product Property</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Simplify each expression. &nbsp; a. <sup>3</sup>&radic;(&minus;27a<sup>6</sup>b<sup>14</sup>)
+      &nbsp;&nbsp; b. &radic;(75x<sup>12</sup>y<sup>7</sup>)</div>
+
+      <p style="font-weight:700;color:var(--sl-navy);margin:6px 0 8px">Part a &mdash; index 3, so look for perfect cubes.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math"><sup>3</sup>&radic;(&minus;27a<sup>6</sup>b<sup>14</sup>) = <sup>3</sup>&radic;((&minus;3)<sup>3</sup> &middot; (a<sup>2</sup>)<sup>3</sup> &middot; (b<sup>4</sup>)<sup>3</sup> &middot; b<sup>2</sup>)</span><span class="reason">Factor into cubes.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= <sup>3</sup>&radic;((&minus;3)<sup>3</sup>) &middot; <sup>3</sup>&radic;((a<sup>2</sup>)<sup>3</sup>) &middot; <sup>3</sup>&radic;((b<sup>4</sup>)<sup>3</sup>) &middot; <sup>3</sup>&radic;(b<sup>2</sup>)</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &minus;3a<sup>2</sup>b<sup>4</sup> &middot; <sup>3</sup>&radic;(b<sup>2</sup>)</span><span class="reason">Simplify.</span></div>
+      <div class="answer-box"><sup>3</sup>&radic;(&minus;27a<sup>6</sup>b<sup>14</sup>) = &minus;3a<sup>2</sup>b<sup>4</sup> <sup>3</sup>&radic;(b<sup>2</sup>)</div>
+      <div class="info-box"><strong>Exponent bookkeeping:</strong> 6 &divide; 3 = 2 exactly, so <code>a<sup>2</sup></code>
+      comes out and nothing stays. 14 &divide; 3 = 4 remainder 2, so <code>b<sup>4</sup></code> comes out and
+      <code>b<sup>2</sup></code> stays in. No absolute value bars &mdash; the index is odd.</div>
+
+      <p style="font-weight:700;color:var(--sl-navy);margin:16px 0 8px">Part b &mdash; index 2, so look for perfect squares.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">&radic;(75x<sup>12</sup>y<sup>7</sup>) = &radic;(5<sup>2</sup> &middot; 3 &middot; (x<sup>6</sup>)<sup>2</sup> &middot; (y<sup>3</sup>)<sup>2</sup> &middot; y)</span><span class="reason">Factor into squares.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= &radic;(5<sup>2</sup>) &middot; &radic;3 &middot; &radic;((x<sup>6</sup>)<sup>2</sup>) &middot; &radic;((y<sup>3</sup>)<sup>2</sup>) &middot; &radic;y</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 5x<sup>6</sup>y<sup>3</sup> &radic;(3y)</span><span class="reason">Simplify.</span></div>
+      <div class="answer-box">&radic;(75x<sup>12</sup>y<sup>7</sup>) = 5x<sup>6</sup>y<sup>3</sup> &radic;(3y)</div>
+      <div class="check-box"><strong>Think About It!</strong> Why are absolute value symbols not necessary
+      around <code>y<sup>3</sup></code>, even though it is an odd power produced by an even root? Because the
+      original expression contains <code>&radic;y</code>: for it to be a real number, <i>y</i> &ge; 0, and then
+      <code>y<sup>3</sup> &ge; 0</code> automatically. (<code>x<sup>6</sup></code> is never negative either.)</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Simplify Expressions with the Quotient Property</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify each expression. &nbsp; a. <sup>3</sup>&radic;(24a<sup>6</sup>/125)
+      &nbsp;&nbsp; b. <sup>4</sup>&radic;(80y<sup>14</sup>/256z<sup>4</sup>)</div>
+
+      <p style="font-weight:700;color:var(--sl-navy);margin:6px 0 8px">Part a</p>
+      <div class="solution-step"><span class="num">1</span><span class="math"><sup>3</sup>&radic;(24a<sup>6</sup>/125) = <sup>3</sup>&radic;(24a<sup>6</sup>) &divide; <sup>3</sup>&radic;125</span><span class="reason">Quotient Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= <sup>3</sup>&radic;(2<sup>3</sup> &middot; 3 &middot; (a<sup>2</sup>)<sup>3</sup>) &divide; <sup>3</sup>&radic;(5<sup>3</sup>)</span><span class="reason">Factor into cubes.</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (<sup>3</sup>&radic;(2<sup>3</sup>) &middot; <sup>3</sup>&radic;3 &middot; <sup>3</sup>&radic;((a<sup>2</sup>)<sup>3</sup>)) &divide; <sup>3</sup>&radic;(5<sup>3</sup>)</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 2a<sup>2</sup> <sup>3</sup>&radic;3 &divide; 5</span><span class="reason">Simplify.</span></div>
+      <div class="answer-box"><sup>3</sup>&radic;(24a<sup>6</sup>/125) = (2a<sup>2</sup> <sup>3</sup>&radic;3)/5</div>
+      <div class="info-box"><strong>Note:</strong> the denominator is already rational
+      (<code><sup>3</sup>&radic;125 = 5</code>), so no rationalizing is needed here.</div>
+
+      <p style="font-weight:700;color:var(--sl-navy);margin:16px 0 8px">Part b</p>
+      <div class="solution-step"><span class="num">1</span><span class="math"><sup>4</sup>&radic;(80y<sup>14</sup>/256z<sup>4</sup>) = <sup>4</sup>&radic;(80y<sup>14</sup>) &divide; <sup>4</sup>&radic;(256z<sup>4</sup>)</span><span class="reason">Quotient Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= <sup>4</sup>&radic;(2<sup>4</sup> &middot; 5 &middot; (y<sup>3</sup>)<sup>4</sup> &middot; y<sup>2</sup>) &divide; <sup>4</sup>&radic;(4<sup>4</sup> &middot; z<sup>4</sup>)</span><span class="reason">Factor into fourth powers.</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (<sup>4</sup>&radic;(2<sup>4</sup>) &middot; <sup>4</sup>&radic;5 &middot; <sup>4</sup>&radic;((y<sup>3</sup>)<sup>4</sup>) &middot; <sup>4</sup>&radic;(y<sup>2</sup>)) &divide; (<sup>4</sup>&radic;(4<sup>4</sup>) &middot; <sup>4</sup>&radic;(z<sup>4</sup>))</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 2|y<sup>3</sup>| <sup>4</sup>&radic;(5y<sup>2</sup>) &divide; (4|z|)</span><span class="reason">Simplify radicals.</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= |y<sup>3</sup>| <sup>4</sup>&radic;(5y<sup>2</sup>) &divide; (2|z|)</span><span class="reason">Reduce 2/4.</span></div>
+      <div class="answer-box"><sup>4</sup>&radic;(80y<sup>14</sup>/256z<sup>4</sup>) = (|y<sup>3</sup>| <sup>4</sup>&radic;(5y<sup>2</sup>))/(2z), &nbsp; z &gt; 0</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The index 4 is even, so every odd power that comes
+      out needs absolute value bars: <code><sup>4</sup>&radic;((y<sup>3</sup>)<sup>4</sup>) = |y<sup>3</sup>|</code>
+      and <code><sup>4</sup>&radic;(z<sup>4</sup>) = |z|</code>. Textbooks often write the denominator as
+      <code>2z</code> assuming <i>z</i> &gt; 0.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Add and Subtract Radicals</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify 6&radic;(45x) + &radic;12 &minus; 3&radic;(20x).</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= 6&radic;(9 &middot; 5x) + &radic;(4 &middot; 3) &minus; 3&radic;(4 &middot; 5x)</span><span class="reason">Factor using squares.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 6(&radic;(3<sup>2</sup>) &middot; &radic;(5x)) + (&radic;(2<sup>2</sup>) &middot; &radic;3) &minus; 3(&radic;(2<sup>2</sup>) &middot; &radic;(5x))</span><span class="reason">Product Property</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 6(3&radic;(5x)) + (2&radic;3) &minus; 3(2&radic;(5x))</span><span class="reason">Simplify radicals.</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 18&radic;(5x) + 2&radic;3 &minus; 6&radic;(5x)</span><span class="reason">Multiply.</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 12&radic;(5x) + 2&radic;3</span><span class="reason">Combine like radicals.</span></div>
+      <div class="answer-box">6&radic;(45x) + &radic;12 &minus; 3&radic;(20x) = 12&radic;(5x) + 2&radic;3</div>
+      <div class="warning-box"><strong>Trap in this problem:</strong> <code>&radic;(5x)</code> and
+      <code>&radic;3</code> are <b>not</b> like radicals, so the answer has two terms. Do not write
+      <code>14&radic;(5x+3)</code> or <code>14&radic;(15x)</code>.</div>
+      <div class="check-box"><strong>Check:</strong> let <i>x</i> = 5. Original:
+      <code>6&radic;225 + &radic;12 &minus; 3&radic;100 = 90 + 3.464 &minus; 30 = 63.464</code>.
+      Answer: <code>12&radic;25 + 2&radic;3 = 60 + 3.464 = 63.464</code> &check;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">Multiply Radicals</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify 4<sup>5</sup>&radic;(&minus;10x<sup>2</sup>y<sup>6</sup>) &middot;
+      3<sup>5</sup>&radic;(16x<sup>4</sup>y<sup>4</sup>).</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= 4 &middot; 3 &middot; <sup>5</sup>&radic;(&minus;10x<sup>2</sup>y<sup>6</sup> &middot; 16x<sup>4</sup>y<sup>4</sup>)</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 12 &middot; <sup>5</sup>&radic;(&minus;1 &middot; 2 &middot; 5 &middot; x<sup>2</sup>y<sup>6</sup> &middot; 16x<sup>4</sup>y<sup>4</sup>)</span><span class="reason">Factor the constants.</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 12 &middot; <sup>5</sup>&radic;(&minus;1 &middot; 2<sup>5</sup> &middot; 5 &middot; x<sup>5</sup> &middot; x &middot; y<sup>10</sup>)</span><span class="reason">Group into powers of 5.</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= 12 &middot; <sup>5</sup>&radic;(&minus;1) &middot; <sup>5</sup>&radic;(2<sup>5</sup>) &middot; <sup>5</sup>&radic;5 &middot; <sup>5</sup>&radic;(x<sup>5</sup>) &middot; <sup>5</sup>&radic;x &middot; <sup>5</sup>&radic;(y<sup>10</sup>)</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 12 &middot; (&minus;1) &middot; 2 &middot; x &middot; y<sup>2</sup> &middot; <sup>5</sup>&radic;5 &middot; <sup>5</sup>&radic;x</span><span class="reason">Simplify.</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= &minus;24xy<sup>2</sup> <sup>5</sup>&radic;(5x)</span><span class="reason">Multiply.</span></div>
+      <div class="answer-box">&minus;24xy<sup>2</sup> <sup>5</sup>&radic;(5x)</div>
+      <div class="info-box"><strong>Think About It!</strong> Here <code><sup>5</sup>&radic;(&minus;1)</code>
+      simplifies to <code>&minus;1</code> because 5 is an odd root. If the index had been <b>even</b>, the
+      radicand would be negative and the result would not be a real number &mdash; it would involve <i>i</i>.</div>
+      <div class="check-box"><strong>Check the exponents:</strong> <code>x<sup>2</sup> &middot; x<sup>4</sup> =
+      x<sup>6</sup></code> and 6 &divide; 5 = 1 r 1, so one <i>x</i> exits and one stays.
+      <code>y<sup>6</sup> &middot; y<sup>4</sup> = y<sup>10</sup></code> and 10 &divide; 5 = 2 exactly, so
+      <code>y<sup>2</sup></code> exits with nothing left inside. &check;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 5</span>
+      <span class="example-title">Use the Distributive Property to Multiply</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">A pennant is a triangle with height 3&radic;8 + 4 and base
+      7&radic;8 + 6&radic;3. Find the area.</div>
+
+      <figure class="fig">
+        <div class="fig-title">Triangle with radical dimensions</div>
+        <svg viewBox="0 0 460 250" width="440" role="img" aria-label="Right triangle with vertical height 3 root 8 plus 4 and horizontal base 7 root 8 plus 6 root 3">
+          <polygon class="g-shape" points="80,50 80,180 394,180"/>
+          <path class="g-right" d="M 92 180 L 92 168 L 80 168"/>
+          <line class="g-line-thin" x1="80" y1="50" x2="80" y2="180"/>
+          <text class="g-meas" x="68" y="118" text-anchor="end" dominant-baseline="middle">3&radic;8 + 4</text>
+          <text class="g-meas-b" x="237" y="204" text-anchor="middle">7&radic;8 + 6&radic;3</text>
+          <text class="g-lbl-sm" x="237" y="228" text-anchor="middle">A = &frac12; &middot; base &middot; height</text>
+          <circle class="g-pt" cx="80" cy="50" r="4"/>
+          <circle class="g-pt" cx="80" cy="180" r="4"/>
+          <circle class="g-pt" cx="394" cy="180" r="4"/>
+        </svg>
+        <figcaption>The base and the height are each binomials containing radicals, so the area needs the
+        Distributive Property (FOIL).</figcaption>
+      </figure>
+
+      <div class="solution-step"><span class="num">1</span><span class="math">A = &frac12;(3&radic;8 + 4)(7&radic;8 + 6&radic;3)</span><span class="reason">Area of a triangle</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= &frac12;[3&radic;8 &middot; 7&radic;8 + 3&radic;8 &middot; 6&radic;3 + 4 &middot; 7&radic;8 + 4 &middot; 6&radic;3]</span><span class="reason">Distributive Property</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= &frac12;[21&radic;64 + 18&radic;24 + 28&radic;8 + 24&radic;3]</span><span class="reason">Multiply radicands.</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= &frac12;[21 &middot; 8 + 18&radic;(2<sup>2</sup> &middot; 6) + 28&radic;(2<sup>2</sup> &middot; 2) + 24&radic;3]</span><span class="reason">Factor into squares.</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= &frac12;[168 + 36&radic;6 + 56&radic;2 + 24&radic;3]</span><span class="reason">Simplify radicals.</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= 84 + 18&radic;6 + 28&radic;2 + 12&radic;3</span><span class="reason">Distribute &frac12;.</span></div>
+      <div class="answer-box">Area = 84 + 18&radic;6 + 28&radic;2 + 12&radic;3 &asymp; 188.5 square units</div>
+      <div class="warning-box"><strong>Watch Out!</strong> None of the four terms are like radicals
+      (<code>&radic;6</code>, <code>&radic;2</code>, <code>&radic;3</code>, and the rational 84), so the answer
+      keeps all four terms. Also note <code>3&radic;8 &middot; 7&radic;8 = 21&radic;64 = 168</code>, not
+      <code>21&radic;8</code>.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 6</span>
+      <span class="example-title">Rationalize the Denominator</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify <sup>3</sup>&radic;(250a<sup>6</sup>/(7a)).</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">= <sup>3</sup>&radic;(250a<sup>6</sup>) &divide; <sup>3</sup>&radic;(7a)</span><span class="reason">Quotient Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= <sup>3</sup>&radic;(5<sup>3</sup> &middot; 2 &middot; (a<sup>2</sup>)<sup>3</sup>) &divide; <sup>3</sup>&radic;(7a)</span><span class="reason">Factor into cubes.</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 5a<sup>2</sup> <sup>3</sup>&radic;2 &divide; <sup>3</sup>&radic;(7a)</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (5a<sup>2</sup> <sup>3</sup>&radic;2 &middot; <sup>3</sup>&radic;(7<sup>2</sup>a<sup>2</sup>)) &divide; (<sup>3</sup>&radic;(7a) &middot; <sup>3</sup>&radic;(7<sup>2</sup>a<sup>2</sup>))</span><span class="reason">Rationalize the denominator.</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= 5a<sup>2</sup> <sup>3</sup>&radic;(2 &middot; 49a<sup>2</sup>) &divide; <sup>3</sup>&radic;(7<sup>3</sup>a<sup>3</sup>)</span><span class="reason">Product Property of Radicals</span></div>
+      <div class="solution-step"><span class="num">6</span><span class="math">= 5a<sup>2</sup> <sup>3</sup>&radic;(98a<sup>2</sup>) &divide; (7a)</span><span class="reason"><sup>3</sup>&radic;(7<sup>3</sup>a<sup>3</sup>) = 7a</span></div>
+      <div class="solution-step"><span class="num">7</span><span class="math">= 5a <sup>3</sup>&radic;(98a<sup>2</sup>) &divide; 7</span><span class="reason">Simplify a<sup>2</sup>/a.</span></div>
+      <div class="answer-box">(5a &middot; <sup>3</sup>&radic;(98a<sup>2</sup>))/7</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The denominator was <code><sup>3</sup>&radic;(7a)</code>,
+      i.e. <code><sup>3</sup>&radic;(7<sup>1</sup>a<sup>1</sup>)</code>. Since <i>n</i> &minus; <i>x</i> = 3
+      &minus; 1 = 2, you multiply by <code><sup>3</sup>&radic;(7<sup>2</sup>a<sup>2</sup>)</code> &mdash;
+      <b>both</b> factors get raised, not just the variable.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 7</span>
+      <span class="example-title">Use Conjugates to Rationalize the Denominator</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Simplify 4x/(2&radic;7 &minus; 5).</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:10px">The denominator has two terms, so multiply
+      the numerator and denominator by the conjugate of <code>2&radic;7 &minus; 5</code>, which is
+      <code>2&radic;7 + 5</code>.</p>
+      <div class="solution-step"><span class="num">1</span><span class="math">= (4x(2&radic;7 + 5)) &divide; ((2&radic;7 &minus; 5)(2&radic;7 + 5))</span><span class="reason">Multiply by the conjugate.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= (8x&radic;7 + 20x) &divide; ((2&radic;7)<sup>2</sup> + 10&radic;7 &minus; 10&radic;7 &minus; 25)</span><span class="reason">FOIL</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= (8x&radic;7 + 20x) &divide; (28 &minus; 25)</span><span class="reason">Middle terms cancel; (2&radic;7)<sup>2</sup> = 4 &middot; 7</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">= (8x&radic;7 + 20x) &divide; 3</span><span class="reason">Subtract.</span></div>
+      <div class="answer-box">(8x&radic;7 + 20x)/3</div>
+      <div class="case-grid">
+        <div class="case-box"><h4>Why the middle terms vanish</h4><div class="math">(A &minus; B)(A + B)<br>= A<sup>2</sup> + AB &minus; AB &minus; B<sup>2</sup><br>= A<sup>2</sup> &minus; B<sup>2</sup><br>Squaring kills both radicals.</div></div>
+        <div class="case-box"><h4>Numeric check</h4><div class="math">2&radic;7 &minus; 5 &asymp; 0.2915<br>Let x = 1: 4/0.2915 &asymp; 13.72<br>(8&radic;7 + 20)/3 &asymp; (21.17+20)/3<br>&asymp; 13.72 &check;</div></div>
+      </div>
+      <div class="warning-box"><strong>Watch Out!</strong> The conjugate flips only the sign <b>between</b> the
+      two terms. The conjugate of <code>2&radic;7 &minus; 5</code> is <code>2&radic;7 + 5</code> &mdash; not
+      <code>&minus;2&radic;7 + 5</code> and not <code>5 &minus; 2&radic;7</code>.</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+  <p style="font-size:14.5px;margin-bottom:12px">Work each one on paper first, then reveal the full solution.</p>
+
+  <div class="try-box">
+    <h4>Practice 1 &middot; Product Property, even index</h4>
+    <div class="prob">Simplify <sup>4</sup>&radic;(64a<sup>4</sup>b<sup>4</sup>).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math"><sup>4</sup>&radic;(64a<sup>4</sup>b<sup>4</sup>) = <sup>4</sup>&radic;(2<sup>4</sup> &middot; 4 &middot; a<sup>4</sup> &middot; b<sup>4</sup>)</span><span class="reason">64 = 16 &middot; 4</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 2|a||b| <sup>4</sup>&radic;4</span><span class="reason">Even index &rarr; absolute values</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math"><sup>4</sup>&radic;4 = 4<sup>1/4</sup> = 2<sup>2/4</sup> = 2<sup>1/2</sup> = &radic;2</span><span class="reason">Reduce the index.</span></div>
+      <div class="answer-box">2|ab| &radic;2</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2 &middot; Add and subtract</h4>
+    <div class="prob">Simplify 3&radic;(24x) &minus; 2&radic;(54x) + &radic;48.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">3&radic;(4 &middot; 6x) &minus; 2&radic;(9 &middot; 6x) + &radic;(16 &middot; 3)</span><span class="reason">Factor into squares.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 3(2&radic;(6x)) &minus; 2(3&radic;(6x)) + 4&radic;3</span><span class="reason">Simplify radicals.</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 6&radic;(6x) &minus; 6&radic;(6x) + 4&radic;3</span><span class="reason">Multiply.</span></div>
+      <div class="answer-box">4&radic;3</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3 &middot; Multiply radicals</h4>
+    <div class="prob">Simplify 6&radic;(3ab) &middot; 4&radic;(24ab<sup>3</sup>), where a &ge; 0 and b &ge; 0.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">= (6 &middot; 4)&radic;(3ab &middot; 24ab<sup>3</sup>) = 24&radic;(72a<sup>2</sup>b<sup>4</sup>)</span><span class="reason">Product Property</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">= 24&radic;(36 &middot; 2 &middot; a<sup>2</sup> &middot; (b<sup>2</sup>)<sup>2</sup>)</span><span class="reason">Factor into squares.</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 24 &middot; 6ab<sup>2</sup>&radic;2</span><span class="reason">Simplify.</span></div>
+      <div class="answer-box">144ab<sup>2</sup>&radic;2</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4 &middot; Conjugates</h4>
+    <div class="prob">Simplify (9 &minus; 2&radic;3)/(&radic;3 + 6).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">Conjugate of &radic;3 + 6 is 6 &minus; &radic;3.</span><span class="reason">Flip the middle sign.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Numerator: (9 &minus; 2&radic;3)(6 &minus; &radic;3) = 54 &minus; 9&radic;3 &minus; 12&radic;3 + 2 &middot; 3</span><span class="reason">FOIL</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= 60 &minus; 21&radic;3</span><span class="reason">Combine like terms.</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">Denominator: (&radic;3 + 6)(6 &minus; &radic;3) = 36 &minus; 3 = 33</span><span class="reason">Difference of squares</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">= (60 &minus; 21&radic;3)/33 = 3(20 &minus; 7&radic;3)/33</span><span class="reason">Factor out 3.</span></div>
+      <div class="answer-box">(20 &minus; 7&radic;3)/11</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5 &middot; Odd index with a negative radicand</h4>
+    <div class="prob">Simplify <sup>3</sup>&radic;(&minus;54x<sup>6</sup>y<sup>11</sup>).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">&minus;54 = (&minus;27)(2) = (&minus;3)<sup>3</sup> &middot; 2</span><span class="reason">Factor the constant.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">x<sup>6</sup> = (x<sup>2</sup>)<sup>3</sup>; &nbsp; y<sup>11</sup> = (y<sup>3</sup>)<sup>3</sup> &middot; y<sup>2</sup></span><span class="reason">11 &divide; 3 = 3 r 2</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">= <sup>3</sup>&radic;((&minus;3)<sup>3</sup>(x<sup>2</sup>)<sup>3</sup>(y<sup>3</sup>)<sup>3</sup> &middot; 2y<sup>2</sup>)</span><span class="reason">Regroup.</span></div>
+      <div class="answer-box">&minus;3x<sup>2</sup>y<sup>3</sup> <sup>3</sup>&radic;(2y<sup>2</sup>)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6 &middot; Product of conjugates</h4>
+    <div class="prob">Simplify (12&radic;10 &minus; 6&radic;5)(12&radic;10 + 6&radic;5).</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">This is (A &minus; B)(A + B) = A<sup>2</sup> &minus; B<sup>2</sup></span><span class="reason">Recognize conjugates.</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">A<sup>2</sup> = (12&radic;10)<sup>2</sup> = 144 &middot; 10 = 1440</span><span class="reason">Square the first term.</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">B<sup>2</sup> = (6&radic;5)<sup>2</sup> = 36 &middot; 5 = 180</span><span class="reason">Square the second term.</span></div>
+      <div class="answer-box">1440 &minus; 180 = 1260</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>One radical, big radicand</td><td>Factor out perfect <i>n</i>th powers; divide each exponent by <i>n</i></td><td><code><sup>3</sup>&radic;(&minus;27a<sup>6</sup>b<sup>14</sup>) = &minus;3a<sup>2</sup>b<sup>4</sup> <sup>3</sup>&radic;(b<sup>2</sup>)</code></td></tr>
+    <tr><td>Fraction under one radical</td><td>Quotient Property, then simplify top and bottom</td><td><code><sup>3</sup>&radic;(24a<sup>6</sup>/125) = 2a<sup>2</sup> <sup>3</sup>&radic;3 / 5</code></td></tr>
+    <tr><td>Sum or difference of radicals</td><td>Simplify each, then combine coefficients of like radicals</td><td><code>6&radic;(45x) + &radic;12 &minus; 3&radic;(20x) = 12&radic;(5x) + 2&radic;3</code></td></tr>
+    <tr><td>Product, same index</td><td>Multiply coefficients, multiply radicands, simplify</td><td><code>4<sup>5</sup>&radic;(&minus;10x<sup>2</sup>y<sup>6</sup>) &middot; 3<sup>5</sup>&radic;(16x<sup>4</sup>y<sup>4</sup>) = &minus;24xy<sup>2</sup> <sup>5</sup>&radic;(5x)</code></td></tr>
+    <tr><td>Binomial times binomial</td><td>Distributive Property / FOIL, then simplify each term</td><td><code>&frac12;(3&radic;8+4)(7&radic;8+6&radic;3) = 84 + 18&radic;6 + 28&radic;2 + 12&radic;3</code></td></tr>
+    <tr><td>One-term radical denominator</td><td>Multiply top and bottom by <code><sup>n</sup>&radic;(b<sup>n&minus;x</sup>)</code></td><td><code><sup>3</sup>&radic;(250a<sup>6</sup>/7a) = 5a <sup>3</sup>&radic;(98a<sup>2</sup>) / 7</code></td></tr>
+    <tr><td>Two-term radical denominator</td><td>Multiply top and bottom by the conjugate</td><td><code>4x/(2&radic;7 &minus; 5) = (8x&radic;7 + 20x)/3</code></td></tr>
+  </table>
+
+  <h3 style="color:var(--sl-navy);font-size:16px;margin:18px 0 6px">Every formula from this lesson</h3>
+  <div class="pill-row">
+    <span class="pill"><sup>n</sup>&radic;(ab) = <sup>n</sup>&radic;a &middot; <sup>n</sup>&radic;b</span>
+    <span class="pill"><sup>n</sup>&radic;(a/b) = <sup>n</sup>&radic;a &divide; <sup>n</sup>&radic;b</span>
+    <span class="pill">a<sup>n</sup>&radic;c &plusmn; b<sup>n</sup>&radic;c = (a&plusmn;b)<sup>n</sup>&radic;c</span>
+    <span class="pill">c<sup>n</sup>&radic;a &middot; d<sup>n</sup>&radic;b = cd<sup>n</sup>&radic;(ab)</span>
+    <span class="pill">1/<sup>n</sup>&radic;(b<sup>x</sup>) &times; <sup>n</sup>&radic;(b<sup>n&minus;x</sup>)</span>
+    <span class="pill">(a&radic;b+c&radic;d)(a&radic;b&minus;c&radic;d) = a<sup>2</sup>b &minus; c<sup>2</sup>d</span>
+    <span class="pill"><sup>n</sup>&radic;(&minus;1) = &minus;1 (n odd)</span>
+  </div>
+
+  <div class="warning-box">
+    <strong>Common mistakes to avoid</strong>
+    <ul style="margin:6px 0 0 20px;line-height:1.8">
+      <li>Adding radicands: <code>&radic;a + &radic;b &ne; &radic;(a+b)</code>.</li>
+      <li>Combining unlike radicals: <code>12&radic;(5x) + 2&radic;3</code> cannot be shortened.</li>
+      <li>Merging different indices: <code>&radic;2 &middot; <sup>3</sup>&radic;2 &ne; <sup>3</sup>&radic;4</code>.</li>
+      <li>Forgetting absolute value bars when an even index produces an odd power outside.</li>
+      <li>Rationalizing by only part of the term: for <code><sup>3</sup>&radic;(7a)</code> multiply by
+      <code><sup>3</sup>&radic;(49a<sup>2</sup>)</code>, not <code><sup>3</sup>&radic;(a<sup>2</sup>)</code>.</li>
+      <li>Writing the conjugate of <code>2&radic;7 &minus; 5</code> as <code>5 &minus; 2&radic;7</code> instead
+      of <code>2&radic;7 + 5</code>.</li>
+      <li>Stopping at <code>2|ab|<sup>4</sup>&radic;4</code> &mdash; the index can still be reduced to
+      <code>2|ab|&radic;2</code>.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+ {q:"Which condition is NOT required for a radical expression to be in simplest form?",
+  opts:["The index n is as small as possible","The radicand contains no factors (other than 1) that are nth powers","The radicand contains no fractions","The radicand must be a prime number"],
+  ans:3,
+  exp:"Simplest form requires the smallest index, no nth power factors, no fractions in the radicand, and no radicals in the denominator. The radicand does not have to be prime &ndash; &radic;(6x) is perfectly simplified."},
+
+ {q:"Two radical expressions are like radical expressions when&hellip;",
+  opts:["they have the same radicand only","they have the same index AND the same radicand","they have the same index only","their coefficients are equal"],
+  ans:1,
+  exp:"Both parts must match. &radic;5 and <sup>3</sup>&radic;5 share a radicand but not an index, and <sup>3</sup>&radic;2 and <sup>3</sup>&radic;7 share an index but not a radicand &ndash; neither pair can be combined."},
+
+ {q:"Simplify &radic;(75x<sup>12</sup>y<sup>7</sup>).",
+  opts:["5x<sup>6</sup>y<sup>3</sup>&radic;(3y)","25x<sup>6</sup>y<sup>3</sup>&radic;(3y)","5x<sup>6</sup>y<sup>3</sup>&radic;(5y)","5x<sup>6</sup>y<sup>4</sup>&radic;3"],
+  ans:0,
+  exp:"75 = 5<sup>2</sup> &middot; 3, so 5 exits and 3 stays. 12 &divide; 2 = 6 exactly, giving x<sup>6</sup>. 7 &divide; 2 = 3 remainder 1, giving y<sup>3</sup> outside and one y inside with the 3."},
+
+ {q:"Simplify <sup>3</sup>&radic;(&minus;27a<sup>6</sup>b<sup>14</sup>).",
+  opts:["3a<sup>2</sup>b<sup>4</sup> <sup>3</sup>&radic;(b<sup>2</sup>)","&minus;3a<sup>3</sup>b<sup>4</sup> <sup>3</sup>&radic;(b<sup>2</sup>)","&minus;3a<sup>2</sup>b<sup>4</sup> <sup>3</sup>&radic;(b<sup>2</sup>)","&minus;27a<sup>2</sup>b<sup>4</sup> <sup>3</sup>&radic;(b<sup>2</sup>)"],
+  ans:2,
+  exp:"&minus;27 = (&minus;3)<sup>3</sup>, so &minus;3 comes out (odd index keeps the negative). 6 &divide; 3 = 2 gives a<sup>2</sup>; 14 &divide; 3 = 4 remainder 2 gives b<sup>4</sup> outside and b<sup>2</sup> inside."},
+
+ {q:"Simplify <sup>3</sup>&radic;(24a<sup>6</sup>/125).",
+  opts:["2a<sup>2</sup> <sup>3</sup>&radic;3 &divide; 25","2a<sup>2</sup> <sup>3</sup>&radic;3 &divide; 5","2a<sup>3</sup> <sup>3</sup>&radic;3 &divide; 5","4a<sup>2</sup> <sup>3</sup>&radic;3 &divide; 5"],
+  ans:1,
+  exp:"By the Quotient Property the expression is <sup>3</sup>&radic;(24a<sup>6</sup>) &divide; <sup>3</sup>&radic;125. Since 24 = 2<sup>3</sup> &middot; 3 and a<sup>6</sup> = (a<sup>2</sup>)<sup>3</sup>, the numerator is 2a<sup>2</sup> <sup>3</sup>&radic;3, and <sup>3</sup>&radic;125 = 5."},
+
+ {q:"Simplify 6&radic;(45x) + &radic;12 &minus; 3&radic;(20x).",
+  opts:["12&radic;(5x) + 2&radic;3","24&radic;(5x) + 2&radic;3","12&radic;(5x) + 4&radic;3","3&radic;(5x) + 2&radic;3"],
+  ans:0,
+  exp:"6&radic;(45x) = 18&radic;(5x), &radic;12 = 2&radic;3, and 3&radic;(20x) = 6&radic;(5x). Only the two &radic;(5x) terms are like: 18 &minus; 6 = 12, and 2&radic;3 stands alone."},
+
+ {q:"Simplify &radic;2 + &radic;8 + &radic;50.",
+  opts:["7&radic;2","&radic;60","6&radic;2","8&radic;2"],
+  ans:3,
+  exp:"&radic;8 = 2&radic;2 and &radic;50 = 5&radic;2, so the sum is 1&radic;2 + 2&radic;2 + 5&radic;2 = 8&radic;2. Note you may never add the radicands to get &radic;60."},
+
+ {q:"Simplify &radic;12 &minus; 2&radic;3 + &radic;108.",
+  opts:["4&radic;3","6&radic;3","8&radic;3","6&radic;6"],
+  ans:1,
+  exp:"&radic;12 = 2&radic;3 and &radic;108 = &radic;(36 &middot; 3) = 6&radic;3. Then 2&radic;3 &minus; 2&radic;3 + 6&radic;3 = 6&radic;3; the first two terms cancel."},
+
+ {q:"Rationalize the denominator of 3 &divide; <sup>5</sup>&radic;(2<sup>3</sup>).",
+  opts:["3<sup>5</sup>&radic;4 &divide; 8","3<sup>5</sup>&radic;8 &divide; 2","3<sup>5</sup>&radic;4 &divide; 2","3<sup>5</sup>&radic;2 &divide; 2"],
+  ans:2,
+  exp:"Here n = 5 and x = 3, so multiply top and bottom by <sup>5</sup>&radic;(2<sup>5&minus;3</sup>) = <sup>5</sup>&radic;(2<sup>2</sup>) = <sup>5</sup>&radic;4. The denominator becomes <sup>5</sup>&radic;(2<sup>5</sup>) = 2."},
+
+ {q:"Simplify 4<sup>5</sup>&radic;(&minus;10x<sup>2</sup>y<sup>6</sup>) &middot; 3<sup>5</sup>&radic;(16x<sup>4</sup>y<sup>4</sup>).",
+  opts:["24xy<sup>2</sup> <sup>5</sup>&radic;(5x)","&minus;24xy<sup>2</sup> <sup>5</sup>&radic;(10x)","&minus;12xy<sup>2</sup> <sup>5</sup>&radic;(5x)","&minus;24xy<sup>2</sup> <sup>5</sup>&radic;(5x)"],
+  ans:3,
+  exp:"Coefficients: 4 &middot; 3 = 12. Radicands: &minus;10 &middot; 16 = &minus;160 = (&minus;1)(2<sup>5</sup>)(5), x<sup>6</sup>, y<sup>10</sup>. Out come &minus;1, 2, x, y<sup>2</sup>, so 12(&minus;1)(2) = &minus;24 with 5x left inside."},
+
+ {q:"Simplify 3&radic;(5y) &middot; 8&radic;(10yz), where y &ge; 0.",
+  opts:["120y&radic;(2z)","120y&radic;(10z)","24y&radic;(2z)","120y<sup>2</sup>&radic;(2z)"],
+  ans:0,
+  exp:"Multiply coefficients (3 &middot; 8 = 24) and radicands (5y &middot; 10yz = 50y<sup>2</sup>z). Then &radic;(50y<sup>2</sup>z) = 5y&radic;(2z), so 24 &middot; 5y = 120y with &radic;(2z) remaining."},
+
+ {q:"Simplify 6 &divide; (&radic;3 &minus; &radic;2).",
+  opts:["6&radic;3 &minus; 6&radic;2","6&radic;3 + 6&radic;2","(6&radic;3 + 6&radic;2) &divide; 5","6&radic;5"],
+  ans:1,
+  exp:"Multiply by the conjugate &radic;3 + &radic;2. The denominator becomes (&radic;3)<sup>2</sup> &minus; (&radic;2)<sup>2</sup> = 3 &minus; 2 = 1, so the answer is just the new numerator 6(&radic;3 + &radic;2)."},
+
+ {q:"Simplify &radic;2 &divide; (&radic;5 &minus; &radic;3).",
+  opts:["&radic;10 + &radic;6","(&radic;10 &minus; &radic;6) &divide; 2","(&radic;10 + &radic;6) &divide; 2","(&radic;10 + &radic;6) &divide; 8"],
+  ans:2,
+  exp:"Multiply by &radic;5 + &radic;3. Numerator: &radic;2(&radic;5 + &radic;3) = &radic;10 + &radic;6. Denominator: 5 &minus; 3 = 2. The 2 does not cancel because the numerator terms are irrational."},
+
+ {q:"Simplify 4x &divide; (2&radic;7 &minus; 5).",
+  opts:["(8x&radic;7 + 20x) &divide; 28","(8x&radic;7 &minus; 20x) &divide; 3","(8x&radic;7 + 20x) &divide; 53","(8x&radic;7 + 20x) &divide; 3"],
+  ans:3,
+  exp:"Multiply by the conjugate 2&radic;7 + 5. Numerator: 4x(2&radic;7) + 4x(5) = 8x&radic;7 + 20x. Denominator: (2&radic;7)<sup>2</sup> &minus; 5<sup>2</sup> = 28 &minus; 25 = 3."},
+
+ {q:"Simplify (8&radic;5 &minus; 6&radic;3)(8&radic;5 + 6&radic;3).",
+  opts:["212","428","320 &minus; 108&radic;15","212 &minus; 96&radic;15"],
+  ans:0,
+  exp:"These are conjugates, so the product is a<sup>2</sup>b &minus; c<sup>2</sup>d = 64 &middot; 5 &minus; 36 &middot; 3 = 320 &minus; 108 = 212. The two middle FOIL terms, &plusmn;48&radic;15, cancel."}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>

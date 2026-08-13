@@ -1,0 +1,642 @@
+<div class="sat-lesson">
+<p class="lesson-objective">Decide whether three lengths can form a triangle, and find the full range of possible lengths for a missing third side.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<section id="concepts">
+  <h2>Core Concepts</h2>
+
+  <div class="concept-card">
+    <h3>1. Three lengths do not automatically make a triangle</h3>
+    <p>Hand someone three sticks and they may or may not be able to close them into a triangle.
+    If two of the sticks are far too short, they simply cannot reach each other across the long
+    one &mdash; the shape never closes. In order for three segments to form a triangle, a special
+    relationship must exist among their lengths.</p>
+    <div class="theorem">
+      <div class="theorem-head">Theorem 6.11 &middot; Triangle Inequality Theorem</div>
+      <div class="theorem-body">
+        The sum of the lengths of any <b>two</b> sides of a triangle must be <b>greater than</b>
+        the length of the third side.
+      </div>
+    </div>
+    <p>For a triangle with sides <code>a</code>, <code>b</code>, and <code>c</code>, all three of
+    these statements must be true at the same time:</p>
+    <div class="formula-box">
+      a + b &gt; c<br>
+      a + c &gt; b<br>
+      b + c &gt; a
+    </div>
+    <p>If even <b>one</b> of the three fails, no triangle exists.</p>
+  </div>
+
+  <div class="concept-card">
+    <h3>2. Testing a set of three lengths</h3>
+    <div class="steps-list">
+      <div class="s">Write the three lengths down.</div>
+      <div class="s">Form all three pairs and add each pair.</div>
+      <div class="s">Compare each sum to the remaining (third) length.</div>
+      <div class="s">If every sum is strictly greater than the third length, a triangle is possible. If any sum is less than <b>or equal to</b> the third length, it is impossible.</div>
+    </div>
+    <div class="info-box"><strong>Study Tip &mdash; the one-check shortcut:</strong>
+    order the lengths so that <code>a &le; b &le; c</code>. Then <code>a + c &gt; b</code> and
+    <code>b + c &gt; a</code> are automatically true, because you are adding the longest side to
+    something positive. Only <code>a + b &gt; c</code> &mdash; <b>the two shortest against the
+    longest</b> &mdash; can ever fail, so that is the only inequality you truly have to check.</div>
+    <div class="warning-box"><strong>Watch Out!</strong> The inequality is <b>strict</b>. If
+    <code>a + b = c</code> exactly, the two short sides lie flat along the long one and the
+    "triangle" collapses to a segment with zero height. Equality means <b>no triangle</b>.
+    Example: 3, 5, 8 fails because <code>3 + 5 = 8</code>, not <code>&gt; 8</code>.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>3. Finding the range for a missing third side</h3>
+    <p>When the lengths of two sides of a triangle are known, the third side can be any length in
+    a <b>range</b> of values &mdash; not just one value. Let the known sides be <code>p</code> and
+    <code>q</code> and let <code>x</code> be the unknown third side. The three inequalities give</p>
+    <div class="formula-box">
+      p + q &gt; x&nbsp;&nbsp;&rarr;&nbsp;&nbsp;x &lt; p + q<br>
+      p + x &gt; q&nbsp;&nbsp;&rarr;&nbsp;&nbsp;x &gt; q &minus; p<br>
+      q + x &gt; p&nbsp;&nbsp;&rarr;&nbsp;&nbsp;x &gt; p &minus; q
+    </div>
+    <p>The last two collapse into one statement: <code>x</code> must exceed the
+    <b>positive difference</b> of the two known sides. So the answer is always a compound
+    inequality:</p>
+    <div class="formula-box">
+      | p &minus; q | &nbsp;&lt;&nbsp; x &nbsp;&lt;&nbsp; p + q
+    </div>
+    <div class="info-box"><strong>Study Tip:</strong> the compound inequality
+    <code>4 &lt; x &lt; 12</code> is read "<i>x</i> is between 4 and 12." Both endpoints are
+    excluded, so the least possible <b>whole-number</b> value is 5 and the greatest is 11.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>4. Key facts to memorise</h3>
+    <div class="keyfact"><div class="ico">1</div><div class="txt">
+      Two sides added must be <b>strictly greater</b> than the third &mdash; "greater than or
+      equal to" is not good enough.</div></div>
+    <div class="keyfact"><div class="ico">2</div><div class="txt">
+      Check the <b>two smallest against the largest</b>. That single test decides everything.</div></div>
+    <div class="keyfact"><div class="ico">3</div><div class="txt">
+      Missing third side: <code>difference &lt; x &lt; sum</code> of the two known sides.</div></div>
+    <div class="keyfact"><div class="ico">4</div><div class="txt">
+      The range is <b>open</b> at both ends: <code>&lt;</code>, never <code>&le;</code>.</div></div>
+    <div class="keyfact"><div class="ico">5</div><div class="txt">
+      Three points are the vertices of a triangle only if they are <b>not collinear</b>. For
+      collinear points the two shorter distances add up to exactly the longest one.</div></div>
+  </div>
+
+  <div class="concept-card">
+    <h3>5. Why the theorem is true (the proof idea)</h3>
+    <p>To prove <code>AC + BC &gt; AB</code> in &#9651;<i>ABC</i>, extend
+    <span style="text-decoration:overline">BC</span> past <i>C</i> to a point <i>D</i> so that
+    <span style="text-decoration:overline">CD</span> &cong;
+    <span style="text-decoration:overline">AC</span>. Then &#9651;<i>ACD</i> is isosceles, so
+    &ang;<i>CAD</i> &cong; &ang;<i>D</i>. Since &ang;<i>BAD</i> is larger than &ang;<i>CAD</i>,
+    it is larger than &ang;<i>D</i>, and by the Angle&ndash;Side relationship of Lesson 6-5 the
+    side opposite the larger angle is longer: <code>BD &gt; AB</code>. But
+    <code>BD = BC + CD = BC + AC</code>. Therefore <code>AC + BC &gt; AB</code>.</p>
+    <div class="info-box"><strong>Think About It!</strong> This is Exercise 22 in the textbook &mdash;
+    the auxiliary segment <span style="text-decoration:overline">CD</span> is the whole trick.</div>
+  </div>
+
+  <div class="concept-card">
+    <h3>6. Vocabulary</h3>
+    <div class="vocab">
+      <div class="vocab-item"><b>Triangle Inequality Theorem</b> &mdash; the sum of any two side
+      lengths of a triangle is greater than the third side length.</div>
+      <div class="vocab-item"><b>Compound inequality</b> &mdash; two inequalities joined into one
+      statement, such as <code>4 &lt; x &lt; 12</code>.</div>
+      <div class="vocab-item"><b>Degenerate triangle</b> &mdash; the flat "triangle" you get when
+      <code>a + b = c</code>; it has zero area and is not a triangle.</div>
+      <div class="vocab-item"><b>Collinear points</b> &mdash; points lying on one line; they can
+      never be the vertices of a triangle.</div>
+    </div>
+  </div>
+</section>
+
+<section id="figures">
+  <h2>Key Figures</h2>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 1 &middot; A valid triangle: 9, 12, 18</div>
+    <svg id="fig1" viewBox="0 0 400 215" width="400" role="img" aria-label="Triangle with sides 9 cm, 12 cm and 18 cm drawn to scale">
+      <g data-part="c">
+        <line class="g-line" x1="40" y1="175" x2="346" y2="175"/>
+        <text class="g-meas" x="193" y="198" text-anchor="middle">18 cm</text>
+      </g>
+      <g data-part="b">
+        <line class="g-line" x1="40" y1="175" x2="222.8" y2="84.4"/>
+        <text class="g-meas-b" x="124.3" y="115.4" text-anchor="middle">12 cm</text>
+      </g>
+      <g data-part="a">
+        <line class="g-line" x1="222.8" y1="84.4" x2="346" y2="175"/>
+        <text class="g-grn" x="293.9" y="116.8" text-anchor="middle">9 cm</text>
+      </g>
+      <circle class="g-pt" cx="40" cy="175" r="5"/>
+      <circle class="g-pt" cx="346" cy="175" r="5"/>
+      <circle class="g-pt" cx="222.8" cy="84.4" r="5"/>
+      <text class="g-lbl" x="222.8" y="68" text-anchor="middle">A</text>
+      <text class="g-lbl" x="32" y="194" text-anchor="end">B</text>
+      <text class="g-lbl" x="354" y="194" text-anchor="start">C</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig1','a')">Side 9</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','b')">Side 12</button>
+      <button class="fig-chip" onclick="figHi(this,'fig1','c')">Side 18</button>
+    </div>
+    <figcaption>Drawn to scale at 17 px per cm. All three checks pass:
+    9 + 12 = 21 &gt; 18, &nbsp; 12 + 18 = 30 &gt; 9, &nbsp; 9 + 18 = 27 &gt; 12. The shape closes.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 2 &middot; When it fails: 4, 5, 12</div>
+    <svg id="fig2" viewBox="0 0 400 235" width="400" role="img" aria-label="Sides 5 and 4 hinged on a base of 12 cannot reach each other; a gap remains">
+      <text class="g-meas" x="200" y="60" text-anchor="middle">5 + 4 = 9 &lt; 12&nbsp;&nbsp;&rarr;&nbsp;&nbsp;no triangle</text>
+      <g data-part="base">
+        <line class="g-line" x1="55" y1="190" x2="343" y2="190"/>
+        <text class="g-meas-b" x="199" y="212" text-anchor="middle">12</text>
+      </g>
+      <g data-part="s1">
+        <path class="g-aux" d="M 175 190 A 120 120 0 0 0 163.8 139.3"/>
+        <line class="g-line" x1="55" y1="190" x2="163.8" y2="139.3"/>
+        <text class="g-meas" x="103.1" y="151.1" text-anchor="middle">5</text>
+      </g>
+      <g data-part="s2">
+        <path class="g-aux" d="M 247 190 A 96 96 0 0 1 256 149.4"/>
+        <line class="g-line" x1="343" y1="190" x2="256" y2="149.4"/>
+        <text class="g-meas" x="305.8" y="156.1" text-anchor="middle">4</text>
+      </g>
+      <g data-part="gap">
+        <line class="g-dash" x1="163.8" y1="139.3" x2="256" y2="149.4"/>
+        <text class="g-meas g-halo" x="209.9" y="130" text-anchor="middle">gap &mdash; ends never meet</text>
+      </g>
+      <circle class="g-pt" cx="55" cy="190" r="5"/>
+      <circle class="g-pt" cx="343" cy="190" r="5"/>
+      <circle class="g-pt-o" cx="163.8" cy="139.3" r="4.5"/>
+      <circle class="g-pt-o" cx="256" cy="149.4" r="4.5"/>
+      <text class="g-lbl" x="45" y="209" text-anchor="end">B</text>
+      <text class="g-lbl" x="353" y="209" text-anchor="start">C</text>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig2','base')">Longest side (12)</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','s1')">Side 5</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','s2')">Side 4</button>
+      <button class="fig-chip" onclick="figHi(this,'fig2','gap')">The gap</button>
+    </div>
+    <figcaption>Drawn to scale at 24 px per unit. Swing the sides of length 5 and 4 (grey arcs)
+    anywhere you like &mdash; laid flat they cover only 9 of the 12 units, so a gap of 3 units
+    always remains. The two short sides cannot reach each other.</figcaption>
+  </figure>
+
+  <figure class="fig">
+    <div class="fig-title">Figure 3 &middot; The range of the third side (sides 8 and 12)</div>
+    <svg id="fig3" viewBox="0 0 540 150" width="540" role="img" aria-label="Number line showing the third side x satisfies 4 less than x less than 20">
+      <line class="g-axis" x1="22" y1="85" x2="518" y2="85"/>
+      <path class="g-axis" fill="none" d="M 32 79 L 22 85 L 32 91"/>
+      <path class="g-axis" fill="none" d="M 508 79 L 518 85 L 508 91"/>
+      <g class="g-axis">
+        <line x1="30" y1="79" x2="30" y2="91"/><line x1="70" y1="79" x2="70" y2="91"/>
+        <line x1="110" y1="79" x2="110" y2="91"/><line x1="150" y1="79" x2="150" y2="91"/>
+        <line x1="190" y1="79" x2="190" y2="91"/><line x1="230" y1="79" x2="230" y2="91"/>
+        <line x1="270" y1="79" x2="270" y2="91"/><line x1="310" y1="79" x2="310" y2="91"/>
+        <line x1="350" y1="79" x2="350" y2="91"/><line x1="390" y1="79" x2="390" y2="91"/>
+        <line x1="430" y1="79" x2="430" y2="91"/><line x1="470" y1="79" x2="470" y2="91"/>
+        <line x1="510" y1="79" x2="510" y2="91"/>
+      </g>
+      <text class="g-lbl-sm" x="30" y="108" text-anchor="middle">0</text>
+      <text class="g-lbl-sm" x="110" y="108" text-anchor="middle">4</text>
+      <text class="g-lbl-sm" x="190" y="108" text-anchor="middle">8</text>
+      <text class="g-lbl-sm" x="270" y="108" text-anchor="middle">12</text>
+      <text class="g-lbl-sm" x="350" y="108" text-anchor="middle">16</text>
+      <text class="g-lbl-sm" x="430" y="108" text-anchor="middle">20</text>
+      <text class="g-lbl-sm" x="510" y="108" text-anchor="middle">24</text>
+      <g data-part="sol">
+        <line x1="110" y1="85" x2="430" y2="85" stroke="var(--sl-orange)" stroke-width="5"/>
+        <text class="g-grn" x="270" y="134" text-anchor="middle">4 &lt; x &lt; 20</text>
+      </g>
+      <g data-part="lower">
+        <line class="g-aux" x1="110" y1="62" x2="110" y2="77"/>
+        <text class="g-meas-b" x="110" y="55" text-anchor="middle">12 &minus; 8 = 4</text>
+        <circle class="g-pt-o" cx="110" cy="85" r="6"/>
+      </g>
+      <g data-part="upper">
+        <line class="g-aux" x1="430" y1="62" x2="430" y2="77"/>
+        <text class="g-meas-b" x="430" y="55" text-anchor="middle">12 + 8 = 20</text>
+        <circle class="g-pt-o" cx="430" cy="85" r="6"/>
+      </g>
+    </svg>
+    <div class="fig-legend">
+      <button class="fig-chip" onclick="figHi(this,'fig3','lower')">Lower bound</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','upper')">Upper bound</button>
+      <button class="fig-chip" onclick="figHi(this,'fig3','sol')">Solution set</button>
+    </div>
+    <figcaption>Both circles are <b>open</b>: at <code>x = 4</code> and at <code>x = 20</code> the
+    triangle collapses flat. Every value strictly between them works.</figcaption>
+  </figure>
+</section>
+
+<section id="examples">
+  <h2>Worked Examples</h2>
+
+  <div class="example-card">
+    <button class="example-header open" onclick="toggleExample(this)">
+      <span class="example-label">Example 1</span>
+      <span class="example-title">Identify possible triangles given side lengths</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body open">
+      <div class="problem-stmt">Is it possible to form a triangle with the given side lengths?
+      If not, explain why not.<br>a. 9 cm, 12 cm, 18 cm &nbsp;&nbsp; b. 3 in., 5 in., 8 in.</div>
+
+      <div class="case-grid">
+        <div class="case-box">
+          <h4>Part a &mdash; 9, 12, 18</h4>
+          <div class="math">
+            9 + 12 = 21 &gt; 18 &#10003;<br>
+            12 + 18 = 30 &gt; 9 &#10003;<br>
+            9 + 18 = 27 &gt; 12 &#10003;
+          </div>
+        </div>
+        <div class="case-box">
+          <h4>Part b &mdash; 3, 5, 8</h4>
+          <div class="math">
+            3 + 5 = 8 &nbsp;<b>not</b>&nbsp; &gt; 8 &#10007;<br>
+            3 + 8 = 11 &gt; 5 &#10003;<br>
+            5 + 8 = 13 &gt; 3 &#10003;
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-step"><span class="num">1</span><span class="math">Check each inequality for 9, 12, 18</span><span class="reason">Triangle Inequality Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">All three sums exceed the third side</span><span class="reason">part a passes</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">Check each inequality for 3, 5, 8</span><span class="reason">Triangle Inequality Theorem</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">3 + 5 = 8, which is not greater than 8</span><span class="reason">one pair fails</span></div>
+
+      <figure class="fig" style="border:none;box-shadow:none;padding:4px 0 0">
+        <svg viewBox="0 0 340 200" width="340" role="img" aria-label="Sides 3 and 5 laid flat span exactly 8, forming no triangle">
+          <line class="g-line" x1="60" y1="165" x2="252" y2="165"/>
+          <text class="g-meas-b" x="156" y="188" text-anchor="middle">8 in.</text>
+          <line class="g-aux" x1="60" y1="120" x2="60" y2="160"/>
+          <line class="g-aux" x1="252" y1="120" x2="252" y2="160"/>
+          <line x1="60" y1="120" x2="132" y2="120" stroke="var(--sl-orange)" stroke-width="3.4" stroke-linecap="round"/>
+          <line x1="132" y1="120" x2="252" y2="120" stroke="var(--sl-orange)" stroke-width="3.4" stroke-linecap="round"/>
+          <circle class="g-pt" cx="60" cy="120" r="4.5"/>
+          <circle class="g-pt-o" cx="132" cy="120" r="4.5"/>
+          <circle class="g-pt" cx="252" cy="120" r="4.5"/>
+          <text class="g-meas" x="96" y="110" text-anchor="middle">3</text>
+          <text class="g-meas" x="192" y="110" text-anchor="middle">5</text>
+          <text class="g-grn" x="156" y="76" text-anchor="middle">3 + 5 = 8: the sides lie flat, height = 0</text>
+        </svg>
+        <figcaption>Drawn to scale at 24 px per inch. The 3-side and the 5-side exactly cover the
+        8-side, so the figure has no height &mdash; it is a segment, not a triangle.</figcaption>
+      </figure>
+
+      <div class="answer-box">a. Yes &mdash; 9, 12, 18 form a triangle. &nbsp;&nbsp;
+      b. No &mdash; 3, 5, 8 do not, because 3 + 5 is not greater than 8.</div>
+      <div class="warning-box"><strong>Watch Out!</strong> In part b it is tempting to say "two out
+      of three worked, so it is close enough." It is not. <b>All three</b> inequalities must hold,
+      so a single failure kills the triangle.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 1 &middot; Check</span>
+      <span class="example-title">Two more sets: 2, 5, 6 and 3, 4, 8</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Is it possible to form a triangle with the given side lengths?
+      If not, explain why not.<br>a. 2 mm, 5 mm, 6 mm &nbsp;&nbsp; b. 3 yd, 4 yd, 8 yd</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">a: order the sides &rarr; 2 &le; 5 &le; 6</span><span class="reason">shortcut setup</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">2 + 5 = 7 &gt; 6 &#10003;</span><span class="reason">two shortest vs. longest</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">b: order the sides &rarr; 3 &le; 4 &le; 8</span><span class="reason">shortcut setup</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">3 + 4 = 7, and 7 &lt; 8 &#10007;</span><span class="reason">fails the only test that matters</span></div>
+      <div class="answer-box">a. Yes. &nbsp;&nbsp; b. No &mdash; 3 + 4 = 7 is less than 8.</div>
+      <div class="check-box"><strong>Check:</strong> for part a the other pairs also pass
+      (2 + 6 = 8 &gt; 5 and 5 + 6 = 11 &gt; 2), confirming that the shortcut was enough. &#10003;</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 2</span>
+      <span class="example-title">Find the possible lengths of a third side</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Two sides of a triangle have lengths 8 and 4. Let <i>x</i> be the
+      length of the third side. Find all possible values of <i>x</i>, and state the least possible
+      whole-number value of <i>x</i>.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">4 + 8 &gt; x&nbsp;&nbsp;&rarr;&nbsp;&nbsp;12 &gt; x</span><span class="reason">Triangle Inequality Theorem</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">4 + x &gt; 8&nbsp;&nbsp;&rarr;&nbsp;&nbsp;x &gt; 4</span><span class="reason">subtract 4 from each side</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">x + 8 &gt; 4&nbsp;&nbsp;&rarr;&nbsp;&nbsp;x &gt; &minus;4</span><span class="reason">always true for a length</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">Combine: 4 &lt; x &lt; 12</span><span class="reason">compound inequality</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">Least whole number strictly greater than 4 is 5</span><span class="reason">endpoints excluded</span></div>
+
+      <figure class="fig" style="border:none;box-shadow:none;padding:4px 0 0">
+        <svg viewBox="0 0 460 130" width="460" role="img" aria-label="Number line showing 4 less than x less than 12">
+          <line class="g-axis" x1="22" y1="70" x2="438" y2="70"/>
+          <path class="g-axis" fill="none" d="M 32 64 L 22 70 L 32 76"/>
+          <path class="g-axis" fill="none" d="M 428 64 L 438 70 L 428 76"/>
+          <g class="g-axis">
+            <line x1="30" y1="64" x2="30" y2="76"/><line x1="60" y1="64" x2="60" y2="76"/>
+            <line x1="90" y1="64" x2="90" y2="76"/><line x1="120" y1="64" x2="120" y2="76"/>
+            <line x1="150" y1="64" x2="150" y2="76"/><line x1="180" y1="64" x2="180" y2="76"/>
+            <line x1="210" y1="64" x2="210" y2="76"/><line x1="240" y1="64" x2="240" y2="76"/>
+            <line x1="270" y1="64" x2="270" y2="76"/><line x1="300" y1="64" x2="300" y2="76"/>
+            <line x1="330" y1="64" x2="330" y2="76"/><line x1="360" y1="64" x2="360" y2="76"/>
+            <line x1="390" y1="64" x2="390" y2="76"/><line x1="420" y1="64" x2="420" y2="76"/>
+          </g>
+          <line x1="150" y1="70" x2="390" y2="70" stroke="var(--sl-orange)" stroke-width="5"/>
+          <circle class="g-pt-o" cx="150" cy="70" r="6"/>
+          <circle class="g-pt-o" cx="390" cy="70" r="6"/>
+          <text class="g-lbl-sm" x="30" y="93" text-anchor="middle">0</text>
+          <text class="g-lbl-sm" x="90" y="93" text-anchor="middle">2</text>
+          <text class="g-lbl-sm" x="150" y="93" text-anchor="middle">4</text>
+          <text class="g-lbl-sm" x="210" y="93" text-anchor="middle">6</text>
+          <text class="g-lbl-sm" x="270" y="93" text-anchor="middle">8</text>
+          <text class="g-lbl-sm" x="330" y="93" text-anchor="middle">10</text>
+          <text class="g-lbl-sm" x="390" y="93" text-anchor="middle">12</text>
+          <text class="g-lbl-sm" x="420" y="93" text-anchor="middle">13</text>
+          <text class="g-grn" x="270" y="119" text-anchor="middle">4 &lt; x &lt; 12</text>
+          <text class="g-meas" x="180" y="48" text-anchor="middle">least whole number: 5</text>
+        </svg>
+      </figure>
+
+      <div class="answer-box">4 &lt; x &lt; 12; the least possible whole-number value is x = 5.</div>
+      <div class="check-box"><strong>Check:</strong> test x = 5 &rarr; sides 4, 5, 8 give
+      4 + 5 = 9 &gt; 8 &#10003;. Test x = 4 &rarr; sides 4, 4, 8 give 4 + 4 = 8, not greater than 8
+      &#10007;, confirming 4 itself is excluded.</div>
+      <div class="info-box"><strong>Think About It!</strong> The greatest possible whole-number
+      value here is 11, because <i>x</i> must stay strictly below 12.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 3</span>
+      <span class="example-title">Use the Triangle Inequality Theorem in a proof</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">&#9651;<i>HAB</i> and &#9651;<i>HCB</i> share side
+      <span style="text-decoration:overline">HB</span>, and HC = HB.
+      Prove that HA + AB &gt; HC.<br>
+      <b>Given:</b> HC = HB &nbsp;&nbsp;&nbsp; <b>Prove:</b> HA + AB &gt; HC</div>
+
+      <figure class="fig" style="border:none;box-shadow:none;padding:4px 0 0">
+        <svg viewBox="0 0 340 215" width="340" role="img" aria-label="Points H, C, B and A with segments HC, HB, HA, CB and AB, where HC equals HB">
+          <line class="g-line" x1="80" y1="57" x2="230" y2="72"/>
+          <line class="g-line" x1="80" y1="57" x2="214" y2="126"/>
+          <line class="g-line" x1="80" y1="57" x2="160" y2="172"/>
+          <line class="g-line" x1="230" y1="72" x2="214" y2="126"/>
+          <line class="g-line" x1="160" y1="172" x2="214" y2="126"/>
+          <line class="g-tick" x1="155.7" y1="57.5" x2="154.3" y2="71.5"/>
+          <line class="g-tick" x1="150.2" y1="85.3" x2="143.8" y2="97.7"/>
+          <circle class="g-pt" cx="80" cy="57" r="5"/>
+          <circle class="g-pt" cx="230" cy="72" r="5"/>
+          <circle class="g-pt" cx="214" cy="126" r="5"/>
+          <circle class="g-pt" cx="160" cy="172" r="5"/>
+          <text class="g-lbl" x="66" y="50" text-anchor="middle">H</text>
+          <text class="g-lbl" x="242" y="70" text-anchor="middle">C</text>
+          <text class="g-lbl" x="228" y="134" text-anchor="middle">B</text>
+          <text class="g-lbl" x="152" y="192" text-anchor="middle">A</text>
+        </svg>
+        <figcaption>Tick marks show
+        <span style="text-decoration:overline">HC</span> &cong;
+        <span style="text-decoration:overline">HB</span> (both 150.7 px in the drawing).</figcaption>
+      </figure>
+
+      <table class="tbl">
+        <tr><th>Statements</th><th>Reasons</th></tr>
+        <tr><td><code>1. HC = HB</code></td><td>1. Given</td></tr>
+        <tr><td><code>2. HA + AB &gt; HB</code></td><td>2. Triangle Inequality Theorem (in &#9651;<i>HAB</i>)</td></tr>
+        <tr><td><code>3. HA + AB &gt; HC</code></td><td>3. Substitution Property of Equality</td></tr>
+      </table>
+      <div class="answer-box">HA + AB &gt; HC &nbsp;&#9632;</div>
+      <div class="warning-box"><strong>Watch Out!</strong> Statement 2 comes from
+      &#9651;<i>HAB</i> only. The sides of that triangle are
+      <span style="text-decoration:overline">HA</span>,
+      <span style="text-decoration:overline">AB</span>, and
+      <span style="text-decoration:overline">HB</span> &mdash; you may not mix in
+      <span style="text-decoration:overline">HC</span> until the substitution step.</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <button class="example-header" onclick="toggleExample(this)">
+      <span class="example-label">Example 4</span>
+      <span class="example-title">A range when one side is an expression</span>
+      <span class="toggle-icon">+</span>
+    </button>
+    <div class="example-body">
+      <div class="problem-stmt">Find the range of possible measures of <i>x</i> if
+      <i>x</i> &minus; 2, 10, and 12 represent the sides of a triangle.</div>
+      <div class="solution-step"><span class="num">1</span><span class="math">Let s = x &minus; 2 be the unknown side</span><span class="reason">substitute a single letter</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">12 &minus; 10 &lt; s &lt; 12 + 10</span><span class="reason">difference &lt; side &lt; sum</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">2 &lt; s &lt; 22</span><span class="reason">simplify</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">2 &lt; x &minus; 2 &lt; 22</span><span class="reason">replace s with x &minus; 2</span></div>
+      <div class="solution-step"><span class="num">5</span><span class="math">4 &lt; x &lt; 24</span><span class="reason">add 2 to all three parts</span></div>
+      <div class="answer-box">4 &lt; x &lt; 24</div>
+      <div class="check-box"><strong>Check:</strong> x = 10 gives sides 8, 10, 12 &rarr;
+      8 + 10 = 18 &gt; 12 &#10003;. x = 4 gives sides 2, 10, 12 &rarr; 2 + 10 = 12, not greater
+      than 12 &#10007;, so 4 is correctly excluded.</div>
+      <div class="warning-box"><strong>Watch Out!</strong> The answer is a range for <b>x</b>, not
+      for the side. Students who stop at <code>2 &lt; x &lt; 22</code> forgot to undo the
+      "&minus; 2".</div>
+    </div>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>Try It Yourself</h2>
+
+  <div class="try-box">
+    <h4>Practice 1</h4>
+    <div class="prob">Is it possible to form a triangle with side lengths 14, 14, and 19?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">Two shortest: 14 + 14 = 28</span><span class="reason">order 14 &le; 14 &le; 19</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">28 &gt; 19 &#10003;</span><span class="reason">the only test that can fail</span></div>
+      <div class="answer-box">Yes &mdash; an isosceles triangle with sides 14, 14, 19 exists.</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 2</h4>
+    <div class="prob">Is it possible to form a triangle with side lengths 23, 26, and 50?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">23 + 26 = 49</span><span class="reason">two shortest sides</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">49 &lt; 50 &#10007;</span><span class="reason">sum does not reach the longest side</span></div>
+      <div class="answer-box">No &mdash; 23 + 26 = 49, which is less than 50.</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 3</h4>
+    <div class="prob">Is it possible to form a triangle with side lengths 2.7, 3.1, and 4.3?</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">2.7 + 3.1 = 5.8 &gt; 4.3 &#10003;</span><span class="reason">two shortest vs. longest</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">2.7 + 4.3 = 7.0 &gt; 3.1 &#10003;&nbsp;&nbsp;3.1 + 4.3 = 7.4 &gt; 2.7 &#10003;</span><span class="reason">confirmation</span></div>
+      <div class="answer-box">Yes &mdash; all three inequalities hold.</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 4</h4>
+    <div class="prob">Find the range for the third side of a triangle whose other two sides are 13 in. and 27 in.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">Difference: 27 &minus; 13 = 14</span><span class="reason">lower bound</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">Sum: 27 + 13 = 40</span><span class="reason">upper bound</span></div>
+      <div class="answer-box">14 &lt; x &lt; 40 (whole numbers from 15 to 39)</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 5</h4>
+    <div class="prob">Find the range of possible measures of <i>x</i> if <i>x</i>, 4, and 6 represent the sides of a triangle.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">6 &minus; 4 = 2</span><span class="reason">difference of the known sides</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">6 + 4 = 10</span><span class="reason">sum of the known sides</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">2 &lt; x &lt; 10</span><span class="reason">compound inequality</span></div>
+      <div class="answer-box">2 &lt; x &lt; 10</div>
+    </div>
+  </div>
+
+  <div class="try-box">
+    <h4>Practice 6</h4>
+    <div class="prob">Determine whether J(&minus;7, &minus;1), K(9, &minus;5), and L(21, &minus;8) are the vertices of a triangle.</div>
+    <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+    <div class="reveal-body">
+      <div class="solution-step"><span class="num">1</span><span class="math">JK = &radic;(16&sup2; + 4&sup2;) = &radic;272 &asymp; 16.49</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">2</span><span class="math">KL = &radic;(12&sup2; + 3&sup2;) = &radic;153 &asymp; 12.37</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">3</span><span class="math">JL = &radic;(28&sup2; + 7&sup2;) = &radic;833 &asymp; 28.86</span><span class="reason">Distance Formula</span></div>
+      <div class="solution-step"><span class="num">4</span><span class="math">16.49 + 12.37 = 28.86 = JL</span><span class="reason">sum equals the longest &mdash; not greater</span></div>
+      <div class="answer-box">No &mdash; the three points are collinear (slope &minus;&frac14; throughout), so they cannot be the vertices of a triangle.</div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+
+  <table class="tbl">
+    <tr><th>Situation</th><th>What to do</th><th>Result</th></tr>
+    <tr><td>Three lengths given</td><td>Order them <code>a &le; b &le; c</code>, then test <code>a + b &gt; c</code></td><td>True &rarr; triangle exists; false &rarr; impossible</td></tr>
+    <tr><td>Sum equals the longest side</td><td>Recognise the equality case</td><td>Degenerate &mdash; <b>no</b> triangle</td></tr>
+    <tr><td>Two sides given, third unknown</td><td>Compute difference and sum</td><td><code>|p &minus; q| &lt; x &lt; p + q</code></td></tr>
+    <tr><td>Least whole-number third side</td><td>Take the difference and add 1</td><td>e.g. 4 and 8 &rarr; least is 5</td></tr>
+    <tr><td>Greatest whole-number third side</td><td>Take the sum and subtract 1</td><td>e.g. 13 and 27 &rarr; greatest is 39</td></tr>
+    <tr><td>Unknown side is an expression</td><td>Bound the expression, then solve for the variable</td><td>e.g. <code>2 &lt; x &minus; 2 &lt; 22 &rarr; 4 &lt; x &lt; 24</code></td></tr>
+    <tr><td>Three coordinate points</td><td>Find all three distances; compare</td><td>Sum of two shorter &gt; longest &rarr; triangle</td></tr>
+    <tr><td>Isosceles, base <code>b</code>, legs <code>x</code></td><td>Need <code>x + x &gt; b</code></td><td><code>x &gt; b/2</code></td></tr>
+    <tr><td>Proof with a shared side</td><td>Apply the theorem inside one triangle, then substitute</td><td>e.g. <code>HA + AB &gt; HB = HC</code></td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">a + b &gt; c</span>
+    <span class="pill">a + c &gt; b</span>
+    <span class="pill">b + c &gt; a</span>
+    <span class="pill">|p &minus; q| &lt; x &lt; p + q</span>
+    <span class="pill">a &le; b &le; c &rarr; test a + b &gt; c</span>
+    <span class="pill">isosceles leg: x &gt; b/2</span>
+  </div>
+
+  <div class="warning-box"><strong>Common mistakes to avoid:</strong>
+    <ul style="margin:8px 0 0 20px;line-height:1.8">
+      <li>Using <code>&ge;</code> instead of <code>&gt;</code>. Equality gives a flat, degenerate figure &mdash; not a triangle.</li>
+      <li>Checking only one pair when the sides are <b>not</b> in order. The shortcut only works after you sort them.</li>
+      <li>Writing the range as <code>p &minus; q &lt; x &lt; p + q</code> without taking the <b>positive</b> difference.</li>
+      <li>Giving one number for the third side. The answer is always a range.</li>
+      <li>Including the endpoints when asked for the least or greatest <b>whole number</b>: for <code>4 &lt; x &lt; 12</code> the answers are 5 and 11, not 4 and 12.</li>
+      <li>Forgetting to solve back for the variable when a side is written as an expression like <code>x &minus; 2</code>.</li>
+      <li>Assuming three plotted points must form a triangle &mdash; collinear points do not.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <h2>Practice Quiz</h2>
+    <p>15 questions &middot; click an answer to check it instantly</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="score-panel" id="scorePanel">
+    <div class="score-big" id="scoreBig">0/15</div>
+    <div class="score-msg" id="scoreMsg"></div>
+    <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+  </div>
+</section>
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"The Triangle Inequality Theorem states that the sum of the lengths of any two sides of a triangle must be ___ the length of the third side.",opts:["less than","equal to","at most","greater than"],ans:3,exp:"The relationship is a strict inequality: a + b &gt; c. If the sum were equal to the third side the figure would flatten into a segment, and if it were less the sides could not reach each other at all."},
+  {q:"Is it possible to form a triangle with side lengths 9, 12, and 18?",opts:["Yes &mdash; all three inequalities hold","No &mdash; 9 + 12 &lt; 18","No &mdash; 9 + 18 &lt; 12","Only if the triangle is right"],ans:0,exp:"9 + 12 = 21 &gt; 18, 9 + 18 = 27 &gt; 12, and 12 + 18 = 30 &gt; 9. Every pair beats the remaining side, so the triangle exists."},
+  {q:"Is it possible to form a triangle with side lengths 8, 9, and 17?",opts:["Yes, all three sums work","No, because 8 + 17 &lt; 9","No, because 9 + 17 = 8","No, because 8 + 9 = 17, which is not greater than 17"],ans:3,exp:"The two shorter sides add to exactly the longest side, so the 8 and the 9 lie flat along the 17 and the height is zero. Equality is the boundary case, and boundary cases are excluded."},
+  {q:"Which set of side lengths can NOT form a triangle?",opts:["14, 14, 19","2.7, 3.1, 4.3","23, 26, 50","12.3, 13.9, 25.2"],ans:2,exp:"For 23, 26, 50 the two shorter sides give 23 + 26 = 49, which is less than 50. The others pass: 14 + 14 = 28 &gt; 19, 2.7 + 3.1 = 5.8 &gt; 4.3, and 12.3 + 13.9 = 26.2 &gt; 25.2."},
+  {q:"Which set of side lengths CAN form a triangle?",opts:["3, 5, 8","0.7, 1.4, 2.1","4, 5, 12","32, 41, 63"],ans:3,exp:"32 + 41 = 73 &gt; 63, so that set works. The first two sets are equality cases (3 + 5 = 8 and 0.7 + 1.4 = 2.1) and 4 + 5 = 9 falls well short of 12."},
+  {q:"Two sides of a triangle measure 6 and 19. Which compound inequality gives the possible third side x?",opts:["6 &lt; x &lt; 19","13 &lt; x &lt; 25","13 &lt; x &le; 25","25 &lt; x &lt; 13"],ans:1,exp:"The third side must be larger than the difference 19 &minus; 6 = 13 and smaller than the sum 19 + 6 = 25. Both endpoints are excluded, and a compound inequality is always written smaller value first."},
+  {q:"Two sides of a triangle measure 7 and 29. Find the range for the third side x.",opts:["22 &lt; x &lt; 36","7 &lt; x &lt; 29","22 &le; x &le; 36","36 &lt; x &lt; 22"],ans:0,exp:"Difference 29 &minus; 7 = 22 and sum 29 + 7 = 36 give 22 &lt; x &lt; 36. At x = 22 or x = 36 the triangle would collapse, so closed endpoints are wrong."},
+  {q:"Two sides of a triangle measure 4 and 8. What is the LEAST possible whole-number length of the third side?",opts:["11","4","5","12"],ans:2,exp:"The range is 4 &lt; x &lt; 12. Since 4 itself is excluded (4 + 4 = 8 gives a flat figure), the smallest whole number that works is 5, which yields the valid set 4, 5, 8."},
+  {q:"Two sides of a triangle measure 13 and 27. What is the GREATEST possible whole-number length of the third side?",opts:["14","39","40","41"],ans:1,exp:"The range is 14 &lt; x &lt; 40. The value 40 is excluded because 13 + 27 = 40 is not greater than 40, so the largest whole number available is 39."},
+  {q:"If x, 4, and 6 represent the side lengths of a triangle, find the range of possible values of x.",opts:["2 &lt; x &lt; 10","x &gt; 2","4 &lt; x &lt; 6","0 &lt; x &lt; 10"],ans:0,exp:"Both bounds are needed: x must exceed the difference 6 &minus; 4 = 2 and stay below the sum 6 + 4 = 10. Answers that give only one bound leave out half of the requirement."},
+  {q:"If x &minus; 2, 10, and 12 represent the side lengths of a triangle, find the range of possible values of x.",opts:["2 &lt; x &lt; 22","4 &lt; x &lt; 24","12 &lt; x &lt; 22","4 &lt; x &lt; 22"],ans:1,exp:"First bound the side itself: 2 &lt; x &minus; 2 &lt; 22. Then add 2 to every part of the compound inequality to solve for the variable, giving 4 &lt; x &lt; 24."},
+  {q:"For a triangle with sides a &le; b &le; c, which single inequality is enough to decide whether the triangle can exist?",opts:["a + c &gt; b","b + c &gt; a","a + b &gt; c","a + b + c &gt; 0"],ans:2,exp:"Adding the longest side c to any other positive length automatically beats the remaining side, so those two checks can never fail. Only the sum of the two shortest sides is at risk of falling short of the longest.",fig:"<svg viewBox='0 0 340 200' width='340' role='img' aria-label='Triangle with sides labelled a, b and c drawn to scale in the ratio 5 to 7 to 9'><line class='g-line' x1='45' y1='160' x2='279' y2='160'/><line class='g-line' x1='45' y1='160' x2='127.3' y2='59.4'/><line class='g-line' x1='127.3' y1='59.4' x2='279' y2='160'/><circle class='g-pt' cx='45' cy='160' r='5'/><circle class='g-pt' cx='279' cy='160' r='5'/><circle class='g-pt' cx='127.3' cy='59.4' r='5'/><text class='g-meas' x='73.8' y='99.6' text-anchor='middle'>a</text><text class='g-meas' x='212' y='96.4' text-anchor='middle'>b</text><text class='g-meas' x='162' y='182' text-anchor='middle'>c</text><text class='g-lbl' x='30' y='177' text-anchor='middle'>P</text><text class='g-lbl' x='290' y='177' text-anchor='middle'>Q</text><text class='g-lbl' x='127' y='45' text-anchor='middle'>R</text></svg>"},
+  {q:"Are J(&minus;7, &minus;1), K(9, &minus;5), and L(21, &minus;8) the vertices of a triangle?",opts:["Yes, they form a scalene triangle","No &mdash; two of the points coincide","Not enough information is given","No &mdash; the three points are collinear"],ans:3,exp:"Slope JK = &minus;4/16 = &minus;1/4 and slope KL = &minus;3/12 = &minus;1/4, so the points lie on one line. The distances confirm it: 16.49 + 12.37 = 28.86, exactly JL rather than more than JL."},
+  {q:"The base of an isosceles triangle measures 6. What is the range of possible lengths x of each leg?",opts:["x &gt; 6","0 &lt; x &lt; 6","x &gt; 3","3 &lt; x &lt; 6"],ans:2,exp:"The two legs are the pair that must beat the base: x + x &gt; 6, so x &gt; 3. The other checks, x + 6 &gt; x, are automatically true, so there is no upper limit on the legs."},
+  {q:"In the figure, HC = HB. Which statement follows from applying the Triangle Inequality Theorem in &#9651;HAB and then substituting?",opts:["HA + AB &gt; HC","HA + AB &lt; HC","HA + HB &gt; AB is the only conclusion","AB &gt; HA + HB"],ans:0,exp:"Inside &#9651;HAB the theorem gives HA + AB &gt; HB. Because HC = HB is given, HB may be replaced by HC, producing HA + AB &gt; HC.",fig:"<svg viewBox='0 0 340 215' width='340' role='img' aria-label='Points H, C, B and A joined so that segment HC is congruent to segment HB'><line class='g-line' x1='80' y1='57' x2='230' y2='72'/><line class='g-line' x1='80' y1='57' x2='214' y2='126'/><line class='g-line' x1='80' y1='57' x2='160' y2='172'/><line class='g-line' x1='230' y1='72' x2='214' y2='126'/><line class='g-line' x1='160' y1='172' x2='214' y2='126'/><line class='g-tick' x1='155.7' y1='57.5' x2='154.3' y2='71.5'/><line class='g-tick' x1='150.2' y1='85.3' x2='143.8' y2='97.7'/><circle class='g-pt' cx='80' cy='57' r='5'/><circle class='g-pt' cx='230' cy='72' r='5'/><circle class='g-pt' cx='214' cy='126' r='5'/><circle class='g-pt' cx='160' cy='172' r='5'/><text class='g-lbl' x='66' y='50' text-anchor='middle'>H</text><text class='g-lbl' x='242' y='70' text-anchor='middle'>C</text><text class='g-lbl' x='228' y='134' text-anchor='middle'>B</text><text class='g-lbl' x='152' y='192' text-anchor='middle'>A</text></svg>"}
+];
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- tabs ---------- */
+function tab(btn,paneId){const wrap=btn.closest('.tab-wrap');wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));btn.classList.add('on');wrap.querySelector('#'+paneId).classList.add('on');}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.tab=tab;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
+</div>
