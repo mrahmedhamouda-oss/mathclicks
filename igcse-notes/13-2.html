@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13.2 Time | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="The 12- and 24-hour clock, adding and subtracting times, decimal hours, timetables and using time correctly in speed calculations.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 13 &mdash; Understanding Measurement</span>
+    </div>
+    <h1>13.2 &nbsp;Time</h1>
+    <p>The 12- and 24-hour clock, adding and subtracting times, decimal hours, timetables and using time correctly in speed calculations.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#clock">Clocks</a>
+  <a href="#arith">Time arithmetic</a>
+  <a href="#decimal">Decimal hours</a>
+  <a href="#tables">Timetables</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="clock" data-nav="Clocks">
+<h2>The 12-hour and 24-hour clock</h2>
+<p>Time is the one topic in 0580 that is <b>not</b> decimal. There are 60 seconds in a minute, 60 minutes in an
+hour and 24 hours in a day, so a calculator will happily give you an answer that looks right and is completely
+wrong. Start by being fluent with the two ways of writing a time.</p>
+
+<div class="grid two">
+  <div class="card"><h4>12-hour clock</h4>
+    <ul>
+      <li>Hours run <span class="m">12, 1, 2, &hellip; 11</span> and then start again.</li>
+      <li>Always needs <b>am</b> (midnight to noon) or <b>pm</b> (noon to midnight).</li>
+      <li>Written <span class="m">7.45 pm</span> or <span class="m">7:45 pm</span>.</li>
+    </ul></div>
+  <div class="card o"><h4>24-hour clock</h4>
+    <ul>
+      <li>Hours run <span class="m">00</span> to <span class="m">23</span>; no am or pm.</li>
+      <li>Always <b>four digits</b>: <span class="m">08:05</span>, not 8:05.</li>
+      <li>Midnight is <span class="m">00:00</span>; noon is <span class="m">12:00</span>.</li>
+    </ul></div>
+</div>
+
+<div class="def"><b>Converting</b>
+<b>am times:</b> keep the hours the same, but write midnight hours as <span class="m">00</span>
+(<span class="m">12:30 am = 00:30</span>).<br>
+<b>pm times:</b> add 12 to the hours &mdash; except <span class="m">12</span>-something pm, which is already
+right (<span class="m">12:40 pm = 12:40</span>).</div>
+
+<div class="card p">
+<h4>The 24-hour clock face</h4>
+<svg viewBox="0 0 640 300" role="img" aria-label="Clock face with the 12-hour numbers on the outside and the 24-hour numbers 13 to 24 on the inside">
+  <circle cx="150" cy="150" r="128" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+  <circle cx="150" cy="150" r="90" fill="none" stroke="#6d28d9" stroke-width="1" opacity=".35"/>
+  <g font-size="15" text-anchor="middle" fill="#0f2d6b" font-weight="bold">
+    <text x="202" y="64">1</text><text x="241" y="102">2</text><text x="255" y="155">3</text>
+    <text x="241" y="207">4</text><text x="202" y="246">5</text><text x="150" y="260">6</text>
+    <text x="98" y="246">7</text><text x="59" y="207">8</text><text x="45" y="155">9</text>
+    <text x="59" y="102">10</text><text x="98" y="64">11</text><text x="150" y="50">12</text>
+  </g>
+  <g font-size="13" text-anchor="middle" fill="#6d28d9">
+    <text x="180" y="103">13</text><text x="202" y="125">14</text><text x="210" y="155">15</text>
+    <text x="202" y="185">16</text><text x="180" y="207">17</text><text x="150" y="215">18</text>
+    <text x="120" y="207">19</text><text x="98" y="185">20</text><text x="90" y="155">21</text>
+    <text x="98" y="125">22</text><text x="120" y="103">23</text><text x="150" y="95">24</text>
+  </g>
+  <line x1="150" y1="150" x2="174" y2="171" stroke="#0f2d6b" stroke-width="4" stroke-linecap="round"/>
+  <line x1="150" y1="150" x2="189" y2="173" stroke="#e05c2a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="150" cy="150" r="5" fill="#0f2d6b"/>
+  <text x="330" y="70" font-size="16" font-weight="bold" fill="#6d28d9">Reading the two rings</text>
+  <text x="330" y="102" font-size="14" fill="#0f2d6b">Outer numbers: morning (am)</text>
+  <text x="330" y="128" font-size="14" fill="#0f2d6b">Inner numbers: afternoon (pm)</text>
+  <text x="330" y="164" font-size="14" fill="#e05c2a">4:20 pm &rarr; 16:20</text>
+  <text x="330" y="192" font-size="14" fill="#e05c2a">7:45 pm &rarr; 19:45</text>
+  <text x="330" y="220" font-size="14" fill="#e05c2a">12:30 am &rarr; 00:30</text>
+  <text x="330" y="248" font-size="14" fill="#e05c2a">12:30 pm &rarr; 12:30</text>
+</svg>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Write (a) <span class="m">8:05 pm</span> and (b) <span class="m">12:15 am</span> in 24-hour clock time; write (c) <span class="m">03:40</span> and (d) <span class="m">19:08</span> in 12-hour clock time.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) It is pm and the hour is not 12, so add 12 to the hours.
+    <span class="work">8 + 12 = 20 &nbsp;&rarr;&nbsp; 20:05</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) 12-something <b>am</b> is just after midnight, so the hour becomes 00.
+    <span class="work">12:15 am &rarr; 00:15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) The hour is less than 12, so it is a morning time.
+    <span class="work">03:40 &rarr; 3:40 am</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(d) The hour is more than 12, so subtract 12 and write pm.
+    <span class="work">19 &minus; 12 = 7 &nbsp;&rarr;&nbsp; 7:08 pm</span></div></div>
+  <div class="final">(a) 20:05 &nbsp; (b) 00:15 &nbsp; (c) 3:40 am &nbsp; (d) 7:08 pm</div>
+  <div class="warn"><b>Watch out</b> <span class="m">12:15 am</span> is a quarter past <b>midnight</b>, while
+  <span class="m">12:15 pm</span> is a quarter past <b>noon</b>. They are twelve hours apart.</div>
+</div>
+</details>
+</section>
+
+<section id="arith" data-nav="Time arithmetic">
+<h2>Adding and subtracting times</h2>
+<p>Never do time arithmetic in a straight line on the calculator. Split the journey at the whole hour and
+count in two easy pieces &mdash; that is exactly how the mark scheme expects to see it.</p>
+
+<div class="grid two">
+  <div class="card g"><h4>Adding a duration</h4>
+    <ol>
+      <li>Add the whole <b>hours</b> first.</li>
+      <li>Then add the <b>minutes</b>.</li>
+      <li>If the minutes go past 60, subtract 60 and carry 1 hour.</li>
+    </ol>
+    <p class="m">09:47 + 3 h 40 min &rarr; 12:47 &rarr; 12:87 &rarr; <b>13:27</b></p></div>
+  <div class="card o"><h4>Finding a duration</h4>
+    <ol>
+      <li>Count from the start time <b>up to the next whole hour</b>.</li>
+      <li>Count whole hours.</li>
+      <li>Count the last few minutes.</li>
+    </ol>
+    <p class="m">14:35 &rarr; 15:00 is 25 min; 15:00 &rarr; 17:00 is 2 h; 17:00 &rarr; 17:10 is 10 min &rarr;
+    <b>2 h 35 min</b></p></div>
+</div>
+
+<div class="warn"><b>Watch out</b>
+<span class="m">10:50 + 25 min</span> is <b>not</b> 10:75. Once the minutes reach 60 you carry an hour:
+<span class="m">10:75 = 11:15</span>. Subtracting works the same way in reverse &mdash; borrow <b>60</b>, not 100.</div>
+
+<h3>Crossing midnight</h3>
+<p>If the finishing time is <i>earlier</i> in the day than the starting time, the clock has gone past midnight.
+Split at <span class="m">24:00</span>.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">A nurse begins a night shift at <span class="m">21:45</span> and finishes at <span class="m">06:30</span> the next morning. How long is the shift?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The finish is earlier on the clock than the start, so the shift crosses midnight.
+    Count up to midnight first.
+    <span class="work">21:45 &rarr; 22:00 is 15 min<br>22:00 &rarr; 24:00 is 2 h<br>so 21:45 &rarr; 00:00 is 2 h 15 min</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now count from midnight to the finish.
+    <span class="work">00:00 &rarr; 06:30 is 6 h 30 min</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add the two pieces, carrying an hour when the minutes reach 60.
+    <span class="work">2 h 15 min + 6 h 30 min = 8 h 45 min</span></div></div>
+  <div class="final">The shift lasts 8 hours 45 minutes</div>
+  <div class="tip"><b>Exam tip</b> A quick check: <span class="m">21:45 + 8 h = 05:45</span>, and
+  <span class="m">05:45 + 45 min = 06:30</span>. Always run the addition back to confirm the subtraction.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Time calculator</h4>
+  <p class="hint">Type a start time as <span class="m">hh:mm</span> in 24-hour form, add a duration, and see the
+  finish time &mdash; including what happens past midnight.</p>
+  <div class="row">
+    <div><label for="tcStart">Start time</label><input type="text" id="tcStart" value="21:45" style="width:110px"></div>
+    <div><label for="tcH">Hours</label><input type="number" id="tcH" value="8" step="1" style="width:90px"></div>
+    <div><label for="tcM">Minutes</label><input type="number" id="tcM" value="45" step="1" style="width:90px"></div>
+  </div>
+  <div class="out" id="tcOut"></div>
+</div>
+</section>
+
+<section id="decimal" data-nav="Decimal hours">
+<h2>Minutes as decimals of an hour</h2>
+<p>Speed, distance and time questions need the time as a <b>decimal number of hours</b>, and this is where the
+single most common error in the whole of Chapter 13 lives.</p>
+
+<div class="warn"><b>The classic mistake</b>
+<span class="m">2 h 45 min</span> is <b>not</b> 2.45 hours. There are 60 minutes in an hour, not 100, so
+<span class="m">45 min =</span> <span class="frac"><span>45</span><span>60</span></span> <span class="m">= 0.75 h</span>
+and <span class="m">2 h 45 min = 2.75 h</span>.</div>
+
+<div class="formula">minutes &rarr; hours: divide by 60 &nbsp;&nbsp;&nbsp;&nbsp; hours &rarr; minutes: multiply by 60
+<small>The only two operations you need</small></div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Minutes</th><th>Fraction of an hour</th><th>Decimal</th></tr></thead>
+<tbody>
+<tr><td>6 min</td><td><span class="frac"><span>6</span><span>60</span></span> = <span class="frac"><span>1</span><span>10</span></span></td><td>0.1 h</td></tr>
+<tr><td>15 min</td><td><span class="frac"><span>1</span><span>4</span></span></td><td>0.25 h</td></tr>
+<tr><td>20 min</td><td><span class="frac"><span>1</span><span>3</span></span></td><td>0.3&#775; h</td></tr>
+<tr><td>30 min</td><td><span class="frac"><span>1</span><span>2</span></span></td><td>0.5 h</td></tr>
+<tr><td>40 min</td><td><span class="frac"><span>2</span><span>3</span></span></td><td>0.6&#775; h</td></tr>
+<tr><td>45 min</td><td><span class="frac"><span>3</span><span>4</span></span></td><td>0.75 h</td></tr>
+<tr><td>48 min</td><td><span class="frac"><span>4</span><span>5</span></span></td><td>0.8 h</td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">(a) Write <span class="m">3 h 24 min</span> as a decimal number of hours. (b) Write <span class="m">2.15 hours</span> in hours and minutes.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Only the minutes change; divide them by 60.
+    <span class="work">24 &divide; 60 = 0.4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Put the whole hours back on the front.
+    <span class="work">3 h 24 min = 3.4 h</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) The 2 is 2 whole hours. Multiply the decimal part by 60.
+    <span class="work">0.15 &times; 60 = 9 min</span></div></div>
+  <div class="final">(a) 3.4 hours &nbsp;&nbsp; (b) 2 hours 9 minutes</div>
+  <div class="warn"><b>Watch out</b> <span class="m">2.15 h</span> is <b>not</b> 2 h 15 min. Two hours and fifteen
+  minutes would be <span class="m">2.25 h</span>.</div>
+</div>
+</details>
+
+<h3>Using time in speed calculations</h3>
+<p>The speed formula only works when the units agree. If a speed is in km/h then the time <b>must</b> be in hours.</p>
+
+<div class="formula">speed = <span class="frac"><span>distance</span><span>time</span></span> &nbsp;&nbsp;
+distance = speed &times; time &nbsp;&nbsp; time = <span class="frac"><span>distance</span><span>speed</span></span>
+<small>Rearrange, then convert the time before substituting</small></div>
+
+<div class="tip"><b>Exam tip</b> When the answer for a time comes out as a decimal, convert it back into hours and
+minutes if the question asks for a clock time. <span class="m">3.75 h = 3 h 45 min</span>, so leaving at 09:20
+means arriving at 13:05.</div>
+
+<div class="tool">
+  <h4>Minutes and decimal hours</h4>
+  <p class="hint">Convert either way and see the division or multiplication by 60 written out in full.</p>
+  <div class="row">
+    <div><label for="dhH">Hours</label><input type="number" id="dhH" value="2" step="1" style="width:90px"></div>
+    <div><label for="dhM">Minutes</label><input type="number" id="dhM" value="45" step="1" style="width:90px"></div>
+    <div><label for="dhD">&hellip; or a decimal number of hours</label><input type="number" id="dhD" value="1.8" step="any" style="width:130px"></div>
+  </div>
+  <div class="out" id="dhOut"></div>
+</div>
+</section>
+
+<section id="tables" data-nav="Timetables">
+<h2>Timetables and time zones</h2>
+<p>A timetable is just a table of 24-hour clock times. Each <b>column</b> is one bus or train; each <b>row</b> is
+one place. To find how long a journey takes, read the two times in the <b>same column</b> and find the difference.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Stop</th><th>Bus A</th><th>Bus B</th><th>Bus C</th></tr></thead>
+<tbody>
+<tr><td><b>Harbour</b></td><td>07:35</td><td>08:50</td><td>12:15</td></tr>
+<tr><td><b>Market</b></td><td>07:52</td><td>09:07</td><td>12:32</td></tr>
+<tr><td><b>Station</b></td><td>08:14</td><td>09:29</td><td>12:54</td></tr>
+<tr><td><b>Airport</b></td><td>08:47</td><td>10:02</td><td>13:27</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note"><b>Note</b> Reading <i>down</i> a column gives a journey; reading <i>across</i> a row gives the
+gap between buses. Bus A leaves the Harbour at 07:35 and Bus B at 08:50, so the buses are 1 h 15 min apart.</div>
+
+<h3>Time zones</h3>
+<p>Different places set their clocks to different <b>local times</b>. A time zone is written as an offset from
+UTC, for example <span class="m">UTC+4</span>. To compare two places, move both clocks into the <b>same</b> zone
+before you subtract.</p>
+
+<div class="grid two">
+  <div class="card"><h4>Going east (a bigger offset)</h4>
+    <p>Local time is <b>ahead</b>. If London is UTC+1 and Dubai is UTC+4, Dubai is
+    <span class="m">4 &minus; 1 = 3</span> hours ahead, so <b>add</b> 3 hours to a London time.</p></div>
+  <div class="card o"><h4>Going west (a smaller offset)</h4>
+    <p>Local time is <b>behind</b>. New York at UTC&minus;4 is <span class="m">2 &minus; (&minus;4) = 6</span> hours
+    behind Cairo at UTC+2, so <b>subtract</b> 6 hours from a Cairo time.</p></div>
+</div>
+
+<div class="def"><b>Flight duration</b>
+The duration of a journey is a real length of time, so it never depends on the time zones. Convert the arrival
+time back into the departure city's clock, then subtract.</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A train travels <span class="m">153 km</span> in 1 hour 48 minutes. Find its average speed in km/h.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The speed is wanted in km/h, so the time must be in <b>hours</b>.
+    <span class="work">48 &divide; 60 = 0.8 &nbsp;&rarr;&nbsp; 1 h 48 min = 1.8 h</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute into <span class="m">speed = distance &divide; time</span>.
+    <span class="work">speed = 153 &divide; 1.8 = 85</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check by reversing: <span class="m">85 &times; 1.8 = 153</span>&nbsp;&#10003;</div></div>
+  <div class="final">average speed = 85 km/h</div>
+  <div class="warn"><b>Exam trap</b> Using 1.48 instead of 1.8 gives 103.4 km/h &mdash; a whole question thrown away
+  for one careless conversion.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Use the bus timetable above. (a) How long does Bus C take from the Harbour to the Airport? (b) Ravi must be at the Airport by 10:00. He catches a bus from the Market. Which bus must he take, and how long does he then wait at the Airport?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Read down the Bus C column: Harbour 12:15, Airport 13:27.
+    <span class="work">12:15 &rarr; 13:00 is 45 min<br>13:00 &rarr; 13:27 is 27 min<br>45 + 27 = 72 min = 1 h 12 min</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Bus B reaches the Airport at 10:02, which is after 10:00, so it is too late.
+    Bus A reaches the Airport at 08:47, in time.
+    <span class="work">Ravi takes Bus A from the Market at 07:52</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Waiting time is from arrival until 10:00.
+    <span class="work">08:47 &rarr; 09:00 is 13 min<br>09:00 &rarr; 10:00 is 1 h<br>total 1 h 13 min</span></div></div>
+  <div class="final">(a) 1 hour 12 minutes &nbsp;&nbsp; (b) Bus A (07:52 from the Market); he waits 1 h 13 min</div>
+  <div class="tip"><b>Exam tip</b> &ldquo;Must arrive <b>by</b> 10:00&rdquo; excludes 10:02. Two minutes late is late.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A plane leaves Dubai (UTC+4) at <span class="m">09:35</span> local time. The flight takes 7 hours 40 minutes. London is UTC+1. At what local time does the plane land in London?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Work out the arrival time on the <b>Dubai</b> clock first &mdash; the flight length is the same everywhere.
+    <span class="work">09:35 + 7 h = 16:35<br>16:35 + 40 min = 17:15 Dubai time</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the time difference between the zones.
+    <span class="work">4 &minus; 1 = 3 hours; London is 3 hours behind Dubai</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract 3 hours to change to London local time.
+    <span class="work">17:15 &minus; 3 h = 14:15</span></div></div>
+  <div class="final">The plane lands at 14:15 local time (2:15 pm)</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A flight leaves Cairo (UTC+2) at <span class="m">23:40</span> and lands in New York (UTC&minus;4) at <span class="m">05:25</span> the next day, local time. Find the length of the flight.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Put both times on the <b>same</b> clock. New York is
+    <span class="m">2 &minus; (&minus;4) = 6</span> hours behind Cairo, so change the Cairo departure into New York time.
+    <span class="work">23:40 &minus; 6 h = 17:40 New York time (same day)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The landing is at 05:25 the next morning, so count up to midnight.
+    <span class="work">17:40 &rarr; 24:00 is 6 h 20 min</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Then count on from midnight to the landing time and add.
+    <span class="work">00:00 &rarr; 05:25 is 5 h 25 min<br>6 h 20 min + 5 h 25 min = 11 h 45 min</span></div></div>
+  <div class="final">The flight lasts 11 hours 45 minutes</div>
+  <div class="note"><b>Why it works</b> Once both times are measured on one clock, a duration is an ordinary
+  subtraction. Converting the <i>departure</i> rather than the arrival is usually neater when the flight crosses midnight.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Write in 24-hour clock time: (a) <span class="m">6:20 pm</span> &nbsp;(b) <span class="m">12:05 am</span>.
+      Write in 12-hour clock time: (c) <span class="m">14:50</span> &nbsp;(d) <span class="m">00:45</span>.</li>
+    <li>A lesson starts at <span class="m">11:35</span> and lasts 50 minutes. When does it end?</li>
+    <li>A ferry leaves at <span class="m">22:20</span> and arrives at <span class="m">04:05</span> the next day.
+      How long is the crossing?</li>
+    <li>Write (a) <span class="m">4 h 12 min</span> in decimal hours and (b) <span class="m">3.25 h</span> in hours
+      and minutes.</li>
+    <li>A cyclist rides <span class="m">63 km</span> in 2 hours 6 minutes. Find her average speed in km/h.</li>
+    <li>A coach leaves Delhi at <span class="m">08:45</span> and travels <span class="m">294 km</span> at an average
+      speed of <span class="m">56 km/h</span>. It stops for 25 minutes on the way. At what time does it arrive?</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) <span class="m">6 + 12 = 18</span> &rarr; <span class="ans">18:20</span> &nbsp;(b) just after midnight &rarr;
+        <span class="ans">00:05</span> &nbsp;(c) <span class="m">14 &minus; 12 = 2</span> &rarr; <span class="ans">2:50 pm</span>
+        &nbsp;(d) <span class="ans">12:45 am</span></li>
+      <li><span class="m">11:35 &rarr; 12:00</span> is 25 min, 25 min left &rarr; <span class="ans">12:25</span></li>
+      <li><span class="m">22:20 &rarr; 00:00</span> is 1 h 40 min; plus 4 h 5 min &rarr;
+        <span class="ans">5 h 45 min</span></li>
+      <li>(a) <span class="m">12 &divide; 60 = 0.2</span> &rarr; <span class="ans">4.2 h</span>
+        &nbsp;(b) <span class="m">0.25 &times; 60 = 15</span> &rarr; <span class="ans">3 h 15 min</span></li>
+      <li><span class="m">6 &divide; 60 = 0.1</span>, so time <span class="m">= 2.1 h</span>;
+        <span class="m">63 &divide; 2.1</span> = <span class="ans">30 km/h</span></li>
+      <li><span class="m">294 &divide; 56 = 5.25 h = 5 h 15 min</span>; <span class="m">08:45 + 5 h 15 min = 14:00</span>;
+        plus the 25 min stop &rarr; <span class="ans">14:25</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>24-hour times always have <b>four digits</b>: <span class="m">08:05</span>, <span class="m">00:30</span>,
+      <span class="m">23:59</span>. No am or pm is used.</li>
+    <li>pm &rarr; 24-hour: add 12 to the hours (but 12:xx pm stays as 12:xx). 12:xx am becomes 00:xx.</li>
+    <li>Add or subtract times in <b>two pieces</b>, splitting at the whole hour; carry or borrow <b>60</b>, never 100.</li>
+    <li>If the finish time is earlier than the start time, the clock has passed midnight &mdash; split the count at
+      <span class="m">00:00</span>.</li>
+    <li><b>Minutes &rarr; decimal hours: divide by 60. Decimal hours &rarr; minutes: multiply by 60.</b>
+      <span class="m">2 h 45 min = 2.75 h</span>, never 2.45 h.</li>
+    <li>For <span class="m">speed = distance &divide; time</span> in km/h, the time must be in hours; convert the
+      minutes first.</li>
+    <li>In a timetable, read <b>down a column</b> for one journey and find the difference between the two times.</li>
+    <li>A journey length does not change with time zones &mdash; put both clock times in the same zone, then subtract.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="13-1.html"><span>&larr; Previous</span><b>13.1 Understanding Units</b></a><a class="next" href="13-3.html"><span>Next &rarr;</span><b>13.3 Limits of Accuracy</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 13.2 Time<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- time calculator ---- */
+(function(){
+  function parseT(s){
+    s=(s||'').trim();
+    var m=s.match(/^(\d{1,2})\s*[:.\s]?\s*(\d{2})$/);
+    if(!m) return null;
+    var h=parseInt(m[1],10), mi=parseInt(m[2],10);
+    if(h>23||mi>59) return null;
+    return h*60+mi;
+  }
+  function pad(n){ return (n<10?'0':'')+n; }
+  function t24(mins){ mins=((mins%1440)+1440)%1440; return pad(Math.floor(mins/60))+':'+pad(mins%60); }
+  function t12(mins){
+    mins=((mins%1440)+1440)%1440;
+    var h=Math.floor(mins/60), mi=mins%60, ap=(h<12?'am':'pm'), h12=h%12; if(h12===0) h12=12;
+    return h12+':'+pad(mi)+' '+ap;
+  }
+  function go(){
+    var out=el('tcOut'), st=parseT(el('tcStart').value);
+    if(st===null){ out.innerHTML='<span class="hl">Enter the start time as hh:mm, for example 09:47.</span>'; return; }
+    var hh=Math.round(num('tcH',0)), mm=Math.round(num('tcM',0));
+    var dur=hh*60+mm, end=st+dur;
+    var days=Math.floor(end/1440);
+    var afterH=t24(st+hh*60);
+    out.innerHTML=
+      '<div>Start <span class="hl">'+t24(st)+'</span> ('+t12(st)+')</div>'+
+      '<div style="margin-top:6px">Add the hours: '+t24(st)+' + '+hh+' h = '+afterH+'</div>'+
+      '<div>Add the minutes: '+afterH+' + '+mm+' min = <b>'+t24(end)+'</b></div>'+
+      '<div style="margin-top:6px">Finish time: <b>'+t24(end)+'</b> ('+t12(end)+')'+
+        (days===1?' &mdash; <span class="hl">the next day</span>':(days>1?' &mdash; <span class="hl">'+days+' days later</span>':''))+'</div>'+
+      '<div style="margin-top:6px;opacity:.75">Duration entered: '+hh+' h '+mm+' min = '+(dur)+' minutes = '+
+        (Math.round(dur/60*1000)/1000)+' hours</div>';
+  }
+  bindAll(['tcStart','tcH','tcM'],go);
+})();
+
+/* ---- minutes and decimal hours ---- */
+(function(){
+  function pad(n){ return (n<10?'0':'')+n; }
+  function go(){
+    var h=Math.round(num('dhH',0)), m=Math.round(num('dhM',0)), d=num('dhD',0);
+    var dec=h+m/60;
+    var decS=String(Math.round(dec*10000)/10000);
+    var wholeH=Math.floor(Math.abs(d))*(d<0?-1:1), part=Math.abs(d)-Math.floor(Math.abs(d));
+    var mins=Math.round(part*60);
+    if(mins===60){ mins=0; wholeH=wholeH+(d<0?-1:1); }
+    el('dhOut').innerHTML=
+      '<div><b>Hours and minutes &rarr; decimal</b></div>'+
+      '<div>'+m+' &divide; 60 = <span class="hl">'+String(Math.round(m/60*10000)/10000)+'</span></div>'+
+      '<div>'+h+' h '+pad(m)+' min = <b>'+decS+' hours</b></div>'+
+      '<div style="margin-top:10px"><b>Decimal &rarr; hours and minutes</b></div>'+
+      '<div>'+(d<0?'&minus;':'')+String(Math.abs(Math.round(part*10000)/10000))+' &times; 60 = <span class="hl">'+mins+' min</span></div>'+
+      '<div>'+String(d).replace('-','&minus;')+' hours = <b>'+wholeH+' h '+mins+' min</b></div>'+
+      '<div style="margin-top:8px;opacity:.75">Careful: '+h+'.'+pad(m)+' would be a different number entirely.</div>';
+  }
+  bindAll(['dhH','dhM','dhD'],go);
+})();
+</script>
+</body>
+</html>

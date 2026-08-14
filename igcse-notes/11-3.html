@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11.3 Understanding Similar Shapes | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="How lengths, areas and volumes change under an enlargement, and how to move between the scale factors k, k&sup2; and k&sup3; with confidence.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 11 &mdash; Pythagoras&rsquo; Theorem and Similar Shapes</span>
+    </div>
+    <h1>11.3 &nbsp;Understanding Similar Shapes</h1>
+    <p>How lengths, areas and volumes change under an enlargement, and how to move between the scale factors k, k&sup2; and k&sup3; with confidence.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#similar">Similar shapes</a>
+  <a href="#factors">Area and volume</a>
+  <a href="#reverse">Working backwards</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="similar" data-nav="Similar shapes">
+<h2>What &ldquo;similar&rdquo; means</h2>
+<p>Two shapes are <b>similar</b> if one is an exact enlargement of the other. The shape is unchanged;
+only the size is different. In 0580 this idea runs from simple missing-side questions right up to
+three-dimensional model and container problems in Paper 4.</p>
+
+<div class="def"><b>Definition</b>
+Two shapes are <b>similar</b> when their corresponding <b>angles are equal</b> and their corresponding
+<b>sides are in the same ratio</b>. That common ratio is the <b>linear scale factor</b>, written
+<span class="m">k</span>.</div>
+
+<div class="formula">k = <span class="frac"><span>length on the large shape</span><span>corresponding length on the small shape</span></span>
+<small>Always put matching sides on top and bottom</small></div>
+
+<div class="card">
+<h4>Corresponding sides and angles</h4>
+<svg viewBox="0 0 460 215" role="img" aria-label="Two similar triangles with corresponding sides shown in matching colours, the second one and a half times the first">
+  <polygon points="40,180 160,180 90,90" fill="#f7f9ff" stroke="#0f2d6b" stroke-width="1"/>
+  <line x1="40" y1="180" x2="160" y2="180" stroke="#e05c2a" stroke-width="4"/>
+  <line x1="40" y1="180" x2="90" y2="90" stroke="#16a34a" stroke-width="4"/>
+  <line x1="160" y1="180" x2="90" y2="90" stroke="#6d28d9" stroke-width="4"/>
+  <text x="100" y="198" font-size="13" text-anchor="middle" fill="#e05c2a">4 cm</text>
+  <text x="52" y="130" font-size="13" text-anchor="end" fill="#16a34a">3.4</text>
+  <text x="146" y="126" font-size="13" fill="#6d28d9">3.8</text>
+
+  <polygon points="230,180 410,180 305,45" fill="#f7f9ff" stroke="#0f2d6b" stroke-width="1"/>
+  <line x1="230" y1="180" x2="410" y2="180" stroke="#e05c2a" stroke-width="4"/>
+  <line x1="230" y1="180" x2="305" y2="45" stroke="#16a34a" stroke-width="4"/>
+  <line x1="410" y1="180" x2="305" y2="45" stroke="#6d28d9" stroke-width="4"/>
+  <text x="320" y="198" font-size="13" text-anchor="middle" fill="#e05c2a">6 cm</text>
+  <text x="244" y="112" font-size="13" text-anchor="end" fill="#16a34a">5.1</text>
+  <text x="376" y="106" font-size="13" fill="#6d28d9">5.7</text>
+  <text x="230" y="24" font-size="13" text-anchor="middle">k = 6 &divide; 4 = 1.5</text>
+  <text x="230" y="212" font-size="12" text-anchor="middle">matching colours are corresponding sides &mdash; every pair has ratio 1.5</text>
+</svg>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+Before you calculate anything, write the two triangles down in <b>corresponding order</b>, for example
+&ldquo;<span class="m">ABC</span> is similar to <span class="m">PQR</span>&rdquo;. Then
+<span class="m">AB</span> matches <span class="m">PQ</span>, and you cannot pair the wrong sides.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Triangle <span class="m">ABC</span> has sides 6&nbsp;cm, 8&nbsp;cm and 10&nbsp;cm. It is similar to triangle <span class="m">PQR</span>, in which the side corresponding to the 6&nbsp;cm side is 15&nbsp;cm. Find the other two sides of <span class="m">PQR</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 460 305" role="img" aria-label="A 6, 8, 10 right-angled triangle and a similar triangle with corresponding side 15 cm and unknown sides x and y">
+    <polygon points="40,260 104,260 40,212" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <polyline points="40,250 50,250 50,260" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="72" y="278" font-size="13" text-anchor="middle">8 cm</text>
+    <text x="34" y="240" font-size="13" text-anchor="end">6 cm</text>
+    <text x="82" y="228" font-size="13">10 cm</text>
+    <text x="72" y="298" font-size="12" text-anchor="middle">triangle ABC</text>
+
+    <polygon points="240,260 400,260 240,140" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <polyline points="240,246 254,246 254,260" fill="none" stroke="#16a34a" stroke-width="2"/>
+    <text x="320" y="278" font-size="13" text-anchor="middle" fill="#e05c2a">x</text>
+    <text x="234" y="204" font-size="13" text-anchor="end">15 cm</text>
+    <text x="332" y="192" font-size="13" fill="#e05c2a">y</text>
+    <text x="320" y="298" font-size="12" text-anchor="middle">triangle PQR</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Find the linear scale factor from the pair you know,
+    large over small.
+    <span class="work">k = 15 &divide; 6 = 2.5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply each remaining side of the small triangle by
+    <span class="m">k</span>.
+    <span class="work">x = 8 &times; 2.5 = 20</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="work">y = 10 &times; 2.5 = 25</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check the answer is consistent: <span class="m">15, 20, 25</span>
+    is <span class="m">5 &times; (3, 4, 5)</span>, so it is still a right-angled triangle.</div></div>
+  <div class="final">x = 20 cm, &nbsp; y = 25 cm</div>
+  <div class="warn"><b>Watch out</b> If you are going from the large shape to the small one, <b>divide</b> by
+  <span class="m">k</span> (or use a scale factor less than 1). Getting the direction wrong turns a
+  4-mark question into 0.</div>
+</div>
+</details>
+</section>
+
+<section id="factors" data-nav="Area and volume">
+<h2>The area and volume scale factors</h2>
+<p>Here is the idea that examiners test hardest. If every length is multiplied by <span class="m">k</span>,
+then <b>area is multiplied by <span class="m">k&sup2;</span></b> and <b>volume is multiplied by
+<span class="m">k&sup3;</span></b>.</p>
+
+<div class="formula">length &times;&nbsp;k &nbsp;&nbsp;&nbsp; area &times;&nbsp;k&sup2; &nbsp;&nbsp;&nbsp; volume &times;&nbsp;k&sup3;
+<small>k is always the LINEAR scale factor</small></div>
+
+<div class="grid two">
+  <div class="card"><h4>Why area uses <span class="m">k&sup2;</span></h4>
+    <svg viewBox="0 0 320 200" role="img" aria-label="A unit square and a square with sides doubled, showing four copies of the small square fit inside">
+      <rect x="40" y="110" width="60" height="60" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+      <text x="70" y="146" font-size="13" text-anchor="middle" fill="#0f2d6b">1</text>
+      <text x="70" y="188" font-size="13" text-anchor="middle">side 1</text>
+      <rect x="150" y="50" width="120" height="120" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="210" y1="50" x2="210" y2="170" stroke="#1a4fa0" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <line x1="150" y1="110" x2="270" y2="110" stroke="#1a4fa0" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text x="180" y="86" font-size="13" text-anchor="middle" fill="#0f2d6b">1</text>
+      <text x="240" y="86" font-size="13" text-anchor="middle" fill="#0f2d6b">1</text>
+      <text x="180" y="146" font-size="13" text-anchor="middle" fill="#0f2d6b">1</text>
+      <text x="240" y="146" font-size="13" text-anchor="middle" fill="#0f2d6b">1</text>
+      <text x="210" y="188" font-size="13" text-anchor="middle">side 2</text>
+      <text x="210" y="34" font-size="13" text-anchor="middle" fill="#e05c2a">2&sup2; = 4 copies</text>
+    </svg>
+    <p>An area is <i>two</i> lengths multiplied together, so it picks up the factor
+    <span class="m">k</span> twice: <span class="m">k &times; k = k&sup2;</span>.</p>
+  </div>
+  <div class="card p"><h4>Why volume uses <span class="m">k&sup3;</span></h4>
+    <svg viewBox="40 0 420 260" role="img" aria-label="A unit cube and a cube with edges doubled, made of eight small cubes">
+      <polygon points="92,118 162,118 162,188 92,188" fill="#f3edff" stroke="#6d28d9" stroke-width="1.5"/>
+      <line x1="60" y1="150" x2="92" y2="118" stroke="#6d28d9" stroke-width="1.5"/>
+      <line x1="130" y1="150" x2="162" y2="118" stroke="#6d28d9" stroke-width="1.5"/>
+      <line x1="130" y1="220" x2="162" y2="188" stroke="#6d28d9" stroke-width="1.5"/>
+      <polygon points="60,150 130,150 130,220 60,220" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+      <text x="110" y="245" font-size="13" text-anchor="middle">edge 1</text>
+
+      <polygon points="304,16 444,16 444,156 304,156" fill="#f3edff" stroke="#6d28d9" stroke-width="1.5"/>
+      <line x1="240" y1="80" x2="304" y2="16" stroke="#6d28d9" stroke-width="1.5"/>
+      <line x1="380" y1="80" x2="444" y2="16" stroke="#6d28d9" stroke-width="1.5"/>
+      <line x1="380" y1="220" x2="444" y2="156" stroke="#6d28d9" stroke-width="1.5"/>
+      <polygon points="240,80 380,80 380,220 240,220" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+      <line x1="310" y1="80" x2="310" y2="220" stroke="#6d28d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <line x1="240" y1="150" x2="380" y2="150" stroke="#6d28d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <line x1="310" y1="80" x2="374" y2="16" stroke="#6d28d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <line x1="272" y1="48" x2="412" y2="48" stroke="#6d28d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <line x1="380" y1="150" x2="444" y2="86" stroke="#6d28d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <line x1="412" y1="48" x2="412" y2="188" stroke="#6d28d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <text x="342" y="245" font-size="13" text-anchor="middle">edge 2 &rarr; 2&sup3; = 8 cubes</text>
+    </svg>
+    <p>A volume is <i>three</i> lengths multiplied together, so the factor appears three times:
+    <span class="m">k &times; k &times; k = k&sup3;</span>.</p>
+  </div>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Linear factor <span class="m">k</span></th><th>Area factor <span class="m">k&sup2;</span></th><th>Volume factor <span class="m">k&sup3;</span></th></tr></thead>
+<tbody>
+<tr><td>2</td><td>4</td><td>8</td></tr>
+<tr><td>3</td><td>9</td><td>27</td></tr>
+<tr><td>1.5</td><td>2.25</td><td>3.375</td></tr>
+<tr><td>&frac12;</td><td>&frac14;</td><td><span class="frac"><span>1</span><span>8</span></span></td></tr>
+<tr><td>10</td><td>100</td><td>1000</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="warn"><b>Watch out &mdash; the classic trap</b>
+If the lengths of a shape are doubled, its area is <b>not</b> doubled. It is multiplied by 4. Never apply
+the linear factor to an area or a volume. Surface area counts as an area, so it uses
+<span class="m">k&sup2;</span> too.</div>
+
+<div class="tool">
+  <h4>Scale-factor explorer</h4>
+  <p class="hint">Drag the slider and watch both shapes and all three ratios change together.
+  Notice how much faster the volume ratio grows.</p>
+  <div class="sliderbox"><div class="lab"><span>linear scale factor k</span><span id="sfKv">2</span></div>
+  <input type="range" id="sfK" min="0.5" max="3" step="0.1" value="2"></div>
+  <div id="sfDraw"></div>
+  <div class="out" id="sfOut"></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Two similar rectangles have corresponding sides of 4&nbsp;cm and 10&nbsp;cm. The area of the smaller rectangle is 24&nbsp;cm&sup2;. Find the area of the larger.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 290 252" role="img" aria-label="Two similar rectangles, the smaller 4 cm wide with area 24 square centimetres and the larger 10 cm wide">
+    <rect x="30" y="140" width="48" height="72" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <rect x="130" y="32" width="120" height="180" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <text x="54" y="228" font-size="13" text-anchor="middle">4 cm</text>
+    <text x="54" y="246" font-size="12" text-anchor="middle" fill="#1a4fa0">area 24 cm&sup2;</text>
+    <text x="190" y="228" font-size="13" text-anchor="middle">10 cm</text>
+    <text x="190" y="246" font-size="12" text-anchor="middle" fill="#16a34a">area = ?</text>
+    <text x="24" y="182" font-size="13" text-anchor="end">6</text>
+    <text x="124" y="126" font-size="13" text-anchor="end">15</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Find the <b>linear</b> scale factor first.
+    <span class="work">k = 10 &divide; 4 = 2.5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Areas use <span class="m">k&sup2;</span>, so square it.
+    <span class="work">k&sup2; = 2.5&sup2; = 6.25</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply the known area by the area scale factor.
+    <span class="work">area = 24 &times; 6.25 = 150</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check independently: the small rectangle must be
+    <span class="m">4 &times; 6</span>, so the large one is <span class="m">10 &times; 15 = 150</span>. &#10003;</div></div>
+  <div class="final">area of the larger rectangle = 150 cm&sup2;</div>
+  <div class="warn"><b>Watch out</b> <span class="m">24 &times; 2.5 = 60</span> is the trap answer. It uses the
+  linear factor on an area.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Two similar cones have heights 6&nbsp;cm and 9&nbsp;cm. The volume of the smaller cone is 120&nbsp;cm&sup3;. Find the volume of the larger cone.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 300 200" role="img" aria-label="Two similar cones of heights 6 cm and 9 cm with volumes 120 cubic centimetres and unknown">
+    <ellipse cx="70" cy="145" rx="34" ry="10" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <polygon points="70,55 36,145 104,145" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="70" y1="55" x2="70" y2="145" stroke="#e05c2a" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="78" y="104" font-size="13" fill="#e05c2a">6 cm</text>
+    <text x="70" y="180" font-size="13" text-anchor="middle">V = 120 cm&sup3;</text>
+
+    <ellipse cx="210" cy="145" rx="51" ry="15" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <polygon points="210,10 159,145 261,145" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <line x1="210" y1="10" x2="210" y2="145" stroke="#e05c2a" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="218" y="82" font-size="13" fill="#e05c2a">9 cm</text>
+    <text x="210" y="180" font-size="13" text-anchor="middle">V = ?</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Heights are lengths, so they give the linear factor directly.
+    <span class="work">k = 9 &divide; 6 = 1.5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Volumes use <span class="m">k&sup3;</span>.
+    <span class="work">k&sup3; = 1.5&sup3; = 3.375</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply.
+    <span class="work">V = 120 &times; 3.375 = 405</span></div></div>
+  <div class="final">volume of the larger cone = 405 cm&sup3;</div>
+  <div class="tip"><b>Exam tip</b> You never need the radius here. If a question gives two similar solids and
+  one length in each, that pair alone gives <span class="m">k</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="reverse" data-nav="Working backwards">
+<h2>Going backwards: from an area or volume ratio to k</h2>
+<p>Questions often give you the <i>areas</i> or the <i>volumes</i> and ask for a length. Then you must undo
+the squaring or cubing: take the <b>square root</b> of an area ratio, or the <b>cube root</b> of a volume
+ratio, to get back to <span class="m">k</span>.</p>
+
+<div class="formula">k = <span class="rt"><span>area factor</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+k = <sup>3</sup><span class="rt"><span>volume factor</span></span>
+<small>Always return to the linear factor before touching a length</small></div>
+
+<div class="grid">
+  <div class="card g"><h4>Given lengths</h4>
+    <p><span class="m">k</span> &rarr; square it for areas, cube it for volumes.</p></div>
+  <div class="card o"><h4>Given areas</h4>
+    <p>Divide to get <span class="m">k&sup2;</span>, square root to get <span class="m">k</span>, then work on.</p></div>
+  <div class="card p"><h4>Given volumes</h4>
+    <p>Divide to get <span class="m">k&sup3;</span>, cube root to get <span class="m">k</span>, then work on.</p></div>
+</div>
+
+<div class="tool">
+  <h4>Scale-factor converter</h4>
+  <p class="hint">Tell it which ratio you have been given and it returns the other two, with the root or
+  power written out.</p>
+  <div class="row">
+    <div><label for="rcType">Which ratio do you know?</label>
+      <select id="rcType">
+        <option value="len">Length ratio (k)</option>
+        <option value="area">Area ratio (k&sup2;)</option>
+        <option value="vol">Volume ratio (k&sup3;)</option>
+      </select></div>
+    <div><label for="rcVal">Its value (large &divide; small)</label>
+      <input type="number" id="rcVal" value="6.25" step="any"></div>
+  </div>
+  <div class="out" id="rcOut"></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Two similar triangles have areas 45&nbsp;cm&sup2; and 125&nbsp;cm&sup2;. The base of the smaller triangle is 12&nbsp;cm. Find the base of the larger triangle.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 360 212" role="img" aria-label="Two similar triangles with areas 45 and 125 square centimetres and bases 12 cm and unknown">
+    <polygon points="30,170 126,170 78,110" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="78" y="188" font-size="13" text-anchor="middle">12 cm</text>
+    <text x="78" y="206" font-size="12" text-anchor="middle" fill="#1a4fa0">area 45 cm&sup2;</text>
+    <polygon points="170,170 330,170 250,70" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <text x="250" y="188" font-size="13" text-anchor="middle" fill="#e05c2a">b</text>
+    <text x="250" y="206" font-size="12" text-anchor="middle" fill="#16a34a">area 125 cm&sup2;</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Divide large by small to get the <b>area</b> scale factor.
+    <span class="work">k&sup2; = <span class="frac"><span>125</span><span>45</span></span> = <span class="frac"><span>25</span><span>9</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square root to come back to the linear factor.
+    <span class="work">k = <span class="rt"><span>25/9</span></span> = <span class="frac"><span>5</span><span>3</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Now, and only now, use it on a length.
+    <span class="work">b = 12 &times; <span class="frac"><span>5</span><span>3</span></span> = 20</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check: <span class="m">(5/3)&sup2; = 25/9 = 2.777&hellip;</span>
+    and <span class="m">45 &times; 2.777&hellip; = 125</span>. &#10003;</div></div>
+  <div class="final">base of the larger triangle = 20 cm</div>
+  <div class="tip"><b>Exam tip</b> Keep the ratio as a fraction rather than a rounded decimal. Here
+  <span class="m">125 &divide; 45 = 2.7&#775;</span> &mdash; rounding it early costs accuracy marks.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Two mathematically similar jugs hold 250&nbsp;ml and 2000&nbsp;ml. The smaller jug is 12&nbsp;cm high and has a surface area of 180&nbsp;cm&sup2;. Find the height and the surface area of the larger jug.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 300 215" role="img" aria-label="Two similar jugs holding 250 millilitres and 2000 millilitres, heights 12 cm and unknown">
+    <polygon points="60,190 52,120 108,120 100,190" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="44" y1="120" x2="44" y2="190" stroke="#e05c2a" stroke-width="2"/>
+    <text x="40" y="160" font-size="13" text-anchor="end" fill="#e05c2a">12</text>
+    <text x="80" y="208" font-size="13" text-anchor="middle">250 ml</text>
+
+    <polygon points="160,190 144,50 256,50 240,190" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <line x1="136" y1="50" x2="136" y2="190" stroke="#e05c2a" stroke-width="2"/>
+    <text x="132" y="124" font-size="13" text-anchor="end" fill="#e05c2a">h</text>
+    <text x="200" y="208" font-size="13" text-anchor="middle">2000 ml</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Capacity is a volume, so the ratio given is
+    <span class="m">k&sup3;</span>.
+    <span class="work">k&sup3; = 2000 &divide; 250 = 8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Cube root.
+    <span class="work">k = <sup>3</sup><span class="rt"><span>8</span></span> = 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Height is a length, so multiply by <span class="m">k</span>.
+    <span class="work">h = 12 &times; 2 = 24</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Surface area is an area, so multiply by
+    <span class="m">k&sup2; = 4</span>.
+    <span class="work">S = 180 &times; 4 = 720</span></div></div>
+  <div class="final">height = 24 cm, &nbsp; surface area = 720 cm&sup2;</div>
+  <div class="warn"><b>Watch out</b> Three different factors appear in one question: <span class="m">k</span>
+  for the height, <span class="m">k&sup2;</span> for the surface area, <span class="m">k&sup3;</span> for the
+  capacity. Decide what kind of quantity each part is <i>before</i> you multiply.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A model of a statue is made to a scale of 1&nbsp;:&nbsp;20. The model has a surface area of 250&nbsp;cm&sup2; and a volume of 400&nbsp;cm&sup3;. Find the surface area of the statue in m&sup2; and its volume in m&sup3;.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 480 220" role="img" aria-label="Diagram showing the length factor 20, area factor 400 and volume factor 8000 for a 1 to 20 scale">
+    <rect x="90" y="33" width="60" height="34" rx="8" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+    <text x="120" y="55" font-size="14" text-anchor="middle" fill="#1a4fa0">1</text>
+    <line x1="160" y1="50" x2="300" y2="50" stroke="#1a4fa0" stroke-width="2"/>
+    <polygon points="300,50 290,45 290,55" fill="#1a4fa0"/>
+    <text x="230" y="42" font-size="13" text-anchor="middle" fill="#1a4fa0">&times; 20</text>
+    <rect x="310" y="33" width="110" height="34" rx="8" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+    <text x="365" y="55" font-size="14" text-anchor="middle" fill="#1a4fa0">20</text>
+    <text x="80" y="55" font-size="13" text-anchor="end">length</text>
+
+    <rect x="90" y="93" width="60" height="34" rx="8" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <text x="120" y="115" font-size="14" text-anchor="middle" fill="#16a34a">1</text>
+    <line x1="160" y1="110" x2="300" y2="110" stroke="#16a34a" stroke-width="2"/>
+    <polygon points="300,110 290,105 290,115" fill="#16a34a"/>
+    <text x="230" y="102" font-size="13" text-anchor="middle" fill="#16a34a">&times; 20&sup2; = 400</text>
+    <rect x="310" y="93" width="110" height="34" rx="8" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <text x="365" y="115" font-size="14" text-anchor="middle" fill="#16a34a">400</text>
+    <text x="80" y="115" font-size="13" text-anchor="end">area</text>
+
+    <rect x="90" y="153" width="60" height="34" rx="8" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+    <text x="120" y="175" font-size="14" text-anchor="middle" fill="#6d28d9">1</text>
+    <line x1="160" y1="170" x2="300" y2="170" stroke="#6d28d9" stroke-width="2"/>
+    <polygon points="300,170 290,165 290,175" fill="#6d28d9"/>
+    <text x="230" y="162" font-size="13" text-anchor="middle" fill="#6d28d9">&times; 20&sup3; = 8000</text>
+    <rect x="310" y="153" width="110" height="34" rx="8" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+    <text x="365" y="175" font-size="14" text-anchor="middle" fill="#6d28d9">8000</text>
+    <text x="80" y="175" font-size="13" text-anchor="end">volume</text>
+    <text x="240" y="208" font-size="13" text-anchor="middle">model &rarr; statue, scale 1 : 20</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">A scale of <span class="m">1 : 20</span> is a
+    <b>linear</b> ratio, so <span class="m">k = 20</span>.
+    <span class="work">k&sup2; = 400, &nbsp; k&sup3; = 8000</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Surface area of the statue.
+    <span class="work">250 &times; 400 = 100&nbsp;000 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Convert. Since <span class="m">1 m = 100 cm</span>,
+    <span class="m">1 m&sup2; = 100&sup2; = 10&nbsp;000 cm&sup2;</span>.
+    <span class="work">100&nbsp;000 &divide; 10&nbsp;000 = 10 m&sup2;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Volume of the statue.
+    <span class="work">400 &times; 8000 = 3&nbsp;200&nbsp;000 cm&sup3;</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Convert, using
+    <span class="m">1 m&sup3; = 100&sup3; = 1&nbsp;000&nbsp;000 cm&sup3;</span>.
+    <span class="work">3&nbsp;200&nbsp;000 &divide; 1&nbsp;000&nbsp;000 = 3.2 m&sup3;</span></div></div>
+  <div class="final">surface area = 10 m&sup2;, &nbsp; volume = 3.2 m&sup3;</div>
+  <div class="note"><b>Note</b> The unit conversion is itself a scale-factor question: metres to centimetres
+  is <span class="m">k = 100</span>, so areas differ by <span class="m">100&sup2;</span> and volumes by
+  <span class="m">100&sup3;</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Two similar cylinders have curved surface areas of <span class="m">50&pi;</span>&nbsp;cm&sup2; and <span class="m">98&pi;</span>&nbsp;cm&sup2;. The volume of the smaller cylinder is 250&nbsp;cm&sup3;. Find the volume of the larger cylinder.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 300 230" role="img" aria-label="Two similar cylinders with curved surface areas 50 pi and 98 pi square centimetres">
+    <path d="M40,100 L40,190 A30,9 0 0 0 100,190 L100,100 Z" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <ellipse cx="70" cy="100" rx="30" ry="9" fill="#ffffff" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="70" y="208" font-size="12" text-anchor="middle" fill="#1a4fa0">CSA 50&pi; cm&sup2;</text>
+    <text x="70" y="224" font-size="12" text-anchor="middle">V = 250 cm&sup3;</text>
+
+    <path d="M168,64 L168,190 A42,13 0 0 0 252,190 L252,64 Z" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <ellipse cx="210" cy="64" rx="42" ry="13" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="210" y="208" font-size="12" text-anchor="middle" fill="#16a34a">CSA 98&pi; cm&sup2;</text>
+    <text x="210" y="224" font-size="12" text-anchor="middle">V = ?</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Curved surface area is an <b>area</b>, so the ratio of the
+    two is <span class="m">k&sup2;</span>. The <span class="m">&pi;</span> cancels.
+    <span class="work">k&sup2; = <span class="frac"><span>98&pi;</span><span>50&pi;</span></span> = 1.96</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square root to reach the linear factor.
+    <span class="work">k = <span class="rt"><span>1.96</span></span> = 1.4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Cube it for the volume factor.
+    <span class="work">k&sup3; = 1.4&sup3; = 2.744</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Multiply the known volume.
+    <span class="work">V = 250 &times; 2.744 = 686</span></div></div>
+  <div class="final">volume of the larger cylinder = 686 cm&sup3;</div>
+  <div class="tip"><b>Exam tip</b> Two steps, both essential: area ratio &rarr; <span class="m">k</span> &rarr;
+  volume ratio. Never jump straight from an area ratio to a volume ratio.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Two similar triangles have corresponding sides 5&nbsp;cm and 12.5&nbsp;cm. Another side of the smaller triangle is 7&nbsp;cm. Find the corresponding side of the larger.</li>
+    <li>Two similar shapes have a linear scale factor of 4. The area of the smaller is 15&nbsp;cm&sup2;. Find the area of the larger.</li>
+    <li>Two similar cylinders have heights 10&nbsp;cm and 25&nbsp;cm. The volume of the smaller is 400&nbsp;cm&sup3;. Find the volume of the larger.</li>
+    <li>Two similar shapes have areas 20&nbsp;cm&sup2; and 45&nbsp;cm&sup2;. A length on the smaller shape is 8&nbsp;cm. Find the corresponding length on the larger.</li>
+    <li>Two similar solids have volumes 54&nbsp;cm&sup3; and 128&nbsp;cm&sup3;. The surface area of the smaller is 27&nbsp;cm&sup2;. Find the surface area of the larger.</li>
+    <li>A model ship is built to a scale of 1&nbsp;:&nbsp;50. The model has a deck of area 32&nbsp;cm&sup2; and a volume of 1500&nbsp;cm&sup3;. Find the deck area of the real ship in m&sup2; and its volume in m&sup3;.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">k = 12.5 &divide; 5 = 2.5</span>; <span class="m">7 &times; 2.5</span> &rarr;
+        <span class="ans">17.5 cm</span></li>
+      <li><span class="m">k&sup2; = 16</span>; <span class="m">15 &times; 16</span> &rarr;
+        <span class="ans">240 cm&sup2;</span></li>
+      <li><span class="m">k = 2.5</span>, <span class="m">k&sup3; = 15.625</span>;
+        <span class="m">400 &times; 15.625</span> &rarr; <span class="ans">6250 cm&sup3;</span></li>
+      <li><span class="m">k&sup2; = 45 &divide; 20 = 2.25</span>, <span class="m">k = 1.5</span>;
+        <span class="m">8 &times; 1.5</span> &rarr; <span class="ans">12 cm</span></li>
+      <li><span class="m">k&sup3; = 128 &divide; 54 = 64/27</span>, so <span class="m">k = 4/3</span> and
+        <span class="m">k&sup2; = 16/9</span>; <span class="m">27 &times; 16/9</span> &rarr;
+        <span class="ans">48 cm&sup2;</span></li>
+      <li><span class="m">k = 50</span>: area <span class="m">32 &times; 2500 = 80&nbsp;000</span> cm&sup2;
+        &rarr; <span class="ans">8 m&sup2;</span>; volume
+        <span class="m">1500 &times; 125&nbsp;000 = 187&nbsp;500&nbsp;000</span> cm&sup3; &rarr;
+        <span class="ans">187.5 m&sup3;</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Similar shapes have <b>equal angles</b> and <b>sides in the same ratio</b>; that ratio is the linear scale factor <span class="m">k</span>.</li>
+    <li>Always compute <span class="m">k</span> as <b>large &divide; small</b> using a pair of <i>corresponding</i> lengths.</li>
+    <li><b>Lengths &times; k, areas &times; k&sup2;, volumes &times; k&sup3;.</b> Surface area is an area, so it uses <span class="m">k&sup2;</span>.</li>
+    <li>Area picks up <span class="m">k</span> twice and volume three times because they are made of two and three lengths.</li>
+    <li>Given an <b>area</b> ratio, square root it to get <span class="m">k</span>; given a <b>volume</b> ratio, cube root it.</li>
+    <li>Never apply the linear factor straight to an area or volume &mdash; that is the most common error in this topic.</li>
+    <li>A map or model scale such as <span class="m">1 : 20</span> is always a <b>linear</b> ratio.</li>
+    <li>Unit changes obey the same rule: <span class="m">1 m&sup2; = 10&nbsp;000 cm&sup2;</span> and <span class="m">1 m&sup3; = 1&nbsp;000&nbsp;000 cm&sup3;</span>.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="11-1.html"><span>&larr; Previous</span><b>11.1 Pythagoras&rsquo; Theorem</b></a><a class="next" href="11-4.html"><span>Next &rarr;</span><b>11.4 Understanding Congruence</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 11.3 Understanding Similar Shapes<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- scale-factor explorer ---- */
+(function(){
+  var box=el('sfDraw'), out=el('sfOut');
+  function go(){
+    var k=num('sfK',2);
+    el('sfKv').innerHTML=fx(k,2);
+    var W=460,H=225,m=30,gap=22;
+    var w=44,h=28;
+    var total=w+gap+k*w, mx=Math.max(h,k*h);
+    var s=Math.min((W-2*m)/total,(H-2*m-24)/mx);
+    var base=H-m-14;
+    var x1=m, w1=w*s, h1=h*s;
+    var x2=m+(w+gap)*s, w2=k*w*s, h2=k*h*s;
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Two similar rectangles drawn to scale">';
+    svg+='<rect x="'+x1+'" y="'+(base-h1)+'" width="'+w1+'" height="'+h1+
+         '" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>';
+    svg+='<rect x="'+x2+'" y="'+(base-h2)+'" width="'+w2+'" height="'+h2+
+         '" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>';
+    svg+='<text x="'+(x1+w1/2)+'" y="'+(base+18)+'" font-size="13" text-anchor="middle">1</text>';
+    svg+='<text x="'+(x2+w2/2)+'" y="'+(base+18)+'" font-size="13" text-anchor="middle" fill="#16a34a">k = '+fx(k,2)+'</text>';
+    svg+='</svg>';
+    box.innerHTML=svg;
+    out.innerHTML=
+      '<div class="tw"><table><thead><tr><th>Quantity</th><th>Scale factor</th><th>Ratio small : large</th></tr></thead><tbody>'+
+      '<tr><td>Length</td><td>k</td><td>1 : <b>'+fx(k,3)+'</b></td></tr>'+
+      '<tr><td>Area (and surface area)</td><td>k&sup2;</td><td>1 : <b>'+fx(k*k,3)+'</b></td></tr>'+
+      '<tr><td>Volume (and capacity)</td><td>k&sup3;</td><td>1 : <b>'+fx(k*k*k,3)+'</b></td></tr>'+
+      '</tbody></table></div>'+
+      '<div style="margin-top:8px">So a side of <span class="hl">5 cm</span> becomes '+fx(5*k,3)+
+      ' cm, an area of <span class="hl">20 cm&sup2;</span> becomes '+fx(20*k*k,3)+
+      ' cm&sup2;, and a volume of <span class="hl">30 cm&sup3;</span> becomes '+fx(30*k*k*k,3)+' cm&sup3;.</div>';
+  }
+  bindAll(['sfK'],go);
+})();
+
+/* ---- scale-factor converter ---- */
+(function(){
+  var out=el('rcOut');
+  function go(){
+    var t=el('rcType').value, v=num('rcVal',0);
+    if(v<=0){ out.innerHTML='<span style="opacity:.6">Enter a positive ratio.</span>'; return; }
+    var k, line;
+    if(t==='len'){ k=v; line='You already have the linear factor: k = <span class="hl">'+fx(k,4)+'</span>'; }
+    else if(t==='area'){ k=Math.sqrt(v);
+      line='k&sup2; = '+fx(v,4)+', so k = &#8730;'+fx(v,4)+' = <span class="hl">'+fx(k,4)+'</span>'; }
+    else { k=Math.pow(v,1/3);
+      line='k&sup3; = '+fx(v,4)+', so k = <sup>3</sup>&#8730;'+fx(v,4)+' = <span class="hl">'+fx(k,4)+'</span>'; }
+    out.innerHTML=
+      '<div>'+line+'</div>'+
+      '<div style="margin-top:8px">Linear factor &nbsp;k = <b>'+fx(k,4)+'</b></div>'+
+      '<div>Area factor &nbsp;k&sup2; = <b>'+fx(k*k,4)+'</b></div>'+
+      '<div>Volume factor &nbsp;k&sup3; = <b>'+fx(k*k*k,4)+'</b></div>'+
+      '<div style="margin-top:8px;opacity:.75;font-size:.92em">Multiply a length by k, an area or surface area by k&sup2;, and a volume or capacity by k&sup3;.</div>';
+  }
+  bindAll(['rcType','rcVal'],go);
+})();
+</script>
+</body>
+</html>

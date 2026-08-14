@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.4 Standard Form | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Writing very large and very small numbers as a &times; 10 to a power, and calculating with them accurately in the exam.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 5 &mdash; Fractions and Standard Form</span>
+    </div>
+    <h1>5.4 &nbsp;Standard Form</h1>
+    <p>Writing very large and very small numbers as a &times; 10 to a power, and calculating with them accurately in the exam.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#form">The form</a>
+  <a href="#multdiv">&times; and &divide;</a>
+  <a href="#addsub">+ and &minus;</a>
+  <a href="#calc">Calculator</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="form" data-nav="The form">
+<h2>What standard form is</h2>
+<p>Scientists deal with numbers like 4&nbsp;500&nbsp;000&nbsp;000 and 0.000&nbsp;000&nbsp;82. Writing all those
+zeros is slow and easy to miscount, so we write every number in the same compact shape.</p>
+
+<div class="def"><b>Definition</b>
+A number is in <b>standard form</b> when it is written as
+<div class="formula" style="margin-top:10px">a &times; 10<sup>n</sup>
+<small>where <span class="m">1 &le; a &lt; 10</span> and <span class="m">n</span> is an integer</small></div>
+The value <span class="m">a</span> must have exactly one non-zero digit before the decimal point.</div>
+
+<div class="grid two">
+  <div class="card"><h4>Large numbers: <span class="m">n</span> is positive</h4>
+    <ul>
+      <li><span class="m">4&nbsp;500&nbsp;000 = 4.5 &times; 10<sup>6</sup></span></li>
+      <li><span class="m">93&nbsp;000 = 9.3 &times; 10<sup>4</sup></span></li>
+      <li><span class="m">6700 = 6.7 &times; 10<sup>3</sup></span></li>
+    </ul>
+    <p>Count how many places the decimal point moves <b>left</b>; that is <span class="m">n</span>.</p>
+  </div>
+  <div class="card o"><h4>Small numbers: <span class="m">n</span> is negative</h4>
+    <ul>
+      <li><span class="m">0.00082 = 8.2 &times; 10<sup>&minus;4</sup></span></li>
+      <li><span class="m">0.0000305 = 3.05 &times; 10<sup>&minus;5</sup></span></li>
+      <li><span class="m">0.0205 = 2.05 &times; 10<sup>&minus;2</sup></span></li>
+    </ul>
+    <p>Count how many places the point moves <b>right</b>; <span class="m">n</span> is that many, negative.</p>
+  </div>
+</div>
+
+<div class="note"><b>Note</b>
+A negative power does <b>not</b> mean the number is negative. <span class="m">8.2 &times; 10<sup>&minus;4</sup></span>
+is a small <i>positive</i> number. Only a minus sign in front of <span class="m">a</span> makes the number
+negative, as in <span class="m">&minus;8.2 &times; 10<sup>&minus;4</sup></span>.</div>
+
+<div class="card p">
+<h4>The scale of powers of ten</h4>
+<svg viewBox="0 0 640 190" role="img" aria-label="Number line of powers of ten from ten to the minus six up to ten to the nine with example quantities">
+  <line x1="30" y1="120" x2="610" y2="120" stroke="#0f2d6b" stroke-width="2"/>
+  <g font-size="12" fill="#0f2d6b" text-anchor="middle">
+    <line x1="60" y1="112" x2="60" y2="128" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="60" y="146">10&#8315;&#8310;</text>
+    <line x1="170" y1="112" x2="170" y2="128" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="170" y="146">10&#8315;&#179;</text>
+    <line x1="280" y1="112" x2="280" y2="128" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="280" y="146">10&#8304;</text>
+    <line x1="390" y1="112" x2="390" y2="128" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="390" y="146">10&#179;</text>
+    <line x1="500" y1="112" x2="500" y2="128" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="500" y="146">10&#8310;</text>
+    <line x1="595" y1="112" x2="595" y2="128" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="595" y="146">10&#8313;</text>
+  </g>
+  <text x="30" y="172" font-size="12" fill="#4a5b7a">smaller</text>
+  <text x="560" y="172" font-size="12" fill="#4a5b7a">larger</text>
+
+  <circle cx="140" cy="120" r="5" fill="#e05c2a"/>
+  <text x="118" y="86" font-size="12" fill="#e05c2a">grain of sand</text>
+  <text x="118" y="70" font-size="12" fill="#e05c2a">5 &times; 10&#8315;&#8308; m</text>
+
+  <circle cx="290" cy="120" r="5" fill="#16a34a"/>
+  <text x="272" y="60" font-size="12" fill="#16a34a">a person</text>
+  <text x="272" y="44" font-size="12" fill="#16a34a">1.7 m</text>
+  <line x1="290" y1="66" x2="290" y2="114" stroke="#16a34a" stroke-width="1"/>
+
+  <circle cx="510" cy="120" r="5" fill="#6d28d9"/>
+  <text x="450" y="86" font-size="12" fill="#6d28d9">Earth radius</text>
+  <text x="450" y="70" font-size="12" fill="#6d28d9">6.4 &times; 10&#8310; m</text>
+</svg>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Write in standard form: (a) 4&nbsp;500&nbsp;000 &nbsp;(b) 0.00082 &nbsp;(c) 34 &times; 10<sup>5</sup>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Move the point until there is one non-zero digit in
+    front of it, and count the places. The number is large, so the point travels <b>left</b>.
+    <span class="work">4&nbsp;500&nbsp;000. &rarr; 4.5 is 6 places left, so n = 6</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Same idea, but this number is small, so the point
+    travels <b>right</b> and the power is negative.
+    <span class="work">0.00082 &rarr; 8.2 is 4 places right, so n = &minus;4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) <span class="m">34</span> is not between 1 and 10,
+    so this is not yet in standard form. Move the point one place left in <span class="m">a</span> and add 1 to
+    the power to keep the value the same.
+    <span class="work">34 &times; 10<sup>5</sup> = 3.4 &times; 10<sup>1</sup> &times; 10<sup>5</sup> = 3.4 &times; 10<sup>6</sup></span></div></div>
+  <div class="final">(a) 4.5 &times; 10<sup>6</sup> &nbsp;&nbsp; (b) 8.2 &times; 10<sup>&minus;4</sup> &nbsp;&nbsp; (c) 3.4 &times; 10<sup>6</sup></div>
+  <div class="warn"><b>Exam trap</b> Part (c) is the single most common lost mark in this topic. An answer of
+  <span class="m">34 &times; 10<sup>5</sup></span> or <span class="m">0.6 &times; 10<sup>&minus;4</sup></span>
+  is not in standard form and scores nothing, however good the working above it.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Write as ordinary numbers: (a) 3.06 &times; 10<sup>5</sup> &nbsp;(b) 9.1 &times; 10<sup>&minus;4</sup>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) A positive power makes the number bigger, so move the
+    point 5 places right, filling with zeros.
+    <span class="work">3.06 &rarr; 306000.</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) A negative power makes the number smaller, so move the
+    point 4 places left.
+    <span class="work">9.1 &rarr; 0.00091</span></div></div>
+  <div class="final">(a) 306&nbsp;000 &nbsp;&nbsp;&nbsp; (b) 0.00091</div>
+  <div class="tip"><b>Exam tip</b> Count the zeros carefully: in
+  <span class="m">9.1 &times; 10<sup>&minus;4</sup></span> there are <b>three</b> zeros after the decimal point,
+  because the 9 itself occupies the fourth place.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Standard form converter and calculator</h4>
+  <p class="hint">Mode 1 and 2 convert in both directions and show the decimal-point movement. Mode 3 multiplies
+  or divides two numbers in standard form and shows the index-law working.</p>
+  <div class="row">
+    <div><label for="sfMode">Mode</label>
+      <select id="sfMode">
+        <option value="toSF" selected>1&nbsp; Ordinary &rarr; standard form</option>
+        <option value="toOrd">2&nbsp; Standard form &rarr; ordinary</option>
+        <option value="calc">3&nbsp; Multiply or divide</option>
+      </select></div>
+    <div id="sfOrdWrap"><label for="sfOrd">Ordinary number</label>
+      <input type="text" id="sfOrd" value="0.00082" style="width:150px"></div>
+    <div id="sfA1Wrap"><label for="sfA1">a</label><input type="number" id="sfA1" value="6" step="any" style="width:90px"></div>
+    <div id="sfM1Wrap"><label for="sfM1">power m</label><input type="number" id="sfM1" value="7" step="1" style="width:90px"></div>
+    <div id="sfOpWrap"><label for="sfOp">Operation</label>
+      <select id="sfOp"><option value="x">&times;</option><option value="d">&divide;</option></select></div>
+    <div id="sfB1Wrap"><label for="sfB1">b</label><input type="number" id="sfB1" value="5" step="any" style="width:90px"></div>
+    <div id="sfN1Wrap"><label for="sfN1">power n</label><input type="number" id="sfN1" value="-3" step="1" style="width:90px"></div>
+  </div>
+  <div class="out" id="sfOut"></div>
+</div>
+</section>
+
+<section id="multdiv" data-nav="&times; and &divide;">
+<h2>Multiplying and dividing</h2>
+<p>Standard form is built out of powers of 10, so the index laws do all the work. Deal with the numbers and
+the powers separately.</p>
+
+<div class="formula">(a &times; 10<sup>m</sup>) &times; (b &times; 10<sup>n</sup>) = (a &times; b) &times; 10<sup>m+n</sup>
+<br>(a &times; 10<sup>m</sup>) &divide; (b &times; 10<sup>n</sup>) = (a &divide; b) &times; 10<sup>m&minus;n</sup>
+<small>Multiply the fronts, add the powers &mdash; divide the fronts, subtract the powers</small></div>
+
+<div class="grid two">
+  <div class="card g"><h4>Worked in one line each</h4>
+    <ul>
+      <li><span class="m">(3 &times; 10<sup>5</sup>) &times; (4 &times; 10<sup>7</sup>) = 12 &times; 10<sup>12</sup> = 1.2 &times; 10<sup>13</sup></span></li>
+      <li><span class="m">(8.4 &times; 10<sup>6</sup>) &divide; (2 &times; 10<sup>&minus;3</sup>) = 4.2 &times; 10<sup>9</sup></span></li>
+      <li><span class="m">(2 &times; 10<sup>5</sup>) &divide; (8 &times; 10<sup>2</sup>) = 0.25 &times; 10<sup>3</sup> = 2.5 &times; 10<sup>2</sup></span></li>
+    </ul>
+  </div>
+  <div class="card p"><h4>Powers of a number in standard form</h4>
+    <p>Raise both parts to the power:</p>
+    <p class="m">(3 &times; 10<sup>4</sup>)<sup>3</sup> = 3<sup>3</sup> &times; 10<sup>12</sup> = 27 &times; 10<sup>12</sup></p>
+    <p class="m">= 2.7 &times; 10<sup>13</sup></p>
+  </div>
+</div>
+
+<div class="warn"><b>Watch out</b>
+Subtracting a negative power catches people out every year:
+<span class="m">6 &minus; (&minus;3) = 6 + 3 = 9</span>. Write the bracket down rather than trying to do it in
+your head.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Work out <span class="m">(6 &times; 10<sup>7</sup>) &times; (5 &times; 10<sup>&minus;3</sup>)</span>, giving your answer in standard form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Separate the fronts from the powers.
+    <span class="work">= (6 &times; 5) &times; (10<sup>7</sup> &times; 10<sup>&minus;3</sup>)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply the fronts; add the indices.
+    <span class="work">6 &times; 5 = 30 &nbsp;&nbsp; 7 + (&minus;3) = 4<br>= 30 &times; 10<sup>4</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">30</span> is not between 1 and 10, so
+    adjust: move the point one place left and add 1 to the index.
+    <span class="work">30 &times; 10<sup>4</sup> = 3 &times; 10<sup>1</sup> &times; 10<sup>4</sup> = 3 &times; 10<sup>5</sup></span></div></div>
+  <div class="final">3 &times; 10<sup>5</sup></div>
+  <div class="note"><b>Check</b> <span class="m">6 &times; 10<sup>7</sup> = 60&nbsp;000&nbsp;000</span> and
+  <span class="m">5 &times; 10<sup>&minus;3</sup> = 0.005</span>;
+  <span class="m">60&nbsp;000&nbsp;000 &times; 0.005 = 300&nbsp;000 = 3 &times; 10<sup>5</sup></span>.</div>
+</div>
+</details>
+</section>
+
+<section id="addsub" data-nav="+ and &minus;">
+<h2>Adding and subtracting</h2>
+<p>There is no index law for adding, so you cannot add the powers. Either write both numbers with the
+<b>same</b> power of 10 and add the fronts, or convert to ordinary numbers, add, and convert back.</p>
+
+<div class="tabs">
+  <div class="heads"><button>Method 1: match the powers</button><button>Method 2: ordinary numbers</button></div>
+  <div class="panes">
+    <div>
+      <p>Rewrite the smaller number using the larger power. Moving the point one place left in
+      <span class="m">a</span> raises the power by 1.</p>
+      <p class="m">4.2 &times; 10<sup>4</sup> = 0.42 &times; 10<sup>5</sup></p>
+      <p class="m">3.6 &times; 10<sup>5</sup> + 0.42 &times; 10<sup>5</sup> = 4.02 &times; 10<sup>5</sup></p>
+      <p>Faster once you trust it, and essential when the numbers are too large for a display.</p>
+    </div>
+    <div>
+      <p>Write both out in full, add, then convert the answer back.</p>
+      <p class="m">360&nbsp;000 + 42&nbsp;000 = 402&nbsp;000</p>
+      <p class="m">402&nbsp;000 = 4.02 &times; 10<sup>5</sup></p>
+      <p>Safe and perfectly acceptable, but risky when there are many zeros to count.</p>
+    </div>
+  </div>
+</div>
+
+<div class="warn"><b>Watch out</b>
+<span class="m">3.6 &times; 10<sup>5</sup> + 4.2 &times; 10<sup>4</sup></span> is <b>not</b>
+<span class="m">7.8 &times; 10<sup>9</sup></span> and <b>not</b> <span class="m">7.8 &times; 10<sup>5</sup></span>.
+You may only add the fronts once the powers are identical.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Work out <span class="m">3.6 &times; 10<sup>5</sup> + 4.2 &times; 10<sup>4</sup></span>, giving your answer in standard form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Choose the larger power, <span class="m">10<sup>5</sup></span>,
+    and rewrite the other term with it.
+    <span class="work">4.2 &times; 10<sup>4</sup> = 0.42 &times; 10<sup>5</sup></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now the powers match, so add the fronts.
+    <span class="work">3.6 + 0.42 = 4.02<br>= 4.02 &times; 10<sup>5</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check that <span class="m">a</span> is between 1 and 10.
+    It is, so no adjustment is needed.
+    <span class="work">1 &le; 4.02 &lt; 10 &nbsp;&#10003;</span></div></div>
+  <div class="final">4.02 &times; 10<sup>5</sup></div>
+  <div class="note"><b>Note</b> When the fronts add to 10 or more you must adjust:
+  <span class="m">9.4 &times; 10<sup>6</sup> + 8.1 &times; 10<sup>6</sup> = 17.5 &times; 10<sup>6</sup>
+  = 1.75 &times; 10<sup>7</sup></span>.</div>
+</div>
+</details>
+</section>
+
+<section id="calc" data-nav="Calculator">
+<h2>Your calculator, and ordering</h2>
+<div class="grid two">
+  <div class="card"><h4>The <span class="m">&times;10<sup>x</sup></span> key</h4>
+    <p>Modern Casio calculators have a key marked <span class="m">&times;10<sup>x</sup></span>; older ones call
+    it <b>EXP</b> or <b>EE</b>. To enter <span class="m">4.2 &times; 10<sup>16</sup></span> press</p>
+    <p class="m">4 &middot; 2 &nbsp; [&times;10<sup>x</sup>] &nbsp; 1 6</p>
+    <p>For a negative index use the <span class="m">(&minus;)</span> key, not the subtraction key.</p>
+  </div>
+  <div class="card o"><h4>Two habits that cost marks</h4>
+    <ul>
+      <li>Do <b>not</b> type <span class="m">&times; 10</span> as well &mdash; the key already means
+        &ldquo;times ten to the power&rdquo;, so <span class="m">4.2 &times; 10</span>&nbsp;[EXP]&nbsp;16 is ten
+        times too big.</li>
+      <li>The display may read <span class="m">4.2<sup>16</sup></span> or <span class="m">4.2E16</span>.
+        Never copy that down &mdash; write <span class="m">4.2 &times; 10<sup>16</sup></span> in full.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="def"><b>Ordering</b>
+To put numbers in standard form in order, compare the <b>powers</b> first. Only if two powers are equal do you
+compare the values of <span class="m">a</span>. Remember that
+<span class="m">10<sup>&minus;5</sup></span> is smaller than <span class="m">10<sup>&minus;4</sup></span>.</div>
+
+<div class="tip"><b>Exam tip</b>
+If a question says &ldquo;write your answer in standard form&rdquo;, that is an instruction, not a suggestion.
+An answer of 300&nbsp;000 where <span class="m">3 &times; 10<sup>5</sup></span> was asked for will not gain the
+final mark.</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Write these numbers in order, smallest first: <span class="m">3.2 &times; 10<sup>&minus;3</sup>, &nbsp; 4.1 &times; 10<sup>&minus;4</sup>, &nbsp; 2.9 &times; 10<sup>&minus;3</sup>, &nbsp; 5 &times; 10<sup>&minus;5</sup></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Sort by power first. The most negative power gives the
+    smallest number.
+    <span class="work">10<sup>&minus;5</sup> &lt; 10<sup>&minus;4</sup> &lt; 10<sup>&minus;3</sup></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Two numbers share the power
+    <span class="m">10<sup>&minus;3</sup></span>, so compare their fronts.
+    <span class="work">2.9 &lt; 3.2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Confirm with ordinary numbers if you are unsure.
+    <span class="work">0.00005, &nbsp;0.00041, &nbsp;0.0029, &nbsp;0.0032</span></div></div>
+  <div class="final">5 &times; 10<sup>&minus;5</sup>, &nbsp; 4.1 &times; 10<sup>&minus;4</sup>, &nbsp; 2.9 &times; 10<sup>&minus;3</sup>, &nbsp; 3.2 &times; 10<sup>&minus;3</sup></div>
+  <div class="warn"><b>Watch out</b> Do not be fooled by a large front. <span class="m">5 &times; 10<sup>&minus;5</sup></span>
+  has the biggest value of <span class="m">a</span> but is by far the smallest number here.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Work out <span class="m">(2.4 &times; 10<sup>&minus;5</sup>) &divide; (6 &times; 10<sup>3</sup>)</span>, giving your answer in standard form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Divide the fronts and subtract the indices.
+    <span class="work">2.4 &divide; 6 = 0.4 &nbsp;&nbsp; &minus;5 &minus; 3 = &minus;8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">So far this reads
+    <span class="m">0.4 &times; 10<sup>&minus;8</sup></span>, which is not standard form because
+    <span class="m">0.4 &lt; 1</span>.
+    <span class="work">0.4 &times; 10<sup>&minus;8</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Move the point one place <b>right</b> in the front, so
+    subtract 1 from the index.
+    <span class="work">= 4 &times; 10<sup>&minus;1</sup> &times; 10<sup>&minus;8</sup> = 4 &times; 10<sup>&minus;9</sup></span></div></div>
+  <div class="final">4 &times; 10<sup>&minus;9</sup></div>
+  <div class="tip"><b>Exam tip</b> Point moves left &rarr; power goes <b>up</b>; point moves right &rarr; power
+  goes <b>down</b>. The value of the whole number never changes.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">The mass of one grain of sand is <span class="m">6.5 &times; 10<sup>&minus;5</sup></span>&nbsp;kg. A beach contains <span class="m">8.4 &times; 10<sup>12</sup></span> grains. (a) Find the total mass of sand in kg, in standard form. (b) Write this mass in tonnes, in standard form. (1 tonne = 1000&nbsp;kg.)</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Total mass = mass of one grain &times; number of grains.
+    <span class="work">(6.5 &times; 10<sup>&minus;5</sup>) &times; (8.4 &times; 10<sup>12</sup>)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Fronts multiply; indices add.
+    <span class="work">6.5 &times; 8.4 = 54.6 &nbsp;&nbsp; &minus;5 + 12 = 7<br>= 54.6 &times; 10<sup>7</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Adjust so that <span class="m">1 &le; a &lt; 10</span>.
+    <span class="work">54.6 &times; 10<sup>7</sup> = 5.46 &times; 10<sup>1</sup> &times; 10<sup>7</sup> = 5.46 &times; 10<sup>8</sup></span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) Divide by 1000, which is
+    <span class="m">10<sup>3</sup></span>, so subtract 3 from the index.
+    <span class="work">5.46 &times; 10<sup>8</sup> &divide; 10<sup>3</sup> = 5.46 &times; 10<sup>5</sup></span></div></div>
+  <div class="final">(a) 5.46 &times; 10<sup>8</sup>&nbsp;kg &nbsp;&nbsp;&nbsp; (b) 5.46 &times; 10<sup>5</sup> tonnes</div>
+  <div class="note"><b>Note</b> Converting units is just another power of 10. Dividing by 1000 lowers the index
+  by 3; multiplying by 1000 raises it by 3. The digits 5&nbsp;4&nbsp;6 never change.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Write in standard form: (a) 62&nbsp;000 &nbsp;(b) 0.00509</li>
+    <li>Write as ordinary numbers: (a) <span class="m">8.03 &times; 10<sup>4</sup></span> &nbsp;(b) <span class="m">2.5 &times; 10<sup>&minus;6</sup></span></li>
+    <li>Work out <span class="m">(4 &times; 10<sup>9</sup>) &times; (7 &times; 10<sup>&minus;4</sup>)</span> in standard form.</li>
+    <li>Work out <span class="m">(9.6 &times; 10<sup>5</sup>) &divide; (3.2 &times; 10<sup>&minus;2</sup>)</span> in standard form.</li>
+    <li>Work out <span class="m">5.2 &times; 10<sup>&minus;4</sup> + 6 &times; 10<sup>&minus;5</sup></span> in standard form.</li>
+    <li>(a) Write in order, smallest first: <span class="m">1.2 &times; 10<sup>3</sup>, &nbsp; 9.9 &times; 10<sup>2</sup>, &nbsp; 1.02 &times; 10<sup>3</sup>, &nbsp; 8.7 &times; 10<sup>1</sup></span>.
+      &nbsp;(b) A rectangle measures <span class="m">2.5 &times; 10<sup>3</sup></span>&nbsp;m by
+      <span class="m">4 &times; 10<sup>&minus;1</sup></span>&nbsp;m. Find its area in standard form.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) point moves 4 places &rarr; <span class="ans">6.2 &times; 10<sup>4</sup></span>
+        &nbsp;(b) first non-zero digit is 5, 3 places &rarr; <span class="ans">5.09 &times; 10<sup>&minus;3</sup></span></li>
+      <li>(a) <span class="ans">80&nbsp;300</span> &nbsp;(b) <span class="ans">0.0000025</span></li>
+      <li><span class="m">4 &times; 7 = 28</span>, <span class="m">9 + (&minus;4) = 5</span>, so
+        <span class="m">28 &times; 10<sup>5</sup></span> &rarr; <span class="ans">2.8 &times; 10<sup>6</sup></span></li>
+      <li><span class="m">9.6 &divide; 3.2 = 3</span>, <span class="m">5 &minus; (&minus;2) = 7</span> &rarr;
+        <span class="ans">3 &times; 10<sup>7</sup></span></li>
+      <li><span class="m">6 &times; 10<sup>&minus;5</sup> = 0.6 &times; 10<sup>&minus;4</sup></span>;
+        <span class="m">5.2 + 0.6 = 5.8</span> &rarr; <span class="ans">5.8 &times; 10<sup>&minus;4</sup></span></li>
+      <li>(a) values 87, 990, 1020, 1200 &rarr;
+        <span class="ans">8.7 &times; 10<sup>1</sup>, 9.9 &times; 10<sup>2</sup>, 1.02 &times; 10<sup>3</sup>, 1.2 &times; 10<sup>3</sup></span>
+        &nbsp;(b) <span class="m">2.5 &times; 4 = 10</span>, <span class="m">3 + (&minus;1) = 2</span>, giving
+        <span class="m">10 &times; 10<sup>2</sup></span> &rarr; <span class="ans">1 &times; 10<sup>3</sup>&nbsp;m&sup2;</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Standard form is <b>a &times; 10<sup>n</sup></b> with <span class="m">1 &le; a &lt; 10</span> and
+      <span class="m">n</span> an integer &mdash; exactly one non-zero digit before the point.</li>
+    <li>Large numbers give a <b>positive</b> power, numbers below 1 give a <b>negative</b> power. A negative
+      power never means a negative number.</li>
+    <li>Moving the decimal point one place <b>left</b> adds 1 to the power; one place <b>right</b> subtracts 1.</li>
+    <li>To multiply: multiply the fronts and <b>add</b> the indices. To divide: divide the fronts and
+      <b>subtract</b> the indices. Take care with negative indices.</li>
+    <li>To add or subtract, first rewrite both numbers with the <b>same</b> power of 10, then add or subtract
+      the fronts. Indices are never added when you are adding numbers.</li>
+    <li>Always check the front at the end: <span class="m">34 &times; 10<sup>5</sup></span> and
+      <span class="m">0.4 &times; 10<sup>&minus;8</sup></span> are <b>not</b> in standard form &mdash; adjust to
+      <span class="m">3.4 &times; 10<sup>6</sup></span> and <span class="m">4 &times; 10<sup>&minus;9</sup></span>.</li>
+    <li>Use the <span class="m">&times;10<sup>x</sup></span> (EXP) key, and never write the calculator display
+      form <span class="m">4.2E16</span> as your answer.</li>
+    <li>Order by comparing powers first, then the values of <span class="m">a</span>.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="5-3.html"><span>&larr; Previous</span><b>5.3 Percentages</b></a><a class="next" href="index.html"><span>More lessons &rarr;</span><b>All notes</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 5.4 Standard Form<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- standard form converter and calculator ---- */
+(function(){
+  var out=el('sfOut');
+  function show(id,yes){ var n=el(id); if(n) n.style.display = yes ? '' : 'none'; }
+  function pw(n){ return '10<sup>'+(n<0?'&minus;'+Math.abs(n):n)+'</sup>'; }
+
+  /* split a plain decimal string into a standard-form pair, all by string work */
+  function toSF(s){
+    s=(s||'').trim().replace(/[, ]/g,'');
+    var neg=/^-/.test(s); s=s.replace(/^[+-]/,'');
+    if(s===''||s==='.'||!/^\d*\.?\d*$/.test(s)) return null;
+    var dot=s.indexOf('.'), ip, fp;
+    if(dot<0){ ip=s; fp=''; } else { ip=s.slice(0,dot); fp=s.slice(dot+1); }
+    var digits=ip+fp, pos=ip.length, i=0;
+    while(i<digits.length && digits.charAt(i)==='0') i++;
+    if(i===digits.length) return {zero:true};
+    var n=pos-i-1;
+    var sig=digits.slice(i).replace(/0+$/,'');
+    if(sig==='') sig='0';
+    var a=sig.charAt(0)+(sig.length>1?'.'+sig.slice(1):'');
+    return {a:(neg?'&minus;':'')+a, n:n};
+  }
+
+  function toOrd(aStr,n){
+    var s=(aStr||'').trim(), neg=/^-/.test(s); s=s.replace(/^[+-]/,'');
+    if(s===''||!/^\d*\.?\d*$/.test(s)) return null;
+    var dot=s.indexOf('.'), ip, fp;
+    if(dot<0){ ip=s; fp=''; } else { ip=s.slice(0,dot); fp=s.slice(dot+1); }
+    var digits=ip+fp, pos=ip.length+n;
+    while(pos<=0){ digits='0'+digits; pos++; }
+    while(pos>digits.length){ digits=digits+'0'; }
+    var res = (pos>=digits.length) ? digits : digits.slice(0,pos)+'.'+digits.slice(pos);
+    res=res.replace(/^0+(\d)/,'$1');
+    if(/\./.test(res)) res=res.replace(/0+$/,'').replace(/\.$/,'');
+    return (neg?'&minus;':'')+res;
+  }
+
+  function go(){
+    var mode=el('sfMode').value;
+    show('sfOrdWrap', mode==='toSF');
+    show('sfA1Wrap', mode!=='toSF');
+    show('sfM1Wrap', mode!=='toSF');
+    show('sfOpWrap', mode==='calc');
+    show('sfB1Wrap', mode==='calc');
+    show('sfN1Wrap', mode==='calc');
+    var lab=el('sfM1Wrap').getElementsByTagName('label')[0];
+    if(lab) lab.innerHTML = (mode==='calc') ? 'power m' : 'power n';
+
+    if(mode==='toSF'){
+      var r=toSF(el('sfOrd').value);
+      if(!r){ out.innerHTML='<span class="hl">Type a plain number such as 4500000 or 0.00082.</span>'; return; }
+      if(r.zero){ out.innerHTML='<span class="hl">Zero cannot be written in standard form &mdash; there is no non-zero first digit.</span>'; return; }
+      var moves=Math.abs(r.n), dir = r.n>0 ? 'left' : 'right';
+      out.innerHTML=
+        '<div>Put the point after the first non-zero digit: <span class="hl">a = '+r.a+'</span></div>'+
+        '<div style="margin-top:6px">'+(moves===0
+          ? 'The point does not move, so <span class="hl">n = 0</span>.'
+          : 'The point moves <span class="hl">'+moves+' place'+(moves===1?'':'s')+' '+dir+
+            '</span>, so <span class="hl">n = '+(r.n<0?'&minus;'+moves:moves)+'</span>.')+'</div>'+
+        '<div style="margin-top:8px;font-size:1.05rem">'+el('sfOrd').value.trim()+' = <b>'+r.a+' &times; '+pw(r.n)+'</b></div>';
+    }
+    else if(mode==='toOrd'){
+      var a=(el('sfA1').value||'').trim(), n=Math.round(num('sfM1',0));
+      var av=parseFloat(a);
+      var o=toOrd(a,n);
+      if(o===null||isNaN(av)){ out.innerHTML='<span class="hl">Enter a value for a and an integer power.</span>'; return; }
+      var warn = (Math.abs(av)<1||Math.abs(av)>=10)
+        ? '<div style="margin-top:8px;color:#e05c2a">a = '+a+' is not between 1 and 10, so '+a+' &times; '+pw(n)+
+          ' is not yet in standard form.</div>' : '';
+      out.innerHTML=
+        '<div>'+(n===0?'The power is 0, so the number is unchanged.'
+          :'A '+(n>0?'positive':'negative')+' power moves the point <span class="hl">'+Math.abs(n)+
+           ' place'+(Math.abs(n)===1?'':'s')+' '+(n>0?'right':'left')+'</span>.')+'</div>'+
+        '<div style="margin-top:8px;font-size:1.05rem">'+a+' &times; '+pw(n)+' = <b>'+o+'</b></div>'+warn;
+    }
+    else{
+      var A=num('sfA1',1), m=Math.round(num('sfM1',0)), B=num('sfB1',1), nn=Math.round(num('sfN1',0));
+      var op=el('sfOp').value, sym = op==='x' ? '&times;' : '&divide;';
+      if(op==='d' && B===0){ out.innerHTML='<span class="hl">You cannot divide by zero.</span>'; return; }
+      var c = op==='x' ? A*B : A/B;
+      var p = op==='x' ? m+nn : m-nn;
+      var raw=fx(c,8), rawp=p, adjusted=false;
+      if(c!==0){
+        while(Math.abs(c)>=10){ c=c/10; p=p+1; adjusted=true; }
+        while(Math.abs(c)<1){ c=c*10; p=p-1; adjusted=true; }
+      }
+      out.innerHTML=
+        '<div>('+fx(A,6)+' &times; '+pw(m)+') '+sym+' ('+fx(B,6)+' &times; '+pw(nn)+')</div>'+
+        '<div style="margin-top:6px">= ('+fx(A,6)+' '+sym+' '+fx(B,6)+') &times; 10<sup>'+
+          ((m<0?'&minus;'+Math.abs(m):m)+(op==='x'?' + ':' &minus; ')+
+           (nn<0?'(&minus;'+Math.abs(nn)+')':nn))+'</sup></div>'+
+        '<div style="margin-top:6px">= <span class="hl">'+raw+' &times; '+pw(rawp)+'</span></div>'+
+        (adjusted
+          ? '<div style="margin-top:6px">'+raw+' is not between 1 and 10, so move the point and change the power: '+
+            '<b>'+fx(c,6)+' &times; '+pw(p)+'</b></div>'
+          : '<div style="margin-top:6px">The front is already between 1 and 10: <b>'+fx(c,6)+' &times; '+pw(p)+'</b></div>');
+    }
+  }
+  bindAll(['sfMode','sfOrd','sfA1','sfM1','sfOp','sfB1','sfN1'],go);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.2 Factorising | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Reversing expansion &mdash; taking out common factors, factorising by grouping, spotting the difference of two squares and factorising simple quadratics.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 6 &mdash; Equations and Transforming Formulae</span>
+    </div>
+    <h1>6.2 &nbsp;Factorising</h1>
+    <p>Reversing expansion &mdash; taking out common factors, factorising by grouping, spotting the difference of two squares and factorising simple quadratics.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#hcf">Common factors</a>
+  <a href="#grouping">Grouping</a>
+  <a href="#dots">Two squares</a>
+  <a href="#quadratics">Quadratics</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="hcf" data-nav="Common factors">
+<h2>Factorising is expanding in reverse</h2>
+<p>When you expand, you remove brackets. When you <b>factorise</b>, you put them back. Every factorising
+answer can therefore be checked in a few seconds by expanding it again &mdash; and you should <i>always</i>
+do that check.</p>
+
+<div class="formula">3x(2x &minus; 5) &nbsp;
+<span style="color:#e05c2a">&#8592;&nbsp;factorise&nbsp;&#8212;&nbsp;expand&nbsp;&#8594;</span> &nbsp;
+6x&sup2; &minus; 15x
+<small>Two ways of writing the same expression</small></div>
+
+<div class="def"><b>Definition</b>
+The <b>highest common factor</b> (HCF) of a set of terms is the largest expression that divides exactly into
+every one of them. To factorise, take the HCF outside a bracket and write what is left inside.</div>
+
+<h3>Finding the HCF of algebraic terms</h3>
+<p>Deal with the numbers and the letters separately.</p>
+<div class="grid two">
+  <div class="card"><h4>Numbers</h4>
+    <p>Take the HCF of the coefficients. For <span class="m">12</span> and <span class="m">18</span> that is
+    <span class="m">6</span>.</p></div>
+  <div class="card p"><h4>Letters</h4>
+    <p>Take each letter that appears in <b>every</b> term, to its <b>lowest</b> power. From
+    <span class="m">x&sup3;y</span> and <span class="m">x&sup2;y&sup2;</span> that gives
+    <span class="m">x&sup2;y</span>.</p></div>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Factorise fully (a) <span class="m">12x&sup3;y &minus; 18x&sup2;y&sup2;</span> &nbsp;(b) <span class="m">&minus;8a&sup2; + 12ab</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Numbers: HCF of 12 and 18 is 6. Letters:
+    <span class="m">x</span> appears as <span class="m">x&sup3;</span> and <span class="m">x&sup2;</span>
+    &rarr; take <span class="m">x&sup2;</span>; <span class="m">y</span> appears as <span class="m">y</span>
+    and <span class="m">y&sup2;</span> &rarr; take <span class="m">y</span>.
+    <span class="work">HCF = 6x&sup2;y</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Divide each term by the HCF to find what goes inside.
+    <span class="work">12x&sup3;y &divide; 6x&sup2;y = 2x<br>18x&sup2;y&sup2; &divide; 6x&sup2;y = 3y</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write the answer and check by expanding.
+    <span class="work">6x&sup2;y(2x &minus; 3y)<br>
+      check: 6x&sup2;y &times; 2x = 12x&sup3;y &nbsp;&#10003;&nbsp;&nbsp;
+      6x&sup2;y &times; (&minus;3y) = &minus;18x&sup2;y&sup2; &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) The HCF is <span class="m">4a</span>, but the
+    leading term is negative, so take out <span class="m">&minus;4a</span>. Dividing a negative by a negative
+    makes the signs inside flip.
+    <span class="work">&minus;8a&sup2; &divide; (&minus;4a) = 2a<br>12ab &divide; (&minus;4a) = &minus;3b</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check by expanding.
+    <span class="work">&minus;4a(2a &minus; 3b) = &minus;8a&sup2; + 12ab &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) 6x&sup2;y(2x &minus; 3y) &nbsp;&nbsp;&nbsp; (b) &minus;4a(2a &minus; 3b)</div>
+</div>
+</details>
+
+<div class="warn"><b>Watch out</b>
+&ldquo;Factorise <b>fully</b>&rdquo; means the bracket must have <b>no common factor left</b>. Writing
+<span class="m">2x&sup2;y(6x &minus; 9y)</span> is not wrong arithmetic, but it is not fully factorised and it
+will not get the mark.</div>
+
+<div class="tool">
+  <h4>HCF extractor</h4>
+  <p class="hint">Set the coefficient and the powers of <span class="m">x</span> and <span class="m">y</span>
+  in each term, and watch the common factor come out. Try a negative first coefficient.</p>
+  <div class="row">
+    <div><label for="h1c">Term 1: number</label><input type="number" id="h1c" value="12" step="1"></div>
+    <div><label for="h1x">power of x</label><input type="number" id="h1x" value="3" min="0" max="6" step="1"></div>
+    <div><label for="h1y">power of y</label><input type="number" id="h1y" value="1" min="0" max="6" step="1"></div>
+  </div>
+  <div class="row">
+    <div><label for="h2c">Term 2: number</label><input type="number" id="h2c" value="-18" step="1"></div>
+    <div><label for="h2x">power of x</label><input type="number" id="h2x" value="2" min="0" max="6" step="1"></div>
+    <div><label for="h2y">power of y</label><input type="number" id="h2y" value="2" min="0" max="6" step="1"></div>
+  </div>
+  <div class="out" id="hcfOut"></div>
+</div>
+</section>
+
+<section id="grouping" data-nav="Grouping">
+<h2>Factorising by grouping</h2>
+<p>An expression with <b>four terms</b> often has no factor common to all four, but splits into two pairs that
+each have a factor. Factorise each pair, and if the brackets that appear are identical you can take that whole
+bracket out as a common factor.</p>
+
+<div class="formula">ax + ay + bx + by = a(x + y) + b(x + y) = (x + y)(a + b)
+<small>The repeated bracket is itself the common factor</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Factorise <span class="m">6x + 3y + 2ax + ay</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Split into two pairs. The first two terms share 3;
+    the last two share <span class="m">a</span>.
+    <span class="work">(6x + 3y) + (2ax + ay)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Factorise each pair.
+    <span class="work">3(2x + y) + a(2x + y)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The bracket <span class="m">(2x + y)</span> appears
+    twice, so take it out.
+    <span class="work">(2x + y)(3 + a)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by expanding all four products.
+    <span class="work">(2x + y)(3 + a) = 6x + 2ax + 3y + ay &nbsp;&#10003;</span></div></div>
+  <div class="final">(2x + y)(3 + a)</div>
+  <div class="tip"><b>Exam tip</b> If the two brackets do not match, re-pair the terms in a different order
+  before deciding it will not work. Here <span class="m">(6x + 2ax) + (3y + ay)</span> gives
+  <span class="m">2x(3 + a) + y(3 + a) = (3 + a)(2x + y)</span> &mdash; the same answer.</div>
+</div>
+</details>
+
+<div class="warn"><b>Watch out</b>
+When the third term is negative you must factorise the second pair with a <b>negative</b> outside so the
+brackets match: <span class="m">2x&sup2; + 6x &minus; x &minus; 3 = 2x(x + 3) &minus; 1(x + 3) = (x + 3)(2x &minus; 1)</span>.
+Notice the <span class="m">&minus;1</span>; leaving it out is the classic slip.</div>
+</section>
+
+<section id="dots" data-nav="Two squares">
+<h2>The difference of two squares</h2>
+<p>Expand <span class="m">(x + 5)(x &minus; 5)</span> and the middle terms destroy each other:
+<span class="m">x&sup2; &minus; 5x + 5x &minus; 25 = x&sup2; &minus; 25</span>. Read that backwards and you have
+a factorisation you should recognise on sight.</p>
+
+<div class="formula">a&sup2; &minus; b&sup2; = (a + b)(a &minus; b)
+<small>Two squares, subtracted &mdash; and nothing in between</small></div>
+
+<div class="card o">
+<h4>How to spot it</h4>
+<ul>
+  <li>Exactly <b>two</b> terms, with a <b>minus</b> between them.</li>
+  <li>Each term is a perfect square: a square number, and every letter to an even power.
+    <span class="m">9x&sup2; = (3x)&sup2;</span>, <span class="m">25 = 5&sup2;</span>,
+    <span class="m">y<sup>6</sup> = (y&sup3;)&sup2;</span>.</li>
+  <li><span class="m">a&sup2; + b&sup2;</span> does <b>not</b> factorise. Only the difference does.</li>
+</ul>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Factorise (a) <span class="m">9x&sup2; &minus; 25</span> &nbsp;(b) <span class="m">2x&sup2; &minus; 32</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Write each term as a square.
+    <span class="work">9x&sup2; = (3x)&sup2; &nbsp;&nbsp; 25 = 5&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Apply the rule with <span class="m">a = 3x</span> and
+    <span class="m">b = 5</span>.
+    <span class="work">(3x + 5)(3x &minus; 5)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check: the outer and inner products cancel.
+    <span class="work">9x&sup2; &minus; 15x + 15x &minus; 25 = 9x&sup2; &minus; 25 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) <span class="m">2x&sup2;</span> is not a perfect
+    square, so look for a common factor <b>first</b>. Always take out the HCF before anything else.
+    <span class="work">2x&sup2; &minus; 32 = 2(x&sup2; &minus; 16)</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Now the bracket is a difference of two squares.
+    <span class="work">2(x + 4)(x &minus; 4)</span></div></div>
+  <div class="final">(a) (3x + 5)(3x &minus; 5) &nbsp;&nbsp;&nbsp; (b) 2(x + 4)(x &minus; 4)</div>
+</div>
+</details>
+
+<div class="tip"><b>Exam tip</b>
+The difference of two squares also makes arithmetic easy without a calculator:
+<span class="m">83&sup2; &minus; 17&sup2; = (83 + 17)(83 &minus; 17) = 100 &times; 66 = 6600</span>.
+Questions like this appear in Paper 2.</div>
+</section>
+
+<section id="quadratics" data-nav="Quadratics">
+<h2>Factorising <span class="m">x&sup2; + bx + c</span></h2>
+<p>Expanding <span class="m">(x + p)(x + q)</span> gives
+<span class="m">x&sup2; + (p + q)x + pq</span>. So to reverse it you need two numbers whose
+<b>product is <span class="m">c</span></b> and whose <b>sum is <span class="m">b</span></b>.</p>
+
+<div class="formula">x&sup2; + bx + c = (x + p)(x + q) &nbsp;&nbsp;where&nbsp;&nbsp; pq = c &nbsp;and&nbsp; p + q = b
+<small>Product then sum &mdash; always start with the product</small></div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Signs in <span class="m">x&sup2; + bx + c</span></th><th>What <span class="m">p</span> and <span class="m">q</span> look like</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><span class="m">c</span> positive, <span class="m">b</span> positive</td><td>both positive</td><td><span class="m">x&sup2; + 7x + 12 = (x + 3)(x + 4)</span></td></tr>
+<tr><td><span class="m">c</span> positive, <span class="m">b</span> negative</td><td>both negative</td><td><span class="m">x&sup2; &minus; 7x + 12 = (x &minus; 3)(x &minus; 4)</span></td></tr>
+<tr><td><span class="m">c</span> negative</td><td>one of each sign; the larger one takes the sign of <span class="m">b</span></td><td><span class="m">x&sup2; + x &minus; 12 = (x + 4)(x &minus; 3)</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Factorise <span class="m">x&sup2; + 7x + 12</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">List the factor pairs of <span class="m">c = 12</span>.
+    Both signs are positive, so only positive pairs are needed.
+    <span class="work">1 &times; 12 &nbsp;&nbsp; 2 &times; 6 &nbsp;&nbsp; 3 &times; 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the pair that adds to <span class="m">b = 7</span>.
+    <span class="work">1 + 12 = 13 &nbsp;&#10007;<br>2 + 6 = 8 &nbsp;&#10007;<br>3 + 4 = 7 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write the brackets with those numbers.
+    <span class="work">(x + 3)(x + 4)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by expanding.
+    <span class="work">x&sup2; + 4x + 3x + 12 = x&sup2; + 7x + 12 &nbsp;&#10003;</span></div></div>
+  <div class="final">(x + 3)(x + 4)</div>
+</div>
+</details>
+
+<div class="note"><b>Note</b>
+When the coefficient of <span class="m">x&sup2;</span> is not 1 &mdash; expressions such as
+<span class="m">2x&sup2; + 7x + 3</span> &mdash; the product-and-sum search has to be adapted. That case is
+covered in lesson 14.6. If the coefficient of <span class="m">x&sup2;</span> here is not 1, check first
+whether it is a common factor you can take out.</div>
+
+<div class="tool">
+  <h4>Product-and-sum searcher</h4>
+  <p class="hint">Enter <span class="m">b</span> and <span class="m">c</span> for
+  <span class="m">x&sup2; + bx + c</span>. Every factor pair of <span class="m">c</span> is listed; the one
+  that adds to <span class="m">b</span> is highlighted. Try <span class="m">b = &minus;3</span>,
+  <span class="m">c = &minus;40</span>.</p>
+  <div class="row">
+    <div><label for="qB">b (coefficient of x)</label><input type="number" id="qB" value="7" step="1"></div>
+    <div><label for="qC">c (constant)</label><input type="number" id="qC" value="12" step="1"></div>
+  </div>
+  <div class="out" id="qOut"></div>
+</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Factorise <span class="m">x&sup2; &minus; 3x &minus; 40</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">c = &minus;40</span> is negative, so
+    the two numbers have <b>opposite</b> signs.
+    <span class="work">pairs multiplying to 40: 1&times;40, 2&times;20, 4&times;10, 5&times;8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">With opposite signs the pair must <b>differ</b> by 3,
+    and the bigger number must be negative because <span class="m">b = &minus;3</span> is negative.
+    <span class="work">5 and 8 differ by 3 &nbsp;&rarr;&nbsp; use +5 and &minus;8<br>
+      (+5) &times; (&minus;8) = &minus;40 &nbsp;&#10003;&nbsp;&nbsp; (+5) + (&minus;8) = &minus;3 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write the brackets.
+    <span class="work">(x + 5)(x &minus; 8)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by expanding.
+    <span class="work">x&sup2; &minus; 8x + 5x &minus; 40 = x&sup2; &minus; 3x &minus; 40 &nbsp;&#10003;</span></div></div>
+  <div class="final">(x + 5)(x &minus; 8)</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Factorise fully <span class="m">2x&sup2; + 10x + 12</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">All three terms are even, so take out the common
+    factor 2 first. This is what turns a &ldquo;hard&rdquo; quadratic into an easy one.
+    <span class="work">2(x&sup2; + 5x + 6)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now factorise the bracket: product 6, sum 5.
+    <span class="work">2 &times; 3 = 6 &nbsp;and&nbsp; 2 + 3 = 5 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Keep the 2 in the final answer &mdash; it does not
+    disappear.
+    <span class="work">2(x + 2)(x + 3)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by expanding.
+    <span class="work">2(x&sup2; + 3x + 2x + 6) = 2(x&sup2; + 5x + 6) = 2x&sup2; + 10x + 12 &nbsp;&#10003;</span></div></div>
+  <div class="final">2(x + 2)(x + 3)</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Factorise completely <span class="m">3x&sup3; &minus; 12x</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Common factor first: HCF of 3 and 12 is 3, and both
+    terms contain <span class="m">x</span>.
+    <span class="work">3x(x&sup2; &minus; 4)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Look at the bracket. Two terms, a minus sign, both
+    perfect squares &mdash; difference of two squares.
+    <span class="work">x&sup2; &minus; 4 = (x + 2)(x &minus; 2)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Put it together. &ldquo;Completely&rdquo; means keep
+    going until nothing factorises any further.
+    <span class="work">3x(x + 2)(x &minus; 2)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by expanding back.
+    <span class="work">3x(x&sup2; &minus; 4) = 3x&sup3; &minus; 12x &nbsp;&#10003;</span></div></div>
+  <div class="final">3x(x + 2)(x &minus; 2)</div>
+  <div class="warn"><b>Watch out</b> Stopping at <span class="m">3x(x&sup2; &minus; 4)</span> loses a mark.
+  Whenever a bracket is a difference of two squares, it can still be split.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Factorise <span class="m">15a + 20</span>.</li>
+    <li>Factorise fully <span class="m">8x&sup2;y &minus; 12xy&sup3;</span>.</li>
+    <li>Factorise <span class="m">49 &minus; p&sup2;</span>.</li>
+    <li>Factorise <span class="m">x&sup2; + 2x &minus; 15</span>.</li>
+    <li>Factorise by grouping <span class="m">2ab + 6a + b + 3</span>.</li>
+    <li>Factorise completely <span class="m">2x&sup3; &minus; 18x</span>.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>HCF of 15 and 20 is 5 &rarr; <span class="ans">5(3a + 4)</span></li>
+      <li>Numbers: HCF 4. Letters: <span class="m">xy</span> is in both &rarr; HCF <span class="m">4xy</span>
+        &rarr; <span class="ans">4xy(2x &minus; 3y&sup2;)</span></li>
+      <li><span class="m">49 = 7&sup2;</span>, so it is <span class="m">7&sup2; &minus; p&sup2;</span> &rarr;
+        <span class="ans">(7 + p)(7 &minus; p)</span></li>
+      <li>Product <span class="m">&minus;15</span>, sum <span class="m">+2</span>: use
+        <span class="m">+5</span> and <span class="m">&minus;3</span> &rarr;
+        <span class="ans">(x + 5)(x &minus; 3)</span></li>
+      <li><span class="m">2a(b + 3) + 1(b + 3)</span> &rarr;
+        <span class="ans">(b + 3)(2a + 1)</span></li>
+      <li><span class="m">2x(x&sup2; &minus; 9)</span>, then two squares &rarr;
+        <span class="ans">2x(x + 3)(x &minus; 3)</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Factorising is the reverse of expanding, so <b>every answer can be checked by expanding</b>. Do it.</li>
+    <li><b>Always take out the HCF first.</b> Numbers: the HCF of the coefficients. Letters: each common
+      letter to its lowest power.</li>
+    <li>If the leading term is negative you may take out a <b>negative</b> common factor &mdash; remember that
+      every sign inside the bracket then flips.</li>
+    <li>Four terms with no overall common factor: try <b>grouping</b> into two pairs, and watch for the
+      hidden <span class="m">&minus;1</span> when the third term is negative.</li>
+    <li><span class="m">a&sup2; &minus; b&sup2; = (a + b)(a &minus; b)</span>. Two terms, a minus sign, both
+      perfect squares. <span class="m">a&sup2; + b&sup2;</span> does not factorise.</li>
+    <li>For <span class="m">x&sup2; + bx + c</span>, find two numbers with <b>product <span class="m">c</span>
+      and sum <span class="m">b</span></b>; the expression is then
+      <span class="m">(x + p)(x + q)</span>.</li>
+    <li>If <span class="m">c</span> is negative the two numbers have opposite signs; if
+      <span class="m">c</span> is positive they share the sign of <span class="m">b</span>.</li>
+    <li>&ldquo;Factorise fully / completely&rdquo; means keep going &mdash; a leftover common factor or an
+      unfactorised difference of two squares costs marks.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="6-1.html"><span>&larr; Previous</span><b>6.1 Solving Equations</b></a><a class="next" href="6-3.html"><span>Next &rarr;</span><b>6.3 Rearranging Formulae</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 6.2 Factorising<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- HCF extractor ---- */
+(function(){
+  var out=el('hcfOut');
+  function pw(v,n){
+    if(n<=0) return '';
+    if(n===1) return v;
+    if(n===2) return v+'&sup2;';
+    if(n===3) return v+'&sup3;';
+    return v+'<sup>'+n+'</sup>';
+  }
+  function body(px,py){ return pw('x',px)+pw('y',py); }
+  function term(co,px,py,first){
+    var bd=body(px,py), a=Math.abs(co), n=(a===1&&bd!=='')?'':String(a);
+    var sign = co<0 ? (first?'&minus;':' &minus; ') : (first?'':' + ');
+    if(co===0) return first?'0':'';
+    return sign+n+bd;
+  }
+  function go(){
+    var c1=Math.round(num('h1c',1)), x1=Math.max(0,Math.round(num('h1x',0))), y1=Math.max(0,Math.round(num('h1y',0)));
+    var c2=Math.round(num('h2c',1)), x2=Math.max(0,Math.round(num('h2x',0))), y2=Math.max(0,Math.round(num('h2y',0)));
+    if(c1===0||c2===0){ out.innerHTML='<span style="opacity:.6">Give both terms a non-zero number.</span>'; return; }
+    var orig=term(c1,x1,y1,true)+term(c2,x2,y2,false);
+    var g=gcd(c1,c2)||1;
+    var H=(c1<0)?-g:g, hx=Math.min(x1,x2), hy=Math.min(y1,y2);
+    var i1=c1/H, i2=c2/H;
+    var hcf=term(H,hx,hy,true);
+    var inside=term(i1,x1-hx,y1-hy,true)+term(i2,x2-hx,y2-hy,false);
+    var head='<div>Expression: <span class="hl">'+orig+'</span></div>'+
+      '<div style="margin-top:6px">HCF of the numbers: '+gcd(c1,c2)+
+        (hx?', lowest power of x: '+pw('x',hx):'')+(hy?', lowest power of y: '+pw('y',hy):'')+'</div>';
+    if(Math.abs(H)===1&&hx===0&&hy===0){
+      out.innerHTML=head+'<div style="margin-top:8px">The only common factor is 1, so <b>'+orig+
+        '</b> does not factorise by taking out a common factor.</div>';
+      return;
+    }
+    out.innerHTML=head+
+      '<div style="margin-top:6px">Common factor: <span class="hl">'+hcf+'</span></div>'+
+      '<div style="margin-top:8px;font-size:1.08rem">'+orig+' = <b>'+hcf+'('+inside+')</b></div>'+
+      '<div style="margin-top:6px;opacity:.75;font-size:.9em">Check: '+hcf+' &times; ('+inside+
+        ') gives back '+orig+'.</div>';
+  }
+  bindAll(['h1c','h1x','h1y','h2c','h2x','h2y'],go);
+})();
+
+/* ---- product-and-sum searcher for x^2 + bx + c ---- */
+(function(){
+  var out=el('qOut');
+  function sg(n){ return n<0 ? '&minus;'+Math.abs(n) : String(n); }
+  function brk(p){ return p<0 ? '(x &minus; '+Math.abs(p)+')' : '(x + '+p+')'; }
+  function quad(b,c){
+    var s='x&sup2;';
+    if(b!==0) s+= (b<0?' &minus; ':' + ')+(Math.abs(b)===1?'x':Math.abs(b)+'x');
+    if(c!==0) s+= (c<0?' &minus; ':' + ')+Math.abs(c);
+    return s;
+  }
+  function go(){
+    var b=Math.round(num('qB',0)), c=Math.round(num('qC',0));
+    if(Math.abs(c)>2000){ out.innerHTML='<span style="opacity:.6">Keep c below 2000 so the list stays readable.</span>'; return; }
+    var head='<div style="margin-bottom:8px">Factorising <span class="hl">'+quad(b,c)+'</span>'+
+      ': find two numbers with product <b style="color:inherit">'+sg(c)+'</b> and sum '+
+      '<b style="color:inherit">'+sg(b)+'</b>.</div>';
+    if(c===0){
+      out.innerHTML=head+'<div>There is no constant term, so take out the common factor x:</div>'+
+        '<div style="margin-top:6px;font-size:1.08rem">'+quad(b,c)+' = <b>x(x '+(b<0?'&minus; '+Math.abs(b):'+ '+b)+')</b></div>';
+      return;
+    }
+    var rows='', found=null, p;
+    for(p=-Math.abs(c); p<=Math.abs(c); p++){
+      if(p===0) continue;
+      if(c%p!==0) continue;
+      var q=c/p;
+      if(p>q) continue;
+      var hit=(p+q===b);
+      if(hit) found=[p,q];
+      rows+='<div style="margin:2px 0'+(hit?';font-weight:700':';opacity:.7')+'">'+
+        (hit?'<span class="hl">&#10003;</span> ':'<span style="opacity:.5">&#10007;</span> ')+
+        sg(p)+' &times; '+sg(q)+' = '+sg(c)+',&nbsp; sum = '+sg(p+q)+'</div>';
+    }
+    var tail;
+    if(found){
+      tail='<div style="margin-top:10px;font-size:1.08rem">'+quad(b,c)+' = <b>'+brk(found[0])+brk(found[1])+'</b></div>'+
+        '<div style="margin-top:6px;opacity:.75;font-size:.9em">Check by expanding: the x terms give '+
+        sg(found[0])+'x '+(found[1]<0?'&minus; '+Math.abs(found[1]):'+ '+found[1])+'x = '+sg(b)+'x.</div>';
+    } else {
+      tail='<div style="margin-top:10px">No pair adds to '+sg(b)+', so <b>'+quad(b,c)+
+        '</b> has no factorisation with whole numbers. Use the quadratic formula or completing the square instead.</div>';
+    }
+    out.innerHTML=head+rows+tail;
+  }
+  bindAll(['qB','qC'],go);
+})();
+</script>
+</body>
+</html>

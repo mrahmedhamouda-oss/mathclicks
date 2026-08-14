@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13.4 Conversion Graphs | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Drawing and reading straight-line graphs that convert one quantity into another, in both directions, accurately and quickly.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 13 &mdash; Understanding Measurement</span>
+    </div>
+    <h1>13.4 &nbsp;Conversion Graphs</h1>
+    <p>Drawing and reading straight-line graphs that convert one quantity into another, in both directions, accurately and quickly.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#idea">The idea</a>
+  <a href="#reading">Reading off</a>
+  <a href="#gradient">Gradient</a>
+  <a href="#notprop">Not proportional</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="idea" data-nav="The idea">
+<h2>What a conversion graph is</h2>
+<p>A <b>conversion graph</b> is a straight line that lets you swap between two units without doing any
+arithmetic at all. Put one quantity on each axis, draw the line once, and every reading afterwards is
+free. Paper 2 and Paper 4 both use them &mdash; sometimes you draw the graph, more often you are given
+one and asked to read values off it.</p>
+
+<div class="def"><b>Definition</b>
+Two quantities are in <b>direct proportion</b> when doubling one doubles the other, and when zero of one
+means zero of the other. Their conversion graph is a <b>straight line through the origin</b>.</div>
+
+<p>That last sentence is the whole reason the graph is straight. If <span class="m">5</span> miles is
+<span class="m">8</span> km, then <span class="m">10</span> miles must be <span class="m">16</span> km and
+<span class="m">0</span> miles is certainly <span class="m">0</span> km. Every point sits on the line
+<span class="m">y = mx</span>, where <span class="m">m</span> is the number of km in one mile.</p>
+
+<div class="card">
+<h4>A conversion graph for miles and kilometres</h4>
+<svg viewBox="0 0 640 400" role="img" aria-label="Conversion graph from miles to kilometres with dotted reading lines at 30 miles giving 48 kilometres">
+  <rect x="0" y="0" width="640" height="400" rx="12" fill="#ffffff" stroke="#dfe6f3"/>
+  <g stroke="#e6ecf7" stroke-width="1">
+    <line x1="60" y1="30" x2="60" y2="350"/><line x1="116" y1="30" x2="116" y2="350"/>
+    <line x1="172" y1="30" x2="172" y2="350"/><line x1="228" y1="30" x2="228" y2="350"/>
+    <line x1="284" y1="30" x2="284" y2="350"/><line x1="340" y1="30" x2="340" y2="350"/>
+    <line x1="396" y1="30" x2="396" y2="350"/><line x1="452" y1="30" x2="452" y2="350"/>
+    <line x1="508" y1="30" x2="508" y2="350"/><line x1="564" y1="30" x2="564" y2="350"/>
+    <line x1="620" y1="30" x2="620" y2="350"/>
+    <line x1="60" y1="350" x2="620" y2="350"/><line x1="60" y1="310" x2="620" y2="310"/>
+    <line x1="60" y1="270" x2="620" y2="270"/><line x1="60" y1="230" x2="620" y2="230"/>
+    <line x1="60" y1="190" x2="620" y2="190"/><line x1="60" y1="150" x2="620" y2="150"/>
+    <line x1="60" y1="110" x2="620" y2="110"/><line x1="60" y1="70"  x2="620" y2="70"/>
+    <line x1="60" y1="30"  x2="620" y2="30"/>
+  </g>
+  <line x1="60" y1="350" x2="620" y2="350" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="60" y1="350" x2="60" y2="30" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="60" y1="350" x2="620" y2="30" stroke="#1a4fa0" stroke-width="3" stroke-linecap="round"/>
+
+  <line x1="396" y1="350" x2="396" y2="158" stroke="#e05c2a" stroke-width="2" stroke-dasharray="7 5"/>
+  <line x1="60" y1="158" x2="396" y2="158" stroke="#e05c2a" stroke-width="2" stroke-dasharray="7 5"/>
+  <circle cx="396" cy="158" r="6" fill="#e05c2a"/>
+  <text x="410" y="140" font-size="14" font-weight="bold" fill="#e05c2a">30 miles = 48 km</text>
+
+  <g font-size="12" fill="#4a5b7a" text-anchor="middle">
+    <text x="60" y="370">0</text><text x="172" y="370">10</text><text x="284" y="370">20</text>
+    <text x="396" y="370">30</text><text x="508" y="370">40</text><text x="620" y="370">50</text>
+  </g>
+  <g font-size="12" fill="#4a5b7a" text-anchor="end">
+    <text x="52" y="354">0</text><text x="52" y="274">20</text><text x="52" y="194">40</text>
+    <text x="52" y="114">60</text><text x="52" y="34">80</text>
+  </g>
+  <text x="52" y="162" font-size="12" font-weight="bold" fill="#e05c2a" text-anchor="end">48</text>
+  <text x="340" y="392" font-size="13" fill="#0f2d6b" text-anchor="middle">Distance (miles)</text>
+  <text x="18" y="24" font-size="13" fill="#0f2d6b">km</text>
+</svg>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Given that <span class="m">5</span> miles = <span class="m">8</span> km, draw a conversion graph for distances from 0 to 50 miles.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Miles and kilometres are in direct proportion, so
+    the graph is a straight line through the origin. That gives your first point for free.
+    <span class="work">Point A: (0, 0)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">A straight line needs only one more point, and the
+    best one to choose is at the <b>far end</b> of the axis &mdash; a long line is much more accurate to draw
+    than a short one. Scale the given conversion up by <span class="m">&times;10</span>.
+    <span class="work">5 miles = 8 km<br>50 miles = 80 km</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Choose sensible scales so the graph fills the grid:
+    miles across from 0 to 50, kilometres up from 0 to 80. Plot <span class="m">(0, 0)</span> and
+    <span class="m">(50, 80)</span> and join them with a ruler, extending the line right across the grid.
+    <span class="work">Point B: (50, 80)</span></div></div>
+  <div class="final">A straight line from (0, 0) to (50, 80)</div>
+  <div class="tip"><b>Exam tip</b> Plot a third point as a check &mdash; here <span class="m">(25, 40)</span>.
+  If it does not lie on your line, one of your points is wrong.</div>
+</div>
+</details>
+
+<div class="warn"><b>Watch out</b> Do not join the points with a freehand wobble or a series of short strokes.
+Marks are given for a single ruled line that reaches both edges of the grid, because you will need to read
+values right up to the ends.</div>
+</section>
+
+<section id="reading" data-nav="Reading off">
+<h2>Reading values off the graph</h2>
+<p>The examiner wants to <b>see</b> how you got your reading. The method has a name in every mark scheme:
+draw the lines on the graph.</p>
+
+<div class="grid two">
+  <div class="card"><h4>Miles <span class="m">&rarr;</span> km (left to right)</h4>
+    <ol>
+      <li>Find the number of miles on the <b>horizontal</b> axis.</li>
+      <li>Draw a dotted line <b>straight up</b> until it meets the graph.</li>
+      <li>Turn and draw a dotted line <b>straight across</b> to the vertical axis.</li>
+      <li>Read the value where it lands.</li>
+    </ol>
+  </div>
+  <div class="card o"><h4>km <span class="m">&rarr;</span> miles (right to left)</h4>
+    <ol>
+      <li>Find the number of kilometres on the <b>vertical</b> axis.</li>
+      <li>Draw a dotted line <b>straight across</b> until it meets the graph.</li>
+      <li>Turn and draw a dotted line <b>straight down</b> to the horizontal axis.</li>
+      <li>Read the value where it lands.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="tip"><b>Exam tip</b> Leave the dotted lines on the paper. If your final number is slightly outside
+the accepted range but your construction lines are correct, you can still pick up the method mark.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Use the miles&ndash;kilometres graph above to convert (a) 30 miles into kilometres, (b) 60 km into miles.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Start on the miles axis at 30. Go vertically up
+    to the line, then horizontally across to the kilometre axis.
+    <span class="work">30 miles &rarr; 48 km</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Check it against the rate: one mile is
+    <span class="m">8 &divide; 5 = 1.6</span> km.
+    <span class="work">30 &times; 1.6 = 48 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Now work the other way. Start on the kilometre
+    axis at 60, go horizontally across to the line, then vertically down to the miles axis. The reading
+    falls halfway between 37 and 38.
+    <span class="work">60 km &rarr; 37.5 miles</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by converting back.
+    <span class="work">37.5 &times; 1.6 = 60 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) 48 km &nbsp;&nbsp;&nbsp; (b) 37.5 miles</div>
+</div>
+</details>
+
+<h3>How accurate is a reading?</h3>
+<p>A graph reading is only as good as your eye and your ruler. Mark schemes normally allow a tolerance of
+about <b>half a small square</b> either side of the true value, so on a grid where one square is 2 km you
+would be accepted anywhere within about <span class="m">&plusmn;1</span> km.</p>
+<div class="warn"><b>Watch out</b> Never write a graph reading to lots of decimal places. Quoting
+&ldquo;<span class="m">47.83</span> km&rdquo; from a graph claims an accuracy you cannot possibly have. Read
+to the nearest sensible division &mdash; <span class="m">48</span> km &mdash; unless the gridlines genuinely
+support more. If a question wants an exact answer, it will give you the rate and expect calculation, not a
+graph.</div>
+</section>
+
+<section id="gradient" data-nav="Gradient">
+<h2>The gradient is the conversion rate</h2>
+<p>For a graph through the origin the equation is <span class="m">y = mx</span>, and
+<span class="m">m</span> &mdash; the gradient &mdash; is exactly the number of <span class="m">y</span>-units
+in one <span class="m">x</span>-unit.</p>
+
+<div class="formula">gradient = <span class="frac"><span>rise</span><span>run</span></span> =
+<span class="frac"><span>80 &minus; 0</span><span>50 &minus; 0</span></span> = 1.6
+<small>1.6 kilometres in every mile</small></div>
+
+<div class="note"><b>Note</b> The gradient of the graph the other way round (km across, miles up) is
+<span class="frac"><span>1</span><span>1.6</span></span><span class="m"> = 0.625</span>. The two rates are
+<b>reciprocals</b> &mdash; multiplying by one undoes multiplying by the other.</div>
+
+<h3>Reading beyond the end of the graph</h3>
+<p>A graph drawn to 50 miles cannot show 250 miles. You do not redraw it &mdash; you use proportion. Read a
+value that <i>is</i> on the graph, then scale the answer by the same factor.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">The conversion graph only goes up to 50 miles. Use it to convert 250 miles into kilometres.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Divide the distance by a convenient factor so it fits
+    on the graph. Here <span class="m">250 &divide; 10 = 25</span>.
+    <span class="work">250 miles = 10 &times; 25 miles</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Read 25 miles off the graph in the usual way.
+    <span class="work">25 miles &rarr; 40 km</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Because the quantities are in direct proportion,
+    multiply the reading by the same factor of 10.
+    <span class="work">250 miles = 10 &times; 40 = 400 km</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check with the rate.
+    <span class="work">250 &times; 1.6 = 400 &nbsp;&#10003;</span></div></div>
+  <div class="final">250 miles &asymp; 400 km</div>
+  <div class="warn"><b>Watch out</b> This scaling trick works <b>only</b> when the line passes through the
+  origin. On a graph with a fixed charge, doubling the distance does <i>not</i> double the cost.</div>
+</div>
+</details>
+</section>
+
+<section id="notprop" data-nav="Not proportional">
+<h2>When the line misses the origin</h2>
+<p>Plenty of real conversion graphs are straight lines that do <b>not</b> go through the origin: a taxi fare
+with a fixed charge before you travel a single metre, or the Celsius-to-Fahrenheit scale, where
+<span class="m">0&deg;C</span> is already <span class="m">32&deg;F</span>. The line is still straight, so
+reading it works exactly the same way &mdash; but the two quantities are no longer in direct proportion.</p>
+
+<div class="card p">
+<h4>Two straight lines, only one of them proportional</h4>
+<svg viewBox="0 0 640 235" role="img" aria-label="Left panel shows a line through the origin, right panel shows a line with a positive intercept">
+  <text x="60" y="22" font-size="13" font-weight="bold" fill="#16a34a">Direct proportion</text>
+  <line x1="60" y1="185" x2="300" y2="185" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="60" y1="185" x2="60" y2="45" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="60" y1="185" x2="290" y2="55" stroke="#16a34a" stroke-width="3"/>
+  <circle cx="60" cy="185" r="5.5" fill="#16a34a"/>
+  <text x="72" y="205" font-size="12" fill="#4a5b7a">starts at (0, 0)</text>
+  <text x="150" y="228" font-size="12" fill="#0f2d6b" text-anchor="middle">y = mx</text>
+
+  <text x="390" y="22" font-size="13" font-weight="bold" fill="#e05c2a">Not proportional</text>
+  <line x1="390" y1="185" x2="620" y2="185" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="390" y1="185" x2="390" y2="45" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="390" y1="145" x2="612" y2="55" stroke="#e05c2a" stroke-width="3"/>
+  <circle cx="390" cy="145" r="5.5" fill="#e05c2a"/>
+  <line x1="378" y1="145" x2="390" y2="145" stroke="#e05c2a" stroke-width="2"/>
+  <text x="402" y="138" font-size="12" fill="#4a5b7a">fixed charge c</text>
+  <text x="490" y="228" font-size="12" fill="#0f2d6b" text-anchor="middle">y = mx + c</text>
+</svg>
+</div>
+
+<div class="grid two">
+  <div class="card o"><h4>Taxi fare</h4>
+    <p>A fixed charge of <span class="m">$2.50</span> plus <span class="m">$1.20</span> per kilometre.</p>
+    <div class="formula">F = 1.20d + 2.50</div>
+    <p>The intercept is the fare before you move; the gradient is the cost of each extra kilometre.</p></div>
+  <div class="card p"><h4>Celsius to Fahrenheit</h4>
+    <p><span class="m">0&deg;C = 32&deg;F</span> and <span class="m">100&deg;C = 212&deg;F</span>.</p>
+    <div class="formula">F = 1.8C + 32</div>
+    <p>Gradient <span class="frac"><span>212 &minus; 32</span><span>100 &minus; 0</span></span>
+    <span class="m">= 1.8</span>, intercept <span class="m">32</span>.</p></div>
+</div>
+
+<div class="warn"><b>Watch out</b> Temperature is a favourite exam trap. <span class="m">20&deg;C</span> is
+<b>not</b> twice as warm as <span class="m">10&deg;C</span> on the Fahrenheit scale:
+<span class="m">10&deg;C = 50&deg;F</span> but <span class="m">20&deg;C = 68&deg;F</span>, not
+<span class="m">100&deg;F</span>. Whenever the line misses the origin, you cannot scale readings up and down.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A taxi charges a fixed $2.50 plus $1.20 for each kilometre. Draw a conversion graph for 0 to 20 km and use it to find (a) the fare for 14 km, (b) the distance covered for a fare of $17.50.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Work out two points. At
+    <span class="m">d = 0</span> the fare is just the fixed charge; at <span class="m">d = 20</span> add
+    twenty lots of $1.20.
+    <span class="work">(0, 2.50)<br>20 &times; 1.20 = 24.00, so (20, 26.50)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Plot the two points and rule the line. It cuts the
+    vertical axis at $2.50, not at the origin.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">(a) Go up from 14 on the distance axis to the line,
+    then across to the fare axis.
+    <span class="work">2.50 + 14 &times; 1.20 = 2.50 + 16.80 = 19.30</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) Go across from 17.50 on the fare axis to the
+    line, then down. To confirm the reading, subtract the fixed charge <b>first</b>, then divide by the rate.
+    <span class="work">17.50 &minus; 2.50 = 15.00<br>15.00 &divide; 1.20 = 12.5 km</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check by converting back.
+    <span class="work">2.50 + 12.5 &times; 1.20 = 2.50 + 15.00 = 17.50 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) $19.30 &nbsp;&nbsp;&nbsp; (b) 12.5 km</div>
+  <div class="tip"><b>Exam tip</b> Money answers are written to <b>2 decimal places</b> &mdash; write $19.30,
+  never $19.3.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Conversion graph explorer</h4>
+  <p class="hint">Choose a preset or type your own rate, then drag the slider to see the dotted reading lines
+  move. Set the fixed charge to something other than zero and watch the line lift off the origin.</p>
+  <div class="row">
+    <div><label for="cgPre">Preset</label>
+      <select id="cgPre">
+        <option value="0">miles &rarr; kilometres</option>
+        <option value="1">gallons &rarr; litres</option>
+        <option value="2">taxi: distance &rarr; fare</option>
+        <option value="3">Celsius &rarr; Fahrenheit</option>
+      </select></div>
+    <div><label for="cgRate">Rate (y per 1 x)</label><input type="number" id="cgRate" value="1.6" step="0.1"></div>
+    <div><label for="cgFix">Fixed charge (y at x = 0)</label><input type="number" id="cgFix" value="0" step="0.5"></div>
+  </div>
+  <div class="row">
+    <div><label for="cgXn">Name of x-axis</label><input type="text" id="cgXn" value="miles" style="width:130px"></div>
+    <div><label for="cgYn">Name of y-axis</label><input type="text" id="cgYn" value="km" style="width:130px"></div>
+    <div><label for="cgMax">Highest x value</label><input type="number" id="cgMax" value="50" step="5"></div>
+  </div>
+  <div class="sliderbox"><div class="lab"><span>Value to read off the x-axis</span><span id="cgValV">30</span></div>
+    <input type="range" id="cgVal" min="0" max="50" step="0.1" value="30"></div>
+  <div id="cgPlot" style="margin:10px 0"></div>
+  <div class="out" id="cgOut"></div>
+</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">A conversion graph is drawn using <span class="m">1</span> gallon = <span class="m">4.5</span> litres, for 0 to 10 gallons. Use it to convert (a) 6.5 gallons into litres, (b) 27 litres into gallons.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The two points needed for the line are
+    <span class="m">(0, 0)</span> and, at the far end, <span class="m">10</span> gallons.
+    <span class="work">10 &times; 4.5 = 45, so (10, 45)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Up from 6.5 gallons, across to the litre axis.
+    The gradient is 4.5 litres per gallon.
+    <span class="work">6.5 &times; 4.5 = 29.25 litres</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">A graph reading here would give about
+    <span class="m">29</span> litres, which is inside the usual half-square tolerance. Quote
+    <span class="m">29.25</span> only if you calculated it.</div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) Across from 27 litres, down to the gallon axis.
+    Going this way you <b>divide</b> by the rate.
+    <span class="work">27 &divide; 4.5 = 6 gallons</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check by converting back.
+    <span class="work">6 &times; 4.5 = 27 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) 29.25 litres &nbsp;&nbsp;&nbsp; (b) 6 gallons</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A conversion graph for temperature passes through <span class="m">(0, 32)</span> and <span class="m">(100, 212)</span>, with <span class="m">&deg;C</span> across and <span class="m">&deg;F</span> up. (a) Find its equation. (b) Convert <span class="m">25&deg;C</span> to <span class="m">&deg;F</span>. (c) Convert <span class="m">5&deg;F</span> to <span class="m">&deg;C</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Gradient first, using the two given points.
+    <span class="work">m = <span class="frac"><span>212 &minus; 32</span><span>100 &minus; 0</span></span> =
+    <span class="frac"><span>180</span><span>100</span></span> = 1.8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The graph crosses the vertical axis at 32, so the
+    intercept is 32.
+    <span class="work">F = 1.8C + 32</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Substitute <span class="m">C = 25</span>.
+    <span class="work">F = 1.8 &times; 25 + 32 = 45 + 32 = 77</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(c) Going the other way, undo the operations in
+    reverse order: subtract 32 first, then divide by 1.8.
+    <span class="work">C = <span class="frac"><span>5 &minus; 32</span><span>1.8</span></span> =
+    <span class="frac"><span>&minus;27</span><span>1.8</span></span> = &minus;15</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check by converting back.
+    <span class="work">1.8 &times; (&minus;15) + 32 = &minus;27 + 32 = 5 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) F = 1.8C + 32 &nbsp;&nbsp; (b) 77&deg;F &nbsp;&nbsp; (c) &minus;15&deg;C</div>
+  <div class="warn"><b>Watch out</b> Dividing by 1.8 <i>before</i> subtracting 32 is the most common error in
+  this topic. The intercept must come off first.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">An electricity bill is a straight-line graph of cost against units used. It passes through <span class="m">(100, 32)</span> and <span class="m">(500, 96)</span>, where the cost is in dollars. (a) Find the standing charge and the cost per unit. (b) Find the bill for 350 units. (c) A customer is charged $60. How many units did they use?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The cost per unit is the gradient.
+    <span class="work">m = <span class="frac"><span>96 &minus; 32</span><span>500 &minus; 100</span></span> =
+    <span class="frac"><span>64</span><span>400</span></span> = 0.16</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The standing charge is the intercept &mdash; the cost
+    of zero units. Substitute one known point into <span class="m">C = 0.16u + c</span>.
+    <span class="work">32 = 0.16 &times; 100 + c<br>32 = 16 + c<br>c = 16</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check with the other point.
+    <span class="work">0.16 &times; 500 + 16 = 80 + 16 = 96 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) Substitute <span class="m">u = 350</span>.
+    <span class="work">C = 0.16 &times; 350 + 16 = 56 + 16 = 72</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">(c) Take the standing charge off first, then divide
+    by the cost per unit.
+    <span class="work">60 &minus; 16 = 44<br>44 &divide; 0.16 = 275 units</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Check by converting back.
+    <span class="work">0.16 &times; 275 + 16 = 44 + 16 = 60 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) standing charge $16.00, cost per unit $0.16 &nbsp;&nbsp; (b) $72.00 &nbsp;&nbsp; (c) 275 units</div>
+  <div class="tip"><b>Exam tip</b> When a question gives you two exact points, calculate from the equation
+  rather than reading off the graph. You get an exact answer, and the working earns method marks even if
+  the arithmetic slips.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>A conversion graph for kilograms to pounds is to be drawn for 0 to 20 kg, using
+      <span class="m">1</span> kg <span class="m">= 2.2</span> lb. (a) Write down the coordinates of two
+      points you would plot. (b) Use the graph to convert 15 kg into pounds.</li>
+    <li>Use the same graph to convert 27.5 lb into kilograms.</li>
+    <li>The graph in question 1 only reaches 20 kg. Explain how you would use it to convert 170 kg into
+      pounds, and give the answer.</li>
+    <li>A conversion graph with kilometres across and miles up passes through the origin and
+      <span class="m">(40, 25)</span>. Find its gradient and say what the gradient means.</li>
+    <li>A taxi fare graph is a straight line through <span class="m">(0, 3)</span> and
+      <span class="m">(12, 21)</span>, where the fare is in dollars and the distance in kilometres.
+      Find (a) the fixed charge, (b) the cost per kilometre, (c) the fare for 8 km,
+      (d) the distance travelled for a fare of $16.50.</li>
+    <li>The temperature conversion line passes through <span class="m">(0, 32)</span> and
+      <span class="m">(100, 212)</span>. (a) Write its equation. (b) Convert <span class="m">35&deg;C</span>
+      to <span class="m">&deg;F</span>. (c) Find the temperature at which both scales show the same number.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) <span class="m">(0, 0)</span> and <span class="m">20 &times; 2.2 = 44</span>, so
+        <span class="ans">(0, 0) and (20, 44)</span>. (b) <span class="m">15 &times; 2.2</span> =
+        <span class="ans">33 lb</span> (check: <span class="m">33 &divide; 2.2 = 15</span>).</li>
+      <li>Across from 27.5 lb, then down: <span class="m">27.5 &divide; 2.2</span> =
+        <span class="ans">12.5 kg</span> (check: <span class="m">12.5 &times; 2.2 = 27.5</span>).</li>
+      <li>The line goes through the origin, so scale. Read <span class="m">170 &divide; 10 = 17</span> kg,
+        which gives <span class="m">17 &times; 2.2 = 37.4</span> lb, then multiply by 10 &rarr;
+        <span class="ans">374 lb</span>.</li>
+      <li><span class="m">25 &divide; 40</span> = <span class="ans">0.625</span>; there are
+        <span class="m">0.625</span> miles in one kilometre (equivalently 1 mile = 1.6 km).</li>
+      <li>(a) intercept <span class="ans">$3.00</span>; (b)
+        <span class="frac"><span>21 &minus; 3</span><span>12</span></span> =
+        <span class="ans">$1.50 per km</span>; (c) <span class="m">3 + 8 &times; 1.5</span> =
+        <span class="ans">$15.00</span>; (d) <span class="m">(16.50 &minus; 3) &divide; 1.5 = 13.5 &divide; 1.5</span>
+        = <span class="ans">9 km</span> (check: <span class="m">3 + 9 &times; 1.5 = 16.50</span>).</li>
+      <li>(a) gradient <span class="m">180 &divide; 100 = 1.8</span>, intercept 32 &rarr;
+        <span class="ans">F = 1.8C + 32</span>; (b) <span class="m">1.8 &times; 35 + 32 = 63 + 32</span> =
+        <span class="ans">95&deg;F</span>; (c) set <span class="m">x = 1.8x + 32</span> &rarr;
+        <span class="m">&minus;0.8x = 32</span> &rarr; <span class="ans">&minus;40&deg;</span>
+        (check: <span class="m">1.8 &times; (&minus;40) + 32 = &minus;40</span>).</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Two quantities in <b>direct proportion</b> give a straight line <b>through the origin</b>; one point
+      is therefore free and you only need to calculate one more.</li>
+    <li>Choose your second point at the <b>far end</b> of the axis &mdash; a long ruled line is far more
+      accurate than a short one.</li>
+    <li>Read values by drawing <b>dotted lines</b>: up then across, or across then down. Leave them on the
+      paper as evidence of method.</li>
+    <li>The <b>gradient is the conversion rate</b>. Multiply by it going one way, divide by it going the
+      other; the two rates are reciprocals.</li>
+    <li>To convert a value beyond the graph, divide by 10 (or 100), read off, then multiply the answer back
+      &mdash; but <b>only</b> if the line passes through the origin.</li>
+    <li>If the line has an intercept, the rule is <span class="m">y = mx + c</span>: going backwards you
+      <b>subtract <span class="m">c</span> first</b>, then divide by <span class="m">m</span>.</li>
+    <li>Graph readings are accurate to about <b>half a small square</b> &mdash; do not quote them to several
+      decimal places, and calculate instead whenever the exact rate is given.</li>
+    <li>Money answers are always given to <b>2 decimal places</b>.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="13-3.html"><span>&larr; Previous</span><b>13.3 Limits of Accuracy</b></a><a class="next" href="13-5.html"><span>Next &rarr;</span><b>13.5 Exchanging Currencies</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 13.4 Conversion Graphs<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- conversion graph explorer ---- */
+(function(){
+  var W=640,H=380,PL=62,PR=20,PT=26,PB=48;
+  var PRESETS=[
+    {r:1.6, c:0,    max:50,  x:'miles',        y:'km',        v:30},
+    {r:4.5, c:0,    max:10,  x:'gallons',      y:'litres',    v:6.5},
+    {r:1.2, c:2.5,  max:20,  x:'km travelled', y:'fare ($)',  v:14},
+    {r:1.8, c:32,   max:100, x:'\u00B0C', y:'\u00B0F', v:25}
+  ];
+  function clean(s){ return String(s||'').replace(/[<>&]/g,''); }
+  function tidy(v){ return String(Math.round(v*1000)/1000); }
+  function nice(range){
+    if(!(range>0)) return 1;
+    var raw=range/8, p=Math.pow(10,Math.floor(Math.log(raw)/Math.LN10)), n=raw/p;
+    var m = n<=1?1 : (n<=2?2 : (n<=2.5?2.5 : (n<=5?5:10)));
+    return m*p;
+  }
+  function draw(rate,fix,xmax,xn,yn,val){
+    var top=fix+rate*xmax; if(!(top>0)) top=1;
+    var ys=nice(top), ymax=Math.ceil(top/ys)*ys; if(ymax<=0) ymax=ys;
+    var xs=nice(xmax);
+    function PX(x){ return PL+(x/xmax)*(W-PL-PR); }
+    function PY(y){ return H-PB-(y/ymax)*(H-PB-PT); }
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Conversion graph with reading lines">';
+    s+='<rect x="0" y="0" width="'+W+'" height="'+H+'" rx="12" fill="#ffffff" stroke="#dfe6f3"/>';
+    var i;
+    for(i=0;i<=xmax+1e-9;i+=xs/2){ s+='<line x1="'+fx(PX(i),1)+'" y1="'+PT+'" x2="'+fx(PX(i),1)+'" y2="'+(H-PB)+'" stroke="#e6ecf7" stroke-width="1"/>'; }
+    for(i=0;i<=ymax+1e-9;i+=ys/2){ s+='<line x1="'+PL+'" y1="'+fx(PY(i),1)+'" x2="'+(W-PR)+'" y2="'+fx(PY(i),1)+'" stroke="#e6ecf7" stroke-width="1"/>'; }
+    s+='<line x1="'+PL+'" y1="'+PY(0)+'" x2="'+(W-PR)+'" y2="'+PY(0)+'" stroke="#0f2d6b" stroke-width="2"/>';
+    s+='<line x1="'+PL+'" y1="'+PY(0)+'" x2="'+PL+'" y2="'+PT+'" stroke="#0f2d6b" stroke-width="2"/>';
+    /* the conversion line */
+    s+='<line x1="'+fx(PX(0),1)+'" y1="'+fx(PY(fix),1)+'" x2="'+fx(PX(xmax),1)+'" y2="'+fx(PY(fix+rate*xmax),1)+
+       '" stroke="#1a4fa0" stroke-width="3" stroke-linecap="round"/>';
+    if(fix>0){ s+='<circle cx="'+fx(PX(0),1)+'" cy="'+fx(PY(fix),1)+'" r="5" fill="#16a34a"/>'; }
+    /* dotted reading lines */
+    var yv=fix+rate*val;
+    if(yv>=0 && yv<=ymax){
+      s+='<line x1="'+fx(PX(val),1)+'" y1="'+PY(0)+'" x2="'+fx(PX(val),1)+'" y2="'+fx(PY(yv),1)+
+         '" stroke="#e05c2a" stroke-width="2" stroke-dasharray="7 5"/>';
+      s+='<line x1="'+PL+'" y1="'+fx(PY(yv),1)+'" x2="'+fx(PX(val),1)+'" y2="'+fx(PY(yv),1)+
+         '" stroke="#e05c2a" stroke-width="2" stroke-dasharray="7 5"/>';
+      s+='<circle cx="'+fx(PX(val),1)+'" cy="'+fx(PY(yv),1)+'" r="6" fill="#e05c2a"/>';
+    }
+    /* tick labels */
+    for(i=0;i<=xmax+1e-9;i+=xs){
+      s+='<text x="'+fx(PX(i),1)+'" y="'+(H-PB+18)+'" font-size="11.5" text-anchor="middle" fill="#4a5b7a">'+tidy(i)+'</text>';
+    }
+    for(i=0;i<=ymax+1e-9;i+=ys){
+      s+='<text x="'+(PL-8)+'" y="'+fx(PY(i)+4,1)+'" font-size="11.5" text-anchor="end" fill="#4a5b7a">'+tidy(i)+'</text>';
+    }
+    s+='<text x="'+((PL+W-PR)/2)+'" y="'+(H-8)+'" font-size="12.5" text-anchor="middle" fill="#0f2d6b">'+xn+'</text>';
+    s+='<text x="6" y="18" font-size="12.5" fill="#0f2d6b">'+yn+'</text>';
+    return s+'</svg>';
+  }
+  function go(){
+    var rate=num('cgRate',1.6), fix=num('cgFix',0), xmax=num('cgMax',50);
+    if(!(xmax>0)) xmax=50;
+    var xn=clean(el('cgXn').value)||'x', yn=clean(el('cgYn').value)||'y';
+    var step=Math.pow(10,Math.floor(Math.log(xmax/100)/Math.LN10));
+    var sl=el('cgVal');
+    sl.max=xmax; sl.step=step;
+    var val=num('cgVal',0); if(val>xmax){ val=xmax; sl.value=xmax; }
+    el('cgValV').innerHTML=tidy(val);
+    el('cgPlot').innerHTML=draw(rate,fix,xmax,xn,yn,val);
+    var yv=fix+rate*val;
+    var eq='y = '+tidy(rate)+'x'+(fix>0?' + '+tidy(fix):(fix<0?' &minus; '+tidy(-fix):''));
+    var back = rate===0 ? 'the rate is zero, so you cannot convert back'
+      : (fix? '('+tidy(yv)+' &minus; '+tidy(fix)+')' : tidy(yv))+' &divide; '+tidy(rate)+
+        ' = <b>'+tidy(val)+'</b> '+xn;
+    el('cgOut').innerHTML=
+      '<div style="font-size:1.06rem;margin-bottom:8px">Line: <span class="hl">'+eq+'</span>'+
+        (fix===0? ' &mdash; through the origin, so this is direct proportion'
+                : ' &mdash; it misses the origin, so this is <b>not</b> direct proportion')+'</div>'+
+      '<div>Up from <span class="hl">'+tidy(val)+'</span> '+xn+', then across: '+
+        (fix?tidy(fix)+' + ':'')+tidy(rate)+' &times; '+tidy(val)+' = <b>'+tidy(yv)+'</b> '+yn+'</div>'+
+      '<div style="margin-top:6px">Converting back'+(fix?' (take off the fixed amount first)':'')+': '+back+'</div>'+
+      '<div style="margin-top:6px">Gradient of the line = <b>'+tidy(rate)+'</b> &mdash; that many '+yn+
+        ' for each unit on the '+xn+' axis.</div>';
+  }
+  el('cgPre').addEventListener('change',function(){
+    var p=PRESETS[parseInt(el('cgPre').value,10)||0];
+    el('cgRate').value=p.r; el('cgFix').value=p.c; el('cgMax').value=p.max;
+    el('cgXn').value=p.x; el('cgYn').value=p.y;
+    el('cgVal').max=p.max; el('cgVal').value=p.v;
+    go();
+  });
+  bindAll(['cgRate','cgFix','cgMax','cgXn','cgYn','cgVal'],go);
+})();
+</script>
+</body>
+</html>

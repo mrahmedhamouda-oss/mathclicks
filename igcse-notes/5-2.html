@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.2 Operations on Fractions | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Adding, subtracting, multiplying and dividing fractions and mixed numbers, plus BIDMAS and reverse &ldquo;find the original&rdquo; problems.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 5 &mdash; Fractions and Standard Form</span>
+    </div>
+    <h1>5.2 &nbsp;Operations on Fractions</h1>
+    <p>Adding, subtracting, multiplying and dividing fractions and mixed numbers, plus BIDMAS and reverse &ldquo;find the original&rdquo; problems.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#addsub">Add &amp; subtract</a>
+  <a href="#multdiv">Multiply &amp; divide</a>
+  <a href="#bidmas">BIDMAS</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="addsub" data-nav="Add &amp; subtract">
+<h2>Adding and subtracting</h2>
+<p>Fifths and eighths are different-sized pieces, so they cannot be added directly. Rewrite both fractions
+over a <b>common denominator</b> first &mdash; the <b>LCM</b> of the two denominators keeps the numbers as
+small as possible &mdash; then add or subtract the numerators only.</p>
+
+<div class="formula"><span class="frac"><span>a</span><span>b</span></span> &plusmn;
+<span class="frac"><span>c</span><span>d</span></span> =
+<span class="frac"><span>ad &plusmn; cb</span><span>bd</span></span>
+<small>Correct for every pair, but the LCM usually beats <span class="m">bd</span> for size</small></div>
+
+<div class="warn"><b>Watch out</b> The denominator does <b>not</b> get added.
+<span class="m"><span class="frac"><span>1</span><span>2</span></span> +
+<span class="frac"><span>1</span><span>3</span></span></span> is
+<span class="m"><span class="frac"><span>5</span><span>6</span></span></span>, not
+<span class="m"><span class="frac"><span>2</span><span>5</span></span></span>. A quick decimal check
+(<span class="m">0.5 + 0.3&#775; = 0.83&#775;</span>) catches this instantly.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Work out <span class="m"><span class="frac"><span>3</span><span>8</span></span> + <span class="frac"><span>5</span><span>12</span></span></span>, giving your answer in its lowest terms.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Find the LCM of the denominators.
+    <span class="work">8 = 2&sup3;, &nbsp;12 = 2&sup2; &times; 3 &nbsp;&rarr;&nbsp; LCM = 2&sup3; &times; 3 = 24</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rewrite each fraction over 24. Whatever multiplies
+    the bottom must multiply the top.
+    <span class="work">3/8 = 9/24 &nbsp;(&times;3)<br>5/12 = 10/24 &nbsp;(&times;2)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add the numerators; the denominator stays at 24.
+    <span class="work">9/24 + 10/24 = 19/24</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check whether it simplifies. 19 is prime and does not
+    divide 24, so it is already in lowest terms.
+    <span class="work">19 &divide; 24 = 0.7916&#775; &nbsp;=&nbsp; 0.375 + 0.416&#775; &nbsp;&#10003;</span></div></div>
+  <div class="final"><span class="frac"><span>19</span><span>24</span></span></div>
+</div>
+</details>
+
+<h3>Mixed numbers</h3>
+<p>There are two respectable methods. Method 1 is safer under pressure and is the one to use for subtraction;
+Method 2 is quicker when the whole numbers are large.</p>
+
+<div class="tabs">
+  <div class="heads"><button>Method 1: go improper</button><button>Method 2: split the parts</button></div>
+  <div class="panes">
+    <div>
+      <p>Convert every mixed number to an improper fraction first, do the arithmetic, then convert back at
+      the very end.</p>
+      <p class="m">3<span class="frac"><span>1</span><span>4</span></span> &minus;
+        1<span class="frac"><span>5</span><span>6</span></span> =
+        <span class="frac"><span>13</span><span>4</span></span> &minus;
+        <span class="frac"><span>11</span><span>6</span></span> =
+        <span class="frac"><span>39</span><span>12</span></span> &minus;
+        <span class="frac"><span>22</span><span>12</span></span> =
+        <span class="frac"><span>17</span><span>12</span></span> =
+        1<span class="frac"><span>5</span><span>12</span></span></p>
+      <p>No borrowing, no traps. This is the method to use if you are ever unsure.</p>
+    </div>
+    <div>
+      <p>Deal with the whole numbers and the fractions separately &mdash; but be ready to <b>borrow</b> one
+      whole when the fraction you are subtracting is too big.</p>
+      <p class="m">3<span class="frac"><span>3</span><span>12</span></span> &minus;
+        1<span class="frac"><span>10</span><span>12</span></span> &nbsp;&rarr;&nbsp;
+        2<span class="frac"><span>15</span><span>12</span></span> &minus;
+        1<span class="frac"><span>10</span><span>12</span></span> =
+        1<span class="frac"><span>5</span><span>12</span></span></p>
+      <p>Here <span class="m"><span class="frac"><span>3</span><span>12</span></span></span> is smaller than
+      <span class="m"><span class="frac"><span>10</span><span>12</span></span></span>, so one whole (twelve
+      twelfths) was carried across: <span class="m">3 + <span class="frac"><span>3</span><span>12</span></span>
+      = 2 + <span class="frac"><span>15</span><span>12</span></span></span>.</p>
+    </div>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Work out <span class="m">3<span class="frac"><span>1</span><span>4</span></span> &minus; 1<span class="frac"><span>5</span><span>6</span></span></span>, giving your answer as a mixed number.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Turn both mixed numbers into improper fractions.
+    <span class="work">3 1/4 = (3 &times; 4 + 1)/4 = 13/4<br>1 5/6 = (1 &times; 6 + 5)/6 = 11/6</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">LCM of 4 and 6 is 12.
+    <span class="work">13/4 = 39/12 &nbsp;(&times;3)<br>11/6 = 22/12 &nbsp;(&times;2)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract the numerators. In Paper 4 you must write
+    this line down &mdash; it carries the method mark.
+    <span class="work">39/12 &minus; 22/12 = 17/12</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Convert back:
+    <span class="m">17 &divide; 12 = 1</span> remainder <span class="m">5</span>.
+    <span class="work">17/12 = 1 5/12 &nbsp;=&nbsp; 1.416&#775;<br>check: 3.25 &minus; 1.83&#775; = 1.416&#775; &#10003;</span></div></div>
+  <div class="final">1<span class="frac"><span>5</span><span>12</span></span></div>
+</div>
+</details>
+</section>
+
+<section id="multdiv" data-nav="Multiply &amp; divide">
+<h2>Multiplying and dividing</h2>
+<p>These are the easy ones: <b>no common denominator is needed</b>. Multiply straight across the top and
+straight across the bottom.</p>
+
+<div class="formula"><span class="frac"><span>a</span><span>b</span></span> &times;
+<span class="frac"><span>c</span><span>d</span></span> =
+<span class="frac"><span>a &times; c</span><span>b &times; d</span></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="frac"><span>a</span><span>b</span></span> &divide;
+<span class="frac"><span>c</span><span>d</span></span> =
+<span class="frac"><span>a</span><span>b</span></span> &times;
+<span class="frac"><span>d</span><span>c</span></span>
+<small>Multiply across &nbsp;&middot;&nbsp; divide by multiplying by the reciprocal</small></div>
+
+<h3>Cancel before you multiply</h3>
+<p>Any numerator may be cancelled with any denominator, whichever fraction it comes from &mdash; you are just
+simplifying the single big fraction before you work it out. It keeps the numbers small and means the answer
+comes out already in lowest terms.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Work out <span class="m"><span class="frac"><span>8</span><span>15</span></span> &times; <span class="frac"><span>25</span><span>32</span></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write it as one fraction so you can see everything.
+    <span class="work">(8 &times; 25) / (15 &times; 32)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Cancel 8 with 32 (both divide by 8).
+    <span class="work">8 &rarr; 1 &nbsp;&nbsp; 32 &rarr; 4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Cancel 25 with 15 (both divide by 5).
+    <span class="work">25 &rarr; 5 &nbsp;&nbsp; 15 &rarr; 3</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Now multiply the small numbers.
+    <span class="work">(1 &times; 5) / (3 &times; 4) = 5/12</span></div></div>
+  <div class="final"><span class="frac"><span>5</span><span>12</span></span> &nbsp;
+    (<span class="m">0.53&#775; &times; 0.78125 = 0.416&#775;</span> &#10003;)</div>
+  <div class="tip"><b>Exam tip</b> Without cancelling you would get
+  <span class="m"><span class="frac"><span>200</span><span>480</span></span></span> &mdash; correct, but you
+  then have to spot that the HCF is 40. Cancelling first is the same work done earlier and more safely.</div>
+</div>
+</details>
+
+<h3>Dividing: keep &ndash; change &ndash; flip</h3>
+<p>Dividing by <span class="m"><span class="frac"><span>1</span><span>6</span></span></span> asks
+&ldquo;how many sixths fit inside?&rdquo;, so dividing by a fraction less than 1 makes the answer
+<b>bigger</b>. The rule is <b>keep</b> the first fraction, <b>change</b> <span class="m">&divide;</span> to
+<span class="m">&times;</span>, <b>flip</b> the second.</p>
+
+<div class="card">
+<h4>Why <span class="m"><span class="frac"><span>2</span><span>3</span></span> &divide; <span class="frac"><span>1</span><span>6</span></span> = 4</span></h4>
+<svg viewBox="0 0 640 210" role="img" aria-label="A bar with two thirds shaded, and the same bar divided into sixths showing four sixths fit inside two thirds">
+  <text x="14" y="52" font-size="14" font-weight="bold" fill="#1a4fa0">2/3</text>
+  <rect x="80" y="24" width="480" height="48" fill="#ffffff" stroke="#0f2d6b" stroke-width="2"/>
+  <rect x="80" y="24" width="320" height="48" fill="#e8f0fe"/>
+  <g stroke="#0f2d6b" stroke-width="1.5">
+    <line x1="240" y1="24" x2="240" y2="72"/><line x1="400" y1="24" x2="400" y2="72"/>
+  </g>
+  <rect x="80" y="24" width="480" height="48" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+
+  <text x="14" y="128" font-size="14" font-weight="bold" fill="#e05c2a">1/6 each</text>
+  <rect x="80" y="100" width="480" height="48" fill="#ffffff" stroke="#0f2d6b" stroke-width="2"/>
+  <rect x="80" y="100" width="320" height="48" fill="#fff1ea"/>
+  <g stroke="#0f2d6b" stroke-width="1.5">
+    <line x1="160" y1="100" x2="160" y2="148"/><line x1="240" y1="100" x2="240" y2="148"/>
+    <line x1="320" y1="100" x2="320" y2="148"/><line x1="400" y1="100" x2="400" y2="148"/>
+    <line x1="480" y1="100" x2="480" y2="148"/>
+  </g>
+  <rect x="80" y="100" width="480" height="48" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="112" y="132" font-size="15" font-weight="bold" fill="#e05c2a">1</text>
+  <text x="192" y="132" font-size="15" font-weight="bold" fill="#e05c2a">2</text>
+  <text x="272" y="132" font-size="15" font-weight="bold" fill="#e05c2a">3</text>
+  <text x="352" y="132" font-size="15" font-weight="bold" fill="#e05c2a">4</text>
+
+  <text x="80" y="182" font-size="14" fill="#6d28d9">Four sixths fit exactly inside two thirds, so the answer is 4 &mdash; bigger than 2/3.</text>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Work out <span class="m">2<span class="frac"><span>1</span><span>3</span></span> &divide; 1<span class="frac"><span>5</span><span>9</span></span></span>.</span></summary>
+<div class="body">
+  <div class="warn"><b>Non-negotiable</b> You may never keep&ndash;change&ndash;flip a mixed number. Convert
+  both to improper fractions <i>first</i>.</div>
+  <div class="step"><div class="n">1</div><div class="t">Convert.
+    <span class="work">2 1/3 = 7/3 &nbsp;&nbsp; 1 5/9 = 14/9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Keep, change, flip.
+    <span class="work">7/3 &divide; 14/9 = 7/3 &times; 9/14</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Cancel before multiplying: 7 with 14 (&divide;7), and
+    9 with 3 (&divide;3).
+    <span class="work">(1 &times; 3) / (1 &times; 2) = 3/2</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Write as a mixed number.
+    <span class="work">3/2 = 1 1/2<br>check: 2.3&#775; &divide; 1.5&#775; = 1.5 &#10003;</span></div></div>
+  <div class="final">1<span class="frac"><span>1</span><span>2</span></span></div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Fraction calculator with working</h4>
+  <p class="hint">Choose an operation and read the working line by line &mdash; the common-denominator step,
+  the arithmetic, then the simplification. Set it to match a question you got wrong.</p>
+  <div class="row">
+    <div><label for="fkA">Numerator 1</label><input type="number" id="fkA" value="3"></div>
+    <div><label for="fkB">Denominator 1</label><input type="number" id="fkB" value="8"></div>
+    <div><label for="fkOp">Operation</label>
+      <select id="fkOp">
+        <option value="add">+ &nbsp;add</option>
+        <option value="sub">&minus; &nbsp;subtract</option>
+        <option value="mul">&times; &nbsp;multiply</option>
+        <option value="div">&divide; &nbsp;divide</option>
+      </select></div>
+    <div><label for="fkC">Numerator 2</label><input type="number" id="fkC" value="5"></div>
+    <div><label for="fkD">Denominator 2</label><input type="number" id="fkD" value="12"></div>
+  </div>
+  <div class="out" id="fkOut"></div>
+</div>
+</section>
+
+<section id="bidmas" data-nav="BIDMAS">
+<h2>Fractions inside bigger calculations</h2>
+<p>Fractions obey <b>BIDMAS</b> exactly like whole numbers: brackets, then indices, then division and
+multiplication (left to right), then addition and subtraction. The fraction line itself also acts as a
+bracket &mdash; work out the whole top and the whole bottom before dividing.</p>
+
+<div class="grid two">
+  <div class="card p"><h4>Order of operations</h4>
+    <ol>
+      <li><b>B</b>rackets</li>
+      <li><b>I</b>ndices</li>
+      <li><b>D</b>ivision and <b>M</b>ultiplication</li>
+      <li><b>A</b>ddition and <b>S</b>ubtraction</li>
+    </ol></div>
+  <div class="card o"><h4>Where students lose marks</h4>
+    <ul>
+      <li>Adding before multiplying in <span class="m">a + b &times; c</span></li>
+      <li>Flipping the <i>first</i> fraction when dividing</li>
+      <li>Leaving the answer as <span class="m"><span class="frac"><span>200</span><span>480</span></span></span>
+        instead of <span class="m"><span class="frac"><span>5</span><span>12</span></span></span></li>
+      <li>Giving <span class="m"><span class="frac"><span>17</span><span>12</span></span></span> when the
+        question asked for a mixed number</li>
+    </ul></div>
+</div>
+
+<h3>Reverse problems: finding the original amount</h3>
+<p>A question such as &ldquo;<span class="m">&#8532;</span> of a number is 24&rdquo; gives you the
+<i>result</i> and asks for the <i>input</i>. Undo the multiplication by dividing &mdash; which, as you now
+know, means multiplying by the reciprocal.</p>
+
+<div class="formula"><span class="frac"><span>2</span><span>3</span></span> of <span class="m">n</span> = 24
+&nbsp;&hArr;&nbsp; n = 24 &divide; <span class="frac"><span>2</span><span>3</span></span> = 24 &times;
+<span class="frac"><span>3</span><span>2</span></span> = 36
+<small>Divide by the fraction &mdash; or divide by the numerator and multiply by the denominator</small></div>
+
+<div class="tip"><b>Exam tip</b> Always finish by checking forwards:
+<span class="m"><span class="frac"><span>2</span><span>3</span></span> of 36 = 24</span> &#10003;. If a
+worded question says money was <i>spent</i> or a tank was <i>emptied</i>, first work out what fraction the
+number you are given represents &mdash; usually <span class="m">1 &minus; (the fraction used)</span>.</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Work out <span class="m">1<span class="frac"><span>1</span><span>2</span></span> + <span class="frac"><span>2</span><span>3</span></span> &times; ( <span class="frac"><span>3</span><span>4</span></span> &minus; <span class="frac"><span>1</span><span>8</span></span> )</span>, giving your answer as a mixed number in its lowest terms.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><b>B</b>rackets first. LCM of 4 and 8 is 8.
+    <span class="work">3/4 &minus; 1/8 = 6/8 &minus; 1/8 = 5/8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><b>M</b>ultiplication next. Cancel the 2 with the 8
+    before multiplying.
+    <span class="work">2/3 &times; 5/8 = (1 &times; 5)/(3 &times; 4) = 5/12</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>A</b>ddition last. Write
+    <span class="m">1<span class="frac"><span>1</span><span>2</span></span></span> as
+    <span class="m"><span class="frac"><span>3</span><span>2</span></span></span>; the LCM of 2 and 12 is 12.
+    <span class="work">3/2 + 5/12 = 18/12 + 5/12 = 23/12</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Convert to a mixed number.
+    <span class="work">23 &divide; 12 = 1 r 11 &nbsp;&rarr;&nbsp; 1 11/12<br>check: 1.5 + 0.416&#775; = 1.916&#775; &#10003;</span></div></div>
+  <div class="final">1<span class="frac"><span>11</span><span>12</span></span></div>
+  <div class="warn"><b>Watch out</b> Adding first would give
+  <span class="m">(1<span class="frac"><span>1</span><span>2</span></span> +
+  <span class="frac"><span>2</span><span>3</span></span>) &times;
+  <span class="frac"><span>5</span><span>8</span></span> =
+  1<span class="frac"><span>17</span><span>48</span></span></span> &mdash; a completely different answer.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">(a) <span class="m">&#8532;</span> of a number is 24. Find the number. (b) Amira spends <span class="m"><span class="frac"><span>3</span><span>8</span></span></span> of her money and has $45 left. How much did she start with?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Call the number <span class="m">n</span> and write
+    the sentence as an equation.
+    <span class="work">2/3 &times; n = 24</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Divide both sides by
+    <span class="m"><span class="frac"><span>2</span><span>3</span></span></span>, i.e. multiply by
+    <span class="m"><span class="frac"><span>3</span><span>2</span></span></span>.
+    <span class="work">n = 24 &times; 3/2 = 72/2 = 36</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check forwards.
+    <span class="work">36 &divide; 3 = 12, &nbsp;12 &times; 2 = 24 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) The $45 is <b>not</b>
+    <span class="m"><span class="frac"><span>3</span><span>8</span></span></span> of the money &mdash; it is
+    what remains.
+    <span class="work">1 &minus; 3/8 = 5/8 of the money = $45</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Divide by
+    <span class="m"><span class="frac"><span>5</span><span>8</span></span></span>.
+    <span class="work">45 &times; 8/5 = 9 &times; 8 = 72</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Check: she spends
+    <span class="m"><span class="frac"><span>3</span><span>8</span></span></span> of 72.
+    <span class="work">72 &divide; 8 &times; 3 = 27, &nbsp;72 &minus; 27 = 45 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) 36 &nbsp;&nbsp;&nbsp; (b) $72.00</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A tank is <span class="m"><span class="frac"><span>2</span><span>5</span></span></span> full. After 36 litres are poured in, it is <span class="m"><span class="frac"><span>7</span><span>10</span></span></span> full. Find the capacity of the tank.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The 36 litres accounts for the <i>change</i> in the
+    fraction, so subtract. LCM of 5 and 10 is 10.
+    <span class="work">7/10 &minus; 2/5 = 7/10 &minus; 4/10 = 3/10</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">So <span class="m"><span class="frac"><span>3</span><span>10</span></span></span>
+    of the capacity <span class="m">C</span> is 36 litres.
+    <span class="work">3/10 &times; C = 36</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply by the reciprocal
+    <span class="m"><span class="frac"><span>10</span><span>3</span></span></span>.
+    <span class="work">C = 36 &times; 10/3 = 12 &times; 10 = 120</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check both statements.
+    <span class="work">2/5 of 120 = 48 &nbsp;&nbsp; 48 + 36 = 84<br>7/10 of 120 = 84 &nbsp;&#10003;</span></div></div>
+  <div class="final">capacity = 120 litres</div>
+  <div class="note"><b>Method note</b> Every reverse problem has the same shape: find <b>what fraction</b> the
+  given amount represents, then divide by that fraction. Writing that one sentence before calculating is worth
+  a mark on its own in Paper 4.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Work out <span class="m"><span class="frac"><span>2</span><span>5</span></span> +
+      <span class="frac"><span>3</span><span>10</span></span></span>.</li>
+    <li>Work out <span class="m"><span class="frac"><span>5</span><span>6</span></span> &minus;
+      <span class="frac"><span>3</span><span>8</span></span></span>.</li>
+    <li>Work out <span class="m">2<span class="frac"><span>3</span><span>4</span></span> +
+      1<span class="frac"><span>5</span><span>6</span></span></span>, giving your answer as a mixed number.</li>
+    <li>Work out (a) <span class="m"><span class="frac"><span>9</span><span>10</span></span> &times;
+      <span class="frac"><span>5</span><span>12</span></span></span> &nbsp;
+      (b) <span class="m">3<span class="frac"><span>1</span><span>3</span></span> &divide;
+      <span class="frac"><span>5</span><span>9</span></span></span></li>
+    <li>Work out <span class="m"><span class="frac"><span>5</span><span>6</span></span> &minus;
+      <span class="frac"><span>1</span><span>3</span></span> &divide;
+      <span class="frac"><span>4</span><span>5</span></span></span>.</li>
+    <li><span class="m"><span class="frac"><span>5</span><span>8</span></span></span> of a number is 35.
+      Find the number, then find <span class="m"><span class="frac"><span>3</span><span>7</span></span></span>
+      of it.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>LCM 10: <span class="m">4/10 + 3/10</span> &rarr; <span class="ans">7/10</span></li>
+      <li>LCM 24: <span class="m">20/24 &minus; 9/24</span> &rarr; <span class="ans">11/24</span>
+        (<span class="m">0.83&#775; &minus; 0.375 = 0.4583&#775;</span>)</li>
+      <li><span class="m">11/4 + 11/6 = 33/12 + 22/12 = 55/12</span> &rarr;
+        <span class="ans">4 7/12</span></li>
+      <li>(a) cancel 5 with 10 and 3 with 12: <span class="m">(3 &times; 1)/(2 &times; 4)</span> &rarr;
+        <span class="ans">3/8</span> &nbsp;
+        (b) <span class="m">10/3 &times; 9/5 = (2 &times; 3)/(1 &times; 1)</span> &rarr;
+        <span class="ans">6</span></li>
+      <li>Division first: <span class="m">1/3 &times; 5/4 = 5/12</span>; then
+        <span class="m">10/12 &minus; 5/12</span> &rarr; <span class="ans">5/12</span></li>
+      <li><span class="m">35 &times; <span class="frac"><span>8</span><span>5</span></span> = 56</span> &rarr;
+        <span class="ans">56</span>; then <span class="m">56 &divide; 7 &times; 3</span> &rarr;
+        <span class="ans">24</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Add and subtract:</b> common denominator (use the LCM), then combine the numerators only &mdash;
+      never the denominators.</li>
+    <li><b>Multiply:</b> straight across the top and bottom. No common denominator is required.</li>
+    <li><b>Cancel before you multiply</b> &mdash; any numerator against any denominator. The answer then
+      arrives already simplified.</li>
+    <li><b>Divide:</b> keep &ndash; change &ndash; flip. Only the <i>second</i> fraction is flipped.</li>
+    <li>Turn <b>every mixed number into an improper fraction first</b>, especially before dividing, then
+      convert back at the end if the question wants a mixed number.</li>
+    <li>Fractions follow <b>BIDMAS</b>; the fraction line acts as a bracket around the top and the bottom.</li>
+    <li>For reverse problems, decide <b>what fraction</b> the given amount is, then divide by that fraction
+      (multiply by its reciprocal) &mdash; and check forwards.</li>
+    <li>Always give the final answer in its <b>lowest terms</b>, and in the form the question asked for.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="5-1.html"><span>&larr; Previous</span><b>5.1 Revisiting Fractions</b></a><a class="next" href="5-3.html"><span>Next &rarr;</span><b>5.3 Percentages</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 5.2 Operations on Fractions<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- fraction calculator with full working ---- */
+(function(){
+  var out=el('fkOut');
+  function raw(a,b){
+    if(b===1) return String(a);
+    return '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>';
+  }
+  function ln(s){ return '<div style="margin:5px 0">'+s+'</div>'; }
+  function mixedOf(p,q){
+    var ap=Math.abs(p);
+    if(q===1||ap<q||ap%q===0) return '';
+    return (p<0?'&minus;':'')+Math.floor(ap/q)+raw(ap%q,q);
+  }
+  function go(){
+    var a=Math.round(num('fkA',3)), b=Math.round(num('fkB',8)),
+        c=Math.round(num('fkC',5)), d=Math.round(num('fkD',12)),
+        op=el('fkOp').value;
+    if(b===0||d===0){ out.innerHTML='<span class="hl">A denominator can never be 0.</span>'; return; }
+    if(b<0){ a=-a; b=-b; }
+    if(d<0){ c=-c; d=-d; }
+    var sym={add:'+',sub:'&minus;',mul:'&times;',div:'&divide;'}[op];
+    var html=ln('<b style="color:inherit">'+raw(a,b)+' '+sym+' '+raw(c,d)+'</b>');
+    var p,q;
+
+    if(op==='add'||op==='sub'){
+      var L=lcm(b,d), m1=L/b, m2=L/d, t1=a*m1, t2=c*m2;
+      html+=ln('Common denominator: LCM('+b+', '+d+') = <span class="hl">'+L+'</span>');
+      html+=ln('Rewrite: '+raw(a,b)+' = '+raw(t1,L)+' (&times;'+m1+') &nbsp;and&nbsp; '+
+               raw(c,d)+' = '+raw(t2,L)+' (&times;'+m2+')');
+      p = (op==='add') ? t1+t2 : t1-t2;
+      q = L;
+      html+=ln('Combine the numerators: '+t1+' '+sym+' '+t2+' = '+p+
+               ', so the answer is '+raw(p,q));
+    } else if(op==='mul'){
+      html+=ln('Multiply across: '+raw(a+' &times; '+c, b+' &times; '+d));
+      p=a*c; q=b*d;
+      html+=ln('= '+raw(p,q));
+    } else {
+      if(c===0){ out.innerHTML='<span class="hl">You cannot divide by zero.</span>'; return; }
+      html+=ln('Keep &ndash; change &ndash; flip: '+raw(a,b)+' &times; '+raw(d,c));
+      p=a*d; q=b*c;
+      if(q<0){ p=-p; q=-q; }
+      html+=ln('Multiply across: '+raw(p,q));
+    }
+
+    var g=gcd(p,q)||1;
+    if(g>1) html+=ln('Simplify: divide top and bottom by the HCF <span class="hl">'+g+'</span> &rarr; '+
+                     raw(p/g,q/g));
+    else     html+=ln('The HCF of '+Math.abs(p)+' and '+q+' is 1, so it is already in lowest terms.');
+    var sp=p/g, sq=q/g, mx=mixedOf(sp,sq);
+    html+=ln('Answer: <b>'+raw(sp,sq)+'</b>'+(mx? ' = <b>'+mx+'</b>' : '')+
+             ' &nbsp;=&nbsp; '+fx(p/q,6));
+    out.innerHTML=html;
+  }
+  bindAll(['fkA','fkB','fkC','fkD','fkOp'],go);
+})();
+</script>
+</body>
+</html>

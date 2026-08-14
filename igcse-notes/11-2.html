@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11.2 Understanding Similar Triangles | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Spotting similar triangles, naming them in the right order, and using the scale factor to calculate missing sides.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 11 &mdash; Pythagoras&rsquo; Theorem and Similar Shapes</span>
+    </div>
+    <h1>11.2 &nbsp;Understanding Similar Triangles</h1>
+    <p>Spotting similar triangles, naming them in the right order, and using the scale factor to calculate missing sides.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#idea">What similar means</a>
+  <a href="#naming">Naming</a>
+  <a href="#shapes">Spotting them</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="idea" data-nav="What similar means">
+<h2>What &ldquo;similar&rdquo; means</h2>
+<p>Two shapes are <b>similar</b> if one is an enlargement of the other: same shape, possibly different
+size. In mathematics that has a precise meaning.</p>
+
+<div class="def"><b>Definition</b>
+Two figures are similar if
+<b>(i)</b> their corresponding angles are equal, and
+<b>(ii)</b> their corresponding sides are in the same ratio.
+That common ratio is the <b>scale factor</b>, usually written <span class="m">k</span>.</div>
+
+<div class="card">
+<h4>The same shape at two sizes</h4>
+<svg viewBox="0 0 420 220" role="img" aria-label="Two similar triangles, the larger one twice the size">
+  <polygon points="30,190 130,190 30,130" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+  <text x="70" y="208" font-size="13" style="fill:#1a4fa0">6 cm</text>
+  <text x="4" y="164" font-size="13" style="fill:#1a4fa0">4.5</text>
+  <text x="86" y="150" font-size="13" style="fill:#1a4fa0">7.5</text>
+  <text x="24" y="126" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="18" y="204" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="132" y="204" font-size="14" style="fill:#0f2d6b">C</text>
+  <path d="M 30 178 L 42 178 L 42 190" fill="none" stroke="#16a34a" stroke-width="2"/>
+
+  <polygon points="230,190 390,190 230,94" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="290" y="208" font-size="13" style="fill:#e05c2a">9.6 cm</text>
+  <text x="200" y="146" font-size="13" style="fill:#e05c2a">7.2</text>
+  <text x="322" y="132" font-size="13" style="fill:#e05c2a">12</text>
+  <text x="224" y="88" font-size="14" style="fill:#0f2d6b">P</text>
+  <text x="218" y="204" font-size="14" style="fill:#0f2d6b">Q</text>
+  <text x="392" y="204" font-size="14" style="fill:#0f2d6b">R</text>
+  <path d="M 230 178 L 242 178 L 242 190" fill="none" stroke="#16a34a" stroke-width="2"/>
+  <text x="150" y="60" font-size="13" style="fill:#6d28d9">scale factor k = 1.6</text>
+  <path d="M 150 70 L 220 100" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5 4"/>
+</svg>
+<div class="formula">9.6 &divide; 6 = 7.2 &divide; 4.5 = 12 &divide; 7.5 = 1.6
+<small>every pair of corresponding sides gives the same scale factor</small></div>
+</div>
+
+<div class="card g">
+<h4>How much do you need to check?</h4>
+<p>For <b>triangles</b> you do not need both conditions &mdash; either one forces the other:</p>
+<ul>
+  <li>If the three angles of one triangle equal the three angles of another, the triangles are
+    similar. This is the condition you will use almost every time, and it is usually called
+    <b>AAA</b> (or just &ldquo;equiangular&rdquo;).</li>
+  <li>Because the angle sum is 180&deg;, showing <b>two</b> pairs of equal angles is enough &mdash; the
+    third pair follows automatically.</li>
+  <li>If all three pairs of sides are in the same ratio (<b>SSS similarity</b>), the triangles are similar.</li>
+  <li>If two pairs of sides are in the same ratio and the angles <i>between</i> them are equal
+    (<b>SAS similarity</b>), the triangles are similar.</li>
+</ul>
+<div class="tip"><b>Exam tip</b> To prove similarity in 0580 you almost always list <b>two pairs of
+equal angles with a reason for each</b>. That is a complete proof.</div>
+</div>
+
+<div class="warn"><b>Similar is not congruent</b>
+<b>Congruent</b> triangles are identical in shape <i>and</i> size &mdash; that is the special case
+<span class="m">k = 1</span>. Similar triangles need only the same shape. See lesson 11.4 for congruence.</div>
+</section>
+
+<section id="naming" data-nav="Naming">
+<h2>Naming triangles in the correct order</h2>
+<p>This is where most marks are lost. When you write
+<span class="m">triangle ABC is similar to triangle PQR</span>, you are stating that
+<span class="m">A</span> corresponds to <span class="m">P</span>, <span class="m">B</span> to
+<span class="m">Q</span> and <span class="m">C</span> to <span class="m">R</span>. Write the letters in
+the wrong order and every ratio you build afterwards will be wrong.</p>
+
+<div class="card o">
+<h4>How to get the order right</h4>
+<ol>
+  <li>Match the <b>equal angles</b> first, not the sides.</li>
+  <li>Write the two triangles one above the other so the matching vertices line up.</li>
+  <li>Then read the sides straight off, pair by pair.</li>
+</ol>
+<div class="formula"><span class="frac"><span>PQ</span><span>AB</span></span> =
+<span class="frac"><span>QR</span><span>BC</span></span> =
+<span class="frac"><span>PR</span><span>AC</span></span> = k
+<small>corresponding sides, in matching order</small></div>
+</div>
+
+<div class="note"><b>Note</b> A side is described by the two vertices at its ends. So the side
+<i>between</i> the vertices matching A and B is the side between P and Q. Line up the letters and the
+sides pair themselves.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">In triangles ABC and DEF, angle A = angle D = 55&deg; and angle B = angle E = 68&deg;. AB = 8 cm, DE = 12 cm and BC = 10 cm. Find EF.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Two pairs of angles are equal, so the third pair must
+    be equal too and the triangles are similar in the order given.
+    <span class="work">triangle ABC is similar to triangle DEF</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the scale factor from the pair of sides you know
+    completely. AB corresponds to DE.
+    <span class="work">k = 12 &divide; 8 = 1.5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">BC corresponds to EF, so multiply by the scale factor.
+    <span class="work">EF = 10 &times; 1.5</span></div></div>
+  <div class="final">EF = 15 cm</div>
+  <div class="tip"><b>Exam tip</b> Before you calculate, decide whether the answer should be
+  <b>bigger or smaller</b>. Here DEF is the larger triangle, so EF must exceed 10 cm.</div>
+</div>
+</details>
+</section>
+
+<section id="shapes" data-nav="Spotting them">
+<h2>Where similar triangles hide</h2>
+<p>Exam diagrams reuse the same three arrangements over and over. Learn to see them.</p>
+
+<div class="card p">
+<h4>1. Nested triangles &mdash; a line parallel to one side</h4>
+<svg viewBox="0 0 420 230" role="img" aria-label="A line parallel to the base creates a smaller nested similar triangle">
+  <polygon points="40,200 380,200 130,40" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="85" y1="120" x2="255" y2="120" stroke="#e05c2a" stroke-width="2.5"/>
+  <path d="M 150 196 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 165 196 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 155 116 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 170 116 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <circle cx="130" cy="40" r="4" fill="#0f2d6b"/>
+  <circle cx="40" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="380" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="85" cy="120" r="4" fill="#e05c2a"/>
+  <circle cx="255" cy="120" r="4" fill="#e05c2a"/>
+  <text x="124" y="32" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="24" y="214" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="386" y="214" font-size="14" style="fill:#0f2d6b">C</text>
+  <text x="66" y="116" font-size="14" style="fill:#e05c2a">D</text>
+  <text x="262" y="116" font-size="14" style="fill:#e05c2a">E</text>
+  <text x="286" y="164" font-size="12" style="fill:#6d28d9">DE parallel to BC</text>
+</svg>
+<p>Because <span class="m">DE</span> is parallel to <span class="m">BC</span>:</p>
+<ul>
+  <li>angle ADE = angle ABC &nbsp;(corresponding angles)</li>
+  <li>angle AED = angle ACB &nbsp;(corresponding angles)</li>
+  <li>angle A is shared</li>
+</ul>
+<div class="formula">triangle ADE is similar to triangle ABC
+<small>equiangular &mdash; two pairs of corresponding angles plus the common angle</small></div>
+<div class="warn"><b>Watch out</b> The ratio uses <b>whole sides from the apex</b>:
+<span class="m">AD / AB</span>, not <span class="m">AD / DB</span>. If the question gives you
+<span class="m">DB</span>, add it to <span class="m">AD</span> first to get <span class="m">AB</span>.</div>
+</div>
+
+<div class="card">
+<h4>2. The bow tie &mdash; two lines crossing between parallel lines</h4>
+<svg viewBox="0 0 420 230" role="img" aria-label="Bow tie arrangement of two similar triangles">
+  <line x1="40" y1="40" x2="200" y2="40" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="220" y1="200" x2="390" y2="200" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="40" y1="40" x2="390" y2="200" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="200" y1="40" x2="220" y2="200" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 110 36 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 300 196 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <circle cx="40" cy="40" r="4" fill="#0f2d6b"/>
+  <circle cx="200" cy="40" r="4" fill="#0f2d6b"/>
+  <circle cx="220" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="390" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="207.7" cy="116.7" r="5" fill="#e05c2a"/>
+  <text x="30" y="30" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="200" y="30" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="212" y="112" font-size="14" style="fill:#e05c2a">X</text>
+  <text x="212" y="220" font-size="14" style="fill:#0f2d6b">D</text>
+  <text x="392" y="220" font-size="14" style="fill:#0f2d6b">C</text>
+</svg>
+<p>With <span class="m">AB</span> parallel to <span class="m">DC</span>, the alternate angles at
+<span class="m">A</span> and <span class="m">C</span> are equal, the alternate angles at
+<span class="m">B</span> and <span class="m">D</span> are equal, and the angles at
+<span class="m">X</span> are vertically opposite. So
+<span class="m">triangle ABX is similar to triangle CDX</span>.</p>
+</div>
+
+<div class="card g">
+<h4>3. Two triangles sharing an angle</h4>
+<p>If two triangles share an angle and one more pair of angles is equal &mdash; often because of a right
+angle, or a cyclic quadrilateral, or parallel lines &mdash; they are similar. This is the arrangement
+behind &ldquo;the perpendicular from the right angle to the hypotenuse&rdquo; problems, where the two
+smaller triangles are each similar to the original.</p>
+</div>
+
+<div class="tool">
+  <h4>Similar triangle solver</h4>
+  <p class="hint">Enter one pair of corresponding sides to fix the scale factor, then a third side to
+  find its partner. Try 6 and 9 with a known side of 8.</p>
+  <div class="row">
+    <div><label for="stA">Side on small triangle</label><input type="number" id="stA" value="6" step="any"></div>
+    <div><label for="stB">Matching side on large</label><input type="number" id="stB" value="9" step="any"></div>
+    <div><label for="stC">Another known side</label><input type="number" id="stC" value="8" step="any"></div>
+    <div><label for="stW">That side is on the</label>
+      <select id="stW"><option value="s">small triangle</option><option value="l">large triangle</option></select></div>
+  </div>
+  <div class="out" id="stOut"></div>
+</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>Worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">In triangle ABC, D lies on AB and E lies on AC with DE parallel to BC. AD = 6 cm, DB = 4 cm and DE = 7.5 cm. Find BC.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">DE is parallel to BC, so triangle ADE is similar to
+    triangle ABC (corresponding angles, common angle A).</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Work out the <b>whole</b> side AB, not just AD.
+    <span class="work">AB = AD + DB = 6 + 4 = 10 cm</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Scale factor from small to large.
+    <span class="work">k = AB / AD = 10 / 6 = 5/3</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">DE corresponds to BC.
+    <span class="work">BC = 7.5 &times; 5/3 = 12.5 cm</span></div></div>
+  <div class="final">BC = 12.5 cm</div>
+  <div class="warn"><b>Watch out</b> Using <span class="m">6/4</span> as the scale factor is the single
+  most common error here. That ratio compares a part with a part, not a triangle with a triangle.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">AB is parallel to DC. The diagonals of trapezium ABCD meet at X. AB = 5 cm, DC = 12 cm and AX = 3.5 cm. Find XC, correct to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">This is the bow tie. Alternate angles give
+    angle BAX = angle DCX and angle ABX = angle CDX, and the angles at X are vertically opposite.
+    <span class="work">triangle ABX is similar to triangle CDX</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">AB corresponds to CD, so the scale factor is
+    <span class="work">k = 12 / 5 = 2.4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">AX corresponds to CX.
+    <span class="work">XC = 3.5 &times; 2.4 = 8.4 cm</span></div></div>
+  <div class="final">XC = 8.40 cm (3 s.f.)</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Two triangles have sides 4 cm, 6 cm, 8 cm and 10 cm, 15 cm, 20 cm. Show that they are similar.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Put the sides of each in order and pair the smallest
+    with the smallest.
+    <span class="work">4 &rarr; 10, &nbsp; 6 &rarr; 15, &nbsp; 8 &rarr; 20</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Work out each ratio.
+    <span class="work">10/4 = 2.5, &nbsp; 15/6 = 2.5, &nbsp; 20/8 = 2.5</span></div></div>
+  <div class="final">All three ratios equal 2.5, so the triangles are similar (SSS), with k = 2.5</div>
+  <div class="note"><b>Note</b> If even one ratio differed, they would not be similar &mdash; you must
+  check all three.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">In triangle PQR, angle Q = 90&deg;. The perpendicular from Q meets PR at S. PS = 4 cm and SR = 9 cm. Find QS.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Angle PSQ = angle QSR = 90&deg;. In triangle PSQ and
+    triangle QSR, angle SPQ = angle SQR because each is 90&deg; minus angle PQS.
+    <span class="work">triangle PSQ is similar to triangle QSR</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Match the sides: PS corresponds to QS, and QS
+    corresponds to RS.
+    <span class="work">QS / PS = RS / QS</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Cross-multiply.
+    <span class="work">QS&sup2; = PS &times; RS = 4 &times; 9 = 36</span></div></div>
+  <div class="final">QS = 6 cm</div>
+  <div class="tip"><b>Exam tip</b> This result &mdash; the perpendicular height is the square root of the
+  product of the two parts of the hypotenuse &mdash; is worth recognising, but always show the similar
+  triangles that produce it.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A vertical stick 1.5 m tall casts a shadow 2.4 m long. At the same moment a tower casts a shadow 36 m long. How tall is the tower?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The sun's rays make the same angle with the ground in
+    both cases, and both objects are vertical, so the two right-angled triangles are equiangular and
+    therefore similar.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Scale factor from the shadows.
+    <span class="work">k = 36 &divide; 2.4 = 15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Apply it to the heights.
+    <span class="work">height = 1.5 &times; 15</span></div></div>
+  <div class="final">The tower is 22.5 m tall</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Exam style. In triangle ABC, X lies on AB and Y lies on AC. AX = 5 cm, XB = 7 cm, AY = 6 cm and YC = 8.4 cm. (a) Show that XY is parallel to BC. (b) Given XY = 4 cm, find BC.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Compare the whole sides from A.
+    <span class="work">AB = 5 + 7 = 12, &nbsp; AC = 6 + 8.4 = 14.4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Work out both ratios.
+    <span class="work">AB / AX = 12 / 5 = 2.4<br>AC / AY = 14.4 / 6 = 2.4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The ratios are equal and angle A is common, so
+    triangle AXY is similar to triangle ABC (SAS similarity). Equal corresponding angles
+    AXY and ABC then make XY parallel to BC.</div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) XY corresponds to BC with k = 2.4.
+    <span class="work">BC = 4 &times; 2.4</span></div></div>
+  <div class="final">(a) proved &nbsp;&nbsp; (b) BC = 9.6 cm</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Triangle ABC is similar to triangle PQR with AB = 5 cm, PQ = 15 cm and BC = 7 cm. Find QR.</li>
+    <li>In triangle ABC, DE is parallel to BC with D on AB and E on AC. AD = 8 cm, AB = 20 cm and
+      BC = 15 cm. Find DE.</li>
+    <li>Two triangles have sides 3, 5, 7 and 9, 15, 20. Are they similar? Justify your answer.</li>
+    <li>AB is parallel to DC and the diagonals of trapezium ABCD meet at X. AB = 6 cm, DC = 9 cm and
+      DX = 7.2 cm. Find BX.</li>
+    <li>A photograph 15 cm wide and 10 cm high is enlarged so that its width becomes 24 cm. Find the
+      new height.</li>
+    <li>In triangle LMN, angle M = 90&deg; and the perpendicular from M meets LN at K. LK = 3 cm and
+      MK = 6 cm. Find KN.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">k = 15 / 5 = 3</span>, so <span class="m">QR = 7 &times; 3</span> =
+        <span class="ans">21 cm</span></li>
+      <li><span class="m">k = 8 / 20 = 0.4</span> (large to small), so
+        <span class="m">DE = 15 &times; 0.4</span> = <span class="ans">6 cm</span></li>
+      <li><span class="m">9/3 = 3</span>, <span class="m">15/5 = 3</span>, but
+        <span class="m">20/7 = 2.857&hellip;</span> &mdash; <span class="ans">not similar</span>,
+        because the third ratio differs.</li>
+      <li>Bow tie: triangle ABX is similar to triangle CDX, so
+        <span class="m">BX / DX = AB / DC = 6/9</span>, giving
+        <span class="m">BX = 7.2 &times; 6/9</span> = <span class="ans">4.8 cm</span></li>
+      <li><span class="m">k = 24 / 15 = 1.6</span>, so <span class="m">10 &times; 1.6</span> =
+        <span class="ans">16 cm</span></li>
+      <li><span class="m">MK&sup2; = LK &times; KN</span>, so <span class="m">36 = 3 &times; KN</span>
+        and <span class="m">KN</span> = <span class="ans">12 cm</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Similar means <b>equal angles</b> and <b>sides in the same ratio</b>. For triangles, equal
+      angles alone is enough.</li>
+    <li>Showing <b>two</b> pairs of equal angles proves two triangles are similar &mdash; the third pair
+      follows from the 180&deg; angle sum.</li>
+    <li>Write the vertices in <b>corresponding order</b>; every ratio you build depends on it.</li>
+    <li>The <b>scale factor</b> <span class="m">k</span> = a length on the second shape divided by the
+      matching length on the first. Multiply by <span class="m">k</span> to enlarge, divide to reduce.</li>
+    <li>A line <b>parallel to one side</b> of a triangle creates a similar triangle &mdash; use whole
+      sides from the apex, never part-to-part.</li>
+    <li>Look for the <b>bow tie</b> whenever two lines cross between a pair of parallel lines.</li>
+    <li>Check your answer is sensibly <b>bigger or smaller</b> before you write it down.</li>
+    <li>Similar with <span class="m">k = 1</span> means <b>congruent</b> (lesson 11.4); area and volume
+      scale factors are <span class="m">k&sup2;</span> and <span class="m">k&sup3;</span> (lesson 11.3).</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="index.html"><span>&larr; Back</span><b>All notes</b></a><a class="next" href="index.html"><span>More lessons &rarr;</span><b>All notes</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 11.2 Understanding Similar Triangles<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+(function(){
+  var out=el('stOut');
+  function go(){
+    var a=num('stA',0), b=num('stB',0), c=num('stC',0), w=(el('stW')||{}).value;
+    if(a<=0||b<=0||c<=0){ out.innerHTML='<span style="opacity:.6">Enter three positive lengths.</span>'; return; }
+    var k=b/a;
+    var res = (w==='s') ? c*k : c/k;
+    var where = (w==='s') ? 'large' : 'small';
+    var opstr = (w==='s') ? (fx(c,3)+' &times; '+fx(k,4)) : (fx(c,3)+' &divide; '+fx(k,4));
+    out.innerHTML=
+      '<div>Scale factor small &rarr; large: &nbsp;k = '+fx(b,3)+' &divide; '+fx(a,3)+
+        ' = <span class="hl">'+fx(k,4)+'</span></div>'+
+      '<div style="margin-top:6px">Matching side on the '+where+' triangle: &nbsp;'+opstr+
+        ' = <b>'+fx(res,4)+'</b></div>'+
+      '<div style="margin-top:6px;opacity:.75;font-size:.9em">Check: '+fx(res,4)+' &divide; '+
+        fx((w==='s')?c:res,4)+' = '+fx(((w==='s')?res/c:c/res),4)+', the same scale factor.</div>';
+  }
+  bindAll(['stA','stB','stC','stW'],go);
+})();
+</script>
+</body>
+</html>

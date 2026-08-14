@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11.4 Understanding Congruence | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="What congruent really means, the four conditions that prove two triangles congruent, and how to set out a proof that earns full marks.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 11 &mdash; Pythagoras&rsquo; Theorem and Similar Shapes</span>
+    </div>
+    <h1>11.4 &nbsp;Understanding Congruence</h1>
+    <p>What congruent really means, the four conditions that prove two triangles congruent, and how to set out a proof that earns full marks.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#meaning">What it means</a>
+  <a href="#conditions">Conditions</a>
+  <a href="#proofs">Writing a proof</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="meaning" data-nav="What it means">
+<h2>Congruent shapes</h2>
+<p>Two shapes are <b>congruent</b> if you could cut one out and place it exactly on top of the other. Same
+shape, <i>and</i> same size. You are allowed to turn it round, slide it, or flip it over &mdash; a reflected
+shape is still congruent.</p>
+
+<div class="def"><b>Definition</b>
+Two shapes are <b>congruent</b> when all corresponding sides are equal <b>and</b> all corresponding angles
+are equal. The symbol is <span class="m">&#8801;</span>: we write
+<span class="m">&#9651;ABC &#8801; &#9651;PQR</span>.</div>
+
+<div class="card">
+<h4>Congruent or only similar?</h4>
+<svg viewBox="0 0 520 232" role="img" aria-label="Three triangles: A and B are the same size and shape, C is the same shape but larger">
+  <polygon points="30,180 130,180 60,120" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <polygon points="280,120 180,120 250,180" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <polygon points="330,180 480,180 375,90" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+  <text x="80" y="204" font-size="13" text-anchor="middle" fill="#1a4fa0">A</text>
+  <text x="230" y="204" font-size="13" text-anchor="middle" fill="#16a34a">B &mdash; turned round</text>
+  <text x="405" y="204" font-size="13" text-anchor="middle" fill="#6d28d9">C &mdash; enlarged</text>
+  <text x="260" y="226" font-size="13" text-anchor="middle">A &#8801; B (congruent) &nbsp;&middot;&nbsp; A is only similar to C</text>
+</svg>
+</div>
+
+<div class="grid two">
+  <div class="card g"><h4>Congruent</h4>
+    <ul>
+      <li>Corresponding <b>angles equal</b></li>
+      <li>Corresponding <b>sides equal</b></li>
+      <li>Scale factor <span class="m">k = 1</span></li>
+      <li>Equal areas and equal perimeters</li>
+    </ul></div>
+  <div class="card p"><h4>Similar</h4>
+    <ul>
+      <li>Corresponding <b>angles equal</b></li>
+      <li>Corresponding sides in a <b>fixed ratio</b></li>
+      <li>Any scale factor <span class="m">k</span></li>
+      <li>Areas in the ratio <span class="m">k&sup2;</span></li>
+    </ul></div>
+</div>
+
+<div class="note"><b>Note</b>
+Every pair of congruent shapes is also similar, with <span class="m">k = 1</span>. The reverse is not true:
+similar shapes are congruent <b>only</b> when the scale factor happens to be 1.</div>
+</section>
+
+<section id="conditions" data-nav="Conditions">
+<h2>The four conditions for congruent triangles</h2>
+<p>You do not need all six measurements to prove two triangles congruent. Three carefully chosen facts are
+enough &mdash; but only if they come in one of these four patterns.</p>
+
+<div class="grid">
+  <div class="card"><h4>SSS &mdash; three sides</h4>
+    <svg viewBox="0 0 240 165" role="img" aria-label="Triangle with all three sides marked as known">
+      <polygon points="30,130 200,130 90,40" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="1"/>
+      <line x1="30" y1="130" x2="200" y2="130" stroke="#e05c2a" stroke-width="4"/>
+      <line x1="30" y1="130" x2="90" y2="40" stroke="#e05c2a" stroke-width="4"/>
+      <line x1="200" y1="130" x2="90" y2="40" stroke="#e05c2a" stroke-width="4"/>
+      <text x="115" y="150" font-size="14" text-anchor="middle" fill="#e05c2a">S</text>
+      <text x="46" y="80" font-size="14" text-anchor="end" fill="#e05c2a">S</text>
+      <text x="162" y="80" font-size="14" fill="#e05c2a">S</text>
+    </svg>
+    <p>All three pairs of sides are equal.</p></div>
+
+  <div class="card"><h4>SAS &mdash; two sides, included angle</h4>
+    <svg viewBox="0 0 240 165" role="img" aria-label="Triangle with two sides and the angle between them marked as known">
+      <polygon points="30,130 200,130 90,40" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="1"/>
+      <line x1="30" y1="130" x2="200" y2="130" stroke="#e05c2a" stroke-width="4"/>
+      <line x1="30" y1="130" x2="90" y2="40" stroke="#e05c2a" stroke-width="4"/>
+      <polyline points="56,130 55.2,123.7 52.9,117.7 49.3,112.5 44.4,108.4" fill="none" stroke="#16a34a" stroke-width="3"/>
+      <text x="115" y="150" font-size="14" text-anchor="middle" fill="#e05c2a">S</text>
+      <text x="46" y="80" font-size="14" text-anchor="end" fill="#e05c2a">S</text>
+      <text x="70" y="120" font-size="14" fill="#16a34a">A</text>
+    </svg>
+    <p>The angle must be <b>between</b> the two sides.</p></div>
+
+  <div class="card"><h4>ASA (or AAS) &mdash; two angles, one side</h4>
+    <svg viewBox="0 0 240 165" role="img" aria-label="Triangle with two angles and the side between them marked as known">
+      <polygon points="30,130 200,130 90,40" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="1"/>
+      <line x1="30" y1="130" x2="200" y2="130" stroke="#e05c2a" stroke-width="4"/>
+      <polyline points="56,130 55.2,123.7 52.9,117.7 49.3,112.5 44.4,108.4" fill="none" stroke="#16a34a" stroke-width="3"/>
+      <polyline points="174,130 174.4,125.6 175.5,121.3 177.4,117.2 179.9,113.5" fill="none" stroke="#16a34a" stroke-width="3"/>
+      <text x="115" y="150" font-size="14" text-anchor="middle" fill="#e05c2a">S</text>
+      <text x="70" y="120" font-size="14" fill="#16a34a">A</text>
+      <text x="164" y="120" font-size="14" text-anchor="end" fill="#16a34a">A</text>
+    </svg>
+    <p>Two angles fix the third, so any matching side will do.</p></div>
+
+  <div class="card"><h4>RHS &mdash; right angle, hypotenuse, side</h4>
+    <svg viewBox="0 0 240 165" role="img" aria-label="Right-angled triangle with the hypotenuse and one other side marked as known">
+      <polygon points="30,130 170,130 30,50" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="1"/>
+      <line x1="170" y1="130" x2="30" y2="50" stroke="#e05c2a" stroke-width="4"/>
+      <line x1="30" y1="130" x2="170" y2="130" stroke="#e05c2a" stroke-width="4"/>
+      <polyline points="30,116 44,116 44,130" fill="none" stroke="#16a34a" stroke-width="3"/>
+      <text x="112" y="82" font-size="14" fill="#e05c2a">H</text>
+      <text x="100" y="150" font-size="14" text-anchor="middle" fill="#e05c2a">S</text>
+      <text x="56" y="124" font-size="14" fill="#16a34a">R</text>
+    </svg>
+    <p>Right-angled triangles only, with the hypotenuse as one of the sides.</p></div>
+</div>
+
+<div class="warn"><b>Watch out &mdash; two patterns that prove nothing</b>
+<b>SSA</b> (two sides and an angle that is <i>not</i> between them) and <b>AAA</b> (three angles) are
+<b>not</b> conditions. AAA proves the triangles are <i>similar</i> only. SSA can give two completely
+different triangles, as shown below.</div>
+
+<div class="card o">
+<h4>Why SSA fails</h4>
+<svg viewBox="0 0 400 250" role="img" aria-label="One angle of 35 degrees with a side of 9 cm and a side of 6 cm producing two different triangles">
+  <line x1="60" y1="210" x2="360" y2="210" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M172,210 A156,156 0 0 0 331,210" fill="none" stroke="#6d28d9" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="60" y1="210" x2="252" y2="76" stroke="#e05c2a" stroke-width="4"/>
+  <line x1="252" y1="76" x2="172" y2="210" stroke="#16a34a" stroke-width="4"/>
+  <line x1="252" y1="76" x2="331" y2="210" stroke="#16a34a" stroke-width="4"/>
+  <polyline points="86,210 85.4,204.6 83.6,199.4 80.7,194.7 76.8,190.7" fill="none" stroke="#1a4fa0" stroke-width="3"/>
+  <text x="98" y="203" font-size="13" fill="#1a4fa0">35&deg;</text>
+  <text x="50" y="222" font-size="13" text-anchor="end">A</text>
+  <text x="258" y="66" font-size="13">B</text>
+  <text x="168" y="230" font-size="13" text-anchor="middle">C&#8321;</text>
+  <text x="335" y="230" font-size="13">C&#8322;</text>
+  <text x="140" y="132" font-size="13" text-anchor="end" fill="#e05c2a">9 cm</text>
+  <text x="196" y="152" font-size="13" fill="#16a34a">6 cm</text>
+  <text x="306" y="140" font-size="13" fill="#16a34a">6 cm</text>
+  <text x="200" y="246" font-size="12" text-anchor="middle">same 9 cm, same 6 cm, same 35&deg; &mdash; two different triangles</text>
+</svg>
+</div>
+
+<div class="tool">
+  <h4>Congruence-condition tester</h4>
+  <p class="hint">Pick the three facts you have been given. The tool tells you whether they are enough, names
+  the condition, and draws the matching pair of triangles.</p>
+  <div class="row">
+    <div><label for="cgSel">The three facts you know</label>
+      <select id="cgSel">
+        <option value="sss">Three pairs of sides</option>
+        <option value="sas">Two sides and the angle BETWEEN them</option>
+        <option value="asa">Two angles and the side BETWEEN them</option>
+        <option value="aas">Two angles and a side NOT between them</option>
+        <option value="rhs">Right angle, hypotenuse and one other side</option>
+        <option value="ssa">Two sides and an angle NOT between them</option>
+        <option value="aaa">Three pairs of angles</option>
+      </select></div>
+  </div>
+  <div id="cgDraw"></div>
+  <div class="out" id="cgOut"></div>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">In triangle <span class="m">ABC</span>, <span class="m">AB = 7</span>&nbsp;cm, <span class="m">AC = 5</span>&nbsp;cm and angle <span class="m">A = 58&deg;</span>. In triangle <span class="m">PQR</span>, <span class="m">PQ = 7</span>&nbsp;cm, <span class="m">PR = 5</span>&nbsp;cm and angle <span class="m">P = 58&deg;</span>. Are the triangles congruent?</span></summary>
+<div class="body">
+  <svg viewBox="0 0 420 220" role="img" aria-label="Two triangles each with sides 7 cm and 5 cm and an included angle of 58 degrees, the second one reflected">
+    <polygon points="40,180 166,180 88,104" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="40" y1="180" x2="166" y2="180" stroke="#e05c2a" stroke-width="4"/>
+    <line x1="40" y1="180" x2="88" y2="104" stroke="#e05c2a" stroke-width="4"/>
+    <polyline points="64,180 63.2,174 61,168.4 57.5,163.5 52.8,159.7" fill="none" stroke="#16a34a" stroke-width="3"/>
+    <text x="32" y="192" font-size="13" text-anchor="end">A</text>
+    <text x="174" y="192" font-size="13">B</text>
+    <text x="82" y="96" font-size="13" text-anchor="end">C</text>
+    <text x="103" y="198" font-size="13" text-anchor="middle" fill="#e05c2a">7 cm</text>
+    <text x="46" y="140" font-size="13" text-anchor="end" fill="#e05c2a">5 cm</text>
+    <text x="86" y="172" font-size="12" fill="#16a34a">58&deg;</text>
+
+    <polygon points="360,180 234,180 312,104" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <line x1="360" y1="180" x2="234" y2="180" stroke="#e05c2a" stroke-width="4"/>
+    <line x1="360" y1="180" x2="312" y2="104" stroke="#e05c2a" stroke-width="4"/>
+    <polyline points="336,180 336.8,174 339,168.4 342.5,163.5 347.2,159.7" fill="none" stroke="#16a34a" stroke-width="3"/>
+    <text x="368" y="192" font-size="13">P</text>
+    <text x="226" y="192" font-size="13" text-anchor="end">Q</text>
+    <text x="318" y="96" font-size="13">R</text>
+    <text x="297" y="198" font-size="13" text-anchor="middle" fill="#e05c2a">7 cm</text>
+    <text x="354" y="140" font-size="13" fill="#e05c2a">5 cm</text>
+    <text x="314" y="172" font-size="12" text-anchor="end" fill="#16a34a">58&deg;</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">List the three given facts as matching pairs.
+    <span class="work">AB = PQ = 7 cm<br>AC = PR = 5 cm<br>angle A = angle P = 58&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Check <i>where</i> the angle sits. Angle
+    <span class="m">A</span> lies between <span class="m">AB</span> and <span class="m">AC</span>, and angle
+    <span class="m">P</span> lies between <span class="m">PQ</span> and <span class="m">PR</span>. It is the
+    <b>included</b> angle in both.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Two sides and the included angle is the SAS condition,
+    so the triangles are congruent. Write the vertices in corresponding order.
+    <span class="work">&#9651;ABC &#8801; &#9651;PQR (SAS)</span></div></div>
+  <div class="final">Yes &mdash; congruent by SAS</div>
+  <div class="note"><b>Note</b> The second triangle here is a <b>mirror image</b> of the first. Reflection
+  does not change any length or angle, so the triangles are still congruent.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Two right-angled triangles each have a hypotenuse of 13&nbsp;cm and one other side of 5&nbsp;cm. Show that they are congruent, and find the remaining side.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 400 235" role="img" aria-label="Two right-angled triangles with hypotenuse 13 cm and a side of 5 cm, drawn in different orientations">
+    <polygon points="40,200 184,200 40,140" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="184" y1="200" x2="40" y2="140" stroke="#e05c2a" stroke-width="4"/>
+    <line x1="40" y1="200" x2="40" y2="140" stroke="#e05c2a" stroke-width="4"/>
+    <polyline points="40,186 54,186 54,200" fill="none" stroke="#16a34a" stroke-width="3"/>
+    <text x="126" y="156" font-size="13" fill="#e05c2a">13 cm</text>
+    <text x="32" y="174" font-size="13" text-anchor="end" fill="#e05c2a">5 cm</text>
+    <text x="112" y="218" font-size="13" text-anchor="middle">12 cm</text>
+
+    <polygon points="280,60 280,204 340,60" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <line x1="280" y1="204" x2="340" y2="60" stroke="#e05c2a" stroke-width="4"/>
+    <line x1="280" y1="60" x2="340" y2="60" stroke="#e05c2a" stroke-width="4"/>
+    <polyline points="280,74 294,74 294,60" fill="none" stroke="#16a34a" stroke-width="3"/>
+    <text x="330" y="146" font-size="13" fill="#e05c2a">13 cm</text>
+    <text x="310" y="52" font-size="13" text-anchor="middle" fill="#e05c2a">5 cm</text>
+    <text x="272" y="136" font-size="13" text-anchor="end">12 cm</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Both triangles contain a right angle, so the special
+    <b>RHS</b> condition is available.
+    <span class="work">R: right angle in each<br>H: hypotenuse 13 cm in each<br>S: one other side 5 cm in each</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">That is exactly RHS, so the triangles are congruent
+    &mdash; even though they are drawn in different orientations.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">The third side is forced. Use Pythagoras.
+    <span class="work">x&sup2; = 13&sup2; &minus; 5&sup2; = 169 &minus; 25 = 144<br>x = 12</span></div></div>
+  <div class="final">congruent by RHS; the remaining side is 12 cm in both</div>
+  <div class="tip"><b>Exam tip</b> RHS is really SSA rescued by the right angle: Pythagoras fixes the third
+  side, so only one triangle is possible. That is why it works when ordinary SSA does not.</div>
+</div>
+</details>
+</section>
+
+<section id="proofs" data-nav="Writing a proof">
+<h2>Naming and proving</h2>
+<p>The order of the letters carries information. When you write
+<span class="m">&#9651;ABC &#8801; &#9651;PQR</span> you are stating that
+<span class="m">A</span> matches <span class="m">P</span>, <span class="m">B</span> matches
+<span class="m">Q</span> and <span class="m">C</span> matches <span class="m">R</span> &mdash; so
+<span class="m">AB = PQ</span>, <span class="m">BC = QR</span> and <span class="m">CA = RP</span>.</p>
+
+<div class="tip"><b>Exam tip</b>
+A congruence proof is worth 3 or 4 marks and has a fixed shape. Write <b>three</b> separate statements, each
+with a reason, then a conclusion naming the condition. Marks are given for the reasons, not for the length.</div>
+
+<div class="card g">
+<h4>The four lines of a congruence proof</h4>
+<ol>
+  <li><span class="m">AB = PQ</span> &nbsp;(reason &mdash; given / radii / opposite sides of a parallelogram &hellip;)</li>
+  <li><span class="m">BC = QR</span> &nbsp;(reason)</li>
+  <li>angle <span class="m">B</span> = angle <span class="m">Q</span> &nbsp;(reason &mdash; alternate angles, common angle, &hellip;)</li>
+  <li>Therefore <span class="m">&#9651;ABC &#8801; &#9651;PQR</span> <b>(SAS)</b></li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q"><span class="m">&#9651;ABC &#8801; &#9651;QSR</span>, with <span class="m">AB = 6</span>&nbsp;cm, <span class="m">BC = 8</span>&nbsp;cm and <span class="m">CA = 7</span>&nbsp;cm. Write down the lengths of <span class="m">QS</span>, <span class="m">SR</span> and <span class="m">RQ</span>, and state which angle equals angle <span class="m">B</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 420 235" role="img" aria-label="Triangle ABC with sides 6, 8 and 7 and the congruent triangle QSR turned upside down">
+    <polygon points="40,190 148,190 72,68" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="32" y="202" font-size="13" text-anchor="end">A</text>
+    <text x="156" y="202" font-size="13">B</text>
+    <text x="66" y="60" font-size="13" text-anchor="end">C</text>
+    <text x="94" y="208" font-size="13" text-anchor="middle">6</text>
+    <text x="124" y="132" font-size="13">8</text>
+    <text x="44" y="129" font-size="13" text-anchor="end">7</text>
+
+    <polygon points="360,80 252,80 328,202" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <text x="370" y="74" font-size="13">Q</text>
+    <text x="242" y="74" font-size="13" text-anchor="end">S</text>
+    <text x="336" y="216" font-size="13">R</text>
+    <text x="306" y="68" font-size="13" text-anchor="middle">6</text>
+    <text x="276" y="141" font-size="13" text-anchor="end">8</text>
+    <text x="356" y="141" font-size="13">7</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Read the correspondence straight off the statement.
+    <span class="work">A &rarr; Q, &nbsp; B &rarr; S, &nbsp; C &rarr; R</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Match the sides letter for letter.
+    <span class="work">AB &rarr; QS, &nbsp; BC &rarr; SR, &nbsp; CA &rarr; RQ</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Copy the lengths across.
+    <span class="work">QS = 6 cm, &nbsp; SR = 8 cm, &nbsp; RQ = 7 cm</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Angles follow the same correspondence.
+    <span class="work">angle B = angle S</span></div></div>
+  <div class="final">QS = 6 cm, SR = 8 cm, RQ = 7 cm; &nbsp; angle B = angle S</div>
+  <div class="warn"><b>Watch out</b> Do not assume the letters run in alphabetical order. Here
+  <span class="m">B</span> matches <span class="m">S</span>, not <span class="m">R</span>. Always read the
+  order given in the question.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q"><span class="m">ABCD</span> is a parallelogram and <span class="m">AC</span> is a diagonal. Prove that <span class="m">&#9651;ABC &#8801; &#9651;CDA</span>, and hence that the opposite angles of a parallelogram are equal.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 420 245" role="img" aria-label="Parallelogram ABCD with diagonal AC, opposite sides marked with matching ticks">
+    <polygon points="60,200 180,80 360,80 240,200" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="60" y1="200" x2="360" y2="80" stroke="#e05c2a" stroke-width="3"/>
+    <line x1="114.3" y1="134.3" x2="125.7" y2="145.7" stroke="#16a34a" stroke-width="3"/>
+    <line x1="294.3" y1="134.3" x2="305.7" y2="145.7" stroke="#16a34a" stroke-width="3"/>
+    <line x1="145" y1="193" x2="145" y2="207" stroke="#6d28d9" stroke-width="3"/>
+    <line x1="155" y1="193" x2="155" y2="207" stroke="#6d28d9" stroke-width="3"/>
+    <line x1="265" y1="73" x2="265" y2="87" stroke="#6d28d9" stroke-width="3"/>
+    <line x1="275" y1="73" x2="275" y2="87" stroke="#6d28d9" stroke-width="3"/>
+    <text x="50" y="214" font-size="13" text-anchor="end">A</text>
+    <text x="172" y="70" font-size="13" text-anchor="end">B</text>
+    <text x="368" y="72" font-size="13">C</text>
+    <text x="250" y="216" font-size="13">D</text>
+    <text x="216" y="132" font-size="13" fill="#e05c2a">common</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">First pair of sides &mdash; opposite sides of a
+    parallelogram are equal.
+    <span class="work">AB = CD &nbsp;(opposite sides of a parallelogram)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Second pair of sides, for the same reason.
+    <span class="work">BC = DA &nbsp;(opposite sides of a parallelogram)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Third fact: the diagonal belongs to both triangles.
+    <span class="work">AC = CA &nbsp;(common side)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Three pairs of equal sides is the SSS condition.
+    <span class="work">&#9651;ABC &#8801; &#9651;CDA &nbsp;(SSS)</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Corresponding angles of congruent triangles are equal, and
+    angle <span class="m">B</span> corresponds to angle <span class="m">D</span>.
+    <span class="work">angle ABC = angle CDA</span></div></div>
+  <div class="final">&#9651;ABC &#8801; &#9651;CDA (SSS), so the opposite angles are equal</div>
+  <div class="tip"><b>Exam tip</b> A shared side or a shared angle is nearly always one of your three facts.
+  Write &ldquo;common&rdquo; as the reason &mdash; it is worth a mark.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q"><span class="m">AB</span> is a chord of a circle with centre <span class="m">O</span>. <span class="m">M</span> lies on <span class="m">AB</span> so that <span class="m">OM</span> is perpendicular to <span class="m">AB</span>. Prove that <span class="m">M</span> is the midpoint of <span class="m">AB</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 360 300" role="img" aria-label="Circle centre O with chord AB and the perpendicular OM meeting AB at M">
+    <circle cx="180" cy="150" r="120" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="84" y1="222" x2="276" y2="222" stroke="#0f2d6b" stroke-width="3"/>
+    <line x1="180" y1="150" x2="84" y2="222" stroke="#16a34a" stroke-width="3"/>
+    <line x1="180" y1="150" x2="276" y2="222" stroke="#16a34a" stroke-width="3"/>
+    <line x1="180" y1="150" x2="180" y2="222" stroke="#e05c2a" stroke-width="3"/>
+    <polyline points="180,208 194,208 194,222" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+    <circle cx="180" cy="150" r="4.5" fill="#0f2d6b"/>
+    <text x="170" y="144" font-size="13" text-anchor="end">O</text>
+    <text x="74" y="238" font-size="13" text-anchor="end">A</text>
+    <text x="286" y="238" font-size="13">B</text>
+    <text x="166" y="242" font-size="13" text-anchor="end">M</text>
+    <text x="116" y="180" font-size="13" text-anchor="end" fill="#16a34a">r</text>
+    <text x="242" y="180" font-size="13" fill="#16a34a">r</text>
+    <text x="188" y="192" font-size="13" fill="#e05c2a">common</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Compare triangles <span class="m">OMA</span> and
+    <span class="m">OMB</span>. Both contain a right angle at <span class="m">M</span>.
+    <span class="work">angle OMA = angle OMB = 90&deg; &nbsp;(given)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The hypotenuse of each is a radius of the circle.
+    <span class="work">OA = OB &nbsp;(radii of the same circle)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The third fact is the shared side.
+    <span class="work">OM = OM &nbsp;(common)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Right angle, hypotenuse and one other side is RHS.
+    <span class="work">&#9651;OMA &#8801; &#9651;OMB &nbsp;(RHS)</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Corresponding sides are therefore equal.
+    <span class="work">AM = MB</span></div></div>
+  <div class="final">&#9651;OMA &#8801; &#9651;OMB (RHS), so AM = MB and M is the midpoint of AB</div>
+  <div class="note"><b>Note</b> This is the proof behind the circle fact you used in lesson 11.1: the
+  perpendicular from the centre to a chord bisects the chord.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q"><span class="m">ABCD</span> is a kite with <span class="m">AB = AD</span> and <span class="m">CB = CD</span>. Prove that <span class="m">&#9651;ABC &#8801; &#9651;ADC</span>, and hence that <span class="m">AC</span> bisects angle <span class="m">BAD</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 360 300" role="img" aria-label="Kite ABCD with equal sides marked and the diagonal AC drawn">
+    <polygon points="180,40 90,140 180,260 270,140" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="180" y1="40" x2="180" y2="260" stroke="#e05c2a" stroke-width="3"/>
+    <line x1="129.1" y1="84.6" x2="140.9" y2="95.4" stroke="#16a34a" stroke-width="3"/>
+    <line x1="230.9" y1="84.6" x2="219.1" y2="95.4" stroke="#16a34a" stroke-width="3"/>
+    <line x1="136.8" y1="192.4" x2="127.2" y2="199.6" stroke="#6d28d9" stroke-width="3"/>
+    <line x1="142.8" y1="200.4" x2="133.2" y2="207.6" stroke="#6d28d9" stroke-width="3"/>
+    <line x1="232.8" y1="199.6" x2="223.2" y2="192.4" stroke="#6d28d9" stroke-width="3"/>
+    <line x1="226.8" y1="207.6" x2="217.2" y2="200.4" stroke="#6d28d9" stroke-width="3"/>
+    <text x="180" y="30" font-size="13" text-anchor="middle">A</text>
+    <text x="80" y="146" font-size="13" text-anchor="end">B</text>
+    <text x="180" y="280" font-size="13" text-anchor="middle">C</text>
+    <text x="280" y="146" font-size="13">D</text>
+    <text x="188" y="160" font-size="13" fill="#e05c2a">common</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Write the first pair of equal sides with its reason.
+    <span class="work">AB = AD &nbsp;(given)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Second pair.
+    <span class="work">CB = CD &nbsp;(given)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The diagonal lies in both triangles.
+    <span class="work">AC = AC &nbsp;(common)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Quote the condition.
+    <span class="work">&#9651;ABC &#8801; &#9651;ADC &nbsp;(SSS)</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Corresponding angles are equal, and angle
+    <span class="m">BAC</span> corresponds to angle <span class="m">DAC</span>.
+    <span class="work">angle BAC = angle DAC</span></div></div>
+  <div class="final">&#9651;ABC &#8801; &#9651;ADC (SSS), so AC bisects angle BAD</div>
+  <div class="warn"><b>Watch out</b> You may <b>not</b> start from &ldquo;the diagonal of a kite bisects the
+  angle&rdquo; &mdash; that is what you are being asked to prove. Only use facts you are given, plus common
+  sides and standard circle or parallel-line reasons.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Two triangles have all three pairs of sides equal. Name the congruence condition.</li>
+    <li>In <span class="m">&#9651;ABC</span> and <span class="m">&#9651;DEF</span>, <span class="m">AB = DE = 8</span>&nbsp;cm, angle <span class="m">A</span> = angle <span class="m">D = 55&deg;</span> and angle <span class="m">B</span> = angle <span class="m">E = 40&deg;</span>. Which condition proves congruence?</li>
+    <li><span class="m">&#9651;ABC &#8801; &#9651;RST</span>. Given <span class="m">AB = 6.2</span>&nbsp;cm, angle <span class="m">B = 74&deg;</span> and <span class="m">ST = 5</span>&nbsp;cm, write down <span class="m">RS</span>, angle <span class="m">S</span> and <span class="m">BC</span>.</li>
+    <li>Two right-angled triangles each have a hypotenuse of 13&nbsp;cm and one other side of 5&nbsp;cm. Are they congruent? Give the condition.</li>
+    <li>Two triangles both have sides 7&nbsp;cm and 10&nbsp;cm and an angle of 40&deg; that is not between those sides. Explain why they need not be congruent.</li>
+    <li><span class="m">PQRS</span> is a rhombus whose diagonals meet at <span class="m">X</span>. Prove that <span class="m">&#9651;PQX &#8801; &#9651;RQX</span>, and hence that the diagonals meet at right angles.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>Three pairs of equal sides &rarr; <span class="ans">SSS</span></li>
+      <li>The 8&nbsp;cm side lies between the two known angles &rarr; <span class="ans">ASA</span>
+        (with two angles known the third is forced, so AAS would also do)</li>
+      <li>Correspondence <span class="m">A &rarr; R, B &rarr; S, C &rarr; T</span>, so
+        <span class="m">RS = AB</span>, angle <span class="m">S</span> = angle <span class="m">B</span>,
+        <span class="m">BC = ST</span> &rarr; <span class="ans">RS = 6.2 cm, angle S = 74&deg;, BC = 5 cm</span></li>
+      <li>Right angle, hypotenuse and one other side &rarr; <span class="ans">yes, RHS</span>
+        (the third side is <span class="m"><span class="rt"><span>169 &minus; 25</span></span> = 12</span> cm in both)</li>
+      <li>This is <span class="ans">SSA, which is not a condition</span> &mdash; the 40&deg; angle is not
+        between the two sides, so the 7&nbsp;cm side can meet the third side in two different places,
+        giving two different triangles.</li>
+      <li><span class="m">PQ = RQ</span> (sides of a rhombus); <span class="m">PX = RX</span> (the diagonals of
+        a rhombus bisect each other); <span class="m">QX = QX</span> (common) &rarr;
+        <span class="ans">&#9651;PQX &#8801; &#9651;RQX (SSS)</span>. So angle
+        <span class="m">PXQ</span> = angle <span class="m">RXQ</span>; they lie on the straight line
+        <span class="m">PR</span> so they add to 180&deg;, giving <span class="ans">90&deg; each</span>.</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Congruent</b> means identical in shape <b>and</b> size; rotating, sliding and reflecting are all allowed.</li>
+    <li>Congruent shapes are similar with <span class="m">k = 1</span>; similar shapes are congruent only if <span class="m">k = 1</span>.</li>
+    <li>The four conditions are <b>SSS</b>, <b>SAS</b>, <b>ASA</b> (including AAS) and <b>RHS</b>.</li>
+    <li>In SAS the angle must be the <b>included</b> angle; in RHS one of the sides must be the <b>hypotenuse</b>.</li>
+    <li><b>SSA and AAA are not conditions.</b> SSA can give two different triangles; AAA proves similarity only.</li>
+    <li>Write congruence statements with vertices in <b>corresponding order</b>: <span class="m">&#9651;ABC &#8801; &#9651;PQR</span> means <span class="m">AB = PQ</span> and angle <span class="m">A</span> = angle <span class="m">P</span>.</li>
+    <li>Set out a proof as <b>three facts, each with a reason</b>, then the conclusion naming the condition.</li>
+    <li>Look for a <b>common side</b>, <b>radii</b>, <b>opposite sides of a parallelogram</b> or <b>alternate angles</b> &mdash; these supply most of the facts you need.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="11-3.html"><span>&larr; Previous</span><b>11.3 Understanding Similar Shapes</b></a><a class="next" href="index.html"><span>More lessons &rarr;</span><b>All notes</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 11.4 Understanding Congruence<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- congruence-condition tester ---- */
+(function(){
+  var box=el('cgDraw'), out=el('cgOut');
+  var BASE=[[0,0],[10,0],[3,6]];
+  var RT=[[0,0],[8,0],[0,6]];
+
+  function xf(pts,deg,flip,sc,dx,dy){
+    var r=deg*Math.PI/180, c=Math.cos(r), s=Math.sin(r), o=[], i;
+    for(i=0;i<pts.length;i++){
+      var x=(flip?-pts[i][0]:pts[i][0])*sc, y=pts[i][1]*sc;
+      o.push([x*c-y*s+dx, x*s+y*c+dy]);
+    }
+    return o;
+  }
+  function arcPts(V,U,Wp,r){
+    var a1=Math.atan2(U[1]-V[1],U[0]-V[0]);
+    var a2=Math.atan2(Wp[1]-V[1],Wp[0]-V[0]);
+    var d=a2-a1, o=[], i;
+    while(d>Math.PI) d-=2*Math.PI;
+    while(d<-Math.PI) d+=2*Math.PI;
+    for(i=0;i<=10;i++){
+      var a=a1+d*i/10;
+      o.push((V[0]+r*Math.cos(a)).toFixed(1)+','+(V[1]+r*Math.sin(a)).toFixed(1));
+    }
+    return o.join(' ');
+  }
+
+  function render(specs){
+    var W=460,H=250,m=42, i,j;
+    var mnx=1e9,mxx=-1e9,mny=1e9,mxy=-1e9;
+    for(i=0;i<specs.length;i++) for(j=0;j<3;j++){
+      var p=specs[i].pts[j];
+      if(p[0]<mnx)mnx=p[0]; if(p[0]>mxx)mxx=p[0];
+      if(p[1]<mny)mny=p[1]; if(p[1]>mxy)mxy=p[1];
+    }
+    var s=Math.min((W-2*m)/((mxx-mnx)||1),(H-2*m-14)/((mxy-mny)||1));
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="A pair of triangles showing the chosen facts">';
+    for(i=0;i<specs.length;i++){
+      var sp=specs[i], q=[];
+      for(j=0;j<3;j++) q.push([m+(sp.pts[j][0]-mnx)*s, H-m-(sp.pts[j][1]-mny)*s]);
+      svg+='<polygon points="'+q[0][0].toFixed(1)+','+q[0][1].toFixed(1)+' '+
+           q[1][0].toFixed(1)+','+q[1][1].toFixed(1)+' '+
+           q[2][0].toFixed(1)+','+q[2][1].toFixed(1)+'" fill="#f7f9ff" stroke="#0f2d6b" stroke-width="1.5"/>';
+      for(j=0;j<3;j++) if(sp.s[j]){
+        var u=q[j], v=q[(j+1)%3];
+        svg+='<line x1="'+u[0].toFixed(1)+'" y1="'+u[1].toFixed(1)+'" x2="'+v[0].toFixed(1)+
+             '" y2="'+v[1].toFixed(1)+'" stroke="#e05c2a" stroke-width="4"/>';
+      }
+      for(j=0;j<3;j++) if(sp.a[j]){
+        svg+='<polyline points="'+arcPts(q[j],q[(j+1)%3],q[(j+2)%3],20)+
+             '" fill="none" stroke="#16a34a" stroke-width="3"/>';
+      }
+      if(sp.rt>=0){
+        var V=q[sp.rt], U=q[(sp.rt+1)%3], X=q[(sp.rt+2)%3];
+        var ux=U[0]-V[0], uy=U[1]-V[1], lu=Math.sqrt(ux*ux+uy*uy)||1;
+        var vx=X[0]-V[0], vy=X[1]-V[1], lv=Math.sqrt(vx*vx+vy*vy)||1;
+        var k=15;
+        svg+='<polyline points="'+(V[0]+ux/lu*k).toFixed(1)+','+(V[1]+uy/lu*k).toFixed(1)+' '+
+             (V[0]+ux/lu*k+vx/lv*k).toFixed(1)+','+(V[1]+uy/lu*k+vy/lv*k).toFixed(1)+' '+
+             (V[0]+vx/lv*k).toFixed(1)+','+(V[1]+vy/lv*k).toFixed(1)+
+             '" fill="none" stroke="#16a34a" stroke-width="3"/>';
+      }
+      var cx=(q[0][0]+q[1][0]+q[2][0])/3;
+      svg+='<text x="'+cx.toFixed(1)+'" y="'+(H-10)+'" font-size="12" text-anchor="middle">'+sp.cap+'</text>';
+    }
+    svg+='</svg>';
+    box.innerHTML=svg;
+  }
+
+  function pair(t2,mark,cap1,cap2){
+    return [
+      {pts:BASE, s:mark.s, a:mark.a, rt:(mark.rt===undefined?-1:mark.rt), cap:cap1},
+      {pts:t2,   s:mark.s, a:mark.a, rt:(mark.rt===undefined?-1:mark.rt), cap:cap2}
+    ];
+  }
+
+  var C={
+    sss:{ok:1,name:'SSS',
+      why:'All three pairs of sides are equal, so the shape is completely fixed.',
+      make:function(){ return pair(xf(BASE,200,false,1,22,7),{s:[1,1,1],a:[0,0,0]},'triangle 1','triangle 2 (turned round)'); }},
+    sas:{ok:1,name:'SAS',
+      why:'Two sides with the angle <b>between</b> them fix the third side and the other two angles.',
+      make:function(){ return pair(xf(BASE,0,true,1,22,0),{s:[1,0,1],a:[1,0,0]},'triangle 1','triangle 2 (reflected)'); }},
+    asa:{ok:1,name:'ASA',
+      why:'Two angles and the side between them fix everything else.',
+      make:function(){ return pair(xf(BASE,180,false,1,22,7),{s:[1,0,0],a:[1,1,0]},'triangle 1','triangle 2 (rotated)'); }},
+    aas:{ok:1,name:'AAS',
+      why:'Two angles force the third, so the side becomes an included side and this reduces to ASA.',
+      make:function(){ return pair(xf(BASE,180,false,1,22,7),{s:[0,1,0],a:[1,1,0]},'triangle 1','triangle 2 (rotated)'); }},
+    rhs:{ok:1,name:'RHS',
+      why:'With a right angle, Pythagoras fixes the third side, so only one triangle is possible.',
+      make:function(){ return [
+        {pts:RT, s:[1,1,0], a:[0,0,0], rt:0, cap:'triangle 1'},
+        {pts:xf(RT,270,false,1,20,9), s:[1,1,0], a:[0,0,0], rt:0, cap:'triangle 2 (rotated)'}]; }},
+    ssa:{ok:0,name:'SSA &mdash; not a condition',
+      why:'The angle is not between the two sides, so the second side can reach the base in two places. Here AB = 9&nbsp;cm, BC = 6&nbsp;cm and angle A = 35&deg; give two different triangles.',
+      make:function(){ return [
+        {pts:[[0,0],[10.43,0],[7.372,5.162]], s:[0,1,1], a:[1,0,0], rt:-1, cap:'one possible triangle'},
+        {pts:[[14,0],[18.314,0],[21.372,5.162]], s:[0,1,1], a:[1,0,0], rt:-1, cap:'a different triangle'}]; }},
+    aaa:{ok:0,name:'AAA &mdash; not a condition',
+      why:'Equal angles only prove the triangles are <b>similar</b>. Nothing fixes the size.',
+      make:function(){ return pair(xf(BASE,0,false,0.62,13,0),{s:[0,0,0],a:[1,1,1]},'triangle 1','same shape, smaller'); }}
+  };
+
+  function go(){
+    var k=el('cgSel').value, c=C[k];
+    render(c.make());
+    out.innerHTML =
+      (c.ok ? '<div><b>Congruent</b> &mdash; these three facts are enough.</div>'
+            : '<div><span class="hl">Not enough</span> &mdash; these three facts do not prove congruence.</div>')+
+      '<div style="margin-top:8px">Condition: <span class="hl">'+c.name+'</span></div>'+
+      '<div style="margin-top:6px">'+c.why+'</div>'+
+      (c.ok ? '<div style="margin-top:8px;opacity:.75;font-size:.92em">In an exam, quote the three facts with reasons and finish with &ldquo;'+c.name+'&rdquo;.</div>' : '');
+  }
+  bindAll(['cgSel'],go);
+})();
+</script>
+</body>
+</html>

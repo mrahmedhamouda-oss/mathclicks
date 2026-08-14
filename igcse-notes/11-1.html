@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11.1 Pythagoras&rsquo; Theorem | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="The relationship between the three sides of a right-angled triangle, and how to use it to find lengths, test for right angles and solve real problems.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 11 &mdash; Pythagoras&rsquo; Theorem and Similar Shapes</span>
+    </div>
+    <h1>11.1 &nbsp;Pythagoras&rsquo; Theorem</h1>
+    <p>The relationship between the three sides of a right-angled triangle, and how to use it to find lengths, test for right angles and solve real problems.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#theorem">The theorem</a>
+  <a href="#finding">Finding sides</a>
+  <a href="#converse">Converse</a>
+  <a href="#apply">Applications</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="theorem" data-nav="The theorem">
+<h2>The theorem</h2>
+<p>In <b>any</b> right-angled triangle, the square drawn on the longest side has exactly the same area as
+the two squares on the shorter sides added together. That single fact &mdash; Pythagoras&rsquo; theorem &mdash;
+is one of the most heavily used results in the whole 0580 syllabus.</p>
+
+<div class="def"><b>Definition</b>
+The <b>hypotenuse</b> is the side <i>opposite the right angle</i>. It is always the longest side of a
+right-angled triangle. Everything in this lesson depends on identifying it correctly first.</div>
+
+<div class="formula">a&sup2; + b&sup2; = c&sup2;
+<small>where <span class="m">c</span> is the hypotenuse and <span class="m">a</span>, <span class="m">b</span> are the two shorter sides</small></div>
+
+<div class="card">
+<h4>Why it is true &mdash; the squares picture</h4>
+<svg viewBox="50 30 380 390" role="img" aria-label="A 3-4-5 right-angled triangle with a square drawn on each side, areas 9, 16 and 25">
+  <polygon points="260,60 380,150 290,270 170,180" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <rect x="80" y="180" width="90" height="90" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <rect x="170" y="270" width="120" height="120" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <polygon points="170,180 290,270 170,270" fill="#ffffff" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="170,254 186,254 186,270" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="125" y="230" font-size="14" text-anchor="middle" fill="#16a34a">area 9</text>
+  <text x="230" y="338" font-size="14" text-anchor="middle" fill="#1a4fa0">area 16</text>
+  <text x="275" y="168" font-size="14" text-anchor="middle" fill="#e05c2a">area 25</text>
+  <text x="155" y="230" font-size="14" text-anchor="end" fill="#16a34a">3</text>
+  <text x="230" y="290" font-size="14" text-anchor="middle" fill="#1a4fa0">4</text>
+  <text x="246" y="208" font-size="14" fill="#e05c2a">5</text>
+  <text x="240" y="415" font-size="15" text-anchor="middle">9 + 16 = 25</text>
+</svg>
+</div>
+
+<h3>Finding the hypotenuse first</h3>
+<p>The right angle can be drawn anywhere on the page. Do not assume the hypotenuse is the bottom or the
+sloping side &mdash; find the right angle, then look straight across from it.</p>
+
+<div class="card o">
+<h4>Same rule, three orientations</h4>
+<svg viewBox="0 0 560 200" role="img" aria-label="Three right-angled triangles in different orientations with the hypotenuse marked on each">
+  <polygon points="30,170 140,170 30,80" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="140" y1="170" x2="30" y2="80" stroke="#e05c2a" stroke-width="4"/>
+  <polyline points="30,156 44,156 44,170" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="100" y="112" font-size="13" fill="#e05c2a">hyp</text>
+
+  <polygon points="200,80 310,80 310,170" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="200" y1="80" x2="310" y2="170" stroke="#e05c2a" stroke-width="4"/>
+  <polyline points="296,80 296,94 310,94" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="216" y="138" font-size="13" fill="#e05c2a">hyp</text>
+
+  <polygon points="420,120 520,167 458,38" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="520" y1="167" x2="458" y2="38" stroke="#e05c2a" stroke-width="4"/>
+  <polyline points="433,126 439,113 426,107" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="500" y="100" font-size="13" fill="#e05c2a">hyp</text>
+  <text x="280" y="196" font-size="13" text-anchor="middle">the hypotenuse is always opposite the right angle</text>
+</svg>
+</div>
+
+<div class="warn"><b>Watch out</b>
+Pythagoras works <b>only</b> in right-angled triangles. If a triangle has no right angle you need the sine
+or cosine rule instead, not <span class="m">a&sup2; + b&sup2; = c&sup2;</span>.</div>
+</section>
+
+<section id="finding" data-nav="Finding sides">
+<h2>Finding a missing side</h2>
+<div class="grid two">
+  <div class="card g"><h4>Finding the hypotenuse &mdash; you <b>add</b></h4>
+    <p>Square both short sides, add, then square root.</p>
+    <p class="m">c = <span class="rt"><span>a&sup2; + b&sup2;</span></span></p></div>
+  <div class="card o"><h4>Finding a shorter side &mdash; you <b>subtract</b></h4>
+    <p>Square the hypotenuse, subtract the square of the known short side, then square root.</p>
+    <p class="m">a = <span class="rt"><span>c&sup2; &minus; b&sup2;</span></span></p></div>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+Decide <i>before</i> you touch the calculator: is the missing side the longest one? If yes, add. If no,
+subtract. Half of all lost marks on this topic come from adding when you should have subtracted.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A right-angled triangle has shorter sides of 8&nbsp;cm and 15&nbsp;cm. Find the length of the hypotenuse.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 320 230" role="img" aria-label="Right-angled triangle with legs 8 cm and 15 cm and unknown hypotenuse x">
+    <polygon points="60,190 240,190 60,94" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <polyline points="60,176 74,176 74,190" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="150" y="210" font-size="14" text-anchor="middle">15 cm</text>
+    <text x="52" y="146" font-size="14" text-anchor="end">8 cm</text>
+    <text x="164" y="130" font-size="14" fill="#e05c2a">x</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The unknown side is opposite the right angle, so it is the
+    hypotenuse. That means <b>add</b>.
+    <span class="work">a&sup2; + b&sup2; = c&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute the two shorter sides.
+    <span class="work">8&sup2; + 15&sup2; = x&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Square each number, then add.
+    <span class="work">64 + 225 = x&sup2;<br>x&sup2; = 289</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Square root. Because 289 is a perfect square the answer is exact.
+    <span class="work">x = <span class="rt"><span>289</span></span> = 17</span></div></div>
+  <div class="final">hypotenuse = 17 cm</div>
+  <div class="tip"><b>Exam tip</b> Check for sense: the hypotenuse must be longer than 15 and shorter than
+  <span class="m">8 + 15 = 23</span>. 17 passes both tests.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">In triangle <span class="m">PQR</span>, angle <span class="m">Q = 90&deg;</span>, <span class="m">PR = 9.4</span>&nbsp;cm and <span class="m">QR = 6.1</span>&nbsp;cm. Find <span class="m">PQ</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 300 230" role="img" aria-label="Right-angled triangle PQR with hypotenuse PR 9.4 cm, side QR 6.1 cm and unknown side PQ">
+    <polygon points="60,190 182,190 60,47" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <polyline points="60,176 74,176 74,190" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="52" y="200" font-size="13" text-anchor="end">Q</text>
+    <text x="192" y="198" font-size="13">R</text>
+    <text x="52" y="42" font-size="13" text-anchor="end">P</text>
+    <text x="121" y="210" font-size="14" text-anchor="middle">6.1 cm</text>
+    <text x="150" y="112" font-size="14" fill="#1a4fa0">9.4 cm</text>
+    <text x="52" y="120" font-size="14" text-anchor="end" fill="#e05c2a">x</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The right angle is at <span class="m">Q</span>, so the hypotenuse
+    is the side opposite it: <span class="m">PR = 9.4</span>&nbsp;cm. The missing side is a <i>shorter</i> side,
+    so <b>subtract</b>.
+    <span class="work">x&sup2; + 6.1&sup2; = 9.4&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rearrange so the unknown is on its own.
+    <span class="work">x&sup2; = 9.4&sup2; &minus; 6.1&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Square first, then subtract &mdash; never subtract the
+    lengths themselves.
+    <span class="work">x&sup2; = 88.36 &minus; 37.21 = 51.15</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Square root and round to 3 significant figures.
+    <span class="work">x = <span class="rt"><span>51.15</span></span> = 7.15192&hellip;</span></div></div>
+  <div class="final">PQ = 7.15 cm (3 s.f.)</div>
+  <div class="warn"><b>Watch out</b> <span class="m">9.4 &minus; 6.1 = 3.3</span> is <b>not</b> the answer.
+  The subtraction happens between the <i>squares</i>, not the lengths.</div>
+</div>
+</details>
+
+<h3>Exact answers or 3 significant figures</h3>
+<p>If the square root is not exact, 0580 expects <b>3 significant figures</b> unless the question says
+otherwise. If the question says &ldquo;give your answer in exact form&rdquo; or &ldquo;in surd form&rdquo;,
+leave the root and simplify it instead.</p>
+
+<div class="formula">diagonal of a 6&nbsp;cm square = <span class="rt"><span>6&sup2; + 6&sup2;</span></span> = <span class="rt"><span>72</span></span> = 6<span class="rt"><span>2</span></span>
+<small>exact form &mdash; or 8.49 cm to 3 s.f.</small></div>
+
+<div class="tool">
+  <h4>Pythagoras solver</h4>
+  <p class="hint">Choose what you are looking for, type the sides you know, and read the working line by line.
+  The triangle below is redrawn to scale every time.</p>
+  <div class="row">
+    <div><label for="pyMode">What do you need?</label>
+      <select id="pyMode">
+        <option value="hyp">Find the hypotenuse</option>
+        <option value="leg">Find a shorter side</option>
+        <option value="chk">Is it right-angled?</option>
+      </select></div>
+    <div><label for="pyA" id="pyLa">Shorter side a</label><input type="number" id="pyA" value="8" step="any"></div>
+    <div><label for="pyB" id="pyLb">Shorter side b</label><input type="number" id="pyB" value="15" step="any"></div>
+    <div id="pyCw"><label for="pyC" id="pyLc">Longest side c</label><input type="number" id="pyC" value="17" step="any"></div>
+  </div>
+  <div id="pyDraw"></div>
+  <div class="out" id="pyOut"></div>
+</div>
+</section>
+
+<section id="converse" data-nav="Converse">
+<h2>Testing for a right angle</h2>
+<p>Pythagoras also works backwards. This reversed version is called the <b>converse</b>, and questions that
+say &ldquo;show that triangle <span class="m">ABC</span> is right-angled&rdquo; are testing exactly it.</p>
+
+<div class="def"><b>The converse</b>
+If the square on the longest side equals the sum of the squares on the other two sides, the triangle
+<b>is</b> right-angled &mdash; and the right angle is the one <i>opposite the longest side</i>.</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Comparison</th><th>Conclusion</th></tr></thead>
+<tbody>
+<tr><td><span class="m">a&sup2; + b&sup2; = c&sup2;</span></td><td>right-angled</td></tr>
+<tr><td><span class="m">a&sup2; + b&sup2; &gt; c&sup2;</span></td><td>all angles acute</td></tr>
+<tr><td><span class="m">a&sup2; + b&sup2; &lt; c&sup2;</span></td><td>the largest angle is obtuse</td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Decide whether each triangle is right-angled: (a) sides 9, 40, 41 &nbsp;(b) sides 5, 7, 9.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 500 220" role="img" aria-label="A 9-40-41 triangle and a 5-7-9 triangle drawn to scale">
+    <polygon points="30,180 190,180 30,144" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <polyline points="30,166 44,166 44,180" fill="none" stroke="#16a34a" stroke-width="2"/>
+    <text x="110" y="200" font-size="13" text-anchor="middle">40</text>
+    <text x="24" y="168" font-size="13" text-anchor="end">9</text>
+    <text x="112" y="152" font-size="13">41</text>
+    <text x="110" y="42" font-size="13" text-anchor="middle" fill="#16a34a">(a) right-angled</text>
+
+    <polygon points="280,180 460,180 343,103" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+    <text x="370" y="200" font-size="13" text-anchor="middle">9</text>
+    <text x="300" y="134" font-size="13" text-anchor="end">5</text>
+    <text x="412" y="134" font-size="13">7</text>
+    <text x="370" y="42" font-size="13" text-anchor="middle" fill="#e05c2a">(b) not right-angled</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">(a) Pick out the longest side, 41. Square the other two and add.
+    <span class="work">9&sup2; + 40&sup2; = 81 + 1600 = 1681</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square the longest side and compare.
+    <span class="work">41&sup2; = 1681 &nbsp;&nbsp;&#10003; equal</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Longest side is 9.
+    <span class="work">5&sup2; + 7&sup2; = 25 + 49 = 74<br>9&sup2; = 81</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Here <span class="m">74 &lt; 81</span>, so the two shorter sides
+    fall short &mdash; the angle opposite the 9 has opened past <span class="m">90&deg;</span>.</div></div>
+  <div class="final">(a) right-angled, with the right angle opposite the side of 41 &nbsp;&nbsp; (b) not right-angled (obtuse)</div>
+  <div class="tip"><b>Exam tip</b> Write both lines out separately and finish with a sentence:
+  &ldquo;since <span class="m">9&sup2; + 40&sup2; = 41&sup2;</span>, the triangle is right-angled&rdquo;.
+  The conclusion carries a mark of its own.</div>
+</div>
+</details>
+
+<h3>Pythagorean triples</h3>
+<p>A <b>Pythagorean triple</b> is a set of three whole numbers that fits the theorem exactly. Recognising
+them saves you time, and any multiple of a triple is also a triple.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Triple</th><th>Check</th><th>Useful multiples</th></tr></thead>
+<tbody>
+<tr><td><span class="m">3, 4, 5</span></td><td><span class="m">9 + 16 = 25</span></td><td>6, 8, 10 &nbsp;&middot;&nbsp; 9, 12, 15 &nbsp;&middot;&nbsp; 30, 40, 50</td></tr>
+<tr><td><span class="m">5, 12, 13</span></td><td><span class="m">25 + 144 = 169</span></td><td>10, 24, 26 &nbsp;&middot;&nbsp; 15, 36, 39</td></tr>
+<tr><td><span class="m">8, 15, 17</span></td><td><span class="m">64 + 225 = 289</span></td><td>16, 30, 34</td></tr>
+<tr><td><span class="m">7, 24, 25</span></td><td><span class="m">49 + 576 = 625</span></td><td>14, 48, 50</td></tr>
+<tr><td><span class="m">9, 40, 41</span></td><td><span class="m">81 + 1600 = 1681</span></td><td>18, 80, 82</td></tr>
+<tr><td><span class="m">20, 21, 29</span></td><td><span class="m">400 + 441 = 841</span></td><td>40, 42, 58</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="apply" data-nav="Applications">
+<h2>Using Pythagoras in real problems</h2>
+<p>Most exam questions hide the triangle inside a picture. Your first job is always the same: <b>draw the
+right-angled triangle on its own</b>, mark the right angle and label the three sides.</p>
+
+<div class="grid two">
+  <div class="card"><h4>Diagonal of a rectangle</h4>
+    <svg viewBox="0 0 280 170" role="img" aria-label="Rectangle 12 cm by 5 cm with a diagonal of 13 cm">
+      <rect x="40" y="40" width="192" height="80" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="40" y1="40" x2="232" y2="120" stroke="#e05c2a" stroke-width="3"/>
+      <polyline points="40,106 54,106 54,120" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+      <text x="136" y="140" font-size="14" text-anchor="middle">12 cm</text>
+      <text x="34" y="86" font-size="14" text-anchor="end">5 cm</text>
+      <text x="150" y="80" font-size="14" fill="#e05c2a">13 cm</text>
+      <text x="136" y="162" font-size="12" text-anchor="middle">the diagonal is the hypotenuse</text>
+    </svg>
+  </div>
+  <div class="card p"><h4>Where the triangle hides</h4>
+    <ul>
+      <li><b>Ladders and ramps</b> &mdash; the ladder is the hypotenuse.</li>
+      <li><b>Rectangles and cuboids</b> &mdash; the diagonal is the hypotenuse.</li>
+      <li><b>Coordinates</b> &mdash; go across, then up.</li>
+      <li><b>Isosceles triangles</b> &mdash; drop a perpendicular to the base and it splits the base exactly in half.</li>
+      <li><b>Circles</b> &mdash; the perpendicular from the centre to a chord bisects the chord, giving a radius&ndash;half-chord triangle.</li>
+    </ul>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A 5.2&nbsp;m ladder leans against a vertical wall. Its foot is 1.8&nbsp;m from the base of the wall. How far up the wall does the ladder reach?</span></summary>
+<div class="body">
+  <svg viewBox="0 0 340 290" role="img" aria-label="Ladder 5.2 m leaning against a wall with its foot 1.8 m from the wall">
+    <line x1="30" y1="250" x2="300" y2="250" stroke="#0f2d6b" stroke-width="3"/>
+    <line x1="80" y1="40" x2="80" y2="250" stroke="#0f2d6b" stroke-width="5"/>
+    <polygon points="80,250 152,250 80,55" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+    <line x1="80" y1="55" x2="152" y2="250" stroke="#e05c2a" stroke-width="4"/>
+    <polyline points="80,236 94,236 94,250" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="116" y="270" font-size="14" text-anchor="middle">1.8 m</text>
+    <text x="72" y="150" font-size="14" text-anchor="end">h</text>
+    <text x="132" y="140" font-size="14" fill="#e05c2a">5.2 m</text>
+    <text x="230" y="120" font-size="13" text-anchor="middle">wall and ground</text>
+    <text x="230" y="140" font-size="13" text-anchor="middle">meet at 90&deg;</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The wall is vertical and the ground horizontal, so the
+    triangle is right-angled. The ladder leans across the right angle, so the ladder is the hypotenuse.
+    <span class="work">h&sup2; + 1.8&sup2; = 5.2&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract, because we want a shorter side.
+    <span class="work">h&sup2; = 27.04 &minus; 3.24 = 23.8</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Square root.
+    <span class="work">h = <span class="rt"><span>23.8</span></span> = 4.87852&hellip;</span></div></div>
+  <div class="final">the ladder reaches 4.88 m up the wall (3 s.f.)</div>
+  <div class="note"><b>Note</b> Keep the full value in your calculator if the question continues &mdash; for
+  example if it then asks for the angle. Round only at the very end.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Find the distance between the points <span class="m">A(&minus;3, 2)</span> and <span class="m">B(5, 8)</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 275 255" role="img" aria-label="Grid showing points A at minus 3 comma 2 and B at 5 comma 8 joined by a line with horizontal 8 and vertical 6">
+    <defs><pattern id="pg111" width="22" height="22" patternUnits="userSpaceOnUse">
+      <path d="M22 0 H0 V22" fill="none" stroke="#c9d6ec" stroke-width="1"/></pattern></defs>
+    <rect x="22" y="22" width="220" height="198" fill="url(#pg111)"/>
+    <line x1="22" y1="220" x2="250" y2="220" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="110" y1="220" x2="110" y2="18" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="44" y1="176" x2="220" y2="176" stroke="#1a4fa0" stroke-width="3" stroke-dasharray="5 4"/>
+    <line x1="220" y1="176" x2="220" y2="44" stroke="#16a34a" stroke-width="3" stroke-dasharray="5 4"/>
+    <line x1="44" y1="176" x2="220" y2="44" stroke="#e05c2a" stroke-width="4"/>
+    <circle cx="44" cy="176" r="5" fill="#0f2d6b"/><circle cx="220" cy="44" r="5" fill="#0f2d6b"/>
+    <text x="36" y="192" font-size="13" text-anchor="end">A</text>
+    <text x="228" y="40" font-size="13">B</text>
+    <text x="132" y="170" font-size="13" text-anchor="middle" fill="#1a4fa0">8</text>
+    <text x="236" y="114" font-size="13" fill="#16a34a">6</text>
+    <text x="120" y="100" font-size="13" fill="#e05c2a">d</text>
+    <text x="254" y="224" font-size="13">x</text>
+    <text x="114" y="16" font-size="13">y</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Find the horizontal step. Subtract the
+    <span class="m">x</span>-coordinates.
+    <span class="work">5 &minus; (&minus;3) = 8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the vertical step. Subtract the
+    <span class="m">y</span>-coordinates.
+    <span class="work">8 &minus; 2 = 6</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Those two steps meet at a right angle, so <span class="m">AB</span>
+    is the hypotenuse of a right-angled triangle with legs 8 and 6.
+    <span class="work">d&sup2; = 8&sup2; + 6&sup2; = 64 + 36 = 100</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><span class="work">d = <span class="rt"><span>100</span></span> = 10</span></div></div>
+  <div class="final">AB = 10 units</div>
+  <div class="note"><b>Note</b> Because both steps are squared, a negative step does no harm. That is why the
+  distance formula <span class="m">d = <span class="rt"><span>(x&#8322;&minus;x&#8321;)&sup2; + (y&#8322;&minus;y&#8321;)&sup2;</span></span></span>
+  is just Pythagoras in disguise.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">An isosceles triangle has two sides of 13&nbsp;cm and a base of 10&nbsp;cm. Find its perpendicular height and hence its area.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 300 275" role="img" aria-label="Isosceles triangle with equal sides 13 cm, base 10 cm, split into two right-angled triangles by a height of 12 cm">
+    <polygon points="150,40 70,232 230,232" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="150" y1="40" x2="150" y2="232" stroke="#e05c2a" stroke-width="3" stroke-dasharray="6 4"/>
+    <polyline points="150,218 164,218 164,232" fill="none" stroke="#e05c2a" stroke-width="2"/>
+    <text x="94" y="130" font-size="14" text-anchor="end">13 cm</text>
+    <text x="208" y="130" font-size="14">13 cm</text>
+    <text x="110" y="252" font-size="14" text-anchor="middle">5 cm</text>
+    <text x="190" y="252" font-size="14" text-anchor="middle">5 cm</text>
+    <text x="158" y="150" font-size="14" fill="#e05c2a">h</text>
+    <text x="150" y="270" font-size="13" text-anchor="middle">base 10 cm</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Drop the perpendicular from the apex. In an isosceles triangle
+    it lands on the <b>midpoint</b> of the base, creating two identical right-angled triangles with base
+    <span class="m">10 &divide; 2 = 5</span>&nbsp;cm.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">In one of those, the 13&nbsp;cm side is the hypotenuse.
+    <span class="work">h&sup2; + 5&sup2; = 13&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract.
+    <span class="work">h&sup2; = 169 &minus; 25 = 144 &nbsp;&rarr;&nbsp; h = 12</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Now use <span class="m">&frac12; &times; base &times; height</span>.
+    <span class="work">area = &frac12; &times; 10 &times; 12 = 60</span></div></div>
+  <div class="final">height = 12 cm, area = 60 cm&sup2;</div>
+  <div class="warn"><b>Watch out</b> Halve the <b>base</b>, not the sloping side. Splitting the 13 is the most
+  common error here.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A circle has centre <span class="m">O</span> and radius 10&nbsp;cm. <span class="m">AB</span> is a chord of length 16&nbsp;cm. Find (a) the distance from <span class="m">O</span> to the chord, (b) the shortest distance from the midpoint of <span class="m">AB</span> to the circle.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 340 330" role="img" aria-label="Circle of radius 10 cm with a chord of 16 cm, the perpendicular distance 6 cm from the centre and 4 cm from the chord to the circle">
+    <circle cx="170" cy="160" r="140" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="58" y1="244" x2="282" y2="244" stroke="#0f2d6b" stroke-width="3"/>
+    <line x1="170" y1="160" x2="170" y2="244" stroke="#e05c2a" stroke-width="3" stroke-dasharray="6 4"/>
+    <line x1="170" y1="160" x2="282" y2="244" stroke="#16a34a" stroke-width="3"/>
+    <line x1="170" y1="244" x2="170" y2="300" stroke="#6d28d9" stroke-width="3"/>
+    <polyline points="170,230 184,230 184,244" fill="none" stroke="#e05c2a" stroke-width="2"/>
+    <circle cx="170" cy="160" r="4.5" fill="#0f2d6b"/>
+    <text x="158" y="154" font-size="14" text-anchor="end">O</text>
+    <text x="48" y="250" font-size="13" text-anchor="end">A</text>
+    <text x="292" y="250" font-size="13">B</text>
+    <text x="178" y="208" font-size="13" fill="#e05c2a">d</text>
+    <text x="240" y="192" font-size="13" fill="#16a34a">10 cm</text>
+    <text x="170" y="268" font-size="13" text-anchor="middle">16 cm</text>
+    <text x="182" y="290" font-size="13" fill="#6d28d9">?</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The perpendicular from the centre to a chord bisects it, so
+    each half is <span class="m">16 &divide; 2 = 8</span>&nbsp;cm. Join <span class="m">O</span> to
+    <span class="m">B</span> &mdash; that line is a radius, 10&nbsp;cm, and it is the hypotenuse.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Apply the theorem to triangle <span class="m">OMB</span>.
+    <span class="work">d&sup2; + 8&sup2; = 10&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract and square root.
+    <span class="work">d&sup2; = 100 &minus; 64 = 36 &nbsp;&rarr;&nbsp; d = 6</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) The shortest route from the midpoint to the circle runs
+    straight on along the same line, and the full distance from <span class="m">O</span> to the circle is the
+    radius.
+    <span class="work">10 &minus; 6 = 4</span></div></div>
+  <div class="final">(a) 6 cm &nbsp;&nbsp; (b) 4 cm</div>
+  <div class="tip"><b>Exam tip</b> Whenever a chord appears, draw the radius to one end and the perpendicular
+  to its midpoint. That triangle solves almost every chord question in Paper 4.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>A right-angled triangle has shorter sides 9&nbsp;cm and 12&nbsp;cm. Find the hypotenuse.</li>
+    <li>The hypotenuse of a right-angled triangle is 8.5&nbsp;cm and one shorter side is 4&nbsp;cm. Find the other shorter side.</li>
+    <li>Is a triangle with sides 12&nbsp;cm, 35&nbsp;cm and 37&nbsp;cm right-angled? Show your working.</li>
+    <li>Find the distance between <span class="m">P(1, &minus;4)</span> and <span class="m">Q(7, 4)</span>.</li>
+    <li>A rectangle measures 11&nbsp;cm by 7&nbsp;cm. Find the length of a diagonal, correct to 3 significant figures.</li>
+    <li>(a) An isosceles triangle has equal sides 10&nbsp;cm and base 12&nbsp;cm. Find its area.
+      (b) A chord of a circle of radius 8&nbsp;cm is 6&nbsp;cm from the centre. Find the length of the chord.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">9&sup2; + 12&sup2; = 81 + 144 = 225</span> &rarr; <span class="ans">15 cm</span></li>
+      <li><span class="m">8.5&sup2; &minus; 4&sup2; = 72.25 &minus; 16 = 56.25</span> &rarr;
+        <span class="ans">7.5 cm</span> (exact)</li>
+      <li><span class="m">12&sup2; + 35&sup2; = 144 + 1225 = 1369</span> and <span class="m">37&sup2; = 1369</span>
+        &rarr; <span class="ans">yes, right-angled</span> (right angle opposite the 37)</li>
+      <li>Steps <span class="m">7 &minus; 1 = 6</span> and <span class="m">4 &minus; (&minus;4) = 8</span>;
+        <span class="m">36 + 64 = 100</span> &rarr; <span class="ans">10 units</span></li>
+      <li><span class="m">11&sup2; + 7&sup2; = 121 + 49 = 170</span>;
+        <span class="m"><span class="rt"><span>170</span></span> = 13.038&hellip;</span> &rarr;
+        <span class="ans">13.0 cm</span></li>
+      <li>(a) half base 6, <span class="m">h&sup2; = 100 &minus; 36 = 64</span>, <span class="m">h = 8</span>,
+        area <span class="m">= &frac12; &times; 12 &times; 8</span> &rarr; <span class="ans">48 cm&sup2;</span>
+        &nbsp;&middot;&nbsp; (b) half chord <span class="m">= <span class="rt"><span>64 &minus; 36</span></span> = <span class="rt"><span>28</span></span> = 5.2915&hellip;</span>
+        &rarr; chord <span class="m">= 2 &times; 5.2915</span> = <span class="ans">10.6 cm</span> (3 s.f.)</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Find the hypotenuse first</b> &mdash; it is the side opposite the right angle, and it is always the longest.</li>
+    <li><span class="m">a&sup2; + b&sup2; = c&sup2;</span>: <b>add</b> to find the hypotenuse, <b>subtract</b> to find a shorter side.</li>
+    <li>Square the lengths <i>before</i> you add or subtract &mdash; never subtract the lengths themselves.</li>
+    <li>Give answers to <b>3 significant figures</b> unless an exact or surd answer is asked for; do not round part-way through.</li>
+    <li>The <b>converse</b>: if <span class="m">a&sup2; + b&sup2; = c&sup2;</span> the triangle is right-angled. Compare the two totals and write a conclusion.</li>
+    <li>Learn the triples <span class="m">3,4,5</span> &nbsp;<span class="m">5,12,13</span> &nbsp;<span class="m">8,15,17</span> &nbsp;<span class="m">7,24,25</span> and their multiples.</li>
+    <li>In word problems, redraw the right-angled triangle on its own before calculating.</li>
+    <li>Two standard set-ups: the height of an isosceles triangle <b>halves the base</b>; the perpendicular from a centre <b>bisects a chord</b>.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="index.html"><span>&larr; Back</span><b>All notes</b></a><a class="next" href="11-3.html"><span>Next &rarr;</span><b>11.3 Understanding Similar Shapes</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 11.1 Pythagoras&rsquo; Theorem<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- Pythagoras solver with to-scale drawing ---- */
+(function(){
+  var box=el('pyDraw'), out=el('pyOut');
+
+  function sig(x){ if(!isFinite(x)) return '?'; if(x===0) return '0';
+    return String(Number(x.toPrecision(3))); }
+  function isInt(x){ return Math.abs(x-Math.round(x))<1e-9; }
+  function surd(n){
+    var k=1,m=Math.round(n);
+    for(var i=2;i*i<=m;i++){ while(m%(i*i)===0){ m=m/(i*i); k=k*i; } }
+    if(m===1) return String(k);
+    return (k===1?'':k)+'&#8730;'+m;
+  }
+  function rootLine(sq){
+    var r=Math.sqrt(sq);
+    if(isInt(sq)&&isInt(r)) return '<b>'+Math.round(r)+'</b> (exact)';
+    if(isInt(sq)) return '<span class="hl">'+surd(sq)+'</span> = <b>'+sig(r)+'</b> (3 s.f.)';
+    return '<b>'+sig(r)+'</b> (3 s.f.)';
+  }
+
+  /* triangle drawn to scale: A(0,0), B(sAB,0), C computed from the other two sides */
+  function draw(sAB,sBC,sCA,lAB,lBC,lCA){
+    var W=380,H=250,m=46;
+    var x=(sCA*sCA+sAB*sAB-sBC*sBC)/(2*sAB);
+    var y2=sCA*sCA-x*x; if(y2<0) y2=0;
+    var y=Math.sqrt(y2);
+    var xs=[0,sAB,x], ys=[0,0,y];
+    var mnx=Math.min(xs[0],xs[1],xs[2]), mxx=Math.max(xs[0],xs[1],xs[2]);
+    var mxy=Math.max(y,1e-6);
+    var s=Math.min((W-2*m)/((mxx-mnx)||1),(H-2*m)/(mxy||1));
+    var px=[],py=[],i;
+    for(i=0;i<3;i++){ px.push(m+(xs[i]-mnx)*s); py.push(H-m-ys[i]*s); }
+    var cx=(px[0]+px[1]+px[2])/3, cy=(py[0]+py[1]+py[2])/3;
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Triangle drawn to scale">';
+    svg+='<polygon points="'+px[0]+','+py[0]+' '+px[1]+','+py[1]+' '+px[2]+','+py[2]+
+         '" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>';
+    var pairs=[[0,1,lAB],[1,2,lBC],[2,0,lCA]];
+    for(i=0;i<3;i++){
+      var u=pairs[i][0], v=pairs[i][1];
+      var mx=(px[u]+px[v])/2, my=(py[u]+py[v])/2;
+      var dx=mx-cx, dy=my-cy, L=Math.sqrt(dx*dx+dy*dy)||1;
+      svg+='<text x="'+(mx+dx/L*22)+'" y="'+(my+dy/L*22+5)+'" font-size="14" text-anchor="middle" fill="#0f2d6b">'+
+           pairs[i][2]+'</text>';
+    }
+    /* right-angle marker */
+    for(i=0;i<3;i++){
+      var a=(i+2)%3, b=(i+1)%3;
+      var ux=px[a]-px[i], uy=py[a]-py[i], vx=px[b]-px[i], vy=py[b]-py[i];
+      var la=Math.sqrt(ux*ux+uy*uy)||1, lb=Math.sqrt(vx*vx+vy*vy)||1;
+      if(Math.abs((ux*vx+uy*vy)/(la*lb))<0.02){
+        var k=15;
+        svg+='<polyline points="'+(px[i]+ux/la*k)+','+(py[i]+uy/la*k)+' '+
+             (px[i]+ux/la*k+vx/lb*k)+','+(py[i]+uy/la*k+vy/lb*k)+' '+
+             (px[i]+vx/lb*k)+','+(py[i]+vy/lb*k)+'" fill="none" stroke="#e05c2a" stroke-width="2.5"/>';
+      }
+    }
+    svg+='</svg>';
+    box.innerHTML=svg;
+  }
+
+  function go(){
+    var mode=el('pyMode').value;
+    el('pyCw').style.display = (mode==='hyp') ? 'none' : '';
+    el('pyLa').innerHTML = (mode==='chk') ? 'Side 1' : 'Shorter side a';
+    el('pyLb').innerHTML = (mode==='chk') ? 'Side 2' : (mode==='hyp' ? 'Shorter side b' : 'Hypotenuse c');
+    el('pyLc').innerHTML = (mode==='chk') ? 'Side 3' : 'Hypotenuse c';
+    if(mode==='leg'){ el('pyLb').innerHTML='Hypotenuse c'; el('pyCw').style.display='none'; }
+
+    var a=num('pyA',0), b=num('pyB',0), c=num('pyC',0);
+
+    if(mode==='hyp'){
+      if(a<=0||b<=0){ out.innerHTML='<span style="opacity:.6">Enter two positive lengths.</span>'; box.innerHTML=''; return; }
+      var sq=a*a+b*b, h=Math.sqrt(sq);
+      draw(a,h,b,String(a),sig(h),String(b));
+      out.innerHTML=
+        '<div>The unknown side is opposite the right angle, so <span class="hl">add</span>.</div>'+
+        '<div style="margin-top:8px">a&sup2; + b&sup2; = c&sup2;</div>'+
+        '<div>'+a+'&sup2; + '+b+'&sup2; = c&sup2;</div>'+
+        '<div>'+fx(a*a,4)+' + '+fx(b*b,4)+' = c&sup2;</div>'+
+        '<div>c&sup2; = '+fx(sq,4)+'</div>'+
+        '<div style="margin-top:6px">c = '+rootLine(sq)+'</div>';
+      return;
+    }
+    if(mode==='leg'){
+      var hyp=b, kn=a;
+      if(kn<=0||hyp<=0){ out.innerHTML='<span style="opacity:.6">Enter two positive lengths.</span>'; box.innerHTML=''; return; }
+      if(kn>=hyp){ out.innerHTML='<span class="hl">The hypotenuse must be the longest side</span> &mdash; make c bigger than a.'; box.innerHTML=''; return; }
+      var sq2=hyp*hyp-kn*kn, o=Math.sqrt(sq2);
+      draw(kn,hyp,o,String(kn),String(hyp),sig(o));
+      out.innerHTML=
+        '<div>The unknown side is <span class="hl">not</span> the hypotenuse, so <span class="hl">subtract</span>.</div>'+
+        '<div style="margin-top:8px">a&sup2; + b&sup2; = c&sup2;</div>'+
+        '<div>b&sup2; = '+hyp+'&sup2; &minus; '+kn+'&sup2;</div>'+
+        '<div>b&sup2; = '+fx(hyp*hyp,4)+' &minus; '+fx(kn*kn,4)+' = '+fx(sq2,4)+'</div>'+
+        '<div style="margin-top:6px">b = '+rootLine(sq2)+'</div>';
+      return;
+    }
+    /* check mode */
+    var v=[a,b,c].slice().sort(function(p,q){return p-q;});
+    if(v[0]<=0){ out.innerHTML='<span style="opacity:.6">Enter three positive lengths.</span>'; box.innerHTML=''; return; }
+    if(v[0]+v[1]<=v[2]){ out.innerHTML='<span class="hl">Those three lengths cannot form a triangle</span> &mdash; the two shorter sides must add to more than the longest.'; box.innerHTML=''; return; }
+    var lhs=v[0]*v[0]+v[1]*v[1], rhs=v[2]*v[2];
+    draw(v[2],v[0],v[1],String(v[2]),String(v[0]),String(v[1]));
+    var verdict, why;
+    if(Math.abs(lhs-rhs)<1e-9){ verdict='<b>Right-angled</b>'; why='the right angle is opposite the longest side, '+v[2]+'.'; }
+    else if(lhs>rhs){ verdict='<b>Not right-angled</b>'; why='a&sup2; + b&sup2; &gt; c&sup2;, so every angle is acute.'; }
+    else { verdict='<b>Not right-angled</b>'; why='a&sup2; + b&sup2; &lt; c&sup2;, so the angle opposite '+v[2]+' is obtuse.'; }
+    out.innerHTML=
+      '<div>Longest side: <span class="hl">'+v[2]+'</span></div>'+
+      '<div style="margin-top:8px">'+v[0]+'&sup2; + '+v[1]+'&sup2; = '+fx(v[0]*v[0],4)+' + '+fx(v[1]*v[1],4)+' = '+fx(lhs,4)+'</div>'+
+      '<div>'+v[2]+'&sup2; = '+fx(rhs,4)+'</div>'+
+      '<div style="margin-top:6px">'+verdict+' &mdash; '+why+'</div>';
+  }
+  bindAll(['pyMode','pyA','pyB','pyC'],go);
+})();
+</script>
+</body>
+</html>

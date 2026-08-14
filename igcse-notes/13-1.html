@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13.1 Understanding Units | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Metric units of length, mass and capacity, converting areas and volumes, and the compound units of speed, density and pressure.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 13 &mdash; Understanding Measurement</span>
+    </div>
+    <h1>13.1 &nbsp;Understanding Units</h1>
+    <p>Metric units of length, mass and capacity, converting areas and volumes, and the compound units of speed, density and pressure.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#metric">Metric units</a>
+  <a href="#areavol">Area &amp; volume</a>
+  <a href="#compound">Compound units</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="metric" data-nav="Metric units">
+<h2>The metric system</h2>
+<p>Every metric unit is built from a <b>base unit</b> and a <b>prefix</b> that tells you how many of the
+base unit you have. Once you know the prefixes you never need to memorise a conversion table again &mdash;
+you can rebuild it in the margin of the exam paper in about ten seconds.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Prefix</th><th>Symbol</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><b>kilo</b></td><td>k</td><td><span class="m">&times; 1000</span></td><td>1 km = 1000 m</td></tr>
+<tr><td><b>centi</b></td><td>c</td><td><span class="m">&times;</span> <span class="frac"><span>1</span><span>100</span></span></td><td>1 cm = 0.01 m, so 100 cm = 1 m</td></tr>
+<tr><td><b>milli</b></td><td>m</td><td><span class="m">&times;</span> <span class="frac"><span>1</span><span>1000</span></span></td><td>1 mm = 0.001 m, so 1000 mm = 1 m</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid">
+  <div class="card"><h4>Length</h4>
+    <ul>
+      <li><span class="m">1 cm = 10 mm</span></li>
+      <li><span class="m">1 m = 100 cm = 1000 mm</span></li>
+      <li><span class="m">1 km = 1000 m</span></li>
+    </ul></div>
+  <div class="card o"><h4>Mass</h4>
+    <ul>
+      <li><span class="m">1 g = 1000 mg</span></li>
+      <li><span class="m">1 kg = 1000 g</span></li>
+      <li><span class="m">1 tonne = 1000 kg</span></li>
+    </ul></div>
+  <div class="card g"><h4>Capacity</h4>
+    <ul>
+      <li><span class="m">1 litre = 1000 ml</span></li>
+      <li><span class="m">1 litre = 100 cl</span></li>
+      <li><span class="m">1 cl = 10 ml</span></li>
+    </ul></div>
+</div>
+
+<div class="def"><b>The only rule you need</b>
+Going to a <b>smaller</b> unit, the number gets <b>bigger</b>, so you <b>multiply</b>.
+Going to a <b>bigger</b> unit, the number gets <b>smaller</b>, so you <b>divide</b>.
+A distance of 3 m is 300 cm (bigger number, smaller unit) but only 0.003 km.</div>
+
+<div class="card p">
+<h4>Choosing a sensible unit</h4>
+<p>Some questions simply ask which unit is appropriate. Match the size of the object to the size of the unit
+so the number is easy to say.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Object</th><th>Sensible unit</th><th>Rough value</th></tr></thead>
+<tbody>
+<tr><td>Thickness of a coin</td><td>millimetres</td><td>2 mm</td></tr>
+<tr><td>Height of a door</td><td>metres</td><td>2 m</td></tr>
+<tr><td>Distance between two cities</td><td>kilometres</td><td>250 km</td></tr>
+<tr><td>Mass of an apple</td><td>grams</td><td>150 g</td></tr>
+<tr><td>Mass of a lorry</td><td>tonnes</td><td>12 t</td></tr>
+<tr><td>Water in a bottle</td><td>millilitres or litres</td><td>500 ml</td></tr>
+<tr><td>Area of a bedroom floor</td><td>square metres</td><td>12 m&sup2;</td></tr>
+<tr><td>Area of a farm</td><td>hectares (1 ha = 10 000 m&sup2;)</td><td>40 ha</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="areavol" data-nav="Area &amp; volume">
+<h2>Converting areas and volumes</h2>
+<p>This is where most marks are lost. Students who happily write <span class="m">1 m = 100 cm</span> then
+write &ldquo;<span class="m">1 m&sup2; = 100 cm&sup2;</span>&rdquo;, which is wrong by a factor of one hundred.
+The reason is simple: an area is a length <b>times</b> a length, so the conversion factor gets used
+<b>twice</b>.</p>
+
+<div class="formula">1 cm&sup2; = (10 mm) &times; (10 mm) = 10&sup2; mm&sup2; = <b>100 mm&sup2;</b>
+<small>Square the linear factor for area</small></div>
+
+<div class="formula">1 cm&sup3; = (10 mm) &times; (10 mm) &times; (10 mm) = 10&sup3; mm&sup3; = <b>1000 mm&sup3;</b>
+<small>Cube the linear factor for volume</small></div>
+
+<div class="card">
+<h4>Why the factor is squared and cubed</h4>
+<svg viewBox="0 0 640 300" role="img" aria-label="A one centimetre square split into one hundred one millimetre squares, and a one centimetre cube split into one thousand cubic millimetres">
+  <defs>
+    <pattern id="mmg" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M18 0H0V18" fill="none" stroke="#1a4fa0" stroke-width="1" opacity=".45"/>
+    </pattern>
+  </defs>
+  <rect x="60" y="60" width="180" height="180" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <rect x="60" y="60" width="180" height="180" fill="url(#mmg)" stroke="none"/>
+  <text x="150" y="46" font-size="14" text-anchor="middle" fill="#0f2d6b">1 cm = 10 mm</text>
+  <text x="46" y="155" font-size="14" text-anchor="middle" fill="#0f2d6b" transform="rotate(-90 46 155)">1 cm = 10 mm</text>
+  <text x="150" y="268" font-size="14" text-anchor="middle" font-weight="bold" fill="#1a4fa0">10 &times; 10 = 100 mm&sup2;</text>
+
+  <path d="M400 100 L520 100 L520 220 L400 220 Z" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <path d="M400 100 L440 62 L560 62 L520 100 Z" fill="#ffd9c7" stroke="#e05c2a" stroke-width="2"/>
+  <path d="M520 100 L560 62 L560 182 L520 220 Z" fill="#ffc7ac" stroke="#e05c2a" stroke-width="2"/>
+  <text x="460" y="240" font-size="13" text-anchor="middle" fill="#e05c2a">10 mm</text>
+  <text x="386" y="164" font-size="13" text-anchor="middle" fill="#e05c2a" transform="rotate(-90 386 164)">10 mm</text>
+  <text x="556" y="42" font-size="13" text-anchor="middle" fill="#e05c2a">10 mm</text>
+  <text x="470" y="268" font-size="14" text-anchor="middle" font-weight="bold" fill="#e05c2a">10 &times; 10 &times; 10 = 1000 mm&sup3;</text>
+</svg>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Linear</th><th>Area</th><th>Volume</th></tr></thead>
+<tbody>
+<tr><td><span class="m">1 cm = 10 mm</span></td><td><span class="m">1 cm&sup2; = 100 mm&sup2;</span></td><td><span class="m">1 cm&sup3; = 1000 mm&sup3;</span></td></tr>
+<tr><td><span class="m">1 m = 100 cm</span></td><td><span class="m">1 m&sup2; = 10 000 cm&sup2;</span></td><td><span class="m">1 m&sup3; = 1 000 000 cm&sup3;</span></td></tr>
+<tr><td><span class="m">1 km = 1000 m</span></td><td><span class="m">1 km&sup2; = 1 000 000 m&sup2;</span></td><td><span class="m">1 km&sup3; = 10<sup>9</sup> m&sup3;</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="warn"><b>Watch out</b>
+<span class="m">1 m&sup2;</span> is <b>not</b> 100 cm&sup2;. Picture a square metre: it is 100 cm along each
+edge, so it holds <span class="m">100 &times; 100 = 10 000</span> centimetre squares.</div>
+
+<div class="def"><b>Capacity and volume are the same thing</b>
+<span class="m">1 ml = 1 cm&sup3;</span> &nbsp;&middot;&nbsp; <span class="m">1 litre = 1000 cm&sup3;</span>
+&nbsp;&middot;&nbsp; <span class="m">1 m&sup3; = 1000 litres</span>.
+A &ldquo;capacity&rdquo; question is a volume question in disguise.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Convert (a) <span class="m">3.7 m&sup2;</span> to cm&sup2;, (b) <span class="m">45 000 mm&sup2;</span> to cm&sup2;, (c) <span class="m">2.4 m&sup3;</span> to cm&sup3;.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The linear factor is <span class="m">1 m = 100 cm</span>. Square it.
+    <span class="work">100&sup2; = 10 000<br>3.7 &times; 10 000 = 37 000 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Going from mm&sup2; to cm&sup2; is going to a <i>bigger</i> unit, so divide by <span class="m">10&sup2; = 100</span>.
+    <span class="work">45 000 &divide; 100 = 450 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Volume, so cube the linear factor.
+    <span class="work">100&sup3; = 1 000 000<br>2.4 &times; 1 000 000 = 2 400 000 cm&sup3;</span></div></div>
+  <div class="final">(a) 37 000 cm&sup2; &nbsp;&nbsp; (b) 450 cm&sup2; &nbsp;&nbsp; (c) 2 400 000 cm&sup3;</div>
+  <div class="tip"><b>Exam tip</b> Check the direction with a sentence: &ldquo;a centimetre square is small, so I need
+  lots of them&rdquo; &rarr; the number must go up.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">A tank is a cuboid measuring <span class="m">0.8 m</span> by <span class="m">45 cm</span> by <span class="m">300 mm</span>. Find its capacity in litres.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Put every length in the <b>same</b> unit first. Centimetres is the natural choice
+    because the answer is wanted in litres and <span class="m">1 litre = 1000 cm&sup3;</span>.
+    <span class="work">0.8 m = 80 cm &nbsp;&middot;&nbsp; 45 cm &nbsp;&middot;&nbsp; 300 mm = 30 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Volume of a cuboid <span class="m">= l &times; w &times; h</span>.
+    <span class="work">80 &times; 45 &times; 30 = 108 000 cm&sup3;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Convert to litres by dividing by 1000.
+    <span class="work">108 000 &divide; 1000 = 108</span></div></div>
+  <div class="final">Capacity = 108 litres</div>
+  <div class="warn"><b>Watch out</b> Never multiply lengths that are in different units. Convert first, multiply second.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Unit converter</h4>
+  <p class="hint">Choose a mode and watch the factor appear &mdash; the tool tells you when it has been squared or cubed.</p>
+  <div class="row">
+    <div><label for="ucMode">Mode</label><select id="ucMode">
+      <option value="length">Length</option>
+      <option value="area" selected>Area</option>
+      <option value="volume">Volume &amp; capacity</option>
+      <option value="mass">Mass</option>
+      <option value="speed">Speed</option>
+    </select></div>
+    <div><label for="ucVal">Value</label><input type="number" id="ucVal" value="3.7" step="any" style="width:120px"></div>
+    <div><label for="ucFrom">From</label><select id="ucFrom"></select></div>
+    <div><label for="ucTo">To</label><select id="ucTo"></select></div>
+  </div>
+  <div class="out" id="ucOut"></div>
+</div>
+</section>
+
+<section id="compound" data-nav="Compound units">
+<h2>Compound units</h2>
+<p>A <b>compound unit</b> is built from two other units, and the word &ldquo;per&rdquo; (or the slash) always
+means <b>divide</b>. If you can read the unit you can write the formula.</p>
+
+<div class="grid">
+  <div class="card"><h4>Speed</h4>
+    <div class="formula" style="margin:6px 0">speed = <span class="frac"><span>distance</span><span>time</span></span></div>
+    <p>Units: <span class="m">m/s</span>, <span class="m">km/h</span>. &ldquo;Metres per second&rdquo; = metres
+    divided by seconds.</p></div>
+  <div class="card o"><h4>Density</h4>
+    <div class="formula" style="margin:6px 0">density = <span class="frac"><span>mass</span><span>volume</span></span></div>
+    <p>Units: <span class="m">g/cm&sup3;</span>, <span class="m">kg/m&sup3;</span>. Rearrange to
+    <span class="m">mass = density &times; volume</span>.</p></div>
+  <div class="card g"><h4>Pressure</h4>
+    <div class="formula" style="margin:6px 0">pressure = <span class="frac"><span>force</span><span>area</span></span></div>
+    <p>Units: <span class="m">N/m&sup2;</span> (also called the pascal), <span class="m">N/cm&sup2;</span>.</p></div>
+</div>
+
+<div class="tip"><b>Exam tip</b> The unit tells you the operation. If an answer must be in
+<span class="m">g/cm&sup3;</span>, the mass must be in grams and the volume in cm&sup3; <i>before</i> you divide.
+Convert first, then divide.</div>
+
+<h3>Converting m/s into km/h</h3>
+<p>Do it in two separate steps and it never goes wrong.</p>
+<div class="formula">1 m/s = <span class="frac"><span>0.001 km</span><span><span class="frac"><span>1</span><span>3600</span></span> h</span></span> = 0.001 &times; 3600 km/h = 3.6 km/h
+<small>Multiply by 3.6 to go m/s &rarr; km/h; divide by 3.6 to come back</small></div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Conversion</th><th>Factor</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td><span class="m">m/s &rarr; km/h</span></td><td><span class="m">&times; 3.6</span></td><td><span class="m">&divide;1000</span> for km, <span class="m">&times;3600</span> for hours</td></tr>
+<tr><td><span class="m">km/h &rarr; m/s</span></td><td><span class="m">&divide; 3.6</span></td><td>the reverse</td></tr>
+<tr><td><span class="m">g/cm&sup3; &rarr; kg/m&sup3;</span></td><td><span class="m">&times; 1000</span></td><td><span class="m">&divide;1000</span> for kg, <span class="m">&times;1 000 000</span> for m&sup3;</td></tr>
+<tr><td><span class="m">N/cm&sup2; &rarr; N/m&sup2;</span></td><td><span class="m">&times; 10 000</span></td><td>1 m&sup2; holds 10 000 cm&sup2;</td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">(a) A cheetah runs at <span class="m">28 m/s</span>. Write this in km/h. (b) A speed limit is <span class="m">90 km/h</span>. Write this in m/s.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) In one second it covers 28 m, so in one hour (3600 s) it covers
+    <span class="work">28 &times; 3600 = 100 800 m</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Change metres to kilometres by dividing by 1000.
+    <span class="work">100 800 &divide; 1000 = 100.8 km/h</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Reverse it: divide by 3.6.
+    <span class="work">90 &divide; 3.6 = 25 m/s</span></div></div>
+  <div class="final">(a) 100.8 km/h &nbsp;&nbsp; (b) 25 m/s</div>
+  <div class="note"><b>Sense check</b> A number of km/h is always <i>larger</i> than the same speed in m/s,
+  because a kilometre per hour is a much smaller speed than a metre per second.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A steel block measures <span class="m">12 cm</span> by <span class="m">5 cm</span> by <span class="m">4 cm</span>. Steel has density <span class="m">7.8 g/cm&sup3;</span>. Find the mass of the block in kilograms.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Volume of the cuboid.
+    <span class="work">V = 12 &times; 5 &times; 4 = 240 cm&sup3;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rearrange <span class="m">density = mass &divide; volume</span> to give
+    <span class="m">mass = density &times; volume</span>. The units match already (g and cm&sup3;).
+    <span class="work">mass = 7.8 &times; 240 = 1872 g</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The question asks for kilograms, so divide by 1000.
+    <span class="work">1872 &divide; 1000 = 1.872 kg</span></div></div>
+  <div class="final">mass = 1.872 kg</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">A crate has weight <span class="m">250 N</span> and its base is a rectangle <span class="m">80 cm</span> by <span class="m">50 cm</span>. Find the pressure on the floor in N/m&sup2;.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Area of the base, in cm&sup2; first.
+    <span class="work">A = 80 &times; 50 = 4000 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The answer must be in N/m&sup2;, so the area must be in m&sup2;.
+    Divide by <span class="m">10 000</span>, not by 100.
+    <span class="work">4000 &divide; 10 000 = 0.4 m&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Now divide force by area.
+    <span class="work">pressure = 250 &divide; 0.4 = 625</span></div></div>
+  <div class="final">pressure = 625 N/m&sup2;</div>
+  <div class="warn"><b>Exam trap</b> Dividing 4000 by 100 gives 40 m&sup2; and a &ldquo;pressure&rdquo; of
+  6.25 N/m&sup2; &mdash; a hundred times too small. Area conversions use the <b>squared</b> factor.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A tin of paint covers <span class="m">12 m&sup2;</span> per litre. A wall measures <span class="m">4.5 m</span> by <span class="m">2.4 m</span> and needs two coats. How many litres of paint are needed?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Area of one coat.
+    <span class="work">4.5 &times; 2.4 = 10.8 m&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Two coats means twice the area to cover.
+    <span class="work">10.8 &times; 2 = 21.6 m&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">&ldquo;12 m&sup2; per litre&rdquo; means divide the area by 12.
+    <span class="work">21.6 &divide; 12 = 1.8 litres</span></div></div>
+  <div class="final">1.8 litres (so 2 whole tins must be bought)</div>
+  <div class="tip"><b>Exam tip</b> When a question ends &ldquo;how many tins?&rdquo; you must round <b>up</b>, whatever the
+  decimal says. You cannot buy 0.8 of a tin.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A water tank holds <span class="m">2.5 m&sup3;</span>. Water flows in at <span class="m">20 litres per minute</span>. How long, in hours and minutes, does it take to fill the empty tank?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The rate is in litres, so convert the capacity to litres.
+    <span class="m">1 m&sup3; = 1 000 000 cm&sup3; = 1000 litres</span>.
+    <span class="work">2.5 &times; 1000 = 2500 litres</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Time = amount &divide; rate.
+    <span class="work">2500 &divide; 20 = 125 minutes</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Convert to hours and minutes.
+    <span class="work">125 = 60 + 60 + 5 = 2 h 5 min</span></div></div>
+  <div class="final">2 hours 5 minutes</div>
+  <div class="note"><b>Note</b> <span class="m">125 min</span> written as a decimal number of hours is
+  <span class="m">125 &divide; 60 = 2.08&#775;3&#775; h</span> &mdash; never write it as 2.05 h. There is more on this in 13.2.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Convert: (a) <span class="m">2.6 km</span> to m &nbsp;(b) <span class="m">750 g</span> to kg
+      &nbsp;(c) <span class="m">4.5 litres</span> to ml &nbsp;(d) <span class="m">85 mm</span> to cm.</li>
+    <li>Convert: (a) <span class="m">6.2 cm&sup2;</span> to mm&sup2; &nbsp;(b) <span class="m">0.75 m&sup2;</span> to cm&sup2;
+      &nbsp;(c) <span class="m">3 200 000 cm&sup3;</span> to m&sup3;.</li>
+    <li>A fish tank measures <span class="m">60 cm</span> by <span class="m">35 cm</span> by <span class="m">40 cm</span>.
+      Find its capacity in litres.</li>
+    <li>Change <span class="m">12.5 m/s</span> into km/h, and <span class="m">126 km/h</span> into m/s.</li>
+    <li>A piece of oak of volume <span class="m">2500 cm&sup3;</span> has mass <span class="m">1.8 kg</span>.
+      Find its density in <span class="m">g/cm&sup3;</span>.</li>
+    <li>A rectangular patio measures <span class="m">3.6 m</span> by <span class="m">2.5 m</span> and is paved with
+      square slabs of side <span class="m">30 cm</span>. How many slabs are needed?</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) <span class="m">2.6 &times; 1000</span> = <span class="ans">2600 m</span> &nbsp;(b) <span class="m">750 &divide; 1000</span> = <span class="ans">0.75 kg</span>
+        &nbsp;(c) <span class="m">4.5 &times; 1000</span> = <span class="ans">4500 ml</span> &nbsp;(d) <span class="m">85 &divide; 10</span> = <span class="ans">8.5 cm</span></li>
+      <li>(a) <span class="m">&times;10&sup2;</span>: <span class="ans">620 mm&sup2;</span> &nbsp;(b) <span class="m">&times;100&sup2;</span>:
+        <span class="ans">7500 cm&sup2;</span> &nbsp;(c) <span class="m">&divide;100&sup3;</span>: <span class="ans">3.2 m&sup3;</span></li>
+      <li><span class="m">60 &times; 35 &times; 40 = 84 000 cm&sup3;</span> &rarr; <span class="m">&divide;1000</span> =
+        <span class="ans">84 litres</span></li>
+      <li><span class="m">12.5 &times; 3.6</span> = <span class="ans">45 km/h</span>;
+        <span class="m">126 &divide; 3.6</span> = <span class="ans">35 m/s</span></li>
+      <li><span class="m">1.8 kg = 1800 g</span>, so <span class="m">1800 &divide; 2500</span> =
+        <span class="ans">0.72 g/cm&sup3;</span></li>
+      <li>Patio <span class="m">= 3.6 &times; 2.5 = 9 m&sup2; = 90 000 cm&sup2;</span>; one slab
+        <span class="m">= 30 &times; 30 = 900 cm&sup2;</span>; <span class="m">90 000 &divide; 900</span> =
+        <span class="ans">100 slabs</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Smaller unit &rarr; bigger number</b> (multiply); <b>bigger unit &rarr; smaller number</b> (divide).</li>
+    <li>Length: <span class="m">1 cm = 10 mm</span>, <span class="m">1 m = 100 cm</span>, <span class="m">1 km = 1000 m</span>.
+      Mass: <span class="m">1 kg = 1000 g</span>, <span class="m">1 t = 1000 kg</span>.</li>
+    <li>For <b>area</b>, square the linear factor: <span class="m">1 cm&sup2; = 100 mm&sup2;</span>,
+      <span class="m">1 m&sup2; = 10 000 cm&sup2;</span>.</li>
+    <li>For <b>volume</b>, cube it: <span class="m">1 cm&sup3; = 1000 mm&sup3;</span>,
+      <span class="m">1 m&sup3; = 1 000 000 cm&sup3;</span>.</li>
+    <li><span class="m">1 ml = 1 cm&sup3;</span>, <span class="m">1 litre = 1000 cm&sup3;</span>,
+      <span class="m">1 m&sup3; = 1000 litres</span>.</li>
+    <li>Compound units: &ldquo;per&rdquo; means divide &mdash; <span class="m">speed = d &divide; t</span>,
+      <span class="m">density = m &divide; V</span>, <span class="m">pressure = F &divide; A</span>.</li>
+    <li><span class="m">m/s &rarr; km/h</span> multiply by <b>3.6</b>; <span class="m">km/h &rarr; m/s</span> divide by <b>3.6</b>.</li>
+    <li>Always convert every quantity into matching units <b>before</b> you multiply or divide.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="index.html"><span>&larr; Back</span><b>All notes</b></a><a class="next" href="13-2.html"><span>Next &rarr;</span><b>13.2 Time</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 13.1 Understanding Units<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- unit converter ---- */
+(function(){
+  var LIN={mm:1,cm:10,m:1000,km:1000000};          /* in millimetres */
+  var NAME={mm:'mm',cm:'cm',m:'m',km:'km'};
+  var MODES={
+    length:{pow:1,units:[['mm','mm',1],['cm','cm',10],['m','m',1000],['km','km',1000000]],from:2,to:1},
+    area:{pow:2,units:[['mm','mm&sup2;',1],['cm','cm&sup2;',100],['m','m&sup2;',1000000],['km','km&sup2;',1e12]],from:2,to:1},
+    volume:{pow:3,units:[['mm','mm&sup3;',1],['cm','cm&sup3;',1000],['ml','ml',1000],['l','litre',1000000],['m','m&sup3;',1e9]],from:4,to:3},
+    mass:{pow:1,units:[['mg','mg',1],['g','g',1000],['kg','kg',1000000],['t','tonne',1e9]],from:2,to:1},
+    speed:{pow:1,units:[['ms','m/s',3.6],['kmh','km/h',1],['mmin','m/min',0.06]],from:0,to:1}
+  };
+  function fmt(x){
+    if(!isFinite(x)) return '&mdash;';
+    var s;
+    if(x!==0 && (Math.abs(x)<1e-6 || Math.abs(x)>=1e13)) return x.toExponential(3);
+    s=String(Number(x.toPrecision(12)));
+    var p=s.split('.');
+    p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,'&nbsp;');
+    return p.join('.').replace('-','&minus;');
+  }
+  function fill(sel,mode,pick){
+    var u=MODES[mode].units, h='';
+    for(var i=0;i<u.length;i++) h+='<option value="'+i+'">'+u[i][1]+'</option>';
+    sel.innerHTML=h; sel.value=String(pick);
+  }
+  function go(){
+    var mode=el('ucMode').value, M=MODES[mode];
+    var i=parseInt(el('ucFrom').value,10), j=parseInt(el('ucTo').value,10);
+    if(isNaN(i)||isNaN(j)||!M.units[i]||!M.units[j]) return;
+    var A=M.units[i], B=M.units[j];
+    var f=A[2]/B[2], v=num('ucVal',0), out=el('ucOut');
+    var head='<div style="font-size:1.05rem">'+fmt(v)+' '+A[1]+' = <b>'+fmt(v*f)+' '+B[1]+'</b></div>';
+    var why='';
+    if(f>=1) why='<div style="margin-top:8px">Factor used: <span class="hl">&times; '+fmt(f)+'</span></div>';
+    else why='<div style="margin-top:8px">Factor used: <span class="hl">&times; '+fmt(f)+'</span> &nbsp;(the same as &divide; '+fmt(1/f)+')</div>';
+    var note='';
+    if(M.pow>1 && LIN[A[0]] && LIN[B[0]]){
+      var lf=LIN[A[0]]/LIN[B[0]];
+      var word=(M.pow===2?'squared':'cubed'), sym=(M.pow===2?'&sup2;':'&sup3;');
+      note='<div style="margin-top:8px">Length factor: 1 '+NAME[A[0]]+' = '+fmt(lf)+' '+NAME[B[0]]+
+           '. '+(M.pow===2?'An area':'A volume')+' is '+(M.pow===2?'length &times; length':'length &times; length &times; length')+
+           ', so the factor is '+word+': <span class="hl">'+fmt(lf)+sym+' = '+fmt(f)+'</span>.</div>';
+    } else if(mode==='volume'){
+      note='<div style="margin-top:8px;opacity:.8">Remember 1 ml = 1 cm&sup3; and 1 litre = 1000 cm&sup3;, so 1 m&sup3; = 1000 litres.</div>';
+    } else if(mode==='speed'){
+      note='<div style="margin-top:8px;opacity:.8">m/s &rarr; km/h multiplies by 3.6 (&divide;1000 for km, &times;3600 for hours).</div>';
+    }
+    out.innerHTML=head+why+note;
+  }
+  function rebuild(){
+    var mode=el('ucMode').value, M=MODES[mode];
+    fill(el('ucFrom'),mode,M.from); fill(el('ucTo'),mode,M.to); go();
+  }
+  on('ucMode',rebuild); on('ucFrom',go); on('ucTo',go); on('ucVal',go);
+  rebuild();
+})();
+</script>
+</body>
+</html>

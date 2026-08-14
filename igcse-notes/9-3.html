@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9.3 Surds | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Simplifying roots, multiplying and dividing them, expanding brackets, rationalising denominators and giving exact answers in surd form.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 9 &mdash; Sequences, Surds and Sets</span>
+    </div>
+    <h1>9.3 &nbsp;Surds</h1>
+    <p>Simplifying roots, multiplying and dividing them, expanding brackets, rationalising denominators and giving exact answers in surd form.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#what">What is a surd</a>
+  <a href="#simplify">Simplifying</a>
+  <a href="#arith">Add and expand</a>
+  <a href="#rationalise">Rationalising</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="what" data-nav="What is a surd">
+<h2>What a surd is, and why we keep them</h2>
+
+<div class="def"><b>Definition</b>
+A <b>surd</b> is a root that cannot be written exactly as a rational number, such as
+<span class="m"><span class="rt"><span>2</span></span></span>,
+<span class="m"><span class="rt"><span>18</span></span></span> or
+<span class="m">3<span class="rt"><span>5</span></span></span>.
+<span class="m"><span class="rt"><span>16</span></span> = 4</span> is <b>not</b> a surd, because the root
+comes out exactly.</div>
+
+<p>A calculator gives <span class="m"><span class="rt"><span>2</span></span> = 1.414213562&hellip;</span>,
+which is rounded and therefore slightly wrong. Writing <span class="m"><span class="rt"><span>2</span></span></span>
+instead keeps the value <b>exact</b>. That is why questions say &ldquo;give your answer in <b>surd form</b>&rdquo;
+or &ldquo;give an <b>exact</b> answer&rdquo; &mdash; a decimal, however many digits, would lose the mark.</p>
+
+<div class="formula"><span class="rt"><span>a</span></span> &times; <span class="rt"><span>b</span></span> = <span class="rt"><span>ab</span></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="frac"><span><span class="rt"><span>a</span></span></span><span><span class="rt"><span>b</span></span></span></span> = <span class="rt"><span><span class="frac"><span>a</span><span>b</span></span></span></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+(<span class="rt"><span>a</span></span>)&sup2; = a
+<small>The three rules that drive everything in this lesson</small></div>
+
+<div class="warn"><b>Watch out</b>
+There is <b>no</b> rule for adding. <span class="m"><span class="rt"><span>9</span></span> + <span class="rt"><span>16</span></span> = 3 + 4 = 7</span>,
+but <span class="m"><span class="rt"><span>9 + 16</span></span> = <span class="rt"><span>25</span></span> = 5</span>.
+So <span class="m"><span class="rt"><span>a</span></span> + <span class="rt"><span>b</span></span> &ne; <span class="rt"><span>a + b</span></span></span>.
+This is the most heavily penalised error in the whole topic.</div>
+
+<div class="card g">
+<h4>Exact answers in action</h4>
+<p>A square has area <span class="m">50 cm&sup2;</span>. Its side is
+<span class="m">&#8730;50 = 5&#8730;2 cm</span>, so the perimeter is <span class="m">20&#8730;2 cm</span> and,
+by Pythagoras, the diagonal <span class="m">d</span> satisfies
+<span class="m">d&sup2; = (5&#8730;2)&sup2; + (5&#8730;2)&sup2; = 50 + 50 = 100</span>, giving
+<span class="m">d = 10 cm</span> exactly.</p>
+<p>Round the side to 7.07 instead and the diagonal comes out as 9.998&hellip; The surd form gives the clean,
+correct answer, which is why the syllabus asks for it.</p>
+</div>
+</section>
+
+<section id="simplify" data-nav="Simplifying">
+<h2>Simplifying a surd</h2>
+<p>To simplify <span class="m"><span class="rt"><span>n</span></span></span>, split <span class="m">n</span>
+into <b>the largest perfect square factor</b> times whatever is left, then take the square root of the square
+part outside.</p>
+
+<div class="card">
+<h4>&#8730;72 step by step</h4>
+<svg viewBox="0 0 620 200" role="img" aria-label="Splitting root 72 into root 36 times root 2, giving 6 root 2">
+  <rect x="20" y="70" width="110" height="56" rx="12" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="75" y="104" font-size="19" text-anchor="middle" fill="#0f2d6b">&#8730;72</text>
+
+  <line x1="130" y1="98" x2="200" y2="60" stroke="#1a4fa0" stroke-width="2"/>
+  <line x1="130" y1="98" x2="200" y2="136" stroke="#1a4fa0" stroke-width="2"/>
+
+  <rect x="200" y="32" width="118" height="52" rx="12" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="259" y="64" font-size="18" text-anchor="middle" fill="#16a34a">&#8730;36 = 6</text>
+  <rect x="200" y="110" width="118" height="52" rx="12" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="259" y="142" font-size="18" text-anchor="middle" fill="#e05c2a">&#8730;2 stays</text>
+
+  <line x1="318" y1="58" x2="380" y2="96" stroke="#1a4fa0" stroke-width="2"/>
+  <line x1="318" y1="136" x2="380" y2="98" stroke="#1a4fa0" stroke-width="2"/>
+
+  <rect x="380" y="70" width="130" height="56" rx="12" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+  <text x="445" y="104" font-size="20" text-anchor="middle" fill="#6d28d9">6&#8730;2</text>
+
+  <text x="310" y="188" font-size="13" text-anchor="middle" fill="#4a5b7a">72 = 36 &times; 2, and 36 is the largest square factor</text>
+</svg>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Surd</th><th>Largest square factor</th><th>Split</th><th>Simplified</th></tr></thead>
+<tbody>
+<tr><td><span class="m">&#8730;50</span></td><td>25</td><td><span class="m">&#8730;25 &times; &#8730;2</span></td><td><span class="m">5&#8730;2</span></td></tr>
+<tr><td><span class="m">&#8730;48</span></td><td>16</td><td><span class="m">&#8730;16 &times; &#8730;3</span></td><td><span class="m">4&#8730;3</span></td></tr>
+<tr><td><span class="m">&#8730;180</span></td><td>36</td><td><span class="m">&#8730;36 &times; &#8730;5</span></td><td><span class="m">6&#8730;5</span></td></tr>
+<tr><td><span class="m">&#8730;200</span></td><td>100</td><td><span class="m">&#8730;100 &times; &#8730;2</span></td><td><span class="m">10&#8730;2</span></td></tr>
+<tr><td><span class="m">&#8730;30</span></td><td>1</td><td>none</td><td><span class="m">&#8730;30</span> (already simplest)</td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Simplify <span class="m">&#8730;72</span>, and explain why <span class="m">2&#8730;18</span> is not a complete answer.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">List the square numbers that divide 72: <span class="m">4, 9, 36</span>. The largest is 36.
+    <span class="work">72 = 36 &times; 2</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Split the root and take the square part out.
+    <span class="work">&#8730;72 = &#8730;36 &times; &#8730;2 = 6&#8730;2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check numerically.
+    <span class="work">&#8730;72 = 8.4852&hellip; &nbsp;&nbsp; 6 &times; 1.41421&hellip; = 8.4852&hellip; &#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Using the factor 4 instead gives <span class="m">&#8730;72 = 2&#8730;18</span>, which is correct but
+    <b>not simplified</b>: 18 still contains the square factor 9, so <span class="m">2&#8730;18 = 2 &times; 3&#8730;2 = 6&#8730;2</span>.</div></div>
+  <div class="final">&#8730;72 = 6&#8730;2</div>
+  <div class="tip"><b>Exam tip</b> If you pick a smaller square factor you still get there &mdash; just keep
+  simplifying until the number under the root has no square factors left.</div>
+</div>
+</details>
+
+<h3>Multiplying and dividing</h3>
+<p>Combine everything under one root, simplify, then split it again. Numbers outside the roots multiply
+separately from the numbers inside.</p>
+
+<div class="formula">&#8730;3 &times; &#8730;12 = &#8730;36 = 6 &nbsp;&nbsp;&nbsp;&nbsp;
+2&#8730;5 &times; 3&#8730;2 = 6&#8730;10 &nbsp;&nbsp;&nbsp;&nbsp; &#8730;45 &divide; &#8730;5 = &#8730;9 = 3
+<small>Example 5 works through a full set</small></div>
+
+<div class="tool">
+  <h4>Surd simplifier</h4>
+  <p class="hint">Enter <span class="m">k&#8730;n</span> and see the largest square factor, the split and the
+  simplified form. Try <span class="m">n = 72</span>, then 200, then 30.</p>
+  <div class="row">
+    <div><label for="ssK">k (outside)</label><input type="number" id="ssK" value="1"></div>
+    <div><label for="ssN">n (under the root)</label><input type="number" id="ssN" value="72" min="0"></div>
+  </div>
+  <div class="out" id="ssOut"></div>
+</div>
+</section>
+
+<section id="arith" data-nav="Add and expand">
+<h2>Adding, subtracting and expanding</h2>
+<p>Surds behave exactly like algebraic terms. You can only collect <b>like surds</b> &mdash; ones with the
+same number under the root &mdash; just as you can only collect like terms in algebra.</p>
+
+<div class="grid two">
+  <div class="card g">
+    <h4>Like surds collect</h4>
+    <p class="m">5&#8730;2 + 3&#8730;2 = 8&#8730;2</p>
+    <p class="m">7&#8730;3 &minus; &#8730;3 = 6&#8730;3</p>
+    <p>Think of <span class="m">&#8730;2</span> as <span class="m">x</span>:
+    <span class="m">5x + 3x = 8x</span>.</p>
+  </div>
+  <div class="card o">
+    <h4>Unlike surds do not</h4>
+    <p class="m">&#8730;2 + &#8730;3</p>
+    <p>cannot be simplified &mdash; leave it exactly as it is. Always <b>simplify first</b>, though: surds that
+    look unlike often are not, as <span class="m">&#8730;12 + &#8730;27 = 2&#8730;3 + 3&#8730;3 = 5&#8730;3</span>.</p>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Simplify <span class="m">&#8730;50 + &#8730;18 &minus; &#8730;8</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Simplify each surd separately, using the largest square factor each time.
+    <span class="work">&#8730;50 = &#8730;25 &times; &#8730;2 = 5&#8730;2<br>&#8730;18 = &#8730;9 &times; &#8730;2 = 3&#8730;2<br>&#8730;8 = &#8730;4 &times; &#8730;2 = 2&#8730;2</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">They are now all multiples of <span class="m">&#8730;2</span>, so collect the coefficients.
+    <span class="work">5&#8730;2 + 3&#8730;2 &minus; 2&#8730;2 = (5 + 3 &minus; 2)&#8730;2 = 6&#8730;2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check on a calculator.
+    <span class="work">7.0711 + 4.2426 &minus; 2.8284 = 8.4853<br>6&#8730;2 = 8.4853 &#10003;</span></div></div>
+  <div class="final">6&#8730;2</div>
+</div>
+</details>
+
+<h3>Expanding brackets</h3>
+<p>Expand exactly as you would in algebra, then use <span class="m">(&#8730;a)&sup2; = a</span> to tidy up.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Product</th><th>Expansion</th><th>Simplified</th></tr></thead>
+<tbody>
+<tr><td><span class="m">&#8730;3(2 + &#8730;3)</span></td><td><span class="m">2&#8730;3 + (&#8730;3)&sup2;</span></td><td><span class="m">3 + 2&#8730;3</span></td></tr>
+<tr><td><span class="m">(2 + &#8730;3)&sup2;</span></td><td><span class="m">4 + 2&#8730;3 + 2&#8730;3 + 3</span></td><td><span class="m">7 + 4&#8730;3</span></td></tr>
+<tr><td><span class="m">(5 &minus; 2&#8730;3)(5 + 2&#8730;3)</span></td><td><span class="m">25 &minus; 4 &times; 3</span></td><td><span class="m">13</span> (rational)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note"><b>Note</b>
+The third line is the key one. <span class="m">(a + b&#8730;c)(a &minus; b&#8730;c) = a&sup2; &minus; b&sup2;c</span>
+is always <b>rational</b>: the two middle terms cancel. This pair is called a pair of <b>conjugates</b>, and it
+is the engine behind rationalising denominators.</div>
+
+</section>
+
+<section id="rationalise" data-nav="Rationalising">
+<h2>Rationalising the denominator</h2>
+<p>Mathematical convention says a final answer should have <b>no surd in the denominator</b>. Removing it is
+called <b>rationalising</b>, and it comes in two versions.</p>
+
+<div class="tabs">
+  <div class="heads"><button>Single surd</button><button>Two terms (conjugate)</button></div>
+  <div class="panes">
+    <div>
+      <p>Multiply the top and bottom by that surd. Since
+      <span class="m">&#8730;a &times; &#8730;a = a</span>, the bottom becomes rational.</p>
+      <div class="formula"><span class="frac"><span>k</span><span><span class="rt"><span>a</span></span></span></span>
+      = <span class="frac"><span>k</span><span><span class="rt"><span>a</span></span></span></span> &times;
+      <span class="frac"><span><span class="rt"><span>a</span></span></span><span><span class="rt"><span>a</span></span></span></span>
+      = <span class="frac"><span>k<span class="rt"><span>a</span></span></span><span>a</span></span></div>
+      <p class="m">6/&#8730;3 = 6&#8730;3/3 = 2&#8730;3</p>
+    </div>
+    <div>
+      <p>Multiply top and bottom by the <b>conjugate</b>: change the sign in the middle. The bottom becomes a
+      difference of two squares and so is rational.</p>
+      <div class="formula"><span class="frac"><span>k</span><span>a + b<span class="rt"><span>c</span></span></span></span>
+      &times; <span class="frac"><span>a &minus; b<span class="rt"><span>c</span></span></span><span>a &minus; b<span class="rt"><span>c</span></span></span></span>
+      = <span class="frac"><span>k(a &minus; b<span class="rt"><span>c</span></span>)</span><span>a&sup2; &minus; b&sup2;c</span></span></div>
+      <p class="m">1/(3 + &#8730;2) = (3 &minus; &#8730;2)/7</p>
+    </div>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Rationalise the denominator of <span class="m"><span class="frac"><span>12</span><span><span class="rt"><span>6</span></span></span></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply top and bottom by <span class="m">&#8730;6</span> &mdash; that is multiplying by 1, so the value is unchanged.
+    <span class="work">12/&#8730;6 &times; &#8730;6/&#8730;6 = 12&#8730;6 / 6</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Cancel the rational numbers.
+    <span class="work">12 &divide; 6 = 2 &nbsp;&rarr;&nbsp; 2&#8730;6</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check: <span class="m">12 &divide; 2.4495 = 4.899</span> and <span class="m">2 &times; 2.4495 = 4.899</span> &#10003;</div></div>
+  <div class="final">2&#8730;6</div>
+  <div class="tip"><b>Exam tip</b> Do not multiply by <span class="m">&#8730;24</span> or anything clever &mdash;
+  the smallest surd that clears the bottom is always the surd itself.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Rationalise the denominator of <span class="m"><span class="frac"><span>8</span><span>3 &minus; <span class="rt"><span>5</span></span></span></span></span>, giving your answer in the form <span class="m">a + b&#8730;5</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The conjugate of <span class="m">3 &minus; &#8730;5</span> is <span class="m">3 + &#8730;5</span>. Multiply top and bottom by it.
+    <span class="work">8/(3 &minus; &#8730;5) &times; (3 + &#8730;5)/(3 + &#8730;5)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Bottom first &mdash; difference of two squares, so no surds survive.
+    <span class="work">(3 &minus; &#8730;5)(3 + &#8730;5) = 9 &minus; 5 = 4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Now the top.
+    <span class="work">8(3 + &#8730;5) = 24 + 8&#8730;5</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Divide every term by 4.
+    <span class="work">(24 + 8&#8730;5)/4 = 6 + 2&#8730;5</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check: <span class="m">8 &divide; (3 &minus; 2.2361) = 8 &divide; 0.7639 = 10.472</span>, and
+    <span class="m">6 + 2(2.2361) = 10.472</span> &#10003;</div></div>
+  <div class="final">6 + 2&#8730;5</div>
+  <div class="warn"><b>Watch out</b> Divide <b>every</b> term of the numerator by the denominator, not just the
+  first. Writing <span class="m">(24 + 8&#8730;5)/4 = 6 + 8&#8730;5</span> throws away the accuracy mark.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Rationalising tool</h4>
+  <p class="hint">Set the fraction <span class="m">k &divide; (a + b&#8730;c)</span>. Put
+  <span class="m">a = 0</span> for a single surd on the bottom. Try
+  <span class="m">k = 8, a = 3, b = &minus;1, c = 5</span>.</p>
+  <div class="row">
+    <div><label for="raK">k (numerator)</label><input type="number" id="raK" value="8"></div>
+    <div><label for="raA">a</label><input type="number" id="raA" value="3"></div>
+    <div><label for="raB">b</label><input type="number" id="raB" value="-1"></div>
+    <div><label for="raC">c (under the root)</label><input type="number" id="raC" value="5" min="0"></div>
+  </div>
+  <div class="out" id="raOut"></div>
+</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Work out (a) <span class="m">&#8730;8 &times; &#8730;6</span> (b) <span class="m">&#8730;32 &divide; &#8730;2</span> (c) <span class="m">3&#8730;5 &times; 4&#8730;10</span>, giving each answer in its simplest surd form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Put both under one root, then simplify.
+    <span class="work">&#8730;8 &times; &#8730;6 = &#8730;48 = &#8730;16 &times; &#8730;3 = 4&#8730;3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Division works the same way, and here the answer is not a surd at all.
+    <span class="work">&#8730;32 &divide; &#8730;2 = &#8730;(32/2) = &#8730;16 = 4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Multiply the outside numbers together and the inside numbers together.
+    <span class="work">3 &times; 4 = 12 &nbsp;&nbsp; &#8730;5 &times; &#8730;10 = &#8730;50 = 5&#8730;2<br>12 &times; 5&#8730;2 = 60&#8730;2</span></div></div>
+  <div class="final">(a) 4&#8730;3 &nbsp;&nbsp; (b) 4 &nbsp;&nbsp; (c) 60&#8730;2</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Expand and simplify (a) <span class="m">(3 + &#8730;5)(2 &minus; &#8730;5)</span> (b) <span class="m">(2&#8730;3 &minus; 1)&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Multiply every term in the first bracket by every term in the second.
+    <span class="work">3 &times; 2 = 6<br>3 &times; (&minus;&#8730;5) = &minus;3&#8730;5<br>&#8730;5 &times; 2 = 2&#8730;5<br>&#8730;5 &times; (&minus;&#8730;5) = &minus;(&#8730;5)&sup2; = &minus;5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect the rational parts and the surd parts separately.
+    <span class="work">(6 &minus; 5) + (&minus;3 + 2)&#8730;5 = 1 &minus; &#8730;5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check: <span class="m">(3 + 2.2361)(2 &minus; 2.2361) = 5.2361 &times; (&minus;0.2361) = &minus;1.2361</span>,
+    and <span class="m">1 &minus; 2.2361 = &minus;1.2361</span> &#10003;</div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) Write the square out as two brackets &mdash; never square the terms separately.
+    <span class="work">(2&#8730;3 &minus; 1)(2&#8730;3 &minus; 1)</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Expand term by term, using <span class="m">(&#8730;3)&sup2; = 3</span>.
+    <span class="work">2&#8730;3 &times; 2&#8730;3 = 4 &times; 3 = 12<br>2&#8730;3 &times; (&minus;1) = &minus;2&#8730;3 &nbsp;(this happens twice)<br>(&minus;1) &times; (&minus;1) = 1</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Collect.
+    <span class="work">12 + 1 &minus; 4&#8730;3 = 13 &minus; 4&#8730;3</span>
+    Check: <span class="m">(3.4641 &minus; 1)&sup2; = 2.4641&sup2; = 6.0718</span> and
+    <span class="m">13 &minus; 4(1.7321) = 6.0718</span> &#10003;</div></div>
+  <div class="final">(a) 1 &minus; &#8730;5 &nbsp;&nbsp;&middot;&nbsp;&nbsp; (b) 13 &minus; 4&#8730;3</div>
+  <div class="warn"><b>Watch out</b> <span class="m">&#8730;5 &times; &#8730;5 = 5</span>, not
+  <span class="m">&#8730;25</span> left unsimplified and certainly not 25. And
+  <span class="m">(2&#8730;3 &minus; 1)&sup2; &ne; 12 + 1</span> &mdash; the middle terms matter.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A rectangle has area <span class="m">24 cm&sup2;</span> and one side of length <span class="m">(3 + &#8730;3) cm</span>. Find the other side in the form <span class="m">a + b&#8730;3</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Other side = area &divide; known side.
+    <span class="work">other side = 24 / (3 + &#8730;3)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply top and bottom by the conjugate <span class="m">3 &minus; &#8730;3</span>.
+    <span class="work">bottom: (3 + &#8730;3)(3 &minus; &#8730;3) = 9 &minus; 3 = 6<br>top: 24(3 &minus; &#8730;3) = 72 &minus; 24&#8730;3</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide each term by 6.
+    <span class="work">(72 &minus; 24&#8730;3)/6 = 12 &minus; 4&#8730;3</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Sense-check the size: <span class="m">12 &minus; 6.928 = 5.07</span> cm, and
+    <span class="m">(3 + 1.732) &times; 5.07 = 24.0</span> &#10003;</div></div>
+  <div class="final">(12 &minus; 4&#8730;3) cm</div>
+  <div class="tip"><b>Exam tip</b> Length answers must be positive. If a rationalised length comes out negative,
+  you have almost certainly used the wrong conjugate sign.</div>
+</div>
+</details>
+
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Simplify (a) <span class="m">&#8730;48</span> (b) <span class="m">&#8730;200</span>.</li>
+    <li>Simplify <span class="m">&#8730;27 + &#8730;75 &minus; &#8730;12</span>.</li>
+    <li>Work out <span class="m">&#8730;6 &times; &#8730;10</span>, giving your answer in simplest surd form.</li>
+    <li>Expand and simplify <span class="m">(&#8730;7 + 2)(&#8730;7 &minus; 5)</span>.</li>
+    <li>Rationalise the denominator of <span class="m">14 &divide; &#8730;7</span>.</li>
+    <li>(a) Rationalise <span class="m"><span class="frac"><span>&#8730;5 + 1</span><span>&#8730;5 &minus; 1</span></span></span>.
+      (b) A right-angled triangle has shorter sides <span class="m">2&#8730;5</span> cm and 4 cm. Find the hypotenuse exactly.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) <span class="m">&#8730;48 = &#8730;16 &times; &#8730;3 =</span> <span class="ans">4&#8730;3</span> &nbsp;(b) <span class="m">&#8730;200 = &#8730;100 &times; &#8730;2 =</span> <span class="ans">10&#8730;2</span></li>
+      <li><span class="m">3&#8730;3 + 5&#8730;3 &minus; 2&#8730;3 = (3 + 5 &minus; 2)&#8730;3 =</span> <span class="ans">6&#8730;3</span></li>
+      <li><span class="m">&#8730;60 = &#8730;4 &times; &#8730;15 =</span> <span class="ans">2&#8730;15</span></li>
+      <li><span class="m">7 &minus; 5&#8730;7 + 2&#8730;7 &minus; 10 =</span> <span class="ans">&minus;3 &minus; 3&#8730;7</span></li>
+      <li><span class="m">14/&#8730;7 &times; &#8730;7/&#8730;7 = 14&#8730;7/7 =</span> <span class="ans">2&#8730;7</span></li>
+      <li>(a) multiply by <span class="m">&#8730;5 + 1</span>: top <span class="m">(&#8730;5 + 1)&sup2; = 6 + 2&#8730;5</span>, bottom <span class="m">5 &minus; 1 = 4</span>, so <span class="ans">(3 + &#8730;5)/2</span>
+        &nbsp;(b) <span class="m">h&sup2; = (2&#8730;5)&sup2; + 4&sup2; = 20 + 16 = 36</span> &rarr; <span class="ans">6 cm</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>A surd is an exact root that is irrational. &ldquo;Exact answer&rdquo; or &ldquo;surd form&rdquo;
+      means <b>do not use a decimal</b>.</li>
+    <li>Simplify by taking out the <b>largest perfect square factor</b>:
+      <span class="m">&#8730;72 = &#8730;36 &times; &#8730;2 = 6&#8730;2</span>.</li>
+    <li><span class="m">&#8730;a &times; &#8730;b = &#8730;(ab)</span> and
+      <span class="m">&#8730;a &divide; &#8730;b = &#8730;(a/b)</span>, but
+      <span class="m">&#8730;a + &#8730;b &ne; &#8730;(a + b)</span>.</li>
+    <li>Only <b>like</b> surds can be added or subtracted &mdash; simplify each one first, then collect the
+      coefficients.</li>
+    <li>Expand brackets exactly as in algebra and use <span class="m">(&#8730;a)&sup2; = a</span>.</li>
+    <li><span class="m">(a + b&#8730;c)(a &minus; b&#8730;c) = a&sup2; &minus; b&sup2;c</span> is always
+      rational &mdash; this is what makes rationalising work.</li>
+    <li>To rationalise: multiply top and bottom by the surd itself, or by the <b>conjugate</b> when the
+      denominator has two terms.</li>
+    <li>Finish by dividing <b>every</b> term of the numerator by the rational denominator, and cancel.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="9-2.html"><span>&larr; Previous</span><b>9.2 Rational and Irrational Numbers</b></a><a class="next" href="10-2.html"><span>Next &rarr;</span><b>10.2 Quadratic Expressions and Equations</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 9.3 Surds<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- surd simplifier ---- */
+(function(){
+  var out=el('ssOut');
+  function nm(x){ return x<0? '&minus;'+Math.abs(x) : String(x); }
+  function go(){
+    var k=Math.round(num('ssK',1)), n=Math.round(num('ssN',0));
+    if(n<0){ out.innerHTML='<span class="hl">Use a value of n that is 0 or more.</span>'; return; }
+    if(n===0||k===0){ out.innerHTML='<div><b>0</b></div>'; return; }
+    var sq=[], s=1, q=n, d;
+    for(d=2; d*d<=n; d++) if(n%(d*d)===0) sq.push(d*d);
+    for(d=2; d*d<=q; d++){ while(q%(d*d)===0){ q/=(d*d); s*=d; } }
+    var outside=k*s;
+    var res = (q===1) ? '<b>'+nm(outside)+'</b>'
+      : '<b>'+(Math.abs(outside)===1? (outside<0?'&minus;':'') : nm(outside))+'&#8730;'+q+'</b>';
+    var kk = (Math.abs(k)===1? (k<0?'&minus;':'') : nm(k));
+    var html='<div>Simplify <span class="hl">'+kk+'&#8730;'+n+'</span></div>';
+    if(s===1){
+      html+='<div style="margin-top:8px">'+n+' has no perfect square factor bigger than 1, '+
+        'so it is already in its simplest form.</div>'+
+        '<div style="margin-top:8px">'+kk+'&#8730;'+n+' = '+res+'</div>';
+    } else if(q===1){
+      html+='<div style="margin-top:8px">'+n+' is itself a perfect square, so this is not a surd at all.</div>'+
+        '<div style="margin-top:6px">&#8730;'+n+' = '+s+'</div>'+
+        '<div style="margin-top:8px">'+kk+'&#8730;'+n+' = '+res+'</div>';
+    } else {
+      html+='<div style="margin-top:8px">Square factors of '+n+': '+sq.join(', ')+
+        ' &nbsp;&rarr;&nbsp; largest is <span class="hl">'+(s*s)+'</span></div>'+
+        '<div style="margin-top:6px">'+n+' = '+(s*s)+' &times; '+q+'</div>'+
+        '<div>&#8730;'+n+' = &#8730;'+(s*s)+' &times; &#8730;'+q+' = '+s+'&#8730;'+q+'</div>'+
+        (Math.abs(k)===1?'':'<div>then multiply by k: '+kk+' &times; '+s+'&#8730;'+q+'</div>')+
+        '<div style="margin-top:8px">'+kk+'&#8730;'+n+' = '+res+'</div>';
+    }
+    html+='<div style="margin-top:8px;opacity:.7;font-size:.9em">Check: '+
+      nm(Math.round(k*Math.sqrt(n)*1e6)/1e6)+' &nbsp;=&nbsp; '+nm(Math.round(outside*Math.sqrt(q)*1e6)/1e6)+'</div>';
+    out.innerHTML=html;
+  }
+  bindAll(['ssK','ssN'],go);
+})();
+
+/* ---- rationalising tool ---- */
+(function(){
+  var out=el('raOut');
+  function nm(x){ return x<0? '&minus;'+Math.abs(x) : String(x); }
+  function surd(p,q,r){
+    if(r===1) return nm(p+q);
+    var t=[];
+    if(p!==0) t.push(nm(p));
+    if(q!==0){
+      var s = t.length? (q<0?' &minus; ':' + ') : (q<0?'&minus;':'');
+      var m = Math.abs(q);
+      t.push(s+(m===1?'':m)+'&#8730;'+r);
+    }
+    return t.length? t.join('') : '0';
+  }
+  function go(){
+    var k=Math.round(num('raK',1)), a=Math.round(num('raA',0)),
+        b=Math.round(num('raB',1)), c=Math.round(num('raC',2));
+    if(c<1){ out.innerHTML='<span class="hl">Use a whole number c of 1 or more.</span>'; return; }
+    var s=1,q=c,d;
+    for(d=2; d*d<=q; d++){ while(q%(d*d)===0){ q/=(d*d); s*=d; } }
+    var B=b*s;                     /* denominator is a + B&#8730;q with q square-free */
+    if(q===1){ B=0; a=a+b*s; }
+    if(a===0 && B===0){ out.innerHTML='<span class="hl">That denominator is zero.</span>'; return; }
+    if(q===1||B===0){
+      out.innerHTML='<div>'+(q===1? '&#8730;'+c+' = '+s+', so the':'There is no surd on the bottom, so the')+
+        ' denominator '+nm(a)+' is already rational: <b>'+fracStr(k,a)+'</b></div>';
+      return;
+    }
+    /* single surd on the bottom: multiply by that surd; two terms: use the conjugate */
+    var mp = (a===0)? 0 : a, mq = (a===0)? B : -B;
+    var D=a*mp+B*mq*q;
+    if(D===0){ out.innerHTML='<span class="hl">That denominator is zero.</span>'; return; }
+    var P=k*mp, Q=k*mq;
+    var g=gcd(gcd(Math.abs(P),Math.abs(Q)),Math.abs(D))||1;
+    P/=g; Q/=g; var Dd=D/g;
+    if(Dd<0){ P=-P; Q=-Q; Dd=-Dd; }
+    var top=surd(P,Q,q);
+    var ans = (Dd===1)? '<b>'+top+'</b>'
+      : '<b><span class="frac"><span>'+top+'</span><span>'+Dd+'</span></span></b>';
+    var conj=surd(mp,mq,q);
+    var val=k/(a+B*Math.sqrt(q));
+    var bq = (B*B===1? String(q) : (B*B)+'&times;'+q);
+    var bottom = (a===0)
+      ? '('+surd(a,B,q)+')('+conj+') = '+bq+' = '+nm(D)
+      : '('+surd(a,B,q)+')('+conj+') = '+(a*a)+' &minus; '+bq+' = '+nm(D);
+    out.innerHTML=
+      '<div>Rationalise <span class="hl"><span class="frac"><span>'+nm(k)+'</span><span>'+surd(a,B,q)+'</span></span></span>'+
+        (s!==1? ' &nbsp;<span style="opacity:.7;font-size:.9em">(&#8730;'+c+' = '+s+'&#8730;'+q+' first)</span>':'')+'</div>'+
+      '<div style="margin-top:8px">Multiply top and bottom by '+
+        (a===0? 'the surd itself, ':'the conjugate ')+'<span class="hl">'+conj+'</span></div>'+
+      '<div style="margin-top:6px">bottom: '+bottom+'</div>'+
+      '<div>top: '+nm(k)+'('+conj+') = '+surd(k*mp,k*mq,q)+'</div>'+
+      (g>1? '<div style="margin-top:6px">Divide every term by '+g+'.</div>':'')+
+      (D<0? '<div style="margin-top:6px">The denominator is negative, so change the sign of every term.</div>':'')+
+      '<div style="margin-top:8px">= '+ans+'</div>'+
+      '<div style="margin-top:8px;opacity:.7;font-size:.9em">Check: '+nm(Math.round(val*1e6)/1e6)+
+        ' &nbsp;=&nbsp; '+nm(Math.round(((P+Q*Math.sqrt(q))/Dd)*1e6)/1e6)+'</div>';
+  }
+  bindAll(['raK','raA','raB','raC'],go);
+})();
+</script>
+</body>
+</html>

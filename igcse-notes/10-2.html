@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10.2 Quadratic Expressions and Equations | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Expanding, factorising and solving quadratics &mdash; and reading the answers straight off the parabola that goes with them.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 10 &mdash; Straight Lines and Quadratic Equations</span>
+    </div>
+    <h1>10.2 &nbsp;Quadratic Expressions and Equations</h1>
+    <p>Expanding, factorising and solving quadratics &mdash; and reading the answers straight off the parabola that goes with them.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#quadratics">Quadratics</a>
+  <a href="#factorising">Factorising</a>
+  <a href="#solving">Solving</a>
+  <a href="#graph">The graph</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="quadratics" data-nav="Quadratics">
+<h2>What makes an expression quadratic</h2>
+<p>An expression is <b>quadratic</b> when the highest power of the variable is <b>2</b> &mdash; there is an
+<span class="m">x&sup2;</span> term, and nothing higher. That single fact controls everything else in this
+lesson: a quadratic equation usually has <b>two</b> solutions, and its graph is a curve, not a line.</p>
+
+<div class="def"><b>Definition</b>
+A quadratic expression can always be written as <span class="m">ax&sup2; + bx + c</span>, where
+<span class="m">a</span>, <span class="m">b</span> and <span class="m">c</span> are numbers and
+<span class="m">a &ne; 0</span>. The number <span class="m">a</span> is the coefficient of
+<span class="m">x&sup2;</span>, <span class="m">b</span> is the coefficient of <span class="m">x</span>,
+and <span class="m">c</span> is the constant term.</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Expression</th><th>Quadratic?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td><span class="m">x&sup2; &minus; 7x + 12</span></td><td><b>Yes</b></td><td><span class="m">a = 1, b = &minus;7, c = 12</span></td></tr>
+<tr><td><span class="m">5 &minus; 2x&sup2;</span></td><td><b>Yes</b></td><td>Rearranged: <span class="m">&minus;2x&sup2; + 0x + 5</span>, so <span class="m">a = &minus;2, b = 0, c = 5</span></td></tr>
+<tr><td><span class="m">3x&sup2;</span></td><td><b>Yes</b></td><td><span class="m">b</span> and <span class="m">c</span> are allowed to be zero</td></tr>
+<tr><td><span class="m">4x &minus; 9</span></td><td>No</td><td>No <span class="m">x&sup2;</span> term &mdash; this is linear</td></tr>
+<tr><td><span class="m">x&sup3; + x&sup2;</span></td><td>No</td><td>The highest power is 3, so it is cubic</td></tr>
+<tr><td><span class="frac"><span>1</span><span>x&sup2;</span></span></td><td>No</td><td>That is <span class="m">x<sup>&minus;2</sup></span> &mdash; a negative power, not a quadratic</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Expanding to a quadratic</h3>
+<p>Multiplying two linear brackets always produces a quadratic. Multiply <b>every</b> term in the first
+bracket by <b>every</b> term in the second, then collect the two middle terms.</p>
+
+<div class="formula">(x + p)(x + q) = x&sup2; + qx + px + pq = x&sup2; + (p + q)x + pq
+<small>The middle coefficient is the SUM, the constant is the PRODUCT</small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Expand and simplify <span class="m">(2x &minus; 3)(x + 5)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply the first term of the left bracket by both terms of the right bracket.
+    <span class="work">2x &times; x = 2x&sup2; &nbsp;&nbsp; 2x &times; 5 = 10x</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now the second term, <b>keeping its minus sign</b>.
+    <span class="work">&minus;3 &times; x = &minus;3x &nbsp;&nbsp; &minus;3 &times; 5 = &minus;15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write all four terms out and collect the like terms.
+    <span class="work">2x&sup2; + 10x &minus; 3x &minus; 15 = 2x&sup2; + 7x &minus; 15</span></div></div>
+  <div class="final">(2x &minus; 3)(x + 5) = 2x&sup2; + 7x &minus; 15</div>
+  <div class="tip"><b>Exam tip</b> Check with a quick substitution. At <span class="m">x = 1</span> the brackets give
+  <span class="m">(&minus;1)(6) = &minus;6</span>, and the answer gives <span class="m">2 + 7 &minus; 15 = &minus;6</span>.
+  Same value, so the expansion is almost certainly right.</div>
+</div>
+</details>
+</section>
+
+<section id="factorising" data-nav="Factorising">
+<h2>Factorising a quadratic</h2>
+<p>Factorising is expanding run backwards: you are given <span class="m">x&sup2; + bx + c</span> and must
+find the two brackets it came from. Because the middle coefficient is the sum and the constant is the
+product, the whole job is: <b>find two numbers that multiply to <span class="m">c</span> and add to
+<span class="m">b</span></b>.</p>
+
+<div class="formula">x&sup2; + bx + c = (x + p)(x + q) &nbsp;&nbsp;where&nbsp;&nbsp; p &times; q = c &nbsp;and&nbsp; p + q = b
+<small>Product then sum &mdash; always in that order</small></div>
+
+<h3>Reading the signs before you start</h3>
+<p>The signs of <span class="m">b</span> and <span class="m">c</span> tell you the signs inside the brackets
+<i>before</i> you hunt for numbers. Learn this table and you will halve your search every time.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Sign of <span class="m">c</span></th><th>Sign of <span class="m">b</span></th><th>Signs in the brackets</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>positive</td><td>positive</td><td>both <b>+</b></td><td><span class="m">x&sup2; + 7x + 12 = (x + 3)(x + 4)</span></td></tr>
+<tr><td>positive</td><td>negative</td><td>both <b>&minus;</b></td><td><span class="m">x&sup2; &minus; 7x + 12 = (x &minus; 3)(x &minus; 4)</span></td></tr>
+<tr><td>negative</td><td>positive</td><td>one of each; the <b>larger</b> number is <b>+</b></td><td><span class="m">x&sup2; + x &minus; 12 = (x + 4)(x &minus; 3)</span></td></tr>
+<tr><td>negative</td><td>negative</td><td>one of each; the <b>larger</b> number is <b>&minus;</b></td><td><span class="m">x&sup2; &minus; x &minus; 12 = (x &minus; 4)(x + 3)</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note"><b>Note</b> When <span class="m">c</span> is negative the two numbers have opposite signs, so
+you are looking for a <b>difference</b> of <span class="m">b</span>, not a sum. For
+<span class="m">x&sup2; &minus; x &minus; 12</span> the pair 4 and 3 differ by 1, and the minus goes on the 4.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Factorise (a) <span class="m">x&sup2; &minus; 9x + 20</span>&nbsp; (b) <span class="m">x&sup2; + 2x &minus; 15</span>&nbsp; (c) <span class="m">x&sup2; &minus; x &minus; 12</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) <span class="m">c = +20</span> and <span class="m">b = &minus;9</span>,
+    so both brackets are negative. Pairs multiplying to 20: <span class="m">1&times;20, 2&times;10, 4&times;5</span>.
+    The pair adding to 9 is <span class="m">4 + 5</span>.
+    <span class="work">x&sup2; &minus; 9x + 20 = (x &minus; 4)(x &minus; 5)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) <span class="m">c = &minus;15</span>, so one bracket is plus and one is minus.
+    Pairs for 15: <span class="m">1&times;15, 3&times;5</span>. The difference must be 2, so use 5 and 3, and since
+    <span class="m">b</span> is positive the plus goes on the 5.
+    <span class="work">x&sup2; + 2x &minus; 15 = (x + 5)(x &minus; 3)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) <span class="m">c = &minus;12</span>, difference 1, so use 4 and 3.
+    <span class="m">b</span> is negative, so the minus goes on the larger number.
+    <span class="work">x&sup2; &minus; x &minus; 12 = (x &minus; 4)(x + 3)</span></div></div>
+  <div class="final">(a) (x &minus; 4)(x &minus; 5) &nbsp; (b) (x + 5)(x &minus; 3) &nbsp; (c) (x &minus; 4)(x + 3)</div>
+  <div class="tip"><b>Exam tip</b> Expand your answer mentally before moving on. For (b):
+  <span class="m">x&sup2; &minus; 3x + 5x &minus; 15 = x&sup2; + 2x &minus; 15</span> &#10003;. It costs five seconds and
+  saves the mark.</div>
+</div>
+</details>
+
+<h3>The difference of two squares</h3>
+<p>When there is <b>no <span class="m">x</span> term</b> and the constant is subtracted, you have a special
+pattern that factorises instantly. It appears in almost every paper, often disguised.</p>
+
+<div class="formula">a&sup2; &minus; b&sup2; = (a + b)(a &minus; b)
+<small>The difference of two squares</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Factorise completely (a) <span class="m">x&sup2; &minus; 49</span>&nbsp; (b) <span class="m">9x&sup2; &minus; 25</span>&nbsp; (c) <span class="m">2x&sup2; &minus; 50</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Write both parts as squares: <span class="m">x&sup2;</span> and
+    <span class="m">49 = 7&sup2;</span>.
+    <span class="work">x&sup2; &minus; 49 = (x + 7)(x &minus; 7)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) <span class="m">9x&sup2; = (3x)&sup2;</span> and <span class="m">25 = 5&sup2;</span>,
+    so <span class="m">a = 3x</span> and <span class="m">b = 5</span>.
+    <span class="work">9x&sup2; &minus; 25 = (3x + 5)(3x &minus; 5)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Neither 2 nor 50 is a square &mdash; but there is a common factor of 2.
+    Take it out <b>first</b>, then use the pattern.
+    <span class="work">2x&sup2; &minus; 50 = 2(x&sup2; &minus; 25) = 2(x + 5)(x &minus; 5)</span></div></div>
+  <div class="final">(a) (x + 7)(x &minus; 7) &nbsp; (b) (3x + 5)(3x &minus; 5) &nbsp; (c) 2(x + 5)(x &minus; 5)</div>
+  <div class="warn"><b>Watch out</b> <span class="m">x&sup2; + 49</span> does <b>not</b> factorise. Only a
+  <i>difference</i> of squares splits into brackets &mdash; a sum of two squares does not.
+  The word &ldquo;completely&rdquo; in a question is a strong hint that a common factor comes out first.</div>
+</div>
+</details>
+</section>
+
+<section id="solving" data-nav="Solving">
+<h2>Solving a quadratic by factorising</h2>
+<p>Factorising turns a quadratic <i>expression</i> into a product. The moment you have a product equal to
+zero, one simple fact finishes the question.</p>
+
+<div class="def"><b>The zero-product principle</b>
+If <span class="m">A &times; B = 0</span> then <b><span class="m">A = 0</span> or <span class="m">B = 0</span></b>
+(or both). Two numbers can only multiply to zero if at least one of them <i>is</i> zero.</div>
+
+<p>So if <span class="m">(x + 5)(x &minus; 2) = 0</span>, then either <span class="m">x + 5 = 0</span>, giving
+<span class="m">x = &minus;5</span>, or <span class="m">x &minus; 2 = 0</span>, giving <span class="m">x = 2</span>.
+Notice that the solutions have the <b>opposite</b> signs to the numbers inside the brackets.</p>
+
+<div class="card o">
+<h4>The method, every time</h4>
+<ol>
+  <li><b>Rearrange</b> so that one side reads <span class="m">ax&sup2; + bx + c</span> and the other side is <b>0</b>.</li>
+  <li><b>Factorise</b> the left-hand side.</li>
+  <li><b>Set each bracket equal to zero</b> and solve the two little linear equations.</li>
+  <li><b>State both answers</b>, using the word &ldquo;or&rdquo;.</li>
+</ol>
+</div>
+
+<div class="warn"><b>Watch out</b> Step 1 is not optional. The zero-product principle only works against
+<b>zero</b>. If <span class="m">(x + 1)(x + 2) = 6</span> you may <i>not</i> write
+<span class="m">x + 1 = 6</span> or <span class="m">x + 2 = 6</span> &mdash; expand, take the 6 across, and
+start again.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Solve (a) <span class="m">x&sup2; + 3x &minus; 10 = 0</span>&nbsp; (b) <span class="m">x&sup2; + 5x = 24</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) It is already equal to zero. Two numbers with product
+    <span class="m">&minus;10</span> and sum <span class="m">+3</span>: <span class="m">+5</span> and <span class="m">&minus;2</span>.
+    <span class="work">(x + 5)(x &minus; 2) = 0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Set each bracket to zero.
+    <span class="work">x + 5 = 0 &nbsp;&rarr;&nbsp; x = &minus;5<br>x &minus; 2 = 0 &nbsp;&rarr;&nbsp; x = 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check both in the original equation.
+    <span class="work">(&minus;5)&sup2; + 3(&minus;5) &minus; 10 = 25 &minus; 15 &minus; 10 = 0 &#10003;<br>
+    2&sup2; + 3(2) &minus; 10 = 4 + 6 &minus; 10 = 0 &#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) This one is <b>not</b> equal to zero yet. Subtract 24 from both sides first.
+    <span class="work">x&sup2; + 5x &minus; 24 = 0</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Product <span class="m">&minus;24</span>, sum <span class="m">+5</span>:
+    the pair is <span class="m">+8</span> and <span class="m">&minus;3</span>.
+    <span class="work">(x + 8)(x &minus; 3) = 0 &nbsp;&rarr;&nbsp; x = &minus;8 &nbsp;or&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Check in the <i>original</i> form <span class="m">x&sup2; + 5x = 24</span>.
+    <span class="work">(&minus;8)&sup2; + 5(&minus;8) = 64 &minus; 40 = 24 &#10003;<br>
+    3&sup2; + 5(3) = 9 + 15 = 24 &#10003;</span></div></div>
+  <div class="final">(a) x = &minus;5 or x = 2 &nbsp;&nbsp;&nbsp; (b) x = &minus;8 or x = 3</div>
+</div>
+</details>
+
+<h3>Never divide by <span class="m">x</span></h3>
+<p>Equations like <span class="m">x&sup2; = 5x</span> tempt everybody. Dividing both sides by
+<span class="m">x</span> gives <span class="m">x = 5</span> and looks finished &mdash; but you have just
+divided by something that might be zero, and in doing so you have <b>thrown away the root
+<span class="m">x = 0</span></b>. Examiners set this deliberately.</p>
+
+<div class="formula">x&sup2; = 5x &nbsp;&rarr;&nbsp; x&sup2; &minus; 5x = 0 &nbsp;&rarr;&nbsp; x(x &minus; 5) = 0 &nbsp;&rarr;&nbsp; x = 0 &nbsp;or&nbsp; x = 5
+<small>Move everything to one side and take out the common factor x</small></div>
+
+<div class="warn"><b>Watch out</b> Whenever both sides share a factor of <span class="m">x</span>, take
+<span class="m">x</span> <i>out as a factor</i> instead of dividing by it. A quadratic that is worth two
+marks nearly always wants two answers &mdash; if you have only one, suspect a lost root.</div>
+</section>
+
+<section id="graph" data-nav="The graph">
+<h2>The graph <span class="m">y = ax&sup2; + bx + c</span></h2>
+<p>Every quadratic graph is a <b>parabola</b>: a smooth, symmetrical curve with one turning point. The
+solutions of <span class="m">ax&sup2; + bx + c = 0</span> are exactly the <b>x-coordinates where the curve
+crosses the x-axis</b>, because that is where <span class="m">y = 0</span>. Solving and reading the graph
+are the same job done two ways.</p>
+
+<div class="grid two">
+  <div class="card">
+    <h4>What each letter does</h4>
+    <ul>
+      <li><span class="m">a &gt; 0</span>: the curve is <b>U-shaped</b> and has a <b>minimum</b> point.</li>
+      <li><span class="m">a &lt; 0</span>: the curve is <b>upside down</b> and has a <b>maximum</b> point.</li>
+      <li>The larger <span class="m">|a|</span> is, the narrower the curve.</li>
+      <li><span class="m">c</span> is the <b>y-intercept</b>: the curve passes through <span class="m">(0, c)</span>.</li>
+    </ul>
+  </div>
+  <div class="card p">
+    <h4>Symmetry and roots</h4>
+    <ul>
+      <li>The <b>line of symmetry</b> is vertical and sits <b>halfway between the roots</b>.</li>
+      <li>Its equation is <span class="m">x = </span><span class="frac"><span>&minus;b</span><span>2a</span></span>,
+        and the turning point lies on it.</li>
+      <li>Roots are also called <b>zeros</b> or <b>x-intercepts</b> &mdash; three names for the same thing.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card g">
+<h4>How many times can a parabola meet the x-axis?</h4>
+<svg viewBox="0 0 640 200" role="img" aria-label="Three parabolas showing two roots, one repeated root and no real roots">
+  <g>
+    <rect x="8" y="8" width="192" height="184" rx="12" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="1.5"/>
+    <line x1="20" y1="130" x2="188" y2="130" stroke="#0f2d6b" stroke-width="2"/>
+    <path d="M 36 40 Q 104 210 172 40" fill="none" stroke="#1a4fa0" stroke-width="3"/>
+    <circle cx="63" cy="130" r="5" fill="#e05c2a"/><circle cx="145" cy="130" r="5" fill="#e05c2a"/>
+    <text x="104" y="176" font-size="13" text-anchor="middle" font-weight="bold" fill="#1a4fa0">two roots</text>
+  </g>
+  <g transform="translate(216,0)">
+    <rect x="8" y="8" width="192" height="184" rx="12" fill="#f3edff" stroke="#6d28d9" stroke-width="1.5"/>
+    <line x1="20" y1="130" x2="188" y2="130" stroke="#0f2d6b" stroke-width="2"/>
+    <path d="M 36 40 Q 104 160 172 40" fill="none" stroke="#6d28d9" stroke-width="3"/>
+    <circle cx="104" cy="130" r="5" fill="#e05c2a"/>
+    <text x="104" y="176" font-size="13" text-anchor="middle" font-weight="bold" fill="#6d28d9">one repeated root</text>
+  </g>
+  <g transform="translate(432,0)">
+    <rect x="8" y="8" width="192" height="184" rx="12" fill="#fff1ea" stroke="#e05c2a" stroke-width="1.5"/>
+    <line x1="20" y1="130" x2="188" y2="130" stroke="#0f2d6b" stroke-width="2"/>
+    <path d="M 36 30 Q 104 130 172 30" fill="none" stroke="#e05c2a" stroke-width="3"/>
+    <text x="104" y="176" font-size="13" text-anchor="middle" font-weight="bold" fill="#e05c2a">no real roots</text>
+  </g>
+</svg>
+<p style="margin-bottom:0">A quadratic that will not factorise is usually one whose curve either misses the
+axis altogether or cuts it at values that are not whole numbers.</p>
+</div>
+
+<div class="tool">
+  <h4>Parabola plotter</h4>
+  <p class="hint">Drag the sliders and watch the curve. Try to make the parabola miss the x-axis, then make it
+  just touch. Notice that <span class="m">c</span> only slides the curve up and down.</p>
+  <div class="sliderbox"><div class="lab"><span>a &mdash; coefficient of x&sup2;</span><span id="qaV">1</span></div>
+    <input type="range" id="qa" min="-2" max="2" step="0.5" value="1"></div>
+  <div class="sliderbox"><div class="lab"><span>b &mdash; coefficient of x</span><span id="qbV">-2</span></div>
+    <input type="range" id="qb" min="-8" max="8" step="1" value="-2"></div>
+  <div class="sliderbox"><div class="lab"><span>c &mdash; constant term</span><span id="qcV">-3</span></div>
+    <input type="range" id="qc" min="-10" max="10" step="1" value="-3"></div>
+  <div id="qPlot" style="margin:10px 0"></div>
+  <div class="out" id="qOut"></div>
+</div>
+
+<div class="note"><b>Note</b> The plotter tells you the value of <span class="m">b&sup2; &minus; 4ac</span>.
+Positive means two roots, zero means one repeated root, negative means the curve never reaches the axis.
+You meet that expression again inside the quadratic formula in Chapter 14.</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Solve <span class="m">x&sup2; = 5x</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Move everything to one side so the other side is zero.
+    <b>Do not divide by <span class="m">x</span>.</b>
+    <span class="work">x&sup2; &minus; 5x = 0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">There is no constant term, so the common factor is
+    <span class="m">x</span> itself.
+    <span class="work">x(x &minus; 5) = 0</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Zero-product principle: the first &ldquo;bracket&rdquo; is just
+    <span class="m">x</span>.
+    <span class="work">x = 0 &nbsp;or&nbsp; x &minus; 5 = 0 &nbsp;&rarr;&nbsp; x = 5</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check both roots in <span class="m">x&sup2; = 5x</span>.
+    <span class="work">0&sup2; = 0 and 5(0) = 0 &#10003;<br>5&sup2; = 25 and 5(5) = 25 &#10003;</span></div></div>
+  <div class="final">x = 0 or x = 5</div>
+  <div class="warn"><b>Watch out</b> Dividing by <span class="m">x</span> at step 1 gives only
+  <span class="m">x = 5</span> and loses half the marks. The graph makes it obvious:
+  <span class="m">y = x&sup2; &minus; 5x</span> passes through the origin, so <span class="m">x = 0</span>
+  must be a root.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Solve <span class="m">(x + 2)(x &minus; 4) = 7</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The right-hand side is not zero, so the brackets are useless as
+    they stand. Expand the left-hand side.
+    <span class="work">x&sup2; &minus; 4x + 2x &minus; 8 = 7<br>x&sup2; &minus; 2x &minus; 8 = 7</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract 7 from both sides to get the standard form.
+    <span class="work">x&sup2; &minus; 2x &minus; 15 = 0</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Product <span class="m">&minus;15</span>, sum <span class="m">&minus;2</span>:
+    the pair is <span class="m">&minus;5</span> and <span class="m">+3</span>.
+    <span class="work">(x &minus; 5)(x + 3) = 0</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Solve each bracket, then check in the <i>original</i> equation.
+    <span class="work">x = 5: (7)(1) = 7 &#10003;<br>x = &minus;3: (&minus;1)(&minus;7) = 7 &#10003;</span></div></div>
+  <div class="final">x = 5 or x = &minus;3</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A rectangle has length <span class="m">(x + 3)</span> cm and width <span class="m">(x &minus; 2)</span> cm. Its area is 24&nbsp;cm&sup2;. Find the perimeter of the rectangle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Area of a rectangle is length &times; width, so form the equation.
+    <span class="work">(x + 3)(x &minus; 2) = 24</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Expand and rearrange to <span class="m">ax&sup2; + bx + c = 0</span>.
+    <span class="work">x&sup2; + x &minus; 6 = 24<br>x&sup2; + x &minus; 30 = 0</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Product <span class="m">&minus;30</span>, sum <span class="m">+1</span>:
+    the pair is <span class="m">+6</span> and <span class="m">&minus;5</span>.
+    <span class="work">(x + 6)(x &minus; 5) = 0 &nbsp;&rarr;&nbsp; x = &minus;6 &nbsp;or&nbsp; x = 5</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><b>Reject the impossible root.</b> If <span class="m">x = &minus;6</span>
+    the width would be <span class="m">&minus;8</span> cm, and a length cannot be negative.
+    <span class="work">x = 5</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Find the actual sides and check the area.
+    <span class="work">length = 5 + 3 = 8 cm, width = 5 &minus; 2 = 3 cm<br>8 &times; 3 = 24 cm&sup2; &#10003;</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Answer the question that was asked &mdash; the perimeter.
+    <span class="work">P = 2(8 + 3) = 22 cm</span></div></div>
+  <div class="final">perimeter = 22 cm</div>
+  <div class="tip"><b>Exam tip</b> In a context question always write one line saying why you rejected a root,
+  such as &ldquo;<span class="m">x = &minus;6</span> gives a negative width&rdquo;. Then re-read the question:
+  here the marks are for the perimeter, not for <span class="m">x</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Expand and simplify <span class="m">(x &minus; 4)(x + 7)</span>.</li>
+    <li>Factorise (a) <span class="m">x&sup2; + 9x + 18</span> &nbsp;(b) <span class="m">x&sup2; &minus; 5x &minus; 24</span> &nbsp;(c) <span class="m">x&sup2; &minus; 81</span></li>
+    <li>Solve <span class="m">x&sup2; &minus; 7x + 12 = 0</span>.</li>
+    <li>Solve <span class="m">x&sup2; = 9x &minus; 20</span>.</li>
+    <li>Solve <span class="m">2x&sup2; = 10x</span>.</li>
+    <li>The curve <span class="m">y = x&sup2; &minus; 2x &minus; 8</span> crosses the x-axis at A and B and the
+      y-axis at C. Write down the coordinates of A, B and C, and the equation of the line of symmetry.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">x&sup2; + 7x &minus; 4x &minus; 28</span> &rarr; <span class="ans">x&sup2; + 3x &minus; 28</span></li>
+      <li>(a) product 18, sum 9 &rarr; <span class="ans">(x + 3)(x + 6)</span> &nbsp;(b) product &minus;24, difference 5
+        &rarr; <span class="ans">(x &minus; 8)(x + 3)</span> &nbsp;(c) difference of two squares &rarr;
+        <span class="ans">(x + 9)(x &minus; 9)</span></li>
+      <li>Product 12, sum &minus;7 &rarr; <span class="m">(x &minus; 3)(x &minus; 4) = 0</span> &rarr;
+        <span class="ans">x = 3 or x = 4</span></li>
+      <li>Rearrange first: <span class="m">x&sup2; &minus; 9x + 20 = 0</span> &rarr;
+        <span class="m">(x &minus; 4)(x &minus; 5) = 0</span> &rarr; <span class="ans">x = 4 or x = 5</span></li>
+      <li><span class="m">2x&sup2; &minus; 10x = 0</span> &rarr; <span class="m">2x(x &minus; 5) = 0</span> &rarr;
+        <span class="ans">x = 0 or x = 5</span> (do not divide by <span class="m">x</span>)</li>
+      <li><span class="m">x&sup2; &minus; 2x &minus; 8 = (x &minus; 4)(x + 2)</span>, so the roots are 4 and &minus;2:
+        <span class="ans">A(&minus;2, 0), B(4, 0)</span>. At <span class="m">x = 0</span>,
+        <span class="m">y = &minus;8</span>, so <span class="ans">C(0, &minus;8)</span>. Halfway between the roots:
+        <span class="ans">x = 1</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>A quadratic has <span class="m">x&sup2;</span> as its highest power and is written
+      <span class="m">ax&sup2; + bx + c</span> with <span class="m">a &ne; 0</span>.</li>
+    <li>To factorise <span class="m">x&sup2; + bx + c</span>, find two numbers with <b>product
+      <span class="m">c</span></b> and <b>sum <span class="m">b</span></b>. The sign of
+      <span class="m">c</span> tells you whether the brackets have the same or different signs.</li>
+    <li><span class="m">a&sup2; &minus; b&sup2; = (a + b)(a &minus; b)</span> &mdash; and take out any common
+      factor before you look for it.</li>
+    <li>Before using the zero-product principle, <b>rearrange to = 0</b>. A product equals zero only when a
+      factor equals zero.</li>
+    <li>Each bracket gives one root, and the root has the <b>opposite sign</b> to the number in the bracket.</li>
+    <li><b>Never divide both sides by <span class="m">x</span></b> &mdash; factorise the <span class="m">x</span>
+      out instead, or you lose the root <span class="m">x = 0</span>.</li>
+    <li>The graph is a parabola: <span class="m">a &gt; 0</span> gives a minimum, <span class="m">a &lt; 0</span>
+      a maximum, the y-intercept is <span class="m">(0, c)</span>, and the roots are the x-intercepts.</li>
+    <li>The line of symmetry is <span class="m">x = </span><span class="frac"><span>&minus;b</span><span>2a</span></span>,
+      exactly halfway between the two roots.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="9-3.html"><span>&larr; Previous</span><b>9.3 Surds</b></a><a class="next" href="index.html"><span>More lessons &rarr;</span><b>All notes</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 10.2 Quadratic Expressions and Equations<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- parabola plotter ---- */
+(function(){
+  var XMIN=-6, XMAX=6, YMIN=-12, YMAX=12, PAD=32, W=640, H=460;
+  function PX(x){ return PAD + (x-XMIN)/(XMAX-XMIN)*(W-2*PAD); }
+  function PY(y){ return PAD + (YMAX-y)/(YMAX-YMIN)*(H-2*PAD); }
+  function sg(n){ return String(n).replace('-','&minus;'); }
+  function eqStr(a,b,c){
+    var s='';
+    if(a===0){ s = (b===0? '' : (b===1?'x':b===-1?'&minus;x':sg(b)+'x')); }
+    else { s = (a===1?'':a===-1?'&minus;':sg(a))+'x&sup2;';
+           if(b!==0) s += (b>0?' + ':' &minus; ') + (Math.abs(b)===1?'':Math.abs(b)) + 'x'; }
+    if(c!==0 || s===''){ s += (s===''? sg(c) : (c>0?' + ':' &minus; ') + Math.abs(c)); }
+    return 'y = '+s;
+  }
+  function curve(a,b,c){
+    var segs=[], pts=[], step=(XMAX-XMIN)/500, x, y;
+    for(x=XMIN; x<=XMAX+1e-9; x+=step){
+      y = a*x*x + b*x + c;
+      if(y>=YMIN && y<=YMAX){ pts.push(fx(PX(x),1)+','+fx(PY(y),1)); }
+      else { if(pts.length>1) segs.push(pts); pts=[]; }
+    }
+    if(pts.length>1) segs.push(pts);
+    return segs;
+  }
+  function draw(a,b,c,roots){
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Graph of the quadratic">';
+    s+='<rect x="0" y="0" width="'+W+'" height="'+H+'" rx="12" fill="#ffffff" stroke="#dfe6f3"/>';
+    var i;
+    for(i=XMIN;i<=XMAX;i++){ s+='<line x1="'+PX(i)+'" y1="'+PAD+'" x2="'+PX(i)+'" y2="'+(H-PAD)+'" stroke="#e6ecf7" stroke-width="1"/>'; }
+    for(i=YMIN;i<=YMAX;i+=2){ s+='<line x1="'+PAD+'" y1="'+PY(i)+'" x2="'+(W-PAD)+'" y2="'+PY(i)+'" stroke="#e6ecf7" stroke-width="1"/>'; }
+    /* line of symmetry */
+    if(a!==0){
+      var h=-b/(2*a);
+      if(h>XMIN && h<XMAX){
+        s+='<line x1="'+fx(PX(h),1)+'" y1="'+PAD+'" x2="'+fx(PX(h),1)+'" y2="'+(H-PAD)+
+           '" stroke="#6d28d9" stroke-width="2" stroke-dasharray="7 5"/>';
+        s+='<text x="'+fx(PX(h)+6,1)+'" y="'+(PAD+16)+'" font-size="12" fill="#6d28d9">x = '+sg(fx(h,2))+'</text>';
+      }
+    }
+    /* axes */
+    s+='<line x1="'+PAD+'" y1="'+PY(0)+'" x2="'+(W-PAD)+'" y2="'+PY(0)+'" stroke="#0f2d6b" stroke-width="2"/>';
+    s+='<line x1="'+PX(0)+'" y1="'+PAD+'" x2="'+PX(0)+'" y2="'+(H-PAD)+'" stroke="#0f2d6b" stroke-width="2"/>';
+    for(i=XMIN+1;i<=XMAX-1;i++){ if(i===0) continue;
+      s+='<text x="'+PX(i)+'" y="'+(PY(0)+16)+'" font-size="11" text-anchor="middle" fill="#4a5b7a">'+sg(i)+'</text>'; }
+    for(i=YMIN+2;i<=YMAX-2;i+=4){ if(i===0) continue;
+      s+='<text x="'+(PX(0)-8)+'" y="'+(PY(i)+4)+'" font-size="11" text-anchor="end" fill="#4a5b7a">'+sg(i)+'</text>'; }
+    s+='<text x="'+(W-PAD-4)+'" y="'+(PY(0)-8)+'" font-size="12" text-anchor="end" fill="#0f2d6b">x</text>';
+    s+='<text x="'+(PX(0)+8)+'" y="'+(PAD+12)+'" font-size="12" fill="#0f2d6b">y</text>';
+    /* curve */
+    curve(a,b,c).forEach(function(p){
+      s+='<polyline points="'+p.join(' ')+'" fill="none" stroke="#1a4fa0" stroke-width="3" stroke-linecap="round"/>';
+    });
+    /* y-intercept */
+    if(c>=YMIN && c<=YMAX){ s+='<circle cx="'+PX(0)+'" cy="'+PY(c)+'" r="5.5" fill="#16a34a"/>'; }
+    /* roots */
+    roots.forEach(function(r){
+      if(r>=XMIN && r<=XMAX){
+        s+='<circle cx="'+fx(PX(r),1)+'" cy="'+PY(0)+'" r="6" fill="#e05c2a"/>';
+        s+='<text x="'+fx(PX(r),1)+'" y="'+(PY(0)-12)+'" font-size="12" text-anchor="middle" font-weight="bold" fill="#e05c2a">'+sg(fx(r,2))+'</text>';
+      }
+    });
+    return s+'</svg>';
+  }
+  function go(){
+    var a=num('qa',1), b=num('qb',-2), c=num('qc',-3);
+    el('qaV').innerHTML=sg(a); el('qbV').innerHTML=sg(b); el('qcV').innerHTML=sg(c);
+    var roots=[], txt='';
+    if(a===0){
+      if(b!==0){ roots=[-c/b]; }
+      txt='<div><span class="hl">a = 0, so this is not a quadratic</span> &mdash; it is the straight line '+
+          eqStr(a,b,c)+'.</div>';
+      if(b!==0) txt+='<div>It cuts the x-axis once, at x = <b>'+sg(fx(-c/b,3))+'</b>.</div>';
+      el('qPlot').innerHTML=draw(a,b,c,roots); el('qOut').innerHTML=txt; return;
+    }
+    var d=b*b-4*a*c, h=-b/(2*a), k=a*h*h+b*h+c;
+    if(d>0){ roots=[(-b-Math.sqrt(d))/(2*a),(-b+Math.sqrt(d))/(2*a)]; }
+    else if(d===0){ roots=[h]; }
+    el('qPlot').innerHTML=draw(a,b,c,roots);
+    txt ='<div style="font-size:1.08rem;margin-bottom:8px"><span class="hl">'+eqStr(a,b,c)+'</span></div>';
+    txt+='<div>Shape: '+(a>0?'U-shaped, with a <b>minimum</b>':'upside down, with a <b>maximum</b>')+'</div>';
+    txt+='<div>y-intercept: <b>(0, '+sg(c)+')</b></div>';
+    txt+='<div>Line of symmetry: <b>x = '+sg(fx(h,3))+'</b> &nbsp;&middot;&nbsp; turning point ('+
+         sg(fx(h,3))+', '+sg(fx(k,3))+')</div>';
+    txt+='<div style="margin-top:6px">b&sup2; &minus; 4ac = '+sg(fx(d,3))+' &rarr; ';
+    if(d>0) txt+='two roots';
+    else if(d===0) txt+='one repeated root (the curve touches the axis)';
+    else txt+='<b>no real roots</b> &mdash; the curve never reaches the x-axis';
+    txt+='</div>';
+    if(d>0) txt+='<div>Roots: x = <b>'+sg(fx(roots[0],3))+'</b> or x = <b>'+sg(fx(roots[1],3))+'</b></div>';
+    else if(d===0) txt+='<div>Root: x = <b>'+sg(fx(roots[0],3))+'</b> (twice)</div>';
+    el('qOut').innerHTML=txt;
+  }
+  bindAll(['qa','qb','qc'],go);
+})();
+</script>
+</body>
+</html>

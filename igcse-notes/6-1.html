@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6.1 Solving Equations | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Using the balance method to solve linear equations with brackets, fractions and the unknown on both sides, and forming your own equations from words and diagrams.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 6 &mdash; Equations and Transforming Formulae</span>
+    </div>
+    <h1>6.1 &nbsp;Solving Equations</h1>
+    <p>Using the balance method to solve linear equations with brackets, fractions and the unknown on both sides, and forming your own equations from words and diagrams.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#balance">Balance</a>
+  <a href="#brackets">Both sides</a>
+  <a href="#fractions">Fractions</a>
+  <a href="#forming">Forming</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="balance" data-nav="Balance">
+<h2>The balance principle</h2>
+<p>An equation is a statement that two expressions have the <b>same value</b>. Think of the equals sign as
+the pivot of a set of scales: as long as you do <b>exactly the same thing to both sides</b>, the scales stay
+balanced and the equation stays true.</p>
+
+<div class="def"><b>Definition</b>
+To <b>solve</b> an equation is to find the value (or values) of the unknown letter that make the two sides
+equal. That value is called the <b>solution</b> or <b>root</b> of the equation.</div>
+
+<div class="card">
+<h4>Keeping the scales level</h4>
+<svg viewBox="0 0 640 300" role="img" aria-label="Balance scales showing 3x plus 4 on the left and 19 on the right, then 4 removed from both sides">
+  <line x1="320" y1="40" x2="320" y2="150" stroke="#0f2d6b" stroke-width="5"/>
+  <polygon points="320,150 288,206 352,206" fill="#0f2d6b"/>
+  <rect x="250" y="206" width="140" height="10" rx="5" fill="#0f2d6b"/>
+  <line x1="120" y1="40" x2="520" y2="40" stroke="#0f2d6b" stroke-width="6" stroke-linecap="round"/>
+  <line x1="150" y1="40" x2="150" y2="76" stroke="#0f2d6b" stroke-width="3"/>
+  <line x1="490" y1="40" x2="490" y2="76" stroke="#0f2d6b" stroke-width="3"/>
+
+  <rect x="60" y="76" width="180" height="54" rx="12" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="150" y="110" font-size="20" text-anchor="middle" fill="#0f2d6b">3x + 4</text>
+  <rect x="400" y="76" width="180" height="54" rx="12" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="490" y="110" font-size="20" text-anchor="middle" fill="#e05c2a">19</text>
+
+  <rect x="60" y="160" width="180" height="40" rx="10" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="150" y="187" font-size="16" text-anchor="middle" fill="#16a34a">take 4 off</text>
+  <rect x="400" y="160" width="180" height="40" rx="10" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="490" y="187" font-size="16" text-anchor="middle" fill="#16a34a">take 4 off</text>
+  <text x="320" y="248" font-size="15" text-anchor="middle" fill="#4a5b7a">same change to both pans, so it stays level</text>
+  <text x="320" y="280" font-size="18" text-anchor="middle" fill="#0f2d6b">3x = 15 &#8594; x = 5</text>
+</svg>
+</div>
+
+<p>To get the letter on its own you undo the operations that have been done to it, using the
+<b>inverse operation</b>, and you undo them in <b>reverse order</b>.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Operation on the unknown</th><th>Inverse you apply to both sides</th></tr></thead>
+<tbody>
+<tr><td>add <span class="m">7</span></td><td>subtract <span class="m">7</span></td></tr>
+<tr><td>subtract <span class="m">7</span></td><td>add <span class="m">7</span></td></tr>
+<tr><td>multiply by <span class="m">4</span></td><td>divide by <span class="m">4</span></td></tr>
+<tr><td>divide by <span class="m">4</span></td><td>multiply by <span class="m">4</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Solve <span class="m">5x &minus; 7 = 23</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The <span class="m">x</span> has been multiplied by 5,
+    <i>then</i> 7 has been subtracted. Undo in reverse order, so deal with the <span class="m">&minus;7</span> first:
+    add 7 to both sides.
+    <span class="work">5x &minus; 7 + 7 = 23 + 7<br>5x = 30</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now undo the multiplication: divide both sides by 5.
+    <span class="work">5x &divide; 5 = 30 &divide; 5<br>x = 6</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>Check</b> by substituting back into the
+    <i>original</i> equation.
+    <span class="work">5 &times; 6 &minus; 7 = 30 &minus; 7 = 23 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = 6</div>
+</div>
+</details>
+
+<div class="tip"><b>Exam tip</b>
+Write one line per step, with the equals signs lined up underneath each other. Method marks in Paper 2 and
+Paper 4 are given for the intermediate lines &mdash; a bare answer with no working scores nothing if it is wrong.</div>
+
+<div class="tool">
+  <h4>Balance-method stepper</h4>
+  <p class="hint">Choose the four numbers in <span class="m">ax + b = cx + d</span>, then press
+  <b>Show next step</b> to reveal the balancing one line at a time. Try
+  <span class="m">a = 3, b = &minus;4, c = &minus;2, d = 11</span>.</p>
+  <div class="row">
+    <div><label for="eqA">a</label><input type="number" id="eqA" value="5" step="1"></div>
+    <div><label for="eqB">b</label><input type="number" id="eqB" value="-7" step="1"></div>
+    <div><label for="eqC">c</label><input type="number" id="eqC" value="2" step="1"></div>
+    <div><label for="eqD">d</label><input type="number" id="eqD" value="8" step="1"></div>
+  </div>
+  <p style="margin:0 0 10px"><button class="btn" id="eqNext">Show next step</button>
+  <button class="btn ghost" id="eqBack">Start again</button></p>
+  <div class="out" id="eqOut"></div>
+</div>
+</section>
+
+<section id="brackets" data-nav="Both sides">
+<h2>Brackets, and the unknown on both sides</h2>
+<p>Two extra jobs turn up before the balancing can start.</p>
+
+<div class="grid two">
+  <div class="card"><h4>Brackets</h4>
+    <p><b>Expand first.</b> Multiply every term inside the bracket by the number outside, then collect like
+    terms. Take great care with a negative multiplier:
+    <span class="m">&minus;3(x &minus; 4) = &minus;3x + 12</span>.</p></div>
+  <div class="card o"><h4>Unknown on both sides</h4>
+    <p><b>Collect the letters on one side and the numbers on the other.</b> It is usually tidiest to move the
+    <i>smaller</i> <span class="m">x</span> term, so that the coefficient you are left with is positive.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Solve <span class="m">3(2x &minus; 5) = 4(x + 1)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Expand both brackets.
+    <span class="work">6x &minus; 15 = 4x + 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The smaller <span class="m">x</span> term is
+    <span class="m">4x</span>, so subtract <span class="m">4x</span> from both sides.
+    <span class="work">2x &minus; 15 = 4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add 15 to both sides.
+    <span class="work">2x = 19</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Divide by 2. A fraction or decimal answer is perfectly
+    acceptable &mdash; do not assume solutions must be whole numbers.
+    <span class="work">x = <span class="frac"><span>19</span><span>2</span></span> = 9.5</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t"><b>Check.</b>
+    <span class="work">LHS = 3(19 &minus; 5) = 3 &times; 14 = 42<br>RHS = 4(10.5) = 42 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = 9.5</div>
+</div>
+</details>
+
+<div class="note"><b>Note</b>
+When the <span class="m">x</span> term is negative, move <i>that</i> one. In
+<span class="m">7 &minus; 2x = 5x &minus; 14</span>, adding <span class="m">2x</span> to both sides gives
+<span class="m">7 = 7x &minus; 14</span>, then <span class="m">21 = 7x</span>, so
+<span class="m">x = 3</span>. Check: <span class="m">7 &minus; 6 = 1</span> and
+<span class="m">15 &minus; 14 = 1</span>&nbsp;&#10003;. It does not matter that the letter ended up on the
+right &mdash; <span class="m">3 = x</span> and <span class="m">x = 3</span> say the same thing.</div>
+
+<div class="warn"><b>Watch out</b>
+The commonest error in this topic is a sign slip when a term crosses the equals sign. A term that is being
+<i>subtracted</i> on one side becomes <i>added</i> on the other:
+<span class="m">7 &minus; 2x = 5x &minus; 14</span> &rarr; <span class="m">7 + 14 = 5x + 2x</span>.
+If you always write the operation you are doing at the side of the line, you will not lose track.</div>
+</section>
+
+<section id="fractions" data-nav="Fractions">
+<h2>Equations containing fractions</h2>
+<p>Fractions make an equation look worse than it is. Clear them in one move: <b>multiply every term on both
+sides by the LCM of the denominators</b>. Each denominator then cancels and you are left with an ordinary
+linear equation.</p>
+
+<div class="formula"><span class="frac"><span>x</span><span>3</span></span> +
+<span class="frac"><span>x</span><span>4</span></span> = 7 &nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+12 &times; <span class="frac"><span>x</span><span>3</span></span> + 12 &times;
+<span class="frac"><span>x</span><span>4</span></span> = 12 &times; 7 &nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+4x + 3x = 84
+<small>LCM of 3 and 4 is 12 &mdash; multiply <i>every</i> term, including the one that has no fraction</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Solve <span class="frac"><span>x + 3</span><span>3</span></span> + <span class="frac"><span>x &minus; 2</span><span>4</span></span> = 4.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The denominators are 3 and 4, so the LCM is 12.
+    Multiply every term by 12 &mdash; and put brackets round any numerator with more than one term.
+    <span class="work">12 &times; <span class="frac"><span>(x + 3)</span><span>3</span></span> + 12 &times;
+      <span class="frac"><span>(x &minus; 2)</span><span>4</span></span> = 12 &times; 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Cancel: <span class="m">12 &divide; 3 = 4</span> and
+    <span class="m">12 &divide; 4 = 3</span>.
+    <span class="work">4(x + 3) + 3(x &minus; 2) = 48</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Expand and collect like terms.
+    <span class="work">4x + 12 + 3x &minus; 6 = 48<br>7x + 6 = 48</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Subtract 6, then divide by 7.
+    <span class="work">7x = 42<br>x = 6</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t"><b>Check.</b>
+    <span class="work"><span class="frac"><span>9</span><span>3</span></span> +
+      <span class="frac"><span>4</span><span>4</span></span> = 3 + 1 = 4 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = 6</div>
+  <div class="warn"><b>Watch out</b> Those brackets in step 1 are not optional. Writing
+  <span class="m">4x + 3 + 3x &minus; 2 = 48</span> loses two marks and gives the wrong answer.</div>
+</div>
+</details>
+
+<h3>When the unknown is in the denominator</h3>
+<p>If <span class="m">x</span> sits underneath, multiply both sides by that denominator to lift it up. When
+each side is a single fraction you may go straight to <b>cross-multiplication</b>, which is the same move done
+twice:</p>
+
+<div class="formula"><span class="frac"><span>p</span><span>q</span></span> =
+<span class="frac"><span>r</span><span>s</span></span> &nbsp;&nbsp;&hArr;&nbsp;&nbsp; ps = qr
+<small>Valid provided <span class="m">q &ne; 0</span> and <span class="m">s &ne; 0</span></small></div>
+
+<div class="note"><b>Note</b>
+Always check that your solution does not make a denominator zero. If solving
+<span class="frac"><span>6</span><span>x &minus; 2</span></span> = 3 gave <span class="m">x = 2</span>, that
+value would have to be rejected, because dividing by zero is undefined.</div>
+</section>
+
+<section id="forming" data-nav="Forming">
+<h2>Forming an equation</h2>
+<p>Many marks in Paper 4 come from questions that give you a situation rather than an equation. The routine is
+always the same.</p>
+
+<div class="grid">
+  <div class="card p"><h4>1. Name the unknown</h4>
+    <p>Let <span class="m">x</span> be the quantity you are asked for &mdash; and write down what it stands
+    for, including units.</p></div>
+  <div class="card"><h4>2. Write each fact in algebra</h4>
+    <p>Translate every sentence or label into an expression in <span class="m">x</span>.</p></div>
+  <div class="card o"><h4>3. Find the equals</h4>
+    <p>Something in the question must be equal to something else: a total, a perimeter, an angle sum, two
+    equal sides.</p></div>
+  <div class="card g"><h4>4. Solve, then answer</h4>
+    <p>Solve the equation, then go back and answer the actual question &mdash; often it wants a length or an
+    angle, not <span class="m">x</span> itself.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">The three angles of a triangle are <span class="m">(2x + 10)&deg;</span>, <span class="m">(3x &minus; 25)&deg;</span> and <span class="m">(x + 15)&deg;</span>. Find the size of the largest angle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The fact that links them: angles in a triangle add up
+    to <span class="m">180&deg;</span>.
+    <span class="work">(2x + 10) + (3x &minus; 25) + (x + 15) = 180</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect like terms. Here the numbers happen to cancel:
+    <span class="m">10 &minus; 25 + 15 = 0</span>.
+    <span class="work">6x = 180</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide by 6.
+    <span class="work">x = 30</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Now answer the question &mdash; substitute back to get
+    the three angles.
+    <span class="work">2(30) + 10 = 70&deg;<br>3(30) &minus; 25 = 65&deg;<br>30 + 15 = 45&deg;</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t"><b>Check.</b>
+    <span class="work">70 + 65 + 45 = 180 &nbsp;&#10003;</span></div></div>
+  <div class="final">largest angle = 70&deg;</div>
+  <div class="tip"><b>Exam tip</b> The check is free marks-insurance: three angles that do not total
+  <span class="m">180&deg;</span> tell you instantly that something has gone wrong.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Solve <span class="frac"><span>5</span><span>2x &minus; 3</span></span> = <span class="frac"><span>2</span><span>x + 1</span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">One fraction equals one fraction, so cross-multiply.
+    <span class="work">5(x + 1) = 2(2x &minus; 3)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Expand both sides.
+    <span class="work">5x + 5 = 4x &minus; 6</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract <span class="m">4x</span> from both sides,
+    then subtract 5.
+    <span class="work">x + 5 = &minus;6<br>x = &minus;11</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><b>Check</b> &mdash; and confirm no denominator is zero.
+    <span class="work">2(&minus;11) &minus; 3 = &minus;25, so LHS = <span class="frac"><span>5</span><span>&minus;25</span></span> = &minus;0.2<br>
+      &minus;11 + 1 = &minus;10, so RHS = <span class="frac"><span>2</span><span>&minus;10</span></span> = &minus;0.2 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = &minus;11</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Solve <span class="frac"><span>2x + 1</span><span>3</span></span> &minus; <span class="frac"><span>x &minus; 4</span><span>2</span></span> = 2.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">LCM of 3 and 2 is 6. Multiply every term by 6,
+    keeping the numerators bracketed.
+    <span class="work">2(2x + 1) &minus; 3(x &minus; 4) = 12</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Expand. The <span class="m">&minus;3</span> multiplies
+    <i>both</i> terms in the second bracket, so <span class="m">&minus;3 &times; &minus;4 = +12</span>.
+    <span class="work">4x + 2 &minus; 3x + 12 = 12</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Collect like terms and subtract 14.
+    <span class="work">x + 14 = 12<br>x = &minus;2</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><b>Check.</b>
+    <span class="work"><span class="frac"><span>&minus;4 + 1</span><span>3</span></span> &minus;
+      <span class="frac"><span>&minus;2 &minus; 4</span><span>2</span></span> = &minus;1 &minus; (&minus;3) = 2 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = &minus;2</div>
+  <div class="warn"><b>Watch out</b> A minus sign in front of a fraction becomes a minus sign in front of the
+  whole bracket. Forgetting this turns <span class="m">&minus;3x + 12</span> into
+  <span class="m">&minus;3x &minus; 12</span> and the answer is lost.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A rectangle has length <span class="m">(2x + 3)</span> cm and width <span class="m">(x &minus; 1)</span> cm. Its perimeter is 40 cm. Find the area of the rectangle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Perimeter of a rectangle is
+    <span class="m">2(length + width)</span>.
+    <span class="work">2[(2x + 3) + (x &minus; 1)] = 40</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Simplify inside the bracket first.
+    <span class="work">2(3x + 2) = 40</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide both sides by 2 (cleaner than expanding), then
+    solve.
+    <span class="work">3x + 2 = 20<br>3x = 18<br>x = 6</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">The question asks for the <b>area</b>, so find the
+    two sides first.
+    <span class="work">length = 2(6) + 3 = 15 cm<br>width = 6 &minus; 1 = 5 cm</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t"><b>Check</b> the perimeter, then multiply.
+    <span class="work">2(15 + 5) = 40 &nbsp;&#10003;<br>area = 15 &times; 5 = 75</span></div></div>
+  <div class="final">area = 75 cm&sup2;</div>
+  <div class="tip"><b>Exam tip</b> Include the units in your final answer line. Area is in
+  <span class="m">cm&sup2;</span>; a missing or wrong unit can cost the accuracy mark.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Solve <span class="m">4x + 9 = 33</span>.</li>
+    <li>Solve <span class="m">3 &minus; 4x = 19</span>.</li>
+    <li>Solve <span class="m">5(x &minus; 2) = 3x + 4</span>.</li>
+    <li>Solve <span class="frac"><span>x + 5</span><span>2</span></span> +
+      <span class="frac"><span>x</span><span>3</span></span> = 9.</li>
+    <li>Solve <span class="frac"><span>6</span><span>x &minus; 2</span></span> =
+      <span class="frac"><span>4</span><span>x + 1</span></span>.</li>
+    <li>Three angles on a straight line are <span class="m">(x + 20)&deg;</span>,
+      <span class="m">(2x)&deg;</span> and <span class="m">(3x &minus; 20)&deg;</span>. Find the largest of
+      the three angles.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">4x = 24</span> &rarr; <span class="ans">x = 6</span>
+        (check: <span class="m">24 + 9 = 33</span>)</li>
+      <li><span class="m">&minus;4x = 16</span> &rarr; <span class="ans">x = &minus;4</span>
+        (check: <span class="m">3 &minus; 4(&minus;4) = 3 + 16 = 19</span>)</li>
+      <li><span class="m">5x &minus; 10 = 3x + 4</span> &rarr; <span class="m">2x = 14</span> &rarr;
+        <span class="ans">x = 7</span> (check: <span class="m">5(5) = 25 = 21 + 4</span>)</li>
+      <li>&times; 6: <span class="m">3(x + 5) + 2x = 54</span> &rarr;
+        <span class="m">5x + 15 = 54</span> &rarr; <span class="m">5x = 39</span> &rarr;
+        <span class="ans">x = 7.8</span> (check: <span class="m">12.8 &divide; 2 + 7.8 &divide; 3 = 6.4 + 2.6 = 9</span>)</li>
+      <li>Cross-multiply: <span class="m">6(x + 1) = 4(x &minus; 2)</span> &rarr;
+        <span class="m">6x + 6 = 4x &minus; 8</span> &rarr; <span class="m">2x = &minus;14</span> &rarr;
+        <span class="ans">x = &minus;7</span> (both sides equal
+        <span class="m">&minus;<span class="frac"><span>2</span><span>3</span></span></span>)</li>
+      <li>Angles on a line sum to <span class="m">180&deg;</span>:
+        <span class="m">6x = 180</span> &rarr; <span class="m">x = 30</span>, giving
+        <span class="m">50&deg;, 60&deg;, 70&deg;</span> &rarr; largest is <span class="ans">70&deg;</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Whatever you do to one side of an equation, do to the <b>other side too</b> &mdash; that is the whole
+      method.</li>
+    <li>Undo operations using <b>inverses in reverse order</b>: deal with adding and subtracting before
+      multiplying and dividing.</li>
+    <li><b>Expand brackets first</b>, then collect the letters on one side and the numbers on the other.
+      Move the smaller <span class="m">x</span> term so the coefficient stays positive.</li>
+    <li>Clear fractions by multiplying <b>every</b> term by the <b>LCM of the denominators</b>, and bracket
+      any numerator with more than one term.</li>
+    <li>If the unknown is in a denominator, multiply it up (or cross-multiply), then reject any solution that
+      would make a denominator zero.</li>
+    <li>Solutions are allowed to be negative, fractional or decimal &mdash; do not force a whole number.</li>
+    <li>Always <b>check by substituting</b> your answer into the original equation; it takes ten seconds and
+      catches nearly every sign slip.</li>
+    <li>When forming an equation, define the letter, translate each fact, find what is equal, solve, then
+      answer the question that was actually asked &mdash; with units.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="2-5.html"><span>&larr; Previous</span><b>2.5 Indices</b></a><a class="next" href="6-2.html"><span>Next &rarr;</span><b>6.2 Factorising</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 6.1 Solving Equations<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- balance-method stepper for ax + b = cx + d ---- */
+(function(){
+  var out=el('eqOut'), step=0;
+
+  function lead(v,isX){
+    var s=v<0?'&minus;':'', a=Math.abs(v);
+    return isX ? s+(a===1?'x':a+'x') : s+a;
+  }
+  function tail(v,isX){
+    if(v===0) return '';
+    var s=v<0?' &minus; ':' + ', a=Math.abs(v);
+    return isX ? s+(a===1?'x':a+'x') : s+a;
+  }
+  function side(coef,con){
+    if(coef===0) return String(con);
+    return lead(coef,true)+tail(con,false);
+  }
+  function line(txt,op){
+    return '<div style="margin:5px 0">'+txt+
+      (op?'<span style="opacity:.6;font-size:.88em">&nbsp;&nbsp;&nbsp;('+op+')</span>':'')+'</div>';
+  }
+  function dec(x){ return Math.abs(x-Math.round(x))<1e-9 ? String(Math.round(x)) : fx(x,4); }
+
+  function go(){
+    var a=num('eqA',1), b=num('eqB',0), c=num('eqC',0), d=num('eqD',0);
+    a=Math.round(a); b=Math.round(b); c=Math.round(c); d=Math.round(d);
+    var html=line('<span class="hl">'+side(a,b)+' = '+side(c,d)+'</span>');
+
+    if(a===c){
+      if(b===d) html+=line('Both sides are identical, so <b>every</b> value of x works.');
+      else html+=line('The x terms cancel and '+b+' &ne; '+d+', so there is <b>no solution</b>.');
+      out.innerHTML=html; return;
+    }
+    var A=a-c, D=d-b, x=D/A;
+
+    var xt=(Math.abs(c)===1?'x':Math.abs(c)+'x');
+    if(step>=1) html+=line(side(A,b)+' = '+d,
+      c===0 ? 'the x term is already only on the left'
+            : (c<0 ? 'add '+xt+' to both sides' : 'subtract '+xt+' from both sides'));
+    if(step>=2) html+=line(lead(A,true)+' = '+D,
+      b===0 ? 'the number is already only on the right'
+            : (b<0 ? 'add '+Math.abs(b)+' to both sides' : 'subtract '+Math.abs(b)+' from both sides'));
+    if(step>=3) html+=line('x = '+(A===1?String(D):fracStr(D,A))+
+      (Math.abs(x-Math.round(x))<1e-9?'':' = '+dec(x)),
+      A===1?'already done':'divide both sides by '+(A<0?'&minus;'+Math.abs(A):A));
+    if(step>=4){
+      html+='<div style="margin-top:10px;border-top:1px solid rgba(0,0,0,.12);padding-top:8px">'+
+        'Check with x = '+dec(x)+':<br>LHS = '+dec(a*x+b)+'&nbsp;&nbsp;&nbsp;RHS = '+dec(c*x+d)+
+        '&nbsp;&nbsp;<b>&#10003;</b></div>';
+    }
+    if(step<4) html+='<div style="margin-top:10px;opacity:.6;font-size:.9em">Press '+
+      '<b style="color:inherit">Show next step</b> to continue.</div>';
+    else html+='<div style="margin-top:10px;opacity:.6;font-size:.9em">Solved. '+
+      'Change a number, or press Start again.</div>';
+    out.innerHTML=html;
+  }
+
+  var nb=el('eqNext'), bb=el('eqBack');
+  if(nb) nb.onclick=function(){ if(step<4) step++; go(); };
+  if(bb) bb.onclick=function(){ step=0; go(); };
+  bindAll(['eqA','eqB','eqC','eqD'],function(){ step=0; go(); });
+})();
+</script>
+</body>
+</html>

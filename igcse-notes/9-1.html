@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9.1 Sequences | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Term-to-term and position-to-term rules, the nth term of linear and quadratic sequences, and the patterns of shapes they come from.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 9 &mdash; Sequences, Surds and Sets</span>
+    </div>
+    <h1>9.1 &nbsp;Sequences</h1>
+    <p>Term-to-term and position-to-term rules, the nth term of linear and quadratic sequences, and the patterns of shapes they come from.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#basics">Term rules</a>
+  <a href="#linear">Linear nth term</a>
+  <a href="#quadratic">Quadratic</a>
+  <a href="#other">Other types</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="basics" data-nav="Term rules">
+<h2>Terms, positions and rules</h2>
+<p>A <b>sequence</b> is a list of numbers in a definite order. Each number is a <b>term</b>, and each term
+has a <b>position</b> &mdash; first, second, third and so on. We write the term in position
+<span class="m">n</span> as <span class="m">T<sub>n</sub></span> or simply &ldquo;the
+<span class="m">n</span>th term&rdquo;.</p>
+
+<div class="grid two">
+  <div class="card">
+    <h4>Term-to-term rule</h4>
+    <p>Tells you how to get from one term to the <i>next</i>. It is useless on its own &mdash; you must also
+    state the <b>first term</b>.</p>
+    <p class="m">3, 7, 11, 15, &hellip;</p>
+    <p>&ldquo;Start at 3 and add 4 each time.&rdquo;</p>
+    <p>Fine for finding the 6th term. Hopeless for the 200th.</p>
+  </div>
+  <div class="card o">
+    <h4>Position-to-term rule</h4>
+    <p>A formula in <span class="m">n</span> that gives <i>any</i> term straight away. This is what
+    examiners mean by &ldquo;find the <span class="m">n</span>th term&rdquo;.</p>
+    <p class="m">T<sub>n</sub> = 4n &minus; 1</p>
+    <p><span class="m">n = 1: 3</span>, <span class="m">n = 2: 7</span>,
+    <span class="m">n = 200: 799</span> &mdash; one substitution, no listing.</p>
+  </div>
+</div>
+
+<div class="warn"><b>Watch out</b>
+&ldquo;Add 4 each time&rdquo; earns <b>no marks</b> when the question asks for the <span class="m">n</span>th
+term. The answer must be an expression containing <span class="m">n</span>.</div>
+
+<div class="def"><b>Definition</b>
+The <b>nth term</b> of a sequence is a formula in <span class="m">n</span> such that substituting
+<span class="m">n = 1, 2, 3, &hellip;</span> generates the terms in order. Positions always start at
+<span class="m">n = 1</span>, never 0.</div>
+
+<div class="tool">
+  <h4>Term generator</h4>
+  <p class="hint">Set the coefficients of <span class="m">an&sup2; + bn + c</span> and watch the sequence
+  appear. Try <span class="m">a = 0, b = 4, c = &minus;1</span>, then <span class="m">a = 1, b = 0, c = 3</span>.</p>
+  <div class="row">
+    <div><label for="tgA">a (coefficient of n&sup2;)</label><input type="number" id="tgA" value="0" step="0.5"></div>
+    <div><label for="tgB">b (coefficient of n)</label><input type="number" id="tgB" value="4"></div>
+    <div><label for="tgC">c (constant)</label><input type="number" id="tgC" value="-1"></div>
+    <div><label for="tgN">how many terms</label><input type="number" id="tgN" value="6" min="2" max="12"></div>
+  </div>
+  <div class="out" id="tgOut"></div>
+</div>
+</section>
+
+<section id="linear" data-nav="Linear nth term">
+<h2>Linear sequences</h2>
+<p>A sequence is <b>linear</b> (or arithmetic) when the difference between consecutive terms is always the
+same. That constant difference is called <span class="m">d</span>, and the first term is
+<span class="m">a</span>.</p>
+
+<div class="formula">n<sup>th</sup> term = dn + (a &minus; d)
+<small>d = common difference &nbsp;&middot;&nbsp; a = first term</small></div>
+
+<p>Why it works: the coefficient of <span class="m">n</span> must be <span class="m">d</span>, because every
+step of 1 in position produces a step of <span class="m">d</span> in value. Then
+<span class="m">a &minus; d</span> is the &ldquo;zero term&rdquo; &mdash; what would sit in front of the
+first term if the pattern were extended backwards.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Position n</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+<tbody>
+<tr><td>Term</td><td><b>2</b></td><td>5</td><td>8</td><td>11</td><td>14</td></tr>
+<tr><td>Difference</td><td colspan="5" style="text-align:center">+3 &nbsp; +3 &nbsp; +3 &nbsp; +3 &nbsp;&rarr;&nbsp; <span class="m">d = 3</span>, zero term <span class="m">= 2</span>, so <span class="m">T<sub>n</sub> = 3n + 2</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Find the <span class="m">n</span>th term of <span class="m">5, 8, 11, 14, &hellip;</span> and hence the 50th term.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the differences underneath. They are constant, so the sequence is linear.
+    <span class="work">5 &nbsp; 8 &nbsp; 11 &nbsp; 14<br>&nbsp;&nbsp;+3 &nbsp;+3 &nbsp;+3 &nbsp;&rarr;&nbsp; d = 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Use <span class="m">dn + (a &minus; d)</span> with <span class="m">a = 5</span>, <span class="m">d = 3</span>.
+    <span class="work">T<sub>n</sub> = 3n + (5 &minus; 3) = 3n + 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check with <span class="m">n = 1</span> and <span class="m">n = 4</span> before you go on.
+    <span class="work">3(1) + 2 = 5 &#10003; &nbsp;&nbsp; 3(4) + 2 = 14 &#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Substitute <span class="m">n = 50</span>.
+    <span class="work">T<sub>50</sub> = 3(50) + 2 = 152</span></div></div>
+  <div class="final">T<sub>n</sub> = 3n + 2 &nbsp;&nbsp;&middot;&nbsp;&nbsp; T<sub>50</sub> = 152</div>
+</div>
+</details>
+
+<h3>Using the rule backwards: is this number in the sequence?</h3>
+<p>To test whether a value <span class="m">k</span> appears, set the <span class="m">n</span>th term equal to
+<span class="m">k</span> and solve for <span class="m">n</span>. If <span class="m">n</span> comes out as a
+<b>positive whole number</b>, the value is a term and <span class="m">n</span> tells you which one. Any
+fraction or negative means it is not in the sequence.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">A sequence begins <span class="m">20, 17, 14, 11, &hellip;</span> (a) Find the <span class="m">n</span>th term. (b) Is <span class="m">&minus;7</span> a term? (c) Is 0 a term?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The difference is negative but still constant.
+    <span class="work">d = &minus;3, &nbsp; a = 20<br>T<sub>n</sub> = &minus;3n + (20 &minus; (&minus;3)) = &minus;3n + 23</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Check: <span class="m">n = 1</span> gives <span class="m">&minus;3 + 23 = 20</span> &#10003;
+    and <span class="m">n = 4</span> gives <span class="m">&minus;12 + 23 = 11</span> &#10003;</div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Set the rule equal to <span class="m">&minus;7</span> and solve.
+    <span class="work">&minus;3n + 23 = &minus;7<br>&minus;3n = &minus;30<br>n = 10</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(c) Now try 0.
+    <span class="work">&minus;3n + 23 = 0 &nbsp;&rarr;&nbsp; n = 23/3 = 7.67&hellip;</span>
+    Not a whole number, so 0 never appears.</div></div>
+  <div class="final">(a) 23 &minus; 3n &nbsp; (b) yes, the 10th term &nbsp; (c) no</div>
+  <div class="tip"><b>Exam tip</b> Always write the sentence &ldquo;<span class="m">n</span> is not a positive
+  integer, so it is not a term&rdquo;. The reasoning carries the mark, not just the word &ldquo;no&rdquo;.</div>
+</div>
+</details>
+
+<h3>Sequences from patterns</h3>
+<p>Pattern questions are linear sequences in disguise. Count the shapes or matchsticks, list the numbers,
+then use the same method. The constant difference is whatever <b>each new copy of the pattern adds</b>.</p>
+
+<div class="card o">
+<h4>Squares made from matchsticks</h4>
+<svg viewBox="0 0 640 180" role="img" aria-label="Three matchstick patterns: one, two and three squares in a row using 4, 7 and 10 matches">
+  <rect x="40" y="30" width="52" height="52" fill="#fff1ea" stroke="#e05c2a" stroke-width="5" stroke-linecap="round"/>
+  <text x="66" y="112" font-size="13" text-anchor="middle">Pattern 1</text>
+  <text x="66" y="132" font-size="13" text-anchor="middle" fill="#1a4fa0">4 matches</text>
+
+  <rect x="190" y="30" width="104" height="52" fill="#fff1ea" stroke="#e05c2a" stroke-width="5" stroke-linecap="round"/>
+  <line x1="242" y1="30" x2="242" y2="82" stroke="#e05c2a" stroke-width="5" stroke-linecap="round"/>
+  <text x="242" y="112" font-size="13" text-anchor="middle">Pattern 2</text>
+  <text x="242" y="132" font-size="13" text-anchor="middle" fill="#1a4fa0">7 matches</text>
+
+  <rect x="390" y="30" width="156" height="52" fill="#fff1ea" stroke="#e05c2a" stroke-width="5" stroke-linecap="round"/>
+  <line x1="442" y1="30" x2="442" y2="82" stroke="#e05c2a" stroke-width="5" stroke-linecap="round"/>
+  <line x1="494" y1="30" x2="494" y2="82" stroke="#e05c2a" stroke-width="5" stroke-linecap="round"/>
+  <text x="468" y="112" font-size="13" text-anchor="middle">Pattern 3</text>
+  <text x="468" y="132" font-size="13" text-anchor="middle" fill="#1a4fa0">10 matches</text>
+
+  <text x="320" y="164" font-size="13" text-anchor="middle" fill="#4a5b7a">each extra square costs 3 more matches</text>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">For the matchstick patterns above, (a) find the number of matches in pattern <span class="m">n</span>, (b) find which pattern uses exactly 61 matches.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) List the counts and difference them.
+    <span class="work">4 &nbsp; 7 &nbsp; 10 &nbsp; 13<br>&nbsp;&nbsp;+3 &nbsp;+3 &nbsp;+3 &nbsp;&rarr;&nbsp; d = 3, a = 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Apply the formula.
+    <span class="work">T<sub>n</sub> = 3n + (4 &minus; 3) = 3n + 1</span>
+    This matches the picture: one match to start the row, then 3 for every square.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Solve <span class="m">3n + 1 = 61</span>.
+    <span class="work">3n = 60 &nbsp;&rarr;&nbsp; n = 20</span></div></div>
+  <div class="final">(a) 3n + 1 &nbsp;&nbsp;&middot;&nbsp;&nbsp; (b) pattern 20</div>
+</div>
+</details>
+</section>
+
+<section id="quadratic" data-nav="Quadratic">
+<h2>Quadratic sequences</h2>
+<p>If the first differences are <i>not</i> constant, difference them again. When the <b>second differences</b>
+are constant the sequence is <b>quadratic</b>: its <span class="m">n</span>th term has the form
+<span class="m">an&sup2; + bn + c</span>.</p>
+
+<div class="formula">a = <span class="frac"><span>second difference</span><span>2</span></span>
+<small>then subtract an&sup2; from the sequence and finish with the linear method</small></div>
+
+<div class="card p">
+<h4>The three-step method</h4>
+<ol>
+  <li>Second difference <span class="m">&divide; 2</span> gives <span class="m">a</span>.</li>
+  <li>Work out <span class="m">an&sup2;</span> for <span class="m">n = 1, 2, 3, &hellip;</span> and
+    <b>subtract</b> it from the original terms.</li>
+  <li>What is left is always a linear sequence &mdash; find its rule <span class="m">bn + c</span> and add it on.</li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A sequence is <span class="m">3, 8, 15, 24, 35, &hellip;</span> (a) Find the <span class="m">n</span>th term. (b) Show that 168 is a term and say which one.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Build the difference table.
+    <span class="work">terms:&nbsp; 3 &nbsp; 8 &nbsp; 15 &nbsp; 24 &nbsp; 35<br>1st:&nbsp;&nbsp;&nbsp; 5 &nbsp; 7 &nbsp;&nbsp; 9 &nbsp;&nbsp; 11<br>2nd:&nbsp;&nbsp;&nbsp;&nbsp; 2 &nbsp; 2 &nbsp;&nbsp; 2</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Second difference 2, so <span class="m">a = 2 &divide; 2 = 1</span>; the <span class="m">n&sup2;</span> part is <span class="m">1n&sup2;</span>.
+    <span class="work">n&sup2;: &nbsp;1, 4, 9, 16, 25</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract <span class="m">n&sup2;</span> from the terms.
+    <span class="work">3&minus;1, 8&minus;4, 15&minus;9, 24&minus;16, 35&minus;25<br>= 2, 4, 6, 8, 10</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">That leftover is linear with <span class="m">d = 2</span> and first term 2, so it is <span class="m">2n</span>. Add the two parts.
+    <span class="work">T<sub>n</sub> = n&sup2; + 2n</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check <span class="m">n = 4</span>: <span class="m">16 + 8 = 24</span> &#10003;</div></div>
+  <div class="step"><div class="n">6</div><div class="t">(b) Solve <span class="m">n&sup2; + 2n = 168</span> as a quadratic equation.
+    <span class="work">n&sup2; + 2n &minus; 168 = 0<br>(n + 14)(n &minus; 12) = 0<br>n = &minus;14 or n = 12</span>
+    A position must be positive, so <span class="m">n = 12</span>.</div></div>
+  <div class="final">(a) T<sub>n</sub> = n&sup2; + 2n &nbsp;&nbsp;&middot;&nbsp;&nbsp; (b) 168 is the 12th term</div>
+  <div class="warn"><b>Watch out</b> Do not stop at the second difference and write &ldquo;<span class="m">a = 2</span>&rdquo;.
+  You must <b>halve</b> it. Halving is the single most-forgotten step in this topic.</div>
+</div>
+</details>
+
+<div class="note"><b>Note</b>
+Quadratic sequences come from two-dimensional patterns &mdash; areas, arrays of dots, numbers of
+diagonals, handshakes. If a pattern grows in two directions at once, expect an <span class="m">n&sup2;</span>.
+For example <span class="m">1, 3, 6, 10, 15</span> (triangular numbers) has second difference 1, giving
+<span class="m">a = &frac12;</span> and <span class="m">T<sub>n</sub> = &frac12;n&sup2; + &frac12;n =
+<span class="frac"><span>n(n + 1)</span><span>2</span></span></span>.</div>
+
+<div class="tool">
+  <h4>Sequence explorer</h4>
+  <p class="hint">Type four or five terms separated by commas. The tool builds the difference rows and works
+  out the rule the way an examiner would. Try <span class="m">2, 9, 20, 35, 54</span> or
+  <span class="m">7, 4, 1, -2</span> or <span class="m">2, 6, 18, 54</span>.</p>
+  <div class="row">
+    <div style="flex:1 1 260px"><label for="seqIn">Your terms</label>
+      <input type="text" id="seqIn" value="3, 8, 15, 24, 35" style="width:100%"></div>
+  </div>
+  <div class="out" id="seqOut"></div>
+</div>
+</section>
+
+<section id="other" data-nav="Other types">
+<h2>Cubic, geometric and Fibonacci-style sequences</h2>
+
+<div class="grid two">
+  <div class="card g">
+    <h4>Cubic sequences</h4>
+    <p>If the <b>third</b> differences are constant the rule involves <span class="m">n&sup3;</span>, and the
+    coefficient of <span class="m">n&sup3;</span> is the third difference <span class="m">&divide; 6</span>.</p>
+    <p class="m">2, 9, 28, 65, 126</p>
+    <p>1st: 7, 19, 37, 61 &nbsp;&middot;&nbsp; 2nd: 12, 18, 24 &nbsp;&middot;&nbsp; 3rd: 6, 6</p>
+    <p><span class="m">6 &divide; 6 = 1</span>, and subtracting <span class="m">n&sup3;</span> leaves
+    <span class="m">1, 1, 1, 1, 1</span>, so <span class="m">T<sub>n</sub> = n&sup3; + 1</span>.</p>
+  </div>
+  <div class="card o">
+    <h4>Geometric (exponential) sequences</h4>
+    <p>Here you <b>multiply</b> by a constant ratio <span class="m">r</span> each time, so the differences
+    never settle. Divide consecutive terms to find <span class="m">r</span>.</p>
+    <div class="formula" style="font-size:1rem;margin:8px 0">T<sub>n</sub> = ar<sup>&thinsp;n&minus;1</sup></div>
+    <p class="m">3, 6, 12, 24, &hellip;</p>
+    <p><span class="m">r = 6 &divide; 3 = 2</span>, <span class="m">a = 3</span>, so
+    <span class="m">T<sub>n</sub> = 3 &times; 2<sup>&thinsp;n&minus;1</sup></span>. Check
+    <span class="m">n = 4</span>: <span class="m">3 &times; 2&sup3; = 24</span> &#10003;</p>
+  </div>
+</div>
+
+<div class="card">
+<h4>Fibonacci-style sequences</h4>
+<p>Some sequences are defined only by a term-to-term rule that uses <b>two</b> previous terms:</p>
+<div class="formula">T<sub>n+2</sub> = T<sub>n+1</sub> + T<sub>n</sub>
+<small>each term is the sum of the two before it</small></div>
+<p>The Fibonacci sequence itself is <span class="m">1, 1, 2, 3, 5, 8, 13, 21, &hellip;</span> There is no
+simple <span class="m">n</span>th term at IGCSE, so questions instead ask you to continue the sequence or to
+find a missing early term using algebra.</p>
+<p><b>Typical question.</b> The first term is 4, the third term is 11 and each term after the second is the
+sum of the two before it. Let the second term be <span class="m">x</span>: then the third term is
+<span class="m">4 + x = 11</span>, so <span class="m">x = 7</span> and the sequence is
+<span class="m">4, 7, 11, 18, 29, &hellip;</span></p>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+Before reaching for differences, glance at the terms. If they double, triple or halve, the sequence is
+geometric and no amount of differencing will help. If they are close to the square numbers
+<span class="m">1, 4, 9, 16</span> or the cubes <span class="m">1, 8, 27, 64</span>, compare with those
+directly &mdash; <span class="m">2, 5, 10, 17</span> is simply <span class="m">n&sup2; + 1</span>.</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Find the <span class="m">n</span>th term of <span class="m">2, 9, 20, 35, 54, &hellip;</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Difference table.
+    <span class="work">terms: 2 &nbsp; 9 &nbsp; 20 &nbsp; 35 &nbsp; 54<br>1st:&nbsp;&nbsp; 7 &nbsp; 11 &nbsp; 15 &nbsp; 19<br>2nd:&nbsp;&nbsp;&nbsp; 4 &nbsp;&nbsp; 4 &nbsp;&nbsp; 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Second difference 4, so <span class="m">a = 4 &divide; 2 = 2</span>.
+    <span class="work">2n&sup2;: &nbsp;2, 8, 18, 32, 50</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract.
+    <span class="work">2&minus;2, 9&minus;8, 20&minus;18, 35&minus;32, 54&minus;50<br>= 0, 1, 2, 3, 4</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">The leftover is linear with <span class="m">d = 1</span>, first term 0, so it is
+    <span class="m">1n + (0 &minus; 1) = n &minus; 1</span>.
+    <span class="work">T<sub>n</sub> = 2n&sup2; + n &minus; 1</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check both ends.
+    <span class="work">n = 1: 2 + 1 &minus; 1 = 2 &#10003;<br>n = 5: 50 + 5 &minus; 1 = 54 &#10003;</span></div></div>
+  <div class="final">T<sub>n</sub> = 2n&sup2; + n &minus; 1</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A sequence is <span class="m">5, 10, 20, 40, &hellip;</span> (a) Write down the <span class="m">n</span>th term. (b) Find the 10th term. (c) Which term equals 1280?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The differences 5, 10, 20 are not constant, but each term is <b>double</b> the one before.
+    <span class="work">10 &divide; 5 = 2, &nbsp; 20 &divide; 10 = 2, &nbsp; 40 &divide; 20 = 2 &nbsp;&rarr;&nbsp; r = 2</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Use <span class="m">ar<sup>&thinsp;n&minus;1</sup></span> with <span class="m">a = 5</span>.
+    <span class="work">T<sub>n</sub> = 5 &times; 2<sup>&thinsp;n&minus;1</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Substitute <span class="m">n = 10</span>. The power is <span class="m">n &minus; 1 = 9</span>, not 10.
+    <span class="work">T<sub>10</sub> = 5 &times; 2<sup>9</sup> = 5 &times; 512 = 2560</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(c) Solve <span class="m">5 &times; 2<sup>&thinsp;n&minus;1</sup> = 1280</span>.
+    <span class="work">2<sup>&thinsp;n&minus;1</sup> = 256 = 2<sup>8</sup><br>n &minus; 1 = 8 &nbsp;&rarr;&nbsp; n = 9</span></div></div>
+  <div class="final">(a) 5 &times; 2<sup>&thinsp;n&minus;1</sup> &nbsp;&middot;&nbsp; (b) 2560 &nbsp;&middot;&nbsp; (c) the 9th term</div>
+  <div class="warn"><b>Watch out</b> Writing <span class="m">5 &times; 2<sup>n</sup></span> gives 10 for the
+  first term. The exponent must be <span class="m">n &minus; 1</span> so that <span class="m">n = 1</span>
+  returns the first term.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">The first four terms of a sequence are <span class="m"><span class="frac"><span>1</span><span>2</span></span>, <span class="frac"><span>2</span><span>5</span></span>, <span class="frac"><span>3</span><span>8</span></span>, <span class="frac"><span>4</span><span>11</span></span></span>. Find the <span class="m">n</span>th term and the 10th term.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Treat the numerators and denominators as two separate sequences.
+    <span class="work">numerators: 1, 2, 3, 4<br>denominators: 2, 5, 8, 11</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Numerators: <span class="m">d = 1</span>, <span class="m">a = 1</span>, so the rule is <span class="m">n</span>.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Denominators: <span class="m">d = 3</span>, <span class="m">a = 2</span>.
+    <span class="work">3n + (2 &minus; 3) = 3n &minus; 1</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Put them back together and test with <span class="m">n = 3</span>.
+    <span class="work">T<sub>n</sub> = n / (3n &minus; 1)<br>n = 3: 3/(9 &minus; 1) = 3/8 &#10003;</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Substitute <span class="m">n = 10</span>.
+    <span class="work">10/(30 &minus; 1) = 10/29</span></div></div>
+  <div class="final">T<sub>n</sub> = <span class="frac"><span>n</span><span>3n &minus; 1</span></span> &nbsp;&nbsp;&middot;&nbsp;&nbsp; T<sub>10</sub> = <span class="frac"><span>10</span><span>29</span></span></div>
+  <div class="tip"><b>Exam tip</b> Whenever a sequence of fractions appears, split it in two. Paper 4 uses this
+  structure regularly, sometimes with a quadratic on the bottom.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Find the <span class="m">n</span>th term of <span class="m">9, 13, 17, 21, &hellip;</span> and the 50th term.</li>
+    <li>A sequence begins <span class="m">100, 93, 86, 79, &hellip;</span> Find the <span class="m">n</span>th term and show whether 2 is a term.</li>
+    <li>Find the <span class="m">n</span>th term of <span class="m">4, 7, 12, 19, 28, &hellip;</span></li>
+    <li>Find the <span class="m">n</span>th term of <span class="m">0, 7, 18, 33, 52, &hellip;</span></li>
+    <li>In a sequence, each term after the second is the sum of the two terms before it. The first term is 1 and the fourth term is 11. Find the second term.</li>
+    <li>Triangles are made from matchsticks in a row: pattern 1 uses 3, pattern 2 uses 5, pattern 3 uses 7. (a) Find the number of matches in pattern <span class="m">n</span>. (b) Which pattern uses 99 matches? (c) Explain why no pattern uses exactly 100 matches.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">d = 4</span>, <span class="m">a = 9</span> &rarr; <span class="m">4n + (9 &minus; 4)</span> = <span class="ans">4n + 5</span>; <span class="m">T<sub>50</sub> = 200 + 5 =</span> <span class="ans">205</span></li>
+      <li><span class="m">d = &minus;7</span>, <span class="m">a = 100</span> &rarr; <span class="ans">107 &minus; 7n</span>. Then <span class="m">107 &minus; 7n = 2 &rarr; 7n = 105 &rarr; n = 15</span>, a positive integer, so <span class="ans">yes, the 15th term</span></li>
+      <li>1st differences 3, 5, 7, 9; 2nd difference 2 &rarr; <span class="m">a = 1</span>. Subtract <span class="m">n&sup2;</span>: <span class="m">3, 3, 3, 3, 3</span> &rarr; <span class="ans">n&sup2; + 3</span></li>
+      <li>1st differences 7, 11, 15, 19; 2nd difference 4 &rarr; <span class="m">a = 2</span>. Subtract <span class="m">2n&sup2;</span>: <span class="m">&minus;2, &minus;1, 0, 1, 2</span>, which is <span class="m">n &minus; 3</span> &rarr; <span class="ans">2n&sup2; + n &minus; 3</span></li>
+      <li>Let the second term be <span class="m">x</span>: terms are <span class="m">1, x, 1 + x, 1 + 2x</span>. So <span class="m">1 + 2x = 11 &rarr; x =</span> <span class="ans">5</span> (sequence 1, 5, 6, 11)</li>
+      <li>(a) <span class="m">d = 2</span>, <span class="m">a = 3</span> &rarr; <span class="ans">2n + 1</span> &nbsp;(b) <span class="m">2n + 1 = 99 &rarr; n =</span> <span class="ans">49</span> &nbsp;(c) <span class="m">2n + 1</span> is always <b>odd</b>, and 100 is even, so no pattern uses 100 matches</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>A <b>term-to-term</b> rule needs the first term as well; a <b>position-to-term</b> rule
+      (the <span class="m">n</span>th term) works for any position on its own.</li>
+    <li>Constant first differences &rarr; <b>linear</b>:
+      <span class="m">T<sub>n</sub> = dn + (a &minus; d)</span>.</li>
+    <li>Constant second differences &rarr; <b>quadratic</b>: halve the second difference to get
+      <span class="m">a</span>, subtract <span class="m">an&sup2;</span>, then finish the leftover linear part.</li>
+    <li>Constant third differences &rarr; <b>cubic</b>, with the coefficient of <span class="m">n&sup3;</span>
+      equal to the third difference <span class="m">&divide; 6</span>.</li>
+    <li>Multiplying by a constant ratio &rarr; <b>geometric</b>:
+      <span class="m">T<sub>n</sub> = ar<sup>&thinsp;n&minus;1</sup></span> &mdash; the power is
+      <span class="m">n &minus; 1</span>.</li>
+    <li>To test whether a number is in a sequence, set the <span class="m">n</span>th term equal to it and
+      solve; only a <b>positive integer</b> value of <span class="m">n</span> counts.</li>
+    <li>Always substitute <span class="m">n = 1</span> and one later value back into your rule before writing
+      the final answer.</li>
+    <li>For pattern questions, count the shapes first, write the number sequence, then use the ordinary methods.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="2-3.html"><span>&larr; Previous</span><b>2.3 Simplifying Expressions</b></a><a class="next" href="2-4.html"><span>Next &rarr;</span><b>2.4 Working with Brackets</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 9.1 Sequences<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- term generator ---- */
+(function(){
+  var out=el('tgOut');
+  function tidy(x){ var r=Math.round(x), v=(Math.abs(x-r)<1e-9? r : Math.round(x*1000)/1000);
+    return v<0? '&minus;'+Math.abs(v) : String(v); }
+  function rule(a,b,c){
+    var p=[];
+    function add(v,tail){
+      if(Math.abs(v)<1e-9) return;
+      var s = p.length===0 ? (v<0?'&minus;':'') : (v<0?' &minus; ':' + ');
+      var m = Math.abs(v);
+      var co = (tail && Math.abs(m-1)<1e-9) ? '' : tidy(m);
+      p.push(s+co+tail);
+    }
+    add(a,'n&sup2;'); add(b,'n'); add(c,'');
+    return p.length? p.join('') : '0';
+  }
+  function go(){
+    var a=num('tgA',0), b=num('tgB',0), c=num('tgC',0), k=Math.max(2,Math.min(12,Math.round(num('tgN',6))));
+    var t=[];
+    for(var n=1;n<=k;n++) t.push(tidy(a*n*n+b*n+c));
+    out.innerHTML='<div>Rule: <span class="hl">T<sub>n</sub> = '+rule(a,b,c)+'</span></div>'+
+      '<div style="margin-top:8px">First '+k+' terms: <b>'+t.join(', ')+'</b>&nbsp;&hellip;</div>'+
+      '<div style="margin-top:8px">T<sub>50</sub> = '+tidy(a*2500+b*50+c)+
+      '&nbsp;&nbsp;&middot;&nbsp;&nbsp;T<sub>100</sub> = '+tidy(a*10000+b*100+c)+'</div>'+
+      (Math.abs(a)<1e-9? '<div style="margin-top:8px;opacity:.7;font-size:.9em">a = 0, so this is a linear sequence: the first differences are all '+tidy(b)+'.</div>'
+        : '<div style="margin-top:8px;opacity:.7;font-size:.9em">The second differences are all '+tidy(2*a)+' &mdash; twice the value of a.</div>');
+  }
+  bindAll(['tgA','tgB','tgC','tgN'],go);
+})();
+
+/* ---- sequence explorer ---- */
+(function(){
+  var out=el('seqOut');
+  var EPS=1e-9;
+  function tidy(x){ var r=Math.round(x), v=(Math.abs(x-r)<1e-9? r : Math.round(x*1e6)/1e6);
+    return v<0? '&minus;'+Math.abs(v) : String(v); }
+  function coef(x){
+    var r=Math.round(x*2);
+    if(Math.abs(x*2-r)<1e-9 && r%2!==0) return fracStr(r,2);
+    return tidy(x);
+  }
+  function polyStr(c){
+    var names=['','n','n&sup2;','n&sup3;'], p=[];
+    for(var k=c.length-1;k>=0;k--){
+      var v=c[k]; if(Math.abs(v)<EPS) continue;
+      var s = p.length===0 ? (v<0?'&minus;':'') : (v<0?' &minus; ':' + ');
+      var m=Math.abs(v);
+      var co = (k>0 && Math.abs(m-1)<1e-9) ? '' : coef(m);
+      p.push(s+co+names[k]);
+    }
+    return p.length? p.join('') : '0';
+  }
+  function evalPoly(c,n){ var s=0; for(var k=0;k<c.length;k++) s+=c[k]*Math.pow(n,k); return s; }
+  function levels(t){
+    var L=[t.slice()];
+    for(var k=1;k<=Math.min(3,t.length-1);k++){
+      var prev=L[k-1], row=[];
+      for(var i=1;i<prev.length;i++) row.push(prev[i]-prev[i-1]);
+      L.push(row);
+    }
+    return L;
+  }
+  function constRow(r){
+    if(r.length<2) return false;
+    for(var i=1;i<r.length;i++) if(Math.abs(r[i]-r[0])>1e-7) return false;
+    return true;
+  }
+  function rowHtml(name,r){
+    return '<div><span style="display:inline-block;width:74px;opacity:.65">'+name+'</span>'+
+      r.map(tidy).join('&nbsp;&nbsp;')+'</div>';
+  }
+  function go(){
+    var raw=(el('seqIn').value||'').replace(/[^0-9eE.,+\-\/ ]/g,'');
+    var bits=raw.split(/[, ]+/).filter(function(s){ return s!==''; });
+    var t=[], i;
+    for(i=0;i<bits.length;i++){
+      var v;
+      if(bits[i].indexOf('/')>0){ var q=bits[i].split('/'); v=parseFloat(q[0])/parseFloat(q[1]); }
+      else v=parseFloat(bits[i]);
+      if(isNaN(v)){ out.innerHTML='<span class="hl">&ldquo;'+bits[i]+'&rdquo; is not a number.</span>'; return; }
+      t.push(v);
+    }
+    if(t.length<3){ out.innerHTML='<span style="opacity:.6">Enter at least three terms, separated by commas.</span>'; return; }
+
+    var L=levels(t), html='';
+    html+=rowHtml('terms',L[0]);
+    if(L[1]) html+=rowHtml('1st diff',L[1]);
+    if(L[2]&&L[2].length&&!constRow(L[1])) html+=rowHtml('2nd diff',L[2]);
+    if(L[3]&&L[3].length&&!constRow(L[1])&&!constRow(L[2])) html+=rowHtml('3rd diff',L[3]);
+    html='<div style="line-height:1.5">'+html+'</div>';
+
+    /* geometric check first */
+    var geo=true, r0=null;
+    for(i=0;i<t.length-1;i++){
+      if(Math.abs(t[i])<EPS){ geo=false; break; }
+      var r=t[i+1]/t[i];
+      if(r0===null) r0=r; else if(Math.abs(r-r0)>1e-7){ geo=false; break; }
+    }
+    if(geo && r0!==null && Math.abs(r0-1)>1e-7){
+      html+='<div style="margin-top:10px">Each term &divide; the one before gives the same ratio '+
+        '<span class="hl">r = '+tidy(r0)+'</span>, so the sequence is <b>geometric</b>.</div>'+
+        '<div style="margin-top:6px">T<sub>n</sub> = <b>'+tidy(t[0])+' &times; '+tidy(r0)+'<sup>&thinsp;n&minus;1</sup></b></div>'+
+        '<div style="margin-top:6px;opacity:.7;font-size:.9em">Check n = '+t.length+': '+
+        tidy(t[0])+' &times; '+tidy(r0)+'<sup>'+(t.length-1)+'</sup> = '+tidy(t[0]*Math.pow(r0,t.length-1))+'</div>';
+      out.innerHTML=html; return;
+    }
+
+    /* polynomial fit by finite differences */
+    var deg=-1;
+    for(i=0;i<L.length;i++){ if(constRow(L[i])){ deg=i; break; } }
+    if(deg<0){
+      html+='<div style="margin-top:10px">No row of differences is constant yet, and the ratios are not equal '+
+        'either. Add another term &mdash; or the sequence may not be linear, quadratic, cubic or geometric.</div>';
+      out.innerHTML=html; return;
+    }
+    var c=[0,0,0,0], basis=[1], fact=1, k, j;
+    for(k=0;k<=deg;k++){
+      if(k>0){
+        fact*=k;
+        var nb=[]; for(j=0;j<=basis.length;j++) nb.push(0);
+        for(j=0;j<basis.length;j++){ nb[j+1]+=basis[j]; nb[j]+=-k*basis[j]; }
+        basis=nb;
+      }
+      var d0=L[k][0]/fact;
+      for(j=0;j<basis.length;j++) c[j]+=d0*basis[j];
+    }
+    while(c.length>1 && Math.abs(c[c.length-1])<EPS) c.pop();
+
+    var why='';
+    if(deg===0) why='Every term is the same, so the sequence is <b>constant</b>.';
+    else if(deg===1) why='The first differences are all <span class="hl">'+tidy(L[1][0])+'</span>, so the sequence is '+
+      '<b>linear</b>: d = '+tidy(L[1][0])+', a = '+tidy(t[0])+', and dn + (a &minus; d) gives the rule below.';
+    else if(deg===2){
+      var A=L[2][0]/2, res=[];
+      for(i=0;i<t.length;i++) res.push(t[i]-A*(i+1)*(i+1));
+      why='The second differences are all <span class="hl">'+tidy(L[2][0])+'</span>, so the sequence is <b>quadratic</b>.'+
+        '<div style="margin-top:6px">a = '+tidy(L[2][0])+' &divide; 2 = <span class="hl">'+coef(A)+'</span></div>'+
+        '<div>Subtract '+coef(A)+'n&sup2; from the terms: '+res.map(tidy).join(',&nbsp;')+'</div>'+
+        '<div>That leftover is linear, giving '+polyStr([c[0],c[1]||0])+'.</div>';
+    }
+    else why='The third differences are all <span class="hl">'+tidy(L[3][0])+'</span>, so the sequence is '+
+      '<b>cubic</b> with n&sup3; coefficient '+tidy(L[3][0])+' &divide; 6 = '+coef(L[3][0]/6)+'.';
+
+    var chk=[]; for(i=1;i<=t.length;i++) chk.push(tidy(evalPoly(c,i)));
+    html+='<div style="margin-top:10px">'+why+'</div>'+
+      '<div style="margin-top:8px;font-size:1.05rem">T<sub>n</sub> = <b>'+polyStr(c)+'</b></div>'+
+      '<div style="margin-top:6px;opacity:.75;font-size:.9em">Check &mdash; the rule generates '+chk.join(', ')+
+      ' &nbsp;'+(chk.join(',')===t.map(tidy).join(',')?'&#10003; matches your terms':'&#10007; does not match')+'</div>'+
+      '<div style="margin-top:4px;opacity:.75;font-size:.9em">T<sub>50</sub> = '+tidy(evalPoly(c,50))+'</div>';
+    out.innerHTML=html;
+  }
+  on('seqIn',go); go();
+})();
+</script>
+</body>
+</html>

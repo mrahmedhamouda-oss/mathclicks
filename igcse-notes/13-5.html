@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13.5 Exchanging Currencies | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Reading an exchange rate correctly, converting in both directions, allowing for commission, and comparing prices across two countries.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 13 &mdash; Understanding Measurement</span>
+    </div>
+    <h1>13.5 &nbsp;Exchanging Currencies</h1>
+    <p>Reading an exchange rate correctly, converting in both directions, allowing for commission, and comparing prices across two countries.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#rates">Exchange rates</a>
+  <a href="#converting">Converting</a>
+  <a href="#commission">Commission</a>
+  <a href="#compare">Comparing</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="rates" data-nav="Exchange rates">
+<h2>What an exchange rate tells you</h2>
+<p>An <b>exchange rate</b> is a conversion rate between two currencies. It is always written as a statement
+about <b>one</b> unit of one currency, and reading which currency that is decides whether you multiply or
+divide. Get that wrong and the rest of the question collapses, so slow down for one second and read it.</p>
+
+<div class="def"><b>Definition</b>
+The exchange rate <span class="m">$1 = &euro;0.85</span> means one dollar buys 0.85 euros. The
+<b>1</b> belongs to the dollar, so every dollar you hand over comes back as 0.85 euros.</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Rate as written</th><th>One unit of&hellip;</th><th>To go that way</th><th>To come back</th></tr></thead>
+<tbody>
+<tr><td><span class="m">$1 = &euro;0.85</span></td><td>dollars</td><td>dollars &rarr; euros: <b>&times; 0.85</b></td><td>euros &rarr; dollars: <b>&divide; 0.85</b></td></tr>
+<tr><td><span class="m">&pound;1 = $1.25</span></td><td>pounds</td><td>pounds &rarr; dollars: <b>&times; 1.25</b></td><td>dollars &rarr; pounds: <b>&divide; 1.25</b></td></tr>
+<tr><td><span class="m">$1 = 3.75</span> riyals</td><td>dollars</td><td>dollars &rarr; riyals: <b>&times; 3.75</b></td><td>riyals &rarr; dollars: <b>&divide; 3.75</b></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<h4>The two directions, in one picture</h4>
+<svg viewBox="0 0 640 200" role="img" aria-label="Diagram showing dollars multiplied by 0.85 give euros, and euros divided by 0.85 give dollars">
+  <rect x="40" y="60" width="180" height="80" rx="14" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="130" y="96" font-size="16" font-weight="bold" fill="#0f2d6b" text-anchor="middle">Dollars</text>
+  <text x="130" y="120" font-size="14" fill="#4a5b7a" text-anchor="middle">$500.00</text>
+
+  <rect x="420" y="60" width="180" height="80" rx="14" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="510" y="96" font-size="16" font-weight="bold" fill="#0f2d6b" text-anchor="middle">Euros</text>
+  <text x="510" y="120" font-size="14" fill="#4a5b7a" text-anchor="middle">&euro;425.00</text>
+
+  <path d="M225 84 L410 84" stroke="#e05c2a" stroke-width="3" fill="none"/>
+  <path d="M410 84 l-13 -6 l0 12 z" fill="#e05c2a"/>
+  <text x="317" y="72" font-size="14" font-weight="bold" fill="#e05c2a" text-anchor="middle">&times; 0.85</text>
+
+  <path d="M415 120 L230 120" stroke="#6d28d9" stroke-width="3" fill="none"/>
+  <path d="M230 120 l13 -6 l0 12 z" fill="#6d28d9"/>
+  <text x="322" y="142" font-size="14" font-weight="bold" fill="#6d28d9" text-anchor="middle">&divide; 0.85</text>
+
+  <text x="320" y="180" font-size="12.5" fill="#4a5b7a" text-anchor="middle">Rate: $1 = &euro;0.85</text>
+</svg>
+</div>
+
+<div class="tip"><b>Exam tip</b> Money answers in 0580 are given to <b>2 decimal places</b> unless the question
+says otherwise. Write <span class="m">&euro;425.00</span>, not <span class="m">&euro;425</span>, and
+<span class="m">$68.40</span>, not <span class="m">$68.4</span>. Do not round part-way through a multi-step
+question &mdash; keep the full figure in your calculator and round only at the end.</div>
+</section>
+
+<section id="converting" data-nav="Converting">
+<h2>Multiplying, dividing, and the sense check</h2>
+<p>There are only two operations available, so if you are unsure, ask yourself a single question
+<b>before</b> you touch the calculator:</p>
+
+<div class="formula">Should the answer be a <b>bigger</b> number or a <b>smaller</b> number?
+<small>The sense check that saves the mark</small></div>
+
+<p>If one dollar is worth less than one euro (<span class="m">$1 = &euro;0.85</span>), then any amount in
+euros is a <b>smaller number</b> than the same value in dollars. So dollars <span class="m">&rarr;</span>
+euros must shrink the number: multiply by 0.85. Euros <span class="m">&rarr;</span> dollars must grow it:
+divide by 0.85. The number changes, the value does not.</p>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">The exchange rate is <span class="m">$1 = &euro;0.85</span>. Convert $250 into euros.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The rate is written for <b>one dollar</b>, and we are
+    starting in dollars, so multiply.
+    <span class="work">250 &times; 0.85</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Sense check: 0.85 is less than 1, so the answer should
+    be a smaller number than 250. It is.
+    <span class="work">= 212.5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write money to 2 decimal places.
+    <span class="work">&euro;212.50</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by converting back.
+    <span class="work">212.50 &divide; 0.85 = 250 &nbsp;&#10003;</span></div></div>
+  <div class="final">&euro;212.50</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Using the same rate <span class="m">$1 = &euro;0.85</span>, convert &euro;340 into dollars.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">This time we are starting in euros, which is
+    <i>not</i> the currency the rate is written for. So we undo the multiplication: divide.
+    <span class="work">340 &divide; 0.85</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Sense check: one dollar is worth only 0.85 euros, so
+    a dollar is the <i>weaker</i> unit and it takes more dollars to hold the same value. The answer must
+    therefore be a <b>bigger</b> number than 340.
+    <span class="work">= 400</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check by converting back.
+    <span class="work">400 &times; 0.85 = 340 &nbsp;&#10003;</span></div></div>
+  <div class="final">$400.00</div>
+  <div class="warn"><b>Watch out</b> Multiplying by mistake gives
+  <span class="m">340 &times; 0.85 = 289</span>, which looks perfectly respectable. Only the sense check
+  catches it, so do the sense check every single time.</div>
+</div>
+</details>
+
+<h3>Rates given the other way round</h3>
+<p>The same relationship can always be written from either currency's point of view, and the two rates are
+<b>reciprocals</b>.</p>
+
+<div class="formula">&pound;1 = $1.25 &nbsp;&hArr;&nbsp; $1 = &pound;<span class="frac"><span>1</span><span>1.25</span></span> = &pound;0.80
+<small>1.25 &times; 0.80 = 1, as it must be</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">The rate is <span class="m">&pound;1 = $1.25</span>. (a) Write the rate in the form <span class="m">$1 = &pound;&hellip;</span> (b) Convert $90 into pounds, using each version of the rate.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Divide both sides by 1.25 so the dollar side
+    becomes 1.
+    <span class="work">$1 = &pound;(1 &divide; 1.25) = &pound;0.80</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Using <span class="m">$1 = &pound;0.80</span> we
+    start in the currency the rate is written for, so multiply.
+    <span class="work">90 &times; 0.80 = 72</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Using <span class="m">&pound;1 = $1.25</span> we are
+    starting in the other currency, so divide. Same answer, as it must be.
+    <span class="work">90 &divide; 1.25 = 72</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by converting back.
+    <span class="work">72 &times; 1.25 = 90 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) $1 = &pound;0.80 &nbsp;&nbsp;&nbsp; (b) &pound;72.00</div>
+  <div class="tip"><b>Exam tip</b> If a rate makes you nervous, rewrite it so that the <b>1</b> sits on the
+  currency you are starting from. Then you always multiply, and there is nothing left to get wrong.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Currency converter</h4>
+  <p class="hint">Set your own rate and amount. The tool shows the multiplication, the inverse rate, the
+  division that undoes it, and any commission taken. Try switching the direction with the same amount.</p>
+  <div class="row">
+    <div><label for="ccA">Currency A</label><input type="text" id="ccA" value="dollars" style="width:120px"></div>
+    <div><label for="ccB">Currency B</label><input type="text" id="ccB" value="euros" style="width:120px"></div>
+    <div><label for="ccRate">Rate: 1 A = ? B</label><input type="number" id="ccRate" value="0.85" step="0.01"></div>
+  </div>
+  <div class="row">
+    <div><label for="ccAmt">Amount to change</label><input type="number" id="ccAmt" value="600" step="10"></div>
+    <div><label for="ccDir">Direction</label>
+      <select id="ccDir"><option value="ab">A &rarr; B</option><option value="ba">B &rarr; A</option></select></div>
+    <div><label for="ccCom">Commission (%)</label><input type="number" id="ccCom" value="0" step="0.5"></div>
+    <div><label for="ccFee">Fixed bank charge</label><input type="number" id="ccFee" value="0" step="0.5"></div>
+  </div>
+  <div class="out" id="ccOut"></div>
+</div>
+</section>
+
+<section id="commission" data-nav="Commission">
+<h2>Commission and bank charges</h2>
+<p>A bank does not swap your money for free. It takes either a <b>percentage commission</b>, a
+<b>fixed charge</b>, or both. The charge is normally taken in the currency you are handing over, so the
+usual order is: <b>subtract the charge first, then convert what is left</b>.</p>
+
+<div class="grid two">
+  <div class="card o"><h4>Percentage commission</h4>
+    <p>A commission of <span class="m">2.5%</span> leaves you with
+    <span class="m">100% &minus; 2.5% = 97.5%</span> of your money.</p>
+    <div class="formula">amount left = amount &times; 0.975</div>
+    <p>Use the multiplier, not two separate steps &mdash; it is faster and safer.</p></div>
+  <div class="card p"><h4>Fixed charge</h4>
+    <p>A flat fee such as <span class="m">$3.50</span> is simply subtracted, whatever the size of the
+    transaction.</p>
+    <div class="formula">amount left = amount &minus; 3.50</div>
+    <p>Fixed charges hurt small exchanges much more than large ones.</p></div>
+</div>
+
+<div class="note"><b>Note</b> For a <i>percentage</i> commission it does not matter whether the bank takes it
+before or after converting &mdash; multiplication is commutative, so
+<span class="m">(600 &times; 0.975) &times; 0.85</span> and <span class="m">(600 &times; 0.85) &times; 0.975</span>
+give the same answer. For a <i>fixed</i> charge the order matters a great deal, so read the question
+carefully to see which currency the fee is charged in.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A bank changes dollars into euros at <span class="m">$1 = &euro;0.85</span> and charges 2.5% commission. How many euros does a customer receive for $600?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The commission is taken from the dollars, leaving
+    97.5%.
+    <span class="work">600 &times; 0.975 = 585</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Convert what is left. The rate is written for one
+    dollar and we are starting in dollars, so multiply.
+    <span class="work">585 &times; 0.85 = 497.25</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The other order gives the same result &mdash; useful
+    as a check.
+    <span class="work">600 &times; 0.85 = 510<br>510 &times; 0.975 = 497.25 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check the conversion by reversing it.
+    <span class="work">497.25 &divide; 0.85 = 585 &nbsp;&#10003;</span></div></div>
+  <div class="final">&euro;497.25</div>
+  <div class="warn"><b>Watch out</b> Commission of 2.5% does <b>not</b> mean you multiply by 0.25 or by
+  2.5. Convert the percentage to a multiplier first: <span class="m">1 &minus; 0.025 = 0.975</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="compare" data-nav="Comparing">
+<h2>Comparing prices in two countries</h2>
+<p>&ldquo;Which is cheaper?&rdquo; questions look harder than they are. You cannot compare 520 of one
+currency with 430 of another, so the method is always the same:</p>
+
+<div class="card g">
+<h4>The method</h4>
+<ol>
+  <li>Choose <b>one</b> currency to work in &mdash; usually the one the question asks the final answer in.</li>
+  <li>Convert the other price into that currency.</li>
+  <li>Compare the two numbers and state clearly which is cheaper.</li>
+  <li>Subtract to find the difference, and give it <b>in the currency the question asked for</b>.</li>
+</ol>
+</div>
+
+<div class="warn"><b>Watch out</b> A question is not finished until you have <i>answered</i> it. Writing
+&ldquo;<span class="m">$505.88</span>&rdquo; scores the calculation mark but not the conclusion mark. Write
+the sentence: &ldquo;the camera is cheaper in France, by $14.12&rdquo;.</div>
+
+<div class="tool">
+  <h4>Which country is cheaper?</h4>
+  <p class="hint">Enter the same item's price in two countries and the exchange rate. The tool converts both
+  prices into each currency so you can see the comparison work either way round.</p>
+  <div class="row">
+    <div><label for="cpA">Currency A</label><input type="text" id="cpA" value="dollars" style="width:120px"></div>
+    <div><label for="cpB">Currency B</label><input type="text" id="cpB" value="euros" style="width:120px"></div>
+    <div><label for="cpRate">Rate: 1 A = ? B</label><input type="number" id="cpRate" value="0.85" step="0.01"></div>
+  </div>
+  <div class="row">
+    <div><label for="cpPa">Price in country A</label><input type="number" id="cpPa" value="520" step="10"></div>
+    <div><label for="cpPb">Price in country B</label><input type="number" id="cpPb" value="430" step="10"></div>
+  </div>
+  <div class="out" id="cpOut"></div>
+</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">A camera costs $520 in the USA and &euro;430 in France. The exchange rate is <span class="m">$1 = &euro;0.85</span>. In which country is the camera cheaper, and by how much in dollars?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The answer is wanted in dollars, so work in dollars.
+    Convert the French price: we are starting in euros, so divide.
+    <span class="work">430 &divide; 0.85 = 505.882&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Keep the full figure for now, but see immediately that
+    it is below $520.
+    <span class="work">&euro;430 = $505.88 (2 d.p.)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract to find the difference, using the unrounded
+    value and rounding only at the end.
+    <span class="work">520 &minus; 505.882&hellip; = 14.117&hellip;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check the same comparison in euros.
+    <span class="work">520 &times; 0.85 = 442.00<br>442.00 &minus; 430 = &euro;12.00<br>12 &divide; 0.85 = $14.12 &nbsp;&#10003;</span></div></div>
+  <div class="final">Cheaper in France, by $14.12</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A bank changes dollars to euros at <span class="m">$1 = &euro;0.85</span>. It charges a fixed fee of $2.00 plus commission of 1.5% of the amount changed. How many euros does a customer receive for $800?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Work out the commission in dollars.
+    <span class="work">1.5% of 800 = 0.015 &times; 800 = 12.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the fixed fee to get the total charge.
+    <span class="work">12.00 + 2.00 = $14.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract the charge from the amount handed over.
+    <span class="work">800 &minus; 14 = $786.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Convert the remainder. Starting in dollars, so
+    multiply.
+    <span class="work">786 &times; 0.85 = 668.10</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check by converting back.
+    <span class="work">668.10 &divide; 0.85 = 786 &nbsp;&#10003;</span></div></div>
+  <div class="final">&euro;668.10</div>
+  <div class="warn"><b>Watch out</b> Do not apply the 1.5% to the euros and the $2.00 to the dollars in the
+  same calculation unless the question says so. Deal with both charges in the currency being handed over.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Aisha changes $1000 into euros at <span class="m">$1 = &euro;0.85</span> with 2% commission. She spends &euro;233 on holiday. She changes the rest back into dollars at <span class="m">&euro;1 = $1.15</span>, again with 2% commission. How many dollars does she receive?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Commission first: 2% taken means 98% remains.
+    <span class="work">1000 &times; 0.98 = $980.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Convert to euros &mdash; starting in dollars and the
+    rate is per dollar, so multiply.
+    <span class="work">980 &times; 0.85 = &euro;833.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Take off what she spends.
+    <span class="work">833 &minus; 233 = &euro;600.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Commission on the way back, again 98% remaining.
+    <span class="work">600 &times; 0.98 = &euro;588.00</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Convert to dollars. The new rate is written per euro
+    and we are starting in euros, so multiply.
+    <span class="work">588 &times; 1.15 = 676.20</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Check by converting back.
+    <span class="work">676.20 &divide; 1.15 = 588 &nbsp;&#10003;</span></div></div>
+  <div class="final">$676.20</div>
+  <div class="note"><b>Why the two rates differ</b> The rate to buy euros
+  (<span class="m">$1 = &euro;0.85</span>, i.e. <span class="m">&euro;1 = $1.176&hellip;</span>) is not the
+  rate to sell them (<span class="m">&euro;1 = $1.15</span>). That gap, plus the commission, is how the bank
+  makes its money &mdash; which is why changing money there and back always leaves you worse off.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>The rate is <span class="m">$1 = 3.75</span> riyals. Convert $340 into riyals.</li>
+    <li>Using the same rate, convert 2550 riyals into dollars.</li>
+    <li>The rate is <span class="m">&pound;1 = $1.25</span>. (a) Write it in the form
+      <span class="m">$1 = &pound;&hellip;</span> (b) Convert $150 into pounds.</li>
+    <li>A bank changes dollars into euros at <span class="m">$1 = &euro;0.85</span> and charges 3%
+      commission. How many euros does a customer get for $400?</li>
+    <li>A jacket costs $96 in the USA and &euro;78 in Spain, with <span class="m">$1 = &euro;0.85</span>.
+      Which is cheaper, and by how much in dollars?</li>
+    <li>Omar changes $2000 into rupees at <span class="m">$1 = 82</span> rupees, paying 1.5% commission.
+      He spends 119540 rupees, then changes the rest back at <span class="m">$1 = 84</span> rupees with no
+      further charge. How many dollars does he receive?</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>Starting in dollars, so multiply: <span class="m">340 &times; 3.75</span> =
+        <span class="ans">1275.00 riyals</span> (check: <span class="m">1275 &divide; 3.75 = 340</span>).</li>
+      <li>Starting in riyals, so divide: <span class="m">2550 &divide; 3.75</span> =
+        <span class="ans">$680.00</span> (check: <span class="m">680 &times; 3.75 = 2550</span>).</li>
+      <li>(a) <span class="m">1 &divide; 1.25</span> = <span class="ans">$1 = &pound;0.80</span>;
+        (b) <span class="m">150 &times; 0.80 = 150 &divide; 1.25</span> = <span class="ans">&pound;120.00</span>
+        (check: <span class="m">120 &times; 1.25 = 150</span>).</li>
+      <li>3% commission leaves 97%: <span class="m">400 &times; 0.97 = 388</span>, then
+        <span class="m">388 &times; 0.85</span> = <span class="ans">&euro;329.80</span>
+        (check: <span class="m">329.80 &divide; 0.85 = 388</span>).</li>
+      <li><span class="m">78 &divide; 0.85 = 91.7647&hellip;</span> = $91.76, which is less than $96, so
+        <span class="ans">cheaper in Spain by $4.24</span>
+        (check in euros: <span class="m">96 &times; 0.85 = 81.60</span>,
+        <span class="m">81.60 &minus; 78 = &euro;3.60</span>, and
+        <span class="m">3.60 &divide; 0.85 = 4.24</span>).</li>
+      <li><span class="m">2000 &times; 0.985 = 1970</span>, then
+        <span class="m">1970 &times; 82 = 161540</span> rupees.
+        <span class="m">161540 &minus; 119540 = 42000</span> rupees left.
+        Coming back, divide: <span class="m">42000 &divide; 84</span> = <span class="ans">$500.00</span>
+        (check: <span class="m">500 &times; 84 = 42000</span>).</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Read which currency the <b>1</b> belongs to. Starting in that currency you <b>multiply</b>; starting
+      in the other one you <b>divide</b>.</li>
+    <li>Always do the <b>sense check</b>: decide whether the answer should be a bigger or a smaller number
+      before you calculate.</li>
+    <li>Rewriting a rate the other way round means taking the <b>reciprocal</b>:
+      <span class="m">&pound;1 = $1.25</span> is the same as <span class="m">$1 = &pound;0.80</span>.</li>
+    <li>Check every conversion by <b>converting back</b> &mdash; it takes five seconds and catches the
+      multiply/divide error.</li>
+    <li>Turn a commission into a <b>multiplier</b>: 2% commission means <span class="m">&times; 0.98</span>.
+      A fixed bank charge is simply subtracted, usually before converting.</li>
+    <li>For a percentage commission the order does not matter; for a <b>fixed charge</b> it does, so note
+      which currency the fee is in.</li>
+    <li>To compare prices in two countries, convert both into the <b>same</b> currency, then state which is
+      cheaper <i>and</i> the difference.</li>
+    <li>Give money to <b>2 decimal places</b>, and do not round until the final line of the working.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="13-4.html"><span>&larr; Previous</span><b>13.4 Conversion Graphs</b></a><a class="next" href="3-1.html"><span>Next &rarr;</span><b>3.1 Lines and Angles</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 13.5 Exchanging Currencies<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- currency converter with commission ---- */
+(function(){
+  function clean(s){ return String(s||'').replace(/[<>&]/g,''); }
+  function go(){
+    var A=clean(el('ccA').value)||'A', B=clean(el('ccB').value)||'B';
+    var r=num('ccRate',0.85), amt=num('ccAmt',0), com=num('ccCom',0), fee=num('ccFee',0);
+    var out=el('ccOut');
+    if(!(r>0)){ out.innerHTML='<span class="hl">The exchange rate must be greater than zero.</span>'; return; }
+    var ab = el('ccDir').value==='ab';
+    var from = ab?A:B, to = ab?B:A;
+    var comAmt = amt*com/100, charge = fee+comAmt;
+    var net = amt-charge;
+    if(net<0) net=0;
+    var res = ab ? net*r : net/r;
+    var s='';
+    s+='<div style="margin-bottom:8px">Rate: <span class="hl">1 '+A+' = '+fx(r,6)+' '+B+'</span>'+
+       ' &nbsp;&middot;&nbsp; the same rate the other way: 1 '+B+' = '+fx(1/r,6)+' '+A+'</div>';
+    s+='<div>Changing <span class="hl">'+money(amt)+' '+from+'</span> into '+to+'.</div>';
+    if(com){ s+='<div style="margin-top:6px">Commission '+fx(com,3)+'% of '+money(amt)+' = '+money(comAmt)+' '+from+'</div>'; }
+    if(fee){ s+='<div style="margin-top:6px">Fixed charge: '+money(fee)+' '+from+'</div>'; }
+    if(charge){ s+='<div style="margin-top:6px">Left to change: '+money(amt)+' &minus; '+money(charge)+' = '+money(net)+' '+from+'</div>'; }
+    s+='<div style="margin-top:6px">Convert: '+money(net)+(ab?' &times; ':' &divide; ')+fx(r,6)+' = <b>'+money(res)+' '+to+'</b></div>';
+    s+='<div style="margin-top:6px;opacity:.85">Check by converting back: '+money(res)+
+       (ab?' &divide; ':' &times; ')+fx(r,6)+' = '+money(net)+' '+from+' &#10003;</div>';
+    if(charge){
+      s+='<div style="margin-top:6px;opacity:.85">Total charges: '+money(charge)+' '+from+
+         ' ('+fx(amt?100*charge/amt:0,2)+'% of the amount changed).</div>';
+    }
+    out.innerHTML=s;
+  }
+  bindAll(['ccA','ccB','ccRate','ccAmt','ccDir','ccCom','ccFee'],go);
+})();
+
+/* ---- which country is cheaper ---- */
+(function(){
+  function clean(s){ return String(s||'').replace(/[<>&]/g,''); }
+  function go(){
+    var A=clean(el('cpA').value)||'A', B=clean(el('cpB').value)||'B';
+    var r=num('cpRate',0.85), pa=num('cpPa',0), pb=num('cpPb',0);
+    var out=el('cpOut');
+    if(!(r>0)){ out.innerHTML='<span class="hl">The exchange rate must be greater than zero.</span>'; return; }
+    var pbInA = pb/r, paInB = pa*r;
+    var s='';
+    s+='<div style="margin-bottom:8px">Rate: <span class="hl">1 '+A+' = '+fx(r,6)+' '+B+'</span></div>';
+    s+='<div><b>Working in '+A+':</b> country A costs '+money(pa)+', country B costs '+
+       money(pb)+' &divide; '+fx(r,6)+' = '+money(pbInA)+'</div>';
+    s+='<div style="margin-top:6px"><b>Working in '+B+':</b> country B costs '+money(pb)+
+       ', country A costs '+money(pa)+' &times; '+fx(r,6)+' = '+money(paInB)+'</div>';
+    var d=Math.abs(pa-pbInA);
+    if(Math.abs(pa-pbInA)<0.005){
+      s+='<div style="margin-top:8px">The two prices are <b>the same</b> once converted.</div>';
+    } else {
+      var cheaper = pbInA<pa ? 'country B' : 'country A';
+      s+='<div style="margin-top:8px">Cheaper in <b>'+cheaper+'</b>, by <b>'+money(d)+' '+A+'</b>'+
+         ' (the same as '+money(d*r)+' '+B+').</div>';
+    }
+    out.innerHTML=s;
+  }
+  bindAll(['cpA','cpB','cpRate','cpPa','cpPb'],go);
+})();
+</script>
+</body>
+</html>
