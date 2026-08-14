@@ -65,6 +65,43 @@ Notes:
 - Optional `"image": "assets/images/filename.png"` for diagram questions (put the file in `assets/images/`).
 - New lesson files must also be listed in `data/manifest.json` (all 53 curriculum lessons are already there).
 
+## Question banks and "Test Me"
+
+Every American Pathway lesson has a **question bank** in `data/bank/<lesson-id>.json`
+— 22–25 questions in the same format as above. The bank powers two things:
+
+- the **"Test your understanding"** panel on the lesson page (practice 10, practice
+  all, or exam mode — questions and answer options are reshuffled on every run);
+- the **Test Me** page at `#/test`, where a student ticks any lessons they like,
+  picks how many questions per lesson (3 / 5 / 10 / all) and a mode, and gets a
+  freshly built test with a per-lesson score breakdown and a full review.
+
+When a lesson has a bank it REPLACES the short quiz in `data/topics/<lesson>.json`
+on the lesson page, so the topic file's `questions` array is only a fallback.
+
+To add or edit questions, either edit the bank JSON directly or use the helper:
+
+```bash
+python3 -c "
+import sys; sys.path.insert(0, 'tools')
+from bankutil import add_questions
+add_questions('10-1-circles-and-circumference', [
+  ('easy', r'What is the diameter of a circle with radius \$7\$?',
+   [r'\$14\$', r'\$3.5\$', r'\$49\$', r'\$7\pi\$'], 'A', r'\$d = 2r = 14\$.'),
+])"
+```
+
+`bankutil.write_bank(...)` replaces a whole bank; `add_questions(...)` appends.
+Both validate every question (choice count, duplicate options, answer letter in
+range, non-empty explanation) and fail loudly on a typo. Pass `None` for the
+choices and a list of accepted answers to make a grid-in question.
+
+Write questions so the **correct answer is first** — the site shuffles the options
+on every run, so their order in the file does not matter. Options like
+"none of these" are automatically pinned last.
+
+After editing a bank, run `python3 tools/build-index.py` so the counts update.
+
 ## Publishing checklist
 
 Before pushing content changes live:
