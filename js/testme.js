@@ -44,15 +44,18 @@
 
   const sample = (arr, n) => (n >= arr.length ? shuffle(arr) : shuffle(arr).slice(0, n));
 
-  // Choices whose wording depends on their position must not be reordered.
-  const positional = (c) => /\b(above|below|both\s+[a-e]\b|neither|all of these|none of these)\b/i.test(c);
+  // "All of the above", "neither", "none of these" only make sense at the end
+  // of the list, so they stay pinned last while everything else is shuffled.
+  const anchored = (c) => /\b(above|below|both\s+[a-e]\b|neither|all of these|none of these)\b/i.test(c);
 
   function shuffleChoices(q) {
     if (q.type === "grid-in" || !Array.isArray(q.choices)) return q;
-    if (q.choices.some(positional)) return q;
     const correct = q.choices[LETTERS.indexOf(q.answer)];
     if (correct === undefined) return q;
-    const choices = shuffle(q.choices);
+    const free = q.choices.filter((c) => !anchored(c));
+    const pinned = q.choices.filter(anchored);
+    if (free.length < 2) return q;
+    const choices = shuffle(free).concat(pinned);
     return Object.assign({}, q, { choices, answer: LETTERS[choices.indexOf(correct)] });
   }
 
@@ -674,5 +677,6 @@
     return true;
   }
 
-  window.MathClicksTest = { renderPage, practice, stop, loadBank };
+  // _shuffleChoices is exposed for quick console checks of the shuffling rules
+  window.MathClicksTest = { renderPage, practice, stop, loadBank, _shuffleChoices: shuffleChoices };
 })();

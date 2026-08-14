@@ -777,7 +777,7 @@ function gamePromoCard() {
 // ---------- Test Me — custom tests from the question bank (js/testme.js) ----------
 
 const TESTME_CSS = "css/testme.css?v=1";
-const TESTME_JS = "js/testme.js?v=1";
+const TESTME_JS = "js/testme.js?v=3";
 
 function loadTestMe() {
   return Promise.all([
