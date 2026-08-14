@@ -671,12 +671,30 @@ function revisionNotesCard() {
   return card;
 }
 
+function questionBankCard() {
+  const card = el("a", "pp-card");
+  card.href = "igcse-question-bank/index.html";
+  card.appendChild(el("div", "pp-card-icon", "📝"));
+  const body = el("div", "pp-card-body");
+  body.appendChild(el("div", "pp-card-title", "Topical Question Bank"));
+  body.appendChild(el("div", "pp-card-sub",
+    "Original exam-style questions for every topic — print a paper, try it under exam conditions, then mark it with the full worked answers and mark scheme."));
+  const meta = el("div", "pp-card-meta");
+  meta.appendChild(el("span", "pp-card-chip", "49 topics"));
+  meta.appendChild(el("span", "pp-card-chip", "490 questions · 1902 marks"));
+  body.appendChild(meta);
+  card.appendChild(body);
+  card.appendChild(el("div", "pp-card-go", "Open →"));
+  return card;
+}
+
 function renderIgcse() {
   main.replaceChildren();
   main.appendChild(backLink("#/", "← Home"));
   main.appendChild(el("h2", "page-title", "IGCSE Math"));
   main.appendChild(el("p", "page-sub", "Cambridge IGCSE 0580 (Extended) — pick a module to begin."));
   main.appendChild(revisionNotesCard());
+  main.appendChild(questionBankCard());
   const ig = igcseTopics();
   if (!ig.length) {
     const box = el("div", "empty-note big");
