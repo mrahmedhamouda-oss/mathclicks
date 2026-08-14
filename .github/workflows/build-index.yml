@@ -1,0 +1,37 @@
+# Safety net: if a push changes lesson data but forgets to regenerate
+# data/index.json (see README "Regenerating the lesson index"), this workflow
+# regenerates it and commits the result, so the cards and search never show
+# stale counts.
+name: Rebuild lesson index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/topics/**"
+      - "data/manifest.json"
+      - "tools/build-index.py"
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate data/index.json
+        run: python3 tools/build-index.py
+
+      - name: Commit if changed
+        run: |
+          if ! git diff --quiet data/index.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/index.json
+            git commit -m "Regenerate lesson index"
+            git push
+          else
+            echo "index.json already up to date"
+          fi
