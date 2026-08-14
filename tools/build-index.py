@@ -18,6 +18,14 @@ DATA = os.path.join(ROOT, "data")
 
 manifest = json.load(open(os.path.join(DATA, "manifest.json"), encoding="utf-8"))
 
+def bank_size(topic_id):
+    """How many questions data/bank/<id>.json holds (0 if there is no bank)."""
+    path = os.path.join(DATA, "bank", topic_id + ".json")
+    if not os.path.exists(path):
+        return 0
+    return len(json.load(open(path, encoding="utf-8")).get("questions", []))
+
+
 topics = []
 for fname in manifest["topics"]:
     t = json.load(open(os.path.join(DATA, "topics", fname), encoding="utf-8"))
@@ -37,6 +45,7 @@ for fname in manifest["topics"]:
         "vidCount": len(t.get("videos", [])),
         "ppCount": len(pp_items),
         "ppVidCount": sum(1 for it in pp_items if str(it.get("video") or "").strip()),
+        "bankCount": bank_size(t["id"]),
     })
 
 out = os.path.join(DATA, "index.json")

@@ -1,0 +1,187 @@
+/* MathClicks — "Test Me" builder + question-bank practice.
+   Loaded on demand (see loadCssOnce in js/app.js). Everything is built from
+   the site's CSS variables so dark mode works with no extra rules. */
+
+/* ---------- builder card ---------- */
+
+.tm-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.1rem 1.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.tm-step { display: flex; align-items: center; gap: .6rem; margin: 1.4rem 0 .7rem; }
+.tm-step:first-child { margin-top: .2rem; }
+.tm-step-n {
+  flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  background: var(--navy); color: #fff; display: grid; place-items: center;
+  font-family: var(--font-head); font-weight: 800; font-size: .9rem;
+}
+.tm-step-t { font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; color: var(--navy); }
+
+.tm-quick { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .7rem; }
+.tm-mini {
+  border: 1px solid var(--line); background: var(--chip-bg); color: var(--navy);
+  border-radius: 999px; padding: .3rem .8rem; font-size: .82rem; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+}
+.tm-mini:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ---------- lesson picker ---------- */
+
+.tm-modules { display: flex; flex-direction: column; gap: .55rem; }
+.tm-module { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.tm-mod-head {
+  display: flex; align-items: center; gap: .6rem; cursor: pointer;
+  padding: .6rem .8rem; background: var(--chip-bg);
+}
+.tm-mod-name { font-family: var(--font-head); font-weight: 700; font-size: .95rem; color: var(--navy); flex: 1; }
+.tm-mod-count { font-size: .78rem; color: var(--muted); white-space: nowrap; }
+
+.tm-lessons { display: flex; flex-direction: column; }
+.tm-lesson {
+  display: flex; align-items: center; gap: .6rem; cursor: pointer;
+  padding: .5rem .8rem .5rem 1.5rem; border-top: 1px solid var(--line);
+}
+.tm-lesson:hover { background: var(--blue-soft); }
+.tm-lesson-name { flex: 1; font-size: .9rem; color: var(--ink); line-height: 1.35; }
+.tm-lesson-name strong { color: var(--blue); margin-right: .25rem; }
+.tm-lesson-count { font-size: .74rem; color: var(--muted); white-space: nowrap; }
+
+.tm-mod-head input, .tm-lesson input { width: 1.05rem; height: 1.05rem; accent-color: var(--blue); flex: none; }
+
+/* ---------- chips / mode picker ---------- */
+
+.tm-chips { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; }
+.tm-chip {
+  border: 2px solid var(--line); background: var(--card); color: var(--navy);
+  border-radius: 999px; padding: .38rem 1rem; font-weight: 700; font-size: .88rem;
+  cursor: pointer; font-family: inherit;
+}
+.tm-chip:hover { border-color: var(--blue); }
+.tm-chip.on { border-color: var(--blue); background: var(--blue); color: #fff; }
+.tm-time { margin-top: .9rem; }
+.tm-time-label { font-size: .85rem; color: var(--muted); font-weight: 700; margin-right: .2rem; }
+
+.tm-modes { display: grid; grid-template-columns: 1fr; gap: .5rem; }
+@media (min-width: 640px) { .tm-modes { grid-template-columns: 1fr 1fr; } }
+.tm-mode {
+  text-align: left; border: 2px solid var(--line); background: var(--card);
+  border-radius: 14px; padding: .7rem .85rem; cursor: pointer; font-family: inherit;
+  display: flex; flex-direction: column; gap: .2rem;
+}
+.tm-mode:hover { border-color: var(--blue); }
+.tm-mode.on { border-color: var(--blue); background: var(--blue-soft); }
+.tm-mode-name { font-family: var(--font-head); font-weight: 700; color: var(--navy); }
+.tm-mode-desc { font-size: .82rem; color: var(--muted); line-height: 1.4; }
+
+/* ---------- sticky start bar ----------
+   Sticks under the navbar (not to the bottom) so it never collides with the
+   floating Formulas / Ask-Mr-Hamouda buttons in the bottom-right corner. */
+
+.tm-bar {
+  position: sticky; top: 68px; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+  box-shadow: var(--shadow-lift); padding: .5rem .55rem .5rem 1.1rem;
+  margin-bottom: 1.4rem;
+}
+.tm-summary { font-weight: 700; color: var(--navy); font-size: .9rem; }
+.tm-bar .btn { white-space: nowrap; }
+.tm-bar .btn:disabled { opacity: .5; cursor: default; }
+
+/* ---------- test runner ---------- */
+
+.tm-run-head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin: .2rem 0 .5rem; }
+.tm-run-title { font-family: var(--font-head); font-weight: 700; color: var(--navy); }
+.tm-clock { font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tm-clock.low { color: var(--bad); }
+.tm-meter { height: 8px; background: var(--chip-bg); border-radius: 999px; overflow: hidden; margin-bottom: 1rem; }
+.tm-meter-fill { height: 100%; width: 0; background: var(--blue); border-radius: 999px; transition: width .25s ease; }
+
+.tm-tag {
+  font-size: .72rem; font-weight: 800; padding: .14rem .55rem; border-radius: 999px;
+  background: var(--blue-soft); color: var(--blue);
+}
+.choice.picked { border-color: var(--blue); background: var(--blue-soft); }
+.tm-time-taken { font-size: .85rem; color: var(--muted); margin-top: .5rem; }
+
+/* ---------- per-lesson breakdown ---------- */
+
+.tm-break { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.2rem; }
+.tm-break-row { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
+.tm-break-name { flex: 1 1 12rem; min-width: 0; font-size: .88rem; }
+.tm-break-link { color: var(--navy); text-decoration: none; font-weight: 600; }
+.tm-break-link:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.tm-break-bar { flex: 1 1 6rem; height: 9px; background: var(--chip-bg); border-radius: 999px; overflow: hidden; }
+.tm-break-fill { height: 100%; border-radius: 999px; }
+.tm-break-fill.good { background: var(--good); }
+.tm-break-fill.ok { background: var(--gold, #f5a623); }
+.tm-break-fill.low { background: var(--bad); }
+.tm-break-score { font-weight: 800; font-size: .85rem; color: var(--navy); min-width: 3rem; text-align: right; }
+
+/* ---------- review list ---------- */
+
+.tm-review { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.2rem; }
+.tm-rev { border: 1px solid var(--line); border-radius: 12px; background: var(--card); overflow: hidden; }
+.tm-rev.bad { border-color: var(--bad); }
+.tm-rev.skip { border-style: dashed; }
+.tm-rev-sum {
+  display: flex; align-items: center; gap: .5rem; padding: .55rem .8rem;
+  cursor: pointer; list-style: none; font-size: .88rem;
+}
+.tm-rev-sum::-webkit-details-marker { display: none; }
+.tm-rev-mark { flex: none; }
+.tm-rev-q { font-weight: 800; color: var(--muted); flex: none; }
+.tm-rev-prompt { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tm-rev-body { padding: .2rem .9rem .9rem; border-top: 1px solid var(--line); }
+.tm-rev-full { margin: .7rem 0; font-weight: 600; }
+.tm-rev-line { font-size: .88rem; margin: .2rem 0; color: var(--ink); }
+.tm-rev-line.good { color: var(--good); font-weight: 700; }
+.tm-rev-why { margin-top: .6rem; padding: .6rem .75rem; background: var(--chip-bg); border-radius: 10px; font-size: .89rem; line-height: 1.55; }
+.tm-rev-link { display: inline-block; margin-top: .7rem; font-weight: 700; font-size: .85rem; color: var(--blue); text-decoration: none; }
+.tm-rev-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- history ---------- */
+
+.tm-history { display: flex; flex-direction: column; gap: .45rem; margin-bottom: 1.4rem; }
+.tm-hist {
+  display: flex; align-items: center; gap: .8rem; padding: .6rem .85rem;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--card);
+}
+.tm-hist-score { font-family: var(--font-head); font-weight: 800; padding: .2rem .6rem; border-radius: 999px; font-size: .85rem; }
+.tm-hist-score.good { background: var(--good-soft); color: var(--good); }
+.tm-hist-score.ok { background: var(--chip-bg); color: var(--navy); }
+.tm-hist-score.low { background: var(--bad-soft); color: var(--bad); }
+.tm-hist-mid { flex: 1; min-width: 0; }
+.tm-hist-title { font-weight: 600; font-size: .9rem; }
+.tm-hist-sub { font-size: .78rem; color: var(--muted); }
+.tm-hist-pct { font-weight: 800; color: var(--muted); }
+
+/* ---------- lesson-page question bank ---------- */
+
+.tm-bank {
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--card);
+  box-shadow: var(--shadow); padding: 1rem 1.1rem 1.1rem; margin-bottom: 1.2rem;
+}
+.tm-bank-title { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; color: var(--navy); }
+.tm-bank-sub { font-size: .87rem; color: var(--muted); margin: .3rem 0 .8rem; line-height: 1.5; }
+.tm-bank-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+/* ---------- home / lesson entry card ---------- */
+
+.tm-promo {
+  display: flex; align-items: center; gap: .9rem; text-decoration: none;
+  border: 1px solid var(--line); border-left: 5px solid var(--gold, #f5a623);
+  border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow);
+  padding: .9rem 1rem; margin-bottom: 1.1rem; transition: transform .15s ease, box-shadow .15s ease;
+}
+.tm-promo:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+.tm-promo-icon { font-size: 1.8rem; flex: none; }
+.tm-promo-body { flex: 1; min-width: 0; }
+.tm-promo-title { font-family: var(--font-head); font-weight: 700; color: var(--navy); }
+.tm-promo-sub { font-size: .86rem; color: var(--muted); line-height: 1.45; }
+.tm-promo-go { font-weight: 800; color: var(--blue); flex: none; }

@@ -92,7 +92,7 @@ const domainSlug = moduleSlug;
 
 // These read the precomputed counts in data/index.json summaries.
 // lessonQuiz counts the self-marking quiz built into an embedded lesson page.
-const qCount = (t) => t.questionCount || t.lessonQuiz || 0;
+const qCount = (t) => t.bankCount || t.questionCount || t.lessonQuiz || 0;
 const pastPaperCount = (t) => t.ppCount || 0;
 const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
 const domClass = (domain) => "dom-" + domainSlug(domain);
@@ -140,14 +140,16 @@ function route() {
   const view = parts[0] || "home";
   const param = decodeURIComponent(parts[1] || "");
   window.scrollTo(0, 0);
-  // Leaving the game? Kill its timers before the DOM goes away.
+  // Leaving the game or a test? Kill their timers before the DOM goes away.
   if (window.MathClicksGame) window.MathClicksGame.stop();
+  if (window.MathClicksTest) window.MathClicksTest.stop();
   main.dataset.view = view === "about" ? "home" : view;
   if (view === "module") renderModule(param);
   else if (view === "topic") renderTopic(param);
   else if (view === "modules") renderModules();
   else if (view === "igcse") renderIgcse();
   else if (view === "game") renderGame();
+  else if (view === "test") renderTest();
   else renderHome();
   setActiveNav(view, routeTrack(view, param));
   typeset(main);
@@ -181,6 +183,7 @@ function setActiveNav(view, track) {
     else if (nav === "ap") active = track === "ap";
     else if (nav === "about") active = view === "about";
     else if (nav === "game") active = view === "game";
+    else if (nav === "test") active = view === "test";
     else active = view === "home";
     a.classList.toggle("active", active);
     if (active) a.setAttribute("aria-current", "page");
@@ -771,6 +774,53 @@ function gamePromoCard() {
   return a;
 }
 
+// ---------- Test Me — custom tests from the question bank (js/testme.js) ----------
+
+const TESTME_CSS = "css/testme.css?v=1";
+const TESTME_JS = "js/testme.js?v=1";
+
+function loadTestMe() {
+  return Promise.all([
+    loadCssOnce("testme-css", TESTME_CSS),
+    loadScriptOnce("testme-js", TESTME_JS),
+  ]);
+}
+
+async function renderTest() {
+  main.replaceChildren();
+  main.appendChild(backLink("#/modules", "← American Pathway"));
+  const note = el("div", "empty-note", "Loading the test builder…");
+  main.appendChild(note);
+  try {
+    await loadTestMe();
+  } catch {
+    note.textContent = "The test builder didn't load — please refresh the page.";
+    return;
+  }
+  // Bail out if the student navigated elsewhere while it downloaded
+  if ((location.hash || "#/").slice(2).split("/")[0] !== "test") return;
+  note.remove();
+  window.MathClicksTest.renderPage(main);
+  typeset(main);
+}
+
+// How many bank questions a lesson has (from data/index.json)
+const bankCount = (t) => t.bankCount || 0;
+
+// Entry card for the Test Me builder
+function testPromoCard() {
+  const a = el("a", "tm-promo");
+  a.href = "#/test";
+  a.appendChild(el("span", "tm-promo-icon", "🎯"));
+  const body = el("div", "tm-promo-body");
+  body.appendChild(el("div", "tm-promo-title", "Test Me"));
+  body.appendChild(el("div", "tm-promo-sub",
+    "Choose any lessons you like and build your own test — practice mode or timed exam mode, with a full review at the end."));
+  a.appendChild(body);
+  a.appendChild(el("span", "tm-promo-go", "Build a test →"));
+  return a;
+}
+
 function renderModules() {
   main.replaceChildren();
   main.appendChild(backLink("#/", "← Home"));
@@ -782,6 +832,7 @@ function renderModules() {
     return;
   }
   main.appendChild(statsStrip(ap));
+  if (ap.some((t) => bankCount(t) > 0)) main.appendChild(testPromoCard());
   for (const m of moduleList(ap)) main.appendChild(moduleCard(m));
 }
 
@@ -1319,7 +1370,10 @@ async function renderTopic(id) {
     renderPastPapers(t);
   }
 
-  if (t.questions.length) {
+  // The question bank supersedes the short built-in quiz and every placeholder
+  if (bankCount(meta)) {
+    // rendered below
+  } else if (t.questions.length) {
     main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
     const quiz = { topic: t, i: 0, correct: 0 };
     const holder = el("div");
@@ -1333,6 +1387,17 @@ async function renderTopic(id) {
     main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
     main.appendChild(el("div", "empty-note",
       "Past-paper practice is coming soon — for now, use the self-check quiz at the end of the lesson."));
+  }
+
+  // Question bank: 20–30 questions per lesson, shuffled on every run
+  if (bankCount(meta)) {
+    main.appendChild(el("h3", "section-title", "📝 Test your understanding"));
+    const host = el("div");
+    main.appendChild(host);
+    loadTestMe()
+      .then(() => window.MathClicksTest.practice(host, t))
+      .catch(() => host.appendChild(el("div", "empty-note",
+        "The question bank didn't load — please refresh the page.")));
   }
 
   // route() typesets before the lesson finishes downloading — run again now
