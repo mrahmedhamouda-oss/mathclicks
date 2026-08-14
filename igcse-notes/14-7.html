@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>14.7 Algebraic Fractions | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Simplifying, multiplying, dividing, adding and subtracting fractions with algebra in them, and solving equations that contain them.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 14 &mdash; Further Solving of Equations and Inequalities</span>
+    </div>
+    <h1>14.7 &nbsp;Algebraic Fractions</h1>
+    <p>Simplifying, multiplying, dividing, adding and subtracting fractions with algebra in them, and solving equations that contain them.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#simplify">Simplifying</a>
+  <a href="#multdiv">Multiply, divide</a>
+  <a href="#addsub">Add, subtract</a>
+  <a href="#equations">Equations</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="simplify" data-nav="Simplifying">
+<h2>Simplifying an algebraic fraction</h2>
+<p>An <b>algebraic fraction</b> is a fraction with algebra on the top, the bottom, or both. Everything you know
+about ordinary fractions still applies &mdash; the only new skill is that you must <b>factorise before you can
+cancel</b>.</p>
+
+<div class="def"><b>The golden rule</b>
+You may cancel a <b>factor</b> that appears in the whole of the top and the whole of the bottom.
+You may <b>never</b> cancel a <b>term</b> &mdash; something that is only part of a sum.</div>
+
+<div class="warn"><b>Watch out &mdash; the single most common error in this topic</b>
+<div class="formula" style="margin:10px 0"><span class="frac"><span>x + 3</span><span>x + 6</span></span>
+&nbsp;<b>&ne;</b>&nbsp; <span class="frac"><span>1</span><span>2</span></span></div>
+The 3 and the 6 are <i>terms</i>, not factors, so they cannot be cancelled. Substitute
+<span class="m">x = 5</span>: the left side is <span class="frac"><span>8</span><span>11</span></span>
+<span class="m">= 0.727&hellip;</span> and the right side is <span class="m">0.5</span>. Different numbers, so the
+cancelling was illegal.</div>
+
+<div class="grid two">
+  <div class="card g"><h4>Allowed &mdash; cancelling a factor</h4>
+    <p><span class="frac"><span>3(x + 2)</span><span>(x + 2)(x + 3)</span></span> =
+    <span class="frac"><span>3</span><span>x + 3</span></span></p>
+    <p style="margin-bottom:0">The bracket <span class="m">(x + 2)</span> multiplies everything above and
+    everything below, so it divides out.</p></div>
+  <div class="card o"><h4>Not allowed &mdash; cancelling a term</h4>
+    <p><span class="frac"><span>x + 2</span><span>x + 3</span></span> is <b>already</b> in its simplest form.</p>
+    <p style="margin-bottom:0">The <span class="m">x</span>s are joined to the numbers by <span class="m">+</span>,
+    not by <span class="m">&times;</span>. Nothing here is a common factor.</p></div>
+</div>
+
+<div class="note"><b>Method</b> Factorise the numerator fully, factorise the denominator fully, then cancel any
+bracket (or number) that appears in both. If nothing factorises, the fraction is already simplest.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Simplify (a) <span class="frac"><span>x&sup2; &minus; 9</span><span>x&sup2; + 7x + 12</span></span> &nbsp;(b) <span class="frac"><span>3x + 6</span><span>x&sup2; + 5x + 6</span></span> &nbsp;(c) <span class="frac"><span>2x&sup2; + 7x + 3</span><span>x&sup2; &minus; 9</span></span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The top is a difference of two squares; the bottom needs two numbers with product 12 and sum 7.
+    <span class="work"><span class="frac"><span>(x &minus; 3)(x + 3)</span><span>(x + 3)(x + 4)</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Cancel the common factor <span class="m">(x + 3)</span>.
+    <span class="work">= <span class="frac"><span>x &minus; 3</span><span>x + 4</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) The top has a numerical common factor; the bottom factorises.
+    <span class="work"><span class="frac"><span>3(x + 2)</span><span>(x + 2)(x + 3)</span></span> =
+    <span class="frac"><span>3</span><span>x + 3</span></span></span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(c) Use the ac method on the top: <span class="m">ac = 6</span>, sum 7, so 6 and 1.
+    <span class="work">2x&sup2; + 6x + x + 3 = 2x(x + 3) + 1(x + 3) = (x + 3)(2x + 1)</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">The bottom is a difference of two squares. Cancel <span class="m">(x + 3)</span>.
+    <span class="work"><span class="frac"><span>(x + 3)(2x + 1)</span><span>(x &minus; 3)(x + 3)</span></span> =
+    <span class="frac"><span>2x + 1</span><span>x &minus; 3</span></span></span></div></div>
+  <div class="final">(a) <span class="frac"><span>x &minus; 3</span><span>x + 4</span></span> &nbsp;&nbsp;
+    (b) <span class="frac"><span>3</span><span>x + 3</span></span> &nbsp;&nbsp;
+    (c) <span class="frac"><span>2x + 1</span><span>x &minus; 3</span></span></div>
+  <div class="tip"><b>Exam tip</b> Test your answer with a number. In (c), put <span class="m">x = 5</span> into the
+  original: <span class="m">(50 + 35 + 3) &divide; (25 &minus; 9) = 88 &divide; 16 = 5.5</span>. Into the answer:
+  <span class="m">11 &divide; 2 = 5.5</span>. Equal, so the simplification is safe.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Cancel check &mdash; does it actually work?</h4>
+  <p class="hint">Move the slider and watch the numbers. The top row is the illegal cancel; the bottom row is a
+  legal one. Only one of them keeps the value of the fraction.</p>
+  <div class="sliderbox"><div class="lab"><span>x</span><span id="ccVal">5</span></div>
+  <input type="range" id="ccX" min="2" max="12" step="1" value="5"></div>
+  <div class="out" id="ccOut"></div>
+</div>
+</section>
+
+<section id="multdiv" data-nav="Multiply, divide">
+<h2>Multiplying and dividing</h2>
+<p>These are the easy operations &mdash; there is no common denominator to find. Factorise everything first,
+cancel across the multiplication, then write what is left.</p>
+
+<div class="formula"><span class="frac"><span>a</span><span>b</span></span> &times;
+<span class="frac"><span>c</span><span>d</span></span> =
+<span class="frac"><span>ac</span><span>bd</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+<span class="frac"><span>a</span><span>b</span></span> &divide;
+<span class="frac"><span>c</span><span>d</span></span> =
+<span class="frac"><span>a</span><span>b</span></span> &times;
+<span class="frac"><span>d</span><span>c</span></span>
+<small>To divide, turn the second fraction upside down and multiply</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Simplify <span class="frac"><span>x&sup2; &minus; 4</span><span>x + 1</span></span> &times; <span class="frac"><span>3x + 3</span><span>x &minus; 2</span></span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Factorise every top and every bottom.
+    <span class="work"><span class="frac"><span>(x &minus; 2)(x + 2)</span><span>x + 1</span></span> &times;
+    <span class="frac"><span>3(x + 1)</span><span>x &minus; 2</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Cancel <span class="m">(x &minus; 2)</span> and <span class="m">(x + 1)</span> &mdash; with multiplication
+    you may cancel any top against any bottom.
+    <span class="work">= (x + 2) &times; 3</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write the answer neatly. Leaving it factorised is fine.
+    <span class="work">= 3(x + 2) &nbsp;&nbsp;or&nbsp;&nbsp; 3x + 6</span></div></div>
+  <div class="final">3(x + 2)</div>
+  <div class="note"><b>Check</b> At <span class="m">x = 5</span> the original is
+  <span class="m">(21 &divide; 6) &times; (18 &divide; 3) = 3.5 &times; 6 = 21</span>, and
+  <span class="m">3(5 + 2) = 21</span>. &#10003;</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Simplify <span class="frac"><span>x&sup2; + 5x + 6</span><span>x&sup2; &minus; 1</span></span> &divide; <span class="frac"><span>x + 3</span><span>x &minus; 1</span></span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Turn the second fraction upside down and change &divide; to &times;.
+    <span class="work"><span class="frac"><span>x&sup2; + 5x + 6</span><span>x&sup2; &minus; 1</span></span> &times;
+    <span class="frac"><span>x &minus; 1</span><span>x + 3</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now factorise.
+    <span class="work"><span class="frac"><span>(x + 2)(x + 3)</span><span>(x &minus; 1)(x + 1)</span></span> &times;
+    <span class="frac"><span>x &minus; 1</span><span>x + 3</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Cancel <span class="m">(x + 3)</span> and <span class="m">(x &minus; 1)</span>.
+    <span class="work">= <span class="frac"><span>x + 2</span><span>x + 1</span></span></span></div></div>
+  <div class="final"><span class="frac"><span>x + 2</span><span>x + 1</span></span></div>
+  <div class="warn"><b>Watch out</b> Invert <b>only</b> the fraction after the division sign, and do it
+  <i>before</i> you start cancelling. Cancelling across a &divide; sign is not allowed.</div>
+</div>
+</details>
+</section>
+
+<section id="addsub" data-nav="Add, subtract">
+<h2>Adding and subtracting</h2>
+<p>Fractions can only be added when they have the same denominator. With algebra the safe common denominator is
+the <b>product of the two denominators</b>, unless they share a factor.</p>
+
+<div class="formula"><span class="frac"><span>a</span><span>x + p</span></span> +
+<span class="frac"><span>b</span><span>x + q</span></span> =
+<span class="frac"><span>a(x + q) + b(x + p)</span><span>(x + p)(x + q)</span></span>
+<small>Cross-multiply the tops; multiply the bottoms</small></div>
+
+<div class="warn"><b>Watch out</b> When you subtract, the whole of the second numerator is being taken away, so
+put it in a bracket: <span class="m">a(x + q) &minus; b(x + p)</span>. Forgetting to change the sign of the second
+term inside that bracket is the classic lost mark.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Write as a single fraction (a) <span class="frac"><span>x</span><span>x + 1</span></span> + <span class="frac"><span>3</span><span>x &minus; 2</span></span> &nbsp;(b) <span class="frac"><span>3</span><span>x &minus; 1</span></span> &minus; <span class="frac"><span>2</span><span>x + 4</span></span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The common denominator is <span class="m">(x + 1)(x &minus; 2)</span>.
+    Multiply each numerator by the denominator it is missing.
+    <span class="work"><span class="frac"><span>x(x &minus; 2) + 3(x + 1)</span><span>(x + 1)(x &minus; 2)</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Expand the top only. Leave the bottom in brackets &mdash; it is more useful factorised.
+    <span class="work">x&sup2; &minus; 2x + 3x + 3 = x&sup2; + x + 3</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The top does not factorise, so this is the final answer.
+    <span class="work">= <span class="frac"><span>x&sup2; + x + 3</span><span>(x + 1)(x &minus; 2)</span></span></span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) Same start, but subtract &mdash; and bracket the second numerator.
+    <span class="work"><span class="frac"><span>3(x + 4) &minus; 2(x &minus; 1)</span><span>(x &minus; 1)(x + 4)</span></span></span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Expand carefully: <span class="m">&minus;2 &times; (&minus;1) = +2</span>.
+    <span class="work">3x + 12 &minus; 2x + 2 = x + 14</span></div></div>
+  <div class="final">(a) <span class="frac"><span>x&sup2; + x + 3</span><span>(x + 1)(x &minus; 2)</span></span>
+    &nbsp;&nbsp;&nbsp; (b) <span class="frac"><span>x + 14</span><span>(x &minus; 1)(x + 4)</span></span></div>
+  <div class="tip"><b>Check with a number</b> (b) at <span class="m">x = 5</span>:
+  <span class="m">3 &divide; 4 &minus; 2 &divide; 9 = 0.75 &minus; 0.222&hellip; = 0.5278</span>, and
+  <span class="m">19 &divide; 36 = 0.5278</span>. &#10003;</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Common-denominator builder</h4>
+  <p class="hint">Set up <span class="m">a/(x + p) &plusmn; b/(x + q)</span> and watch the single fraction being
+  built line by line. Negative values of <span class="m">p</span> and <span class="m">q</span> are fine.</p>
+  <div class="row">
+    <div><label for="cdA">a</label><input type="number" id="cdA" value="1" step="1"></div>
+    <div><label for="cdP">p (in x + p)</label><input type="number" id="cdP" value="1" step="1"></div>
+    <div><label for="cdS">operation</label><select id="cdS"><option value="1">add</option><option value="-1">subtract</option></select></div>
+    <div><label for="cdB">b</label><input type="number" id="cdB" value="3" step="1"></div>
+    <div><label for="cdQ">q (in x + q)</label><input type="number" id="cdQ" value="-2" step="1"></div>
+  </div>
+  <div class="out" id="cdOut"></div>
+</div>
+
+<div class="note"><b>When the denominators share a factor</b> Do not blindly multiply them together. Factorise
+first: for <span class="frac"><span>4</span><span>x&sup2; &minus; 9</span></span> +
+<span class="frac"><span>1</span><span>x + 3</span></span> the bottoms are
+<span class="m">(x &minus; 3)(x + 3)</span> and <span class="m">(x + 3)</span>, so the common denominator is just
+<span class="m">(x &minus; 3)(x + 3)</span>. See Example 6.</div>
+</section>
+
+<section id="equations" data-nav="Equations">
+<h2>Equations containing algebraic fractions</h2>
+<p>To solve an equation with fractions in it, <b>multiply every term by the common denominator</b>. The fractions
+disappear and you are left with a linear or a quadratic equation you already know how to solve.</p>
+
+<div class="def"><b>Values that are not allowed</b>
+A denominator can never be zero. Before you start, write down the values of <span class="m">x</span> that must be
+excluded: for <span class="frac"><span>5</span><span>x + 2</span></span> that is <span class="m">x &ne; &minus;2</span>.
+If a solution turns out to be an excluded value, you must reject it.</div>
+
+<div class="card">
+<h4>A quick linear one</h4>
+<p>Solve <span class="frac"><span>5</span><span>x + 2</span></span> =
+<span class="frac"><span>3</span><span>x &minus; 1</span></span>, where <span class="m">x &ne; &minus;2</span> and
+<span class="m">x &ne; 1</span>.</p>
+<p>Multiply both sides by <span class="m">(x + 2)(x &minus; 1)</span> &mdash; with a single fraction each side this is
+the same as cross-multiplying:</p>
+<div class="formula">5(x &minus; 1) = 3(x + 2) &nbsp;&rarr;&nbsp; 5x &minus; 5 = 3x + 6
+&nbsp;&rarr;&nbsp; 2x = 11 &nbsp;&rarr;&nbsp; x = 5.5</div>
+<p style="margin-bottom:0">Check: <span class="m">5 &divide; 7.5 = 0.6&#775;</span> and
+<span class="m">3 &divide; 4.5 = 0.6&#775;</span>. &#10003;</p>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Solve <span class="frac"><span>1</span><span>x</span></span> + <span class="frac"><span>1</span><span>x + 1</span></span> = <span class="frac"><span>5</span><span>6</span></span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">State the excluded values first.
+    <span class="work">x &ne; 0 &nbsp;and&nbsp; x &ne; &minus;1</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The common denominator of all three terms is <span class="m">6x(x + 1)</span>.
+    Multiply every term by it and cancel.
+    <span class="work">6(x + 1) + 6x = 5x(x + 1)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Expand both sides.
+    <span class="work">6x + 6 + 6x = 5x&sup2; + 5x<br>12x + 6 = 5x&sup2; + 5x</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Collect on the side that keeps <span class="m">x&sup2;</span> positive.
+    <span class="work">0 = 5x&sup2; &minus; 7x &minus; 6</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Factorise: <span class="m">ac = &minus;30</span>, sum <span class="m">&minus;7</span> &rarr; <span class="m">&minus;10</span> and 3.
+    <span class="work">5x&sup2; &minus; 10x + 3x &minus; 6 = 5x(x &minus; 2) + 3(x &minus; 2) = (x &minus; 2)(5x + 3)</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Solve each bracket. Neither value is excluded, so both are kept.
+    <span class="work">x = 2 &nbsp;or&nbsp; x = &minus;<span class="frac"><span>3</span><span>5</span></span></span></div></div>
+  <div class="final">x = 2 &nbsp;or&nbsp; x = &minus;0.6</div>
+  <div class="tip"><b>Check both</b> <span class="m">&#189; + &#8531; = 5/6</span> &#10003; and, for
+  <span class="m">x = &minus;0.6</span>: <span class="m">&minus;1.66&#775; + 2.5 = 0.83&#775; = 5/6</span> &#10003;.
+  In Paper 4 a check like this is worth the twenty seconds it costs.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Write <span class="frac"><span>4</span><span>x&sup2; &minus; 9</span></span> + <span class="frac"><span>1</span><span>x + 3</span></span> as a single fraction in its simplest form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Factorise the first denominator &mdash; it is a difference of two squares.
+    <span class="work"><span class="frac"><span>4</span><span>(x &minus; 3)(x + 3)</span></span> +
+    <span class="frac"><span>1</span><span>x + 3</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The second denominator is already inside the first, so the common denominator is
+    <span class="m">(x &minus; 3)(x + 3)</span>. Only the second fraction needs adjusting.
+    <span class="work"><span class="frac"><span>4</span><span>(x &minus; 3)(x + 3)</span></span> +
+    <span class="frac"><span>x &minus; 3</span><span>(x &minus; 3)(x + 3)</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add the numerators.
+    <span class="work">4 + x &minus; 3 = x + 1</span></div></div>
+  <div class="final"><span class="frac"><span>x + 1</span><span>(x &minus; 3)(x + 3)</span></span></div>
+  <div class="note"><b>Check</b> At <span class="m">x = 5</span>: <span class="m">4 &divide; 16 + 1 &divide; 8 = 0.375</span>
+  and <span class="m">6 &divide; (2 &times; 8) = 0.375</span>. &#10003; Using the product
+  <span class="m">(x&sup2; &minus; 9)(x + 3)</span> would have worked too, but you would then have to cancel
+  <span class="m">(x + 3)</span> at the end to gain the final mark.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Solve <span class="frac"><span>3</span><span>x + 1</span></span> + <span class="frac"><span>4</span><span>x &minus; 2</span></span> = 2, giving your answers correct to 2 decimal places.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Excluded values: <span class="m">x &ne; &minus;1</span> and <span class="m">x &ne; 2</span>.
+    Multiply every term by <span class="m">(x + 1)(x &minus; 2)</span>.
+    <span class="work">3(x &minus; 2) + 4(x + 1) = 2(x + 1)(x &minus; 2)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Expand each side.
+    <span class="work">3x &minus; 6 + 4x + 4 = 2(x&sup2; &minus; x &minus; 2)<br>7x &minus; 2 = 2x&sup2; &minus; 2x &minus; 4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Rearrange to <span class="m">&hellip; = 0</span>.
+    <span class="work">0 = 2x&sup2; &minus; 9x &minus; 2</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">No integer pair multiplies to <span class="m">&minus;4</span> and adds to <span class="m">&minus;9</span>,
+    so use the formula with <span class="m">a = 2, b = &minus;9, c = &minus;2</span>.
+    <span class="work">x = <span class="frac"><span>9 &plusmn; &#8730;(81 + 16)</span><span>4</span></span> =
+    <span class="frac"><span>9 &plusmn; &#8730;97</span><span>4</span></span></span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Work out both values, rounding only at the end.
+    <span class="work">&#8730;97 = 9.8489&hellip;<br>x = 18.8489 &divide; 4 = 4.712&hellip; &nbsp;or&nbsp;
+    x = &minus;0.8489 &divide; 4 = &minus;0.2122&hellip;</span></div></div>
+  <div class="final">x = 4.71 &nbsp;or&nbsp; x = &minus;0.21 (2 d.p.)</div>
+  <div class="warn"><b>Watch out</b> Do not round <span class="m">&#8730;97</span> to 9.85 and then divide &mdash;
+  keep the full calculator value until the very last step, or the second decimal place can come out wrong.
+  Both answers are needed; a single root scores half the marks.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Simplify <span class="frac"><span>x&sup2; &minus; 16</span><span>x&sup2; &minus; x &minus; 12</span></span>.</li>
+    <li>Simplify <span class="frac"><span>2x&sup2; &minus; 8</span><span>x&sup2; + 4x + 4</span></span>.</li>
+    <li>Write as a single fraction: <span class="frac"><span>2</span><span>x + 3</span></span> +
+      <span class="frac"><span>5</span><span>x &minus; 1</span></span>.</li>
+    <li>Simplify <span class="frac"><span>x&sup2; &minus; 1</span><span>x + 2</span></span> &times;
+      <span class="frac"><span>3x + 6</span><span>x &minus; 1</span></span>.</li>
+    <li>Solve <span class="m">x</span> + <span class="frac"><span>12</span><span>x</span></span> = 8.</li>
+    <li>Solve <span class="frac"><span>5</span><span>x &minus; 1</span></span> &minus;
+      <span class="frac"><span>2</span><span>x + 2</span></span> = 1, giving your answers to 2 decimal places.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="frac"><span>(x &minus; 4)(x + 4)</span><span>(x &minus; 4)(x + 3)</span></span> &rarr;
+        <span class="ans"><span class="frac"><span>x + 4</span><span>x + 3</span></span></span></li>
+      <li><span class="frac"><span>2(x &minus; 2)(x + 2)</span><span>(x + 2)&sup2;</span></span> &rarr;
+        <span class="ans"><span class="frac"><span>2(x &minus; 2)</span><span>x + 2</span></span></span></li>
+      <li><span class="m">2(x &minus; 1) + 5(x + 3) = 2x &minus; 2 + 5x + 15</span> &rarr;
+        <span class="ans"><span class="frac"><span>7x + 13</span><span>(x + 3)(x &minus; 1)</span></span></span></li>
+      <li><span class="frac"><span>(x &minus; 1)(x + 1)</span><span>x + 2</span></span> &times;
+        <span class="frac"><span>3(x + 2)</span><span>x &minus; 1</span></span> &rarr;
+        <span class="ans">3(x + 1)</span></li>
+      <li>Multiply by <span class="m">x</span> (<span class="m">x &ne; 0</span>):
+        <span class="m">x&sup2; + 12 = 8x</span> &rarr; <span class="m">x&sup2; &minus; 8x + 12 = 0</span> &rarr;
+        <span class="m">(x &minus; 2)(x &minus; 6) = 0</span> &rarr; <span class="ans">x = 2 or x = 6</span></li>
+      <li><span class="m">x &ne; 1, x &ne; &minus;2</span>. <span class="m">5(x + 2) &minus; 2(x &minus; 1) = (x &minus; 1)(x + 2)</span>
+        &rarr; <span class="m">3x + 12 = x&sup2; + x &minus; 2</span> &rarr;
+        <span class="m">x&sup2; &minus; 2x &minus; 14 = 0</span> &rarr;
+        <span class="m">x = <span class="frac"><span>2 &plusmn; &#8730;60</span><span>2</span></span></span> &rarr;
+        <span class="ans">x = 4.87 or x = &minus;2.87</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Factorise first, cancel second.</b> Nothing can be cancelled until top and bottom are products.</li>
+    <li>Cancel <b>factors</b>, never <b>terms</b>: <span class="frac"><span>x + 3</span><span>x + 6</span></span>
+      does not simplify at all.</li>
+    <li>To divide, invert the second fraction and multiply &mdash; then cancel.</li>
+    <li>To add or subtract, use <span class="m">(x + p)(x + q)</span> as the denominator, unless the denominators
+      share a factor, in which case factorise and use the smaller common denominator.</li>
+    <li>When subtracting, <b>bracket the second numerator</b> before you expand.</li>
+    <li>Expand the numerator, but leave the denominator in factorised form.</li>
+    <li>To solve, multiply <b>every term</b> by the common denominator, rearrange to
+      <span class="m">&hellip; = 0</span>, then factorise or use the formula.</li>
+    <li>Always state the values of <span class="m">x</span> that make a denominator zero, and reject any solution
+      that matches one. Substitute your answers back to check.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="14-6.html"><span>&larr; Previous</span><b>14.6 Factorising Quadratics</b></a><a class="next" href="13-1.html"><span>Next &rarr;</span><b>13.1 Understanding Units</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 14.7 Algebraic Fractions<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- cancel check: factor versus term ---- */
+(function(){
+  var out=el('ccOut');
+  function go(){
+    var x=num('ccX',5);
+    el('ccVal').textContent=x;
+    var f1=(x+3)/(x+6), f2=0.5;
+    var g1=((x+3)*(x-1))/((x+6)*(x-1)), g2=(x+3)/(x+6);
+    out.innerHTML=
+      '<div class="tw"><table><thead><tr><th>Cancelling</th><th>before</th><th>after</th><th></th></tr></thead><tbody>'+
+      '<tr><td>(x + 3)/(x + 6) &rarr; 1/2 &nbsp;<span style="opacity:.7">(terms)</span></td>'+
+        '<td>'+fx(f1,4)+'</td><td>'+fx(f2,4)+'</td>'+
+        '<td><span class="hl">&#10007; not equal</span></td></tr>'+
+      '<tr><td>(x + 3)(x &minus; 1) / (x + 6)(x &minus; 1) &rarr; (x + 3)/(x + 6) &nbsp;<span style="opacity:.7">(factor)</span></td>'+
+        '<td>'+fx(g1,4)+'</td><td>'+fx(g2,4)+'</td>'+
+        '<td><b>&#10003; equal</b></td></tr>'+
+      '</tbody></table></div>'+
+      '<div style="margin-top:8px">At x = <span class="hl">'+x+'</span> the illegal cancel changes the value by '+
+      '<span class="hl">'+fx(Math.abs(f1-f2),4)+'</span>; the legal one changes nothing, at this or any other value of x.</div>';
+  }
+  bindAll(['ccX'],go);
+})();
+
+/* ---- common-denominator builder ---- */
+(function(){
+  var out=el('cdOut');
+  function sg(n){ return n<0 ? '&minus;'+Math.abs(n) : ''+n; }
+  function ds(p){ return p===0 ? 'x' : 'x'+(p<0?' &minus; ':' + ')+Math.abs(p); }
+  function br(p){ return p===0 ? 'x' : '('+ds(p)+')'; }
+  function co(n,v){                                   /* n lots of v, as a signed term */
+    if(n===0) return '0';
+    return (n<0?'&minus;':'')+(Math.abs(n)===1? '' : Math.abs(n))+v;
+  }
+  function frac(t,b){ return '<span class="frac"><span>'+t+'</span><span>'+b+'</span></span>'; }
+  function sum(parts){                                /* [[coef,'x'], [coef,'']] -> signed string */
+    var s='', i, c, v;
+    for(i=0;i<parts.length;i++){
+      c=parts[i][0]; v=parts[i][1];
+      if(c===0) continue;
+      if(s==='') s+=(c<0?'&minus;':'')+((Math.abs(c)===1&&v!=='')?'':Math.abs(c))+v;
+      else s+=(c<0?' &minus; ':' + ')+((Math.abs(c)===1&&v!=='')?'':Math.abs(c))+v;
+    }
+    return s===''? '0' : s;
+  }
+  function linStr(A,C){ return sum([[A,'x'],[C,'']]); }
+  function go(){
+    var a=Math.round(num('cdA',1)), p=Math.round(num('cdP',1)),
+        b=Math.round(num('cdB',3)), q=Math.round(num('cdQ',-2)),
+        s=Math.round(num('cdS',1));
+    var opWord = s>0 ? 'add' : 'subtract', opSign = s>0 ? ' + ' : ' &minus; ';
+    var head='<div>'+frac(sg(a),ds(p))+opSign+frac(sg(b),ds(q))+'</div>';
+
+    if(p===q){
+      var top=a+s*b;
+      out.innerHTML=head+
+        '<div style="margin-top:8px">The denominators are already the same, so just '+opWord+
+        ' the numerators.</div>'+
+        '<div style="margin-top:6px"><b>'+frac(sg(top),ds(p))+'</b></div>'+
+        '<div style="margin-top:8px">Not allowed: x = '+sg(-p)+'</div>';
+      return;
+    }
+
+    var A=a+s*b, C=a*q+s*b*p;                          /* numerator = Ax + C */
+    var den=br(p)+br(q);
+    var denExp='x&sup2;'+((p+q)===0?'':((p+q)<0?' &minus; ':' + ')+(Math.abs(p+q)===1?'':Math.abs(p+q))+'x')+
+      ((p*q)===0?'':((p*q)<0?' &minus; ':' + ')+Math.abs(p*q));
+    var t=5; while(t===-p||t===-q) t++;
+    var lhs=a/(t+p)+s*(b/(t+q)), rhs=(A*t+C)/((t+p)*(t+q));
+
+    out.innerHTML=head+
+      '<div style="margin-top:10px">Common denominator: <span class="hl">'+den+'</span> &nbsp;'+
+        '<span style="opacity:.7">= '+denExp+'</span></div>'+
+      '<div style="margin-top:8px">Cross-multiply the numerators'+(s>0?'':' &mdash; bracket the second one')+':</div>'+
+      '<div style="margin:4px 0">'+frac(co(a,br(q))+opSign+co(b,br(p)),den)+'</div>'+
+      '<div style="margin-top:8px">Expand the top only:</div>'+
+      '<div style="margin:4px 0">'+frac(sum([[a,'x'],[a*q,''],[s*b,'x'],[s*b*p,'']]),den)+'</div>'+
+      '<div style="margin-top:8px">Collect like terms &mdash; single fraction: <b>'+
+        frac(linStr(A,C),den)+'</b></div>'+
+      '<div style="margin-top:8px">Not allowed: x = '+sg(-p)+' and x = '+sg(-q)+'</div>'+
+      '<div style="margin-top:8px;opacity:.8;font-size:.92em">Check at x = '+t+': original = '+sg(fx(lhs,4))+
+        ', single fraction = '+sg(fx(rhs,4))+' &#10003;</div>';
+  }
+  bindAll(['cdA','cdP','cdB','cdQ','cdS'],go);
+})();
+</script>
+</body>
+</html>

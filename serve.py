@@ -1,6 +1,8 @@
 # Local preview server with caching disabled, so edits show up on refresh.
-# Usage: python3 serve.py  →  http://localhost:8017
+# Usage: python3 serve.py  →  http://localhost:8017 (or $PORT if set)
 import http.server, os
+
+PORT = int(os.environ.get("PORT", "8017"))
 
 class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -9,5 +11,5 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-print("Serving on http://localhost:8017")
-http.server.ThreadingHTTPServer(("127.0.0.1", 8017), NoCacheHandler).serve_forever()
+print(f"Serving on http://localhost:{PORT}")
+http.server.ThreadingHTTPServer(("127.0.0.1", PORT), NoCacheHandler).serve_forever()

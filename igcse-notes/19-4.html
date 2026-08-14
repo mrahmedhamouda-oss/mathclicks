@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>19.4 Angle Relationships in Circles | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="The circle theorems &mdash; each one with the exact wording the examiner expects you to quote as your reason.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 19 &mdash; Symmetry</span>
+    </div>
+    <h1>19.4 &nbsp;Angle Relationships in Circles</h1>
+    <p>The circle theorems &mdash; each one with the exact wording the examiner expects you to quote as your reason.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#theorems">The theorems</a>
+  <a href="#using">Using them</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="theorems" data-nav="The theorems">
+<h2>The circle theorems</h2>
+<p>Circle questions in Paper 4 almost always ask you to <b>find an angle and give a reason</b>. The
+angle is usually the easy part; the marks are in the wording. Learn each theorem with the phrase
+printed underneath its diagram &mdash; that phrase <i>is</i> the reason.</p>
+
+<div class="def"><b>Before you start</b>
+An angle is <b>at the centre</b> if its vertex is at O. It is <b>at the circumference</b> if its vertex
+is a point on the circle. A <b>chord</b> joins two points on the circle; a chord splits the circle into
+a <b>major</b> and a <b>minor segment</b>.</div>
+
+<div class="card">
+<h4>1. The angle at the centre is twice the angle at the circumference</h4>
+<svg viewBox="0 0 400 280" role="img" aria-label="Angle at centre is twice the angle at the circumference">
+  <circle cx="200" cy="160" r="110" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <line x1="200" y1="160" x2="104.7" y2="215" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="200" y1="160" x2="295.3" y2="215" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="200" y1="50" x2="104.7" y2="215" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="200" y1="50" x2="295.3" y2="215" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 173 175 A 32 32 0 0 0 227 175" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <path d="M 182 82 A 38 38 0 0 0 218 82" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+  <circle cx="200" cy="160" r="4" fill="#0f2d6b"/>
+  <circle cx="200" cy="50" r="4" fill="#0f2d6b"/>
+  <circle cx="104.7" cy="215" r="4" fill="#0f2d6b"/>
+  <circle cx="295.3" cy="215" r="4" fill="#0f2d6b"/>
+  <text x="206" y="152" font-size="14" style="fill:#0f2d6b">O</text>
+  <text x="196" y="40" font-size="14" style="fill:#0f2d6b">P</text>
+  <text x="86" y="230" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="304" y="230" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="182" y="200" font-size="13" style="fill:#e05c2a">120&#176;</text>
+  <text x="184" y="105" font-size="13" style="fill:#0f2d6b">60&#176;</text>
+</svg>
+<div class="formula">angle AOB = 2 &times; angle APB
+<small>Reason: the angle at the centre is twice the angle at the circumference</small></div>
+<div class="warn"><b>Watch out</b> Both angles must stand on the <b>same arc</b> AB. Look for the
+&ldquo;arrowhead&rdquo; shape pointing at O and the same arrowhead pointing at P.</div>
+</div>
+
+<div class="card g">
+<h4>2. The angle in a semicircle is 90&deg;</h4>
+<svg viewBox="0 0 400 250" role="img" aria-label="The angle in a semicircle is a right angle">
+  <circle cx="200" cy="150" r="110" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <line x1="90" y1="150" x2="310" y2="150" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="90" y1="150" x2="255" y2="54.7" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="310" y1="150" x2="255" y2="54.7" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 240.5 46.5 L 232.5 60.5 L 246.5 68.5" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <circle cx="200" cy="150" r="4" fill="#0f2d6b"/>
+  <circle cx="90" cy="150" r="4" fill="#0f2d6b"/>
+  <circle cx="310" cy="150" r="4" fill="#0f2d6b"/>
+  <circle cx="255" cy="54.7" r="4" fill="#0f2d6b"/>
+  <text x="196" y="168" font-size="14" style="fill:#0f2d6b">O</text>
+  <text x="72" y="156" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="318" y="156" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="262" y="44" font-size="14" style="fill:#0f2d6b">C</text>
+  <text x="150" y="142" font-size="12" style="fill:#e05c2a">diameter</text>
+</svg>
+<div class="formula">AB is a diameter &nbsp;&rArr;&nbsp; angle ACB = 90&#176;
+<small>Reason: the angle in a semicircle is 90&deg;</small></div>
+<p>This is really theorem 1 with the centre angle equal to 180&deg;. The moment you see a line through
+the centre, look for a right angle at the circumference.</p>
+</div>
+
+<div class="card p">
+<h4>3. Angles in the same segment are equal</h4>
+<svg viewBox="0 0 400 280" role="img" aria-label="Angles in the same segment are equal">
+  <circle cx="200" cy="160" r="110" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+  <line x1="104.7" y1="215" x2="295.3" y2="215" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="200" y1="50" x2="104.7" y2="215" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="200" y1="50" x2="295.3" y2="215" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="115.7" y1="89.3" x2="104.7" y2="215" stroke="#16a34a" stroke-width="2"/>
+  <line x1="115.7" y1="89.3" x2="295.3" y2="215" stroke="#16a34a" stroke-width="2"/>
+  <path d="M 183 83 A 36 36 0 0 0 217 84" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 113 125 A 36 36 0 0 0 148 108" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <circle cx="104.7" cy="215" r="4" fill="#0f2d6b"/>
+  <circle cx="295.3" cy="215" r="4" fill="#0f2d6b"/>
+  <circle cx="200" cy="50" r="4" fill="#0f2d6b"/>
+  <circle cx="115.7" cy="89.3" r="4" fill="#0f2d6b"/>
+  <text x="86" y="232" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="304" y="232" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="196" y="40" font-size="14" style="fill:#0f2d6b">P</text>
+  <text x="96" y="82" font-size="14" style="fill:#0f2d6b">Q</text>
+  <text x="186" y="106" font-size="13" style="fill:#0f2d6b">60&#176;</text>
+  <text x="126" y="132" font-size="13" style="fill:#16a34a">60&#176;</text>
+  <text x="176" y="234" font-size="12" style="fill:#e05c2a">chord AB</text>
+</svg>
+<div class="formula">angle APB = angle AQB
+<small>Reason: angles in the same segment are equal</small></div>
+<div class="tip"><b>Exam tip</b> The shape to look for is a <b>bow tie</b> (or hourglass): two triangles
+sharing the same chord, with their apexes on the same side of it.</div>
+</div>
+
+<div class="card o">
+<h4>4. Opposite angles of a cyclic quadrilateral add to 180&deg;</h4>
+<svg viewBox="0 0 400 290" role="img" aria-label="Cyclic quadrilateral opposite angles">
+  <circle cx="200" cy="160" r="110" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <polygon points="303.4,122.4 162.4,56.6 96.6,197.6 270.7,244.3"
+           fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="270.7" y1="244.3" x2="340" y2="262" stroke="#6d28d9" stroke-width="2.5"
+        stroke-dasharray="5 4"/>
+  <circle cx="303.4" cy="122.4" r="4" fill="#0f2d6b"/>
+  <circle cx="162.4" cy="56.6" r="4" fill="#0f2d6b"/>
+  <circle cx="96.6" cy="197.6" r="4" fill="#0f2d6b"/>
+  <circle cx="270.7" cy="244.3" r="4" fill="#0f2d6b"/>
+  <text x="312" y="118" font-size="14" style="fill:#0f2d6b">C</text>
+  <text x="156" y="46" font-size="14" style="fill:#0f2d6b">D</text>
+  <text x="78" y="204" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="266" y="264" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="270" y="132" font-size="13" style="fill:#e05c2a">x</text>
+  <text x="112" y="192" font-size="13" style="fill:#e05c2a">180&#176; &minus; x</text>
+  <text x="164" y="80" font-size="13" style="fill:#16a34a">y</text>
+  <text x="246" y="232" font-size="13" style="fill:#16a34a">180&#176; &minus; y</text>
+  <text x="316" y="278" font-size="12" style="fill:#6d28d9">exterior angle = x</text>
+</svg>
+<div class="formula">angle A + angle C = 180&#176; &nbsp;&nbsp;and&nbsp;&nbsp; angle B + angle D = 180&#176;
+<small>Reason: opposite angles of a cyclic quadrilateral are supplementary</small></div>
+<p>It follows that the <b>exterior angle of a cyclic quadrilateral equals the interior opposite
+angle</b> &mdash; useful, and worth quoting by name.</p>
+<div class="warn"><b>Watch out</b> All four vertices must lie <b>on the circle</b>. A quadrilateral with
+one vertex inside or outside is not cyclic and the theorem does not apply.</div>
+</div>
+
+<div class="card">
+<h4>5. The alternate segment theorem</h4>
+<svg viewBox="0 0 400 300" role="img" aria-label="Alternate segment theorem">
+  <circle cx="200" cy="150" r="110" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <line x1="60" y1="260" x2="340" y2="260" stroke="#e05c2a" stroke-width="3"/>
+  <line x1="200" y1="260" x2="104.7" y2="205" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="104.7" y1="205" x2="255" y2="54.7" stroke="#16a34a" stroke-width="2"/>
+  <line x1="200" y1="260" x2="255" y2="54.7" stroke="#16a34a" stroke-width="2"/>
+  <path d="M 172 260 A 28 28 0 0 0 178 244" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <path d="M 236 74 A 30 30 0 0 0 253 85" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <circle cx="200" cy="260" r="4" fill="#0f2d6b"/>
+  <circle cx="104.7" cy="205" r="4" fill="#0f2d6b"/>
+  <circle cx="255" cy="54.7" r="4" fill="#0f2d6b"/>
+  <text x="196" y="282" font-size="14" style="fill:#0f2d6b">T</text>
+  <text x="86" y="200" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="262" y="46" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="148" y="248" font-size="13" style="fill:#6d28d9">x</text>
+  <text x="228" y="104" font-size="13" style="fill:#6d28d9">x</text>
+  <text x="300" y="278" font-size="12" style="fill:#e05c2a">tangent at T</text>
+</svg>
+<div class="formula">angle between tangent and chord = angle in the alternate segment
+<small>Reason: alternate segment theorem</small></div>
+<p>The angle between the tangent <span class="m">T</span> and the chord <span class="m">TA</span> equals
+the angle <span class="m">TBA</span> in the segment on the <b>other</b> side of that chord.</p>
+</div>
+
+<div class="card g">
+<h4>6. The tangent facts you also need</h4>
+<ul>
+  <li>A <b>tangent is perpendicular to the radius</b> at the point of contact &mdash; so a right angle
+    appears whenever a radius meets a tangent.</li>
+  <li>The <b>two tangents from an external point are equal</b> in length, so the triangle they form
+    with the chord of contact is <b>isosceles</b>.</li>
+</ul>
+<div class="note"><b>Note</b> These are the symmetry properties from lesson 19.3. In angle questions
+they usually supply the right angle or the pair of equal base angles that unlocks everything else.</div>
+</div>
+
+<div class="tool">
+  <h4>Circle theorem demonstrator</h4>
+  <p class="hint">Drag the slider to move <span class="m">P</span> around the major arc. Watch
+  <span class="m">angle APB</span> stay fixed while the centre angle stays exactly double it &mdash;
+  that is theorems 1 and 3 happening at the same time.</p>
+  <div class="sliderbox"><div class="lab"><span>Position of P on the major arc</span>
+    <span id="ctVal">90&#176;</span></div>
+    <input type="range" id="ctP" min="20" max="160" step="1" value="90"></div>
+  <div id="ctSvg"></div>
+  <div class="out" id="ctOut"></div>
+</div>
+</section>
+
+<section id="using" data-nav="Using them">
+<h2>Using the theorems in a problem</h2>
+<div class="card o">
+<h4>A method that always works</h4>
+<ol>
+  <li><b>Mark what you are given</b> on the diagram &mdash; the centre, any diameter, any tangent,
+    equal radii.</li>
+  <li><b>Hunt for the shapes:</b> arrowhead (centre theorem), bow tie (same segment), semicircle
+    (right angle), four points on the circle (cyclic quadrilateral), tangent touching (alternate
+    segment or perpendicular radius).</li>
+  <li><b>Fill in every angle you can</b>, one at a time, writing the reason next to each.</li>
+  <li>Remember the ordinary facts too: angles in a triangle add to 180&deg;, angles on a straight
+    line add to 180&deg;, and any triangle with two radii as sides is <b>isosceles</b>.</li>
+</ol>
+</div>
+<div class="tip"><b>Exam tip</b> One mark is for the angle, one is for the reason. Write the reason in
+full &mdash; &ldquo;angles in the same segment&rdquo; scores; &ldquo;circle theorem&rdquo; does not.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A, B and P lie on a circle centre O. Angle APB = 34&deg;. Find angle AOB.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Both angles stand on the same arc AB, with one
+    vertex at the centre and one on the circumference.
+    <span class="work">angle AOB = 2 &times; angle APB</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute.
+    <span class="work">angle AOB = 2 &times; 34&#176; = 68&#176;</span></div></div>
+  <div class="final">angle AOB = 68&#176; (angle at centre is twice the angle at the circumference)</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">PQ is a diameter of a circle and R lies on the circle. Angle RPQ = 27&deg;. Find angle PQR.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">PQ is a diameter, so the angle at R is a right angle.
+    <span class="work">angle PRQ = 90&#176; &nbsp; (angle in a semicircle)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Use the angle sum of triangle PQR.
+    <span class="work">angle PQR = 180&#176; &minus; 90&#176; &minus; 27&#176;</span></div></div>
+  <div class="final">angle PQR = 63&#176;</div>
+  <div class="tip"><b>Exam tip</b> Whenever a question mentions a diameter, write
+  &ldquo;90&deg; &mdash; angle in a semicircle&rdquo; on the diagram before you do anything else.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">ABCD is a cyclic quadrilateral. Angle ABC = 96&deg; and angle BCD = 71&deg;. Find angle ADC and angle DAB, and the exterior angle of the quadrilateral at B.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">ABC and ADC are opposite angles.
+    <span class="work">angle ADC = 180&#176; &minus; 96&#176; = 84&#176;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">BCD and DAB are opposite angles.
+    <span class="work">angle DAB = 180&#176; &minus; 71&#176; = 109&#176;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check: the four angles of any quadrilateral add to 360&deg;.
+    <span class="work">96 + 71 + 84 + 109 = 360 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">The exterior angle at B is on a straight line with
+    the interior angle ABC &mdash; and it equals the interior opposite angle ADC, as expected.
+    <span class="work">180&#176; &minus; 96&#176; = 84&#176; = angle ADC &nbsp;&#10003;</span></div></div>
+  <div class="final">angle ADC = 84&#176;, angle DAB = 109&#176;, exterior angle at B = 84&#176;</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">O is the centre of a circle. TA is a tangent touching the circle at A, and OT = 25 cm with radius OA = 7 cm. Find angle OTA, correct to 1 decimal place.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The tangent meets the radius at A.
+    <span class="work">angle OAT = 90&#176; &nbsp; (tangent &perp; radius)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Triangle OAT is right-angled at A, with OT as the
+    hypotenuse. Relative to angle T, OA is the opposite side.
+    <span class="work">sin T = opp / hyp = 7 / 25 = 0.28</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Use the inverse sine.
+    <span class="work">T = sin&#8315;&sup1;(0.28) = 16.2602&hellip;&#176;</span></div></div>
+  <div class="final">angle OTA = 16.3&#176; (1 d.p.)</div>
+  <div class="note"><b>Note</b> The tangent length itself is
+  <span class="rt"><span>25&sup2; &minus; 7&sup2;</span></span> = <span class="rt"><span>576</span></span>
+  = 24 cm, by Pythagoras.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">A, B and C lie on a circle centre O. Angle OBC = 28&deg;. Find angle BAC.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">OB and OC are both radii, so triangle OBC is isosceles.
+    <span class="work">angle OCB = angle OBC = 28&#176;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Angle sum of triangle OBC.
+    <span class="work">angle BOC = 180&#176; &minus; 28&#176; &minus; 28&#176; = 124&#176;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Angle BOC is at the centre and angle BAC is at the
+    circumference, both on arc BC.
+    <span class="work">angle BAC = 124&#176; &divide; 2</span></div></div>
+  <div class="final">angle BAC = 62&#176;</div>
+  <div class="tip"><b>Exam tip</b> Two radii always make an isosceles triangle. That single observation
+  unlocks a large fraction of circle questions.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">TA is a tangent to a circle at A. B and C are points on the circle, and the angle between the tangent TA and the chord AB is 63&deg;. Angle BAC = 44&deg;. Find angle ACB and angle ABC.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The angle between the tangent and chord AB equals the
+    angle in the alternate segment, which is the angle subtended by AB at C.
+    <span class="work">angle ACB = 63&#176; &nbsp; (alternate segment theorem)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now use the angle sum of triangle ABC.
+    <span class="work">angle ABC = 180&#176; &minus; 63&#176; &minus; 44&#176;</span></div></div>
+  <div class="final">angle ACB = 63&#176;, angle ABC = 73&#176;</div>
+  <div class="warn"><b>Watch out</b> The alternate segment is the one on the <i>other</i> side of the
+  chord from the angle you are given. Shade it lightly on the diagram if you are unsure.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Exam style. A, B, C and D lie on a circle centre O. BD is a diameter. Angle ADB = 32&deg; and angle DBC = 47&deg;. Find angle ABD, angle BCD and angle BAD, giving a reason for each.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">BD is a diameter, so the angle at A in triangle ABD is
+    a right angle.
+    <span class="work">angle BAD = 90&#176; &nbsp; (angle in a semicircle)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Angle sum of triangle ABD.
+    <span class="work">angle ABD = 180&#176; &minus; 90&#176; &minus; 32&#176; = 58&#176;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">BD is also a diameter for triangle BCD, so the angle
+    at C is a right angle.
+    <span class="work">angle BCD = 90&#176; &nbsp; (angle in a semicircle)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check with the cyclic quadrilateral ABCD: angle BAD
+    and angle BCD are opposite.
+    <span class="work">90&#176; + 90&#176; = 180&#176; &nbsp;&#10003;</span></div></div>
+  <div class="final">angle BAD = 90&#176;, angle ABD = 58&#176;, angle BCD = 90&#176;</div>
+  <div class="note"><b>Note</b> The 47&deg; is not needed for these three parts &mdash; it would be used to
+  find angle BDC = 180&deg; &minus; 90&deg; &minus; 47&deg; = 43&deg;. Exam diagrams often carry extra
+  information; take only what you need.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>P, Q and R are on a circle centre O. Angle POQ = 146&deg;. Find angle PRQ.</li>
+    <li>AB is a diameter and C is on the circle. Angle ABC = 41&deg;. Find angle BAC.</li>
+    <li>WXYZ is a cyclic quadrilateral with angle WXY = 103&deg;. Find angle WZY.</li>
+    <li>A, B, C and D lie on a circle. Angle ACB = 25&deg;. Write down angle ADB and give a reason.</li>
+    <li>A tangent touches a circle centre O at T. The point S is outside the circle with
+      OS = 17 cm and radius 8 cm. Find the length ST.</li>
+    <li>The exterior angle of a cyclic quadrilateral PQRS at vertex R is 78&deg;. Find the interior
+      angle at P, and explain why.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>Angle at the circumference is half the angle at the centre:
+        <span class="m">146 &divide; 2</span> = <span class="ans">73&#176;</span></li>
+      <li>Angle ACB = 90&deg; (angle in a semicircle), so
+        <span class="m">180 &minus; 90 &minus; 41</span> = <span class="ans">49&#176;</span></li>
+      <li>Opposite angles of a cyclic quadrilateral: <span class="m">180 &minus; 103</span> =
+        <span class="ans">77&#176;</span></li>
+      <li><span class="ans">25&#176;</span> &mdash; angles in the same segment are equal (both stand on
+        chord AB).</li>
+      <li>Angle OTS = 90&deg; (tangent &perp; radius), so
+        <span class="m">ST = <span class="rt"><span>17&sup2; &minus; 8&sup2;</span></span> =
+        <span class="rt"><span>225</span></span></span> = <span class="ans">15 cm</span></li>
+      <li>The exterior angle of a cyclic quadrilateral equals the interior opposite angle, and P is
+        opposite R, so angle P = <span class="ans">78&#176;</span>. (Check: the interior angle at R is
+        <span class="m">180 &minus; 78 = 102&#176;</span>, and <span class="m">78 + 102 = 180</span>.)</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Angle at the centre = 2 &times; angle at the circumference</b>, when both stand on the same arc.</li>
+    <li><b>The angle in a semicircle is 90&deg;</b> &mdash; look for it every time a diameter appears.</li>
+    <li><b>Angles in the same segment are equal</b> &mdash; the bow-tie shape.</li>
+    <li><b>Opposite angles of a cyclic quadrilateral add to 180&deg;</b>, and the exterior angle equals
+      the interior opposite angle.</li>
+    <li><b>Alternate segment theorem:</b> the angle between a tangent and a chord equals the angle in
+      the alternate segment.</li>
+    <li>A <b>tangent is perpendicular to the radius</b>, and the <b>two tangents from a point are
+      equal</b>, giving an isosceles triangle.</li>
+    <li>Any triangle made from <b>two radii is isosceles</b> &mdash; often the missing step.</li>
+    <li><b>Always write the reason.</b> Half the marks in a circle question are for the wording.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="11-2.html"><span>&larr; Previous</span><b>11.2 Understanding Similar Triangles</b></a><a class="next" href="11-1.html"><span>Next &rarr;</span><b>11.1 Pythagoras&rsquo; Theorem</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 19.4 Angle Relationships in Circles<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+(function(){
+  var box=el('ctSvg'), out=el('ctOut');
+  var cx=200, cy=160, r=110;
+  function pt(deg){ var t=deg*Math.PI/180; return [cx+r*Math.cos(t), cy-r*Math.sin(t)]; }
+  function ang(A,V,B){
+    var ax=A[0]-V[0], ay=A[1]-V[1], bx=B[0]-V[0], by=B[1]-V[1];
+    var d=(ax*bx+ay*by)/(Math.sqrt(ax*ax+ay*ay)*Math.sqrt(bx*bx+by*by));
+    if(d>1)d=1; if(d<-1)d=-1;
+    return Math.acos(d)*180/Math.PI;
+  }
+  function go(){
+    var pd=num('ctP',90);
+    el('ctVal').innerHTML=pd+'&#176;';
+    var A=pt(210), B=pt(330), P=pt(pd), O=[cx,cy];
+    var aP=ang(A,P,B), aO=ang(A,O,B);
+    box.innerHTML=
+      '<svg viewBox="0 0 400 290" role="img" aria-label="Interactive circle theorem diagram">'+
+      '<circle cx="200" cy="160" r="110" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>'+
+      '<line x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#e05c2a" stroke-width="2.5"/>'+
+      '<line x1="200" y1="160" x2="'+A[0]+'" y2="'+A[1]+'" stroke="#e05c2a" stroke-width="2"/>'+
+      '<line x1="200" y1="160" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#e05c2a" stroke-width="2"/>'+
+      '<line x1="'+P[0]+'" y1="'+P[1]+'" x2="'+A[0]+'" y2="'+A[1]+'" stroke="#0f2d6b" stroke-width="2.5"/>'+
+      '<line x1="'+P[0]+'" y1="'+P[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#0f2d6b" stroke-width="2.5"/>'+
+      '<circle cx="200" cy="160" r="4" fill="#0f2d6b"/>'+
+      '<circle cx="'+A[0]+'" cy="'+A[1]+'" r="4" fill="#0f2d6b"/>'+
+      '<circle cx="'+B[0]+'" cy="'+B[1]+'" r="4" fill="#0f2d6b"/>'+
+      '<circle cx="'+P[0]+'" cy="'+P[1]+'" r="5" fill="#16a34a"/>'+
+      '<text x="206" y="152" font-size="14" style="fill:#0f2d6b">O</text>'+
+      '<text x="'+(A[0]-18)+'" y="'+(A[1]+16)+'" font-size="14" style="fill:#0f2d6b">A</text>'+
+      '<text x="'+(B[0]+8)+'" y="'+(B[1]+16)+'" font-size="14" style="fill:#0f2d6b">B</text>'+
+      '<text x="'+(P[0]-6)+'" y="'+(P[1]-12)+'" font-size="14" style="fill:#16a34a">P</text>'+
+      '<text x="176" y="196" font-size="13" style="fill:#e05c2a">'+Math.round(aO)+'&#176;</text>'+
+      '</svg>';
+    out.innerHTML=
+      '<div>angle APB = <b>'+fx(aP,1)+'&#176;</b> &nbsp;&mdash;&nbsp; unchanged wherever P sits on the major arc</div>'+
+      '<div>angle AOB = <span class="hl">'+fx(aO,1)+'&#176;</span> at the centre</div>'+
+      '<div style="margin-top:6px">Check: 2 &times; '+fx(aP,1)+'&#176; = <b>'+fx(2*aP,1)+'&#176;</b> = angle AOB</div>';
+  }
+  on('ctP',go); go();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>17.2 Borrowing and Investing Money | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Simple and compound interest, depreciation, hire purchase, loans and mortgages &mdash; and how to tell instantly which formula a question wants.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 17 &mdash; Managing Money</span>
+    </div>
+    <h1>17.2 &nbsp;Borrowing and Investing Money</h1>
+    <p>Simple and compound interest, depreciation, hire purchase, loans and mortgages &mdash; and how to tell instantly which formula a question wants.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#simple">Simple interest</a>
+  <a href="#compound">Compound interest</a>
+  <a href="#depreciation">Depreciation</a>
+  <a href="#borrowing">Borrowing</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="simple" data-nav="Simple interest">
+<h2>Simple interest</h2>
+<p>With <b>simple interest</b> the interest is worked out on the <b>original</b> amount every single year.
+The money invested (or borrowed) is called the <b>principal</b>, and it never changes, so the interest is
+the same amount each year.</p>
+
+<div class="formula">I = <span class="frac"><span>P r t</span><span>100</span></span>
+<small>I = interest, P = principal, r = rate per year (%), t = time in years</small></div>
+
+<div class="def"><b>Key idea</b>
+The formula gives you the <b>interest only</b>. If a question asks for the <i>total amount</i> or the
+<i>value of the investment</i>, you must add the principal back on:
+<span class="m">A = P + I</span>.</div>
+
+<p>Because the formula has four letters, any one of them can be the unknown. Rearranged:</p>
+<div class="tw">
+<table>
+<thead><tr><th>Unknown</th><th>Rearrangement</th><th>In words</th></tr></thead>
+<tbody>
+<tr><td>Interest <span class="m">I</span></td><td><span class="m">I = Prt &divide; 100</span></td><td>multiply all three, divide by 100</td></tr>
+<tr><td>Principal <span class="m">P</span></td><td><span class="m">P = 100I &divide; (rt)</span></td><td>how much was invested</td></tr>
+<tr><td>Rate <span class="m">r</span></td><td><span class="m">r = 100I &divide; (Pt)</span></td><td>what percentage per year</td></tr>
+<tr><td>Time <span class="m">t</span></td><td><span class="m">t = 100I &divide; (Pr)</span></td><td>how many years</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="warn"><b>Watch out</b>
+<span class="m">t</span> must be in <b>years</b>. Nine months is <span class="m">t = 0.75</span>;
+18 months is <span class="m">t = 1.5</span>. And <span class="m">r</span> goes into the formula as the
+plain number 3.5, not as 0.035 &mdash; the &divide; 100 is already there.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">$4500 is invested at 3.5% per year simple interest for 4 years. Find (a) the interest earned, (b) the value of the investment at the end.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write down what each letter is worth.
+    <span class="work">P = 4500, &nbsp; r = 3.5, &nbsp; t = 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Substitute into <span class="m">I = Prt &divide; 100</span>.
+    <span class="work">I = (4500 &times; 3.5 &times; 4) &divide; 100<br>I = 63 000 &divide; 100 = 630</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) The value is principal plus interest.
+    <span class="work">4500.00 + 630.00 = 5130.00</span></div></div>
+  <div class="final">(a) interest = $630.00 &nbsp;&nbsp; (b) value = $5130.00</div>
+  <div class="tip"><b>Exam tip</b> Sense-check it: one year&rsquo;s interest is
+  <span class="m">0.035 &times; 4500 = 157.50</span>, and <span class="m">4 &times; 157.50 = 630</span>.
+  Same answer, and it shows you understand what simple interest <i>means</i>.</div>
+</div>
+</details>
+</section>
+
+<section id="compound" data-nav="Compound interest">
+<h2>Compound interest</h2>
+<p>With <b>compound interest</b> the interest earned is added to the account, and next year&rsquo;s interest
+is worked out on the <b>new, larger</b> amount. You earn interest on your interest, so the growth speeds
+up year after year.</p>
+
+<div class="formula">V = P<span class="m">(1 + <span class="frac"><span>r</span><span>100</span></span>)<sup>n</sup></span>
+<small>V = final value, P = principal, r = rate per year (%), n = number of years</small></div>
+
+<div class="def"><b>Key idea</b>
+This formula gives the <b>final value</b>, not the interest. To find the interest earned:
+<span class="m">interest = V &minus; P</span>. Read the question carefully &mdash; &ldquo;how much is in the
+account&rdquo; wants <span class="m">V</span>; &ldquo;how much interest&rdquo; wants
+<span class="m">V &minus; P</span>.</div>
+
+<div class="grid two">
+  <div class="card"><h4>The multiplier</h4>
+    <p>An increase of <span class="m">r</span>% is a multiplier of
+    <span class="m">1 + <span class="frac"><span>r</span><span>100</span></span></span>:</p>
+    <ul>
+      <li>3.5% &rarr; <span class="m">&times; 1.035</span></li>
+      <li>7% &rarr; <span class="m">&times; 1.07</span></li>
+      <li>12.5% &rarr; <span class="m">&times; 1.125</span></li>
+    </ul>
+    <p>Compounding for <span class="m">n</span> years just means using that multiplier
+    <span class="m">n</span> times, which is the power.</p></div>
+  <div class="card o"><h4>Simple or compound?</h4>
+    <ul>
+      <li><b>Simple</b>: interest is a fixed amount every year; the graph is a straight line.</li>
+      <li><b>Compound</b>: interest grows each year; the graph curves upwards.</li>
+      <li>Over 1 year they give exactly the <b>same</b> answer.</li>
+      <li>After that, compound always gives <b>more</b> &mdash; and the gap widens.</li>
+    </ul></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">$4500 is invested at 3.5% per year compound interest for 4 years. Find the interest earned, and state how much better this is than the simple interest in Example 1.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the multiplier for a 3.5% increase.
+    <span class="work">1 + 3.5 &divide; 100 = 1.035</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute into <span class="m">V = P(1 + r/100)<sup>n</sup></span> with <span class="m">n = 4</span>.
+    <span class="work">V = 4500 &times; 1.035<sup>4</sup><br>V = 4500 &times; 1.147523&hellip; = 5163.8535&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Round the value to 2 decimal places.
+    <span class="work">V = $5163.85</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Interest earned is the value minus the principal.
+    <span class="work">5163.85 &minus; 4500.00 = $663.85</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Compare with the simple interest of $630.00.
+    <span class="work">663.85 &minus; 630.00 = $33.85 more</span></div></div>
+  <div class="final">Interest = $663.85 &mdash; that is $33.85 more than simple interest</div>
+  <div class="warn"><b>Watch out</b> Keep the full value in your calculator until the very last step. If
+  you round <span class="m">1.035<sup>4</sup></span> to 1.15 first, you get $675 and lose the accuracy mark.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Simple vs compound comparison</h4>
+  <p class="hint">Set a principal, a rate and a number of years, then watch the two columns pull apart.
+  Switch the mode to <i>Depreciation</i> to see a value falling instead.</p>
+  <div class="row">
+    <div><label for="ciP">Principal ($)</label><input type="number" id="ciP" value="4500" step="100"></div>
+    <div><label for="ciR">Rate per year (%)</label><input type="number" id="ciR" value="3.5" step="0.5"></div>
+    <div><label for="ciN">Number of years</label><input type="number" id="ciN" value="6" step="1" min="1" max="25"></div>
+    <div><label for="ciMode">Mode</label>
+      <select id="ciMode">
+        <option value="grow">Growth: simple vs compound</option>
+        <option value="drop">Depreciation</option>
+      </select></div>
+  </div>
+  <div class="out" id="ciOut"></div>
+</div>
+</section>
+
+<section id="depreciation" data-nav="Depreciation">
+<h2>Depreciation</h2>
+<p>Cars, machinery, computers and phones <b>lose</b> a percentage of their value each year. This is
+<b>depreciation</b> &mdash; compound interest running backwards.</p>
+
+<div class="formula">V = P<span class="m">(1 &minus; <span class="frac"><span>r</span><span>100</span></span>)<sup>n</sup></span>
+<small>Exactly the same structure &mdash; the plus sign becomes a minus sign</small></div>
+
+<div class="note"><b>Note</b>
+A 15% loss means a multiplier of <span class="m">1 &minus; 0.15 = 0.85</span>. Because the multiplier is
+less than 1, the value falls quickly at first and then more slowly &mdash; it never actually reaches zero.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A car is bought for $18 000. It depreciates by 15% each year. Find its value after 5 years, and the total loss in value.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the multiplier for a 15% decrease.
+    <span class="work">1 &minus; 15 &divide; 100 = 0.85</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute into <span class="m">V = P(1 &minus; r/100)<sup>n</sup></span>.
+    <span class="work">V = 18 000 &times; 0.85<sup>5</sup><br>V = 18 000 &times; 0.443705&hellip; = 7986.6956&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Round to 2 decimal places.
+    <span class="work">V = $7986.70</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Loss in value = original &minus; final.
+    <span class="work">18 000.00 &minus; 7986.70 = $10 013.30</span></div></div>
+  <div class="final">Value after 5 years = $7986.70; loss = $10 013.30</div>
+  <div class="warn"><b>Common error</b> Losing 15% a year for 5 years is <b>not</b> losing 75%. Repeated
+  percentage change is never the same as adding the percentages up.</div>
+</div>
+</details>
+</section>
+
+<section id="borrowing" data-nav="Borrowing">
+<h2>Hire purchase, loans and mortgages</h2>
+<div class="def"><b>Definition</b>
+<b>Hire purchase</b> (HP) lets you take the goods now and pay in instalments. You pay a
+<b>deposit</b> first, then a fixed number of equal payments. The total paid is always <i>more</i> than the
+cash price &mdash; the difference is the cost of borrowing.</div>
+
+<div class="formula">total HP price = deposit + (number of instalments &times; instalment)
+<small>extra cost = total HP price &minus; cash price</small></div>
+
+<div class="grid">
+  <div class="card"><h4>Deposits</h4>
+    <p>Usually given as a percentage of the cash price. A 20% deposit on $1250 is
+    <span class="m">0.20 &times; 1250 = $250.00</span>.</p></div>
+  <div class="card o"><h4>Loans</h4>
+    <p>Money borrowed and repaid with interest, often monthly. Total repaid = monthly payment &times;
+    number of months; the interest is that total minus the amount borrowed.</p></div>
+  <div class="card p"><h4>Mortgages</h4>
+    <p>A very large loan to buy property, repaid over 20&ndash;30 years. Small differences in rate become
+    enormous over that length of time.</p>
+    <p>Example: $150&nbsp;000 repaid at $890 per month for 25 years costs
+    <span class="m">890 &times; 300 = $267&nbsp;000</span> &mdash; that is $117&nbsp;000 of interest.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A washing machine has a cash price of $1250. On hire purchase a customer pays a deposit of 20% plus 24 monthly instalments of $47.50. Find (a) the total hire purchase price, (b) the extra amount paid compared with the cash price, (c) that extra as a percentage of the cash price.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Find the deposit &mdash; 20% of the cash price.
+    <span class="work">0.20 &times; 1250 = $250.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the total of the instalments.
+    <span class="work">24 &times; 47.50 = $1140.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add them for the total HP price.
+    <span class="work">250.00 + 1140.00 = $1390.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) Compare with the cash price.
+    <span class="work">1390.00 &minus; 1250.00 = $140.00</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">(c) Write the extra as a percentage of the <b>cash price</b>.
+    <span class="work"><span class="frac"><span>140</span><span>1250</span></span> &times; 100 = 11.2%</span></div></div>
+  <div class="final">(a) $1390.00 &nbsp;&nbsp; (b) $140.00 extra &nbsp;&nbsp; (c) 11.2%</div>
+  <div class="tip"><b>Exam tip</b> The percentage is always taken from the <b>cash price</b> &mdash; that is
+  the amount the customer would have paid without borrowing.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">$8000 is invested at 4.2% per year compound interest. Find the least number of complete years before the investment is worth more than $10 000.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the condition using the compound formula.
+    <span class="work">8000 &times; 1.042<sup>n</sup> &gt; 10 000</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">There is no algebra needed &mdash; try values of
+    <span class="m">n</span> on your calculator and make a short table.
+    <span class="work">n = 4: &nbsp;8000 &times; 1.042<sup>4</sup> = 9431.07<br>n = 5: &nbsp;8000 &times; 1.042<sup>5</sup> = 9827.17</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Keep going until you pass $10 000.
+    <span class="work">n = 6: &nbsp;8000 &times; 1.042<sup>6</sup> = 10 239.91 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">After 5 years it is still below $10 000, so 6 whole
+    years are needed.
+    <span class="work">n = 6</span></div></div>
+  <div class="final">6 years</div>
+  <div class="tip"><b>Exam tip</b> Show at least the two values either side of the target &mdash; the one that
+  fails and the one that works. That is what earns the method mark on this style of question.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A painting bought for $12 000 is worth $15 972.00 three years later. Its value has increased by the same percentage each year. Find that percentage.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Put the values into the compound formula, calling the
+    multiplier <span class="m">k</span>.
+    <span class="work">12 000 &times; k<sup>3</sup> = 15 972</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Divide both sides by 12 000.
+    <span class="work">k<sup>3</sup> = 15 972 &divide; 12 000 = 1.331</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Take the cube root (the <span class="m"><sup>3</sup>&#8730;</span> key).
+    <span class="work">k = <sup>3</sup>&#8730;1.331 = 1.1</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">A multiplier of 1.1 is an increase of 0.1, which is 10%.
+    <span class="work">r = (1.1 &minus; 1) &times; 100 = 10</span></div></div>
+  <div class="final">10% per year</div>
+  <div class="note"><b>Note</b> The same method works for depreciation: you would get a multiplier below 1,
+  say 0.88, and the rate of depreciation would be
+  <span class="m">(1 &minus; 0.88) &times; 100 = 12%</span> per year.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A machine costs $24 000 new. It loses 20% of its value in the first year and 12% of its value in each year after that. Find its value after 4 years, and express this as a percentage of the original cost.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Deal with the first year on its own &mdash; multiplier 0.8.
+    <span class="work">24 000 &times; 0.8 = $19 200.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Years 2, 3 and 4 use a multiplier of 0.88, three times.
+    <span class="work">19 200 &times; 0.88<sup>3</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Evaluate, keeping the full accuracy.
+    <span class="work">0.88<sup>3</sup> = 0.681472<br>19 200 &times; 0.681472 = 13 084.2624</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Round the money answer to 2 decimal places.
+    <span class="work">V = $13 084.26</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">As a percentage of the original cost:
+    <span class="work"><span class="frac"><span>13 084.26</span><span>24 000</span></span> &times; 100 = 54.517&hellip; = 54.5%</span></div></div>
+  <div class="final">Value = $13 084.26, which is 54.5% (3 s.f.) of the original cost</div>
+  <div class="warn"><b>Watch out</b> The power is <b>3</b>, not 4 &mdash; the first year has already been dealt
+  with separately. Count the years the multiplier is actually applied.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>$3200 is invested for 3 years at 4.5% per year <b>simple</b> interest. Find the interest earned
+      and the total value.</li>
+    <li>$3200 is invested for 3 years at 4.5% per year <b>compound</b> interest. Find the value, and how
+      much more interest this earns than in question 1.</li>
+    <li>A motorbike costing $6400 depreciates by 18% per year. Find its value after 3 years.</li>
+    <li>$5000 earns $900 simple interest in 4 years. Find the rate of interest per year.</li>
+    <li>A laptop has a cash price of $960. On hire purchase you pay a 15% deposit and 18 monthly
+      instalments of $52.75. Find the extra amount paid compared with the cash price, and express it as a
+      percentage of the cash price.</li>
+    <li>Kofi invests $15 000 at 5.2% per year compound interest. Find (a) the value after 6 years,
+      (b) the least number of complete years before the investment is worth more than $25 000.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">I = (3200 &times; 4.5 &times; 3) &divide; 100</span> =
+        <span class="ans">$432.00</span>; total <span class="m">3200 + 432</span> =
+        <span class="ans">$3632.00</span></li>
+      <li><span class="m">V = 3200 &times; 1.045<sup>3</sup> = 3651.7316&hellip;</span> =
+        <span class="ans">$3651.73</span>; interest <span class="m">451.73</span>, which is
+        <span class="m">451.73 &minus; 432.00</span> = <span class="ans">$19.73 more</span></li>
+      <li><span class="m">6400 &times; 0.82<sup>3</sup> = 3528.7552</span> =
+        <span class="ans">$3528.76</span></li>
+      <li><span class="m">r = 100I &divide; (Pt) = (100 &times; 900) &divide; (5000 &times; 4)
+        = 90 000 &divide; 20 000</span> = <span class="ans">4.5%</span></li>
+      <li>Deposit <span class="m">0.15 &times; 960 = 144.00</span>; instalments
+        <span class="m">18 &times; 52.75 = 949.50</span>; total <span class="m">1093.50</span>.
+        Extra <span class="m">1093.50 &minus; 960</span> = <span class="ans">$133.50</span>, which is
+        <span class="m">133.50 &divide; 960 &times; 100 = 13.90625</span> =
+        <span class="ans">13.9%</span> (3 s.f.)</li>
+      <li>(a) <span class="m">15 000 &times; 1.052<sup>6</sup> = 20 332.262&hellip;</span> =
+        <span class="ans">$20 332.26</span> &nbsp;(b)
+        <span class="m">n = 10: 24 902.83</span> (too small),
+        <span class="m">n = 11: 26 197.77</span> &rarr; <span class="ans">11 years</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Simple interest:</b> <span class="m">I = Prt &divide; 100</span> gives the <i>interest only</i>;
+      add <span class="m">P</span> for the total value.</li>
+    <li><b>Compound interest:</b> <span class="m">V = P(1 + r/100)<sup>n</sup></span> gives the
+      <i>final value</i>; subtract <span class="m">P</span> for the interest earned.</li>
+    <li><b>Depreciation:</b> <span class="m">V = P(1 &minus; r/100)<sup>n</sup></span> &mdash; same formula,
+      minus sign, multiplier below 1.</li>
+    <li>Compound beats simple over more than one year, and the gap grows with time. Over exactly one year
+      they are identical.</li>
+    <li>Repeated percentage change never equals the percentages added together: 15% off five times is not
+      75% off.</li>
+    <li>To find <span class="m">n</span>, try values on your calculator and show the value either side of
+      the target. To find <span class="m">r</span>, find the multiplier first, then use
+      <span class="m">n</span>th roots.</li>
+    <li><b>Hire purchase:</b> total = deposit + instalments; the extra cost is measured against the
+      <b>cash price</b>.</li>
+    <li>Keep full accuracy in the calculator and round only at the end &mdash; money answers to
+      <b>2 decimal places</b>.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="17-1.html"><span>&larr; Previous</span><b>17.1 Earning Money</b></a><a class="next" href="17-3.html"><span>Next &rarr;</span><b>17.3 Buying and Selling</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 17.2 Borrowing and Investing Money<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- simple vs compound vs depreciation comparison ---- */
+(function(){
+  var out=el('ciOut');
+  function cell(t,extra){ return '<td style="padding:3px 12px 3px 0;'+(extra||'')+'">'+t+'</td>'; }
+  function go(){
+    var P=num('ciP',0), r=num('ciR',0), n=Math.round(num('ciN',1));
+    var mode=(el('ciMode')||{}).value||'grow';
+    if(n<1) n=1; if(n>25) n=25;
+    var rows='', y, html='';
+    if(mode==='drop'){
+      var m=1-r/100;
+      rows='<tr style="opacity:.7">'+cell('Year')+cell('Multiplier used')+cell('Value ($)')+
+        cell('Total lost ($)')+'</tr>';
+      for(y=1;y<=n;y++){
+        var v=P*Math.pow(m,y);
+        rows+='<tr>'+cell(y)+cell(fx(m,4)+'<sup>'+y+'</sup>')+cell(money(v))+cell(money(P-v))+'</tr>';
+      }
+      var vf=P*Math.pow(m,n);
+      html='<div>Depreciation multiplier = 1 &minus; '+fx(r,2)+' &divide; 100 = <span class="hl">'+
+          fx(m,4)+'</span></div>'+
+        '<table style="margin-top:8px;font-size:.95em">'+rows+'</table>'+
+        '<div style="margin-top:8px">After '+n+' years: V = '+money(P)+' &times; '+fx(m,4)+'<sup>'+n+
+          '</sup> = <b>$'+money(vf)+'</b></div>'+
+        '<div>Total loss in value = <b>$'+money(P-vf)+'</b></div>';
+    } else {
+      var k=1+r/100;
+      rows='<tr style="opacity:.7">'+cell('Year')+cell('Simple ($)')+cell('Compound ($)')+
+        cell('Difference ($)')+'</tr>';
+      for(y=1;y<=n;y++){
+        var s=P+P*r*y/100, c=P*Math.pow(k,y);
+        rows+='<tr>'+cell(y)+cell(money(s))+cell(money(c))+cell(money(c-s))+'</tr>';
+      }
+      var sf=P+P*r*n/100, cf=P*Math.pow(k,n);
+      html='<div>Compound multiplier = 1 + '+fx(r,2)+' &divide; 100 = <span class="hl">'+fx(k,4)+
+          '</span>; each year simple interest adds a fixed $'+money(P*r/100)+'</div>'+
+        '<table style="margin-top:8px;font-size:.95em">'+rows+'</table>'+
+        '<div style="margin-top:8px">After '+n+' years &mdash; simple: <b>$'+money(sf)+
+          '</b> (interest $'+money(sf-P)+')</div>'+
+        '<div>After '+n+' years &mdash; compound: <b>$'+money(cf)+'</b> (interest $'+money(cf-P)+')</div>'+
+        '<div style="margin-top:6px;opacity:.75;font-size:.9em">Compound is $'+money(cf-sf)+
+          ' better over '+n+' year'+(n===1?'':'s')+'.</div>';
+    }
+    out.innerHTML=html;
+  }
+  bindAll(['ciP','ciR','ciN','ciMode'],go);
+})();
+</script>
+</body>
+</html>

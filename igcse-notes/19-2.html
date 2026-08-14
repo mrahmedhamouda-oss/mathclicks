@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>19.2 Symmetry in Three Dimensions | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Planes of symmetry in solids and axes of rotational symmetry &mdash; how to count them systematically instead of guessing, for every solid on the syllabus.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 19 &mdash; Symmetry</span>
+    </div>
+    <h1>19.2 &nbsp;Symmetry in Three Dimensions</h1>
+    <p>Planes of symmetry in solids and axes of rotational symmetry &mdash; how to count them systematically instead of guessing, for every solid on the syllabus.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#planes">Planes</a>
+  <a href="#cube">Cube</a>
+  <a href="#solids">Other solids</a>
+  <a href="#axes">Axes</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="planes" data-nav="Planes">
+<h2>Planes of symmetry</h2>
+<p>In two dimensions the mirror is a <b>line</b>. In three dimensions the mirror is a flat surface: a
+<b>plane of symmetry</b>. Everything you learned about line symmetry carries over &mdash; the test is still
+&ldquo;does one half reflect onto the other?&rdquo;</p>
+
+<div class="def"><b>Definition</b>
+A <b>plane of symmetry</b> is a flat surface that cuts a solid into two pieces such that each piece is the
+<b>mirror image</b> of the other in that plane. Every point of the solid has a matching point the same
+perpendicular distance on the other side of the plane.</div>
+
+<div class="card">
+<h4>The three planes of symmetry of a cuboid</h4>
+<svg viewBox="0 0 780 200" role="img" aria-label="A cuboid shown three times, each time with one of its three planes of symmetry shaded">
+  <g>
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="85" y1="125" x2="85" y2="35"/><line x1="85" y1="125" x2="225" y2="125"/>
+      <line x1="85" y1="125" x2="40" y2="160"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="40" y="70" width="140" height="90"/>
+      <line x1="40" y1="70" x2="85" y2="35"/><line x1="180" y1="70" x2="225" y2="35"/>
+      <line x1="180" y1="160" x2="225" y2="125"/>
+      <line x1="85" y1="35" x2="225" y2="35"/><line x1="225" y1="35" x2="225" y2="125"/>
+    </g>
+    <polygon points="110,70 155,35 155,125 110,160" fill="#e05c2a" fill-opacity="0.32" stroke="#e05c2a" stroke-width="2"/>
+    <text x="130" y="188" font-size="13" text-anchor="middle" fill="#e05c2a">1 &mdash; cuts the length in half</text>
+  </g>
+  <g transform="translate(260,0)">
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="85" y1="125" x2="85" y2="35"/><line x1="85" y1="125" x2="225" y2="125"/>
+      <line x1="85" y1="125" x2="40" y2="160"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="40" y="70" width="140" height="90"/>
+      <line x1="40" y1="70" x2="85" y2="35"/><line x1="180" y1="70" x2="225" y2="35"/>
+      <line x1="180" y1="160" x2="225" y2="125"/>
+      <line x1="85" y1="35" x2="225" y2="35"/><line x1="225" y1="35" x2="225" y2="125"/>
+    </g>
+    <polygon points="40,115 180,115 225,80 85,80" fill="#e05c2a" fill-opacity="0.32" stroke="#e05c2a" stroke-width="2"/>
+    <text x="130" y="188" font-size="13" text-anchor="middle" fill="#e05c2a">2 &mdash; horizontal, halfway up</text>
+  </g>
+  <g transform="translate(520,0)">
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="85" y1="125" x2="85" y2="35"/><line x1="85" y1="125" x2="225" y2="125"/>
+      <line x1="85" y1="125" x2="40" y2="160"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="40" y="70" width="140" height="90"/>
+      <line x1="40" y1="70" x2="85" y2="35"/><line x1="180" y1="70" x2="225" y2="35"/>
+      <line x1="180" y1="160" x2="225" y2="125"/>
+      <line x1="85" y1="35" x2="225" y2="35"/><line x1="225" y1="35" x2="225" y2="125"/>
+    </g>
+    <polygon points="62.5,52.5 202.5,52.5 202.5,142.5 62.5,142.5" fill="#e05c2a" fill-opacity="0.32" stroke="#e05c2a" stroke-width="2"/>
+    <text x="130" y="188" font-size="13" text-anchor="middle" fill="#e05c2a">3 &mdash; cuts the depth in half</text>
+  </g>
+</svg>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+A cuboid whose three edge lengths are all different has exactly <b>3</b> planes of symmetry: one parallel to
+each pair of opposite faces, each one halfway between them. Say it as &ldquo;one for each pair of faces&rdquo;
+and you will never miscount.</div>
+
+<div class="card o">
+<h4>Why the diagonal cut fails</h4>
+<svg viewBox="0 0 300 200" role="img" aria-label="A cuboid with a diagonal cut shaded, marked as not a plane of symmetry">
+  <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+    <line x1="85" y1="125" x2="85" y2="35"/><line x1="85" y1="125" x2="225" y2="125"/>
+    <line x1="85" y1="125" x2="40" y2="160"/>
+  </g>
+  <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+    <rect x="40" y="70" width="140" height="90"/>
+    <line x1="40" y1="70" x2="85" y2="35"/><line x1="180" y1="70" x2="225" y2="35"/>
+    <line x1="180" y1="160" x2="225" y2="125"/>
+    <line x1="85" y1="35" x2="225" y2="35"/><line x1="225" y1="35" x2="225" y2="125"/>
+  </g>
+  <polygon points="40,70 180,70 225,125 85,125" fill="#9fb3d1" fill-opacity="0.35" stroke="#6d28d9" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="150" y="188" font-size="13" text-anchor="middle" fill="#6d28d9">two congruent halves, but not mirror images</text>
+</svg>
+</div>
+
+<div class="warn"><b>Watch out</b>
+Cutting a cuboid diagonally does produce two <i>congruent</i> pieces &mdash; but one is a <b>rotation</b> of the
+other, not a reflection, so it is <b>not</b> a plane of symmetry. The diagonal cut only works when the two
+faces it meets are <b>equal squares</b> &mdash; which is why a cube has extra planes and an ordinary cuboid
+does not.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A cuboid measures 8&nbsp;cm by 5&nbsp;cm by 3&nbsp;cm. Write down the number of planes of symmetry and describe each one.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The three edge lengths are all different, so no diagonal
+    cut can work. Take the pairs of opposite faces one at a time.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Parallel to the two <span class="m">5 &times; 3</span>
+    faces, halfway along the 8&nbsp;cm edges.
+    <span class="work">a 5 cm &times; 3 cm rectangular cut, 4 cm from each end</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Parallel to the two <span class="m">8 &times; 3</span>
+    faces, halfway along the 5&nbsp;cm edges.
+    <span class="work">an 8 cm &times; 3 cm cut, 2.5 cm from each side</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Parallel to the two <span class="m">8 &times; 5</span>
+    faces, halfway along the 3&nbsp;cm edges.
+    <span class="work">an 8 cm &times; 5 cm cut, 1.5 cm from each face</span></div></div>
+  <div class="final">3 planes of symmetry</div>
+</div>
+</details>
+</section>
+
+<section id="cube" data-nav="Cube">
+<h2>The cube &mdash; nine planes</h2>
+<p>A cube is a cuboid whose edges are all equal, so it keeps the three &ldquo;face&rdquo; planes and gains
+six more. Count them in two groups and the answer is never in doubt.</p>
+
+<div class="grid two">
+  <div class="card g"><h4>Group 1 &mdash; parallel to the faces</h4>
+    <p>One plane halfway between each pair of opposite faces. A cube has 3 pairs of opposite faces.</p>
+    <p class="m">3 planes</p></div>
+  <div class="card p"><h4>Group 2 &mdash; the diagonal planes</h4>
+    <p>Each one contains a pair of <b>opposite edges</b>. The 12 edges pair up into 6 such pairs, and every
+    one of these cuts works because the faces of a cube are squares.</p>
+    <p class="m">6 planes</p></div>
+</div>
+
+<div class="formula">3 + 6 = <b>9 planes of symmetry</b>
+<small>A cube has 9; a cuboid with different edges has only 3</small></div>
+
+<div class="card">
+<h4>Two of the six diagonal planes</h4>
+<svg viewBox="0 0 540 210" role="img" aria-label="A cube shown twice, each time with one diagonal plane of symmetry shaded">
+  <g>
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="90" y1="140" x2="90" y2="20"/><line x1="90" y1="140" x2="210" y2="140"/>
+      <line x1="90" y1="140" x2="50" y2="180"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="50" y="60" width="120" height="120"/>
+      <line x1="50" y1="60" x2="90" y2="20"/><line x1="170" y1="60" x2="210" y2="20"/>
+      <line x1="170" y1="180" x2="210" y2="140"/>
+      <line x1="90" y1="20" x2="210" y2="20"/><line x1="210" y1="20" x2="210" y2="140"/>
+    </g>
+    <polygon points="50,60 170,60 210,140 90,140" fill="#e05c2a" fill-opacity="0.32" stroke="#e05c2a" stroke-width="2"/>
+    <text x="130" y="200" font-size="13" text-anchor="middle" fill="#e05c2a">top front edge to bottom back edge</text>
+  </g>
+  <g transform="translate(280,0)">
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="90" y1="140" x2="90" y2="20"/><line x1="90" y1="140" x2="210" y2="140"/>
+      <line x1="90" y1="140" x2="50" y2="180"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="50" y="60" width="120" height="120"/>
+      <line x1="50" y1="60" x2="90" y2="20"/><line x1="170" y1="60" x2="210" y2="20"/>
+      <line x1="170" y1="180" x2="210" y2="140"/>
+      <line x1="90" y1="20" x2="210" y2="20"/><line x1="210" y1="20" x2="210" y2="140"/>
+    </g>
+    <polygon points="50,60 50,180 210,140 210,20" fill="#6d28d9" fill-opacity="0.28" stroke="#6d28d9" stroke-width="2"/>
+    <text x="130" y="200" font-size="13" text-anchor="middle" fill="#6d28d9">left front edge to right back edge</text>
+  </g>
+</svg>
+</div>
+
+<div class="note"><b>In between the cube and the cuboid</b>
+A <b>square prism</b> &mdash; a cuboid with a square cross-section, such as
+<span class="m">4 &times; 4 &times; 10</span> &mdash; has <b>5</b> planes: the one cutting the length in half,
+plus the four planes containing the long axis that match the four lines of symmetry of the square
+cross-section (two through the faces, two through the diagonals).</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">A solid cuboid measures 4&nbsp;cm by 4&nbsp;cm by 10&nbsp;cm. Find the number of planes of symmetry, and explain why the answer is not 3.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The cross-section is a <b>square</b>
+    <span class="m">4 &times; 4</span>. Any plane that contains the long axis and is a line of symmetry of that
+    square is a plane of symmetry of the solid. A square has <b>4</b> lines of symmetry.
+    <span class="work">4 planes containing the 10 cm axis</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">There is also one plane <i>perpendicular</i> to the long
+    axis, halfway along it.
+    <span class="work">1 more plane, 5 cm from each square face</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add them.
+    <span class="work">4 + 1 = 5</span></div></div>
+  <div class="final">5 planes of symmetry</div>
+  <div class="tip"><b>Exam tip</b> For <b>any prism</b>: number of planes = (lines of symmetry of the
+  cross-section) + 1 for the cut halfway along its length. Test it on a cube:
+  <span class="m">4 + 1 = 5</span>? No &mdash; a cube is a special case where the &ldquo;length&rdquo; equals the
+  side, so all three directions act as the cross-section, giving 9.</div>
+</div>
+</details>
+</section>
+
+<section id="solids" data-nav="Other solids">
+<h2>Pyramids, prisms and curved solids</h2>
+
+<div class="grid">
+  <div class="card"><h4>Square-based pyramid</h4>
+    <svg viewBox="0 0 260 190" role="img" aria-label="A square based pyramid with one plane of symmetry shaded">
+      <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+        <line x1="90" y1="125" x2="210" y2="125"/><line x1="90" y1="125" x2="50" y2="160"/>
+        <line x1="90" y1="125" x2="130" y2="35"/>
+      </g>
+      <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+        <line x1="50" y1="160" x2="170" y2="160"/><line x1="170" y1="160" x2="210" y2="125"/>
+        <line x1="130" y1="35" x2="50" y2="160"/><line x1="130" y1="35" x2="170" y2="160"/>
+        <line x1="130" y1="35" x2="210" y2="125"/>
+      </g>
+      <polygon points="110,160 150,125 130,35" fill="#e05c2a" fill-opacity="0.32" stroke="#e05c2a" stroke-width="2"/>
+      <text x="130" y="182" font-size="12.5" text-anchor="middle" fill="#e05c2a">4 planes in all</text>
+    </svg>
+    <p>2 planes through the midpoints of opposite base edges, and 2 through the base diagonals. All four
+    contain the apex.</p></div>
+
+  <div class="card g"><h4>Triangular prism</h4>
+    <svg viewBox="0 0 260 190" role="img" aria-label="A triangular prism with the plane halfway along its length shaded">
+      <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+        <line x1="115" y1="98" x2="165" y2="8"/><line x1="115" y1="98" x2="215" y2="98"/>
+        <line x1="115" y1="98" x2="70" y2="130"/>
+      </g>
+      <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+        <polygon points="120,40 70,130 170,130"/>
+        <line x1="120" y1="40" x2="165" y2="8"/><line x1="170" y1="130" x2="215" y2="98"/>
+        <line x1="165" y1="8" x2="215" y2="98"/>
+      </g>
+      <polygon points="142.5,24 92.5,114 192.5,114" fill="#e05c2a" fill-opacity="0.32" stroke="#e05c2a" stroke-width="2"/>
+      <text x="130" y="182" font-size="12.5" text-anchor="middle" fill="#e05c2a">equilateral ends: 4 planes</text>
+    </svg>
+    <p>Cross-section equilateral: <b>3 + 1 = 4</b>. Cross-section isosceles only: <b>1 + 1 = 2</b>.
+    Cross-section scalene: <b>1</b>.</p></div>
+
+  <div class="card p"><h4>Cylinder</h4>
+    <svg viewBox="0 0 260 190" role="img" aria-label="A cylinder with a vertical plane through its axis and the horizontal plane halfway up">
+      <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+        <ellipse cx="130" cy="45" rx="60" ry="20"/>
+        <line x1="70" y1="45" x2="70" y2="145"/><line x1="190" y1="45" x2="190" y2="145"/>
+        <path d="M70,145 A60,20 0 0,0 190,145"/>
+      </g>
+      <path d="M70,145 A60,20 0 0,1 190,145" fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4"/>
+      <rect x="70" y="45" width="120" height="100" fill="#e05c2a" fill-opacity="0.28" stroke="#e05c2a" stroke-width="2"/>
+      <ellipse cx="130" cy="95" rx="60" ry="20" fill="#6d28d9" fill-opacity="0.22" stroke="#6d28d9" stroke-width="2"/>
+      <text x="130" y="182" font-size="12.5" text-anchor="middle" fill="#6d28d9">infinitely many</text>
+    </svg>
+    <p>Every vertical plane through the axis is a plane of symmetry &mdash; there are infinitely many &mdash;
+    and so is the one horizontal plane halfway up.</p></div>
+
+  <div class="card o"><h4>Cone</h4>
+    <svg viewBox="0 0 260 190" role="img" aria-label="A cone with a vertical plane through the axis shaded">
+      <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+        <line x1="75" y1="145" x2="130" y2="30"/><line x1="185" y1="145" x2="130" y2="30"/>
+        <path d="M75,145 A55,18 0 0,0 185,145"/>
+      </g>
+      <path d="M75,145 A55,18 0 0,1 185,145" fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4"/>
+      <polygon points="75,145 185,145 130,30" fill="#e05c2a" fill-opacity="0.3" stroke="#e05c2a" stroke-width="2"/>
+      <text x="130" y="182" font-size="12.5" text-anchor="middle" fill="#e05c2a">infinitely many vertical planes</text>
+    </svg>
+    <p>Every plane containing the axis works. A <i>horizontal</i> cut does <b>not</b>: the top piece is a small
+    cone and the bottom piece is a frustum.</p></div>
+
+  <div class="card"><h4>Sphere</h4>
+    <svg viewBox="0 0 260 190" role="img" aria-label="A sphere with a plane through its centre shaded">
+      <circle cx="130" cy="95" r="70" fill="none" stroke="#0f2d6b" stroke-width="2.2"/>
+      <ellipse cx="130" cy="95" rx="70" ry="22" fill="#e05c2a" fill-opacity="0.28" stroke="#e05c2a" stroke-width="2"/>
+      <line x1="130" y1="25" x2="130" y2="165" stroke="#9fb3d1" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <text x="130" y="182" font-size="12.5" text-anchor="middle" fill="#e05c2a">any plane through the centre</text>
+    </svg>
+    <p>A sphere is the most symmetrical solid of all: <b>every</b> plane through the centre is a plane of
+    symmetry, and the centre is its centre of symmetry.</p></div>
+
+  <div class="card g"><h4>The rule for prisms</h4>
+    <p>For a prism whose cross-section is not a square or a circle:</p>
+    <p class="m">planes = (lines of symmetry of the cross-section) + 1</p>
+    <p>Regular hexagonal prism: <span class="m">6 + 1 = 7</span>. Regular pentagonal prism:
+    <span class="m">5 + 1 = 6</span>.</p></div>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Solid</th><th>Planes of symmetry</th><th>Main axis of rotational symmetry</th></tr></thead>
+<tbody>
+<tr><td>Cuboid (all edges different)</td><td>3</td><td>3 axes, each of order 2</td></tr>
+<tr><td>Square prism (square cross-section)</td><td>5</td><td>the long axis, order 4</td></tr>
+<tr><td>Cube</td><td>9</td><td>3 axes of order 4, 4 of order 3, 6 of order 2</td></tr>
+<tr><td>Square-based pyramid</td><td>4</td><td>the vertical axis, order 4</td></tr>
+<tr><td>Prism, equilateral triangle ends</td><td>4</td><td>the long axis, order 3</td></tr>
+<tr><td>Prism, isosceles triangle ends</td><td>2</td><td>none (order 1) about the long axis</td></tr>
+<tr><td>Regular hexagonal prism</td><td>7</td><td>the long axis, order 6</td></tr>
+<tr><td>Cylinder</td><td>infinitely many</td><td>the long axis, infinite order</td></tr>
+<tr><td>Cone</td><td>infinitely many</td><td>the axis through the apex, infinite order</td></tr>
+<tr><td>Sphere</td><td>infinitely many</td><td>infinitely many axes, all of infinite order</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tool">
+  <h4>Plane-of-symmetry explorer</h4>
+  <p class="hint">Choose a solid, then press <b>Next plane</b> to slice it one plane at a time. The counter
+  keeps score, so you can check whether your own count agrees.</p>
+  <div class="row">
+    <div><label for="psSolid">Solid</label>
+      <select id="psSolid">
+        <option value="cuboid" selected>Cuboid (edges all different)</option>
+        <option value="cube">Cube</option>
+        <option value="sqpris">Square prism (4 by 4 by 10)</option>
+        <option value="pyr">Square-based pyramid</option>
+        <option value="prism">Triangular prism (equilateral ends)</option>
+        <option value="cyl">Cylinder</option>
+        <option value="cone">Cone</option>
+        <option value="sph">Sphere</option>
+      </select></div>
+    <div><label>Slice it</label><button class="btn" id="psNext">Next plane</button></div>
+    <div><label>Start again</label><button class="btn ghost" id="psReset">Reset</button></div>
+  </div>
+  <svg id="psSvg" viewBox="0 0 340 230" role="img" aria-label="A solid with one of its planes of symmetry shaded"></svg>
+  <div class="out" id="psOut"></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A prism is 12&nbsp;cm long. Its cross-section is a triangle with sides 5&nbsp;cm, 5&nbsp;cm and 8&nbsp;cm. How many planes of symmetry does the prism have?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Deal with the cross-section first. A triangle with
+    sides 5, 5, 8 is <b>isosceles</b>, not equilateral, so it has just <b>1</b> line of symmetry.
+    <span class="work">1 plane containing that line and the 12 cm length</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Then add the cut perpendicular to the length, halfway
+    along.
+    <span class="work">1 more plane, 6 cm from each end</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Total.
+    <span class="work">1 + 1 = 2</span></div></div>
+  <div class="final">2 planes of symmetry</div>
+  <div class="warn"><b>Watch out</b> If the triangle were equilateral the answer would be
+  <span class="m">3 + 1 = 4</span>, and if it were scalene it would be just <b>1</b> (only the halfway cut).
+  Always check the cross-section before you write anything down.</div>
+</div>
+</details>
+</section>
+
+<section id="axes" data-nav="Axes">
+<h2>Axes of rotational symmetry</h2>
+<p>In three dimensions a shape rotates about a <b>line</b>, not a point. That line is an <b>axis of
+rotational symmetry</b>, and it has an <b>order</b> in exactly the same sense as in two dimensions.</p>
+
+<div class="def"><b>Definition</b>
+An <b>axis of rotational symmetry</b> is a line about which the solid can be turned so that it occupies the
+same space as before. The <b>order</b> is the number of positions in one full turn where the solid looks
+unchanged.</div>
+
+<div class="card">
+<h4>The three axes of a cuboid</h4>
+<svg viewBox="0 0 780 200" role="img" aria-label="A cuboid shown three times with each of its three order 2 axes of rotational symmetry drawn">
+  <g>
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="85" y1="125" x2="85" y2="35"/><line x1="85" y1="125" x2="225" y2="125"/>
+      <line x1="85" y1="125" x2="40" y2="160"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="40" y="70" width="140" height="90"/>
+      <line x1="40" y1="70" x2="85" y2="35"/><line x1="180" y1="70" x2="225" y2="35"/>
+      <line x1="180" y1="160" x2="225" y2="125"/>
+      <line x1="85" y1="35" x2="225" y2="35"/><line x1="225" y1="35" x2="225" y2="125"/>
+    </g>
+    <line x1="20" y1="120" x2="245" y2="80" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="130" y="188" font-size="13" text-anchor="middle" fill="#6d28d9">through the end faces &mdash; order 2</text>
+  </g>
+  <g transform="translate(260,0)">
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="85" y1="125" x2="85" y2="35"/><line x1="85" y1="125" x2="225" y2="125"/>
+      <line x1="85" y1="125" x2="40" y2="160"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="40" y="70" width="140" height="90"/>
+      <line x1="40" y1="70" x2="85" y2="35"/><line x1="180" y1="70" x2="225" y2="35"/>
+      <line x1="180" y1="160" x2="225" y2="125"/>
+      <line x1="85" y1="35" x2="225" y2="35"/><line x1="225" y1="35" x2="225" y2="125"/>
+    </g>
+    <line x1="132.5" y1="20" x2="132.5" y2="175" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="130" y="188" font-size="13" text-anchor="middle" fill="#6d28d9">through top and bottom &mdash; order 2</text>
+  </g>
+  <g transform="translate(520,0)">
+    <g fill="none" stroke="#9fb3d1" stroke-width="1.8" stroke-dasharray="5 4">
+      <line x1="85" y1="125" x2="85" y2="35"/><line x1="85" y1="125" x2="225" y2="125"/>
+      <line x1="85" y1="125" x2="40" y2="160"/>
+    </g>
+    <g fill="none" stroke="#0f2d6b" stroke-width="2.2">
+      <rect x="40" y="70" width="140" height="90"/>
+      <line x1="40" y1="70" x2="85" y2="35"/><line x1="180" y1="70" x2="225" y2="35"/>
+      <line x1="180" y1="160" x2="225" y2="125"/>
+      <line x1="85" y1="35" x2="225" y2="35"/><line x1="225" y1="35" x2="225" y2="125"/>
+    </g>
+    <line x1="95" y1="130" x2="170" y2="72" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="130" y="188" font-size="13" text-anchor="middle" fill="#6d28d9">front to back &mdash; order 2</text>
+  </g>
+</svg>
+</div>
+
+<div class="grid two">
+  <div class="card"><h4>How to describe an axis</h4>
+    <p>Say where it goes in, and where it comes out: &ldquo;the axis through the centres of the two
+    <span class="m">5 &times; 3</span> faces&rdquo;, or &ldquo;the vertical axis through the apex and the centre
+    of the base&rdquo;. A vague answer such as &ldquo;down the middle&rdquo; does not score.</p></div>
+  <div class="card o"><h4>Orders you should know</h4>
+    <ul>
+      <li>Cuboid: 3 axes, each of order <b>2</b></li>
+      <li>Square-based pyramid: 1 axis of order <b>4</b></li>
+      <li>Equilateral triangular prism: the long axis has order <b>3</b></li>
+      <li>Regular hexagonal prism: the long axis has order <b>6</b></li>
+      <li>Cylinder and cone: the axis has <b>infinite</b> order &mdash; any rotation at all works</li>
+    </ul></div>
+</div>
+
+<div class="note"><b>Going further</b>
+A cube has <b>13</b> axes altogether: 3 of order 4 through the centres of opposite faces, 4 of order 3 through
+opposite corners, and 6 of order 2 through the midpoints of opposite edges. You will not be asked to list all
+13, but being able to see the order-3 corner-to-corner axis is a genuine test of 3-D thinking.</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Compare a solid cylinder and a solid cone. For each, state the number of planes of symmetry and describe the axis of rotational symmetry.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><b>Cylinder.</b> Any plane containing the axis cuts it
+    into two identical half-cylinders that are mirror images, and there are infinitely many such planes.
+    <span class="work">infinitely many vertical planes</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The cylinder also has one horizontal plane, halfway up,
+    because the top half is a mirror image of the bottom half.
+    <span class="work">still infinitely many in total</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>Cone.</b> Every plane through the apex and the centre
+    of the base works, so again there are infinitely many. But a horizontal cut does <b>not</b>, because the
+    two pieces are different shapes.
+    <span class="work">infinitely many, all containing the axis</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Both have one axis of rotational symmetry: the line
+    joining the centres of the circular ends (cylinder), or the apex to the centre of the base (cone). Any
+    rotation at all leaves the solid looking the same.
+    <span class="work">order is infinite for both</span></div></div>
+  <div class="final">Both: infinitely many planes; one axis of infinite order</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">A cuboid measures 6&nbsp;cm by 6&nbsp;cm by 6&nbsp;cm. State (a) how many planes of symmetry it has, (b) the order of rotational symmetry about an axis through the centres of two opposite faces, (c) the order about a body diagonal.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">All edges are 6 cm, so this cuboid is a <b>cube</b>.
+    <span class="work">3 face planes + 6 diagonal planes = 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Look down the axis through two opposite face centres:
+    you see a square, and a square has rotational symmetry of order 4. Turning the cube through
+    <span class="m">90&deg;</span> about that axis leaves it looking identical.
+    <span class="work">order 4 &mdash; it fits every 90&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Look down a corner-to-corner body diagonal: the
+    three faces meeting at that corner take each other&rsquo;s places every
+    <span class="m">120&deg;</span>.
+    <span class="work">360&deg; &divide; 120&deg; = 3</span></div></div>
+  <div class="final">(a) 9 &nbsp;&nbsp; (b) order 4 &nbsp;&nbsp; (c) order 3</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">The diagram shows a prism whose cross-section is a regular hexagon of side 3&nbsp;cm; the prism is 20&nbsp;cm long. Find the number of planes of symmetry, and state the order of rotational symmetry about the long axis.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Start with the cross-section. A regular hexagon has
+    <b>6</b> lines of symmetry: 3 joining opposite vertices and 3 joining the midpoints of opposite sides.
+    <span class="work">6 planes, each containing the 20 cm axis</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the plane perpendicular to the axis, halfway along.
+    <span class="work">6 + 1 = 7 planes</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Rotational symmetry about the long axis matches the
+    rotational symmetry of the cross-section, which is order 6 for a regular hexagon.
+    <span class="work">order 6 &mdash; the prism fits every 60&deg;</span></div></div>
+  <div class="final">7 planes of symmetry; rotational symmetry of order 6 about the long axis</div>
+  <div class="tip"><b>Exam tip</b> Two-dimensional symmetry does the heavy lifting for every prism. Draw the
+  cross-section, count its lines and its order, then add the single halfway plane.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Write down the number of planes of symmetry of (a) a cuboid measuring
+      <span class="m">7 &times; 4 &times; 2</span>, (b) a cube, (c) a sphere, (d) a square-based pyramid.</li>
+    <li>A prism 10&nbsp;cm long has a cross-section that is an isosceles triangle with sides 6&nbsp;cm,
+      6&nbsp;cm and 4&nbsp;cm. How many planes of symmetry does it have?</li>
+    <li>A cuboid measures <span class="m">5 &times; 5 &times; 12</span> centimetres. Explain why it has more
+      than 3 planes of symmetry and state how many it has.</li>
+    <li>Describe the axis of rotational symmetry of a cone and state its order.</li>
+    <li>A solid cylinder has radius 4&nbsp;cm and height 10&nbsp;cm. Describe <b>all</b> of its planes of
+      symmetry.</li>
+    <li>A prism 15&nbsp;cm long has a regular pentagonal cross-section. Find the number of planes of symmetry
+      and the order of rotational symmetry about the long axis. Would your answers change if the pentagon were
+      irregular but had one line of symmetry?</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) all edges different &rarr; <span class="ans">3</span> &nbsp;(b) 3 face planes + 6 diagonal planes
+        &rarr; <span class="ans">9</span> &nbsp;(c) <span class="ans">infinitely many</span>
+        &nbsp;(d) 2 through opposite edge midpoints + 2 through the diagonals &rarr; <span class="ans">4</span></li>
+      <li>Isosceles cross-section has 1 line of symmetry &rarr; 1 plane along the length, plus the halfway cut
+        &rarr; <span class="ans">2 planes</span></li>
+      <li>The cross-section is a <b>square</b>, which has 4 lines of symmetry, so 4 planes contain the 12 cm
+        axis; add the plane 6 cm from each square face &rarr; <span class="ans">5 planes</span></li>
+      <li>The line from the <b>apex to the centre of the circular base</b>; any rotation about it maps the cone
+        onto itself, so the order is <span class="ans">infinite</span></li>
+      <li>Every plane containing the axis (infinitely many, each a
+        <span class="m">8 cm &times; 10 cm</span> rectangle) <b>and</b> the horizontal plane 5 cm up
+        (a circle of radius 4 cm) &rarr; <span class="ans">infinitely many in total</span></li>
+      <li>Regular pentagon: 5 lines, order 5 &rarr; <span class="ans">5 + 1 = 6 planes, order 5</span>.
+        With only one line of symmetry the prism would have <span class="ans">1 + 1 = 2 planes and order 1</span>
+        (no rotational symmetry about the long axis).</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>A <b>plane of symmetry</b> cuts a solid into two halves that are <b>mirror images</b> &mdash; congruent
+      is not enough.</li>
+    <li>Cuboid with all edges different: <b>3</b> planes. Cube: <b>9</b> (3 face planes + 6 diagonal planes).
+      Square prism: <b>5</b>.</li>
+    <li>Square-based pyramid: <b>4</b> planes, all through the apex.</li>
+    <li>For any prism, <b>planes = lines of symmetry of the cross-section + 1</b> (the cut halfway along the
+      length).</li>
+    <li>Cylinder, cone and sphere all have <b>infinitely many</b> planes of symmetry; the cone has no horizontal
+      one.</li>
+    <li>An <b>axis of rotational symmetry</b> is a line; its <b>order</b> is how many times the solid fits in
+      one full turn about it.</li>
+    <li>A cuboid has 3 axes each of order 2; a square-based pyramid has one axis of order 4; a cylinder and a
+      cone have one axis of infinite order.</li>
+    <li>Describe an axis by naming <b>both</b> points it passes through &mdash; two face centres, or the apex and
+      the centre of the base.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="19-1.html"><span>&larr; Previous</span><b>19.1 Symmetry in Two Dimensions</b></a><a class="next" href="19-3.html"><span>Next &rarr;</span><b>19.3 Symmetry Properties of Circles</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 19.2 Symmetry in Three Dimensions<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- plane of symmetry explorer ---- */
+(function(){
+  var svg=el('psSvg'), out=el('psOut'), cur='cuboid', idx=-1, CX=170, CY=118;
+
+  function pr(p,S){
+    var x=p[0]-S.c[0], y=p[1]-S.c[1], z=p[2]-S.c[2], s=S.s;
+    return [CX+(x-z)*0.866*s, CY-y*s+(x+z)*0.5*s];
+  }
+  function pl(a,S){
+    var i,q,r=[]; for(i=0;i<a.length;i++){ q=pr(a[i],S); r.push(fx(q[0],1)+','+fx(q[1],1)); }
+    return r.join(' ');
+  }
+  function seg(e,S,col,w,dash){
+    var a=pr(e[0],S), b=pr(e[1],S);
+    return '<line x1="'+fx(a[0],1)+'" y1="'+fx(a[1],1)+'" x2="'+fx(b[0],1)+'" y2="'+fx(b[1],1)+
+      '" stroke="'+col+'" stroke-width="'+w+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>';
+  }
+  function line3(a,S,col,w,dash,close){
+    return '<poly'+(close?'gon':'line')+' points="'+pl(a,S)+'" fill="none" stroke="'+col+
+      '" stroke-width="'+w+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>';
+  }
+  function box(X,Y,Z){
+    var v=[],i,a,b,e=[],h=[];
+    for(i=0;i<8;i++) v.push([(i&1)?X:0,(i&2)?Y:0,(i&4)?Z:0]);
+    for(a=0;a<8;a++) for(b=a+1;b<8;b++){
+      var d=a^b; if(d===1||d===2||d===4){ if(a===0) h.push([v[a],v[b]]); else e.push([v[a],v[b]]); }
+    }
+    return {ed:e,hid:h};
+  }
+  function hc(y,r,t0,t1,n){            /* horizontal circle / arc */
+    var a=[],i,t; for(i=0;i<=n;i++){ t=(t0+(t1-t0)*i/n)*Math.PI/180; a.push([r*Math.cos(t),y,r*Math.sin(t)]); }
+    return a;
+  }
+  function dz(r,n){ var a=[],i,t; for(i=0;i<n;i++){ t=2*Math.PI*i/n; a.push([r*Math.cos(t),r*Math.sin(t),0]); } return a; }
+  function dx(r,n){ var a=[],i,t; for(i=0;i<n;i++){ t=2*Math.PI*i/n; a.push([0,r*Math.sin(t),r*Math.cos(t)]); } return a; }
+
+  var SOL={};
+  /* cuboid 2.8 by 1.5 by 1.8 */
+  (function(){
+    var X=2.8,Y=1.5,Z=1.8,b=box(X,Y,Z);
+    SOL.cuboid={nm:'Cuboid, all edges different',c:[X/2,Y/2,Z/2],s:40,ed:b.ed,hid:b.hid,tot:'3',
+      end:'Three planes &mdash; one halfway between each pair of opposite faces. No diagonal cut works.',
+      planes:[
+        {p:[[X/2,0,0],[X/2,Y,0],[X/2,Y,Z],[X/2,0,Z]],t:'parallel to the end faces, cutting the length in half'},
+        {p:[[0,Y/2,0],[X,Y/2,0],[X,Y/2,Z],[0,Y/2,Z]],t:'horizontal, halfway up'},
+        {p:[[0,0,Z/2],[X,0,Z/2],[X,Y,Z/2],[0,Y,Z/2]],t:'parallel to the front face, cutting the depth in half'}]};
+  })();
+  /* cube */
+  (function(){
+    var A=2.2,b=box(A,A,A),P=[];
+    P.push({p:[[A/2,0,0],[A/2,A,0],[A/2,A,A],[A/2,0,A]],t:'face plane 1 &mdash; parallel to the end faces'});
+    P.push({p:[[0,A/2,0],[A,A/2,0],[A,A/2,A],[0,A/2,A]],t:'face plane 2 &mdash; horizontal, halfway up'});
+    P.push({p:[[0,0,A/2],[A,0,A/2],[A,A,A/2],[0,A,A/2]],t:'face plane 3 &mdash; parallel to the front face'});
+    P.push({p:[[0,0,0],[A,0,A],[A,A,A],[0,A,0]],t:'diagonal plane through a pair of opposite vertical edges'});
+    P.push({p:[[A,0,0],[0,0,A],[0,A,A],[A,A,0]],t:'diagonal plane through the other pair of vertical edges'});
+    P.push({p:[[0,0,0],[A,A,0],[A,A,A],[0,0,A]],t:'diagonal plane through a pair of opposite depth edges'});
+    P.push({p:[[A,0,0],[0,A,0],[0,A,A],[A,0,A]],t:'diagonal plane through the other pair of depth edges'});
+    P.push({p:[[0,0,0],[A,0,0],[A,A,A],[0,A,A]],t:'diagonal plane through a pair of opposite horizontal edges'});
+    P.push({p:[[0,A,0],[A,A,0],[A,0,A],[0,0,A]],t:'diagonal plane through the last pair of horizontal edges'});
+    SOL.cube={nm:'Cube',c:[A/2,A/2,A/2],s:40,ed:b.ed,hid:b.hid,tot:'9',
+      end:'3 face planes + 6 diagonal planes = <b>9</b>.',planes:P};
+  })();
+  /* square prism 4 by 4 by 10 */
+  (function(){
+    var X=3.4,A=1.4,b=box(X,A,A);
+    SOL.sqpris={nm:'Square prism, 4 by 4 by 10',c:[X/2,A/2,A/2],s:44,ed:b.ed,hid:b.hid,tot:'5',
+      end:'The square cross-section has 4 lines of symmetry, giving 4 planes along the length, plus 1 across it: <b>5</b>.',
+      planes:[
+        {p:[[X/2,0,0],[X/2,A,0],[X/2,A,A],[X/2,0,A]],t:'across the prism, halfway along its length'},
+        {p:[[0,A/2,0],[X,A/2,0],[X,A/2,A],[0,A/2,A]],t:'along the length, horizontal'},
+        {p:[[0,0,A/2],[X,0,A/2],[X,A,A/2],[0,A,A/2]],t:'along the length, vertical'},
+        {p:[[0,0,0],[X,0,0],[X,A,A],[0,A,A]],t:'along the length, through one diagonal of the square'},
+        {p:[[0,A,0],[X,A,0],[X,0,A],[0,0,A]],t:'along the length, through the other diagonal'}]};
+  })();
+  /* square based pyramid */
+  (function(){
+    var R=1.3,H=2.2,ap=[0,H,0],
+        b1=[-R,0,-R],b2=[R,0,-R],b3=[R,0,R],b4=[-R,0,R];
+    SOL.pyr={nm:'Square-based pyramid',c:[0,0.7,0],s:45,
+      ed:[[b2,b3],[b3,b4],[ap,b2],[ap,b3],[ap,b4]],
+      hid:[[b1,b2],[b1,b4],[ap,b1]],tot:'4',
+      end:'2 planes through the midpoints of opposite base edges + 2 through the base diagonals = <b>4</b>.',
+      planes:[
+        {p:[[0,0,-R],[0,0,R],ap],t:'through the midpoints of the front and back base edges'},
+        {p:[[-R,0,0],[R,0,0],ap],t:'through the midpoints of the left and right base edges'},
+        {p:[b1,b3,ap],t:'through one diagonal of the square base'},
+        {p:[b2,b4,ap],t:'through the other diagonal of the base'}]};
+  })();
+  /* triangular prism, equilateral ends */
+  (function(){
+    var L=3,h=1.99,r=1.15,
+        a0=[0,0,-r],a1=[0,0,r],a2=[0,h,0],
+        c0=[L,0,-r],c1=[L,0,r],c2=[L,h,0];
+    SOL.prism={nm:'Prism with equilateral triangle ends',c:[L/2,0.66,0],s:42,
+      ed:[[a1,a2],[c0,c1],[c1,c2],[c2,c0],[a1,c1],[a2,c2]],
+      hid:[[a0,a1],[a0,a2],[a0,c0]],tot:'4',
+      end:'The equilateral cross-section has 3 lines of symmetry, so 3 planes run along the prism, plus 1 across it: <b>4</b>.',
+      planes:[
+        {p:[[L/2,0,-r],[L/2,0,r],[L/2,h,0]],t:'across the prism, halfway along its length'},
+        {p:[[0,0,0],[L,0,0],[L,h,0],[0,h,0]],t:'along the prism, through the top edge and the middle of the base'},
+        {p:[[0,0,-r],[L,0,-r],[L,h/2,r/2],[0,h/2,r/2]],t:'along the prism, through one bottom edge'},
+        {p:[[0,0,r],[L,0,r],[L,h/2,-r/2],[0,h/2,-r/2]],t:'along the prism, through the other bottom edge'}]};
+  })();
+  /* cylinder */
+  (function(){
+    var r=1.2,H=2.4,t=-45*Math.PI/180,u=135*Math.PI/180;
+    function vert(deg){
+      var a=deg*Math.PI/180, x=r*Math.cos(a), z=r*Math.sin(a);
+      return [[x,0,z],[x,H,z],[-x,H,-z],[-x,0,-z]];
+    }
+    SOL.cyl={nm:'Cylinder',c:[0,H/2,0],s:45,ed:[
+        [[r*Math.cos(t),0,r*Math.sin(t)],[r*Math.cos(t),H,r*Math.sin(t)]],
+        [[r*Math.cos(u),0,r*Math.sin(u)],[r*Math.cos(u),H,r*Math.sin(u)]]],
+      hid:[],tot:'infinitely many',
+      end:'Every vertical plane through the axis works, and so does the horizontal one: <b>infinitely many</b>.',
+      pre:function(S){ return line3(hc(0,r,135,315,32),S,'#9fb3d1','1.8','5 4'); },
+      post:function(S){ return line3(hc(H,r,0,360,48),S,'#0f2d6b','2.2','',false)+
+                               line3(hc(0,r,-45,135,32),S,'#0f2d6b','2.2','',false); },
+      planes:[
+        {p:vert(0),t:'a vertical plane through the axis'},
+        {p:vert(60),t:'another vertical plane through the axis &mdash; turned 60&deg;'},
+        {p:vert(120),t:'and another: every angle gives a new one'},
+        {p:hc(H/2,r,0,360,48),t:'the horizontal plane halfway up'}]};
+  })();
+  /* cone */
+  (function(){
+    var r=1.3,H=2.6,d=Math.sqrt(2)*H,al=Math.acos(r/d)*180/Math.PI,tq=-135,
+        t1=tq-al,t2=tq+al,ap=[0,H,0];
+    function pt(deg){ var a=deg*Math.PI/180; return [r*Math.cos(a),0,r*Math.sin(a)]; }
+    function tri(deg){ var a=deg*Math.PI/180, x=r*Math.cos(a), z=r*Math.sin(a); return [[x,0,z],ap,[-x,0,-z]]; }
+    SOL.cone={nm:'Cone',c:[0,0.9,0],s:48,ed:[[pt(t1),ap],[pt(t2),ap]],hid:[],tot:'infinitely many',
+      end:'Every plane containing the axis works &mdash; <b>infinitely many</b>. A horizontal cut does not.',
+      pre:function(S){ return line3(hc(0,r,t1,t2,32),S,'#9fb3d1','1.8','5 4'); },
+      post:function(S){ return line3(hc(0,r,t2,t1+360,40),S,'#0f2d6b','2.2','',false); },
+      planes:[
+        {p:tri(0),t:'a vertical plane through the apex and the centre of the base'},
+        {p:tri(60),t:'the same cut turned through 60&deg;'},
+        {p:tri(120),t:'and again &mdash; any angle you like'}]};
+  })();
+  /* sphere */
+  (function(){
+    var r=1.5;
+    SOL.sph={nm:'Sphere',c:[0,0,0],s:55,ed:[],hid:[],tot:'infinitely many',
+      end:'Every plane through the centre is a plane of symmetry: <b>infinitely many</b>.',
+      post:function(S){
+        return '<circle cx="'+CX+'" cy="'+CY+'" r="'+fx(r*S.s,1)+'" fill="none" stroke="#0f2d6b" stroke-width="2.2"/>'+
+               line3(hc(0,r,0,360,48),S,'#9fb3d1','1.6','5 4');
+      },
+      planes:[
+        {p:hc(0,r,0,360,48),t:'the horizontal plane through the centre'},
+        {p:dz(r,48),t:'a vertical plane through the centre'},
+        {p:dx(r,48),t:'a vertical plane at right angles to the last one'}]};
+  })();
+
+  function build(){
+    var S=SOL[cur], g='', i;
+    g+='<rect x="0" y="0" width="340" height="230" fill="#ffffff" stroke="#d8e2f2"/>';
+    if(S.pre) g+=S.pre(S);
+    for(i=0;i<S.hid.length;i++) g+=seg(S.hid[i],S,'#9fb3d1','1.8','5 4');
+    for(i=0;i<S.ed.length;i++) g+=seg(S.ed[i],S,'#0f2d6b','2.2','');
+    if(S.post) g+=S.post(S);
+    if(idx>=0) g+='<polygon points="'+pl(S.planes[idx].p,S)+'" fill="#e05c2a" fill-opacity="0.3" stroke="#e05c2a" stroke-width="2.2"/>';
+    svg.innerHTML=g;
+  }
+  function report(){
+    var S=SOL[cur], h='<div style="font-size:1.05rem;margin-bottom:6px"><span class="hl">'+S.nm+'</span></div>';
+    if(idx<0){ out.innerHTML=h+'<div>Press <b>Next plane</b> to start slicing.</div>'; return; }
+    var last=(idx===S.planes.length-1);
+    out.innerHTML=h+
+      '<div>Plane '+(idx+1)+': '+S.planes[idx].t+'</div>'+
+      '<div style="margin-top:6px">Counted so far: <b>'+(idx+1)+'</b></div>'+
+      (last? '<div style="margin-top:8px">'+S.end+'</div>'+
+             '<div style="margin-top:4px;opacity:.75;font-size:.9em">Total planes of symmetry: '+S.tot+'</div>' : '');
+  }
+  el('psSolid').addEventListener('change',function(){ cur=el('psSolid').value; idx=-1; build(); report(); });
+  el('psNext').onclick=function(){ var S=SOL[cur]; idx=idx+1; if(idx>=S.planes.length) idx=0; build(); report(); };
+  el('psReset').onclick=function(){ idx=-1; build(); report(); };
+  build(); report();
+})();
+</script>
+</body>
+</html>

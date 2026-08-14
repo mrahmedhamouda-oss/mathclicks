@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>17.3 Buying and Selling | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Profit and loss, percentage profit, discounts, sales tax and unit pricing &mdash; the percentage skills every shopkeeper and every examiner uses.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 17 &mdash; Managing Money</span>
+    </div>
+    <h1>17.3 &nbsp;Buying and Selling</h1>
+    <p>Profit and loss, percentage profit, discounts, sales tax and unit pricing &mdash; the percentage skills every shopkeeper and every examiner uses.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#profit">Profit and loss</a>
+  <a href="#discount">Discounts</a>
+  <a href="#salestax">Sales tax</a>
+  <a href="#value">Best value</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="profit" data-nav="Profit and loss">
+<h2>Cost price, selling price, profit and loss</h2>
+<div class="def"><b>Definition</b>
+The <b>cost price</b> (CP) is what the seller paid. The <b>selling price</b> (SP) is what the customer
+pays. If <span class="m">SP &gt; CP</span> there is a <b>profit</b>; if <span class="m">SP &lt; CP</span>
+there is a <b>loss</b>.</div>
+
+<div class="formula">profit = SP &minus; CP &nbsp;&nbsp;&nbsp;&nbsp; loss = CP &minus; SP
+<small>Always subtract the smaller from the larger, then say which it is</small></div>
+
+<p>A profit of $48 means very different things on a $60 item and on a $6000 item, so profit is almost
+always converted into a <b>percentage</b>. In IGCSE this percentage is measured against the
+<b>cost price</b> unless the question says otherwise.</p>
+
+<div class="formula">percentage profit = <span class="frac"><span>profit</span><span>cost price</span></span> &times; 100
+<small>The cost price is the denominator &mdash; it is the 100% the change is measured from</small></div>
+
+<div class="formula">percentage loss = <span class="frac"><span>loss</span><span>cost price</span></span> &times; 100
+<small>Same denominator: the price the seller originally paid</small></div>
+
+<div class="warn"><b>Watch out</b>
+Dividing by the selling price is the most frequent error in this whole chapter. The only time you divide
+by something else is when the question explicitly says so, for example &ldquo;express the profit as a
+percentage of the <i>selling</i> price&rdquo;. Underline that word as you read.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A shop buys a jacket for $240 and sells it for $288. Find the profit and the percentage profit.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Identify the two prices.
+    <span class="work">CP = $240.00, &nbsp; SP = $288.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract to find the profit.
+    <span class="work">288.00 &minus; 240.00 = $48.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide by the <b>cost</b> price and multiply by 100.
+    <span class="work"><span class="frac"><span>48</span><span>240</span></span> &times; 100 = 0.2 &times; 100 = 20</span></div></div>
+  <div class="final">Profit = $48.00, percentage profit = 20%</div>
+  <div class="tip"><b>Exam tip</b> Check with a multiplier: a 20% profit means
+  <span class="m">SP = 1.2 &times; CP = 1.2 &times; 240 = 288</span> &#10003;. One line, and it confirms both answers.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">A trader buys a scooter for $1450 and later sells it for $1218. Find the percentage loss.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The selling price is lower, so this is a loss.
+    <span class="work">1450 &minus; 1218 = $232.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Divide the loss by the cost price.
+    <span class="work"><span class="frac"><span>232</span><span>1450</span></span> = 0.16</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply by 100 and state that it is a loss.
+    <span class="work">0.16 &times; 100 = 16</span></div></div>
+  <div class="final">Percentage loss = 16%</div>
+  <div class="note"><b>Note</b> Never write a percentage loss as a negative number in this topic. Write the
+  size of the change and label it &ldquo;loss&rdquo;.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Profit and loss calculator</h4>
+  <p class="hint">Enter a cost price and a selling price. The tool names the multiplier that turns one into
+  the other &mdash; the number you should be checking your answers against.</p>
+  <div class="row">
+    <div><label for="plCp">Cost price ($)</label><input type="number" id="plCp" value="240" step="10"></div>
+    <div><label for="plSp">Selling price ($)</label><input type="number" id="plSp" value="288" step="10"></div>
+  </div>
+  <div class="out" id="plOut"></div>
+</div>
+</section>
+
+<section id="discount" data-nav="Discounts">
+<h2>Discounts and sale prices</h2>
+<p>A <b>discount</b> is a reduction from the marked (or list) price. There are two ways to find the sale
+price, and you should be able to use both.</p>
+
+<div class="tabs">
+  <div class="heads"><button>Method 1 &mdash; find and subtract</button><button>Method 2 &mdash; multiplier</button></div>
+  <div class="panes">
+    <div>
+      <p>Work out the discount, then take it off.</p>
+      <p><span class="m">30% of 85 = 0.30 &times; 85 = 25.50</span></p>
+      <p><span class="m">85.00 &minus; 25.50 = 59.50</span></p>
+      <p>Safer if the question also asks &ldquo;how much was saved?&rdquo;.</p>
+    </div>
+    <div>
+      <p>Subtract the percentage from 100 first, then multiply once.</p>
+      <p><span class="m">100% &minus; 30% = 70%</span></p>
+      <p><span class="m">0.70 &times; 85 = 59.50</span></p>
+      <p>One calculator step, so fewer chances to slip &mdash; and it is the only sensible method when two
+      reductions follow one another.</p>
+    </div>
+  </div>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Change</th><th>Multiplier</th><th>Change</th><th>Multiplier</th></tr></thead>
+<tbody>
+<tr><td>10% off</td><td><span class="m">&times; 0.9</span></td><td>10% on</td><td><span class="m">&times; 1.1</span></td></tr>
+<tr><td>25% off</td><td><span class="m">&times; 0.75</span></td><td>15% on</td><td><span class="m">&times; 1.15</span></td></tr>
+<tr><td>35% off</td><td><span class="m">&times; 0.65</span></td><td>45% on</td><td><span class="m">&times; 1.45</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A coat is marked at $85. In a sale it is reduced by 30%. (a) Find the sale price. (b) A second coat has a sale price of $59.50 after the same 30% reduction &mdash; find its marked price.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) A 30% reduction leaves 70%, so the multiplier is 0.7.
+    <span class="work">0.70 &times; 85.00 = 59.50</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Going backwards, <b>divide</b> by the same multiplier.
+    <span class="work">marked price = 59.50 &divide; 0.70 = 85.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check forwards.
+    <span class="work">0.70 &times; 85.00 = 59.50 &#10003;</span></div></div>
+  <div class="final">(a) $59.50 &nbsp;&nbsp; (b) $85.00</div>
+  <div class="warn"><b>Watch out</b> To reverse a 30% discount you divide by 0.7. Adding 30% back on gives
+  <span class="m">1.3 &times; 59.50 = 77.35</span>, which is wrong &mdash; the 30% was a percentage of the
+  larger, original price.</div>
+</div>
+</details>
+</section>
+
+<section id="salestax" data-nav="Sales tax">
+<h2>Sales tax (VAT)</h2>
+<div class="def"><b>Definition</b>
+<b>Sales tax</b> (called VAT in many countries) is a percentage <b>added</b> to the price of goods and
+services. A price is either <b>excluding tax</b> (pre-tax) or <b>including tax</b>. The tax is always a
+percentage of the pre-tax price.</div>
+
+<div class="formula">price including tax = pre-tax price &times; <span class="m">(1 + <span class="frac"><span>rate</span><span>100</span></span>)</span>
+<small>Adding the tax &mdash; multiply going forwards</small></div>
+
+<div class="formula">pre-tax price = <span class="frac"><span>price including tax</span><span>1 + rate/100</span></span>
+<small>Stripping the tax out &mdash; divide coming back</small></div>
+
+<div class="card o">
+<h4>Forwards and backwards with 15% tax</h4>
+<svg viewBox="0 0 640 180" role="img" aria-label="Diagram showing multiplying a pre-tax price by 1.15 to include tax and dividing by 1.15 to remove it">
+  <rect x="30" y="55" width="200" height="60" rx="10" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="130" y="80" font-size="14" text-anchor="middle" fill="#1a4fa0" font-weight="bold">Pre-tax price</text>
+  <text x="130" y="102" font-size="15" text-anchor="middle" fill="#0f2d6b">$240.00</text>
+
+  <rect x="410" y="55" width="200" height="60" rx="10" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="510" y="80" font-size="14" text-anchor="middle" fill="#16a34a" font-weight="bold">Price with tax</text>
+  <text x="510" y="102" font-size="15" text-anchor="middle" fill="#0f2d6b">$276.00</text>
+
+  <line x1="240" y1="72" x2="400" y2="72" stroke="#e05c2a" stroke-width="2.5" marker-end="url(#ar1)"/>
+  <text x="320" y="60" font-size="13.5" text-anchor="middle" fill="#e05c2a" font-weight="bold">&times; 1.15</text>
+  <line x1="400" y1="100" x2="240" y2="100" stroke="#6d28d9" stroke-width="2.5" marker-end="url(#ar2)"/>
+  <text x="320" y="122" font-size="13.5" text-anchor="middle" fill="#6d28d9" font-weight="bold">&divide; 1.15</text>
+
+  <text x="320" y="152" font-size="12.5" text-anchor="middle" fill="#4a5b7a">tax charged = 276.00 &minus; 240.00 = $36.00</text>
+  <defs>
+    <marker id="ar1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#e05c2a"/></marker>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#6d28d9"/></marker>
+  </defs>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Sales tax is charged at 15%. (a) A table is priced at $240 before tax. Find the price a customer pays. (b) A chair costs $471.50 including tax. Find its pre-tax price and the tax charged.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Adding 15% means multiplying by 1.15.
+    <span class="work">240.00 &times; 1.15 = 276.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) The $471.50 already contains the tax, so it is
+    <b>115%</b> of the pre-tax price. Divide.
+    <span class="work">471.50 &divide; 1.15 = 410.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The tax is the difference between the two prices.
+    <span class="work">471.50 &minus; 410.00 = 61.50</span></div></div>
+  <div class="final">(a) $276.00 &nbsp;&nbsp; (b) pre-tax $410.00, tax $61.50</div>
+  <div class="warn"><b>Watch out</b> Do not take 15% of $471.50. That gives $70.73, and it is wrong, because
+  the tax is 15% of the <b>pre-tax</b> price, not of the total.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Discount and tax tool</h4>
+  <p class="hint">Follow the price along the chain: marked price, then the discount, then the tax added at
+  the till. Set the discount to 0 to see tax on its own.</p>
+  <div class="row">
+    <div><label for="dtP">Marked price ($)</label><input type="number" id="dtP" value="85" step="5"></div>
+    <div><label for="dtD">Discount (%)</label><input type="number" id="dtD" value="30" step="5"></div>
+    <div><label for="dtT">Sales tax (%)</label><input type="number" id="dtT" value="15" step="1"></div>
+  </div>
+  <div class="out" id="dtOut"></div>
+</div>
+</section>
+
+<section id="value" data-nav="Best value">
+<h2>Choosing the better value</h2>
+<p>To compare two packs of different sizes you must compare <b>like with like</b>. Reduce both to the same
+unit &mdash; either the price for one unit, or the amount you get for $1.</p>
+
+<div class="grid two">
+  <div class="card"><h4>Price per unit</h4>
+    <p><span class="m">price &divide; quantity</span></p>
+    <p>The <b>smaller</b> answer is the better value.</p></div>
+  <div class="card g"><h4>Quantity per dollar</h4>
+    <p><span class="m">quantity &divide; price</span></p>
+    <p>The <b>larger</b> answer is the better value.</p></div>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Offer</th><th>Working</th><th>Price per litre</th></tr></thead>
+<tbody>
+<tr><td>1.5 litres for $2.85</td><td><span class="m">2.85 &divide; 1.5</span></td><td>$1.90</td></tr>
+<tr><td>2.5 litres for $4.60</td><td><span class="m">4.60 &divide; 2.5</span></td><td><b>$1.84</b></td></tr>
+</tbody>
+</table>
+</div>
+<p>The 2.5 litre bottle is better value, by 6 cents per litre. Notice that the bigger pack is <i>usually</i>
+better value but not always &mdash; you must do the arithmetic, never assume.</p>
+
+<div class="tip"><b>Exam tip</b> State your comparison in a full sentence: &ldquo;the 2.5 litre bottle is
+better value because it costs $1.84 per litre compared with $1.90 per litre&rdquo;. A bare answer with no
+comparison usually loses the final mark.</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">A shop sells a bicycle for $448, making a profit of 40%. Find the cost price and the profit.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">A 40% profit means the selling price is 140% of the
+    cost price.
+    <span class="work">SP = 1.4 &times; CP</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute the selling price and divide by the multiplier.
+    <span class="work">448 = 1.4 &times; CP<br>CP = 448 &divide; 1.4 = 320</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The profit is the difference.
+    <span class="work">448.00 &minus; 320.00 = 128.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check the percentage.
+    <span class="work">128 &divide; 320 &times; 100 = 40% &#10003;</span></div></div>
+  <div class="final">Cost price = $320.00, profit = $128.00</div>
+  <div class="warn"><b>Watch out</b> 40% of $448 is $179.20, and $448 &minus; $179.20 = $268.80 &mdash; a
+  tempting but wrong answer. The 40% belongs to the <b>cost</b> price, which is the unknown.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A trader buys 120 shirts for a total of $1800. He sells 90 of them at $22 each and the remaining 30 at a discount of 25% off $22. Find his total profit and his percentage profit.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Income from the shirts sold at full price.
+    <span class="work">90 &times; 22.00 = $1980.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the discounted price using the multiplier 0.75.
+    <span class="work">0.75 &times; 22.00 = $16.50</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Income from the remaining shirts.
+    <span class="work">30 &times; 16.50 = $495.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Total income, then subtract the total cost.
+    <span class="work">1980.00 + 495.00 = $2475.00<br>2475.00 &minus; 1800.00 = $675.00</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Percentage profit, using the total cost price.
+    <span class="work"><span class="frac"><span>675</span><span>1800</span></span> &times; 100 = 37.5</span></div></div>
+  <div class="final">Profit = $675.00, percentage profit = 37.5%</div>
+  <div class="tip"><b>Exam tip</b> With mixed sales, work out the <i>total</i> income and the
+  <i>total</i> cost before you touch percentages. Never average the two percentages.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A television is advertised at $644, a price that includes sales tax at 15%. The shop bought the television for $420. Find (a) the selling price before tax, (b) the shop&rsquo;s percentage profit based on that pre-tax selling price.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The advertised price is 115% of the pre-tax price,
+    so divide.
+    <span class="work">644 &divide; 1.15 = 560</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Check by multiplying forwards.
+    <span class="work">560.00 &times; 1.15 = 644.00 &#10003;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Profit = pre-tax selling price &minus; cost price.
+    <span class="work">560.00 &minus; 420.00 = $140.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Divide by the cost price and multiply by 100.
+    <span class="work"><span class="frac"><span>140</span><span>420</span></span> &times; 100 = 33.333&hellip;</span></div></div>
+  <div class="final">(a) $560.00 &nbsp;&nbsp; (b) 33.3% profit (3 s.f.)</div>
+  <div class="note"><b>Why pre-tax?</b> The tax is collected for the government, not kept by the shop, so
+  the shop&rsquo;s profit is measured on the price before tax.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>An item is bought for $60 and sold for $75. Find the profit and the percentage profit.</li>
+    <li>A van bought for $2400 is sold for $1872. Find the percentage loss.</li>
+    <li>A coat marked at $180 is reduced by 35% in a sale. Find the sale price.</li>
+    <li>A restaurant bill is $46 before a 12% service tax is added. Find the total to pay.</li>
+    <li>Which is better value: 400 g of coffee for $3.60, or 750 g for $6.60? Show your comparison.</li>
+    <li>A shop buys a laptop for $520 and marks it up by 45%. In a sale the marked price is reduced by
+      20%, and sales tax of 10% is then added at the till. Find (a) the price the customer pays,
+      (b) the shop&rsquo;s percentage profit on the pre-tax sale price.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>Profit <span class="m">75 &minus; 60 = 15</span> &rarr; <span class="ans">$15.00</span>;
+        <span class="m">15 &divide; 60 &times; 100</span> = <span class="ans">25%</span></li>
+      <li>Loss <span class="m">2400 &minus; 1872 = 528</span>;
+        <span class="m">528 &divide; 2400 &times; 100</span> = <span class="ans">22% loss</span></li>
+      <li><span class="m">100% &minus; 35% = 65%</span>, so
+        <span class="m">0.65 &times; 180</span> = <span class="ans">$117.00</span></li>
+      <li><span class="m">1.12 &times; 46</span> = <span class="ans">$51.52</span></li>
+      <li><span class="m">3.60 &divide; 400 &times; 100 = $0.90</span> per 100 g;
+        <span class="m">6.60 &divide; 750 &times; 100 = $0.88</span> per 100 g &rarr;
+        <span class="ans">the 750 g pack is better value</span></li>
+      <li>Marked <span class="m">1.45 &times; 520 = 754.00</span>; sale price
+        <span class="m">0.8 &times; 754 = 603.20</span>; with tax
+        <span class="m">1.1 &times; 603.20 = 663.52</span>.
+        (a) <span class="ans">$663.52</span> &nbsp;(b) profit
+        <span class="m">603.20 &minus; 520 = 83.20</span>, so
+        <span class="m">83.20 &divide; 520 &times; 100</span> = <span class="ans">16%</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Profit = SP &minus; CP</b> and <b>loss = CP &minus; SP</b>. Say which one it is.</li>
+    <li>Percentage profit and percentage loss are calculated as a percentage of the <b>cost price</b>
+      unless the question says otherwise.</li>
+    <li>Use <b>multipliers</b>: 25% off is <span class="m">&times; 0.75</span>, 45% on is
+      <span class="m">&times; 1.45</span>. One step, fewer errors.</li>
+    <li>To undo a percentage change, <b>divide</b> by the multiplier. Never add the percentage back on.</li>
+    <li>Sales tax is a percentage of the <b>pre-tax</b> price: multiply by
+      <span class="m">1 + rate/100</span> to add it, divide by the same number to strip it out.</li>
+    <li>Successive changes multiply: a 20% reduction then 10% tax is
+      <span class="m">&times; 0.8 &times; 1.1 = &times; 0.88</span>, not a 10% reduction overall.</li>
+    <li>For best value, divide to get the price per unit (smaller wins) or the quantity per dollar
+      (larger wins) &mdash; and write a sentence comparing them.</li>
+    <li>Money answers to <b>2 decimal places</b>; percentages to <b>3 significant figures</b> unless they
+      come out exactly.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="17-2.html"><span>&larr; Previous</span><b>17.2 Borrowing and Investing Money</b></a><a class="next" href="2-1.html"><span>Next &rarr;</span><b>2.1 Using Letters</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 17.3 Buying and Selling<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- profit and loss calculator ---- */
+(function(){
+  var out=el('plOut');
+  function go(){
+    var cp=num('plCp',0), sp=num('plSp',0);
+    if(cp<=0){ out.innerHTML='<span style="opacity:.6">Enter a cost price greater than zero.</span>'; return; }
+    var d=sp-cp, mult=sp/cp, pct=Math.abs(d)/cp*100, word=d>=0?'Profit':'Loss';
+    out.innerHTML=
+      '<div>'+word+' = |'+money(sp)+' &minus; '+money(cp)+'| = <span class="hl">$'+money(Math.abs(d))+'</span></div>'+
+      '<div style="margin-top:6px">Percentage '+word.toLowerCase()+' = '+
+        '('+money(Math.abs(d))+' &divide; '+money(cp)+') &times; 100 = <b>'+fx(pct,2)+'%</b></div>'+
+      '<div style="margin-top:6px">Multiplier from CP to SP = '+money(sp)+' &divide; '+money(cp)+
+        ' = <b>'+fx(mult,4)+'</b></div>'+
+      '<div style="margin-top:6px;opacity:.75;font-size:.9em">Check: '+money(cp)+' &times; '+fx(mult,4)+
+        ' = $'+money(cp*mult)+(d===0?' &mdash; the shop broke even.':'')+'</div>';
+  }
+  bindAll(['plCp','plSp'],go);
+})();
+
+/* ---- discount and tax tool ---- */
+(function(){
+  var out=el('dtOut');
+  function go(){
+    var p=num('dtP',0), d=num('dtD',0), t=num('dtT',0);
+    var dm=1-d/100, tm=1+t/100;
+    var sale=p*dm, saved=p-sale, withTax=sale*tm, tax=withTax-sale, overall=dm*tm;
+    out.innerHTML=
+      '<div>Discount multiplier = 1 &minus; '+fx(d,2)+' &divide; 100 = <span class="hl">'+fx(dm,4)+'</span></div>'+
+      '<div>Sale price = '+money(p)+' &times; '+fx(dm,4)+' = <b>$'+money(sale)+'</b> &nbsp;(saving $'+
+        money(saved)+')</div>'+
+      '<div style="margin-top:8px">Tax multiplier = 1 + '+fx(t,2)+' &divide; 100 = <span class="hl">'+
+        fx(tm,4)+'</span></div>'+
+      '<div>Price with tax = '+money(sale)+' &times; '+fx(tm,4)+' = <b>$'+money(withTax)+
+        '</b> &nbsp;(tax $'+money(tax)+')</div>'+
+      '<div style="margin-top:8px">Going backwards: $'+money(withTax)+' &divide; '+fx(tm,4)+' = $'+
+        money(sale)+' before tax</div>'+
+      '<div style="margin-top:6px;opacity:.75;font-size:.9em">Overall multiplier = '+fx(dm,4)+' &times; '+
+        fx(tm,4)+' = '+fx(overall,4)+', an overall '+(overall<1?'decrease':'increase')+' of '+
+        fx(Math.abs(overall-1)*100,2)+'% on the marked price.</div>';
+  }
+  bindAll(['dtP','dtD','dtT'],go);
+})();
+</script>
+</body>
+</html>

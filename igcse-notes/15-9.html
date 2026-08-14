@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15.9 Trigonometry in Three Dimensions | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Finding a right-angled triangle inside a solid, redrawing it flat, and using Pythagoras or trigonometry on cuboids, pyramids and cones.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 15 &mdash; Scale Drawings, Bearings and Trigonometry</span>
+    </div>
+    <h1>15.9 &nbsp;Trigonometry in Three Dimensions</h1>
+    <p>Finding a right-angled triangle inside a solid, redrawing it flat, and using Pythagoras or trigonometry on cuboids, pyramids and cones.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#method">The method</a>
+  <a href="#cuboid">Cuboids</a>
+  <a href="#lineplane">Line and plane</a>
+  <a href="#planes">Two planes</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="method" data-nav="The method">
+<h2>The method: hunt the triangle, then draw it flat</h2>
+<p>There is no new mathematics in this topic. Every 3D question reduces to a right-angled triangle that
+you already know how to solve &mdash; the only difficulty is <b>seeing</b> it inside the solid and
+getting its side lengths right.</p>
+
+<div class="def"><b>The routine</b>
+<ol style="margin:6px 0 0">
+  <li><b>Find</b> a right-angled triangle inside the solid that contains what you know and what you want.</li>
+  <li><b>Redraw it flat</b>, on its own, as a plain 2D triangle. Mark the right angle.</li>
+  <li><b>Fill in</b> every length you can. You will often need a first triangle just to supply a length
+    for the second.</li>
+  <li><b>Solve</b> it with Pythagoras (no angles) or SOHCAHTOA (an angle involved).</li>
+</ol></div>
+
+<div class="card">
+<h4>The same triangle, seen twice</h4>
+<svg viewBox="0 0 660 275" role="img" aria-label="A cuboid with triangle ACG shaded inside it, and an arrow to the same triangle redrawn flat as a right-angled triangle with the right angle at C">
+  <polygon points="40,215 265,177 265,77" fill="#e05c2a" fill-opacity="0.18" stroke="none"/>
+  <polyline points="95,177 40,215 210,215 265,177 95,177" fill="none" stroke="#4a5b7a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polyline points="40,215 210,215 265,177" fill="none" stroke="#0f2d6b" stroke-width="2.4"/>
+  <polyline points="40,115 210,115 265,77 95,77 40,115" fill="none" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="40" y1="215" x2="40" y2="115" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="210" y1="215" x2="210" y2="115" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="265" y1="177" x2="265" y2="77" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="95" y1="177" x2="95" y2="77" stroke="#4a5b7a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="40" y1="215" x2="265" y2="177" stroke="#e05c2a" stroke-width="2.4" stroke-dasharray="7 4"/>
+  <line x1="40" y1="215" x2="265" y2="77" stroke="#16a34a" stroke-width="3"/>
+  <text x="28" y="230" font-size="12">A</text>
+  <text x="208" y="232" font-size="12">B</text>
+  <text x="270" y="192" font-size="12">C</text>
+  <text x="86" y="170" font-size="12" fill="#8a97ad">D</text>
+  <text x="26" y="110" font-size="12">E</text>
+  <text x="210" y="108" font-size="12">F</text>
+  <text x="270" y="72" font-size="12">G</text>
+  <text x="86" y="70" font-size="12" fill="#8a97ad">H</text>
+  <text x="130" y="252" font-size="12" text-anchor="middle">inside the solid</text>
+
+  <line x1="300" y1="150" x2="360" y2="150" stroke="#6d28d9" stroke-width="2.5"/>
+  <polygon points="360,150 348,144 348,156" fill="#6d28d9"/>
+  <text x="330" y="140" font-size="11" text-anchor="middle" fill="#6d28d9">draw it flat</text>
+
+  <polygon points="400,205 600,205 600,95" fill="#e05c2a" fill-opacity="0.12" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="586,205 586,191 600,191" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="390" y="220" font-size="12">A</text>
+  <text x="604" y="220" font-size="12">C</text>
+  <text x="604" y="90" font-size="12">G</text>
+  <text x="500" y="223" font-size="12" text-anchor="middle" fill="#e05c2a">base diagonal AC</text>
+  <text x="608" y="152" font-size="12" fill="#1a4fa0">height CG</text>
+  <text x="470" y="140" font-size="12" text-anchor="middle" fill="#16a34a">AG</text>
+  <text x="500" y="252" font-size="12" text-anchor="middle">flat, right-angled at C</text>
+</svg>
+</div>
+
+<div class="warn"><b>Watch out</b>
+Do <b>not</b> try to do the trigonometry on the 3D picture. Lengths in a 3D sketch are distorted, and
+angles that look like right angles often are not. Once the triangle is on its own, the picture is
+honest again.</div>
+
+<div class="tip"><b>Exam tip</b>
+In Paper 4 the flat sketch earns you method marks even if the arithmetic slips. Draw it, label all
+three sides, and mark the right angle with a small square.</div>
+</section>
+
+<section id="cuboid" data-nav="Cuboids">
+<h2>The space diagonal of a cuboid</h2>
+<p>Label a cuboid <span class="m">ABCDEFGH</span> with <span class="m">ABCD</span> the base and
+<span class="m">E, F, G, H</span> directly above <span class="m">A, B, C, D</span>. The longest straight
+line inside it runs from one corner to the opposite corner &mdash; here <span class="m">AG</span>.
+Finding it takes <b>two</b> applications of Pythagoras.</p>
+
+<div class="card g">
+<h4>Stage 1 then stage 2</h4>
+<p><b>Stage 1</b> &mdash; the base triangle <span class="m">ABC</span>, right angled at
+<span class="m">B</span>, gives the <b>base diagonal</b>:</p>
+<div class="formula">AC&sup2; = AB&sup2; + BC&sup2; = l&sup2; + w&sup2;</div>
+<p><b>Stage 2</b> &mdash; triangle <span class="m">ACG</span>, right angled at <span class="m">C</span>
+because the vertical edge <span class="m">CG</span> meets the base at right angles, gives the
+<b>space diagonal</b>:</p>
+<div class="formula">AG&sup2; = AC&sup2; + CG&sup2; = l&sup2; + w&sup2; + h&sup2;
+<small>so AG = &#8730;(l&sup2; + w&sup2; + h&sup2;)</small></div>
+<p style="margin:8px 0 0">You may quote the one-line formula, but write the two stages out if the
+question says <i>show that</i>, and always keep <span class="m">AC</span> in <b>squared</b> form
+(<span class="m">AC&sup2; = 100</span>) so you never round it.</p>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A cuboid measures 8&nbsp;cm by 6&nbsp;cm by 5&nbsp;cm. Find the length of the space diagonal AG.</span></summary>
+<div class="body">
+<svg viewBox="0 0 660 215" role="img" aria-label="Two flat right-angled triangles: base triangle ABC with sides 8 cm and 6 cm, and triangle ACG with base 10 cm and height 5 cm">
+  <polygon points="40,180 232,180 232,36" fill="#1a4fa0" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="218,180 218,166 232,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="30" y="195" font-size="12">A</text>
+  <text x="234" y="196" font-size="12">B</text>
+  <text x="236" y="32" font-size="12">C</text>
+  <text x="136" y="199" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold">8 cm</text>
+  <text x="240" y="112" font-size="13" fill="#1a4fa0" font-weight="bold">6 cm</text>
+  <text x="112" y="100" font-size="13" text-anchor="middle" fill="#e05c2a" font-weight="bold">AC</text>
+  <text x="136" y="18" font-size="12" text-anchor="middle">Stage 1: base ABC</text>
+
+  <polygon points="360,180 600,180 600,60" fill="#16a34a" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="586,180 586,166 600,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="350" y="195" font-size="12">A</text>
+  <text x="604" y="196" font-size="12">C</text>
+  <text x="604" y="56" font-size="12">G</text>
+  <text x="480" y="199" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold">10 cm</text>
+  <text x="608" y="126" font-size="13" fill="#1a4fa0" font-weight="bold">5 cm</text>
+  <text x="452" y="112" font-size="13" text-anchor="middle" fill="#e05c2a" font-weight="bold">AG</text>
+  <text x="480" y="18" font-size="12" text-anchor="middle">Stage 2: ACG</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">Draw the base triangle ABC flat. It is right angled at B because the base is a rectangle.
+    <span class="work">AC&sup2; = 8&sup2; + 6&sup2; = 64 + 36 = 100</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Here <span class="m">AC = 10</span> exactly, but leave it as <span class="m">AC&sup2; = 100</span> to carry forward.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Draw triangle ACG flat. The vertical edge CG is perpendicular to the base, so the right angle is at C.
+    <span class="work">AG&sup2; = AC&sup2; + CG&sup2; = 100 + 5&sup2; = 125</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Square root.
+    <span class="work">AG = &#8730;125 = 11.1803&hellip;</span></div></div>
+  <div class="final">AG = 11.2 cm (3 s.f.)</div>
+  <div class="note"><b>One-line check</b> <span class="m">&#8730;(8&sup2; + 6&sup2; + 5&sup2;) = &#8730;125 = 11.18</span> &#10003;.
+  The space diagonal must be longer than every edge and longer than every face diagonal.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">For the same 8&nbsp;cm by 6&nbsp;cm by 5&nbsp;cm cuboid, find the angle that AG makes with the base ABCD.</span></summary>
+<div class="body">
+<svg viewBox="0 0 380 215" role="img" aria-label="Flat right-angled triangle ACG with AC 10 cm, CG 5 cm and the angle at A marked theta">
+  <polygon points="45,180 285,180 285,60" fill="#16a34a" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="271,180 271,166 285,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 87,180 A 42,42 0 0,0 82.6,161.2" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="94" y="173" font-size="14" fill="#e05c2a" font-weight="bold">&theta;</text>
+  <text x="35" y="195" font-size="12">A</text>
+  <text x="289" y="196" font-size="12">C</text>
+  <text x="289" y="56" font-size="12">G</text>
+  <text x="175" y="199" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold">AC = 10 cm&nbsp;&nbsp;(A)</text>
+  <text x="293" y="126" font-size="13" fill="#1a4fa0" font-weight="bold">5 cm (O)</text>
+  <text x="145" y="112" font-size="13" text-anchor="middle" fill="#4a5b7a">&#8730;125</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">The angle between AG and the base is the angle inside triangle ACG at A, because AC lies flat in the base and is the shadow of AG.
+    <span class="work">required angle = angle GAC</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Label relative to <span class="m">&theta;</span>: CG = 5 is <b>O</b>, AC = 10 is <b>A</b>. O and A &rarr; tangent.
+    <span class="work">tan &theta; = 5 / 10 = 0.5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Inverse tangent.
+    <span class="work">&theta; = tan<sup>&minus;1</sup>(0.5) = 26.5650&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 26.6&deg; (1 d.p.)</div>
+  <div class="tip"><b>Exam tip</b> Use <b>tangent</b> with the base diagonal, not sine with the space diagonal.
+  Both give 26.6&deg; here, but tangent uses two exact numbers, while sine needs the rounded
+  <span class="m">&#8730;125</span>.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Cuboid explorer</h4>
+  <p class="hint">Drag the sliders and watch the base diagonal (orange) and the space diagonal (green) change.</p>
+  <div class="sliderbox"><div class="lab"><span>length l (cm)</span><span id="cbLv">8</span></div>
+    <input type="range" id="cbL" min="1" max="15" step="0.5" value="8"></div>
+  <div class="sliderbox"><div class="lab"><span>width w (cm)</span><span id="cbWv">6</span></div>
+    <input type="range" id="cbW" min="1" max="15" step="0.5" value="6"></div>
+  <div class="sliderbox"><div class="lab"><span>height h (cm)</span><span id="cbHv">5</span></div>
+    <input type="range" id="cbH" min="1" max="15" step="0.5" value="5"></div>
+  <div id="cbFig"></div>
+  <div class="out" id="cbOut"></div>
+</div>
+</section>
+
+<section id="lineplane" data-nav="Line and plane">
+<h2>The angle between a line and a plane</h2>
+<div class="def"><b>Definition</b>
+To find the angle between a line and a plane, drop a <b>perpendicular</b> from the far end of the line
+onto the plane. Join the foot of that perpendicular back to where the line meets the plane: that new
+line is the <b>projection</b> (the shadow) of the original line. The angle you want is between the
+<b>line and its projection</b>.</div>
+
+<div class="card o">
+<h4>Reading the projection off a cuboid</h4>
+<svg viewBox="0 0 440 265" role="img" aria-label="Cuboid ABCDEFGH with the space diagonal AG drawn, its projection AC on the base, and the vertical drop GC, with the angle between AG and AC marked">
+  <polyline points="140,170 60,225 300,225 380,170 140,170" fill="none" stroke="#4a5b7a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polyline points="60,225 300,225 380,170" fill="none" stroke="#0f2d6b" stroke-width="2.4"/>
+  <polyline points="60,95 300,95 380,40 140,40 60,95" fill="none" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="60" y1="225" x2="60" y2="95" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="300" y1="225" x2="300" y2="95" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="380" y1="170" x2="380" y2="40" stroke="#1a4fa0" stroke-width="3.2"/>
+  <line x1="140" y1="170" x2="140" y2="40" stroke="#4a5b7a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="60" y1="225" x2="380" y2="170" stroke="#e05c2a" stroke-width="3" stroke-dasharray="8 4"/>
+  <line x1="60" y1="225" x2="380" y2="40" stroke="#16a34a" stroke-width="3.2"/>
+  <path d="M 119,214.8 A 60,60 0 0,0 111.9,195.0" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <text x="126" y="207" font-size="13" fill="#6d28d9" font-weight="bold">&theta;</text>
+  <text x="48" y="240" font-size="12">A</text>
+  <text x="298" y="242" font-size="12">B</text>
+  <text x="386" y="186" font-size="12">C</text>
+  <text x="132" y="163" font-size="12" fill="#8a97ad">D</text>
+  <text x="46" y="90" font-size="12">E</text>
+  <text x="302" y="88" font-size="12">F</text>
+  <text x="386" y="36" font-size="12">G</text>
+  <text x="132" y="34" font-size="12" fill="#8a97ad">H</text>
+  <text x="230" y="212" font-size="12" fill="#e05c2a" font-weight="bold">projection AC</text>
+  <text x="200" y="118" font-size="12" fill="#16a34a" font-weight="bold">the line AG</text>
+  <text x="388" y="110" font-size="12" fill="#1a4fa0">perpendicular</text>
+</svg>
+<p style="margin:10px 0 0">Because <span class="m">GC</span> is perpendicular to the base,
+<span class="m">C</span> is the foot of the perpendicular and <span class="m">AC</span> is the
+projection. So the angle between <span class="m">AG</span> and the base is
+<span class="m">&theta; = </span> angle <span class="m">GAC</span>, exactly as in Example 2.</p>
+</div>
+
+<div class="warn"><b>Watch out</b>
+The angle is <b>never</b> measured to an edge of the solid unless that edge happens to be the
+projection. For <span class="m">AG</span> and the base, the projection is the base <i>diagonal</i>
+<span class="m">AC</span> &mdash; not the edge <span class="m">AB</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">In the same cuboid (AB = 8&nbsp;cm, BC = 6&nbsp;cm, height 5&nbsp;cm), find the angle between the face diagonal AF and the base ABCD.</span></summary>
+<div class="body">
+<svg viewBox="0 0 660 250" role="img" aria-label="Cuboid with face diagonal AF highlighted and its projection AB on the base, next to the flat right-angled triangle ABF with AB 8 cm and BF 5 cm">
+  <polyline points="90,172 35,210 195,210 250,172 90,172" fill="none" stroke="#4a5b7a" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <polyline points="35,210 195,210 250,172" fill="none" stroke="#0f2d6b" stroke-width="2.2"/>
+  <polyline points="35,110 195,110 250,72 90,72 35,110" fill="none" stroke="#0f2d6b" stroke-width="2.2"/>
+  <line x1="35" y1="210" x2="35" y2="110" stroke="#0f2d6b" stroke-width="2.2"/>
+  <line x1="195" y1="210" x2="195" y2="110" stroke="#1a4fa0" stroke-width="3"/>
+  <line x1="250" y1="172" x2="250" y2="72" stroke="#0f2d6b" stroke-width="2.2"/>
+  <line x1="90" y1="172" x2="90" y2="72" stroke="#4a5b7a" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="35" y1="210" x2="195" y2="210" stroke="#e05c2a" stroke-width="3.2"/>
+  <line x1="35" y1="210" x2="195" y2="110" stroke="#16a34a" stroke-width="3.2"/>
+  <text x="24" y="225" font-size="12">A</text>
+  <text x="192" y="227" font-size="12">B</text>
+  <text x="256" y="188" font-size="12">C</text>
+  <text x="22" y="105" font-size="12">E</text>
+  <text x="198" y="106" font-size="12">F</text>
+  <text x="256" y="68" font-size="12">G</text>
+  <text x="112" y="228" font-size="12" fill="#e05c2a" font-weight="bold">projection AB</text>
+  <text x="86" y="148" font-size="12" fill="#16a34a" font-weight="bold">AF</text>
+
+  <polygon points="380,190 620,190 620,40" fill="#16a34a" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="606,190 606,176 620,176" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 422,190 A 42,42 0 0,0 415.6,167.7" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="430" y="182" font-size="13" fill="#e05c2a" font-weight="bold">&theta;</text>
+  <text x="370" y="205" font-size="12">A</text>
+  <text x="624" y="206" font-size="12">B</text>
+  <text x="624" y="36" font-size="12">F</text>
+  <text x="500" y="209" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold">8 cm (A)</text>
+  <text x="628" y="120" font-size="13" fill="#1a4fa0" font-weight="bold">5 cm (O)</text>
+  <text x="470" y="105" font-size="12" text-anchor="middle" fill="#4a5b7a">AF</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">F is directly above B, so the perpendicular from F meets the base at B. The projection of AF is therefore the <b>edge AB</b>, not a diagonal.
+    <span class="work">required angle = angle FAB</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Draw triangle ABF flat, right angled at B.
+    <span class="work">AB = 8, BF = 5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Relative to <span class="m">&theta;</span>: BF is <b>O</b>, AB is <b>A</b> &rarr; tangent.
+    <span class="work">tan &theta; = 5 / 8 = 0.625<br>&theta; = tan<sup>&minus;1</sup>(0.625) = 32.0053&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 32.0&deg; (1 d.p.)</div>
+  <div class="note"><b>Compare</b> AG made 26.6&deg; with the base and AF makes 32.0&deg;. AF is steeper because
+  its shadow (8&nbsp;cm) is shorter than AG's shadow (10&nbsp;cm), while both rise the same 5&nbsp;cm.</div>
+</div>
+</details>
+</section>
+
+<section id="planes" data-nav="Two planes">
+<h2>The angle between two planes</h2>
+<div class="def"><b>Definition</b>
+Two planes meet in a straight line. Pick a point on that line and draw, <b>from that same point</b>, a
+line in each plane that is <b>perpendicular to the line of intersection</b>. The angle between those two
+lines is the angle between the planes.</div>
+
+<p>For a square-based pyramid <span class="m">VABCD</span> with apex <span class="m">V</span> vertically
+above the centre <span class="m">M</span> of the base, the angle between a sloping face and the base is
+found at the <b>midpoint of a base edge</b>.</p>
+
+<div class="grid two">
+  <div class="card g"><h4>Slant edge</h4>
+    <p><span class="m">VA</span>, from the apex to a <b>corner</b>. Its flat triangle uses
+    <b>half the base diagonal</b>, <span class="m">AM</span>.</p></div>
+  <div class="card o"><h4>Slant height</h4>
+    <p><span class="m">VN</span>, from the apex to the <b>midpoint of an edge</b>. Its flat triangle uses
+    <b>half the base side</b>, <span class="m">MN</span>.</p></div>
+</div>
+
+<div class="card p">
+<h4>Where the two triangles live</h4>
+<svg viewBox="0 0 400 268" role="img" aria-label="Square-based pyramid VABCD with vertical height VM, the slant edge VA, and the slant height VN to the midpoint N of edge BC">
+  <polyline points="80,225 250,225 305,187" fill="none" stroke="#0f2d6b" stroke-width="2.4"/>
+  <polyline points="80,225 135,187 305,187" fill="none" stroke="#4a5b7a" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="192.5" y1="56" x2="80" y2="225" stroke="#16a34a" stroke-width="3"/>
+  <line x1="192.5" y1="56" x2="250" y2="225" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="192.5" y1="56" x2="305" y2="187" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="192.5" y1="56" x2="135" y2="187" stroke="#4a5b7a" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="192.5" y1="56" x2="192.5" y2="206" stroke="#1a4fa0" stroke-width="2.6" stroke-dasharray="7 4"/>
+  <line x1="192.5" y1="206" x2="277.5" y2="206" stroke="#e05c2a" stroke-width="2.4" stroke-dasharray="6 4"/>
+  <line x1="192.5" y1="56" x2="277.5" y2="206" stroke="#e05c2a" stroke-width="3"/>
+  <line x1="80" y1="225" x2="305" y2="187" stroke="#16a34a" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="68" y="240" font-size="12">A</text>
+  <text x="250" y="242" font-size="12">B</text>
+  <text x="310" y="200" font-size="12">C</text>
+  <text x="126" y="180" font-size="12" fill="#8a97ad">D</text>
+  <text x="186" y="46" font-size="12">V</text>
+  <text x="180" y="222" font-size="12" fill="#1a4fa0">M</text>
+  <text x="282" y="220" font-size="12" fill="#e05c2a">N</text>
+  <text x="120" y="130" font-size="12" fill="#16a34a" font-weight="bold">slant edge VA</text>
+  <text x="288" y="128" font-size="12" fill="#e05c2a" font-weight="bold">VN</text>
+  <text x="196" y="140" font-size="12" fill="#1a4fa0">height VM</text>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A pyramid has a square base of side 10&nbsp;cm and a vertical height of 12&nbsp;cm. Find the angle between a sloping face and the base.</span></summary>
+<div class="body">
+<svg viewBox="0 0 380 215" role="img" aria-label="Flat right-angled triangle VMN with MN 5 cm, VM 12 cm and the angle at N marked">
+  <polygon points="45,185 105,185 105,41" fill="#e05c2a" fill-opacity="0.1" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="91,185 91,171 105,171" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 78,185 A 33,33 0 0,0 57.7,154.5" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <text x="72" y="164" font-size="13" fill="#6d28d9" font-weight="bold">&theta;</text>
+  <text x="34" y="200" font-size="12">N</text>
+  <text x="109" y="201" font-size="12">M</text>
+  <text x="109" y="37" font-size="12">V</text>
+  <text x="75" y="204" font-size="12" text-anchor="middle" fill="#1a4fa0" font-weight="bold">5 cm</text>
+  <text x="113" y="115" font-size="13" fill="#1a4fa0" font-weight="bold">12 cm</text>
+  <text x="58" y="105" font-size="13" fill="#e05c2a" font-weight="bold">VN = 13</text>
+  <text x="250" y="70" font-size="12">N is the midpoint of BC</text>
+  <text x="250" y="92" font-size="12">MN = half of 10 = 5 cm</text>
+  <text x="250" y="114" font-size="12">VM is the vertical height</text>
+  <text x="250" y="136" font-size="12">MN and VN are both</text>
+  <text x="250" y="158" font-size="12">perpendicular to BC</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">The face VBC meets the base along BC. Take N, the midpoint of BC. Then NV lies in the face and NM lies in the base, and both are perpendicular to BC.
+    <span class="work">required angle = angle VNM</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">M is the centre of the square, so MN is half the side.
+    <span class="work">MN = 10 &divide; 2 = 5 cm, VM = 12 cm</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Draw triangle VMN flat, right angled at M. Relative to <span class="m">&theta;</span>: VM = 12 is <b>O</b>, MN = 5 is <b>A</b> &rarr; tangent.
+    <span class="work">tan &theta; = 12 / 5 = 2.4<br>&theta; = tan<sup>&minus;1</sup>(2.4) = 67.3801&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 67.4&deg; (1 d.p.)</div>
+  <div class="tip"><b>Exam tip</b> The slant height comes free from the same triangle:
+  <span class="m">VN = &#8730;(12&sup2; + 5&sup2;) = &#8730;169 = 13</span>&nbsp;cm &mdash; the number you need for the
+  surface area of the pyramid.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Pyramid calculator</h4>
+  <p class="hint">Square base, apex above the centre. Compare the slant edge with the slant height, and the
+  two angles they make with the base.</p>
+  <div class="row">
+    <div><label for="pyA">Base side a (cm)</label><input type="number" id="pyA" value="10" step="0.5" min="0.5"></div>
+    <div><label for="pyH">Vertical height h (cm)</label><input type="number" id="pyH" value="12" step="0.5" min="0.5"></div>
+  </div>
+  <div class="out" id="pyOut"></div>
+</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">The same pyramid has a square base of side 10&nbsp;cm and height 12&nbsp;cm. Find (a) the length of a slant edge VA, (b) the angle VA makes with the base.</span></summary>
+<div class="body">
+<svg viewBox="0 0 660 215" role="img" aria-label="Left: the square base ABCD with diagonal AC of 10 root 2 cm. Right: flat triangle AMV with AM 7.07 cm, VM 12 cm and angle theta at A">
+  <polygon points="45,55 185,55 185,180 45,180" fill="#1a4fa0" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="45" y1="180" x2="185" y2="55" stroke="#e05c2a" stroke-width="2.5" stroke-dasharray="7 4"/>
+  <circle cx="115" cy="117.5" r="4" fill="#1a4fa0"/>
+  <text x="35" y="195" font-size="12">A</text>
+  <text x="186" y="195" font-size="12">B</text>
+  <text x="189" y="52" font-size="12">C</text>
+  <text x="34" y="50" font-size="12">D</text>
+  <text x="121" y="132" font-size="12" fill="#1a4fa0">M</text>
+  <text x="115" y="199" font-size="12" text-anchor="middle">10 cm</text>
+  <text x="230" y="112" font-size="12" text-anchor="middle" fill="#e05c2a">AC = 10&#8730;2</text>
+  <text x="230" y="132" font-size="12" text-anchor="middle" fill="#e05c2a">AM = 5&#8730;2</text>
+
+  <polygon points="380,185 462,185 462,45" fill="#16a34a" fill-opacity="0.09" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="448,185 448,171 462,171" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 413,185 A 33,33 0 0,0 396.8,156.2" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <text x="408" y="164" font-size="13" fill="#6d28d9" font-weight="bold">&theta;</text>
+  <text x="370" y="200" font-size="12">A</text>
+  <text x="466" y="201" font-size="12">M</text>
+  <text x="466" y="41" font-size="12">V</text>
+  <text x="421" y="204" font-size="12" text-anchor="middle" fill="#1a4fa0" font-weight="bold">7.07</text>
+  <text x="470" y="118" font-size="13" fill="#1a4fa0" font-weight="bold">12 cm</text>
+  <text x="400" y="105" font-size="13" fill="#e05c2a" font-weight="bold">VA</text>
+  <text x="560" y="100" font-size="12" text-anchor="middle">right angle at M:</text>
+  <text x="560" y="122" font-size="12" text-anchor="middle">VM is vertical,</text>
+  <text x="560" y="144" font-size="12" text-anchor="middle">AM lies in the base</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">The projection of VA on the base is AM, half the base diagonal. Find the diagonal first.
+    <span class="work">AC&sup2; = 10&sup2; + 10&sup2; = 200<br>AC = &#8730;200 = 14.1421&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Halve it.
+    <span class="work">AM = &#8730;200 &divide; 2 = 7.07106&hellip; &nbsp;(AM&sup2; = 50)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(a) Triangle AMV is right angled at M. Two sides known, angle not needed &rarr; Pythagoras.
+    <span class="work">VA&sup2; = AM&sup2; + VM&sup2; = 50 + 144 = 194<br>VA = &#8730;194 = 13.9283&hellip;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) For the angle, use the two exact sides: VM = 12 is <b>O</b>, AM is <b>A</b> &rarr; tangent.
+    <span class="work">tan &theta; = 12 &divide; 7.07106&hellip; = 1.69705&hellip;<br>&theta; = tan<sup>&minus;1</sup>(1.69705&hellip;) = 59.4910&hellip;&deg;</span></div></div>
+  <div class="final">(a) VA = 13.9 cm &nbsp;&nbsp; (b) &theta; = 59.5&deg;</div>
+  <div class="warn"><b>Watch out</b> The slant edge (13.9&nbsp;cm) and the slant height (13&nbsp;cm) are
+  different lengths, and the angles they make with the base (59.5&deg; and 67.4&deg;) are different too.
+  Read the question carefully: <i>edge</i> means corner, <i>face</i> means edge midpoint.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A cone has base radius 6&nbsp;cm and slant height 14&nbsp;cm. Find (a) its vertical height, (b) the angle the slant height makes with the base.</span></summary>
+<div class="body">
+<svg viewBox="0 0 380 255" role="img" aria-label="A cone of base radius 6 cm and slant height 14 cm, with the vertical height drawn to the centre of the base and the base angle marked">
+  <path d="M 190,48 L 118,200 A 72,20 0 0,0 262,200 Z" fill="#1a4fa0" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 118,200 A 72,20 0 0,1 262,200" fill="none" stroke="#4a5b7a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="190" y1="48" x2="190" y2="200" stroke="#1a4fa0" stroke-width="2.6" stroke-dasharray="7 4"/>
+  <line x1="190" y1="200" x2="262" y2="200" stroke="#e05c2a" stroke-width="2.6"/>
+  <polyline points="176,200 176,186 190,186" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 222,200 A 40,40 0 0,1 244.9,163.9" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <text x="212" y="188" font-size="13" fill="#6d28d9" font-weight="bold">&theta;</text>
+  <text x="226" y="219" font-size="13" text-anchor="middle" fill="#e05c2a" font-weight="bold">6 cm</text>
+  <text x="248" y="115" font-size="13" fill="#16a34a" font-weight="bold">14 cm</text>
+  <text x="176" y="120" font-size="13" text-anchor="end" fill="#1a4fa0" font-weight="bold">h</text>
+  <text x="190" y="243" font-size="12" text-anchor="middle">the shaded cross-section is a right-angled triangle</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">Cut the cone vertically through the apex. The half cross-section is a right-angled triangle: radius along the base, height up the axis, slant height as the hypotenuse.
+    <span class="work">r = 6, l = 14, right angle at the centre</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Two sides known, no angle needed &rarr; Pythagoras. The slant height is the longest side, so subtract.
+    <span class="work">h&sup2; = 14&sup2; &minus; 6&sup2; = 196 &minus; 36 = 160<br>h = &#8730;160 = 12.6491&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) For the angle at the base rim, the 6&nbsp;cm radius is <b>A</b> and the 14&nbsp;cm slant is <b>H</b> &rarr; cosine.
+    <span class="work">cos &theta; = 6 / 14 = 0.428571&hellip;<br>&theta; = cos<sup>&minus;1</sup>(0.428571&hellip;) = 64.6230&hellip;&deg;</span></div></div>
+  <div class="final">(a) h = 12.6 cm &nbsp;&nbsp; (b) &theta; = 64.6&deg;</div>
+  <div class="note"><b>Bonus</b> The angle at the apex between the axis and the slant is
+  <span class="m">90 &minus; 64.6 = 25.4&deg;</span>, so the full angle at the point of the cone is
+  <span class="m">50.8&deg;</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">A closed box is a cuboid measuring 24&nbsp;cm by 10&nbsp;cm by h&nbsp;cm. The longest straight rod that fits inside is exactly 30&nbsp;cm. Find h, and the angle the rod makes with the base.</span></summary>
+<div class="body">
+<svg viewBox="0 0 440 265" role="img" aria-label="Cuboid box 24 cm by 10 cm by h, with a 30 cm rod along the space diagonal and the angle it makes with the base marked">
+  <polyline points="140,170 60,225 300,225 380,170 140,170" fill="none" stroke="#4a5b7a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <polyline points="60,225 300,225 380,170" fill="none" stroke="#0f2d6b" stroke-width="2.4"/>
+  <polyline points="60,95 300,95 380,40 140,40 60,95" fill="none" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="60" y1="225" x2="60" y2="95" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="300" y1="225" x2="300" y2="95" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="380" y1="170" x2="380" y2="40" stroke="#0f2d6b" stroke-width="2.4"/>
+  <line x1="140" y1="170" x2="140" y2="40" stroke="#4a5b7a" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="60" y1="225" x2="380" y2="170" stroke="#e05c2a" stroke-width="2.6" stroke-dasharray="7 4"/>
+  <line x1="60" y1="225" x2="380" y2="40" stroke="#16a34a" stroke-width="3.2"/>
+  <path d="M 119,214.8 A 60,60 0 0,0 111.9,195.0" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <text x="126" y="207" font-size="13" fill="#6d28d9" font-weight="bold">&theta;</text>
+  <text x="48" y="240" font-size="12">A</text>
+  <text x="386" y="186" font-size="12">C</text>
+  <text x="386" y="36" font-size="12">G</text>
+  <text x="180" y="243" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold">24 cm</text>
+  <text x="352" y="212" font-size="13" fill="#1a4fa0" font-weight="bold">10 cm</text>
+  <text x="390" y="110" font-size="13" fill="#1a4fa0" font-weight="bold">h</text>
+  <text x="188" y="112" font-size="13" fill="#16a34a" font-weight="bold">rod = 30 cm</text>
+  <text x="238" y="208" font-size="12" fill="#e05c2a">AC = 26 cm</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">The longest rod lies along the space diagonal AG, so use the 3D formula and work backwards.
+    <span class="work">AG&sup2; = 24&sup2; + 10&sup2; + h&sup2;<br>30&sup2; = 576 + 100 + h&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rearrange for <span class="m">h&sup2;</span>.
+    <span class="work">900 &minus; 676 = h&sup2;<br>h&sup2; = 224<br>h = &#8730;224 = 14.9666&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">For the angle, first get the base diagonal &mdash; the projection of the rod.
+    <span class="work">AC&sup2; = 24&sup2; + 10&sup2; = 676<br>AC = 26 cm exactly</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">In triangle ACG the height is <b>O</b> and AC is <b>A</b> &rarr; tangent. Use the unrounded height.
+    <span class="work">tan &theta; = 14.9666&hellip; &divide; 26 = 0.575641&hellip;<br>&theta; = tan<sup>&minus;1</sup>(0.575641&hellip;) = 29.9264&hellip;&deg;</span></div></div>
+  <div class="final">h = 15.0 cm (3 s.f.) &nbsp;&nbsp; &theta; = 29.9&deg;</div>
+  <div class="tip"><b>Exam tip</b> Since AG = 30 and AC = 26 are both exact, you could instead use
+  <span class="m">cos &theta; = 26/30</span>, giving 29.9&deg; as well &mdash; a quick way to check the answer
+  without reusing your value of <span class="m">h</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>A cuboid measures 9&nbsp;cm by 12&nbsp;cm by 8&nbsp;cm. Find the length of its space diagonal.</li>
+    <li>For that cuboid, find the angle the space diagonal makes with the base.</li>
+    <li>A pyramid has a square base of side 8&nbsp;cm and a vertical height of 15&nbsp;cm. Find the slant height (apex to the midpoint of a base edge) and the angle between a sloping face and the base.</li>
+    <li>A cone has base radius 9&nbsp;cm and vertical height 12&nbsp;cm. Find the angle between a slant height and the base.</li>
+    <li>For the pyramid in question 3, find the length of a slant edge and the angle it makes with the base.</li>
+    <li>A room is a cuboid 6&nbsp;m long, 4&nbsp;m wide and 3&nbsp;m high. A wire runs from a bottom corner to the opposite top corner. Find (a) its length, (b) the angle it makes with the floor.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li><span class="m">d&sup2; = 9&sup2; + 12&sup2; + 8&sup2; = 81 + 144 + 64 = 289</span> &rarr; <span class="ans">17 cm</span> exactly.</li>
+      <li>Base diagonal <span class="m">&#8730;(81 + 144) = 15</span>; <span class="m">tan &theta; = 8/15</span> &rarr; <span class="ans">28.1&deg;</span></li>
+      <li>Half the base side is 4. <span class="m">VN = &#8730;(15&sup2; + 4&sup2;) = &#8730;241 = 15.5</span> cm; <span class="m">tan &theta; = 15/4</span> &rarr; <span class="ans">15.5 cm and 75.1&deg;</span></li>
+      <li>Radius is <b>A</b>, height is <b>O</b> &rarr; <span class="m">tan &theta; = 12/9</span> &rarr; <span class="ans">53.1&deg;</span></li>
+      <li>Half the base diagonal <span class="m">= &#8730;(8&sup2; + 8&sup2;) &divide; 2 = 5.65685&hellip;</span> (square 32). Slant edge <span class="m">= &#8730;(225 + 32) = &#8730;257</span>; <span class="m">tan &theta; = 15 &divide; 5.65685&hellip;</span> &rarr; <span class="ans">16.0 cm and 69.3&deg;</span></li>
+      <li>(a) <span class="m">&#8730;(36 + 16 + 9) = &#8730;61</span> &rarr; <span class="ans">7.81 m</span>. (b) Floor diagonal <span class="m">&#8730;52 = 7.2111&hellip;</span>; <span class="m">tan &theta; = 3 &divide; 7.2111&hellip;</span> &rarr; <span class="ans">22.6&deg;</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Every 3D question becomes a 2D one: <b>find the right-angled triangle, redraw it flat</b>, label all
+      three sides, then use Pythagoras or SOHCAHTOA.</li>
+    <li>Space diagonal of a cuboid: <span class="m">AG = &#8730;(l&sup2; + w&sup2; + h&sup2;)</span>, or two
+      stages &mdash; base diagonal first, then upright.</li>
+    <li>Carry lengths forward in <b>squared</b> form (<span class="m">AC&sup2; = 100</span>) so nothing is
+      rounded part way through.</li>
+    <li>The angle between a line and a plane is the angle between the line and its <b>projection</b> &mdash;
+      drop a perpendicular to the plane and join the foot back to the start.</li>
+    <li>The angle between two planes is measured at their line of intersection, using a line in each plane
+      that is <b>perpendicular to that intersection</b>.</li>
+    <li>In a square-based pyramid the <b>slant edge</b> uses half the base <i>diagonal</i>; the <b>slant
+      height</b> uses half the base <i>side</i>. They are different, and so are their angles.</li>
+    <li>A cone splits into a right-angled triangle with sides <span class="m">r</span>,
+      <span class="m">h</span> and slant height <span class="m">l</span>, where
+      <span class="m">l&sup2; = r&sup2; + h&sup2;</span>.</li>
+    <li>Lengths to <b>3 significant figures</b>, angles to <b>1 decimal place</b>, and never do trigonometry
+      on the distorted 3D sketch.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="15-3.html"><span>&larr; Previous</span><b>15.3 The Tangent, Sine and Cosine Ratios</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 15.9 Trigonometry in Three Dimensions<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- cuboid explorer ---- */
+(function(){
+  var fig=el('cbFig'), out=el('cbOut');
+  if(!fig) return;
+  function lineStr(x1,y1,x2,y2,col,wd,dash){
+    return '<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+
+      '" stroke="'+col+'" stroke-width="'+wd+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>';
+  }
+  function txt(x,y,s,col,anc,sz){
+    return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" font-size="'+(sz||12)+'" text-anchor="'+
+      (anc||'middle')+'" fill="'+col+'">'+s+'</text>';
+  }
+  function go(){
+    var l=num('cbL',8), w=num('cbW',6), h=num('cbH',5);
+    el('cbLv').textContent=fx(l,1); el('cbWv').textContent=fx(w,1); el('cbHv').textContent=fx(h,1);
+    var s=Math.min(290/(l+0.45*w), 165/(h+0.35*w));
+    var ax=58, ay=235, L=l*s, H=h*s, dx=0.45*w*s, dy=-0.35*w*s;
+    var Ax=ax, Ay=ay, Bx=ax+L, By=ay, Dx=ax+dx, Dy=ay+dy, Cx=ax+L+dx, Cy=ay+dy;
+    var Ex=Ax, Ey=Ay-H, Fx=Bx, Fy=By-H, Hx=Dx, Hy=Dy-H, Gx=Cx, Gy=Cy-H;
+    var NAVY='#0f2d6b', GREY='#8a97ad', ORG='#e05c2a', GRN='#16a34a', BLU='#1a4fa0';
+    var svg='<svg viewBox="0 0 420 275" role="img" aria-label="Cuboid with base diagonal and space diagonal drawn">';
+    svg+=lineStr(Ax,Ay,Dx,Dy,GREY,1.5,'5 4')+lineStr(Dx,Dy,Cx,Cy,GREY,1.5,'5 4')+lineStr(Dx,Dy,Hx,Hy,GREY,1.5,'5 4');
+    svg+=lineStr(Ax,Ay,Bx,By,NAVY,2.4)+lineStr(Bx,By,Cx,Cy,NAVY,2.4);
+    svg+=lineStr(Ax,Ay,Ex,Ey,NAVY,2.4)+lineStr(Bx,By,Fx,Fy,NAVY,2.4)+lineStr(Cx,Cy,Gx,Gy,BLU,3.2);
+    svg+=lineStr(Ex,Ey,Fx,Fy,NAVY,2.4)+lineStr(Fx,Fy,Gx,Gy,NAVY,2.4)+lineStr(Gx,Gy,Hx,Hy,NAVY,2.4)+lineStr(Hx,Hy,Ex,Ey,NAVY,2.4);
+    svg+=lineStr(Ax,Ay,Cx,Cy,ORG,2.8,'8 4');
+    svg+=lineStr(Ax,Ay,Gx,Gy,GRN,3.2);
+    svg+=txt(Ax-12,Ay+14,'A',NAVY)+txt(Bx,By+18,'B',NAVY)+txt(Cx+12,Cy+16,'C',NAVY)+txt(Dx-12,Dy-6,'D',GREY);
+    svg+=txt(Ex-12,Ey-4,'E',NAVY)+txt(Fx+2,Fy-8,'F',NAVY)+txt(Gx+12,Gy-4,'G',NAVY)+txt(Hx-12,Hy-6,'H',GREY);
+    svg+=txt((Ax+Bx)/2,Ay+18,fx(l,1)+' cm',BLU)+txt((Bx+Cx)/2+22,(By+Cy)/2+14,fx(w,1)+' cm',BLU)+
+         txt(Gx+30,(Cy+Gy)/2,fx(h,1)+' cm',BLU);
+    svg+=txt((Ax+Cx)/2,(Ay+Cy)/2+18,'base diag',ORG,'middle',11);
+    svg+=txt((Ax+Gx)/2-10,(Ay+Gy)/2-8,'space diag',GRN,'middle',11);
+    svg+='</svg>';
+    fig.innerHTML=svg;
+    var d2=l*l+w*w, d=Math.sqrt(d2), sp=Math.sqrt(d2+h*h), th=Math.atan(h/d)*180/Math.PI;
+    out.innerHTML=
+      '<div>Stage 1 &nbsp; AC&sup2; = '+fx(l,1)+'&sup2; + '+fx(w,1)+'&sup2; = '+fx(d2,2)+
+        ' &nbsp;&rarr;&nbsp; AC = <span class="hl">'+fx(d,3)+'</span> cm</div>'+
+      '<div style="margin-top:4px">Stage 2 &nbsp; AG&sup2; = '+fx(d2,2)+' + '+fx(h,1)+'&sup2; = '+fx(d2+h*h,2)+
+        ' &nbsp;&rarr;&nbsp; AG = <b>'+fx(sp,3)+'</b> cm</div>'+
+      '<div style="margin-top:4px">One line &nbsp; AG = &#8730;('+fx(l,1)+'&sup2; + '+fx(w,1)+'&sup2; + '+fx(h,1)+'&sup2;) = <b>'+fx(sp,3)+'</b> cm</div>'+
+      '<div style="margin-top:6px">Angle with base &nbsp; tan &theta; = '+fx(h,1)+' &divide; '+fx(d,3)+
+        ' &nbsp;&rarr;&nbsp; &theta; = <b>'+fx(th,1)+'&deg;</b></div>';
+  }
+  bindAll(['cbL','cbW','cbH'],go);
+})();
+
+/* ---- pyramid calculator ---- */
+(function(){
+  var out=el('pyOut');
+  if(!out) return;
+  function go(){
+    var a=num('pyA',10), h=num('pyH',12);
+    if(a<=0||h<=0){ out.innerHTML='<span class="hl">Both measurements must be positive.</span>'; return; }
+    var am2=a*a/2, am=Math.sqrt(am2);          /* half the base diagonal */
+    var mn=a/2;                                 /* half the base side    */
+    var edge=Math.sqrt(am2+h*h), sl=Math.sqrt(mn*mn+h*h);
+    var angE=Math.atan(h/am)*180/Math.PI, angF=Math.atan(h/mn)*180/Math.PI;
+    out.innerHTML=
+      '<div>Half base diagonal &nbsp; AM = &#8730;('+fx(a,1)+'&sup2; + '+fx(a,1)+'&sup2;) &divide; 2 = <span class="hl">'+fx(am,4)+'</span> cm</div>'+
+      '<div>Half base side &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MN = '+fx(a,1)+' &divide; 2 = <span class="hl">'+fx(mn,3)+'</span> cm</div>'+
+      '<div style="margin-top:6px">Slant edge &nbsp; VA = &#8730;('+fx(am2,2)+' + '+fx(h*h,2)+') = <b>'+fx(edge,3)+'</b> cm</div>'+
+      '<div>Slant height &nbsp; VN = &#8730;('+fx(mn*mn,2)+' + '+fx(h*h,2)+') = <b>'+fx(sl,3)+'</b> cm</div>'+
+      '<div style="margin-top:6px">Edge to base &nbsp; tan &theta; = '+fx(h,1)+' &divide; '+fx(am,4)+' &rarr; <b>'+fx(angE,1)+'&deg;</b></div>'+
+      '<div>Face to base &nbsp; tan &theta; = '+fx(h,1)+' &divide; '+fx(mn,3)+' &rarr; <b>'+fx(angF,1)+'&deg;</b></div>';
+  }
+  bindAll(['pyA','pyH'],go);
+})();
+</script>
+</body>
+</html>

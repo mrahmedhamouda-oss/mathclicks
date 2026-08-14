@@ -660,7 +660,7 @@ function revisionNotesCard() {
   body.appendChild(el("div", "pp-card-sub",
     "Interactive notes for IGCSE 0580 Extended — every step of every worked example shown, with a tool on each page to explore the idea yourself."));
   const meta = el("div", "pp-card-meta");
-  meta.appendChild(el("span", "pp-card-chip", "38 lessons"));
+  meta.appendChild(el("span", "pp-card-chip", "54 lessons"));
   meta.appendChild(el("span", "pp-card-chip", "Number · Algebra · Geometry · Measures"));
   body.appendChild(meta);
   card.appendChild(body);

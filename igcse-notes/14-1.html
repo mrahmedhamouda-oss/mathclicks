@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>14.1 Simultaneous Linear Equations | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Finding the one pair of values that satisfies two linear equations at once, by elimination, by substitution and from a graph.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 14 &mdash; Further Solving of Equations and Inequalities</span>
+    </div>
+    <h1>14.1 &nbsp;Simultaneous Linear Equations</h1>
+    <p>Finding the one pair of values that satisfies two linear equations at once, by elimination, by substitution and from a graph.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#meaning">What it means</a>
+  <a href="#elimination">Elimination</a>
+  <a href="#substitution">Substitution</a>
+  <a href="#graphical">Graphically</a>
+  <a href="#wordy">Word problems</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="meaning" data-nav="What it means">
+<h2>What a simultaneous pair means</h2>
+<p>One linear equation in two unknowns has <b>endlessly many</b> solutions. Look at
+<span class="m">2x + y = 11</span>: you can pick almost any <span class="m">x</span> you like and find a
+<span class="m">y</span> to match. The same is true of <span class="m">3x &minus; 2y = 6</span>. But there is
+usually exactly <b>one pair</b> that works for <b>both</b> at the same time, and finding it is what this
+lesson is about.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th><span class="m">x</span></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+<tbody>
+<tr><td><span class="m">y</span> from <span class="m">2x + y = 11</span></td><td>9</td><td>7</td><td>5</td><td><b>3</b></td><td>1</td><td>&minus;1</td></tr>
+<tr><td><span class="m">y</span> from <span class="m">3x &minus; 2y = 6</span></td><td>&minus;1.5</td><td>0</td><td>1.5</td><td><b>3</b></td><td>4.5</td><td>6</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Only <span class="m">x = 4</span> gives the same <span class="m">y</span> in both rows. The solution of the
+pair is therefore <span class="m">x = 4</span>, <span class="m">y = 3</span>. Trial and improvement like this
+is far too slow for an exam, so we use algebra &mdash; but the meaning never changes.</p>
+
+<div class="def"><b>Definition</b>
+<b>Simultaneous equations</b> are two (or more) equations that must be true <i>at the same time</i>. Solving
+them means finding the value of every unknown that satisfies <b>every</b> equation. Two unknowns need two
+equations; three unknowns would need three.</div>
+
+<div class="tip"><b>Exam tip</b> Always finish by substituting your pair into <b>both</b> original equations.
+It takes fifteen seconds and it is the only way to be certain. A pair that fits one equation but not the
+other scores nothing.</div>
+
+<div class="formula">x = 4, &nbsp; y = 3 &nbsp;&rarr;&nbsp; 2(4) + 3 = 11 &#10003; &nbsp;&nbsp;&nbsp; 3(4) &minus; 2(3) = 6 &#10003;
+<small>Check in BOTH equations, every time</small></div>
+</section>
+
+<section id="elimination" data-nav="Elimination">
+<h2>Method 1: elimination</h2>
+<p>The idea is to add or subtract the two equations so that one unknown <b>disappears</b>, leaving a simple
+linear equation you can solve in one line. This only works when the coefficients of that unknown match in
+size, so sometimes you must multiply an equation first.</p>
+
+<div class="card o">
+<h4>Add or subtract? Look at the signs</h4>
+<p>Compare the coefficients of the letter you want to remove &mdash; once they are the <b>same size</b>:</p>
+<ul>
+  <li><b>Same signs &rarr; Subtract</b> &nbsp;(<span class="m">+3x</span> and <span class="m">+3x</span>, or
+    <span class="m">&minus;2y</span> and <span class="m">&minus;2y</span>)</li>
+  <li><b>Different signs &rarr; Add</b> &nbsp;(<span class="m">+4y</span> and <span class="m">&minus;4y</span>)</li>
+</ul>
+<p style="margin-bottom:0">Some students remember it as <b>SSS &mdash; Same Sign, Subtract</b>.</p>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Solve <span class="m">3x + 2y = 19</span> and <span class="m">3x &minus; y = 4</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Label the equations. The coefficients of
+    <span class="m">x</span> are already both <span class="m">+3</span>.
+    <span class="work">(1)&nbsp; 3x + 2y = 19<br>(2)&nbsp; 3x &minus; y = 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Same signs, so <b>subtract</b>: (1) &minus; (2).
+    Take great care with <span class="m">2y &minus; (&minus;y) = 3y</span>.
+    <span class="work">(3x &minus; 3x) + (2y &minus; (&minus;y)) = 19 &minus; 4<br>3y = 15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Solve for <span class="m">y</span>.
+    <span class="work">y = 5</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Substitute <span class="m">y = 5</span> back into the
+    <i>simpler</i> equation, (2).
+    <span class="work">3x &minus; 5 = 4<br>3x = 9 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check in <b>both</b> original equations.
+    <span class="work">(1) 3(3) + 2(5) = 9 + 10 = 19 &#10003;<br>(2) 3(3) &minus; 5 = 9 &minus; 5 = 4 &#10003;</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 5</div>
+  <div class="warn"><b>Watch out</b> Subtracting a negative term is where most marks are lost. Write the
+  subtraction line out in full &mdash; in Paper 4 that line itself can earn a method mark.</div>
+</div>
+</details>
+
+<h3>When nothing matches: multiply first</h3>
+<p>If neither pair of coefficients matches, multiply one or both equations by whatever makes them match. You
+are allowed to multiply <b>every term on both sides</b> of an equation by any number &mdash; the equation
+stays true.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Solve <span class="m">3x + 4y = 25</span> and <span class="m">x &minus; 2y = &minus;5</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Nothing matches yet. The <span class="m">y</span> terms are
+    the easier target: <span class="m">4</span> is a multiple of <span class="m">2</span>, so multiply (2) by 2.
+    <span class="work">(1)&nbsp; 3x + 4y = 25<br>(2)&nbsp; x &minus; 2y = &minus;5<br>(2)&times;2:&nbsp; 2x &minus; 4y = &minus;10</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now <span class="m">+4y</span> and <span class="m">&minus;4y</span>:
+    different signs, so <b>add</b>.
+    <span class="work">(3x + 2x) + (4y &minus; 4y) = 25 + (&minus;10)<br>5x = 15 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute into (1).
+    <span class="work">3(3) + 4y = 25<br>4y = 16 &nbsp;&rarr;&nbsp; y = 4</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check in both.
+    <span class="work">(1) 9 + 16 = 25 &#10003;<br>(2) 3 &minus; 8 = &minus;5 &#10003;</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 4</div>
+  <div class="note"><b>Note</b> Multiply <b>every</b> term, including the number on the right-hand side.
+  Forgetting the right-hand side is the second most common error in this topic.</div>
+</div>
+</details>
+
+<p>Sometimes neither coefficient divides into the other &mdash; for example <span class="m">3y</span> and
+<span class="m">2y</span>. Then multiply <b>both</b> equations, using the lowest common multiple of the two
+coefficients: multiply (1) by 2 and (2) by 3 so that both become <span class="m">6y</span>. Example 5 does
+exactly that.</p>
+
+<div class="tool">
+  <h4>Elimination stepper</h4>
+  <p class="hint">Type the six coefficients of <span class="m">ax + by = c</span> for each equation (whole
+  numbers) and read the elimination laid out line by line. Try making the coefficients match, then clash.</p>
+  <div class="row">
+    <div><label for="eA1">Equation 1: a</label><input type="number" id="eA1" value="3"></div>
+    <div><label for="eB1">b</label><input type="number" id="eB1" value="2"></div>
+    <div><label for="eC1">c</label><input type="number" id="eC1" value="19"></div>
+  </div>
+  <div class="row">
+    <div><label for="eA2">Equation 2: a</label><input type="number" id="eA2" value="3"></div>
+    <div><label for="eB2">b</label><input type="number" id="eB2" value="-1"></div>
+    <div><label for="eC2">c</label><input type="number" id="eC2" value="4"></div>
+  </div>
+  <div class="out" id="eOut"></div>
+</div>
+</section>
+
+<section id="substitution" data-nav="Substitution">
+<h2>Method 2: substitution</h2>
+<p>Here you make one letter the subject of one equation, then replace that letter in the <b>other</b>
+equation. You are left with a single equation in a single unknown.</p>
+
+<div class="card">
+<h4>The four steps</h4>
+<ol>
+  <li>Choose the easiest equation and make <span class="m">x</span> or <span class="m">y</span> the subject.
+    Pick the letter whose coefficient is <span class="m">1</span> or <span class="m">&minus;1</span> if there is one.</li>
+  <li>Substitute that expression into the <b>other</b> equation &mdash; put it in <b>brackets</b>.</li>
+  <li>Solve the resulting linear equation.</li>
+  <li>Put that value back into your subject formula to get the second unknown, then check in both.</li>
+</ol>
+</div>
+
+<p>Substitution is the natural choice when one equation is already written as
+<span class="m">y = &hellip;</span>, which is exactly how straight lines usually arrive. For
+<span class="m">y = 2x &minus; 1</span> together with <span class="m">3x + 2y = 12</span>:
+<span class="m">3x + 2(2x &minus; 1) = 12</span> gives <span class="m">7x &minus; 2 = 12</span>, so
+<span class="m">x = 2</span> and <span class="m">y = 3</span>. Check:
+<span class="m">3(2) + 2(3) = 12</span> &#10003;.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Solve <span class="m">2x + y = 11</span> and <span class="m">3x &minus; 2y = 6</span> &mdash; once by elimination and once by substitution.</span></summary>
+<div class="body">
+<div class="tabs">
+  <div class="heads"><button>Elimination</button><button>Substitution</button></div>
+  <div class="panes">
+    <div>
+      <div class="step"><div class="n">1</div><div class="t">To match the <span class="m">y</span> terms, multiply (1) by 2.
+        <span class="work">(1)&nbsp; 2x + y = 11 &nbsp;&rarr;&nbsp; 4x + 2y = 22<br>(2)&nbsp; 3x &minus; 2y = 6</span></div></div>
+      <div class="step"><div class="n">2</div><div class="t"><span class="m">+2y</span> and <span class="m">&minus;2y</span>
+        have different signs, so <b>add</b>.
+        <span class="work">(4x + 3x) + (2y &minus; 2y) = 22 + 6<br>7x = 28 &nbsp;&rarr;&nbsp; x = 4</span></div></div>
+      <div class="step"><div class="n">3</div><div class="t">Substitute into (1).
+        <span class="work">2(4) + y = 11 &nbsp;&rarr;&nbsp; y = 3</span></div></div>
+    </div>
+    <div>
+      <div class="step"><div class="n">1</div><div class="t">Equation (1) has a <span class="m">y</span> with coefficient 1,
+        so make <span class="m">y</span> the subject of it.
+        <span class="work">y = 11 &minus; 2x</span></div></div>
+      <div class="step"><div class="n">2</div><div class="t">Substitute into (2), <b>in brackets</b>.
+        <span class="work">3x &minus; 2(11 &minus; 2x) = 6</span></div></div>
+      <div class="step"><div class="n">3</div><div class="t">Expand carefully: <span class="m">&minus;2 &times; &minus;2x = +4x</span>.
+        <span class="work">3x &minus; 22 + 4x = 6<br>7x = 28 &nbsp;&rarr;&nbsp; x = 4</span></div></div>
+      <div class="step"><div class="n">4</div><div class="t">Back into the subject formula.
+        <span class="work">y = 11 &minus; 2(4) = 3</span></div></div>
+    </div>
+  </div>
+</div>
+  <div class="step"><div class="n">&#10003;</div><div class="t">Both routes give the same pair. Check in both equations.
+    <span class="work">(1) 2(4) + 3 = 11 &#10003;<br>(2) 3(4) &minus; 2(3) = 12 &minus; 6 = 6 &#10003;</span></div></div>
+  <div class="final">x = 4, &nbsp; y = 3</div>
+  <div class="tip"><b>Exam tip</b> Unless a question says &ldquo;use substitution&rdquo;, either method earns full
+  marks. Elimination is usually faster when every coefficient is a whole number; substitution wins when one
+  equation already gives <span class="m">y</span> in terms of <span class="m">x</span>.</div>
+</div>
+</details>
+
+<div class="warn"><b>Watch out</b> When you substitute, put the expression in brackets before multiplying.
+Writing <span class="m">3x &minus; 2 &times; 11 &minus; 2x</span> instead of
+<span class="m">3x &minus; 2(11 &minus; 2x)</span> changes the sign of the second term and wrecks the
+answer.</div>
+</section>
+
+<section id="graphical" data-nav="Graphically">
+<h2>The graphical meaning</h2>
+<p>Each linear equation draws a straight line. Every point on a line is a pair
+<span class="m">(x, y)</span> that satisfies its equation, so the pair that satisfies <b>both</b> equations
+must lie on <b>both</b> lines &mdash; it is the <b>point of intersection</b>.</p>
+
+<div class="grid">
+  <div class="card g"><h4>One solution</h4>
+    <p>Different gradients, so the lines cross exactly once. This is the ordinary case.</p></div>
+  <div class="card o"><h4>No solution</h4>
+    <p>Same gradient, different intercepts &mdash; the lines are <b>parallel</b> and never meet, for example
+    <span class="m">y = 2x + 1</span> and <span class="m">y = 2x &minus; 3</span>.</p></div>
+  <div class="card p"><h4>Infinitely many</h4>
+    <p>One equation is a multiple of the other, so the lines are <b>identical</b> and every point on the line
+    is a solution, for example <span class="m">x + y = 5</span> and <span class="m">2x + 2y = 10</span>.</p></div>
+</div>
+
+<div class="tool">
+  <h4>Two-line grapher</h4>
+  <p class="hint">Enter the coefficients of <span class="m">ax + by = c</span> for both lines. The intersection
+  is marked. Try <span class="m">1, 1, 5</span> with <span class="m">2, 2, 10</span>, then with
+  <span class="m">2, 2, 6</span>, and see what changes.</p>
+  <div class="row">
+    <div><label for="gA1">Line 1: a</label><input type="number" id="gA1" value="2"></div>
+    <div><label for="gB1">b</label><input type="number" id="gB1" value="1"></div>
+    <div><label for="gC1">c</label><input type="number" id="gC1" value="11"></div>
+  </div>
+  <div class="row">
+    <div><label for="gA2">Line 2: a</label><input type="number" id="gA2" value="3"></div>
+    <div><label for="gB2">b</label><input type="number" id="gB2" value="-2"></div>
+    <div><label for="gC2">c</label><input type="number" id="gC2" value="6"></div>
+  </div>
+  <div id="gPlot" style="margin:10px 0"></div>
+  <div class="out" id="gOut"></div>
+</div>
+
+<div class="tip"><b>Exam tip</b> If a question says &ldquo;solve graphically&rdquo; you must draw both lines
+accurately and read off the intersection &mdash; algebra alone will not earn the marks. If it just says
+&ldquo;solve&rdquo;, use algebra: reading a graph to 2 decimal places is impossible.</div>
+</section>
+
+<section id="wordy" data-nav="Word problems">
+<h2>Forming the equations yourself</h2>
+<p>Most Paper 4 marks in this topic come from turning sentences into equations. The routine never changes.</p>
+
+<div class="card p">
+<h4>From words to a pair of equations</h4>
+<ol>
+  <li><b>Define your letters</b> in writing, with units: &ldquo;let <span class="m">p</span> be the cost of one
+    pen in dollars&rdquo;. Unlabelled letters lose marks.</li>
+  <li>Each separate fact about the situation gives you <b>one equation</b>. Two unknowns means you must hunt
+    for <b>two</b> facts.</li>
+  <li>Keep the units consistent &mdash; all in dollars or all in cents, never a mixture.</li>
+  <li>Solve, then answer the actual question in a sentence, with units.</li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">3 pens and 2 notebooks cost $11.60. 5 pens and 4 notebooks cost $20.80. Find the cost of one pen and the cost of one notebook.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Define the letters clearly.
+    <span class="work">Let p = cost of one pen ($)<br>Let n = cost of one notebook ($)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Each purchase gives one equation.
+    <span class="work">(1)&nbsp; 3p + 2n = 11.60<br>(2)&nbsp; 5p + 4n = 20.80</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply (1) by 2 so both have <span class="m">4n</span>.
+    <span class="work">(1)&times;2:&nbsp; 6p + 4n = 23.20</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Same signs, so <b>subtract</b> (2) from that line.
+    <span class="work">(6p &minus; 5p) + (4n &minus; 4n) = 23.20 &minus; 20.80<br>p = 2.40</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Substitute into (1).
+    <span class="work">3(2.40) + 2n = 11.60<br>7.20 + 2n = 11.60<br>2n = 4.40 &nbsp;&rarr;&nbsp; n = 2.20</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Check in both.
+    <span class="work">(1) 3(2.40) + 2(2.20) = 7.20 + 4.40 = 11.60 &#10003;<br>
+    (2) 5(2.40) + 4(2.20) = 12.00 + 8.80 = 20.80 &#10003;</span></div></div>
+  <div class="final">a pen costs $2.40 and a notebook costs $2.20</div>
+  <div class="tip"><b>Exam tip</b> Money answers must be given to <b>2 decimal places</b>: write
+  <span class="m">$2.40</span>, not <span class="m">$2.4</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Solve <span class="m">2x + 3y = 12</span> and <span class="m">5x &minus; 2y = 11</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Neither <span class="m">3</span> nor <span class="m">2</span>
+    divides into the other, so multiply <b>both</b> equations. The lowest common multiple of 3 and 2 is
+    <span class="m">6</span>, so use (1)&times;2 and (2)&times;3.
+    <span class="work">(1)&times;2:&nbsp; 4x + 6y = 24<br>(2)&times;3:&nbsp; 15x &minus; 6y = 33</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">+6y</span> and <span class="m">&minus;6y</span>:
+    different signs, so <b>add</b>.
+    <span class="work">19x = 57 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute into the original (1).
+    <span class="work">2(3) + 3y = 12<br>3y = 6 &nbsp;&rarr;&nbsp; y = 2</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check in both originals.
+    <span class="work">(1) 6 + 6 = 12 &#10003;<br>(2) 15 &minus; 4 = 11 &#10003;</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 2</div>
+  <div class="note"><b>Note</b> Always substitute into an <b>original</b> equation, not a scaled one. If you
+  made a slip while multiplying, the check will then catch it.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Solve <span class="m">5x + 3y = 4</span> and <span class="m">2x &minus; 5y = 14</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Eliminate <span class="m">y</span>: the lowest common
+    multiple of 3 and 5 is 15, so multiply (1) by 5 and (2) by 3.
+    <span class="work">(1)&times;5:&nbsp; 25x + 15y = 20<br>(2)&times;3:&nbsp; 6x &minus; 15y = 42</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Different signs, so <b>add</b>.
+    <span class="work">31x = 62 &nbsp;&rarr;&nbsp; x = 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute into (1). Expect a negative &mdash; that is fine.
+    <span class="work">5(2) + 3y = 4<br>3y = 4 &minus; 10 = &minus;6 &nbsp;&rarr;&nbsp; y = &minus;2</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check in both.
+    <span class="work">(1) 10 + 3(&minus;2) = 10 &minus; 6 = 4 &#10003;<br>
+    (2) 2(2) &minus; 5(&minus;2) = 4 + 10 = 14 &#10003;</span></div></div>
+  <div class="final">x = 2, &nbsp; y = &minus;2</div>
+  <div class="warn"><b>Watch out</b> A negative answer is not a mistake. The trap is the double negative in the
+  check: <span class="m">&minus;5 &times; &minus;2 = +10</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">The perimeter of a rectangle is 34&nbsp;cm. Its length is 5&nbsp;cm more than its width. Find the area of the rectangle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Define the letters.
+    <span class="work">Let l = length (cm), w = width (cm)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Perimeter of a rectangle is
+    <span class="m">2l + 2w</span>. Divide through by 2 straight away to keep the numbers small.
+    <span class="work">2l + 2w = 34<br>(1)&nbsp; l + w = 17</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">&ldquo;Length is 5 more than width&rdquo; gives the second
+    equation. Write it in the same layout as the first.
+    <span class="work">l = w + 5<br>(2)&nbsp; l &minus; w = 5</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">The <span class="m">w</span> terms have different signs,
+    so <b>add</b>.
+    <span class="work">2l = 22 &nbsp;&rarr;&nbsp; l = 11</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Substitute into (1).
+    <span class="work">11 + w = 17 &nbsp;&rarr;&nbsp; w = 6</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Check both facts, then answer what was asked &mdash;
+    the <b>area</b>.
+    <span class="work">perimeter = 2(11 + 6) = 34 cm &#10003;<br>11 &minus; 6 = 5 &#10003;<br>
+    area = 11 &times; 6 = 66 cm&sup2;</span></div></div>
+  <div class="final">area = 66 cm&sup2;</div>
+  <div class="tip"><b>Exam tip</b> Do not stop at <span class="m">l = 11</span> and <span class="m">w = 6</span>.
+  Geometry questions almost always want a length, an area or a perimeter at the end, with the correct unit.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Solve <span class="m">4x + y = 13</span> and <span class="m">2x + y = 7</span>.</li>
+    <li>Solve <span class="m">3x + 2y = 13</span> and <span class="m">x &minus; 2y = &minus;1</span>.</li>
+    <li>Use substitution to solve <span class="m">y = 3x &minus; 4</span> and <span class="m">2x + y = 11</span>.</li>
+    <li>Solve <span class="m">3x + 2y = 5</span> and <span class="m">2x + 5y = &minus;4</span>.</li>
+    <li>The lines <span class="m">y = 2x + 1</span> and <span class="m">2y = 4x &minus; 6</span> are drawn on the
+      same grid. Explain why these simultaneous equations have no solution.</li>
+    <li>4 coffees and 3 teas cost $16.10. 2 coffees and 5 teas cost $15.40. Find the cost of one coffee and
+      one tea.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>Same signs, subtract: <span class="m">2x = 6</span> &rarr; <span class="m">x = 3</span>, then
+        <span class="m">2(3) + y = 7</span> &rarr; <span class="ans">x = 3, y = 1</span>
+        (check: <span class="m">12 + 1 = 13</span> &#10003;)</li>
+      <li><span class="m">+2y</span> and <span class="m">&minus;2y</span>, so add: <span class="m">4x = 12</span>
+        &rarr; <span class="m">x = 3</span>, then <span class="m">9 + 2y = 13</span> &rarr;
+        <span class="ans">x = 3, y = 2</span> (check: <span class="m">3 &minus; 4 = &minus;1</span> &#10003;)</li>
+      <li><span class="m">2x + (3x &minus; 4) = 11</span> &rarr; <span class="m">5x = 15</span> &rarr;
+        <span class="m">x = 3</span>, so <span class="m">y = 9 &minus; 4</span> &rarr;
+        <span class="ans">x = 3, y = 5</span></li>
+      <li>(1)&times;5 and (2)&times;2: <span class="m">15x + 10y = 25</span>, <span class="m">4x + 10y = &minus;8</span>;
+        same signs, subtract &rarr; <span class="m">11x = 33</span>, <span class="m">x = 3</span>, then
+        <span class="m">9 + 2y = 5</span> &rarr; <span class="ans">x = 3, y = &minus;2</span></li>
+      <li>The second equation divides by 2 to give <span class="m">y = 2x &minus; 3</span>. Both lines have
+        <b>gradient 2</b> but different intercepts, so they are <span class="ans">parallel</span> and never
+        intersect &mdash; there is no pair satisfying both.</li>
+      <li><span class="m">4c + 3t = 16.10</span>, <span class="m">2c + 5t = 15.40</span>. (2)&times;2 gives
+        <span class="m">4c + 10t = 30.80</span>; subtract &rarr; <span class="m">7t = 14.70</span>,
+        <span class="m">t = 2.10</span>, then <span class="m">4c = 16.10 &minus; 6.30 = 9.80</span> &rarr;
+        <span class="ans">coffee $2.45, tea $2.10</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Simultaneous equations must <b>both</b> be true at once; two unknowns need two equations.</li>
+    <li><b>Elimination</b>: make the coefficients of one letter match in size, then
+      <b>same signs subtract, different signs add</b>.</li>
+    <li>When nothing matches, multiply one or both equations by the numbers that make the coefficients equal
+      to their <b>lowest common multiple</b> &mdash; and multiply <b>every</b> term, including the right-hand side.</li>
+    <li><b>Substitution</b>: make one letter the subject, then replace it in the <b>other</b> equation, always
+      using brackets.</li>
+    <li>Substitute your first value back into an <b>original</b> equation to find the second unknown.</li>
+    <li><b>Check the pair in both original equations</b> before you move on &mdash; it is the only reliable check.</li>
+    <li>Graphically the solution is the <b>point of intersection</b>: parallel lines give no solution, identical
+      lines give infinitely many.</li>
+    <li>In word problems, define each letter with its unit, get one equation per fact, and finish by answering
+      the question that was actually asked.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="10-2.html"><span>&larr; Previous</span><b>10.2 Quadratic Expressions and Equations</b></a><a class="next" href="14-4.html"><span>Next &rarr;</span><b>14.4 Completing the Square</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 14.1 Simultaneous Linear Equations<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- shared formatting for both widgets ---- */
+/* ---- elimination stepper ---- */
+(function(){
+  var out=el('eOut');
+  function fs(a,b){ return fracStr(a,b).replace(/-/g,'&minus;'); }
+  function ns(n){ return (n<0?'&minus;':'')+fx(Math.abs(n),3); }
+  function term(co,v,first){
+    if(co===0) return '';
+    var m=Math.abs(co), s;
+    if(first) s=(co<0?'&minus;':'');
+    else s=(co<0?' &minus; ':' + ');
+    return s+(m===1?'':fx(m,3))+v;
+  }
+  function eqLine(a,b,c){
+    var s='';
+    if(a!==0){ s+=term(a,'x',true); s+=term(b,'y',false); }
+    else s+=term(b,'y',true);
+    if(s==='') s='0';
+    return s+' = '+ns(c);
+  }
+  function go(){
+    var a1=Math.round(num('eA1',3)), b1=Math.round(num('eB1',2)), c1=Math.round(num('eC1',19)),
+        a2=Math.round(num('eA2',3)), b2=Math.round(num('eB2',-1)), c2=Math.round(num('eC2',4));
+    if((a1===0&&b1===0)||(a2===0&&b2===0)){
+      out.innerHTML='<span class="hl">Each equation needs at least one of x and y.</span>'; return; }
+    var D=a1*b2-a2*b1;
+    var head='<div>(1)&nbsp; '+eqLine(a1,b1,c1)+'</div><div>(2)&nbsp; '+eqLine(a2,b2,c2)+'</div>';
+    if(D===0){
+      var same=(a1*c2-a2*c1===0)&&(c1*b2-c2*b1===0);
+      out.innerHTML=head+'<div style="margin-top:8px">Whatever you multiply by, <b>both</b> letters vanish '+
+        'together.</div><div style="margin-top:6px">'+(same?
+        '<span class="hl">The two equations are the same line</span> &mdash; infinitely many solutions.':
+        '<span class="hl">The lines are parallel</span> &mdash; there is no solution.')+'</div>';
+      return;
+    }
+    /* prefer the letter whose coefficients already match in size, as a student would */
+    var idx;
+    if(a1!==0 && Math.abs(a1)===Math.abs(a2)) idx=0;
+    else if(b1!==0 && Math.abs(b1)===Math.abs(b2)) idx=1;
+    else idx=(b1!==0&&b2!==0)?1:0;      /* 1 = eliminate y, 0 = eliminate x */
+    var e1=[a1,b1], e2=[a2,b2];
+    var p=e1[idx], q=e2[idx];
+    var body='';
+    if(p===0||q===0){
+      body='<div style="margin-top:8px">One equation already contains a single unknown &mdash; solve that one '+
+           'first, then substitute into the other.</div>';
+    } else {
+      var L=lcm(Math.abs(p),Math.abs(q)), m1=L/Math.abs(p), m2=L/Math.abs(q);
+      var s1=[a1*m1,b1*m1,c1*m1], s2=[a2*m2,b2*m2,c2*m2];
+      var same=(p>0)===(q>0);
+      var ev=(idx===1)?'y':'x';
+      body='<div style="margin-top:8px">Eliminate <span class="hl">'+ev+'</span>: make both coefficients '+L+'.</div>';
+      body+='<div>(1)'+(m1===1?'':'&times;'+m1)+':&nbsp; '+eqLine(s1[0],s1[1],s1[2])+'</div>';
+      body+='<div>(2)'+(m2===1?'':'&times;'+m2)+':&nbsp; '+eqLine(s2[0],s2[1],s2[2])+'</div>';
+      var oth=1-idx;
+      var A=same? s1[oth]-s2[oth] : s1[oth]+s2[oth];
+      var C=same? s1[2]-s2[2] : s1[2]+s2[2];
+      var kv=(idx===1)?'x':'y';
+      body+='<div style="margin-top:6px">Signs are <b>'+(same?'the same &rarr; subtract':'different &rarr; add')+
+            '</b>:</div><div>&nbsp;&nbsp;'+(A===1?'':A===-1?'&minus;':ns(A))+kv+' = '+ns(C)+'</div>';
+      body+='<div style="margin-top:6px">'+kv+' = '+fs(C,A)+'</div>';
+    }
+    var x=(c1*b2-c2*b1)/D, y=(a1*c2-a2*c1)/D;
+    var k1=a1*x+b1*y, k2=a2*x+b2*y;
+    out.innerHTML=head+body+
+      '<div style="margin-top:10px">Solution: <b>x = '+fs(c1*b2-c2*b1,D)+'</b>, &nbsp;<b>y = '+
+        fs(a1*c2-a2*c1,D)+'</b></div>'+
+      '<div style="margin-top:6px;opacity:.8">Check&nbsp; (1): '+ns(k1)+' = '+ns(c1)+
+        ' &#10003; &nbsp;&nbsp;(2): '+ns(k2)+' = '+ns(c2)+' &#10003;</div>';
+  }
+  bindAll(['eA1','eB1','eC1','eA2','eB2','eC2'],go);
+})();
+
+/* ---- two-line grapher ---- */
+(function(){
+  var XMIN=-8, XMAX=8, YMIN=-5, YMAX=5, PAD=30, W=640, H=422;
+  function PX(x){ return PAD + (x-XMIN)/(XMAX-XMIN)*(W-2*PAD); }
+  function PY(y){ return PAD + (YMAX-y)/(YMAX-YMIN)*(H-2*PAD); }
+  function sg(n){ return String(n).replace('-','&minus;'); }
+  function ns(n){ return (n<0?'&minus;':'')+fx(Math.abs(n),3); }
+  function fs(a,b){ return fracStr(a,b).replace(/-/g,'&minus;'); }
+  function segs(a,b,c){
+    var res=[], pts=[], step=(XMAX-XMIN)/400, x, y;
+    if(a===0&&b===0) return res;
+    if(b===0){
+      var xv=c/a;
+      if(xv>=XMIN&&xv<=XMAX) res.push([PX(xv)+','+PY(YMIN), PX(xv)+','+PY(YMAX)]);
+      return res;
+    }
+    for(x=XMIN; x<=XMAX+1e-9; x+=step){
+      y=(c-a*x)/b;
+      if(y>=YMIN&&y<=YMAX) pts.push(fx(PX(x),1)+','+fx(PY(y),1));
+      else { if(pts.length>1) res.push(pts); pts=[]; }
+    }
+    if(pts.length>1) res.push(pts);
+    return res;
+  }
+  function draw(L1,L2,pt){
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Two straight lines and their intersection">';
+    s+='<rect x="0" y="0" width="'+W+'" height="'+H+'" rx="12" fill="#ffffff" stroke="#dfe6f3"/>';
+    var i;
+    for(i=XMIN;i<=XMAX;i++) s+='<line x1="'+PX(i)+'" y1="'+PAD+'" x2="'+PX(i)+'" y2="'+(H-PAD)+'" stroke="#e6ecf7"/>';
+    for(i=YMIN;i<=YMAX;i++) s+='<line x1="'+PAD+'" y1="'+PY(i)+'" x2="'+(W-PAD)+'" y2="'+PY(i)+'" stroke="#e6ecf7"/>';
+    s+='<line x1="'+PAD+'" y1="'+PY(0)+'" x2="'+(W-PAD)+'" y2="'+PY(0)+'" stroke="#0f2d6b" stroke-width="2"/>';
+    s+='<line x1="'+PX(0)+'" y1="'+PAD+'" x2="'+PX(0)+'" y2="'+(H-PAD)+'" stroke="#0f2d6b" stroke-width="2"/>';
+    for(i=XMIN+2;i<=XMAX-2;i+=2){ if(i===0) continue;
+      s+='<text x="'+PX(i)+'" y="'+(PY(0)+16)+'" font-size="11" text-anchor="middle" fill="#4a5b7a">'+sg(i)+'</text>'; }
+    for(i=YMIN+1;i<=YMAX-1;i++){ if(i===0) continue;
+      s+='<text x="'+(PX(0)-8)+'" y="'+(PY(i)+4)+'" font-size="11" text-anchor="end" fill="#4a5b7a">'+sg(i)+'</text>'; }
+    s+='<text x="'+(W-PAD-4)+'" y="'+(PY(0)-8)+'" font-size="12" text-anchor="end" fill="#0f2d6b">x</text>';
+    s+='<text x="'+(PX(0)+8)+'" y="'+(PAD+12)+'" font-size="12" fill="#0f2d6b">y</text>';
+    L1.forEach(function(p){ s+='<polyline points="'+p.join(' ')+'" fill="none" stroke="#1a4fa0" stroke-width="3"/>'; });
+    L2.forEach(function(p){ s+='<polyline points="'+p.join(' ')+'" fill="none" stroke="#e05c2a" stroke-width="3"/>'; });
+    if(pt){
+      s+='<circle cx="'+fx(PX(pt[0]),1)+'" cy="'+fx(PY(pt[1]),1)+'" r="7" fill="#16a34a"/>';
+      s+='<text x="'+fx(PX(pt[0])+11,1)+'" y="'+fx(PY(pt[1])-11,1)+'" font-size="13" font-weight="bold" fill="#16a34a">('+
+         ns(pt[0])+', '+ns(pt[1])+')</text>';
+    }
+    s+='<text x="'+(PAD+8)+'" y="'+(H-PAD-10)+'" font-size="12" font-weight="bold" fill="#1a4fa0">line 1</text>';
+    s+='<text x="'+(PAD+72)+'" y="'+(H-PAD-10)+'" font-size="12" font-weight="bold" fill="#e05c2a">line 2</text>';
+    return s+'</svg>';
+  }
+  function go(){
+    var a1=num('gA1',2), b1=num('gB1',1), c1=num('gC1',11),
+        a2=num('gA2',3), b2=num('gB2',-2), c2=num('gC2',6);
+    if((a1===0&&b1===0)||(a2===0&&b2===0)){
+      el('gPlot').innerHTML=''; el('gOut').innerHTML='<span class="hl">Each line needs at least one of x and y.</span>'; return; }
+    var D=a1*b2-a2*b1, pt=null, txt='';
+    if(D!==0){
+      var x=(c1*b2-c2*b1)/D, y=(a1*c2-a2*c1)/D;
+      if(x>=XMIN&&x<=XMAX&&y>=YMIN&&y<=YMAX) pt=[x,y];
+      txt='<div>The lines cross once.</div><div style="margin-top:6px">Solution: <b>x = '+
+          fs(Math.round((c1*b2-c2*b1)*1000),Math.round(D*1000))+'</b>, &nbsp;<b>y = '+
+          fs(Math.round((a1*c2-a2*c1)*1000),Math.round(D*1000))+'</b></div>'+
+          '<div style="margin-top:6px;opacity:.8">Check&nbsp; (1): '+ns(a1*x+b1*y)+' = '+ns(c1)+
+          ' &#10003; &nbsp;&nbsp;(2): '+ns(a2*x+b2*y)+' = '+ns(c2)+' &#10003;</div>'+
+          (pt?'':'<div style="margin-top:6px" class="hl">The crossing point is outside the window shown.</div>');
+    } else {
+      var same=(a1*c2-a2*c1===0)&&(c1*b2-c2*b1===0);
+      txt=same? '<div><span class="hl">Identical lines</span> &mdash; one equation is a multiple of the other, '+
+                'so every point on the line is a solution: <b>infinitely many solutions</b>.</div>'
+              : '<div><span class="hl">Parallel lines</span> &mdash; same gradient, different intercepts, so they '+
+                'never meet: <b>no solution</b>.</div>';
+    }
+    el('gPlot').innerHTML=draw(segs(a1,b1,c1),segs(a2,b2,c2),pt);
+    el('gOut').innerHTML=txt;
+  }
+  bindAll(['gA1','gB1','gC1','gA2','gB2','gC2'],go);
+})();
+</script>
+</body>
+</html>
