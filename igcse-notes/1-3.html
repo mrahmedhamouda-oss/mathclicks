@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.3 Prime Numbers | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="What makes a number prime, how to test one quickly, and how writing a number as a product of primes unlocks roots, squares, cubes, HCFs and LCMs.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 1 &mdash; Reviewing Number Concepts</span>
+    </div>
+    <h1>1.3 &nbsp;Prime Numbers</h1>
+    <p>What makes a number prime, how to test one quickly, and how writing a number as a product of primes unlocks roots, squares, cubes, HCFs and LCMs.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#what">What is a prime</a>
+  <a href="#testing">Testing</a>
+  <a href="#factorising">Factorising</a>
+  <a href="#using">Using primes</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="what" data-nav="What is a prime">
+<h2>What a prime number is</h2>
+<div class="def"><b>Definition</b>
+A <b>prime number</b> is a positive integer with <b>exactly two</b> distinct factors: 1 and itself.
+A positive integer with more than two factors is called <b>composite</b>.</div>
+
+<p>The word &ldquo;exactly&rdquo; is doing all the work in that definition, and it settles the question students
+ask every year.</p>
+
+<div class="warn"><b>Watch out &mdash; why 1 is not prime</b>
+1 has only <b>one</b> factor (itself), not two, so it fails the definition. This is not an arbitrary rule: if 1
+counted as prime, then <span class="m">12 = 2&sup2; &times; 3</span> and
+<span class="m">12 = 1 &times; 2&sup2; &times; 3</span> and <span class="m">12 = 1&sup2; &times; 2&sup2; &times; 3</span>
+would all be different prime factorisations, and every number would have infinitely many. Excluding 1 keeps the
+prime factorisation of every number <b>unique</b>.</div>
+
+<div class="note"><b>Note</b>
+2 is the only even prime &mdash; every other even number has 2 as a third factor. That makes 2 the odd one out,
+and it is the reason exam questions love it: &ldquo;write down the only even prime number&rdquo; is a real mark.</div>
+
+<div class="card g">
+<h4>The 25 primes below 100 &mdash; learn these</h4>
+<div class="tw">
+<table>
+<thead><tr><th>Range</th><th>Primes</th><th>How many</th></tr></thead>
+<tbody>
+<tr><td>1&ndash;20</td><td><span class="m">2, 3, 5, 7, 11, 13, 17, 19</span></td><td>8</td></tr>
+<tr><td>21&ndash;40</td><td><span class="m">23, 29, 31, 37</span></td><td>4</td></tr>
+<tr><td>41&ndash;60</td><td><span class="m">41, 43, 47, 53, 59</span></td><td>5</td></tr>
+<tr><td>61&ndash;80</td><td><span class="m">61, 67, 71, 73, 79</span></td><td>5</td></tr>
+<tr><td>81&ndash;100</td><td><span class="m">83, 89, 97</span></td><td>3</td></tr>
+</tbody>
+</table>
+</div>
+<p>Useful near-misses that catch people out: <span class="m">51 = 3 &times; 17</span>,
+<span class="m">57 = 3 &times; 19</span>, <span class="m">87 = 3 &times; 29</span>,
+<span class="m">91 = 7 &times; 13</span> and <span class="m">1</span> itself. None of these is prime.</p>
+</div>
+</section>
+
+<section id="testing" data-nav="Testing">
+<h2>Testing whether a number is prime</h2>
+<p>You do not have to try every divisor. If <span class="m">n</span> has a factor larger than
+<span class="rt"><span>n</span></span>, then the partner it multiplies with must be <i>smaller</i> than
+<span class="rt"><span>n</span></span> &mdash; so you would already have found it.</p>
+
+<div class="formula">Test only the primes up to <span class="rt"><span>n</span></span>
+<small>If none of them divides n, then n is prime</small></div>
+
+<div class="card">
+<h4>The method, step by step</h4>
+<ol>
+  <li>Work out <span class="rt"><span>n</span></span> on your calculator and round <b>up</b>.</li>
+  <li>Divide <span class="m">n</span> by each prime in turn: 2, 3, 5, 7, 11, 13, 17, 19, &hellip; up to that value.</li>
+  <li>If any division gives a whole number, <span class="m">n</span> is composite &mdash; you have found a factor.</li>
+  <li>If none does, <span class="m">n</span> is prime.</li>
+</ol>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+Use the divisibility tests from 1.2 for 2, 3, 5 and 11 &mdash; they are instant and remove most candidates
+before you touch the calculator.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Show that 397 is a prime number.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Find the square root and round up &mdash; that is how far you must test.
+    <span class="work"><span class="rt"><span>397</span></span> = 19.92&hellip; &rarr; test primes up to 19</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Clear the easy ones with divisibility tests.
+    <span class="work">2: 397 is odd &nbsp;&#10007;<br>3: 3+9+7 = 19, not a multiple of 3 &nbsp;&#10007;<br>5: does not end in 0 or 5 &nbsp;&#10007;<br>11: 3 &minus; 9 + 7 = 1 &nbsp;&#10007;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide by the remaining primes 7, 13, 17, 19.
+    <span class="work">397 &divide; 7 = 56.71&hellip;<br>397 &divide; 13 = 30.54&hellip;<br>397 &divide; 17 = 23.35&hellip;<br>397 &divide; 19 = 20.89&hellip;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">No prime up to 19 divides it, so there is nothing left to try.</div></div>
+  <div class="final">397 has exactly two factors, 1 and 397, so it is prime</div>
+  <div class="note"><b>Why stop at 19?</b> The next prime is 23, and
+  <span class="m">23 &times; 23 = 529 &gt; 397</span>. Any factor above 19 would need a partner below 19, which we
+  have already ruled out.</div>
+</div>
+</details>
+</section>
+
+<section id="factorising" data-nav="Factorising">
+<h2>Writing a number as a product of primes</h2>
+<div class="def"><b>Key idea</b>
+Every integer greater than 1 can be written as a product of primes in <b>exactly one way</b> (apart from the
+order). This is the Fundamental Theorem of Arithmetic, and it is why prime factorisation is so powerful.</div>
+
+<p>Two methods are accepted. Learn both, then use whichever you find faster &mdash; but always finish by writing
+the answer in <b>index form</b>, smallest prime first.</p>
+
+<div class="tabs">
+  <div class="heads"><button>Factor tree</button><button>Division ladder</button></div>
+  <div class="panes">
+    <div>
+      <p>Split the number into <i>any</i> factor pair, then keep splitting until every branch ends on a prime.
+      Circle the primes. Different starting splits give the same final answer.</p>
+      <svg viewBox="0 0 640 300" role="img" aria-label="Factor tree for 360 giving 2 cubed times 3 squared times 5">
+        <line x1="320" y1="42" x2="210" y2="88" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="320" y1="42" x2="455" y2="88" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="200" y1="112" x2="135" y2="158" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="200" y1="112" x2="270" y2="158" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="455" y1="112" x2="410" y2="158" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="455" y1="112" x2="510" y2="158" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="130" y1="182" x2="95" y2="228" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="130" y1="182" x2="165" y2="228" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="272" y1="182" x2="238" y2="228" stroke="#1a4fa0" stroke-width="2"/>
+        <line x1="272" y1="182" x2="308" y2="228" stroke="#1a4fa0" stroke-width="2"/>
+
+        <text x="320" y="36" font-size="20" font-weight="bold" text-anchor="middle" fill="#0f2d6b">360</text>
+        <text x="196" y="106" font-size="18" text-anchor="middle" fill="#0f2d6b">36</text>
+        <text x="459" y="106" font-size="18" text-anchor="middle" fill="#0f2d6b">10</text>
+        <text x="128" y="176" font-size="18" text-anchor="middle" fill="#0f2d6b">6</text>
+        <text x="274" y="176" font-size="18" text-anchor="middle" fill="#0f2d6b">6</text>
+
+        <circle cx="408" cy="170" r="17" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+        <text x="408" y="176" font-size="16" text-anchor="middle" fill="#16a34a" font-weight="bold">2</text>
+        <circle cx="512" cy="170" r="17" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+        <text x="512" y="176" font-size="16" text-anchor="middle" fill="#16a34a" font-weight="bold">5</text>
+        <circle cx="92" cy="240" r="17" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+        <text x="92" y="246" font-size="16" text-anchor="middle" fill="#16a34a" font-weight="bold">2</text>
+        <circle cx="168" cy="240" r="17" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+        <text x="168" y="246" font-size="16" text-anchor="middle" fill="#16a34a" font-weight="bold">3</text>
+        <circle cx="234" cy="240" r="17" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+        <text x="234" y="246" font-size="16" text-anchor="middle" fill="#16a34a" font-weight="bold">2</text>
+        <circle cx="312" cy="240" r="17" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+        <text x="312" y="246" font-size="16" text-anchor="middle" fill="#16a34a" font-weight="bold">3</text>
+
+        <text x="320" y="288" font-size="15" text-anchor="middle" fill="#e05c2a" font-weight="bold">360 = 2 &times; 2 &times; 2 &times; 3 &times; 3 &times; 5 = 2&sup3; &times; 3&sup2; &times; 5</text>
+      </svg>
+    </div>
+    <div>
+      <p>Divide repeatedly by the <b>smallest</b> prime that goes in, writing the prime on the left and the
+      quotient underneath. Stop at 1. The primes down the left-hand side are your answer.</p>
+      <div class="tw">
+      <table>
+      <thead><tr><th>Divide by</th><th>Number</th><th>Why that prime</th></tr></thead>
+      <tbody>
+      <tr><td><b>2</b></td><td><span class="m">1176</span></td><td>even</td></tr>
+      <tr><td><b>2</b></td><td><span class="m">588</span></td><td>even</td></tr>
+      <tr><td><b>2</b></td><td><span class="m">294</span></td><td>even</td></tr>
+      <tr><td><b>3</b></td><td><span class="m">147</span></td><td>odd; 1+4+7 = 12, a multiple of 3</td></tr>
+      <tr><td><b>7</b></td><td><span class="m">49</span></td><td>not 2, 3 or 5; <span class="m">49 = 7 &times; 7</span></td></tr>
+      <tr><td><b>7</b></td><td><span class="m">7</span></td><td>prime</td></tr>
+      <tr><td>&mdash;</td><td><span class="m">1</span></td><td>stop</td></tr>
+      </tbody>
+      </table>
+      </div>
+      <p><span class="m">1176 = 2 &times; 2 &times; 2 &times; 3 &times; 7 &times; 7 = 2&sup3; &times; 3 &times; 7&sup2;</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+&ldquo;Write 360 as a product of its prime factors&rdquo; means the answer must be a <b>product</b>:
+<span class="m">2&sup3; &times; 3&sup2; &times; 5</span>. Writing just the list &ldquo;2, 3, 5&rdquo; scores nothing,
+and the multiplication signs are part of the answer.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Write 360 as a product of its prime factors, giving your answer in index form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Start with any pair you can see. <span class="m">360 = 36 &times; 10</span> is easy.
+    <span class="work">360 = 36 &times; 10</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Split each branch again.
+    <span class="work">36 = 6 &times; 6 &nbsp;&nbsp; 10 = 2 &times; 5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Split anything still composite. 2 and 5 are prime, so stop those branches.
+    <span class="work">6 = 2 &times; 3 &nbsp;&nbsp; 6 = 2 &times; 3</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Collect every leaf of the tree and group equal primes.
+    <span class="work">360 = 2 &times; 3 &times; 2 &times; 3 &times; 2 &times; 5<br>= 2&sup3; &times; 3&sup2; &times; 5</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check by multiplying back.
+    <span class="work">8 &times; 9 &times; 5 = 72 &times; 5 = 360 &nbsp;&#10003;</span></div></div>
+  <div class="final">360 = 2&sup3; &times; 3&sup2; &times; 5</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Use the division ladder to write 1176 as a product of primes in index form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Keep halving while the number is even.
+    <span class="work">1176 &divide; 2 = 588<br>588 &divide; 2 = 294<br>294 &divide; 2 = 147</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">147 is odd. Digit sum <span class="m">1+4+7 = 12</span>, so divide by 3.
+    <span class="work">147 &divide; 3 = 49</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">49 is not divisible by 2, 3 or 5. Try 7.
+    <span class="work">49 &divide; 7 = 7 &nbsp;&nbsp; 7 &divide; 7 = 1</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Read the divisors down the ladder and group them.
+    <span class="work">1176 = 2 &times; 2 &times; 2 &times; 3 &times; 7 &times; 7 = 2&sup3; &times; 3 &times; 7&sup2;</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check.
+    <span class="work">8 &times; 3 &times; 49 = 24 &times; 49 = 1176 &nbsp;&#10003;</span></div></div>
+  <div class="final">1176 = 2&sup3; &times; 3 &times; 7&sup2;</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Prime factoriser</h4>
+  <p class="hint">Type any whole number from 2 to 100000. You get the division ladder, the answer in index form,
+  and a verdict on whether it is prime, a perfect square or a perfect cube. Try 397, 1764, 3375 and 720.</p>
+  <div class="row">
+    <div><label for="pfN">Your number</label><input type="number" id="pfN" value="1764" min="2" max="100000"></div>
+  </div>
+  <div class="out" id="pfOut"></div>
+</div>
+</section>
+
+<section id="using" data-nav="Using primes">
+<h2>What prime factorisation is for</h2>
+<p>Prime factorisation is not an end in itself. It is the tool that answers four different exam questions.</p>
+
+<div class="grid two">
+  <div class="card g">
+    <h4>Square roots &mdash; halve the indices</h4>
+    <p>A number is a <b>perfect square</b> exactly when every index in its prime factorisation is <b>even</b>.
+    Then halve each index to get the root.</p>
+    <p class="m">1764 = 2&sup2; &times; 3&sup2; &times; 7&sup2; &rarr;
+      <span class="rt"><span>1764</span></span> = 2 &times; 3 &times; 7 = 42</p>
+  </div>
+  <div class="card p">
+    <h4>Cube roots &mdash; divide the indices by 3</h4>
+    <p>A <b>perfect cube</b> has every index a multiple of 3.</p>
+    <p class="m">3375 = 3&sup3; &times; 5&sup3; &rarr; &#8731;3375 = 3 &times; 5 = 15</p>
+  </div>
+  <div class="card">
+    <h4>HCF &mdash; lowest powers</h4>
+    <p>Take only the primes common to both, each to its <b>lowest</b> power.</p>
+    <p class="m">126 = 2 &times; 3&sup2; &times; 7<br>168 = 2&sup3; &times; 3 &times; 7<br>
+      HCF = 2 &times; 3 &times; 7 = 42</p>
+  </div>
+  <div class="card o">
+    <h4>LCM &mdash; highest powers</h4>
+    <p>Take <b>every</b> prime that appears, each to its <b>highest</b> power.</p>
+    <p class="m">LCM = 2&sup3; &times; 3&sup2; &times; 7 = 504</p>
+  </div>
+</div>
+
+<div class="note"><b>Check</b>
+For the pair above, <span class="m">HCF &times; LCM = 42 &times; 504 = 21&nbsp;168</span> and
+<span class="m">126 &times; 168 = 21&nbsp;168</span> &mdash; agreement, as it must be for two numbers.</div>
+
+<div class="tip"><b>Exam tip</b>
+A favourite Extended question is &ldquo;find the smallest integer <span class="m">k</span> such that
+<span class="m">nk</span> is a perfect square (or cube)&rdquo;. Factorise <span class="m">n</span>, look at each
+index, and supply exactly the primes needed to lift every index up to a multiple of 2 (or of 3).</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Use prime factors to find <span class="rt"><span>1764</span></span> without a calculator.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Factorise by repeated division.
+    <span class="work">1764 &divide; 2 = 882<br>882 &divide; 2 = 441<br>441 &divide; 3 = 147<br>147 &divide; 3 = 49<br>49 = 7 &times; 7</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Write it in index form and check every index is even.
+    <span class="work">1764 = 2&sup2; &times; 3&sup2; &times; 7&sup2; &nbsp;&rarr;&nbsp; a perfect square</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Halve each index.
+    <span class="work"><span class="rt"><span>1764</span></span> = 2<sup>1</sup> &times; 3<sup>1</sup> &times; 7<sup>1</sup> = 42</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by squaring.
+    <span class="work">42&sup2; = 42 &times; 42 = 1764 &nbsp;&#10003;</span></div></div>
+  <div class="final"><span class="rt"><span>1764</span></span> = 42</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Show that 3375 is a perfect cube but not a perfect square, and write down its cube root.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">3375 is odd and ends in 5, so start dividing by 5.
+    <span class="work">3375 &divide; 5 = 675<br>675 &divide; 5 = 135<br>135 &divide; 5 = 27<br>27 = 3 &times; 3 &times; 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect into index form.
+    <span class="work">3375 = 3&sup3; &times; 5&sup3;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Every index is a multiple of 3, so it is a perfect cube. Divide each index by 3.
+    <span class="work">&#8731;3375 = 3<sup>1</sup> &times; 5<sup>1</sup> = 15 &nbsp;&nbsp;(15&sup3; = 3375 &#10003;)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">The indices 3 and 3 are <b>odd</b>, so it cannot be a perfect square.
+    <span class="work"><span class="rt"><span>3375</span></span> = 58.09&hellip; &nbsp;&mdash; not an integer</span></div></div>
+  <div class="final">3375 = 3&sup3; &times; 5&sup3;, a perfect cube with &#8731;3375 = 15, but not a perfect square</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Find the smallest positive integer <span class="m">k</span> such that <span class="m">720k</span> is a perfect square.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Factorise 720.
+    <span class="work">720 = 72 &times; 10 = (2&sup3; &times; 3&sup2;) &times; (2 &times; 5)<br>720 = 2<sup>4</sup> &times; 3&sup2; &times; 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">A perfect square needs <b>every index even</b>. Inspect them.
+    <span class="work">2<sup>4</sup> &rarr; 4 is even &#10003;<br>3&sup2; &rarr; 2 is even &#10003;<br>5<sup>1</sup> &rarr; 1 is odd &#10007;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Only the 5 is short. Supply one more 5 to lift its index from 1 to 2.
+    <span class="work">k = 5</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Verify.
+    <span class="work">720 &times; 5 = 3600 = 2<sup>4</sup> &times; 3&sup2; &times; 5&sup2;<br><span class="rt"><span>3600</span></span> = 2&sup2; &times; 3 &times; 5 = 60 &nbsp;&#10003;</span></div></div>
+  <div class="final">k = 5, and 720k = 3600 = 60&sup2;</div>
+  <div class="warn"><b>Watch out</b> The question says <b>smallest</b>. <span class="m">k = 20</span> also works
+  (<span class="m">720 &times; 20 = 14&nbsp;400 = 120&sup2;</span>), but it is not the smallest, so it scores nothing.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q"><span class="m">N = 1440</span>. Find the smallest positive integer <span class="m">n</span> such that <span class="m">Nn</span> is a perfect cube, and state the cube root of the result.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Factorise 1440.
+    <span class="work">1440 &divide; 2 = 720 &divide; 2 = 360 &divide; 2 = 180 &divide; 2 = 90 &divide; 2 = 45<br>45 = 3&sup2; &times; 5<br>1440 = 2<sup>5</sup> &times; 3&sup2; &times; 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">For a cube, every index must be a <b>multiple of 3</b>. Work out the shortfall for each prime.
+    <span class="work">2<sup>5</sup> &rarr; next multiple of 3 is 6, need 2<sup>1</sup><br>3&sup2; &rarr; next is 3, need 3<sup>1</sup><br>5<sup>1</sup> &rarr; next is 3, need 5&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply the shortfalls together.
+    <span class="work">n = 2 &times; 3 &times; 5&sup2; = 2 &times; 3 &times; 25 = 150</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check the product really is a cube, and take its cube root by dividing the indices by 3.
+    <span class="work">1440 &times; 150 = 216&nbsp;000 = 2<sup>6</sup> &times; 3&sup3; &times; 5&sup3;<br>&#8731;216000 = 2&sup2; &times; 3 &times; 5 = 60 &nbsp;&nbsp;(60&sup3; = 216&nbsp;000 &#10003;)</span></div></div>
+  <div class="final">n = 150, and 1440n = 216&nbsp;000 = 60&sup3;</div>
+  <div class="tip"><b>Exam tip</b> Set the working out prime by prime as above. Guessing the multiplier almost
+  always misses one of the primes, and there are no marks for a nearly-right cube.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Explain why 1 is not a prime number, and write down the only even prime.</li>
+    <li>Is 221 a prime number? Show the test you use.</li>
+    <li>Write 2520 as a product of its prime factors in index form.</li>
+    <li>Use prime factors to find <span class="rt"><span>5184</span></span>.</li>
+    <li>Find the HCF and the LCM of 126 and 168 using prime factorisation.</li>
+    <li><span class="m">n = 2<sup>4</sup> &times; 3 &times; 5&sup2;</span>. Find the smallest positive integer
+      <span class="m">k</span> such that <span class="m">nk</span> is a perfect square, and give
+      <span class="rt"><span>nk</span></span>.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>A prime has <b>exactly two</b> distinct factors; 1 has only one factor, itself, so it is not prime &rarr;
+        the only even prime is <span class="ans">2</span></li>
+      <li><span class="rt"><span>221</span></span> <span class="m">= 14.86&hellip;</span>, so test 2, 3, 5, 7, 11, 13.
+        <span class="m">221 &divide; 13 = 17</span> &rarr; <span class="ans">not prime</span>
+        (<span class="m">221 = 13 &times; 17</span>)</li>
+      <li><span class="m">2520 &divide; 2 = 1260 &divide; 2 = 630 &divide; 2 = 315</span>;
+        <span class="m">315 &divide; 3 = 105 &divide; 3 = 35 = 5 &times; 7</span> &rarr;
+        <span class="ans">2&sup3; &times; 3&sup2; &times; 5 &times; 7</span></li>
+      <li><span class="m">5184 = 2<sup>6</sup> &times; 3<sup>4</sup></span>; halve the indices &rarr;
+        <span class="m">2&sup3; &times; 3&sup2; = 8 &times; 9 =</span> <span class="ans">72</span>
+        (check <span class="m">72&sup2; = 5184</span>)</li>
+      <li><span class="m">126 = 2 &times; 3&sup2; &times; 7</span>, <span class="m">168 = 2&sup3; &times; 3 &times; 7</span>
+        &rarr; HCF <span class="m">= 2 &times; 3 &times; 7 =</span> <span class="ans">42</span>,
+        LCM <span class="m">= 2&sup3; &times; 3&sup2; &times; 7 =</span> <span class="ans">504</span></li>
+      <li>Indices are 4, 1, 2; only the 3 has an odd index, so <span class="ans">k = 3</span>.
+        Then <span class="m">nk = 2<sup>4</sup> &times; 3&sup2; &times; 5&sup2; = 3600</span> and
+        <span class="rt"><span>nk</span></span> <span class="m">= 2&sup2; &times; 3 &times; 5 =</span>
+        <span class="ans">60</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>A <b>prime</b> has exactly two distinct factors. 1 is <b>not</b> prime; 2 is the only even prime.</li>
+    <li>There are <b>25 primes below 100</b>. Watch the traps: 51, 57, 87 and 91 are all composite.</li>
+    <li>To test whether <span class="m">n</span> is prime, divide only by the primes up to
+      <span class="rt"><span>n</span></span>. If none divides it, it is prime.</li>
+    <li>Every number above 1 has a <b>unique</b> prime factorisation. Factor tree or division ladder &mdash; same answer.</li>
+    <li>Always present the answer as a <b>product</b> in <b>index form</b>, smallest prime first, and check by multiplying back.</li>
+    <li>Perfect square &hArr; all indices <b>even</b>; perfect cube &hArr; all indices <b>multiples of 3</b>.
+      Halve the indices for a square root, divide by 3 for a cube root.</li>
+    <li><b>HCF</b> = common primes to the <b>lowest</b> power; <b>LCM</b> = all primes to the <b>highest</b> power.</li>
+    <li>For &ldquo;smallest multiplier to make a square or cube&rdquo;, top up each index to the next multiple of
+      2 or 3 &mdash; and read the word <b>smallest</b>.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="1-2.html"><span>&larr; Previous</span><b>1.2 Multiples and Factors</b></a><a class="next" href="1-4.html"><span>Next &rarr;</span><b>1.4 Directed Numbers</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 1.3 Prime Numbers<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- prime factoriser ---- */
+(function(){
+  var out=el('pfOut');
+
+  function idxForm(ks,m){
+    var parts=[],i;
+    for(i=0;i<ks.length;i++){ parts.push(ks[i]+(m[ks[i]]>1? '<sup>'+m[ks[i]]+'</sup>' : '')); }
+    return parts.join(' &times; ');
+  }
+
+  function go(){
+    var n=Math.round(num('pfN',0));
+    if(!(n>=2 && n<=100000)){
+      out.innerHTML='<span style="opacity:.6">Enter a whole number from 2 to 100000.</span>';
+      return;
+    }
+
+    /* division ladder */
+    var rows=[], cur=n, d=2;
+    while(d*d<=cur){
+      if(cur%d===0){ rows.push([d,cur,cur/d]); cur=cur/d; }
+      else { d++; }
+    }
+    if(cur>1){ rows.push([cur,cur,1]); }
+
+    var f=primeFactors(n), m={}, ks=[], i;
+    for(i=0;i<f.length;i++){
+      if(!m[f[i]]){ m[f[i]]=0; ks.push(f[i]); }
+      m[f[i]]++;
+    }
+
+    var h='<div style="margin-bottom:8px">Division ladder for <span class="hl">'+n+'</span>:</div>'+
+          '<div style="font-family:var(--mono);font-size:.9em;margin-bottom:10px">';
+    for(i=0;i<rows.length;i++){
+      h+='<div>'+rows[i][1]+' &divide; '+rows[i][0]+' = '+rows[i][2]+'</div>';
+    }
+    h+='</div>';
+
+    h+='<div>Product of primes: '+f.join(' &times; ')+'</div>';
+    h+='<div style="margin-top:4px">Index form: <b>'+n+' = '+idxForm(ks,m)+'</b></div>';
+
+    /* verdicts */
+    var isPrime=(f.length===1);
+    var allEven=true, allTriple=true;
+    for(i=0;i<ks.length;i++){
+      if(m[ks[i]]%2!==0) allEven=false;
+      if(m[ks[i]]%3!==0) allTriple=false;
+    }
+    var nf=1;
+    for(i=0;i<ks.length;i++){ nf*=(m[ks[i]]+1); }
+
+    var lim=Math.floor(Math.sqrt(n));
+    h+='<div style="margin-top:10px">';
+    h+='<div>'+(isPrime?'<b>&#10003; '+n+' is PRIME</b> &mdash; '+
+        (lim<2? 'its only factors are 1 and itself' : 'no prime up to '+lim+' divides it'):
+        '<span class="hl">'+n+' is composite</span> &mdash; it has more than two factors')+'</div>';
+
+    if(allEven){
+      var r=1; for(i=0;i<ks.length;i++){ r*=Math.pow(ks[i],m[ks[i]]/2); }
+      h+='<div>&#10003; Perfect square: every index is even, so &#8730;'+n+' = <b>'+r+'</b></div>';
+    } else {
+      h+='<div><span style="opacity:.45">&#10007;</span> Not a perfect square &mdash; at least one index is odd</div>';
+    }
+    if(allTriple){
+      var c=1; for(i=0;i<ks.length;i++){ c*=Math.pow(ks[i],m[ks[i]]/3); }
+      h+='<div>&#10003; Perfect cube: every index is a multiple of 3, so &#8731;'+n+' = <b>'+c+'</b></div>';
+    } else {
+      h+='<div><span style="opacity:.45">&#10007;</span> Not a perfect cube</div>';
+    }
+    h+='<div style="margin-top:6px;opacity:.75;font-size:.9em">Adding 1 to each index and multiplying gives the '+
+       'total number of factors: '+nf+'</div>';
+    h+='</div>';
+
+    out.innerHTML=h;
+  }
+  on('pfN',go); go();
+})();
+</script>
+</body>
+</html>

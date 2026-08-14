@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.4 Directed Numbers | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Reading, ordering and calculating with positive and negative numbers &mdash; the sign rules, the powers trap, and how to key it all correctly into a calculator.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 1 &mdash; Reviewing Number Concepts</span>
+    </div>
+    <h1>1.4 &nbsp;Directed Numbers</h1>
+    <p>Reading, ordering and calculating with positive and negative numbers &mdash; the sign rules, the powers trap, and how to key it all correctly into a calculator.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#context">In context</a>
+  <a href="#addsub">Add &amp; subtract</a>
+  <a href="#multdiv">Multiply &amp; divide</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="context" data-nav="In context">
+<h2>Directed numbers in the real world</h2>
+<p>A <b>directed number</b> carries a direction as well as a size. The minus sign is not decoration &mdash; it
+tells you which way to go from zero.</p>
+
+<div class="grid">
+  <div class="card"><h4>Temperature</h4>
+    <p><span class="m">&minus;7&deg;C</span> is 7 degrees <b>below</b> freezing.
+    A rise of 12&deg; takes it to <span class="m">5&deg;C</span>.</p></div>
+  <div class="card o"><h4>Depth and height</h4>
+    <p>Sea level is 0. A submarine at <span class="m">&minus;180</span> m is 180 m <b>below</b> the surface;
+    a cliff top at <span class="m">+45</span> m is above it.</p></div>
+  <div class="card g"><h4>Money</h4>
+    <p>A balance of <span class="m">&minus;$45.20</span> means you <b>owe</b> $45.20. A deposit is positive,
+    a withdrawal negative.</p></div>
+  <div class="card p"><h4>Other contexts</h4>
+    <p>Floors below ground, time before an event, gain and loss in a game, and change in a share price all use
+    directed numbers.</p></div>
+</div>
+
+<div class="def"><b>Key idea</b>
+On the number line, numbers get <b>larger</b> as you move right and <b>smaller</b> as you move left. This is
+the whole of ordering: <span class="m">a &lt; b</span> simply means <span class="m">a</span> lies to the
+<b>left</b> of <span class="m">b</span>.</div>
+
+<div class="card">
+<h4>The number line</h4>
+<svg viewBox="0 0 640 130" role="img" aria-label="A number line from minus 6 to 6 with arrows showing smaller to the left and larger to the right">
+  <line x1="60" y1="34" x2="300" y2="34" stroke="#1a4fa0" stroke-width="2"/>
+  <polygon points="56,34 68,29 68,39" fill="#1a4fa0"/>
+  <text x="180" y="22" font-size="12.5" text-anchor="middle" fill="#1a4fa0">smaller &middot; colder &middot; deeper</text>
+  <line x1="340" y1="34" x2="580" y2="34" stroke="#e05c2a" stroke-width="2"/>
+  <polygon points="584,34 572,29 572,39" fill="#e05c2a"/>
+  <text x="460" y="22" font-size="12.5" text-anchor="middle" fill="#e05c2a">larger &middot; warmer &middot; higher</text>
+
+  <line x1="12" y1="70" x2="628" y2="70" stroke="#0f2d6b" stroke-width="2"/>
+  <polygon points="628,70 617,65 617,75" fill="#0f2d6b"/>
+  <polygon points="12,70 23,65 23,75" fill="#0f2d6b"/>
+
+  <line x1="30" y1="62" x2="30" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="78" y1="62" x2="78" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="127" y1="62" x2="127" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="175" y1="62" x2="175" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="223" y1="62" x2="223" y2="78" stroke="#9aa8c0" stroke-width="1.3"/>
+  <line x1="272" y1="62" x2="272" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="320" y1="58" x2="320" y2="82" stroke="#e05c2a" stroke-width="2.4"/><line x1="368" y1="62" x2="368" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="417" y1="62" x2="417" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="465" y1="62" x2="465" y2="78" stroke="#9aa8c0" stroke-width="1.3"/>
+  <line x1="513" y1="62" x2="513" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="562" y1="62" x2="562" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="610" y1="62" x2="610" y2="78" stroke="#9aa8c0" stroke-width="1.3"/>
+
+  <text x="30" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;6</text><text x="78" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;5</text><text x="127" y="98" font-size="12" text-anchor="middle" fill="#1a4fa0" font-weight="bold">&minus;4</text><text x="175" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;3</text>
+  <text x="223" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;2</text><text x="272" y="98" font-size="12" text-anchor="middle" fill="#1a4fa0" font-weight="bold">&minus;1</text><text x="320" y="98" font-size="12" text-anchor="middle" fill="#e05c2a" font-weight="bold">0</text><text x="368" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">1</text>
+  <text x="417" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">2</text><text x="465" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">3</text><text x="513" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">4</text><text x="562" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">5</text>
+  <text x="610" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">6</text>
+
+  <circle cx="127" cy="70" r="5" fill="#1a4fa0"/>
+  <circle cx="272" cy="70" r="5" fill="#1a4fa0"/>
+  <text x="200" y="122" font-size="12.5" text-anchor="middle" fill="#1a4fa0">&minus;4 &lt; &minus;1, because &minus;4 is further left</text>
+</svg>
+</div>
+
+<div class="warn"><b>Watch out</b>
+The bigger the digits, the <i>smaller</i> a negative number is. <span class="m">&minus;9 &lt; &minus;2</span>
+is true, and <span class="m">&minus;0.5 &gt; &minus;0.8</span> is also true. When you are ordering, never compare
+the digits on their own &mdash; picture the line every time.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Six midday temperatures are <span class="m">&minus;12, 5, &minus;3, 0, &minus;8, 2</span> (in &deg;C). (a) Write them in order, coldest first. (b) Find the difference between the highest and the lowest.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Deal with the negatives first: the one with the largest digits is
+    the furthest left, so it is the smallest.
+    <span class="work">negatives, coldest first: &minus;12, &minus;8, &minus;3<br>then 0, then the positives: 2, 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Write the full ordered list.
+    <span class="work">&minus;12, &minus;8, &minus;3, 0, 2, 5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) &ldquo;Difference&rdquo; means highest <b>minus</b> lowest. Subtracting a
+    negative moves you to the right, so it adds.
+    <span class="work">5 &minus; (&minus;12) = 5 + 12 = 17</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Sense-check on the line: from &minus;12 up to 0 is 12 degrees, then
+    0 up to 5 is another 5. <span class="work">12 + 5 = 17 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) &minus;12, &minus;8, &minus;3, 0, 2, 5 &nbsp;&nbsp;&nbsp; (b) 17&deg;C</div>
+</div>
+</details>
+</section>
+
+<section id="addsub" data-nav="Add &amp; subtract">
+<h2>Adding and subtracting</h2>
+<p>Every addition or subtraction is a <b>journey along the number line</b>. Start at the first number; the
+second number tells you how far and which way.</p>
+
+<div class="grid two">
+  <div class="card g"><h4>Move right when you&hellip;</h4>
+    <ul><li><b>add a positive</b>: <span class="m">&minus;5 + 3 = &minus;2</span></li>
+    <li><b>subtract a negative</b>: <span class="m">4 &minus; (&minus;7) = 11</span></li></ul></div>
+  <div class="card o"><h4>Move left when you&hellip;</h4>
+    <ul><li><b>subtract a positive</b>: <span class="m">2 &minus; 6 = &minus;4</span></li>
+    <li><b>add a negative</b>: <span class="m">&minus;3 + (&minus;5) = &minus;8</span></li></ul></div>
+</div>
+
+<h3>The two-signs-together rule</h3>
+<p>When an operation sign lands next to the sign of a number, replace the <b>pair</b> with a single sign, then
+carry out an ordinary calculation.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>You see</th><th>Replace with</th><th>Example</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td><span class="m">+ (+a)</span></td><td><span class="m">+ a</span></td><td><span class="m">7 + (+3)</span></td><td><span class="m">7 + 3 = 10</span></td></tr>
+<tr><td><span class="m">+ (&minus;a)</span></td><td><span class="m">&minus; a</span></td><td><span class="m">7 + (&minus;3)</span></td><td><span class="m">7 &minus; 3 = 4</span></td></tr>
+<tr><td><span class="m">&minus; (+a)</span></td><td><span class="m">&minus; a</span></td><td><span class="m">7 &minus; (+3)</span></td><td><span class="m">7 &minus; 3 = 4</span></td></tr>
+<tr><td><span class="m">&minus; (&minus;a)</span></td><td><span class="m">+ a</span></td><td><span class="m">7 &minus; (&minus;3)</span></td><td><span class="m">7 + 3 = 10</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="warn"><b>Watch out</b>
+The rule applies only to <b>two signs standing next to each other</b>. In <span class="m">&minus;5 + 3</span>
+there is a single sign in front of the 5 and a single operation sign, so nothing combines: the answer is
+<span class="m">&minus;2</span>, not <span class="m">&minus;8</span>. Students who chant &ldquo;two minuses make
+a plus&rdquo; without checking lose marks here every single year.</div>
+
+<div class="tool">
+  <h4>Number-line journey</h4>
+  <p class="hint">Set a start value and a second number, choose add or subtract, and watch the journey drawn on
+  the line. Try <span class="m">4</span> subtract <span class="m">&minus;7</span>, then
+  <span class="m">&minus;3</span> add <span class="m">&minus;5</span>.</p>
+  <div class="row">
+    <div><label for="nlA">Start at</label><input type="number" id="nlA" value="4" step="1"></div>
+    <div><label for="nlOp">Operation</label>
+      <select id="nlOp"><option value="p">add</option><option value="m" selected>subtract</option></select></div>
+    <div><label for="nlB">Second number</label><input type="number" id="nlB" value="-7" step="1"></div>
+  </div>
+  <div class="out" id="nlOut"></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Work out <span class="m">6 &minus; (&minus;4) + (&minus;9)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Simplify each pair of adjacent signs before doing any arithmetic.
+    <span class="work">&minus; (&minus;4) &rarr; + 4<br>+ (&minus;9) &rarr; &minus; 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rewrite the whole expression on one clean line.
+    <span class="work">6 + 4 &minus; 9</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Work from left to right.
+    <span class="work">6 + 4 = 10<br>10 &minus; 9 = 1</span></div></div>
+  <div class="final">6 &minus; (&minus;4) + (&minus;9) = 1</div>
+  <div class="tip"><b>Exam tip</b> Write out the simplified line <span class="m">6 + 4 &minus; 9</span>. It is
+  a method mark, and it stops you from losing track of the signs.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Marta's bank balance is <span class="m">&minus;$45.20</span>. She pays in $120 and then a direct debit of $88.50 is taken out. Find her new balance.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Translate the words into directed numbers: paying in is
+    <span class="m">+</span>, money taken out is <span class="m">&minus;</span>.
+    <span class="work">&minus;45.20 + 120 &minus; 88.50</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Left to right. The first step clears the overdraft and leaves credit.
+    <span class="work">&minus;45.20 + 120 = 74.80</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Now subtract the direct debit. It is larger than the balance, so she
+    goes back into debt.
+    <span class="work">74.80 &minus; 88.50 = &minus;13.70</span></div></div>
+  <div class="final">New balance = &minus;$13.70, i.e. she is $13.70 overdrawn</div>
+  <div class="warn"><b>Watch out</b> Money answers must be given to <b>2 decimal places</b>, and the sign is part
+  of the answer &mdash; &ldquo;$13.70&rdquo; on its own would not gain the accuracy mark.</div>
+</div>
+</details>
+</section>
+
+<section id="multdiv" data-nav="Multiply &amp; divide">
+<h2>Multiplying, dividing and powers</h2>
+<p>For <span class="m">&times;</span> and <span class="m">&divide;</span> the rule is far simpler than for
+<span class="m">+</span> and <span class="m">&minus;</span>: work out the answer ignoring signs, then decide the
+sign at the end.</p>
+
+<div class="formula">same signs &rarr; <b>positive</b> &nbsp;&nbsp;&nbsp;&nbsp; different signs &rarr; <b>negative</b>
+<small>Applies to multiplication and division only</small></div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Calculation</th><th>Signs</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td><span class="m">6 &times; 4</span></td><td>+ and +</td><td><span class="m">24</span></td></tr>
+<tr><td><span class="m">&minus;6 &times; 4</span></td><td>&minus; and +</td><td><span class="m">&minus;24</span></td></tr>
+<tr><td><span class="m">6 &times; (&minus;4)</span></td><td>+ and &minus;</td><td><span class="m">&minus;24</span></td></tr>
+<tr><td><span class="m">&minus;6 &times; (&minus;4)</span></td><td>&minus; and &minus;</td><td><span class="m">24</span></td></tr>
+<tr><td><span class="m">&minus;48 &divide; 6</span></td><td>&minus; and +</td><td><span class="m">&minus;8</span></td></tr>
+<tr><td><span class="m">&minus;48 &divide; (&minus;6)</span></td><td>&minus; and &minus;</td><td><span class="m">8</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+For a long string of multiplications and divisions, just <b>count the negative signs</b>. An <b>odd</b> number of
+negatives gives a negative answer; an <b>even</b> number gives a positive one. So
+<span class="m">&minus;2 &times; &minus;3 &times; &minus;5</span> has three negatives, and the answer is
+<span class="m">&minus;30</span>.</div>
+
+<h3>Negative numbers and powers</h3>
+<p>This is the single most common slip in the whole topic, and it is worth a mark in almost every substitution
+question.</p>
+
+<div class="grid two">
+  <div class="card g"><h4><span class="m">(&minus;3)&sup2; = 9</span></h4>
+    <p>The brackets say the <b>whole of</b> <span class="m">&minus;3</span> is squared.</p>
+    <p class="m">(&minus;3)&sup2; = (&minus;3) &times; (&minus;3) = 9</p></div>
+  <div class="card o"><h4><span class="m">&minus;3&sup2; = &minus;9</span></h4>
+    <p>Without brackets the power applies to the <b>3 only</b>; the minus is applied afterwards.</p>
+    <p class="m">&minus;3&sup2; = &minus;(3 &times; 3) = &minus;9</p></div>
+</div>
+
+<div class="def"><b>Key idea</b>
+A negative number raised to an <b>even</b> power is positive; raised to an <b>odd</b> power it is negative.
+<span class="m">(&minus;2)&sup2; = 4</span>, <span class="m">(&minus;2)&sup3; = &minus;8</span>,
+<span class="m">(&minus;2)<sup>4</sup> = 16</span>, <span class="m">(&minus;2)<sup>5</sup> = &minus;32</span>.
+This is just the odd-or-even count of negatives again.</div>
+
+<div class="card p">
+<h4>Using your calculator without losing marks</h4>
+<ul>
+  <li>Use the <b><span class="m">(&minus;)</span></b> key for a negative <i>number</i> and the
+    <b><span class="m">&minus;</span></b> key for the <i>operation</i> of subtracting. They are different keys and
+    swapping them gives a syntax error or a wrong answer.</li>
+  <li>Always put a negative number in <b>brackets</b> before a power or before multiplying:
+    key <span class="m">( (&minus;) 3 ) x&sup2;</span> to get 9. Keying
+    <span class="m">(&minus;) 3 x&sup2;</span> gives <span class="m">&minus;9</span>, because the calculator
+    follows the same rule as the mathematics.</li>
+  <li>Put brackets round the whole numerator and the whole denominator of a fraction before dividing.</li>
+  <li>Do not round part-way through. Keep the full display value and round only the final answer, to
+    <b>3 significant figures</b> unless the question says otherwise.</li>
+</ul>
+</div>
+
+<div class="tool">
+  <h4>Sign rules checker</h4>
+  <p class="hint">Choose two numbers and an operation and see which sign rule applies and why. Set the operation
+  to &ldquo;power&rdquo; and try a start value of <span class="m">&minus;3</span> with power 2 to see the bracket
+  trap in action.</p>
+  <div class="row">
+    <div><label for="srA">First number</label><input type="number" id="srA" value="-6" step="1"></div>
+    <div><label for="srOp">Operation</label>
+      <select id="srOp"><option value="x">multiply</option><option value="d">divide</option><option value="p">power</option></select></div>
+    <div><label for="srB">Second number</label><input type="number" id="srB" value="-4" step="1"></div>
+  </div>
+  <div class="out" id="srOut"></div>
+</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Work out (a) <span class="m">&minus;20 &divide; (&minus;4) &times; (&minus;3)</span> &nbsp;(b) <span class="m">&minus;5 &times; (&minus;4) &times; (&minus;2)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Multiplication and division have equal priority, so work strictly
+    <b>left to right</b>.
+    <span class="work">&minus;20 &divide; (&minus;4) = 5 &nbsp;(same signs &rarr; positive)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now multiply that result by <span class="m">&minus;3</span>.
+    <span class="work">5 &times; (&minus;3) = &minus;15 &nbsp;(different signs &rarr; negative)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Use the counting shortcut: there are <b>three</b> negative signs,
+    an odd number, so the answer is negative.
+    <span class="work">5 &times; 4 &times; 2 = 40 &rarr; answer &minus;40</span></div></div>
+  <div class="final">(a) &minus;15 &nbsp;&nbsp;&nbsp; (b) &minus;40</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Evaluate (a) <span class="m">(&minus;3)&sup2; &minus; 3&sup2;</span> &nbsp;(b) <span class="m">(&minus;2)&sup3; &times; (&minus;5)&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Treat the two terms separately. The brackets matter.
+    <span class="work">(&minus;3)&sup2; = (&minus;3) &times; (&minus;3) = 9<br>3&sup2; = 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract.
+    <span class="work">9 &minus; 9 = 0</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Even power &rarr; positive; odd power &rarr; negative.
+    <span class="work">(&minus;2)&sup3; = &minus;8<br>(&minus;5)&sup2; = 25</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">One negative factor, so the product is negative.
+    <span class="work">&minus;8 &times; 25 = &minus;200</span></div></div>
+  <div class="final">(a) 0 &nbsp;&nbsp;&nbsp; (b) &minus;200</div>
+  <div class="warn"><b>Watch out</b> Part (a) is <b>not</b> <span class="m">&minus;9 &minus; 9 = &minus;18</span>.
+  <span class="m">(&minus;3)&sup2;</span> has brackets, so the answer is <span class="m">+9</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Find the value of <span class="m">b&sup2; &minus; 4ac</span> when <span class="m">a = 2</span>, <span class="m">b = &minus;7</span> and <span class="m">c = 3</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Substitute, putting every negative value in <b>brackets</b>. This single
+    habit prevents almost all sign errors.
+    <span class="work">(&minus;7)&sup2; &minus; 4 &times; 2 &times; 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Deal with the power first (order of operations).
+    <span class="work">(&minus;7)&sup2; = 49</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Then the multiplication, then the subtraction.
+    <span class="work">4 &times; 2 &times; 3 = 24<br>49 &minus; 24 = 25</span></div></div>
+  <div class="final">b&sup2; &minus; 4ac = 25</div>
+  <div class="tip"><b>Exam tip</b> You will meet <span class="m">b&sup2; &minus; 4ac</span> again in the quadratic
+  formula. Writing <span class="m">&minus;7&sup2; = &minus;49</span> there turns a correct pair of solutions into
+  no solutions at all, so build the bracket habit now.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Work out <span class="frac"><span>(&minus;4)&sup2; &minus; 5 &times; (&minus;6)</span><span>&minus;2</span></span>, showing the calculator keys you would use.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Work out the numerator. Powers first, then multiplication.
+    <span class="work">(&minus;4)&sup2; = 16<br>5 &times; (&minus;6) = &minus;30</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtracting a negative adds.
+    <span class="work">16 &minus; (&minus;30) = 16 + 30 = 46</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide by the denominator. Different signs, so the answer is negative.
+    <span class="work">46 &divide; (&minus;2) = &minus;23</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">On the calculator, bracket the numerator and the denominator in full.
+    <span class="work">( ( (&minus;) 4 ) x&sup2; &minus; 5 &times; ( (&minus;) 6 ) ) &divide; ( (&minus;) 2 ) =</span></div></div>
+  <div class="final">&minus;23</div>
+  <div class="warn"><b>Watch out</b> Typing the expression without the outer brackets gives
+  <span class="m">16 + 30 &divide; (&minus;2) = 1</span>, because the calculator divides only the 30. The
+  brackets are not optional.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Write in order, smallest first: <span class="m">&minus;4, 3, &minus;11, 0, &minus;1, 7</span>.</li>
+    <li>Work out (a) <span class="m">&minus;8 + 15</span> &nbsp;(b) <span class="m">&minus;6 &minus; 9</span>
+      &nbsp;(c) <span class="m">4 &minus; (&minus;7)</span> &nbsp;(d) <span class="m">&minus;3 + (&minus;5)</span></li>
+    <li>Work out (a) <span class="m">&minus;6 &times; 7</span> &nbsp;(b) <span class="m">&minus;48 &divide; (&minus;6)</span>
+      &nbsp;(c) <span class="m">(&minus;2)<sup>4</sup></span> &nbsp;(d) <span class="m">&minus;2<sup>4</sup></span></li>
+    <li>At midday the temperature in Astana is <span class="m">&minus;19&deg;C</span> and in Cairo it is
+      <span class="m">24&deg;C</span>. How much warmer is Cairo?</li>
+    <li>Find the value of <span class="m">b&sup2; &minus; 4ac</span> when <span class="m">a = 3</span>,
+      <span class="m">b = &minus;8</span> and <span class="m">c = &minus;2</span>.</li>
+    <li>A submarine is at a depth of 180 m. It rises 65 m, then makes three further dives of 40 m each.
+      Write its final position as a directed number and state its depth.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>Negatives first, largest digits furthest left &rarr;
+        <span class="ans">&minus;11, &minus;4, &minus;1, 0, 3, 7</span></li>
+      <li>(a) start at &minus;8, move 15 right &rarr; <span class="ans">7</span>;
+        (b) move 9 further left &rarr; <span class="ans">&minus;15</span>;
+        (c) <span class="m">&minus;(&minus;7) &rarr; +7</span>, so <span class="m">4 + 7 =</span>
+        <span class="ans">11</span>;
+        (d) <span class="m">+(&minus;5) &rarr; &minus;5</span>, so <span class="m">&minus;3 &minus; 5 =</span>
+        <span class="ans">&minus;8</span></li>
+      <li>(a) different signs &rarr; <span class="ans">&minus;42</span>;
+        (b) same signs &rarr; <span class="ans">8</span>;
+        (c) even power with brackets &rarr; <span class="ans">16</span>;
+        (d) no brackets, so <span class="m">&minus;(2<sup>4</sup>) =</span> <span class="ans">&minus;16</span></li>
+      <li><span class="m">24 &minus; (&minus;19) = 24 + 19 =</span> <span class="ans">43&deg;C warmer</span></li>
+      <li><span class="m">(&minus;8)&sup2; &minus; 4 &times; 3 &times; (&minus;2) = 64 &minus; (&minus;24) = 64 + 24 =</span>
+        <span class="ans">88</span></li>
+      <li>Depth 180 m below the surface is <span class="m">&minus;180</span>;
+        <span class="m">&minus;180 + 65 = &minus;115</span>; three dives of 40 m give
+        <span class="m">&minus;115 &minus; 120 =</span> <span class="ans">&minus;235</span>, so the submarine is at
+        a depth of <span class="ans">235 m</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>A negative number is <b>left of zero</b>. Ordering is always decided by position on the line, never by
+      the size of the digits.</li>
+    <li>Adding moves right, subtracting moves left &mdash; and a negative second number reverses that direction.</li>
+    <li>The two-signs-together rule applies <b>only</b> to adjacent signs:
+      <span class="m">&minus;(&minus;a) = +a</span> and <span class="m">+(&minus;a) = &minus;a</span>.
+      Rewrite the expression on one clean line before calculating.</li>
+    <li>For <span class="m">&times;</span> and <span class="m">&divide;</span>: <b>same signs give positive,
+      different signs give negative</b>. For a long chain, count the negatives &mdash; odd means negative.</li>
+    <li><span class="m">(&minus;3)&sup2; = 9</span> but <span class="m">&minus;3&sup2; = &minus;9</span>.
+      The brackets decide what is being squared.</li>
+    <li>A negative to an <b>even</b> power is positive; to an <b>odd</b> power it is negative.</li>
+    <li>Substitute negative values <b>in brackets</b>, always &mdash; especially in
+      <span class="m">b&sup2; &minus; 4ac</span>.</li>
+    <li>On the calculator use the <span class="m">(&minus;)</span> key for negative numbers, bracket whole
+      numerators and denominators, and round only at the very end.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="1-3.html"><span>&larr; Previous</span><b>1.3 Prime Numbers</b></a><a class="next" href="1-5.html"><span>Next &rarr;</span><b>1.5 Powers, Roots and Laws of Indices</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 1.4 Directed Numbers<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- number-line journey ---- */
+(function(){
+  var out=el('nlOut');
+
+  function sgn(v){ return v<0? '&minus;'+Math.abs(v) : String(v); }
+  function par(v){ return v<0? '(&minus;'+Math.abs(v)+')' : String(v); }
+
+  function go(){
+    var a=Math.round(num('nlA',0)), b=Math.round(num('nlB',0));
+    var opEl=el('nlOp'), op=opEl? opEl.value : 'p';
+    if(Math.abs(a)>500||Math.abs(b)>500){
+      out.innerHTML='<span style="opacity:.6">Keep both numbers between &minus;500 and 500.</span>'; return;
+    }
+    var move=(op==='p')? b : -b;
+    var res=a+move;
+
+    var lo=Math.min(a,res,0), hi=Math.max(a,res,0);
+    var pad=Math.max(1,Math.ceil((hi-lo)*0.18));
+    lo-=pad; hi+=pad;
+    var span=hi-lo;
+    var opts=[1,2,5,10,20,25,50,100,200,500], st=opts[opts.length-1], i;
+    for(i=0;i<opts.length;i++){ if(span/opts[i]<=15){ st=opts[i]; break; } }
+
+    function X(v){ return 20+(v-lo)/span*600; }
+
+    var s='<svg viewBox="0 0 640 152" role="img" aria-label="Number line journey from '+a+' to '+res+'">';
+    s+='<line x1="10" y1="95" x2="630" y2="95" stroke="#0f2d6b" stroke-width="2"/>';
+    s+='<polygon points="630,95 619,90 619,100" fill="#0f2d6b"/>';
+    s+='<polygon points="10,95 21,90 21,100" fill="#0f2d6b"/>';
+
+    var t0=Math.ceil(lo/st)*st, t, x;
+    for(t=t0;t<=hi;t+=st){
+      x=X(t);
+      s+='<line x1="'+fx(x,1)+'" y1="88" x2="'+fx(x,1)+'" y2="102" stroke="'+(t===0?'#e05c2a':'#9aa8c0')+
+         '" stroke-width="'+(t===0?2.2:1.2)+'"/>';
+      s+='<text x="'+fx(x,1)+'" y="120" font-size="11.5" text-anchor="middle" fill="'+
+         (t===0?'#e05c2a':'#4a5b7a')+'">'+sgn(t)+'</text>';
+    }
+
+    if(move!==0){
+      var col=(move>0)? '#16a34a' : '#e05c2a';
+      var x1=X(a), x2=X(res), mx=(x1+x2)/2;
+      s+='<path d="M '+fx(x1,1)+' 88 Q '+fx(mx,1)+' 26 '+fx(x2,1)+' 88" fill="none" stroke="'+col+
+         '" stroke-width="2.5"/>';
+      var ang=Math.atan2(62, x2-mx)*180/Math.PI;
+      s+='<polygon points="0,0 -11,-5 -11,5" fill="'+col+'" transform="translate('+fx(x2,1)+
+         ',88) rotate('+fx(ang,1)+')"/>';
+      s+='<text x="'+fx(mx,1)+'" y="20" font-size="13" text-anchor="middle" fill="'+col+
+         '" font-weight="bold">'+(move>0? 'move '+move+' right' : 'move '+Math.abs(move)+' left')+'</text>';
+    }
+
+    s+='<circle cx="'+fx(X(a),1)+'" cy="95" r="5.5" fill="#1a4fa0"/>';
+    s+='<circle cx="'+fx(X(res),1)+'" cy="95" r="5.5" fill="#16a34a"/>';
+    s+='<text x="'+fx(X(a),1)+'" y="143" font-size="11.5" text-anchor="middle" fill="#1a4fa0">start '+sgn(a)+'</text>';
+    s+='<text x="'+fx(X(res),1)+'" y="143" font-size="11.5" text-anchor="middle" fill="#16a34a">end '+sgn(res)+'</text>';
+    s+='</svg>';
+
+    var why;
+    if(op==='p'){
+      why = (b<0)? 'Adding a negative is the same as subtracting: <span class="hl">'+sgn(a)+
+                   ' + (&minus;'+Math.abs(b)+') = '+sgn(a)+' &minus; '+Math.abs(b)+'</span>, so you move <b>left</b>.'
+                 : 'Adding a positive moves you <b>right</b> along the line.';
+    } else {
+      why = (b<0)? 'Subtracting a negative is the same as adding: <span class="hl">'+sgn(a)+
+                   ' &minus; (&minus;'+Math.abs(b)+') = '+sgn(a)+' + '+Math.abs(b)+'</span>, so you move <b>right</b>.'
+                 : 'Subtracting a positive moves you <b>left</b> along the line.';
+    }
+    if(b===0) why='Adding or subtracting zero leaves you where you started.';
+
+    out.innerHTML=s+
+      '<div style="margin-top:6px">'+sgn(a)+' '+(op==='p'?'+':'&minus;')+' '+par(b)+' = <b>'+sgn(res)+'</b></div>'+
+      '<div style="margin-top:6px;opacity:.85;font-size:.93em">'+why+'</div>';
+  }
+  bindAll(['nlA','nlOp','nlB'],go);
+})();
+
+/* ---- sign rules checker ---- */
+(function(){
+  var out=el('srOut');
+  function sgn(v){ return v<0? '&minus;'+Math.abs(v) : String(v); }
+  function par(v){ return v<0? '(&minus;'+Math.abs(v)+')' : String(v); }
+
+  function go(){
+    var a=num('srA',0), b=num('srB',0);
+    var opEl=el('srOp'), op=opEl? opEl.value : 'x';
+    var same=((a<0)===(b<0));
+    var h='';
+
+    if(op==='x'||op==='d'){
+      if(op==='d' && b===0){
+        out.innerHTML='<span style="opacity:.6">You cannot divide by zero.</span>'; return;
+      }
+      var r=(op==='x')? a*b : a/b;
+      var symb=(op==='x')? '&times;' : '&divide;';
+      h+='<div>'+sgn(a)+' '+symb+' '+par(b)+'</div>';
+      h+='<div style="margin-top:6px">Step 1 &mdash; ignore the signs: <span class="hl">'+
+         Math.abs(a)+' '+symb+' '+Math.abs(b)+' = '+fx(Math.abs(op==='x'? a*b : a/b),4)+'</span></div>';
+      if(a===0||b===0){
+        h+='<div>Step 2 &mdash; zero has no sign, so the answer is 0.</div>';
+      } else {
+        h+='<div>Step 2 &mdash; the signs are <span class="hl">'+(same?'the same':'different')+
+           '</span>, so the answer is <span class="hl">'+(same?'positive':'negative')+'</span>.</div>';
+      }
+      h+='<div style="margin-top:6px">'+sgn(a)+' '+symb+' '+par(b)+' = <b>'+
+         (r<0? '&minus;'+fx(Math.abs(r),4) : fx(r,4))+'</b></div>';
+    } else {
+      var n=Math.round(b);
+      if(n<0||n>8){
+        out.innerHTML='<span style="opacity:.6">For powers, use a whole number from 0 to 8 in the second box.</span>';
+        return;
+      }
+      var withBr=Math.pow(a,n), noBr=-Math.pow(Math.abs(a),n);
+      h+='<div>With brackets: ('+sgn(a)+')<sup>'+n+'</sup> = <b>'+
+         (withBr<0? '&minus;'+Math.abs(withBr) : withBr)+'</b></div>';
+      if(a<0){
+        h+='<div style="margin-top:4px">The base is negative and the power is <span class="hl">'+
+           (n%2===0? 'even, so the answer is positive' : 'odd, so the answer is negative')+'</span>'+
+           (n===0? ' (any non-zero number to the power 0 is 1)' : '')+'.</div>';
+        h+='<div style="margin-top:6px">Without brackets: &minus;'+Math.abs(a)+'<sup>'+n+'</sup> = &minus;('+
+           Math.abs(a)+'<sup>'+n+'</sup>) = <b>'+(noBr<0? '&minus;'+Math.abs(noBr) : noBr)+'</b></div>';
+        h+='<div style="margin-top:4px;opacity:.8;font-size:.92em">'+
+           (withBr===noBr? 'Here the two agree, because the power is odd.'
+                         : 'The two answers differ &mdash; the brackets decide what is being raised to the power.')+
+           '</div>';
+      } else {
+        h+='<div style="margin-top:4px;opacity:.8;font-size:.92em">The base is positive, so brackets make no '+
+           'difference here. Try a negative first number to see the trap.</div>';
+      }
+    }
+    out.innerHTML=h;
+  }
+  bindAll(['srA','srOp','srB'],go);
+})();
+</script>
+</body>
+</html>

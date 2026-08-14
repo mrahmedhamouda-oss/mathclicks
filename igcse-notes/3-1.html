@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.1 Lines and Angles | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="The angle facts every geometry question is built from, and how to write the reason the examiner is looking for.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 3 &mdash; Lines, Angles and Shapes</span>
+    </div>
+    <h1>3.1 &nbsp;Lines and Angles</h1>
+    <p>The angle facts every geometry question is built from, and how to write the reason the examiner is looking for.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#naming">Naming angles</a>
+  <a href="#basics">Angle facts</a>
+  <a href="#parallel">Parallel lines</a>
+  <a href="#chases">Angle chases</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="naming" data-nav="Naming angles">
+<h2>Naming and describing angles</h2>
+<p>An angle measures <b>turn</b>. Two rays meeting at a point create an angle, and the whole of geometry
+in this course is built on knowing what to call each one and how big it can be.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Name</th><th>Size</th><th>How to spot it</th></tr></thead>
+<tbody>
+<tr><td><b>Acute</b></td><td><span class="m">0&deg; &lt; a &lt; 90&deg;</span></td><td>Sharp &mdash; smaller than a corner of a page</td></tr>
+<tr><td><b>Right</b></td><td><span class="m">a = 90&deg;</span></td><td>Marked with a small square, never with an arc</td></tr>
+<tr><td><b>Obtuse</b></td><td><span class="m">90&deg; &lt; a &lt; 180&deg;</span></td><td>Open, but not yet a straight line</td></tr>
+<tr><td><b>Straight</b></td><td><span class="m">a = 180&deg;</span></td><td>A half turn &mdash; the two rays form one straight line</td></tr>
+<tr><td><b>Reflex</b></td><td><span class="m">180&deg; &lt; a &lt; 360&deg;</span></td><td>The angle measured the &ldquo;long way round&rdquo;</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<h4>The four angle types</h4>
+<svg viewBox="0 0 700 210" role="img" aria-label="Four diagrams showing an acute, right, obtuse and reflex angle">
+  <rect x="0" y="0" width="700" height="210" fill="#f7faff"/>
+  <!-- acute -->
+  <line x1="90" y1="120" x2="160" y2="120" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="90" y1="120" x2="135" y2="66.4" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 118 120 A 28 28 0 0 0 108 98.6" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="127" y="107" font-size="13" font-weight="bold" fill="#e05c2a">50&deg;</text>
+  <text x="120" y="192" font-size="13" text-anchor="middle" fill="#12213d">Acute</text>
+  <!-- right -->
+  <line x1="260" y1="120" x2="330" y2="120" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="260" y1="120" x2="260" y2="50" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 260 102 L 278 102 L 278 120" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="286" y="98" font-size="13" font-weight="bold" fill="#e05c2a">90&deg;</text>
+  <text x="290" y="192" font-size="13" text-anchor="middle" fill="#12213d">Right</text>
+  <!-- obtuse -->
+  <line x1="430" y1="120" x2="500" y2="120" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="430" y1="120" x2="385" y2="66.4" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 458 120 A 28 28 0 0 0 412 98.6" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="447" y="86" font-size="13" font-weight="bold" fill="#e05c2a">130&deg;</text>
+  <text x="450" y="192" font-size="13" text-anchor="middle" fill="#12213d">Obtuse</text>
+  <!-- reflex -->
+  <line x1="600" y1="120" x2="670" y2="120" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="600" y1="120" x2="565" y2="59.4" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 630 120 A 30 30 0 1 1 585 94" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="600" y="163" font-size="13" font-weight="bold" text-anchor="middle" fill="#e05c2a">240&deg;</text>
+  <text x="612" y="192" font-size="13" text-anchor="middle" fill="#12213d">Reflex</text>
+</svg>
+</div>
+
+<div class="def"><b>Naming with three letters</b>
+The angle written <span class="m">&#8736;ABC</span> (or <span class="m">AB&#770;C</span>) is the angle at
+<b>B</b>, between the arms <span class="m">BA</span> and <span class="m">BC</span>. The middle letter is
+always the vertex. If only one angle sits at a vertex you may write <span class="m">&#8736;B</span>.</div>
+
+<div class="grid two">
+  <div class="card">
+    <h4>Perpendicular lines</h4>
+    <svg viewBox="0 0 300 220" role="img" aria-label="Two perpendicular lines meeting at a right angle">
+      <rect x="0" y="0" width="300" height="220" fill="#f7faff"/>
+      <line x1="30" y1="140" x2="270" y2="140" stroke="#0f2d6b" stroke-width="2.5"/>
+      <line x1="150" y1="30" x2="150" y2="210" stroke="#0f2d6b" stroke-width="2.5"/>
+      <path d="M 150 122 L 168 122 L 168 140" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+      <text x="180" y="114" font-size="14" font-weight="bold" fill="#e05c2a">90&deg;</text>
+      <text x="278" y="134" font-size="13" fill="#0f2d6b">B</text>
+      <text x="20" y="134" font-size="13" fill="#0f2d6b">A</text>
+      <text x="144" y="24" font-size="13" fill="#0f2d6b">C</text>
+      <text x="144" y="206" font-size="13" fill="#0f2d6b">D</text>
+    </svg>
+    <p>Lines that cross at <span class="m">90&deg;</span>. Written <span class="m">AB &#8869; CD</span>.</p>
+  </div>
+  <div class="card o">
+    <h4>Parallel lines</h4>
+    <svg viewBox="0 0 300 220" role="img" aria-label="Two pairs of parallel lines marked with single and double arrows">
+      <rect x="0" y="0" width="300" height="220" fill="#f7faff"/>
+      <line x1="30" y1="50" x2="270" y2="50" stroke="#0f2d6b" stroke-width="2.5"/>
+      <line x1="30" y1="95" x2="270" y2="95" stroke="#0f2d6b" stroke-width="2.5"/>
+      <path d="M 144 44 L 152 50 L 144 56" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+      <path d="M 144 89 L 152 95 L 144 101" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+      <line x1="30" y1="160" x2="270" y2="160" stroke="#0f2d6b" stroke-width="2.5"/>
+      <line x1="30" y1="205" x2="270" y2="205" stroke="#0f2d6b" stroke-width="2.5"/>
+      <path d="M 136 154 L 144 160 L 136 166" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+      <path d="M 148 154 L 156 160 L 148 166" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+      <path d="M 136 199 L 144 205 L 136 211" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+      <path d="M 148 199 L 156 205 L 148 211" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+      <text x="150" y="128" font-size="12" text-anchor="middle" fill="#4a5b7a">first pair</text>
+      <text x="150" y="30" font-size="12" text-anchor="middle" fill="#4a5b7a">same arrows = parallel</text>
+    </svg>
+    <p>Lines that never meet, always the same distance apart. Matching <b>arrows</b> mark each parallel
+    pair; a second pair gets double arrows.</p>
+  </div>
+</div>
+</section>
+
+<section id="basics" data-nav="Angle facts">
+<h2>The four angle facts you build everything on</h2>
+
+<div class="grid two">
+  <div class="card g"><h4>1. Angles on a straight line</h4>
+    <p>Angles that sit side by side on a straight line add up to <b>180&deg;</b>.</p>
+    <p class="m">Reason: <b>angles on a straight line</b></p></div>
+  <div class="card g"><h4>2. Angles at a point</h4>
+    <p>Angles that fill a complete turn about a point add up to <b>360&deg;</b>.</p>
+    <p class="m">Reason: <b>angles at a point</b></p></div>
+  <div class="card p"><h4>3. Vertically opposite angles</h4>
+    <p>When two straight lines cross, the angles opposite each other are <b>equal</b>.</p>
+    <p class="m">Reason: <b>vertically opposite angles</b></p></div>
+  <div class="card o"><h4>4. Complementary / supplementary</h4>
+    <p>Two angles are <b>complementary</b> if they add to <span class="m">90&deg;</span> and
+    <b>supplementary</b> if they add to <span class="m">180&deg;</span>.</p></div>
+</div>
+
+<div class="grid two">
+<div class="card">
+<h4>On a straight line: 50 + 60 + 70 = 180</h4>
+<svg viewBox="0 0 500 200" role="img" aria-label="Three angles on a straight line adding to 180 degrees">
+  <rect x="0" y="0" width="500" height="200" fill="#f7faff"/>
+  <line x1="40" y1="150" x2="460" y2="150" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="250" y1="150" x2="285.9" y2="51.3" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="250" y1="150" x2="182.5" y2="69.6" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 292 150 A 42 42 0 0 0 264.4 110.5" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <path d="M 264.4 110.5 A 42 42 0 0 0 223 117.8" fill="none" stroke="#1a4fa0" stroke-width="2.5"/>
+  <path d="M 223 117.8 A 42 42 0 0 0 208 150" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+  <text x="300.8" y="118" font-size="14" font-weight="bold" text-anchor="middle" fill="#e05c2a">70&deg;</text>
+  <text x="239.2" y="93" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">60&deg;</text>
+  <text x="193.8" y="128" font-size="14" font-weight="bold" text-anchor="middle" fill="#6d28d9">50&deg;</text>
+  <circle cx="250" cy="150" r="4" fill="#0f2d6b"/>
+  <text x="250" y="185" font-size="13" text-anchor="middle" fill="#12213d">half a turn = 180&deg;</text>
+</svg>
+</div>
+<div class="card">
+<h4>At a point: 80 + 75 + 95 + 110 = 360</h4>
+<svg viewBox="0 0 500 280" role="img" aria-label="Four angles around a point adding to 360 degrees">
+  <rect x="0" y="0" width="500" height="280" fill="#f7faff"/>
+  <line x1="250" y1="140" x2="345" y2="140" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="250" y1="140" x2="266.5" y2="46.4" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="250" y1="140" x2="163.9" y2="99.9" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="250" y1="140" x2="217.5" y2="229.3" stroke="#0f2d6b" stroke-width="2.5"/>
+  <text x="292.1" y="109" font-size="14" font-weight="bold" text-anchor="middle" fill="#e05c2a">80&deg;</text>
+  <text x="224.6" y="96" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">75&deg;</text>
+  <text x="199.2" y="166" font-size="14" font-weight="bold" text-anchor="middle" fill="#6d28d9">95&deg;</text>
+  <text x="281.5" y="190" font-size="14" font-weight="bold" text-anchor="middle" fill="#16a34a">110&deg;</text>
+  <circle cx="250" cy="140" r="4" fill="#0f2d6b"/>
+  <text x="250" y="265" font-size="13" text-anchor="middle" fill="#12213d">a full turn = 360&deg;</text>
+</svg>
+</div>
+</div>
+
+<div class="card p">
+<h4>Vertically opposite angles are equal</h4>
+<svg viewBox="0 0 480 250" role="img" aria-label="Two crossing lines showing two pairs of equal vertically opposite angles">
+  <rect x="0" y="0" width="480" height="250" fill="#f7faff"/>
+  <line x1="80" y1="178" x2="400" y2="62" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="230.4" y1="10.4" x2="249.6" y2="229.6" stroke="#0f2d6b" stroke-width="2.5"/>
+  <text x="272.2" y="74" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">75&deg;</text>
+  <text x="189.4" y="92" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">105&deg;</text>
+  <text x="207.8" y="175" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">75&deg;</text>
+  <text x="290.6" y="157" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">105&deg;</text>
+  <circle cx="240" cy="120" r="4" fill="#0f2d6b"/>
+  <text x="240" y="243" font-size="13" text-anchor="middle" fill="#12213d">75 + 105 = 180 on each straight line</text>
+</svg>
+<p>The two orange angles are equal and the two blue angles are equal. You can prove it: each pair of
+neighbours lies on a straight line, so both orange angles equal <span class="m">180&deg; &minus; 105&deg;</span>.</p>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Three angles <span class="m">(x + 30)&deg;</span>, <span class="m">3x&deg;</span> and <span class="m">(2x + 30)&deg;</span> lie on a straight line. Find <span class="m">x</span> and all three angles.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the fact as an equation. The three angles sit on a straight line, so they total <span class="m">180&deg;</span>.
+    <span class="work">(x + 30) + 3x + (2x + 30) = 180</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect like terms.
+    <span class="work">6x + 60 = 180</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Solve.
+    <span class="work">6x = 120 &nbsp;&rarr;&nbsp; x = 20</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Substitute back into each expression &mdash; and check the total.
+    <span class="work">x + 30 = 50&deg;, &nbsp; 3x = 60&deg;, &nbsp; 2x + 30 = 70&deg;<br>50 + 60 + 70 = 180 &#10003;</span></div></div>
+  <div class="final">x = 20, and the angles are 50&deg;, 60&deg; and 70&deg;</div>
+  <div class="tip"><b>Exam tip</b> Always substitute back. It costs ten seconds and catches almost every
+  arithmetic slip before the examiner does.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Four angles meet at a point. They are a right angle, <span class="m">2x&deg;</span>, <span class="m">3x&deg;</span> and <span class="m">(x + 30)&deg;</span>. Find <span class="m">x</span> and all four angles.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 500 280" role="img" aria-label="Four angles at a point, one of them marked as a right angle">
+    <rect x="0" y="0" width="500" height="280" fill="#f7faff"/>
+    <line x1="250" y1="150" x2="350" y2="150" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="250" y1="150" x2="250" y2="50" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="250" y1="150" x2="151.5" y2="132.6" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="250" y1="150" x2="284.2" y2="244" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 270 150 L 270 130 L 250 130" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+    <text x="291" y="114" font-size="14" font-weight="bold" text-anchor="middle" fill="#e05c2a">90&deg;</text>
+    <text x="212.7" y="110" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">2x&deg;</text>
+    <text x="212.7" y="199" font-size="14" font-weight="bold" text-anchor="middle" fill="#6d28d9">3x&deg;</text>
+    <text x="297.5" y="188" font-size="14" font-weight="bold" text-anchor="middle" fill="#16a34a">(x+30)&deg;</text>
+    <circle cx="250" cy="150" r="4" fill="#0f2d6b"/>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The four angles fill a complete turn, so they add to <span class="m">360&deg;</span>. The small square means that angle is exactly <span class="m">90&deg;</span>.
+    <span class="work">90 + 2x + 3x + (x + 30) = 360</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect like terms.
+    <span class="work">6x + 120 = 360</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Solve.
+    <span class="work">6x = 240 &nbsp;&rarr;&nbsp; x = 40</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Substitute back and check the total is <span class="m">360&deg;</span>.
+    <span class="work">2x = 80&deg;, &nbsp; 3x = 120&deg;, &nbsp; x + 30 = 70&deg;<br>90 + 80 + 120 + 70 = 360 &#10003;</span></div></div>
+  <div class="final">x = 40; the angles are 90&deg;, 80&deg;, 120&deg; and 70&deg;</div>
+  <div class="warn"><b>Watch out</b> A right angle is marked with a <b>square</b>, never with a number and
+  never with an arc. If you see the square you may use <span class="m">90&deg;</span> without being told.</div>
+</div>
+</details>
+</section>
+
+<section id="parallel" data-nav="Parallel lines">
+<h2>Parallel lines and a transversal</h2>
+<p>A line that cuts across two parallel lines is called a <b>transversal</b>. It creates
+<b>eight</b> angles &mdash; but only <b>two different sizes</b>, and they always add to
+<span class="m">180&deg;</span>. Every parallel-line question is just a matter of deciding which of the
+two sizes each angle is.</p>
+
+<div class="card">
+<h4>The eight angles</h4>
+<svg viewBox="0 0 520 270" role="img" aria-label="Two parallel lines cut by a transversal creating eight angles labelled a to h">
+  <rect x="0" y="0" width="520" height="270" fill="#f7faff"/>
+  <line x1="50" y1="70" x2="470" y2="70" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="50" y1="190" x2="470" y2="190" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 96 63 L 106 70 L 96 77" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 96 183 L 106 190 L 96 197" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="170" y1="235" x2="330" y2="25" stroke="#6d28d9" stroke-width="2.5"/>
+  <text x="282.4" y="47" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">a</text>
+  <text x="322.6" y="61" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">b</text>
+  <text x="268.8" y="87" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">c</text>
+  <text x="309" y="101" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">d</text>
+  <text x="191" y="167" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">e</text>
+  <text x="231.2" y="181" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">f</text>
+  <text x="177.4" y="207" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">g</text>
+  <text x="217.6" y="221" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">h</text>
+  <circle cx="295.7" cy="70" r="3.5" fill="#0f2d6b"/>
+  <circle cx="204.3" cy="190" r="3.5" fill="#0f2d6b"/>
+  <text x="60" y="258" font-size="13" fill="#e05c2a">orange angles all equal</text>
+  <text x="300" y="258" font-size="13" fill="#1a4fa0">blue angles all equal</text>
+</svg>
+<p>Here <span class="m">b = c = f = g</span> and <span class="m">a = d = e = h</span>, and any orange plus
+any blue makes <span class="m">180&deg;</span>.</p>
+</div>
+
+<h3>The three named relationships</h3>
+<div class="grid">
+  <div class="card o">
+    <h4>Corresponding (F)</h4>
+    <svg viewBox="0 0 280 220" role="img" aria-label="Corresponding angles forming an F shape">
+      <rect x="0" y="0" width="280" height="220" fill="#f7faff"/>
+      <line x1="30" y1="60" x2="250" y2="60" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="30" y1="160" x2="250" y2="160" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="90.1" y1="205" x2="190.9" y2="15" stroke="#0f2d6b" stroke-width="2"/>
+      <path d="M 167 60 L 250 60" fill="none" stroke="#e05c2a" stroke-width="5" opacity=".45"/>
+      <path d="M 114 160 L 250 160" fill="none" stroke="#e05c2a" stroke-width="5" opacity=".45"/>
+      <path d="M 190.9 15 L 90.1 205" fill="none" stroke="#e05c2a" stroke-width="5" opacity=".45"/>
+      <path d="M 189 60 A 22 22 0 0 0 177.3 40.6" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+      <path d="M 136 160 A 22 22 0 0 0 124.3 140.6" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+      <text x="194" y="44" font-size="13" font-weight="bold" fill="#e05c2a">62&deg;</text>
+      <text x="141" y="144" font-size="13" font-weight="bold" fill="#e05c2a">62&deg;</text>
+    </svg>
+    <p><b>Corresponding angles are equal.</b> Same corner at each crossing. The highlighted lines make an
+    <b>F</b> (which may be back to front or upside down).</p>
+  </div>
+  <div class="card p">
+    <h4>Alternate (Z)</h4>
+    <svg viewBox="0 0 280 220" role="img" aria-label="Alternate angles forming a Z shape">
+      <rect x="0" y="0" width="280" height="220" fill="#f7faff"/>
+      <line x1="30" y1="60" x2="250" y2="60" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="30" y1="160" x2="250" y2="160" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="90.1" y1="205" x2="190.9" y2="15" stroke="#0f2d6b" stroke-width="2"/>
+      <path d="M 30 60 L 167 60 L 114 160 L 250 160" fill="none" stroke="#6d28d9" stroke-width="5" opacity=".4"/>
+      <path d="M 145 60 A 22 22 0 0 0 156.7 79.4" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+      <path d="M 136 160 A 22 22 0 0 0 124.3 140.6" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+      <text x="140" y="81" font-size="13" font-weight="bold" text-anchor="middle" fill="#6d28d9">62&deg;</text>
+      <text x="141" y="144" font-size="13" font-weight="bold" fill="#6d28d9">62&deg;</text>
+    </svg>
+    <p><b>Alternate angles are equal.</b> They sit <i>between</i> the parallels, on <i>opposite</i> sides of
+    the transversal. The highlighted path makes a <b>Z</b>.</p>
+  </div>
+  <div class="card g">
+    <h4>Co-interior / allied (C)</h4>
+    <svg viewBox="0 0 280 220" role="img" aria-label="Co-interior angles forming a C shape and adding to 180 degrees">
+      <rect x="0" y="0" width="280" height="220" fill="#f7faff"/>
+      <line x1="30" y1="60" x2="250" y2="60" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="30" y1="160" x2="250" y2="160" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="90.1" y1="205" x2="190.9" y2="15" stroke="#0f2d6b" stroke-width="2"/>
+      <path d="M 30 60 L 167 60 L 114 160 L 30 160" fill="none" stroke="#16a34a" stroke-width="5" opacity=".4"/>
+      <path d="M 145 60 A 22 22 0 0 0 156.7 79.4" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+      <path d="M 124.3 140.6 A 22 22 0 0 0 92 160" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+      <text x="140" y="81" font-size="13" font-weight="bold" text-anchor="middle" fill="#16a34a">62&deg;</text>
+      <text x="98" y="137" font-size="13" font-weight="bold" text-anchor="middle" fill="#16a34a">118&deg;</text>
+    </svg>
+    <p><b>Co-interior angles add to 180&deg;.</b> Between the parallels, on the <i>same</i> side of the
+    transversal. The highlighted path makes a <b>C</b>. Here <span class="m">62 + 118 = 180</span>.</p>
+  </div>
+</div>
+
+<div class="warn"><b>Watch out</b>
+F, Z and C are memory aids, not reasons. In the exam you must write the words
+&ldquo;<b>corresponding angles</b>&rdquo;, &ldquo;<b>alternate angles</b>&rdquo; or
+&ldquo;<b>co-interior angles</b>&rdquo;. And every one of them needs the lines to be <b>parallel</b> &mdash;
+if the diagram has no arrows, you cannot use these facts at all.</div>
+
+<div class="tool">
+  <h4>Parallel lines explorer</h4>
+  <p class="hint">Drag the slider to tilt the transversal. Watch how only two angle sizes ever appear, and
+  read off which relationship links each pair.</p>
+  <div class="sliderbox"><div class="lab"><span>Transversal angle &theta;</span><span id="plVal">65&deg;</span></div>
+  <input type="range" id="plAng" min="30" max="150" step="5" value="65"></div>
+  <div id="plFig"></div>
+  <div class="out" id="plOut"></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">In the diagram the two lines are parallel. Find <span class="m">p</span>, <span class="m">q</span> and <span class="m">r</span>, giving a reason for each.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 520 270" role="img" aria-label="Parallel lines cut by a transversal with one angle of 68 degrees and three unknowns p, q and r">
+    <rect x="0" y="0" width="520" height="270" fill="#f7faff"/>
+    <line x1="50" y1="70" x2="470" y2="70" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="50" y1="190" x2="470" y2="190" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 96 63 L 106 70 L 96 77" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 96 183 L 106 190 L 96 197" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="311.7" y1="25" x2="226.8" y2="235" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="321.7" y="55" font-size="14" font-weight="bold" text-anchor="middle" fill="#e05c2a">68&deg;</text>
+    <text x="265.3" y="93" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">p</text>
+    <text x="226" y="166" font-size="14" font-weight="bold" text-anchor="middle" fill="#16a34a">q</text>
+    <text x="264" y="222" font-size="14" font-weight="bold" text-anchor="middle" fill="#6d28d9">r</text>
+    <circle cx="293.5" cy="70" r="3.5" fill="#0f2d6b"/>
+    <circle cx="245" cy="190" r="3.5" fill="#0f2d6b"/>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">p</span> is directly opposite the <span class="m">68&deg;</span> angle at the same crossing.
+    <span class="work">p = 68&deg; &nbsp;(vertically opposite angles)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">q</span> and <span class="m">p</span> both lie between the parallels, on the same side of the transversal.
+    <span class="work">q = 180 &minus; 68 = 112&deg; &nbsp;(co-interior angles)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">r</span> is opposite <span class="m">q</span> at the lower crossing.
+    <span class="work">r = 112&deg; &nbsp;(vertically opposite angles)</span></div></div>
+  <div class="final">p = 68&deg;, &nbsp; q = 112&deg;, &nbsp; r = 112&deg;</div>
+  <div class="tip"><b>Exam tip</b> There is usually more than one valid route. Marks are for a correct value
+  <i>with</i> a correct reason, so pick whichever single step you can justify most cleanly.</div>
+</div>
+</details>
+</section>
+
+<section id="chases" data-nav="Angle chases">
+<h2>Multi-step angle chases &mdash; and the reasons</h2>
+<p>A &ldquo;chase&rdquo; is a chain of small steps. Examiners award marks for each <b>value with its reason</b>,
+so never write a bare number. Use this vocabulary and nothing else:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>What you used</th><th>Write exactly this</th></tr></thead>
+<tbody>
+<tr><td>Two angles making a half turn</td><td>angles on a straight line (sum 180&deg;)</td></tr>
+<tr><td>Angles filling a full turn</td><td>angles at a point (sum 360&deg;)</td></tr>
+<tr><td>Angles opposite at a crossing</td><td>vertically opposite angles</td></tr>
+<tr><td>Same corner, F shape</td><td>corresponding angles</td></tr>
+<tr><td>Opposite sides, Z shape</td><td>alternate angles</td></tr>
+<tr><td>Same side, between the parallels</td><td>co-interior angles (sum 180&deg;)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tip"><b>Exam tip</b> If a diagram has a bend or a zig-zag between two parallel lines, <b>draw a
+third line through the corner, parallel to the other two</b>. It turns one hard angle into two easy
+alternate angles. Draw it dashed and label it &ldquo;parallel to AB&rdquo; &mdash; the construction itself
+earns credit.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">In the diagram <span class="m">AB</span> is parallel to <span class="m">CD</span>, <span class="m">&#8736;APX = 42&deg;</span> and <span class="m">&#8736;CQX = 35&deg;</span>. Find <span class="m">&#8736;PXQ</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 500 280" role="img" aria-label="A zig-zag between two parallel lines with a construction line drawn through the bend">
+    <rect x="0" y="0" width="500" height="280" fill="#f7faff"/>
+    <line x1="40" y1="50" x2="460" y2="50" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="40" y1="230" x2="460" y2="230" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 106 43 L 116 50 L 106 57" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 106 223 L 116 230 L 106 237" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="90" y1="158" x2="420" y2="158" stroke="#16a34a" stroke-width="2" stroke-dasharray="7 5"/>
+    <line x1="320" y1="50" x2="200" y2="158" stroke="#6d28d9" stroke-width="2.5"/>
+    <line x1="200" y1="158" x2="302.8" y2="230" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="282.7" y="68" font-size="13" font-weight="bold" text-anchor="middle" fill="#e05c2a">42&deg;</text>
+    <text x="262.7" y="221" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a4fa0">35&deg;</text>
+    <text x="248.5" y="143" font-size="13" font-weight="bold" text-anchor="middle" fill="#e05c2a">42&deg;</text>
+    <text x="249.6" y="178" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a4fa0">35&deg;</text>
+    <text x="30" y="45" font-size="13" fill="#0f2d6b">A</text>
+    <text x="466" y="45" font-size="13" fill="#0f2d6b">B</text>
+    <text x="30" y="248" font-size="13" fill="#0f2d6b">C</text>
+    <text x="466" y="248" font-size="13" fill="#0f2d6b">D</text>
+    <text x="327" y="42" font-size="13" font-weight="bold" fill="#6d28d9">P</text>
+    <text x="182" y="152" font-size="13" font-weight="bold" fill="#6d28d9">X</text>
+    <text x="308" y="248" font-size="13" font-weight="bold" fill="#6d28d9">Q</text>
+    <text x="424" y="162" font-size="12" fill="#16a34a">parallel to AB</text>
+    <circle cx="200" cy="158" r="4" fill="#6d28d9"/>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Draw a dashed line through <span class="m">X</span> parallel to <span class="m">AB</span> (and therefore parallel to <span class="m">CD</span> as well).
+    <span class="work">construction line through X, parallel to AB and CD</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The upper part of <span class="m">&#8736;PXQ</span> and <span class="m">&#8736;APX</span> are alternate angles between <span class="m">AB</span> and the dashed line.
+    <span class="work">upper part = 42&deg; &nbsp;(alternate angles)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The lower part and <span class="m">&#8736;CQX</span> are alternate angles between the dashed line and <span class="m">CD</span>.
+    <span class="work">lower part = 35&deg; &nbsp;(alternate angles)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Add the two parts.
+    <span class="work">&#8736;PXQ = 42 + 35 = 77&deg;</span></div></div>
+  <div class="final">&#8736;PXQ = 77&deg;</div>
+  <div class="note"><b>The pattern</b> For a single zig-zag between parallel lines, the bend angle is simply
+  the <b>sum</b> of the two outer angles. That shortcut is worth knowing &mdash; but still show the
+  construction line, because the reason marks live there.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Two parallel lines are cut by a transversal. Two co-interior angles are <span class="m">(4x &minus; 20)&deg;</span> and <span class="m">(2x + 20)&deg;</span>. Find <span class="m">x</span> and both angles.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 520 270" role="img" aria-label="Two co-interior angles given as algebraic expressions">
+    <rect x="0" y="0" width="520" height="270" fill="#f7faff"/>
+    <line x1="50" y1="70" x2="470" y2="70" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="50" y1="190" x2="470" y2="190" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 380 63 L 390 70 L 380 77" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 380 183 L 390 190 L 380 197" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="250.9" y1="25" x2="287.9" y2="235" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="228" y="106" font-size="14" font-weight="bold" text-anchor="end" fill="#e05c2a">(4x &minus; 20)&deg;</text>
+    <text x="244" y="170" font-size="14" font-weight="bold" text-anchor="end" fill="#1a4fa0">(2x + 20)&deg;</text>
+    <circle cx="258.8" cy="70" r="3.5" fill="#0f2d6b"/>
+    <circle cx="280" cy="190" r="3.5" fill="#0f2d6b"/>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Co-interior angles between parallel lines add to <span class="m">180&deg;</span>.
+    <span class="work">(4x &minus; 20) + (2x + 20) = 180</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The <span class="m">&minus;20</span> and <span class="m">+20</span> cancel.
+    <span class="work">6x = 180 &nbsp;&rarr;&nbsp; x = 30</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute and check.
+    <span class="work">4(30) &minus; 20 = 100&deg;<br>2(30) + 20 = 80&deg;<br>100 + 80 = 180 &#10003;</span></div></div>
+  <div class="final">x = 30; the angles are 100&deg; and 80&deg;</div>
+  <div class="warn"><b>Watch out</b> Students often set co-interior angles <i>equal</i>. They are equal only
+  in the special case <span class="m">90&deg;</span> and <span class="m">90&deg;</span>. Same side between
+  the parallels always means <b>add to 180&deg;</b>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">The two horizontal lines are parallel. Find <span class="m">a</span>, <span class="m">b</span>, <span class="m">c</span> and <span class="m">d</span>, giving a reason for each step.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 520 270" role="img" aria-label="Parallel lines with a 116 degree angle and four unknown angles a, b, c and d">
+    <rect x="0" y="0" width="520" height="270" fill="#f7faff"/>
+    <line x1="50" y1="70" x2="470" y2="70" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="50" y1="190" x2="470" y2="190" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 96 63 L 106 70 L 96 77" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <path d="M 96 183 L 106 190 L 96 197" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="320.4" y1="25" x2="218.1" y2="235" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="273" y="44" font-size="14" font-weight="bold" text-anchor="middle" fill="#e05c2a">116&deg;</text>
+    <text x="329" y="56" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">a</text>
+    <text x="317.6" y="105" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">b</text>
+    <text x="270.5" y="176" font-size="14" font-weight="bold" text-anchor="middle" fill="#16a34a">c</text>
+    <text x="209.5" y="214" font-size="14" font-weight="bold" text-anchor="middle" fill="#16a34a">d</text>
+    <circle cx="298.5" cy="70" r="3.5" fill="#0f2d6b"/>
+    <circle cx="240" cy="190" r="3.5" fill="#0f2d6b"/>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">a</span> and <span class="m">116&deg;</span> sit next to each other on the upper parallel line.
+    <span class="work">a = 180 &minus; 116 = 64&deg; &nbsp;(angles on a straight line)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">b</span> is opposite the <span class="m">116&deg;</span> angle at the same crossing.
+    <span class="work">b = 116&deg; &nbsp;(vertically opposite angles)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">c</span> occupies the same corner at the lower crossing as <span class="m">a</span> does at the upper one.
+    <span class="work">c = 64&deg; &nbsp;(corresponding angles)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><span class="m">d</span> is opposite <span class="m">c</span>.
+    <span class="work">d = 64&deg; &nbsp;(vertically opposite angles)</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Sanity check: at the lower crossing the four angles are
+    <span class="m">64, 116, 64, 116</span>.
+    <span class="work">64 + 116 + 64 + 116 = 360 &#10003;</span></div></div>
+  <div class="final">a = 64&deg;, &nbsp; b = 116&deg;, &nbsp; c = 64&deg;, &nbsp; d = 64&deg;</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Angles <span class="m">(3t + 5)&deg;</span> and <span class="m">(5t &minus; 25)&deg;</span> are alternate angles between two parallel lines. A third angle <span class="m">w</span> is co-interior with the first. Find <span class="m">t</span> and <span class="m">w</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Alternate angles are <b>equal</b>, so form an equation.
+    <span class="work">3t + 5 = 5t &minus; 25</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect the <span class="m">t</span> terms on the side where they stay positive.
+    <span class="work">5 + 25 = 5t &minus; 3t<br>30 = 2t &nbsp;&rarr;&nbsp; t = 15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check both expressions give the same angle.
+    <span class="work">3(15) + 5 = 50&deg; &nbsp;and&nbsp; 5(15) &minus; 25 = 50&deg; &#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Co-interior with a <span class="m">50&deg;</span> angle means they total <span class="m">180&deg;</span>.
+    <span class="work">w = 180 &minus; 50 = 130&deg;</span></div></div>
+  <div class="final">t = 15, &nbsp; w = 130&deg;</div>
+  <div class="tip"><b>Exam tip</b> Read the words before you look at the picture. &ldquo;Alternate&rdquo; means
+  set them equal; &ldquo;co-interior&rdquo; or &ldquo;allied&rdquo; means make them add to 180&deg;.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Name each angle type: (a) <span class="m">47&deg;</span> &nbsp;(b) <span class="m">90&deg;</span> &nbsp;(c) <span class="m">163&deg;</span> &nbsp;(d) <span class="m">275&deg;</span> &nbsp;(e) <span class="m">180&deg;</span></li>
+    <li>Three angles on a straight line are <span class="m">4x&deg;</span>, <span class="m">(3x + 10)&deg;</span> and <span class="m">(2x &minus; 10)&deg;</span>. Find <span class="m">x</span> and the three angles.</li>
+    <li>Four angles at a point are <span class="m">6y&deg;</span>, <span class="m">5y&deg;</span>, <span class="m">4y&deg;</span> and <span class="m">3y&deg;</span>. Find <span class="m">y</span> and the largest angle.</li>
+    <li>Two parallel lines are cut by a transversal, and one angle is <span class="m">73&deg;</span>. Write down, with reasons, the size of (a) the corresponding angle, (b) the alternate angle, (c) the co-interior angle.</li>
+    <li><span class="m">AB</span> is parallel to <span class="m">CD</span>. A zig-zag runs from <span class="m">P</span> on <span class="m">AB</span> to <span class="m">X</span> to <span class="m">Q</span> on <span class="m">CD</span>, with <span class="m">&#8736;APX = 28&deg;</span> and <span class="m">&#8736;CQX = 47&deg;</span>. Find <span class="m">&#8736;PXQ</span>.</li>
+    <li>Two co-interior angles between parallel lines are <span class="m">(2x + 15)&deg;</span> and <span class="m">(3x &minus; 20)&deg;</span>. Find <span class="m">x</span> and both angles, and state which is obtuse.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) <span class="ans">acute</span> &nbsp;(b) <span class="ans">right</span> &nbsp;(c) <span class="ans">obtuse</span> &nbsp;(d) <span class="ans">reflex</span> &nbsp;(e) <span class="ans">straight</span> (a half turn)</li>
+      <li><span class="m">4x + 3x + 10 + 2x &minus; 10 = 180</span> &rarr; <span class="m">9x = 180</span> &rarr;
+        <span class="ans">x = 20</span>; angles <span class="m">80&deg;, 70&deg;, 30&deg;</span>
+        (check <span class="m">80 + 70 + 30 = 180</span>).</li>
+      <li><span class="m">6y + 5y + 4y + 3y = 360</span> &rarr; <span class="m">18y = 360</span> &rarr;
+        <span class="ans">y = 20</span>; largest <span class="m">= 6(20) =</span> <span class="ans">120&deg;</span>.</li>
+      <li>(a) <span class="ans">73&deg;</span> (corresponding angles) &nbsp;(b) <span class="ans">73&deg;</span> (alternate angles)
+        &nbsp;(c) <span class="m">180 &minus; 73 =</span> <span class="ans">107&deg;</span> (co-interior angles).</li>
+      <li>Draw a line through <span class="m">X</span> parallel to <span class="m">AB</span>: the two parts are
+        <span class="m">28&deg;</span> and <span class="m">47&deg;</span> (alternate angles each time), so
+        <span class="m">&#8736;PXQ = 28 + 47 =</span> <span class="ans">75&deg;</span>.</li>
+      <li><span class="m">2x + 15 + 3x &minus; 20 = 180</span> &rarr; <span class="m">5x &minus; 5 = 180</span> &rarr;
+        <span class="m">5x = 185</span> &rarr; <span class="ans">x = 37</span>; angles
+        <span class="m">89&deg;</span> and <span class="m">91&deg;</span> (check <span class="m">89 + 91 = 180</span>);
+        the obtuse one is <span class="ans">91&deg;</span>.</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Acute <span class="m">&lt; 90&deg;</span>, right <span class="m">= 90&deg;</span>, obtuse between
+      <span class="m">90&deg;</span> and <span class="m">180&deg;</span>, reflex between
+      <span class="m">180&deg;</span> and <span class="m">360&deg;</span>.</li>
+    <li>Angles on a straight line add to <b>180&deg;</b>; angles at a point add to <b>360&deg;</b>;
+      vertically opposite angles are <b>equal</b>.</li>
+    <li>Complementary angles add to <span class="m">90&deg;</span>; supplementary angles add to
+      <span class="m">180&deg;</span>.</li>
+    <li>With parallel lines: <b>corresponding</b> (F) equal, <b>alternate</b> (Z) equal,
+      <b>co-interior</b> (C) add to <span class="m">180&deg;</span>.</li>
+    <li>A transversal across parallel lines makes only <b>two</b> different angle sizes, and they are
+      supplementary.</li>
+    <li>No arrows on the diagram means no parallel-line reasons &mdash; check before you use them.</li>
+    <li>For a zig-zag between parallels, draw a <b>dashed line through the bend parallel to the others</b>;
+      the bend angle is the sum of the two outer angles.</li>
+    <li>Every step in an angle chase needs a <b>value and a reason</b>. A number on its own scores nothing
+      in the reasoning marks.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="index.html"><span>&larr; Back</span><b>All notes</b></a><a class="next" href="3-2.html"><span>Next &rarr;</span><b>3.2 Triangles</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 3.1 Lines and Angles<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- parallel lines explorer ---- */
+(function(){
+  var fig=el('plFig'), out=el('plOut');
+  var O='#e05c2a', B='#1a4fa0';
+  function pt(cx,cy,r,a){ var t=a*Math.PI/180; return [cx+r*Math.cos(t), cy+r*Math.sin(t)]; }
+  function sector(cx,cy,r,a1,a2,col){
+    var p1=pt(cx,cy,r,a1), p2=pt(cx,cy,r,a2);
+    var d=a2-a1, la=(Math.abs(d)>180)?1:0, sw=(d>0)?1:0;
+    return '<path d="M '+cx.toFixed(1)+' '+cy.toFixed(1)+' L '+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+
+      ' A '+r+' '+r+' 0 '+la+' '+sw+' '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)+
+      ' Z" fill="'+col+'" fill-opacity=".2" stroke="'+col+'" stroke-width="1.5"/>';
+  }
+  function lab(cx,cy,r,a,txt,col){
+    var p=pt(cx,cy,r,a);
+    return '<text x="'+p[0].toFixed(1)+'" y="'+(p[1]+4).toFixed(1)+'" text-anchor="middle" font-size="12.5"'+
+      ' font-weight="bold" fill="'+col+'">'+txt+'</text>';
+  }
+  function knot(cx,cy,th,letters){
+    var s='', v=[th,180-th,th,180-th], c=[O,B,O,B];
+    var a1=[-th,0,180-th,180], a2=[0,180-th,180,360-th];
+    var bis=[-th/2,90-th/2,180-th/2,270-th/2];
+    for(var i=0;i<4;i++){
+      s+=sector(cx,cy,30,a1[i],a2[i],c[i]);
+      s+=lab(cx,cy,50,bis[i],letters[i]+' = '+v[i],c[i]);
+    }
+    return s+'<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="3.5" fill="#0f2d6b"/>';
+  }
+  function go(){
+    var th=num('plAng',65);
+    el('plVal').innerHTML=th+'&deg;';
+    var cot=Math.cos(th*Math.PI/180)/Math.sin(th*Math.PI/180);
+    var Tx=300+65*cot, Bx=300-65*cot, ex1=300+118*cot, ex2=300-118*cot;
+    var s='<svg viewBox="0 0 600 270" role="img" aria-label="Two parallel lines cut by a transversal with all eight angles measured">';
+    s+='<rect x="0" y="0" width="600" height="270" fill="#f7faff"/>';
+    s+='<line x1="30" y1="70" x2="570" y2="70" stroke="#0f2d6b" stroke-width="2.5"/>';
+    s+='<line x1="30" y1="200" x2="570" y2="200" stroke="#0f2d6b" stroke-width="2.5"/>';
+    s+='<path d="M 76 63 L 86 70 L 76 77" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>';
+    s+='<path d="M 76 193 L 86 200 L 76 207" fill="none" stroke="#0f2d6b" stroke-width="2.5"/>';
+    s+='<line x1="'+ex1.toFixed(1)+'" y1="17" x2="'+ex2.toFixed(1)+'" y2="253" stroke="#6d28d9" stroke-width="2.5"/>';
+    s+=knot(Tx,70,th,['b','d','c','a']);
+    s+=knot(Bx,200,th,['f','h','g','e']);
+    s+='</svg>';
+    fig.innerHTML=s;
+    var t=180-th;
+    var perp = (th===90) ? '<div style="margin-top:8px"><span class="hl">Special case:</span> the transversal is '+
+      'perpendicular to both parallels, so all eight angles are 90&deg;.</div>' : '';
+    out.innerHTML=
+      '<div>Only two sizes appear: <b>'+th+'&deg;</b> and <b>'+t+'&deg;</b>, and '+th+' + '+t+' = <span class="hl">180</span>.</div>'+
+      '<div style="margin-top:8px"><b>Corresponding</b> (equal): a &amp; e, b &amp; f, c &amp; g, d &amp; h</div>'+
+      '<div><b>Alternate</b> (equal): c &amp; f = '+th+'&deg;, &nbsp; d &amp; e = '+t+'&deg;</div>'+
+      '<div><b>Co-interior</b> (sum 180&deg;): c &amp; e, &nbsp; d &amp; f &nbsp;&rarr;&nbsp; '+th+' + '+t+' = 180</div>'+
+      '<div><b>Vertically opposite</b> (equal): a &amp; d, b &amp; c, e &amp; h, f &amp; g</div>'+perp;
+  }
+  on('plAng',go); go();
+})();
+</script>
+</body>
+</html>

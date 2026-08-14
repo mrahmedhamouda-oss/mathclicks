@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.4 Polygons | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Naming polygons, the interior and exterior angle rules, finding the number of sides from a single angle, and why only some shapes tessellate.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 3 &mdash; Lines, Angles and Shapes</span>
+    </div>
+    <h1>3.4 &nbsp;Polygons</h1>
+    <p>Naming polygons, the interior and exterior angle rules, finding the number of sides from a single angle, and why only some shapes tessellate.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#names">Naming</a>
+  <a href="#interior">Interior angles</a>
+  <a href="#exterior">Exterior angles</a>
+  <a href="#tess">Tessellation</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="names" data-nav="Naming">
+<h2>What counts as a polygon</h2>
+<p>A <b>polygon</b> is a closed flat shape made only of straight sides. No curves, no gaps, no
+crossing lines. You are expected to know the names up to twelve sides &mdash; examiners use them
+without explanation, so &ldquo;the interior angles of a nonagon&rdquo; must tell you
+<span class="m">n = 9</span> immediately.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Sides <span class="m">n</span></th><th>Name</th><th>Angle sum</th><th>Sides <span class="m">n</span></th><th>Name</th><th>Angle sum</th></tr></thead>
+<tbody>
+<tr><td>3</td><td>Triangle</td><td><span class="m">180&deg;</span></td><td>8</td><td>Octagon</td><td><span class="m">1080&deg;</span></td></tr>
+<tr><td>4</td><td>Quadrilateral</td><td><span class="m">360&deg;</span></td><td>9</td><td>Nonagon</td><td><span class="m">1260&deg;</span></td></tr>
+<tr><td>5</td><td>Pentagon</td><td><span class="m">540&deg;</span></td><td>10</td><td>Decagon</td><td><span class="m">1440&deg;</span></td></tr>
+<tr><td>6</td><td>Hexagon</td><td><span class="m">720&deg;</span></td><td>11</td><td>Hendecagon</td><td><span class="m">1620&deg;</span></td></tr>
+<tr><td>7</td><td>Heptagon</td><td><span class="m">900&deg;</span></td><td>12</td><td>Dodecagon</td><td><span class="m">1800&deg;</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<h4>The regular polygons you should recognise on sight</h4>
+<svg viewBox="0 0 740 190" role="img" aria-label="Regular triangle, square, pentagon, hexagon, heptagon and octagon side by side">
+  <polygon points="70,56 108.1,122 31.9,122" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+  <polygon points="190,56 234,100 190,144 146,100" fill="#e9f9ef" stroke="#16a34a" stroke-width="2.5"/>
+  <polygon points="310,56 351.8,86.4 335.9,135.6 284.1,135.6 268.2,86.4" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+  <polygon points="430,56 468.1,78 468.1,122 430,144 391.9,122 391.9,78" fill="#f3edff" stroke="#6d28d9" stroke-width="2.5"/>
+  <polygon points="550,56 584.4,72.6 592.9,109.8 569.1,139.6 530.9,139.6 507.1,109.8 515.6,72.6" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+  <polygon points="670,56 701.1,68.9 714,100 701.1,131.1 670,144 638.9,131.1 626,100 638.9,68.9" fill="#e9f9ef" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="70" y="168" text-anchor="middle" font-size="14" font-weight="bold">Triangle</text>
+  <text x="190" y="168" text-anchor="middle" font-size="14" font-weight="bold">Square</text>
+  <text x="310" y="168" text-anchor="middle" font-size="14" font-weight="bold">Pentagon</text>
+  <text x="430" y="168" text-anchor="middle" font-size="14" font-weight="bold">Hexagon</text>
+  <text x="550" y="168" text-anchor="middle" font-size="14" font-weight="bold">Heptagon</text>
+  <text x="670" y="168" text-anchor="middle" font-size="14" font-weight="bold">Octagon</text>
+  <text x="70" y="186" text-anchor="middle" font-size="12" fill="#4a5b7a">n = 3</text>
+  <text x="190" y="186" text-anchor="middle" font-size="12" fill="#4a5b7a">n = 4</text>
+  <text x="310" y="186" text-anchor="middle" font-size="12" fill="#4a5b7a">n = 5</text>
+  <text x="430" y="186" text-anchor="middle" font-size="12" fill="#4a5b7a">n = 6</text>
+  <text x="550" y="186" text-anchor="middle" font-size="12" fill="#4a5b7a">n = 7</text>
+  <text x="670" y="186" text-anchor="middle" font-size="12" fill="#4a5b7a">n = 8</text>
+</svg>
+</div>
+
+<div class="def"><b>Definition</b>
+A polygon is <b>regular</b> when <i>both</i> conditions hold: all sides are the same length
+<b>and</b> all interior angles are equal. A rhombus has equal sides but unequal angles, and a
+rectangle has equal angles but unequal sides &mdash; neither is regular.</div>
+
+<div class="grid two">
+  <div class="card">
+    <h4>Convex</h4>
+    <p>Every interior angle is <span class="m">&lt; 180&deg;</span>. All the vertices point
+    outwards, and any straight line you draw across the shape crosses the boundary at most twice.</p>
+    <svg viewBox="0 0 200 180" role="img" aria-label="Convex pentagon with all angles less than 180 degrees">
+      <polygon points="100,18 176,72 148,158 52,158 24,72" fill="#e9f9ef" stroke="#16a34a" stroke-width="2.5"/>
+      <circle cx="100" cy="18" r="4" fill="#16a34a"/><circle cx="176" cy="72" r="4" fill="#16a34a"/>
+      <circle cx="148" cy="158" r="4" fill="#16a34a"/><circle cx="52" cy="158" r="4" fill="#16a34a"/>
+      <circle cx="24" cy="72" r="4" fill="#16a34a"/>
+      <text x="100" y="105" text-anchor="middle" font-size="13" fill="#16a34a">all angles &lt; 180&deg;</text>
+    </svg>
+  </div>
+  <div class="card o">
+    <h4>Concave (re-entrant)</h4>
+    <p>At least one interior angle is <b>reflex</b> &mdash; bigger than <span class="m">180&deg;</span>.
+    The shape has a dent. The angle sum rule still works perfectly.</p>
+    <svg viewBox="0 0 160 180" role="img" aria-label="Concave dart shaped quadrilateral with one reflex angle of 240 degrees">
+      <polygon points="70,10 122,153 70,123 18,153" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+      <text x="70" y="34" text-anchor="middle" font-size="12" fill="#e05c2a">40&deg;</text>
+      <text x="108" y="146" text-anchor="middle" font-size="12" fill="#e05c2a">40&deg;</text>
+      <text x="32" y="146" text-anchor="middle" font-size="12" fill="#e05c2a">40&deg;</text>
+      <text x="70" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f2d6b">240&deg;</text>
+      <text x="80" y="176" text-anchor="middle" font-size="12" fill="#4a5b7a">40+40+40+240 = 360&deg;</text>
+    </svg>
+  </div>
+</div>
+</section>
+
+<section id="interior" data-nav="Interior angles">
+<h2>The interior angle sum</h2>
+<p>Pick one vertex of a polygon and join it to every vertex it is not already joined to. The polygon
+splits into <b>triangles</b> &mdash; and because each triangle contributes
+<span class="m">180&deg;</span>, that is where the whole rule comes from.</p>
+
+<div class="card p">
+<h4>Why the formula works</h4>
+<svg viewBox="0 0 620 240" role="img" aria-label="A pentagon split into three triangles by two diagonals from one vertex">
+  <polygon points="170,28 257.5,91.6 224.1,194.4 115.9,194.4 82.5,91.6" fill="#f3edff" stroke="#6d28d9" stroke-width="2.5"/>
+  <line x1="170" y1="28" x2="224.1" y2="194.4" stroke="#6d28d9" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <line x1="170" y1="28" x2="115.9" y2="194.4" stroke="#6d28d9" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="205" y="95" text-anchor="middle" font-size="14" fill="#6d28d9">180&deg;</text>
+  <text x="170" y="140" text-anchor="middle" font-size="14" fill="#6d28d9">180&deg;</text>
+  <text x="134" y="95" text-anchor="middle" font-size="14" fill="#6d28d9">180&deg;</text>
+  <circle cx="170" cy="28" r="4.5" fill="#0f2d6b"/>
+  <text x="340" y="70" font-size="15">A pentagon has <tspan font-weight="bold">5</tspan> sides.</text>
+  <text x="340" y="98" font-size="15">The diagonals from one vertex</text>
+  <text x="340" y="122" font-size="15">make <tspan font-weight="bold">5 &minus; 2 = 3</tspan> triangles.</text>
+  <text x="340" y="156" font-size="15" fill="#6d28d9" font-weight="bold">Sum = 3 &times; 180&deg; = 540&deg;</text>
+  <text x="340" y="192" font-size="13" fill="#4a5b7a">Two vertices are &ldquo;used up&rdquo; as the</text>
+  <text x="340" y="212" font-size="13" fill="#4a5b7a">neighbours of the chosen vertex.</text>
+</svg>
+</div>
+
+<div class="formula">Sum of interior angles = (n &minus; 2) &times; 180&deg;
+<small>n is the number of sides</small></div>
+
+<div class="tip"><b>Exam tip</b> This works for <i>every</i> polygon &mdash; regular or irregular,
+convex or concave. If a shape has a reflex angle, use the reflex value in the sum, not the angle
+outside it.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Four angles of a pentagon are <span class="m">100&deg;</span>, <span class="m">115&deg;</span>, <span class="m">130&deg;</span> and <span class="m">90&deg;</span>. Find the fifth angle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Work out the angle sum for <span class="m">n = 5</span>.
+    <span class="work">(5 &minus; 2) &times; 180&deg; = 3 &times; 180&deg; = 540&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the four angles you are given.
+    <span class="work">100 + 115 + 130 + 90 = 435&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract from the total. Show this subtraction line &mdash; it is where the method mark sits.
+    <span class="work">x = 540 &minus; 435 = 105&deg;</span></div></div>
+  <div class="final">The fifth angle is 105&deg;</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">The interior angles of a polygon add up to <span class="m">2340&deg;</span>. How many sides has it?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Set the formula equal to the sum you are given.
+    <span class="work">(n &minus; 2) &times; 180 = 2340</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Divide both sides by 180.
+    <span class="work">n &minus; 2 = 2340 &divide; 180 = 13</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add 2.
+    <span class="work">n = 13 + 2 = 15</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check by substituting back.
+    <span class="work">(15 &minus; 2) &times; 180 = 13 &times; 180 = 2340 &nbsp;&#10003;</span></div></div>
+  <div class="final">The polygon has 15 sides</div>
+  <div class="warn"><b>Watch out</b> Do not forget the &ldquo;<span class="m">+ 2</span>&rdquo;. Writing
+  <span class="m">n = 13</span> is the single most common error on this question type.</div>
+</div>
+</details>
+</section>
+
+<section id="exterior" data-nav="Exterior angles">
+<h2>Exterior angles and regular polygons</h2>
+<p>Extend one side of a polygon past a vertex. The angle between that extension and the next side is
+the <b>exterior angle</b>. Interior and exterior angle at the same vertex sit on a straight line, so
+they always add to <span class="m">180&deg;</span>.</p>
+
+<div class="card o">
+<h4>Walk once round the shape and you turn through 360&deg;</h4>
+<svg viewBox="0 0 620 250" role="img" aria-label="Pentagon with each side extended to show the five exterior angles adding to 360 degrees">
+  <polygon points="170,28 257.5,91.6 224.1,194.4 115.9,194.4 82.5,91.6" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="82.5" y1="91.6" x2="207.2" y2="1" stroke="#0f2d6b" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="170" y1="28" x2="294.7" y2="118.6" stroke="#0f2d6b" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="257.5" y1="91.6" x2="209.9" y2="238.1" stroke="#0f2d6b" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="224.1" y1="194.4" x2="69.9" y2="194.4" stroke="#0f2d6b" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="115.9" y1="194.4" x2="68.3" y2="47.9" stroke="#0f2d6b" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="216" y="24" font-size="13" fill="#0f2d6b" font-weight="bold">72&deg;</text>
+  <text x="276" y="107" font-size="13" fill="#0f2d6b" font-weight="bold">72&deg;</text>
+  <text x="228" y="228" font-size="13" fill="#0f2d6b" font-weight="bold">72&deg;</text>
+  <text x="74" y="212" font-size="13" fill="#0f2d6b" font-weight="bold">72&deg;</text>
+  <text x="48" y="56" font-size="13" fill="#0f2d6b" font-weight="bold">72&deg;</text>
+  <text x="170" y="120" text-anchor="middle" font-size="14" fill="#e05c2a" font-weight="bold">interior 108&deg;</text>
+  <text x="340" y="70" font-size="15">Each turn at a corner is an</text>
+  <text x="340" y="94" font-size="15">exterior angle. Going all the way</text>
+  <text x="340" y="118" font-size="15">round you face the start again:</text>
+  <text x="340" y="152" font-size="15" fill="#e05c2a" font-weight="bold">5 &times; 72&deg; = 360&deg;</text>
+  <text x="340" y="186" font-size="13" fill="#4a5b7a">and at every vertex</text>
+  <text x="340" y="206" font-size="13" fill="#4a5b7a">108&deg; + 72&deg; = 180&deg;</text>
+</svg>
+</div>
+
+<div class="formula">Sum of exterior angles = 360&deg;
+<small>True for every convex polygon, however many sides &mdash; and however irregular</small></div>
+
+<div class="grid two">
+  <div class="card g">
+    <h4>Regular polygon: one exterior angle</h4>
+    <div class="formula">exterior angle = <span class="frac"><span>360&deg;</span><span>n</span></span></div>
+    <p>All <span class="m">n</span> exterior angles are equal, and together they make
+    <span class="m">360&deg;</span>, so share it out.</p>
+  </div>
+  <div class="card p">
+    <h4>Regular polygon: one interior angle</h4>
+    <div class="formula">interior angle = 180&deg; &minus; <span class="frac"><span>360&deg;</span><span>n</span></span></div>
+    <p>Or divide the total: <span class="frac"><span>(n &minus; 2) &times; 180&deg;</span><span>n</span></span>.
+    Both give the same answer &mdash; use whichever is quicker.</p>
+  </div>
+</div>
+
+<div class="tip"><b>Exam tip</b> Nearly every &ldquo;how many sides?&rdquo; question is fastest through
+the <b>exterior</b> angle, because <span class="m">n = 360 &divide; exterior</span> is a single
+division. Convert an interior angle to its exterior angle first by subtracting from
+<span class="m">180&deg;</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Work out the interior and exterior angles of a regular dodecagon (12 sides).</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Exterior angle first &mdash; it is one division.
+    <span class="work">360 &divide; 12 = 30&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Interior angle is the supplement.
+    <span class="work">180 &minus; 30 = 150&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check with the angle sum.
+    <span class="work">(12 &minus; 2) &times; 180 = 1800&deg;<br>1800 &divide; 12 = 150&deg; &nbsp;&#10003;</span></div></div>
+  <div class="final">exterior = 30&deg;, interior = 150&deg;</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Each interior angle of a regular polygon is <span class="m">156&deg;</span>. How many sides does it have?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Turn the interior angle into an exterior angle using the straight line.
+    <span class="work">exterior = 180 &minus; 156 = 24&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The exterior angles share out <span class="m">360&deg;</span>.
+    <span class="work">n = 360 &divide; 24 = 15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check: a regular 15-gon.
+    <span class="work">180 &minus; (360 &divide; 15) = 180 &minus; 24 = 156&deg; &nbsp;&#10003;</span></div></div>
+  <div class="final">15 sides</div>
+  <div class="warn"><b>Watch out</b> If your division does not give a whole number, no such regular
+  polygon exists &mdash; say so. An interior angle of <span class="m">155&deg;</span> gives
+  <span class="m">360 &divide; 25 = 14.4</span>, which is impossible.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Regular polygon explorer</h4>
+  <p class="hint">Drag the slider. Watch the exterior angle shrink as <span class="m">n</span> grows,
+  and count the dashed triangles &mdash; there are always <span class="m">n &minus; 2</span> of them.</p>
+  <div class="sliderbox"><div class="lab"><span>Number of sides n</span><span id="rpNVal">6</span></div>
+    <input type="range" id="rpN" min="3" max="16" step="1" value="6"></div>
+  <svg viewBox="0 0 300 250" role="img" aria-label="Regular polygon drawn from the slider value, split into triangles">
+    <polygon id="rpPoly" points="150,30 150,30 150,30" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+    <path id="rpDiag" d="" fill="none" stroke="#6d28d9" stroke-width="1.3" stroke-dasharray="5 4"/>
+    <text id="rpCap" x="150" y="238" text-anchor="middle" font-size="14" fill="#0f2d6b"></text>
+  </svg>
+  <div class="out" id="rpOut"></div>
+</div>
+</section>
+
+<section id="tess" data-nav="Tessellation">
+<h2>Fitting polygons round a point</h2>
+<p>Shapes <b>tessellate</b> when copies of them cover the plane with no gaps and no overlaps. At every
+meeting point the angles must total exactly <span class="m">360&deg;</span> &mdash; that one condition
+decides everything.</p>
+
+<div class="grid two">
+  <div class="card g">
+    <h4>Hexagons fit: 3 &times; 120&deg; = 360&deg;</h4>
+    <svg viewBox="60 20 260 260" role="img" aria-label="Three regular hexagons meeting exactly at a point">
+      <polygon points="175,150 115,150 85,98 115,46.1 175,46.1 205,98" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+      <polygon points="175,150 205,98 265,98 295,150 265,202 205,202" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+      <polygon points="175,150 205,202 175,253.9 115,253.9 85,202 115,150" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+      <text x="149" y="128" font-size="12" fill="#16a34a">120&deg;</text>
+      <text x="192" y="152" font-size="12" fill="#16a34a">120&deg;</text>
+      <text x="149" y="178" font-size="12" fill="#16a34a">120&deg;</text>
+      <circle cx="175" cy="150" r="4.5" fill="#0f2d6b"/>
+    </svg>
+  </div>
+  <div class="card o">
+    <h4>Pentagons do not: 3 &times; 108&deg; = 324&deg;</h4>
+    <svg viewBox="90 20 240 260" role="img" aria-label="Three regular pentagons round a point leaving a 36 degree gap">
+      <polygon points="175,150 114.9,128.1 117.1,64.1 178.6,46.5 214.4,99.6" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+      <polygon points="175,150 214.4,99.6 274.5,121.5 272.3,185.4 210.8,203.1" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+      <polygon points="175,150 210.8,203.1 171.4,253.5 111.2,231.6 113.5,167.6" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+      <polygon points="175,150 113.5,167.6 114.9,128.1" fill="#0f2d6b" opacity="0.85"/>
+      <text x="122" y="152" font-size="12" fill="#0f2d6b" font-weight="bold">36&deg; gap</text>
+      <circle cx="175" cy="150" r="4.5" fill="#0f2d6b"/>
+    </svg>
+  </div>
+</div>
+
+<div class="note"><b>Note</b> Only three regular polygons tessellate on their own: the equilateral
+triangle (<span class="m">6 &times; 60 = 360</span>), the square
+(<span class="m">4 &times; 90 = 360</span>) and the regular hexagon
+(<span class="m">3 &times; 120 = 360</span>). They are the only ones whose interior angle divides
+exactly into <span class="m">360&deg;</span>. <b>Every</b> triangle and <b>every</b> quadrilateral
+tessellates, even irregular ones, because their angles total <span class="m">180&deg;</span> and
+<span class="m">360&deg;</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Two regular octagons and one square meet at a point. Show that they fit exactly.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Interior angle of a regular octagon.
+    <span class="work">exterior = 360 &divide; 8 = 45&deg;<br>interior = 180 &minus; 45 = 135&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">A square has interior angle <span class="m">90&deg;</span>. Add the three angles at the point.
+    <span class="work">135 + 135 + 90 = 360&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The angles total exactly <span class="m">360&deg;</span>, so there is no gap and no overlap.</div></div>
+  <div class="final">135&deg; + 135&deg; + 90&deg; = 360&deg;, so the three shapes tessellate together</div>
+  <svg viewBox="60 10 270 250" role="img" aria-label="Two regular octagons and a square meeting exactly at a point">
+    <polygon points="180,150 128,150 91.2,113.2 91.2,61.2 128,24.5 180,24.5 216.8,61.2 216.8,113.2" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+    <polygon points="180,150 216.8,113.2 268.8,113.2 305.5,150 305.5,202 268.8,238.8 216.8,238.8 180,202" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+    <polygon points="180,150 180,202 128,202 128,150" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <text x="150" y="132" font-size="12" fill="#1a4fa0">135&deg;</text>
+    <text x="196" y="156" font-size="12" fill="#1a4fa0">135&deg;</text>
+    <text x="152" y="172" font-size="12" fill="#16a34a">90&deg;</text>
+    <circle cx="180" cy="150" r="4.5" fill="#0f2d6b"/>
+  </svg>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">The angles of a hexagon are <span class="m">x</span>, <span class="m">2x</span>, <span class="m">2x</span>, <span class="m">110&deg;</span>, <span class="m">130&deg;</span> and <span class="m">150&deg;</span>. Find <span class="m">x</span> and the largest angle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Angle sum of a hexagon.
+    <span class="work">(6 &minus; 2) &times; 180 = 4 &times; 180 = 720&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Form an equation, collecting the <span class="m">x</span> terms and the numbers.
+    <span class="work">x + 2x + 2x + 110 + 130 + 150 = 720<br>5x + 390 = 720</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Solve.
+    <span class="work">5x = 330<br>x = 66&deg;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">The angles are <span class="m">66, 132, 132, 110, 130, 150</span>. Check they total 720.
+    <span class="work">66 + 132 + 132 + 110 + 130 + 150 = 720 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = 66&deg;, and the largest angle is 150&deg;</div>
+  <div class="tip"><b>Exam tip</b> Always add your finished angles back up. It costs ten seconds and
+  catches an arithmetic slip that would otherwise lose every mark after step 2.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">In a regular polygon each interior angle is 8 times the size of each exterior angle. Find the number of sides.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Let the exterior angle be <span class="m">e</span>. Then the interior angle is <span class="m">8e</span>, and they lie on a straight line.
+    <span class="work">e + 8e = 180</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Solve for <span class="m">e</span>.
+    <span class="work">9e = 180<br>e = 20&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Use the exterior angle rule.
+    <span class="work">n = 360 &divide; 20 = 18</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check: interior angle <span class="m">= 180 &minus; 20 = 160&deg;</span>, and
+    <span class="m">160 &divide; 20 = 8</span> &#10003;</div></div>
+  <div class="final">The polygon has 18 sides</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 8</span><span class="q">A regular pentagon and a regular hexagon share an edge, as shown. Find the angle <span class="m">x</span> between them.</span></summary>
+<div class="body">
+  <svg viewBox="30 0 380 240" role="img" aria-label="A regular pentagon and a regular hexagon sharing an edge with angle x between their outer edges">
+    <polygon points="210,70 210,170 114.9,200.9 56.1,120 114.9,39.1" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+    <polygon points="210,170 210,70 296.6,20 383.2,70 383.2,170 296.6,220" fill="#f3edff" stroke="#6d28d9" stroke-width="2.5"/>
+    <text x="140" y="125" text-anchor="middle" font-size="14" fill="#e05c2a">pentagon</text>
+    <text x="297" y="125" text-anchor="middle" font-size="14" fill="#6d28d9">hexagon</text>
+    <text x="186" y="92" font-size="12" fill="#e05c2a">108&deg;</text>
+    <text x="216" y="92" font-size="12" fill="#6d28d9">120&deg;</text>
+    <text x="203" y="40" font-size="15" font-weight="bold" fill="#0f2d6b">x</text>
+    <circle cx="210" cy="70" r="4.5" fill="#0f2d6b"/>
+    <text x="230" y="188" font-size="12" fill="#4a5b7a">shared edge</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Interior angle of the regular pentagon.
+    <span class="work">180 &minus; (360 &divide; 5) = 180 &minus; 72 = 108&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Interior angle of the regular hexagon.
+    <span class="work">180 &minus; (360 &divide; 6) = 180 &minus; 60 = 120&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The three angles at the shared vertex go all the way round a point.
+    <span class="work">x + 108 + 120 = 360</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Solve.
+    <span class="work">x = 360 &minus; 228 = 132&deg;</span></div></div>
+  <div class="final">x = 132&deg;</div>
+  <div class="warn"><b>Watch out</b> The angles at that vertex make a <b>full turn</b>
+  (<span class="m">360&deg;</span>), not a straight line. Students who write
+  <span class="m">x + 108 + 120 = 180</span> get a negative angle &mdash; an instant sign that
+  something is wrong.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Work out the sum of the interior angles of (a) an octagon (b) a 20-sided polygon.</li>
+    <li>Find each interior angle and each exterior angle of a regular nonagon (9 sides).</li>
+    <li>Each exterior angle of a regular polygon is <span class="m">15&deg;</span>. How many sides has it?</li>
+    <li>Five angles of a hexagon are <span class="m">140&deg;</span>, <span class="m">95&deg;</span>,
+      <span class="m">120&deg;</span>, <span class="m">160&deg;</span> and <span class="m">85&deg;</span>.
+      Find the sixth angle.</li>
+    <li>Explain why a regular octagon cannot tessellate on its own.</li>
+    <li>The interior angle of a regular polygon <span class="m">P</span> is
+      <span class="m">140&deg;</span>. (a) Find the number of sides of <span class="m">P</span>.
+      (b) Two of these polygons and one other regular polygon <span class="m">Q</span> fit exactly
+      around a point. Find the number of sides of <span class="m">Q</span>.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) <span class="m">(8 &minus; 2) &times; 180</span> = <span class="ans">1080&deg;</span>
+        &nbsp;(b) <span class="m">(20 &minus; 2) &times; 180 = 18 &times; 180</span> =
+        <span class="ans">3240&deg;</span></li>
+      <li>exterior <span class="m">= 360 &divide; 9 =</span> <span class="ans">40&deg;</span>;
+        interior <span class="m">= 180 &minus; 40 =</span> <span class="ans">140&deg;</span></li>
+      <li><span class="m">n = 360 &divide; 15 =</span> <span class="ans">24 sides</span></li>
+      <li>Sum <span class="m">= 720&deg;</span>; the five given angles total
+        <span class="m">600&deg;</span>, so the sixth is <span class="m">720 &minus; 600 =</span>
+        <span class="ans">120&deg;</span></li>
+      <li>Interior angle <span class="m">= 135&deg;</span> and
+        <span class="m">360 &divide; 135 = 2.6&#775;</span>, not a whole number, so copies leave a gap
+        &mdash; <span class="ans">135&deg; does not divide exactly into 360&deg;</span></li>
+      <li>(a) exterior <span class="m">= 180 &minus; 140 = 40&deg;</span>, so
+        <span class="m">n = 360 &divide; 40 =</span> <span class="ans">9 sides</span>
+        &nbsp;(b) angles at the point: <span class="m">140 + 140 = 280&deg;</span>, so
+        <span class="m">Q</span> has interior angle <span class="m">360 &minus; 280 = 80&deg;</span>;
+        exterior <span class="m">= 100&deg;</span> and <span class="m">360 &divide; 100 = 3.6</span>
+        &mdash; <span class="ans">no such regular polygon exists</span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li>Sum of interior angles <b>= (n &minus; 2) &times; 180&deg;</b>, because the polygon splits into
+      <span class="m">n &minus; 2</span> triangles.</li>
+    <li>Sum of exterior angles <b>= 360&deg;</b> for every polygon, whatever <span class="m">n</span> is.</li>
+    <li>At any vertex, interior + exterior <b>= 180&deg;</b> &mdash; they are on a straight line.</li>
+    <li>For a <b>regular</b> polygon: exterior <span class="m">= 360 &divide; n</span> and interior
+      <span class="m">= 180 &minus; 360 &divide; n</span>.</li>
+    <li>To find <span class="m">n</span> from an angle, always go via the exterior angle:
+      <span class="m">n = 360 &divide; exterior</span>. A non-integer answer means no such polygon exists.</li>
+    <li><b>Regular</b> means equal sides <i>and</i> equal angles; a concave polygon has one reflex
+      interior angle but still obeys the angle sum.</li>
+    <li>Shapes fit round a point only when the angles total exactly <b>360&deg;</b>; among regular
+      polygons only the triangle, square and hexagon tessellate alone.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="index.html"><span>&larr; Back</span><b>All notes</b></a><a class="next" href="3-5.html"><span>Next &rarr;</span><b>3.5 Circles</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 3.4 Polygons<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- regular polygon explorer ---- */
+(function(){
+  var out=el('rpOut'), poly=el('rpPoly'), diag=el('rpDiag'), cap=el('rpCap');
+  var CX=150, CY=118, R=88;
+  function pt(n,i){
+    var a=(-90 + 360*i/n)*Math.PI/180;
+    return [CX+R*Math.cos(a), CY+R*Math.sin(a)];
+  }
+  function go(){
+    var n=Math.round(num('rpN',6));
+    el('rpNVal').textContent=n;
+    var pts=[], i;
+    for(i=0;i<n;i++){ var p=pt(n,i); pts.push(fx(p[0],1)+','+fx(p[1],1)); }
+    poly.setAttribute('points', pts.join(' '));
+    var d='', a=pt(n,0);
+    for(i=2;i<=n-2;i++){ var b=pt(n,i); d+='M'+fx(a[0],1)+' '+fx(a[1],1)+'L'+fx(b[0],1)+' '+fx(b[1],1); }
+    diag.setAttribute('d', d);
+    var sum=(n-2)*180, ext=360/n, inter=180-ext;
+    var names={3:'triangle',4:'square',5:'pentagon',6:'hexagon',7:'heptagon',8:'octagon',
+               9:'nonagon',10:'decagon',11:'hendecagon',12:'dodecagon'};
+    cap.textContent=(names[n]? 'regular '+names[n] : 'regular '+n+'-gon')+'  \u2014  '+(n-2)+' triangles';
+    out.innerHTML=
+      '<div>Angle sum: ('+n+' &minus; 2) &times; 180&deg; = <span class="hl">'+(n-2)+'</span> &times; 180&deg; = <b>'+sum+'&deg;</b></div>'+
+      '<div style="margin-top:6px">Each exterior angle: 360&deg; &divide; '+n+' = <b>'+fx(ext,2)+'&deg;</b></div>'+
+      '<div style="margin-top:6px">Each interior angle: 180&deg; &minus; '+fx(ext,2)+'&deg; = <b>'+fx(inter,2)+'&deg;</b></div>'+
+      '<div style="margin-top:6px">Check by sharing the sum: '+sum+'&deg; &divide; '+n+' = '+fx(sum/n,2)+'&deg; &#10003;</div>'+
+      '<div style="margin-top:8px;opacity:.8;font-size:.92em">Tessellates alone? 360 &divide; '+fx(inter,2)+
+        ' = '+fx(360/inter,3)+' &mdash; '+((Math.abs(360/inter-Math.round(360/inter))<1e-9)?
+        '<span class="hl">whole number, so yes</span>':'not a whole number, so no')+
+        '</div>';
+  }
+  bindAll(['rpN'],go);
+})();
+</script>
+</body>
+</html>

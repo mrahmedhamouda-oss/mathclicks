@@ -651,11 +651,29 @@ function wireReveal() {
   els.forEach((e) => obs.observe(e));
 }
 
+function revisionNotesCard() {
+  const card = el("a", "pp-card");
+  card.href = "igcse-notes/index.html";
+  card.appendChild(el("div", "pp-card-icon", "📒"));
+  const body = el("div", "pp-card-body");
+  body.appendChild(el("div", "pp-card-title", "Revision Notes"));
+  body.appendChild(el("div", "pp-card-sub",
+    "Interactive notes for IGCSE 0580 Extended — every step of every worked example shown, with a tool on each page to explore the idea yourself."));
+  const meta = el("div", "pp-card-meta");
+  meta.appendChild(el("span", "pp-card-chip", "18 lessons"));
+  meta.appendChild(el("span", "pp-card-chip", "Number · Algebra · Geometry"));
+  body.appendChild(meta);
+  card.appendChild(body);
+  card.appendChild(el("div", "pp-card-go", "Open →"));
+  return card;
+}
+
 function renderIgcse() {
   main.replaceChildren();
   main.appendChild(backLink("#/", "← Home"));
   main.appendChild(el("h2", "page-title", "IGCSE Math"));
   main.appendChild(el("p", "page-sub", "Cambridge IGCSE 0580 (Extended) — pick a module to begin."));
+  main.appendChild(revisionNotesCard());
   const ig = igcseTopics();
   if (!ig.length) {
     const box = el("div", "empty-note big");

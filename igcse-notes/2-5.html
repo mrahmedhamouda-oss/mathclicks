@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2.5 Indices | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="The laws of indices applied to algebraic terms, including zero, negative and fractional powers, and solving equations by matching bases.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 2 &mdash; Making Sense of Algebra</span>
+    </div>
+    <h1>2.5 &nbsp;Indices</h1>
+    <p>The laws of indices applied to algebraic terms, including zero, negative and fractional powers, and solving equations by matching bases.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#notation">Index notation</a>
+  <a href="#laws">Index laws</a>
+  <a href="#negfrac">Zero, negative, fractional</a>
+  <a href="#equations">Index equations</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="notation" data-nav="Index notation">
+<h2>Index notation in algebra</h2>
+<p>An <b>index</b> (plural <b>indices</b>) is a shorthand for repeated multiplication. Instead of writing
+<span class="m">x &times; x &times; x &times; x</span> you write <span class="m">x<sup>4</sup></span>. The
+number being multiplied is the <b>base</b>; the small raised number is the <b>index</b> or <b>power</b>.</p>
+
+<div class="card">
+<h4>The parts of a term</h4>
+<svg viewBox="0 0 520 220" role="img" aria-label="The term 3x to the power 4 with coefficient, base and index labelled">
+  <text x="196" y="118" font-size="52" font-weight="bold" style="fill:#e05c2a">3</text>
+  <text x="238" y="118" font-size="52" font-weight="bold" style="fill:#1a4fa0">x</text>
+  <text x="280" y="88" font-size="32" font-weight="bold" style="fill:#16a34a">4</text>
+
+  <line x1="205" y1="132" x2="120" y2="158" stroke="#e05c2a" stroke-width="2"/>
+  <line x1="252" y1="132" x2="262" y2="158" stroke="#1a4fa0" stroke-width="2"/>
+  <line x1="296" y1="72" x2="420" y2="150" stroke="#16a34a" stroke-width="2"/>
+
+  <text x="112" y="178" text-anchor="middle" font-size="15" font-weight="bold" style="fill:#e05c2a">coefficient</text>
+  <text x="266" y="178" text-anchor="middle" font-size="15" font-weight="bold" style="fill:#1a4fa0">base</text>
+  <text x="432" y="168" text-anchor="middle" font-size="15" font-weight="bold" style="fill:#16a34a">index</text>
+  <text x="260" y="208" text-anchor="middle" font-size="16" style="fill:#4a5b7a">3x&#8308; = 3 &times; x &times; x &times; x &times; x</text>
+</svg>
+</div>
+
+<div class="warn"><b>Watch out</b>
+The index attaches only to the letter immediately in front of it. <span class="m">3x&sup2;</span> means
+<span class="m">3 &times; x &times; x</span>, whereas <span class="m">(3x)&sup2;</span> means
+<span class="m">3x &times; 3x = 9x&sup2;</span>. Test with <span class="m">x = 2</span>:
+<span class="m">3x&sup2; = 12</span> but <span class="m">(3x)&sup2; = 36</span>. The bracket changes
+everything.</div>
+
+<p>The same distinction decides whether terms can be added or must be multiplied:</p>
+<div class="tw">
+<table>
+<thead><tr><th>Expression</th><th>Simplifies to</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td><span class="m">5x&sup2; + 3x&sup2;</span></td><td><span class="m">8x&sup2;</span></td><td>Like terms &mdash; add the coefficients, index unchanged</td></tr>
+<tr><td><span class="m">5x&sup2; &times; 3x&sup2;</span></td><td><span class="m">15x<sup>4</sup></span></td><td>Multiply coefficients, <b>add</b> the indices</td></tr>
+<tr><td><span class="m">x&sup2; + x&sup3;</span></td><td>will not simplify</td><td>Not like terms &mdash; leave it alone</td></tr>
+<tr><td><span class="m">4a&sup3;b&sup2;</span></td><td><span class="m">4 &times; a &times; a &times; a &times; b &times; b</span></td><td>Each letter carries its own index</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="laws" data-nav="Index laws">
+<h2>The laws of indices</h2>
+<p>Every law below is just a shortcut for writing the multiplication out in full. If you ever forget one,
+expand a small case and read the answer off.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Law</th><th>Rule</th><th>Algebraic example</th></tr></thead>
+<tbody>
+<tr><td>Multiplying</td><td><span class="m">a<sup>m</sup> &times; a<sup>n</sup> = a<sup>m+n</sup></span></td><td><span class="m">x&sup3; &times; x&sup2; = x<sup>5</sup></span></td></tr>
+<tr><td>Dividing</td><td><span class="m">a<sup>m</sup> &divide; a<sup>n</sup> = a<sup>m&minus;n</sup></span></td><td><span class="m">x<sup>5</sup> &divide; x&sup2; = x&sup3;</span></td></tr>
+<tr><td>Power of a power</td><td><span class="m">(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></span></td><td><span class="m">(x&sup3;)&sup2; = x<sup>6</sup></span></td></tr>
+<tr><td>Power of a product</td><td><span class="m">(ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></span></td><td><span class="m">(2x)&sup3; = 8x&sup3;</span></td></tr>
+<tr><td>Power of a quotient</td><td><span class="m">(<span class="frac"><span>a</span><span>b</span></span>)<sup>n</sup> = <span class="frac"><span>a<sup>n</sup></span><span>b<sup>n</sup></span></span></span></td><td><span class="m">(<span class="frac"><span>x</span><span>3</span></span>)&sup2; = <span class="frac"><span>x&sup2;</span><span>9</span></span></span></td></tr>
+<tr><td>Zero index</td><td><span class="m">a<sup>0</sup> = 1</span> &nbsp;(<span class="m">a &ne; 0</span>)</td><td><span class="m">7x<sup>0</sup> = 7</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="def"><b>Where the first three come from</b>
+<span class="m">x&sup3; &times; x&sup2; = (xxx)(xx) = x<sup>5</sup></span> &mdash; you are just counting
+<span class="m">x</span>s. Dividing cancels them:
+<span class="m">x<sup>5</sup> &divide; x&sup2; = <span class="frac"><span>xxxxx</span><span>xx</span></span> = x&sup3;</span>.
+And <span class="m">(x&sup3;)&sup2; = x&sup3; &times; x&sup3; = x<sup>6</sup></span>.</div>
+
+<div class="warn"><b>Watch out</b>
+The laws work <b>only when the bases match</b>. You cannot combine <span class="m">2&sup3; &times; 3&sup2;</span>
+into a single power, and <span class="m">x&sup2; + x&sup3;</span> is <b>not</b> <span class="m">x<sup>5</sup></span>
+&mdash; the adding law is for multiplying terms, never for adding them.</div>
+
+<div class="tool">
+  <h4>Index-law simplifier</h4>
+  <p class="hint">Build two terms, choose <span class="m">&times;</span> or <span class="m">&divide;</span>,
+  and see which law is used at each stage. Try <span class="m">12a<sup>5</sup>b&sup2; &divide; 4a&sup2;b</span>
+  by entering 12, 5, 2 and 4, 2, 1 with &divide;.</p>
+  <div class="row">
+    <div><label for="ilK1">1st coefficient</label><input type="number" id="ilK1" value="12" step="1" style="width:100px"></div>
+    <div><label for="ilX1">power of x</label><input type="number" id="ilX1" value="5" step="1" style="width:100px"></div>
+    <div><label for="ilY1">power of y</label><input type="number" id="ilY1" value="2" step="1" style="width:100px"></div>
+    <div><label for="ilOp">operation</label><select id="ilOp"><option value="d">&divide;</option><option value="m">&times;</option></select></div>
+    <div><label for="ilK2">2nd coefficient</label><input type="number" id="ilK2" value="4" step="1" style="width:100px"></div>
+    <div><label for="ilX2">power of x</label><input type="number" id="ilX2" value="2" step="1" style="width:100px"></div>
+    <div><label for="ilY2">power of y</label><input type="number" id="ilY2" value="1" step="1" style="width:100px"></div>
+  </div>
+  <div class="out" id="ilOut"></div>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Simplify (a) <span class="m">5x&sup3; &times; 4x<sup>4</sup></span> &nbsp;(b) <span class="m">20a<sup>6</sup> &divide; 5a&sup2;</span> &nbsp;(c) <span class="m">(2x<sup>5</sup>)&sup3;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Deal with the numbers and the letters separately. Multiply the coefficients, add the indices.
+    <span class="work">5 &times; 4 = 20 &nbsp;&nbsp; x&sup3; &times; x<sup>4</sup> = x<sup>3+4</sup> = x<sup>7</sup></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Divide the coefficients, subtract the indices.
+    <span class="work">20 &divide; 5 = 4 &nbsp;&nbsp; a<sup>6</sup> &divide; a&sup2; = a<sup>6&minus;2</sup> = a<sup>4</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) The index outside applies to <b>everything</b> inside the bracket &mdash; the 2 as well as the <span class="m">x<sup>5</sup></span>.
+    <span class="work">2&sup3; = 8 &nbsp;&nbsp; (x<sup>5</sup>)&sup3; = x<sup>15</sup></span></div></div>
+  <div class="final">(a) 20x<sup>7</sup> &nbsp;&nbsp; (b) 4a<sup>4</sup> &nbsp;&nbsp; (c) 8x<sup>15</sup></div>
+  <div class="warn"><b>Common error</b> In (c), writing <span class="m">2x<sup>15</sup></span> forgets to cube
+  the coefficient. Check with <span class="m">x = 2</span>: <span class="m">(2 &times; 32)&sup3; = 64&sup3; = 262144</span>,
+  and <span class="m">8 &times; 2<sup>15</sup> = 8 &times; 32768 = 262144</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Simplify <span class="m">(3x&sup2;y)&sup3;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Use <span class="m">(abc)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup>c<sup>n</sup></span>: cube each factor inside the bracket.
+    <span class="work">(3x&sup2;y)&sup3; = 3&sup3; &times; (x&sup2;)&sup3; &times; y&sup3;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Evaluate the number and use the power-of-a-power law. Remember <span class="m">y = y<sup>1</sup></span>.
+    <span class="work">3&sup3; = 27 &nbsp;&nbsp; (x&sup2;)&sup3; = x<sup>6</sup> &nbsp;&nbsp; (y<sup>1</sup>)&sup3; = y&sup3;</span></div></div>
+  <div class="final">27x<sup>6</sup>y&sup3;</div>
+  <div class="note"><b>Check</b> With <span class="m">x = 2</span>, <span class="m">y = 3</span>:
+  <span class="m">(3 &times; 4 &times; 3)&sup3; = 36&sup3; = 46656</span>, and
+  <span class="m">27 &times; 64 &times; 27 = 46656</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="negfrac" data-nav="Zero, negative, fractional">
+<h2>Zero, negative and fractional indices</h2>
+<p>The three laws above force the meaning of these indices &mdash; they are not arbitrary definitions.</p>
+
+<div class="grid">
+  <div class="card p">
+    <h4>Zero index</h4>
+    <p><span class="m">x<sup>5</sup> &divide; x<sup>5</sup> = 1</span>, but the law gives
+    <span class="m">x<sup>5&minus;5</sup> = x<sup>0</sup></span>.</p>
+    <div class="formula">a<sup>0</sup> = 1</div>
+    <p>So <span class="m">5x<sup>0</sup> = 5 &times; 1 = 5</span>, but <span class="m">(5x)<sup>0</sup> = 1</span>.</p>
+  </div>
+  <div class="card o">
+    <h4>Negative index</h4>
+    <p><span class="m">x&sup2; &divide; x<sup>5</sup> = <span class="frac"><span>1</span><span>x&sup3;</span></span></span>,
+    and the law gives <span class="m">x<sup>&minus;3</sup></span>.</p>
+    <div class="formula">a<sup>&minus;n</sup> = <span class="frac"><span>1</span><span>a<sup>n</sup></span></span></div>
+    <p>A negative index means <b>reciprocal</b>, not a negative answer.</p>
+  </div>
+  <div class="card g">
+    <h4>Fractional index</h4>
+    <p><span class="m">a<sup>1/2</sup> &times; a<sup>1/2</sup> = a<sup>1</sup></span>, so
+    <span class="m">a<sup>1/2</sup></span> must be the square root.</p>
+    <div class="formula">a<sup>1/2</sup> = <span class="rt"><span>a</span></span> &nbsp;&nbsp;
+    a<sup>1/3</sup> = <sup>3</sup><span class="rt"><span>a</span></span> &nbsp;&nbsp;
+    a<sup>m/n</sup> = (<sup>n</sup><span class="rt"><span>a</span></span>)<sup>m</sup></div>
+    <p>Bottom of the fraction is the <b>root</b>, top is the <b>power</b>.</p>
+  </div>
+</div>
+
+<div class="tip"><b>Exam tip</b> For <span class="m">a<sup>m/n</sup></span> always take the <b>root first</b>, then
+the power &mdash; the numbers stay small.
+<span class="m">8<sup>2/3</sup> = (<sup>3</sup><span class="rt"><span>8</span></span>)&sup2; = 2&sup2; = 4</span>
+is far easier than working out <span class="m">8&sup2; = 64</span> and then cube-rooting it.</div>
+
+<div class="tw">
+<table>
+<thead><tr><th>Expression</th><th>Working</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td><span class="m">49<sup>1/2</sup></span></td><td>square root of 49</td><td><span class="m">7</span></td></tr>
+<tr><td><span class="m">8<sup>4/3</sup></span></td><td>cube root 2, then <span class="m">2<sup>4</sup></span></td><td><span class="m">16</span></td></tr>
+<tr><td><span class="m">16<sup>&minus;1/2</sup></span></td><td><span class="frac"><span>1</span><span>16<sup>1/2</sup></span></span> = <span class="frac"><span>1</span><span>4</span></span></td><td><span class="m"><span class="frac"><span>1</span><span>4</span></span></span></td></tr>
+<tr><td><span class="m">16<sup>&minus;3/4</sup></span></td><td>4th root 2, then <span class="m">2&sup3; = 8</span>, then reciprocal</td><td><span class="m"><span class="frac"><span>1</span><span>8</span></span></span></td></tr>
+<tr><td><span class="m">(<span class="frac"><span>2</span><span>3</span></span>)<sup>&minus;2</sup></span></td><td>reciprocal, then square: <span class="m">(<span class="frac"><span>3</span><span>2</span></span>)&sup2;</span></td><td><span class="m"><span class="frac"><span>9</span><span>4</span></span></span></td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Simplify, giving each answer with positive indices: (a) <span class="m">5x<sup>0</sup></span> &nbsp;(b) <span class="m">4x<sup>&minus;3</sup></span> &nbsp;(c) <span class="m">(16x<sup>4</sup>)<sup>1/2</sup></span> &nbsp;(d) <span class="m">(27a<sup>6</sup>)<sup>2/3</sup></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The index belongs to <span class="m">x</span> only, so <span class="m">x<sup>0</sup> = 1</span> and the 5 survives.
+    <span class="work">5 &times; 1 = 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Only <span class="m">x</span> carries the negative index, so only <span class="m">x&sup3;</span> goes to the bottom.
+    <span class="work">4x<sup>&minus;3</sup> = 4 &times; <span class="frac"><span>1</span><span>x&sup3;</span></span> = <span class="frac"><span>4</span><span>x&sup3;</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) A power of <span class="m">&frac12;</span> is a square root; apply it to both factors.
+    <span class="work">16<sup>1/2</sup> = 4 &nbsp;&nbsp; (x<sup>4</sup>)<sup>1/2</sup> = x<sup>4 &times; 1/2</sup> = x&sup2;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(d) Cube root first, then square.
+    <span class="work">27<sup>2/3</sup> = 3&sup2; = 9 &nbsp;&nbsp; (a<sup>6</sup>)<sup>2/3</sup> = a<sup>4</sup></span></div></div>
+  <div class="final">(a) 5 &nbsp;&nbsp; (b) <span class="frac"><span>4</span><span>x&sup3;</span></span> &nbsp;&nbsp; (c) 4x&sup2; &nbsp;&nbsp; (d) 9a<sup>4</sup></div>
+  <div class="note"><b>Check (d)</b> With <span class="m">a = 2</span>:
+  <span class="m">27 &times; 64 = 1728</span>, whose cube root is 12, and <span class="m">12&sup2; = 144</span>.
+  The answer gives <span class="m">9 &times; 16 = 144</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="equations" data-nav="Index equations">
+<h2>Solving index equations</h2>
+<p>When the unknown sits in the index, you cannot solve by the usual balancing moves. Instead write
+<b>both sides as powers of the same base</b>. Once the bases match, the indices must be equal.</p>
+
+<div class="formula">If a<sup>p</sup> = a<sup>q</sup> then p = q
+<small>Valid for any base <span class="m">a &gt; 0</span>, <span class="m">a &ne; 1</span></small></div>
+
+<div class="grid two">
+  <div class="card">
+    <h4>Straightforward: <span class="m">2<sup>x</sup> = 32</span></h4>
+    <p>Write 32 as a power of 2: <span class="m">32 = 2<sup>5</sup></span>.</p>
+    <p><span class="m">2<sup>x</sup> = 2<sup>5</sup></span>, so <span class="m">x = 5</span>.</p>
+  </div>
+  <div class="card o">
+    <h4>Reciprocal: <span class="m">5<sup>x</sup> = <span class="frac"><span>1</span><span>125</span></span></span></h4>
+    <p><span class="m"><span class="frac"><span>1</span><span>125</span></span> = <span class="frac"><span>1</span><span>5&sup3;</span></span> = 5<sup>&minus;3</sup></span>.</p>
+    <p>So <span class="m">x = &minus;3</span>.</p>
+  </div>
+</div>
+
+<div class="tip"><b>Exam tip</b> Learn the small powers by heart &mdash; <span class="m">2, 4, 8, 16, 32, 64, 128</span>;
+<span class="m">3, 9, 27, 81</span>; <span class="m">5, 25, 125</span>. Spotting that both 9 and 27 are powers
+of 3 is the whole question.</div>
+
+<div class="tool">
+  <h4>Common-base solver</h4>
+  <p class="hint">Enter <span class="m">a</span> and <span class="m">b</span> to solve
+  <span class="m">a<sup>x</sup> = b</span>. Fractions are allowed on the right, e.g. <span class="m">1/125</span>.
+  Try <span class="m">a = 9</span>, <span class="m">b = 27</span>.</p>
+  <div class="row">
+    <div><label for="cbA">a (the base)</label><input type="text" id="cbA" value="9" style="width:110px"></div>
+    <div><label for="cbB">b (the result)</label><input type="text" id="cbB" value="27" style="width:110px"></div>
+  </div>
+  <div class="out" id="cbOut"></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Solve <span class="m">9<sup>x</sup> = 27</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">9 and 27 are not powers of each other, but both are powers of <b>3</b>. That is the common base.
+    <span class="work">9 = 3&sup2; &nbsp;&nbsp; 27 = 3&sup3;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rewrite the left-hand side and use <span class="m">(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></span>.
+    <span class="work">9<sup>x</sup> = (3&sup2;)<sup>x</sup> = 3<sup>2x</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Bases now match, so the indices are equal.
+    <span class="work">3<sup>2x</sup> = 3&sup3; &nbsp;&rarr;&nbsp; 2x = 3</span></div></div>
+  <div class="final">x = <span class="frac"><span>3</span><span>2</span></span> = 1.5</div>
+  <div class="note"><b>Check</b> <span class="m">9<sup>1.5</sup> = (&#8730;9)&sup3; = 3&sup3; = 27</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Simplify (a) <span class="m">12a<sup>5</sup>b&sup2; &divide; 4a&sup2;b</span> &nbsp;(b) <span class="m">(5p&sup2;q)&sup2; &times; 2p&sup3;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Split the job into three: numbers, then <span class="m">a</span>, then <span class="m">b</span>. Remember <span class="m">b = b<sup>1</sup></span>.
+    <span class="work">12 &divide; 4 = 3<br>a<sup>5</sup> &divide; a&sup2; = a<sup>3</sup><br>b&sup2; &divide; b<sup>1</sup> = b<sup>1</sup> = b</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Deal with the bracket before multiplying &mdash; the index applies to all three factors inside.
+    <span class="work">(5p&sup2;q)&sup2; = 25p<sup>4</sup>q&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Now multiply by <span class="m">2p&sup3;</span>: multiply coefficients, add the <span class="m">p</span> indices.
+    <span class="work">25 &times; 2 = 50 &nbsp;&nbsp; p<sup>4</sup> &times; p&sup3; = p<sup>7</sup></span></div></div>
+  <div class="final">(a) 3a&sup3;b &nbsp;&nbsp;&nbsp; (b) 50p<sup>7</sup>q&sup2;</div>
+  <div class="note"><b>Check (a)</b> With <span class="m">a = 2</span>, <span class="m">b = 3</span>:
+  <span class="m">12 &times; 32 &times; 9 = 3456</span> and <span class="m">4 &times; 4 &times; 3 = 48</span>,
+  so <span class="m">3456 &divide; 48 = 72</span>. The answer gives <span class="m">3 &times; 8 &times; 3 = 72</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">Simplify fully <span class="m"><span class="frac"><span>(2x&sup2;y&sup3;)&sup3; &times; 5x<sup>4</sup></span><span>4x<sup>5</sup>y<sup>8</sup></span></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Brackets first. Cube every factor inside.
+    <span class="work">(2x&sup2;y&sup3;)&sup3; = 2&sup3; &times; x<sup>6</sup> &times; y<sup>9</sup> = 8x<sup>6</sup>y<sup>9</sup></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply out the whole numerator.
+    <span class="work">8x<sup>6</sup>y<sup>9</sup> &times; 5x<sup>4</sup> = 40x<sup>10</sup>y<sup>9</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide: coefficients first, then subtract indices letter by letter.
+    <span class="work">40 &divide; 4 = 10<br>x<sup>10</sup> &divide; x<sup>5</sup> = x<sup>5</sup><br>y<sup>9</sup> &divide; y<sup>8</sup> = y</span></div></div>
+  <div class="final">10x<sup>5</sup>y</div>
+  <div class="tip"><b>Exam tip</b> &ldquo;Simplify fully&rdquo; means no brackets and no negative indices left in
+  the answer. Check with <span class="m">x = 2</span>, <span class="m">y = 1</span>: the original is
+  <span class="m"><span class="frac"><span>512 &times; 80</span><span>128</span></span> = 320</span>, and
+  <span class="m">10 &times; 32 &times; 1 = 320</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Solve <span class="m">8<sup>x+1</sup> = 4<sup>2x&minus;1</sup></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Both 8 and 4 are powers of 2, so use base 2 throughout.
+    <span class="work">8 = 2&sup3; &nbsp;&nbsp; 4 = 2&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rewrite each side. Multiply the indices, and keep the brackets around <span class="m">x + 1</span>.
+    <span class="work">(2&sup3;)<sup>x+1</sup> = 2<sup>3(x+1)</sup> = 2<sup>3x+3</sup><br>(2&sup2;)<sup>2x&minus;1</sup> = 2<sup>2(2x&minus;1)</sup> = 2<sup>4x&minus;2</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Equal bases, so equate the indices and solve the linear equation.
+    <span class="work">3x + 3 = 4x &minus; 2<br>3 + 2 = 4x &minus; 3x</span></div></div>
+  <div class="final">x = 5</div>
+  <div class="warn"><b>Watch out</b> Forgetting the bracket gives <span class="m">3x + 1</span> instead of
+  <span class="m">3x + 3</span> and the whole answer is lost. Check: <span class="m">8<sup>6</sup> = 262144</span>
+  and <span class="m">4<sup>9</sup> = 262144</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Simplify: (a) <span class="m">x<sup>5</sup> &times; x&sup3;</span> &nbsp;(b) <span class="m">y<sup>7</sup> &divide; y&sup2;</span> &nbsp;(c) <span class="m">(m<sup>4</sup>)&sup3;</span></li>
+    <li>Simplify: (a) <span class="m">6a&sup3; &times; 5a<sup>4</sup></span> &nbsp;(b) <span class="m">24p<sup>8</sup> &divide; 6p&sup3;</span> &nbsp;(c) <span class="m">(4x&sup3;y)&sup2;</span></li>
+    <li>Write with positive indices: (a) <span class="m">3x<sup>&minus;4</sup></span> &nbsp;(b) <span class="m">(2x)<sup>&minus;3</sup></span> &nbsp;(c) <span class="m">9y<sup>0</sup></span></li>
+    <li>Evaluate: (a) <span class="m">49<sup>1/2</sup></span> &nbsp;(b) <span class="m">8<sup>4/3</sup></span> &nbsp;(c) <span class="m">16<sup>&minus;1/2</sup></span></li>
+    <li>Simplify <span class="m">(25x<sup>6</sup>)<sup>1/2</sup> &times; 2x<sup>&minus;1</sup></span>.</li>
+    <li>Solve <span class="m">3<sup>x</sup> &times; 9<sup>x+1</sup> = 81</span>.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) add indices &rarr; <span class="ans">x<sup>8</sup></span> &nbsp;(b) subtract &rarr;
+        <span class="ans">y<sup>5</sup></span> &nbsp;(c) multiply &rarr; <span class="ans">m<sup>12</sup></span></li>
+      <li>(a) <span class="m">6 &times; 5 = 30</span>, <span class="m">a<sup>3+4</sup></span> &rarr;
+        <span class="ans">30a<sup>7</sup></span> &nbsp;(b) <span class="m">24 &divide; 6 = 4</span>,
+        <span class="m">p<sup>8&minus;3</sup></span> &rarr; <span class="ans">4p<sup>5</sup></span>
+        &nbsp;(c) square each factor &rarr; <span class="ans">16x<sup>6</sup>y&sup2;</span></li>
+      <li>(a) only <span class="m">x</span> moves down &rarr;
+        <span class="ans"><span class="frac"><span>3</span><span>x<sup>4</sup></span></span></span>
+        &nbsp;(b) the bracket means the 2 is cubed too:
+        <span class="m">(2x)&sup3; = 8x&sup3;</span> &rarr;
+        <span class="ans"><span class="frac"><span>1</span><span>8x&sup3;</span></span></span>
+        &nbsp;(c) <span class="m">y<sup>0</sup> = 1</span> &rarr; <span class="ans">9</span></li>
+      <li>(a) <span class="ans">7</span> &nbsp;(b) cube root 2, then <span class="m">2<sup>4</sup></span> &rarr;
+        <span class="ans">16</span> &nbsp;(c) <span class="m"><span class="frac"><span>1</span><span>&#8730;16</span></span></span> &rarr;
+        <span class="ans"><span class="frac"><span>1</span><span>4</span></span></span></li>
+      <li><span class="m">(25x<sup>6</sup>)<sup>1/2</sup> = 5x&sup3;</span>; then
+        <span class="m">5x&sup3; &times; 2x<sup>&minus;1</sup> = 10x<sup>3&minus;1</sup></span> &rarr;
+        <span class="ans">10x&sup2;</span> &nbsp;(at <span class="m">x = 2</span>: <span class="m">40 &times; 1 = 40</span> both ways)</li>
+      <li><span class="m">9<sup>x+1</sup> = 3<sup>2x+2</sup></span>, so
+        <span class="m">3<sup>x</sup> &times; 3<sup>2x+2</sup> = 3<sup>3x+2</sup></span>; and
+        <span class="m">81 = 3<sup>4</sup></span>, so <span class="m">3x + 2 = 4</span> &rarr;
+        <span class="ans">x = <span class="frac"><span>2</span><span>3</span></span></span></li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><span class="m">a<sup>m</sup> &times; a<sup>n</sup> = a<sup>m+n</sup></span>,
+      <span class="m">a<sup>m</sup> &divide; a<sup>n</sup> = a<sup>m&minus;n</sup></span>,
+      <span class="m">(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></span> &mdash; only when the
+      <b>bases are the same</b>.</li>
+    <li>With algebraic terms, handle the <b>coefficients separately</b> from the letters:
+      <span class="m">12a<sup>5</sup>b&sup2; &divide; 4a&sup2;b = 3a&sup3;b</span>.</li>
+    <li><span class="m">(ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></span> &mdash; an index outside a bracket
+      applies to the coefficient too: <span class="m">(3x&sup2;y)&sup3; = 27x<sup>6</sup>y&sup3;</span>.</li>
+    <li><span class="m">a<sup>0</sup> = 1</span> for any non-zero <span class="m">a</span>, so
+      <span class="m">5x<sup>0</sup> = 5</span> but <span class="m">(5x)<sup>0</sup> = 1</span>.</li>
+    <li><span class="m">a<sup>&minus;n</sup> = <span class="frac"><span>1</span><span>a<sup>n</sup></span></span></span>
+      &mdash; a negative index means reciprocal, never a negative answer.</li>
+    <li><span class="m">a<sup>m/n</sup></span>: the <b>bottom is the root</b>, the <b>top is the power</b>.
+      Take the root first to keep the numbers small.</li>
+    <li>To solve an equation with the unknown in the index, write both sides to a <b>common base</b>, then
+      equate the indices.</li>
+    <li>Adding is not multiplying: <span class="m">x&sup2; + x&sup3;</span> does not simplify, but
+      <span class="m">x&sup2; &times; x&sup3; = x<sup>5</sup></span>.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="2-4.html"><span>&larr; Previous</span><b>2.4 Working with Brackets</b></a><a class="next" href="index.html"><span>More lessons &rarr;</span><b>All notes</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 2.5 Indices<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- index-law simplifier ---- */
+(function(){
+  var out=el('ilOut');
+  function S(n){ return n<0? '&minus;'+Math.abs(n) : String(n); }
+  function pw(v,e){
+    if(e===0) return '';
+    if(e===1) return v;
+    return v+'<sup>'+(e<0?'&minus;'+Math.abs(e):e)+'</sup>';
+  }
+  function term(k,m,n){
+    if(k===0) return '0';
+    var body=pw('x',m)+pw('y',n);
+    var c='';
+    if(k===1) c = body? '' : '1';
+    else if(k===-1) c = body? '&minus;' : '&minus;1';
+    else c = (k<0? '&minus;'+Math.abs(k) : String(k));
+    return c+body;
+  }
+  /* build answer with positive indices only */
+  function positive(cn,cd,m,n){
+    var top=[], bot=[];
+    if(m>0) top.push(pw('x',m)); else if(m<0) bot.push(pw('x',-m));
+    if(n>0) top.push(pw('y',n)); else if(n<0) bot.push(pw('y',-n));
+    var neg = cn<0; cn=Math.abs(cn);
+    var ts=(cn===1 && top.length)? top.join('') : cn+top.join('');
+    var bs=(cd===1 && bot.length)? bot.join('') : (bot.length||cd!==1? cd+bot.join('') : '');
+    var res = bs? '<span class="frac"><span>'+ts+'</span><span>'+bs+'</span></span>' : ts;
+    return (neg?'&minus;':'')+res;
+  }
+  function go(){
+    var k1=Math.round(num('ilK1',12)), m1=Math.round(num('ilX1',5)), n1=Math.round(num('ilY1',2));
+    var k2=Math.round(num('ilK2',4)),  m2=Math.round(num('ilX2',2)), n2=Math.round(num('ilY2',1));
+    var op=(el('ilOp')||{}).value==='m'? 'm':'d';
+    if(k2===0 && op==='d'){ out.innerHTML='<span class="hl">You cannot divide by zero.</span>'; return; }
+
+    var mx, my, cn, cd, sign, lawC;
+    if(op==='m'){
+      mx=m1+m2; my=n1+n2; cn=k1*k2; cd=1;
+      lawC='Coefficients: '+S(k1)+' &times; '+S(k2)+' = <span class="hl">'+S(k1*k2)+'</span>';
+    } else {
+      mx=m1-m2; my=n1-n2;
+      var g=gcd(k1,k2)||1; cn=k1/g; cd=k2/g;
+      if(cd<0){ cn=-cn; cd=-cd; }
+      lawC='Coefficients: '+S(k1)+' &divide; '+S(k2)+' = <span class="hl">'+(cd===1? S(cn) : S(cn)+'/'+cd)+'</span>';
+    }
+    var sym = op==='m'? '&times;' : '&divide;';
+    var lawX = op==='m'
+      ? 'x: &nbsp;a<sup>m</sup> &times; a<sup>n</sup> = a<sup>m+n</sup> &nbsp;&rarr;&nbsp; x<sup>'+S(m1)+'</sup> &times; x<sup>'+S(m2)+'</sup> = <span class="hl">x<sup>'+S(mx)+'</sup></span>'
+      : 'x: &nbsp;a<sup>m</sup> &divide; a<sup>n</sup> = a<sup>m&minus;n</sup> &nbsp;&rarr;&nbsp; x<sup>'+S(m1)+'</sup> &divide; x<sup>'+S(m2)+'</sup> = <span class="hl">x<sup>'+S(mx)+'</sup></span>';
+    var lawY = op==='m'
+      ? 'y: &nbsp;y<sup>'+S(n1)+'</sup> &times; y<sup>'+S(n2)+'</sup> = <span class="hl">y<sup>'+S(my)+'</sup></span>'
+      : 'y: &nbsp;y<sup>'+S(n1)+'</sup> &divide; y<sup>'+S(n2)+'</sup> = <span class="hl">y<sup>'+S(my)+'</sup></span>';
+
+    var notes=[];
+    if(mx===0) notes.push('x<sup>0</sup> = 1, so x disappears from the answer.');
+    if(my===0) notes.push('y<sup>0</sup> = 1, so y disappears from the answer.');
+    if(mx<0||my<0) notes.push('A negative index means a reciprocal &mdash; move that letter to the bottom of a fraction.');
+
+    out.innerHTML =
+      '<div>'+term(k1,m1,n1)+' '+sym+' '+term(k2,m2,n2)+'</div>'+
+      '<div style="margin-top:8px">'+lawC+'</div>'+
+      '<div style="margin-top:4px">'+lawX+'</div>'+
+      '<div style="margin-top:4px">'+lawY+'</div>'+
+      '<div style="margin-top:8px">Answer: <b>'+positive(cn,cd,mx,my)+'</b></div>'+
+      (notes.length? '<div style="margin-top:8px;opacity:.8;font-size:.9em">'+notes.join('<br>')+'</div>':'');
+  }
+  bindAll(['ilK1','ilX1','ilY1','ilK2','ilX2','ilY2','ilOp'],go);
+})();
+
+/* ---- common-base solver for a^x = b ---- */
+(function(){
+  var out=el('cbOut');
+  function powExp(r,v){            /* returns e with r^e === v, else null */
+    var e=0, cur=1;
+    while(cur<v){ cur*=r; e++; if(e>64) return null; }
+    return cur===v? e : null;
+  }
+  function parseVal(s){            /* integer or 1/integer -> {n:,d:} */
+    s=(s||'').trim().replace(/\s+/g,'');
+    var m=s.match(/^(\d+)\/(\d+)$/);
+    if(m) return {n:parseInt(m[1],10), d:parseInt(m[2],10)};
+    if(/^\d+$/.test(s)) return {n:parseInt(s,10), d:1};
+    return null;
+  }
+  function go(){
+    var A=parseVal(el('cbA').value), B=parseVal(el('cbB').value);
+    if(!A||!B||A.d!==1||A.n<2){
+      out.innerHTML='<span class="hl">Enter a whole number of at least 2 for a, and a whole number or a fraction such as 1/125 for b.</span>';
+      return;
+    }
+    var a=A.n, r=null, p=null;
+    for(var t=2;t<=a;t++){ var e=powExp(t,a); if(e!==null){ r=t; p=e; break; } }
+    if(r===null){ out.innerHTML='<span class="hl">Could not find a base for a.</span>'; return; }
+
+    var q=null, bTxt;
+    if(B.d===1){ q=powExp(r,B.n); bTxt=String(B.n); }
+    else if(B.n===1){ var e2=powExp(r,B.d); if(e2!==null) q=-e2; bTxt='1/'+B.d; }
+    else bTxt=B.n+'/'+B.d;
+
+    if(q===null){
+      out.innerHTML='<div>a = '+a+' = '+r+'<sup>'+p+'</sup></div>'+
+        '<div style="margin-top:8px"><span class="hl">'+bTxt+' is not a power of '+r+
+        ', so there is no common base. At IGCSE the numbers are always chosen so that one exists &mdash; check your values.</span></div>';
+      return;
+    }
+    var g=gcd(Math.abs(q),p)||1;
+    var xn=q/g, xd=p/g;
+    var val=Math.pow(a,q/p);
+    var xStr = xd===1? (xn<0? '&minus;'+Math.abs(xn) : String(xn))
+                     : (xn<0? '&minus;'+fracStr(-xn,xd) : fracStr(xn,xd));
+    var dec=fx(q/p,4); if(dec.charAt(0)==='-') dec='&minus;'+dec.slice(1);
+    out.innerHTML=
+      '<div>Solve &nbsp;'+a+'<sup>x</sup> = '+bTxt+'</div>'+
+      '<div style="margin-top:8px">Common base <span class="hl">'+r+'</span>: &nbsp;'+a+' = '+r+'<sup>'+p+'</sup>'+
+        ' &nbsp;and&nbsp; '+bTxt+' = '+r+'<sup>'+(q<0?'&minus;'+Math.abs(q):q)+'</sup></div>'+
+      '<div style="margin-top:6px">('+r+'<sup>'+p+'</sup>)<sup>x</sup> = '+r+'<sup>'+p+'x</sup>, so &nbsp;'+
+        p+'x = '+(q<0?'&minus;'+Math.abs(q):q)+'</div>'+
+      '<div style="margin-top:8px">x = <b>'+xStr+'</b>'+
+        (xd===1? '' : ' &nbsp;= '+dec)+'</div>'+
+      '<div style="margin-top:8px;opacity:.75;font-size:.9em">Check: '+a+'<sup>x</sup> = '+fx(val,6)+'</div>';
+  }
+  bindAll(['cbA','cbB'],go);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2.2 Substitution | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Replacing letters with numbers &mdash; positive, negative and fractional &mdash; and evaluating expressions and formulae without losing marks to sign errors.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 2 &mdash; Making Sense of Algebra</span>
+    </div>
+    <h1>2.2 &nbsp;Substitution</h1>
+    <p>Replacing letters with numbers &mdash; positive, negative and fractional &mdash; and evaluating expressions and formulae without losing marks to sign errors.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#basics">Substituting</a>
+  <a href="#negatives">Negatives</a>
+  <a href="#formulae">Formulae</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="basics" data-nav="Substituting">
+<h2>What substitution means</h2>
+<p><b>Substitution</b> means replacing each letter in an expression by the number it stands for, then working
+out the value. It sounds trivial. It is where a large number of Paper 2 and Paper 4 marks are quietly thrown
+away, almost always through signs and order of operations.</p>
+
+<div class="def"><b>The golden rule</b>
+Write the substituted number <b>inside a bracket</b>, every single time. It costs you two pen strokes and it
+protects you from every common sign error.</div>
+
+<div class="formula">3a &nbsp;&rarr;&nbsp; 3(a) &nbsp;&nbsp;&nbsp; a&sup2; &nbsp;&rarr;&nbsp; (a)&sup2; &nbsp;&nbsp;&nbsp; &minus;a&sup2; &nbsp;&rarr;&nbsp; &minus;(a)&sup2;
+<small>Bracket first, then put the number in</small></div>
+
+<h3>Order of operations still applies</h3>
+<p>Once the numbers are in, you are doing ordinary arithmetic, so <b>BIDMAS</b> governs everything:
+Brackets, Indices, Division and Multiplication, then Addition and Subtraction.</p>
+
+<div class="grid two">
+  <div class="card"><h4>Powers before multiplying</h4>
+    <p><span class="m">3x&sup2;</span> means <span class="m">3 &times; x&sup2;</span>, so square first.
+    When <span class="m">x = 4</span>: <span class="m">3(4)&sup2; = 3 &times; 16 = 48</span>, <b>not</b>
+    <span class="m">(3 &times; 4)&sup2; = 144</span>.</p></div>
+  <div class="card o"><h4>A fraction bar is a bracket</h4>
+    <p><span class="frac"><span>2x + 1</span><span>3</span></span> means
+    <span class="m">(2x + 1) &divide; 3</span>. When <span class="m">x = 7</span> it is
+    <span class="frac"><span>15</span><span>3</span></span><span class="m"> = 5</span>, not
+    <span class="m">2(7) + </span><span class="frac"><span>1</span><span>3</span></span>.</p></div>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Find the value of <span class="m">4a + 3b</span> when <span class="m">a = 5</span> and <span class="m">b = &minus;2</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the expression, then replace each letter with its value in brackets.
+    <span class="work">4a + 3b = 4(5) + 3(&minus;2)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Do the multiplications first (BIDMAS).
+    <span class="work">= 20 + (&minus;6)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Adding a negative is the same as subtracting.
+    <span class="work">= 20 &minus; 6</span></div></div>
+  <div class="final">4a + 3b = 14</div>
+  <div class="tip"><b>Exam tip</b> Show the substitution line. If your arithmetic slips, a correct substitution
+  line still scores the method mark.</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>Substitution machine</h4>
+  <p class="hint">Move the sliders and watch the bracketed substitution line appear before the answer. Try
+  <span class="m">x = &minus;3</span> and compare <span class="m">x&sup2;</span> with
+  <span class="m">&minus;x&sup2;</span>.</p>
+  <div class="sliderbox"><div class="lab"><span>x</span><span id="sbXv">3</span></div>
+    <input type="range" id="sbX" min="-6" max="6" step="0.5" value="3"></div>
+  <div class="sliderbox"><div class="lab"><span>y</span><span id="sbYv">-2</span></div>
+    <input type="range" id="sbY" min="-6" max="6" step="0.5" value="-2"></div>
+  <div class="out" id="sbOut"></div>
+</div>
+</section>
+
+<section id="negatives" data-nav="Negatives">
+<h2>Substituting negative numbers</h2>
+<p>This is the single biggest source of lost marks in the whole of Chapter 2. Two rules do all the work.</p>
+
+<div class="grid two">
+  <div class="card g"><h4>A negative squared is positive</h4>
+    <p><span class="m">(&minus;3)&sup2; = (&minus;3) &times; (&minus;3) = 9</span></p>
+    <p><span class="m">(&minus;3)&sup3; = &minus;27</span> &mdash; an <b>odd</b> power keeps the minus sign,
+    an <b>even</b> power removes it.</p></div>
+  <div class="card o"><h4>But <span class="m">&minus;x&sup2;</span> is not <span class="m">(&minus;x)&sup2;</span></h4>
+    <p><span class="m">&minus;x&sup2;</span> means &ldquo;square it, <i>then</i> make it negative&rdquo;.
+    With <span class="m">x = &minus;3</span>:</p>
+    <p><span class="m">&minus;x&sup2; = &minus;(&minus;3)&sup2; = &minus;9</span> &nbsp;but&nbsp;
+    <span class="m">(&minus;x)&sup2; = (3)&sup2; = 9</span></p></div>
+</div>
+
+<div class="warn"><b>Watch out</b> Subtracting a negative adds. In <span class="m">5 &minus; 2x</span> with
+<span class="m">x = &minus;4</span>: <span class="m">5 &minus; 2(&minus;4) = 5 &minus; (&minus;8) = 5 + 8 = 13</span>.
+Students who skip the bracket typically write <span class="m">5 &minus; 8 = &minus;3</span> and lose the lot.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Given <span class="m">p = &minus;3</span> and <span class="m">q = 4</span>, find the value of (a) <span class="m">p&sup2;</span>, (b) <span class="m">&minus;p&sup2;</span>, (c) <span class="m">2p &minus; q&sup2;</span>, (d) <span class="m">(p &minus; q)&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Bracket the negative before squaring.
+    <span class="work">p&sup2; = (&minus;3)&sup2; = 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) The minus sign sits <i>outside</i> the squaring, so it survives.
+    <span class="work">&minus;p&sup2; = &minus;(&minus;3)&sup2; = &minus;(9) = &minus;9</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Multiply and square first, then subtract.
+    <span class="work">2(&minus;3) &minus; (4)&sup2; = &minus;6 &minus; 16 = &minus;22</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(d) The bracket comes first here, so subtract before squaring.
+    <span class="work">(&minus;3 &minus; 4)&sup2; = (&minus;7)&sup2; = 49</span></div></div>
+  <div class="final">(a) 9 &nbsp; (b) &minus;9 &nbsp; (c) &minus;22 &nbsp; (d) 49</div>
+  <div class="note"><b>Compare</b> (c) and (d) use the same two numbers and give &minus;22 and 49. The brackets
+  are doing all the work &mdash; read them carefully.</div>
+</div>
+</details>
+
+<h3>Fractional values</h3>
+<p>Fractions substitute in exactly the same way. Keep them as fractions if the numbers are friendly, and
+remember that a fraction raised to a power raises both the numerator and the denominator.</p>
+
+<div class="formula"><span class="frac"><span>2</span><span>3</span></span><sup>2</sup> = <span class="frac"><span>2&sup2;</span><span>3&sup2;</span></span> = <span class="frac"><span>4</span><span>9</span></span>
+<small>Square the top and the bottom</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Given <span class="m">x = </span><span class="frac"><span>1</span><span>2</span></span> and <span class="m">y = </span><span class="frac"><span>2</span><span>3</span></span>, find (a) <span class="m">6x + 9y</span>, (b) <span class="m">x&sup2;y</span>, (c) <span class="m">x &divide; y</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Multiply each fraction by its coefficient and cancel.
+    <span class="work">6(<span class="frac"><span>1</span><span>2</span></span>) + 9(<span class="frac"><span>2</span><span>3</span></span>) = 3 + 6 = 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Square <span class="m">x</span> first (indices before multiplication).
+    <span class="work">(<span class="frac"><span>1</span><span>2</span></span>)&sup2; &times; <span class="frac"><span>2</span><span>3</span></span> = <span class="frac"><span>1</span><span>4</span></span> &times; <span class="frac"><span>2</span><span>3</span></span> = <span class="frac"><span>2</span><span>12</span></span> = <span class="frac"><span>1</span><span>6</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Dividing by a fraction means multiplying by its reciprocal.
+    <span class="work"><span class="frac"><span>1</span><span>2</span></span> &divide; <span class="frac"><span>2</span><span>3</span></span> = <span class="frac"><span>1</span><span>2</span></span> &times; <span class="frac"><span>3</span><span>2</span></span> = <span class="frac"><span>3</span><span>4</span></span></span></div></div>
+  <div class="final">(a) 9 &nbsp;&nbsp; (b) <span class="frac"><span>1</span><span>6</span></span> &nbsp;&nbsp; (c) <span class="frac"><span>3</span><span>4</span></span></div>
+  <div class="tip"><b>Exam tip</b> If the question gives fractions, give a fraction answer. Writing
+  <span class="m">0.1666&hellip;</span> instead of <span class="frac"><span>1</span><span>6</span></span>
+  looks like a rounded answer and can be penalised.</div>
+</div>
+</details>
+</section>
+
+<section id="formulae" data-nav="Formulae">
+<h2>Substituting into formulae</h2>
+<p>A formula is just an expression with a name on the front. The mark scheme almost always wants three lines:
+<b>the formula</b>, <b>the substitution</b>, <b>the answer with its unit</b>.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Formula</th><th>What it gives</th><th>Careful with&hellip;</th></tr></thead>
+<tbody>
+<tr><td><span class="m">A = </span><span class="frac"><span>1</span><span>2</span></span><span class="m">(a + b)h</span></td><td>area of a trapezium</td><td>add <span class="m">a</span> and <span class="m">b</span> before halving</td></tr>
+<tr><td><span class="m">A = &pi;r&sup2;</span></td><td>area of a circle</td><td>square <span class="m">r</span>, then multiply by <span class="m">&pi;</span></td></tr>
+<tr><td><span class="m">V = </span><span class="frac"><span>1</span><span>3</span></span><span class="m">&pi;r&sup2;h</span></td><td>volume of a cone</td><td>only <span class="m">r</span> is squared</td></tr>
+<tr><td><span class="m">speed = </span><span class="frac"><span>distance</span><span>time</span></span></td><td>average speed</td><td>time in <b>hours</b> for km/h &mdash; 2 h 30 min is 2.5, not 2.30</td></tr>
+<tr><td><span class="m">v = u + at</span></td><td>final velocity</td><td><span class="m">a</span> is often negative</td></tr>
+<tr><td><span class="m">s = ut + </span><span class="frac"><span>1</span><span>2</span></span><span class="m">at&sup2;</span></td><td>distance travelled</td><td>square <span class="m">t</span> before multiplying</td></tr>
+<tr><td><span class="m">C = </span><span class="frac"><span>5(F &minus; 32)</span><span>9</span></span></td><td>&deg;F converted to &deg;C</td><td>the bracket must be done first</td></tr>
+<tr><td><span class="m">c = <span class="rt"><span>a&sup2; + b&sup2;</span></span></span></td><td>hypotenuse (Pythagoras)</td><td>add <b>before</b> taking the root</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="warn"><b>Watch out</b> <span class="m"><span class="rt"><span>a&sup2; + b&sup2;</span></span></span>
+is <b>not</b> <span class="m">a + b</span>. The root sign is a bracket: everything under the bar is worked out
+first. With <span class="m">a = 6</span>, <span class="m">b = 8</span> the answer is 10, not 14.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Use <span class="m">c = <span class="rt"><span>a&sup2; + b&sup2;</span></span></span> to find <span class="m">c</span> when <span class="m">a = 6</span> and <span class="m">b = 8</span>. Then find <span class="m">c</span> when <span class="m">a = 3.5</span> and <span class="m">b = 7.2</span>, correct to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Substitute, keeping everything under the root.
+    <span class="work">c = <span class="rt"><span>(6)&sup2; + (8)&sup2;</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square first, then add, then root.
+    <span class="work">c = <span class="rt"><span>36 + 64</span></span> = <span class="rt"><span>100</span></span> = 10</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Second pair: square and add.
+    <span class="work">(3.5)&sup2; + (7.2)&sup2; = 12.25 + 51.84 = 64.09</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Take the root and only <i>then</i> round.
+    <span class="work">c = <span class="rt"><span>64.09</span></span> = 8.00562&hellip;</span></div></div>
+  <div class="final">c = 10 &nbsp;&nbsp;and&nbsp;&nbsp; c = 8.01 (3 s.f.)</div>
+  <div class="tip"><b>Exam tip</b> Do not round <span class="m">64.09</span> or any intermediate value.
+  Keep the full display on your calculator and round once, at the very end.</div>
+</div>
+</details>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">The formula <span class="m">C = </span><span class="frac"><span>5(F &minus; 32)</span><span>9</span></span> converts degrees Fahrenheit to degrees Celsius. Find <span class="m">C</span> when (a) <span class="m">F = 212</span>, (b) <span class="m">F = 5</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Substitute and deal with the bracket first.
+    <span class="work">C = <span class="frac"><span>5(212 &minus; 32)</span><span>9</span></span> = <span class="frac"><span>5(180)</span><span>9</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply, then divide.
+    <span class="work">C = <span class="frac"><span>900</span><span>9</span></span> = 100</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Now the bracket gives a negative &mdash; keep it in brackets.
+    <span class="work">C = <span class="frac"><span>5(5 &minus; 32)</span><span>9</span></span> = <span class="frac"><span>5(&minus;27)</span><span>9</span></span></span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">A negative divided by a positive is negative.
+    <span class="work">C = <span class="frac"><span>&minus;135</span><span>9</span></span> = &minus;15</span></div></div>
+  <div class="final">(a) C = 100&deg;C &nbsp;&nbsp; (b) C = &minus;15&deg;C</div>
+  <div class="note"><b>Sense check</b> 212&deg;F is boiling water and 100&deg;C is boiling water, so part (a)
+  is right. Always sanity-check a formula answer against something you know.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q">A car travels 150 km in 2 hours 30 minutes. (a) Use <span class="m">speed = </span><span class="frac"><span>distance</span><span>time</span></span> to find its average speed in km/h. (b) At that speed, how far would it travel in 3 hours 45 minutes?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Convert the time to hours as a decimal. 30 minutes is <span class="frac"><span>30</span><span>60</span></span> of an hour.
+    <span class="work">2 h 30 min = 2.5 h</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Substitute into the formula.
+    <span class="work">speed = <span class="frac"><span>150</span><span>2.5</span></span> = 60 km/h</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Rearranged, <span class="m">distance = speed &times; time</span>, and 45 min is 0.75 h.
+    <span class="work">distance = 60 &times; 3.75</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><span class="work">= 225 km</span></div></div>
+  <div class="final">(a) 60 km/h &nbsp;&nbsp; (b) 225 km</div>
+  <div class="warn"><b>Watch out</b> Never substitute 2.30 for 2 hours 30 minutes. Minutes are sixtieths:
+  15 min = 0.25 h, 20 min = <span class="m">0.3&#775;</span> h, 40 min = <span class="m">0.6&#775;</span> h.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">The formula <span class="m">s = ut + </span><span class="frac"><span>1</span><span>2</span></span><span class="m">at&sup2;</span> gives the distance <span class="m">s</span> metres travelled. Find <span class="m">s</span> when (a) <span class="m">u = 8</span>, <span class="m">a = &minus;2</span>, <span class="m">t = 3</span>; (b) <span class="m">u = 0</span>, <span class="m">a = 9.8</span>, <span class="m">t = 2.5</span>, giving your answer to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Substitute all three values, bracketing each one.
+    <span class="work">s = (8)(3) + <span class="frac"><span>1</span><span>2</span></span>(&minus;2)(3)&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Indices first: <span class="m">(3)&sup2; = 9</span>. Then the multiplications.
+    <span class="work">s = 24 + <span class="frac"><span>1</span><span>2</span></span>(&minus;2)(9) = 24 + (&minus;9)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Adding a negative subtracts.
+    <span class="work">s = 24 &minus; 9 = 15</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(b) The first term vanishes because <span class="m">u = 0</span>.
+    <span class="work">s = (0)(2.5) + <span class="frac"><span>1</span><span>2</span></span>(9.8)(2.5)&sup2;</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t"><span class="m">(2.5)&sup2; = 6.25</span>, so multiply the three numbers.
+    <span class="work">s = 0 + 0.5 &times; 9.8 &times; 6.25 = 30.625</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">Round only now, to 3 significant figures.
+    <span class="work">s = 30.6</span></div></div>
+  <div class="final">(a) s = 15 m &nbsp;&nbsp; (b) s = 30.6 m (3 s.f.)</div>
+  <div class="warn"><b>Watch out</b> In part (a) the <span class="m">t&sup2;</span> applies only to
+  <span class="m">t</span>, not to <span class="m">at</span>. Squaring <span class="m">(&minus;2)(3)</span>
+  would give <span class="m">36</span> and a completely wrong answer.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li><span class="m">a = 4</span> and <span class="m">b = &minus;3</span>. Find (a) <span class="m">2a + 5b</span>, (b) <span class="m">ab</span>, (c) <span class="m">a&sup2; + b&sup2;</span>, (d) <span class="m">(a + b)&sup2;</span>.</li>
+    <li><span class="m">x = &minus;5</span>. Find (a) <span class="m">x&sup2;</span>, (b) <span class="m">&minus;x&sup2;</span>, (c) <span class="m">3 &minus; 2x</span>, (d) <span class="m">x&sup3;</span>.</li>
+    <li><span class="m">p = </span><span class="frac"><span>2</span><span>3</span></span> and <span class="m">q = </span><span class="frac"><span>1</span><span>4</span></span>. Find (a) <span class="m">9p&sup2;</span>, (b) <span class="m">8q</span>, (c) <span class="m">p &divide; q</span>.</li>
+    <li>Use <span class="m">v = u + at</span> to find <span class="m">v</span> when <span class="m">u = 25</span>, <span class="m">a = &minus;4</span> and <span class="m">t = 6.5</span>.</li>
+    <li>Use <span class="m">C = </span><span class="frac"><span>5(F &minus; 32)</span><span>9</span></span> to find <span class="m">C</span> when <span class="m">F = &minus;4</span>.</li>
+    <li>The surface area of a sphere is <span class="m">A = 4&pi;r&sup2;</span>. Find <span class="m">A</span> when <span class="m">r = 6.5</span> cm, correct to 3 significant figures.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>(a) <span class="m">2(4) + 5(&minus;3) = 8 &minus; 15 = </span><span class="ans">&minus;7</span> &nbsp;(b) <span class="m">(4)(&minus;3) = </span><span class="ans">&minus;12</span> &nbsp;(c) <span class="m">16 + 9 = </span><span class="ans">25</span> &nbsp;(d) <span class="m">(4 + (&minus;3))&sup2; = (1)&sup2; = </span><span class="ans">1</span></li>
+      <li>(a) <span class="m">(&minus;5)&sup2; = </span><span class="ans">25</span> &nbsp;(b) <span class="m">&minus;(&minus;5)&sup2; = </span><span class="ans">&minus;25</span> &nbsp;(c) <span class="m">3 &minus; 2(&minus;5) = 3 + 10 = </span><span class="ans">13</span> &nbsp;(d) <span class="m">(&minus;5)&sup3; = </span><span class="ans">&minus;125</span></li>
+      <li>(a) <span class="m">9 &times; </span><span class="frac"><span>4</span><span>9</span></span><span class="m"> = </span><span class="ans">4</span> &nbsp;(b) <span class="m">8 &times; </span><span class="frac"><span>1</span><span>4</span></span><span class="m"> = </span><span class="ans">2</span> &nbsp;(c) <span class="frac"><span>2</span><span>3</span></span><span class="m"> &times; </span><span class="frac"><span>4</span><span>1</span></span><span class="m"> = </span><span class="ans"><span class="frac"><span>8</span><span>3</span></span></span></li>
+      <li><span class="m">v = 25 + (&minus;4)(6.5) = 25 &minus; 26 = </span><span class="ans">&minus;1</span></li>
+      <li><span class="m">C = </span><span class="frac"><span>5(&minus;4 &minus; 32)</span><span>9</span></span><span class="m"> = </span><span class="frac"><span>5(&minus;36)</span><span>9</span></span><span class="m"> = </span><span class="frac"><span>&minus;180</span><span>9</span></span><span class="m"> = </span><span class="ans">&minus;20&deg;C</span></li>
+      <li><span class="m">A = 4&pi;(6.5)&sup2; = 4&pi;(42.25) = 169&pi; = 530.929&hellip; = </span><span class="ans">531 cm&sup2;</span> (3 s.f.)</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Always bracket the substituted value</b>, especially when it is negative:
+      <span class="m">x&sup2; &rarr; (&minus;3)&sup2;</span>.</li>
+    <li>An even power of a negative is positive; an odd power stays negative:
+      <span class="m">(&minus;2)&sup2; = 4</span> but <span class="m">(&minus;2)&sup3; = &minus;8</span>.</li>
+    <li><span class="m">&minus;x&sup2;</span> and <span class="m">(&minus;x)&sup2;</span> are different.
+      In <span class="m">&minus;x&sup2;</span> only <span class="m">x</span> is squared.</li>
+    <li>BIDMAS still rules after substituting: brackets, indices, then <span class="m">&times; &divide;</span>,
+      then <span class="m">+ &minus;</span>.</li>
+    <li>A fraction bar and a root sign both act as brackets &mdash; complete everything above the bar or under
+      the root before dividing or rooting.</li>
+    <li>Show the formula, then the substitution, then the answer. The substitution line carries the method mark.</li>
+    <li>Convert times to decimal <b>hours</b> before using <span class="m">speed = </span><span class="frac"><span>distance</span><span>time</span></span>: 2 h 30 min is 2.5 h.</li>
+    <li>Never round part-way through. Round once, at the end, to 3 significant figures unless told otherwise.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="2-1.html"><span>&larr; Previous</span><b>2.1 Using Letters</b></a><a class="next" href="2-3.html"><span>Next &rarr;</span><b>2.3 Simplifying Expressions</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 2.2 Substitution<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- substitution machine ---- */
+(function(){
+  function sn(v){ var r=Math.round(v*10000)/10000; return r<0? '&minus;'+Math.abs(r) : String(r); }
+  function br(v){ return '('+sn(v)+')'; }
+  function go(){
+    var x=num('sbX',3), y=num('sbY',-2);
+    el('sbXv').innerHTML=sn(x); el('sbYv').innerHTML=sn(y);
+    var rows=[
+      ['3x + 2y', '3'+br(x)+' + 2'+br(y), 3*x+2*y],
+      ['x&sup2; &minus; y&sup2;', br(x)+'&sup2; &minus; '+br(y)+'&sup2;', x*x-y*y],
+      ['&minus;x&sup2;', '&minus;'+br(x)+'&sup2;', -(x*x)],
+      ['(x &minus; y)&sup2;', '('+br(x)+' &minus; '+br(y)+')&sup2;', (x-y)*(x-y)],
+      ['5x&sup2;y', '5'+br(x)+'&sup2;'+br(y), 5*x*x*y],
+      ['2(x + 3y)', '2('+br(x)+' + 3'+br(y)+')', 2*(x+3*y)]
+    ];
+    var h='<table style="width:100%;border-collapse:collapse">';
+    h+='<tr style="opacity:.65;font-size:.85em"><td>Expression</td><td>Substitution line</td><td style="text-align:right">Value</td></tr>';
+    for(var i=0;i<rows.length;i++){
+      h+='<tr><td style="padding:5px 8px 5px 0"><span class="hl">'+rows[i][0]+'</span></td>'+
+         '<td style="padding:5px 8px">'+rows[i][1]+'</td>'+
+         '<td style="padding:5px 0;text-align:right"><b>'+sn(rows[i][2])+'</b></td></tr>';
+    }
+    h+='</table>';
+    if(x<0){ h+='<div style="margin-top:10px;opacity:.8;font-size:.9em">Notice that <span class="hl">x&sup2;</span> is positive while <span class="hl">&minus;x&sup2;</span> is negative &mdash; the bracket is what keeps them apart.</div>'; }
+    el('sbOut').innerHTML=h;
+  }
+  bindAll(['sbX','sbY'],go);
+})();
+</script>
+</body>
+</html>

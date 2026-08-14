@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1.2 Multiples and Factors | IGCSE 0580 Extended Notes</title>
+<meta name="description" content="Multiples, factors, divisibility tests and the two workhorses of the number topic &mdash; the highest common factor and the lowest common multiple.">
+<style>
+/* ============ THEME ============ */
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ============ PROGRESS + HEADER ============ */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#f5a623);z-index:60;transition:width .1s linear}
+header.hero{
+  background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden;
+}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+
+/* ============ STICKY NAV ============ */
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.on{color:var(--blue);border-bottom-color:var(--orange)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ SECTIONS ============ */
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+
+/* ============ CARDS ============ */
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+/* callouts */
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+
+/* formula display */
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.ans{display:inline-block;background:var(--green-l);border:1.5px solid var(--green);color:var(--green);
+  border-radius:8px;padding:2px 10px;font-weight:700;font-family:var(--mono)}
+
+/* math bits */
+code,.m{font-family:var(--mono);background:var(--code-bg);border-radius:5px;padding:1px 6px;font-size:.94em;color:var(--navy)}
+.m.plain{background:none;padding:0}
+.frac{display:inline-flex;flex-direction:column;vertical-align:-0.55em;text-align:center;margin:0 .22em;line-height:1.18;font-size:.95em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .32em}
+.frac>span:last-child{padding:0 .32em}
+.rt{display:inline-flex;align-items:flex-start;vertical-align:-.12em;line-height:1.1}
+.rt::before{content:"\221A";font-size:1.2em;line-height:1;margin-top:-.06em}
+.rt>span{border-top:1.5px solid currentColor;padding:.06em .2em 0 .1em;margin-top:.04em}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem;background:var(--card);
+  border-radius:11px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:.9rem}
+html[data-theme="dark"] th{background:#1c2f52;color:#dce8ff}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--code-bg)}
+.tw{overflow-x:auto}
+
+/* ============ WORKED EXAMPLES (collapsible) ============ */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+.ex>summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  font-weight:600;background:linear-gradient(180deg,var(--card),var(--code-bg))}
+.ex>summary::-webkit-details-marker{display:none}
+.ex>summary:hover{background:var(--blue-l)}
+.ex>summary .tag{background:var(--navy);color:#fff;border-radius:7px;padding:2px 9px;font-size:12.5px;
+  font-weight:700;flex:none;margin-top:2px;letter-spacing:.3px}
+html[data-theme="dark"] .ex>summary .tag{background:#24406e;color:#dce8ff}
+.ex>summary .q{flex:1;color:var(--ink)}
+.ex>summary::after{content:"\25BC";font-size:11px;color:var(--ink-soft);transition:transform .2s;margin-top:5px;flex:none}
+.ex[open]>summary::after{transform:rotate(180deg)}
+.ex .body{padding:6px 18px 18px;border-top:1px solid var(--line)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+.step .t{flex:1}
+.step .t .work{font-family:var(--mono);background:var(--code-bg);border-radius:8px;padding:8px 11px;
+  margin-top:5px;display:block;overflow-x:auto;font-size:.95rem}
+.final{background:var(--green-l);border:1.5px solid var(--green);border-radius:11px;padding:11px 15px;
+  margin-top:12px;font-weight:700;font-family:var(--mono);color:var(--green);text-align:center;font-size:1.05rem}
+
+/* ============ TRY IT ============ */
+.tryit{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--orange);
+  border-radius:var(--radius);padding:15px 17px;margin:14px 0;box-shadow:var(--shadow)}
+.tryit h4{margin:0 0 6px;color:var(--orange);font-size:.85rem;letter-spacing:1.1px;text-transform:uppercase}
+.tryit ol{margin:8px 0 0;padding-left:20px}
+.tryit .sol{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.tryit.show .sol{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:8px 16px;font-size:14px;
+  font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.btn:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.o{background:var(--orange)} .btn.o:hover{background:#b8461c}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--blue);color:var(--blue);background:none}
+
+/* ============ TABS ============ */
+.tabs{margin:14px 0}
+.tabs .heads{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:-1px}
+.tabs .heads button{background:var(--code-bg);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 15px;cursor:pointer;font-family:inherit;font-size:14px;
+  font-weight:600;color:var(--ink-soft)}
+.tabs .heads button.on{background:var(--card);color:var(--blue);border-bottom:1px solid var(--card)}
+.tabs .panes>div{display:none;background:var(--card);border:1px solid var(--line);
+  border-radius:0 12px 12px 12px;padding:15px 17px}
+.tabs .panes>div.on{display:block}
+
+/* ============ INTERACTIVE TOOL ============ */
+.tool{background:linear-gradient(135deg,var(--blue-l),var(--card));border:1px solid rgba(26,79,160,.3);
+  border-radius:var(--radius);padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.tool h4{margin:0 0 4px;color:var(--navy);font-size:1rem;display:flex;align-items:center;gap:8px}
+.tool h4::before{content:"\26A1";font-size:1.05em}
+.tool .hint{font-size:.85rem;color:var(--ink-soft);margin:0 0 12px}
+.tool .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.tool label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:4px}
+.tool input[type=number],.tool input[type=text],.tool select{
+  font-family:var(--mono);font-size:15px;padding:7px 10px;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);color:var(--ink);width:120px}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--blue)}
+.tool input[type=range]{width:100%;accent-color:var(--orange)}
+.tool .out{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+  font-family:var(--mono);font-size:.97rem;min-height:44px;overflow-x:auto}
+.tool .out b{color:var(--green)}
+.tool .out .hl{color:var(--orange);font-weight:700}
+.sliderbox{margin:10px 0}
+.sliderbox .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--ink-soft)}
+.sliderbox .lab span:last-child{font-family:var(--mono);color:var(--orange)}
+svg{max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
+.card svg,.tool svg,.ex svg,section>svg{max-width:min(100%,560px);max-height:430px}
+svg text{font-family:var(--mono);fill:var(--ink)}
+
+/* ============ KEY POINTS / EXAM ============ */
+.keypoints{background:linear-gradient(135deg,#0b2050,#1a4fa0);color:#fff;border-radius:var(--radius);
+  padding:20px 22px;margin:22px 0}
+.keypoints h3{color:#fff;margin:0 0 10px;font-size:1.12rem}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:7px 0;color:#e3ecff}
+.keypoints b,.keypoints .m{color:#ffd9c7;background:rgba(255,255,255,.1)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;color:var(--ink);box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  header.hero h1{font-size:1.55rem}
+  h2{font-size:1.25rem}
+  .tool input[type=number],.tool input[type=text],.tool select{width:100%}
+  .tool .row>div{flex:1 1 100%}
+}
+@media print{
+  nav.sticky,#bar,#themeBtn,.tool,.pager{display:none!important}
+  .ex .body{display:block!important}
+  body{background:#fff;font-size:12pt}
+  .card,.ex,table{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Chapter 1 &mdash; Reviewing Number Concepts</span>
+    </div>
+    <h1>1.2 &nbsp;Multiples and Factors</h1>
+    <p>Multiples, factors, divisibility tests and the two workhorses of the number topic &mdash; the highest common factor and the lowest common multiple.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner" id="navInner"><a href="#multiples">Multiples</a>
+  <a href="#factors">Factors</a>
+  <a href="#primefac">Prime method</a>
+  <a href="#words">Word problems</a>
+  <a href="#examples">Examples</a>
+  <a href="#tryit">Your turn</a>
+  <a href="#key">Key points</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+<section id="multiples" data-nav="Multiples">
+<h2>Multiples and the LCM</h2>
+<p>A <b>multiple</b> of a number is what you get when you multiply it by a positive integer. The multiples of
+7 are <span class="m">7, 14, 21, 28, 35, &hellip;</span> &mdash; the list never ends. Every number is a multiple
+of itself, so 7 is the first multiple of 7.</p>
+
+<div class="def"><b>Definition</b>
+A <b>common multiple</b> of two or more numbers is a number that appears in <i>all</i> of their multiple lists.
+The <b>lowest common multiple (LCM)</b> is the smallest of these.</div>
+
+<div class="card">
+<h4>Finding the LCM by listing</h4>
+<p>Write out the multiples of the larger number first, then check each one against the smaller number. You
+usually find the answer within five or six terms.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Number</th><th>Multiples</th></tr></thead>
+<tbody>
+<tr><td><b>6</b></td><td><span class="m">6, 12, 18, <b>24</b>, 30, 36, 42, <b>48</b>, &hellip;</span></td></tr>
+<tr><td><b>8</b></td><td><span class="m">8, 16, <b>24</b>, 32, 40, <b>48</b>, 56, &hellip;</span></td></tr>
+</tbody>
+</table>
+</div>
+<p>Common multiples of 6 and 8: <span class="m">24, 48, 72, 96, &hellip;</span> &mdash; and the LCM is
+<span class="m">24</span>. Notice that every common multiple is itself a multiple of the LCM.</p>
+</div>
+
+<div class="warn"><b>Watch out</b>
+The LCM is <i>not</i> always the product of the two numbers. <span class="m">6 &times; 8 = 48</span>, but the
+LCM is 24. Multiplying only works when the numbers share no factors.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Write down the first three common multiples of 8 and 12, and state the LCM.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">List the multiples of the larger number, 12.
+    <span class="work">12, 24, 36, 48, 60, 72, &hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Test each one: is it in the 8 times table?
+    <span class="work">12 &divide; 8 = 1.5 &nbsp;&#10007;<br>24 &divide; 8 = 3 &nbsp;&#10003;<br>36 &divide; 8 = 4.5 &nbsp;&#10007;<br>48 &divide; 8 = 6 &nbsp;&#10003;<br>72 &divide; 8 = 9 &nbsp;&#10003;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The common multiples are 24, 48, 72 &mdash; every multiple of 24.
+    The smallest is the LCM.</div></div>
+  <div class="final">Common multiples 24, 48, 72 &nbsp;&nbsp;&middot;&nbsp;&nbsp; LCM = 24</div>
+</div>
+</details>
+</section>
+
+<section id="factors" data-nav="Factors">
+<h2>Factors, the HCF and divisibility</h2>
+<p>A <b>factor</b> (or divisor) of a number divides into it exactly, leaving no remainder. Unlike multiples,
+the list of factors is <b>finite</b>. Find them in <i>pairs</i>, working outwards from 1 &mdash; that way you
+never miss one.</p>
+
+<div class="formula">24 = 1 &times; 24 &nbsp;=&nbsp; 2 &times; 12 &nbsp;=&nbsp; 3 &times; 8 &nbsp;=&nbsp; 4 &times; 6
+<small>Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24</small></div>
+
+<div class="tip"><b>Exam tip</b>
+Stop pairing when the two numbers meet or cross. For 24 you stop after <span class="m">4 &times; 6</span>
+because <span class="m">5</span> is not a factor and <span class="m">6 &times; 4</span> repeats a pair you
+already have. For a perfect square such as 36 the middle pair is <span class="m">6 &times; 6</span>, which is
+why perfect squares have an <b>odd</b> number of factors.</div>
+
+<div class="def"><b>Definition</b>
+A <b>common factor</b> divides into all the given numbers. The <b>highest common factor (HCF)</b> is the
+largest of them.</div>
+
+<h3>Divisibility tests</h3>
+<p>These save enormous amounts of time and are expected knowledge. Learn them.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Divisible by</th><th>Test</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><b>2</b></td><td>Last digit is even</td><td><span class="m">3174</span> ends in 4 &#10003;</td></tr>
+<tr><td><b>3</b></td><td>Digit sum is divisible by 3</td><td><span class="m">4521 &rarr; 4+5+2+1 = 12</span> &#10003;</td></tr>
+<tr><td><b>4</b></td><td>Last <i>two</i> digits form a multiple of 4</td><td><span class="m">1316 &rarr; 16 &divide; 4 = 4</span> &#10003;</td></tr>
+<tr><td><b>5</b></td><td>Last digit is 0 or 5</td><td><span class="m">2345</span> &#10003;</td></tr>
+<tr><td><b>6</b></td><td>Passes the tests for 2 <i>and</i> 3</td><td><span class="m">4512</span> even, digit sum 12 &#10003;</td></tr>
+<tr><td><b>8</b></td><td>Last <i>three</i> digits form a multiple of 8</td><td><span class="m">5128 &rarr; 128 &divide; 8 = 16</span> &#10003;</td></tr>
+<tr><td><b>9</b></td><td>Digit sum is divisible by 9</td><td><span class="m">6831 &rarr; 6+8+3+1 = 18</span> &#10003;</td></tr>
+<tr><td><b>10</b></td><td>Last digit is 0</td><td><span class="m">8970</span> &#10003;</td></tr>
+<tr><td><b>11</b></td><td>Alternating digit sum is 0 or a multiple of 11</td><td><span class="m">3729 &rarr; 3&minus;7+2&minus;9 = &minus;11</span> &#10003;</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note"><b>Note</b>
+There is no simple test for 7. If you need it, just do the division. And a number divisible by 4 and by 3 is
+divisible by 12 &mdash; but a number divisible by 4 and 6 need <i>not</i> be divisible by 24, because 4 and 6
+share the factor 2.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">List all the factors of 36 and of 48, and hence write down their common factors and their HCF.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Pair up the factors of 36, working outwards from 1.
+    <span class="work">1 &times; 36, &nbsp;2 &times; 18, &nbsp;3 &times; 12, &nbsp;4 &times; 9, &nbsp;6 &times; 6<br>Factors: 1, 2, 3, 4, 6, 9, 12, 18, 36</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Do the same for 48. Use the divisibility tests: 48 is even, its
+    digit sum is 12 so it divides by 3, and <span class="m">48 &divide; 4 = 12</span>.
+    <span class="work">1 &times; 48, &nbsp;2 &times; 24, &nbsp;3 &times; 16, &nbsp;4 &times; 12, &nbsp;6 &times; 8<br>Factors: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Pick out the numbers appearing in both lists.
+    <span class="work">Common factors: 1, 2, 3, 4, 6, 12</span></div></div>
+  <div class="final">Common factors 1, 2, 3, 4, 6, 12 &nbsp;&nbsp;&middot;&nbsp;&nbsp; HCF = 12</div>
+  <div class="note"><b>Check</b> Every common factor is a factor of the HCF. If a number in your common list does
+  not divide 12, you have made a slip.</div>
+</div>
+</details>
+</section>
+
+<section id="primefac" data-nav="Prime method">
+<h2>HCF and LCM from prime factorisation</h2>
+<p>Listing works for small numbers. For anything larger you must use <b>prime factorisation</b> &mdash; and in
+Paper 4 the question will often demand it. Write each number as a product of primes, then compare.</p>
+
+<div class="formula">84 = 2&sup2; &times; 3 &times; 7 &nbsp;&nbsp;&nbsp;&nbsp; 120 = 2&sup3; &times; 3 &times; 5
+<small>Both numbers as products of primes, in index form</small></div>
+
+<div class="tabs">
+  <div class="heads"><button>Venn method</button><button>Index method</button></div>
+  <div class="panes">
+    <div>
+      <p>Put the <b>shared</b> prime factors in the overlap and whatever is left over in the outer regions.</p>
+      <svg viewBox="0 0 640 300" role="img" aria-label="Venn diagram of the prime factors of 84 and 120">
+        <circle cx="240" cy="145" r="115" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+        <circle cx="400" cy="145" r="115" fill="#fff1ea" fill-opacity="0.7" stroke="#e05c2a" stroke-width="2"/>
+        <text x="150" y="34" font-size="16" font-weight="bold" fill="#1a4fa0">84</text>
+        <text x="470" y="34" font-size="16" font-weight="bold" fill="#e05c2a">120</text>
+        <text x="172" y="118" font-size="12" fill="#4a5b7a" text-anchor="middle">84 only</text>
+        <text x="172" y="158" font-size="24" text-anchor="middle" fill="#0f2d6b">7</text>
+        <text x="320" y="100" font-size="12" fill="#6d28d9" text-anchor="middle">shared</text>
+        <text x="320" y="130" font-size="20" text-anchor="middle" fill="#6d28d9">2</text>
+        <text x="320" y="158" font-size="20" text-anchor="middle" fill="#6d28d9">2</text>
+        <text x="320" y="186" font-size="20" text-anchor="middle" fill="#6d28d9">3</text>
+        <text x="468" y="118" font-size="12" fill="#4a5b7a" text-anchor="middle">120 only</text>
+        <text x="468" y="158" font-size="24" text-anchor="middle" fill="#0f2d6b">2&nbsp;&nbsp;5</text>
+        <text x="320" y="290" font-size="14" text-anchor="middle" fill="#16a34a" font-weight="bold">HCF = the overlap &nbsp;&middot;&nbsp; LCM = the whole diagram</text>
+      </svg>
+      <p><b>HCF</b> = product of the overlap = <span class="m">2 &times; 2 &times; 3 = 12</span>.<br>
+      <b>LCM</b> = product of <i>all three</i> regions = <span class="m">7 &times; 2 &times; 2 &times; 3 &times; 2 &times; 5 = 840</span>.</p>
+    </div>
+    <div>
+      <p>Line up the two factorisations and compare the <b>index</b> (power) of each prime.</p>
+      <div class="tw">
+      <table>
+      <thead><tr><th>Prime</th><th>In 84</th><th>In 120</th><th>HCF takes the <b>lower</b></th><th>LCM takes the <b>higher</b></th></tr></thead>
+      <tbody>
+      <tr><td><b>2</b></td><td>2&sup2;</td><td>2&sup3;</td><td>2&sup2;</td><td>2&sup3;</td></tr>
+      <tr><td><b>3</b></td><td>3<sup>1</sup></td><td>3<sup>1</sup></td><td>3<sup>1</sup></td><td>3<sup>1</sup></td></tr>
+      <tr><td><b>5</b></td><td>5<sup>0</sup></td><td>5<sup>1</sup></td><td>5<sup>0</sup> = 1</td><td>5<sup>1</sup></td></tr>
+      <tr><td><b>7</b></td><td>7<sup>1</sup></td><td>7<sup>0</sup></td><td>7<sup>0</sup> = 1</td><td>7<sup>1</sup></td></tr>
+      </tbody>
+      </table>
+      </div>
+      <p><b>HCF</b> <span class="m">= 2&sup2; &times; 3 = 12</span> &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <b>LCM</b> <span class="m">= 2&sup3; &times; 3 &times; 5 &times; 7 = 840</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="tip"><b>Exam tip</b>
+Remember the two words: <b>HCF &mdash; lowest power, common primes only. LCM &mdash; highest power, every prime
+that appears.</b> Say it out loud until it sticks; it is worth several marks a paper.</div>
+
+<div class="formula">HCF(a, b) &times; LCM(a, b) = a &times; b
+<small>True for any two positive integers &mdash; a superb check (it does NOT extend to three numbers)</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Find the HCF and LCM of 84 and 120, giving your answers as products of primes and as numbers.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Break each number down to primes.
+    <span class="work">84 = 4 &times; 21 = 2&sup2; &times; 3 &times; 7<br>120 = 8 &times; 15 = 2&sup3; &times; 3 &times; 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">HCF: keep only primes in <i>both</i>, each to its <b>lower</b> power.
+    <span class="work">2 appears as 2&sup2; and 2&sup3; &rarr; take 2&sup2;<br>3 appears in both &rarr; take 3<br>5 and 7 are missing from one &rarr; ignore<br>HCF = 2&sup2; &times; 3 = 12</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">LCM: take <i>every</i> prime, each to its <b>higher</b> power.
+    <span class="work">LCM = 2&sup3; &times; 3 &times; 5 &times; 7 = 8 &times; 105 = 840</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check with the product rule.
+    <span class="work">12 &times; 840 = 10&nbsp;080<br>84 &times; 120 = 10&nbsp;080 &nbsp;&#10003;</span></div></div>
+  <div class="final">HCF = 2&sup2; &times; 3 = 12 &nbsp;&nbsp;&middot;&nbsp;&nbsp; LCM = 2&sup3; &times; 3 &times; 5 &times; 7 = 840</div>
+</div>
+</details>
+
+<div class="tool">
+  <h4>HCF and LCM explorer</h4>
+  <p class="hint">Enter two or three numbers and watch the prime factorisations line up. Leave the third box
+  empty (or 0) if you only want two. Try 84 and 120, then 24, 36 and 60.</p>
+  <div class="row">
+    <div><label for="hlA">First number</label><input type="number" id="hlA" value="84" min="1" max="100000"></div>
+    <div><label for="hlB">Second number</label><input type="number" id="hlB" value="120" min="1" max="100000"></div>
+    <div><label for="hlC">Third (optional)</label><input type="number" id="hlC" value="0" min="0" max="100000"></div>
+  </div>
+  <div class="out" id="hlOut"></div>
+</div>
+</section>
+
+<section id="words" data-nav="Word problems">
+<h2>Deciding: is it HCF or LCM?</h2>
+<p>Almost every mark lost on this topic comes from choosing the wrong one. The question never says
+&ldquo;find the LCM&rdquo;; it talks about bells, buses, tiles or party bags. Use this test.</p>
+
+<div class="grid two">
+  <div class="card g">
+    <h4>It is the LCM when&hellip;</h4>
+    <ul>
+      <li>things start together and you want the <b>next time they coincide</b> (bells, lights, buses, planets)</li>
+      <li>you are <b>building up</b> to a bigger quantity</li>
+      <li>you need the <b>smallest number of items</b> that can be split into equal groups two different ways</li>
+      <li>the answer is <b>bigger than</b> the numbers in the question</li>
+    </ul>
+  </div>
+  <div class="card o">
+    <h4>It is the HCF when&hellip;</h4>
+    <ul>
+      <li>you are <b>cutting up or sharing out</b> a fixed amount (ribbon, sweets, tiles)</li>
+      <li>you want the <b>largest</b> size of piece, tile or group</li>
+      <li>you want the <b>greatest number of identical bags</b> made with nothing left over</li>
+      <li>the answer is <b>smaller than</b> the numbers in the question</li>
+    </ul>
+  </div>
+</div>
+
+<div class="warn"><b>Watch out</b>
+&ldquo;Largest&rdquo; and &ldquo;greatest&rdquo; usually point to HCF, but read carefully: <i>&ldquo;the greatest
+number of bags&rdquo;</i> is the HCF, whereas <i>&ldquo;the smallest number of packs he can buy&rdquo;</i> is an
+LCM question in disguise. Always finish by asking: should my answer be bigger or smaller than the numbers given?</div>
+</section>
+
+<section id="examples" data-nav="Examples">
+<h2>More worked examples</h2>
+<p><button class="btn ghost" data-expandall>Expand all examples</button></p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A rectangular floor measures 90&nbsp;cm by 144&nbsp;cm. It is to be covered exactly by identical square tiles with no cutting. Find the largest possible tile, and how many are needed.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The tile side must divide <b>both</b> 90 and 144, and we want the
+    <b>largest</b> such length &mdash; that is the HCF.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Prime factorise both.
+    <span class="work">90 = 2 &times; 3&sup2; &times; 5<br>144 = 2<sup>4</sup> &times; 3&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Common primes, lower powers.
+    <span class="work">HCF = 2 &times; 3&sup2; = 18</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Count the tiles along each side, then multiply.
+    <span class="work">90 &divide; 18 = 5 &nbsp;&nbsp; 144 &divide; 18 = 8<br>5 &times; 8 = 40 tiles</span></div></div>
+  <div class="final">Largest tile = 18&nbsp;cm by 18&nbsp;cm, and 40 tiles are needed</div>
+  <div class="tip"><b>Exam tip</b> The number of tiles is <i>not</i> the area divided by the HCF. Divide each side
+  length separately, then multiply &mdash; it is faster and far less error-prone.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Three church bells ring at intervals of 12, 15 and 18 minutes. They all ring together at 08:00. At what time do they next all ring together?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">They coincide again after a time that is a multiple of 12,
+    of 15 <i>and</i> of 18 &mdash; the smallest such time is the LCM.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Prime factorise all three.
+    <span class="work">12 = 2&sup2; &times; 3<br>15 = 3 &times; 5<br>18 = 2 &times; 3&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Take every prime to its highest power.
+    <span class="work">LCM = 2&sup2; &times; 3&sup2; &times; 5 = 4 &times; 9 &times; 5 = 180</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Convert to hours and add on to the start time.
+    <span class="work">180 min = 3 hours<br>08:00 + 3 h = 11:00</span></div></div>
+  <div class="final">They next ring together at 11:00</div>
+  <div class="warn"><b>Watch out</b> Give the answer in the form the question asks for. If it says
+  &ldquo;how long until&rdquo;, write 3 hours; if it says &ldquo;at what time&rdquo;, you must add it on.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 6</span><span class="q"><span class="m">P = 2&sup3; &times; 3 &times; 5&sup2;</span> and <span class="m">Q = 2&sup2; &times; 3&sup3; &times; 5</span>. Find (a) the HCF of P and Q, (b) the LCM of P and Q, each as a product of primes in index form.</span></summary>
+<div class="body">
+  <div class="note"><b>Note</b> The numbers are already factorised. Do <b>not</b> multiply them out &mdash; the
+  question wants index form, and multiplying out wastes time and invites arithmetic slips.</div>
+  <div class="step"><div class="n">1</div><div class="t">Compare the index of each prime in turn.
+    <span class="work">prime 2: &nbsp;2&sup3; and 2&sup2;<br>prime 3: &nbsp;3<sup>1</sup> and 3&sup3;<br>prime 5: &nbsp;5&sup2; and 5<sup>1</sup></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) HCF takes the <b>lower</b> index each time.
+    <span class="work">HCF = 2&sup2; &times; 3 &times; 5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) LCM takes the <b>higher</b> index each time.
+    <span class="work">LCM = 2&sup3; &times; 3&sup3; &times; 5&sup2;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">If a numerical check is wanted:
+    <span class="work">HCF = 4 &times; 3 &times; 5 = 60<br>LCM = 8 &times; 27 &times; 25 = 5400<br>60 &times; 5400 = 324&nbsp;000 = 600 &times; 540 = P &times; Q &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) HCF = 2&sup2; &times; 3 &times; 5 &nbsp;&nbsp;&nbsp; (b) LCM = 2&sup3; &times; 3&sup3; &times; 5&sup2;</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 7</span><span class="q">Two numbers have an HCF of 6 and an LCM of 72. One of the numbers is 24. Find the other number.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Use the product rule.
+    <span class="work">HCF &times; LCM = a &times; b<br>6 &times; 72 = 24 &times; b</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Work out the left-hand side and divide.
+    <span class="work">432 = 24b<br>b = 432 &divide; 24 = 18</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Always verify with the original conditions.
+    <span class="work">24 = 2&sup3; &times; 3, &nbsp; 18 = 2 &times; 3&sup2;<br>HCF = 2 &times; 3 = 6 &nbsp;&#10003;<br>LCM = 2&sup3; &times; 3&sup2; = 72 &nbsp;&#10003;</span></div></div>
+  <div class="final">The other number is 18</div>
+  <div class="warn"><b>Watch out</b> This shortcut works only for <b>two</b> numbers. For three numbers,
+  <span class="m">HCF &times; LCM</span> is generally not the product &mdash; you must go back to prime factors.</div>
+</div>
+</details>
+</section>
+
+<section id="tryit" data-nav="Your turn">
+<h2>Your turn</h2>
+<div class="tryit">
+  <h4>Practice set</h4>
+  <ol>
+    <li>Write down the first four common multiples of 6 and 9.</li>
+    <li>Find the HCF and the LCM of 45 and 60.</li>
+    <li>Without a calculator, decide whether 2838 is divisible by (a) 3 &nbsp;(b) 4 &nbsp;(c) 11.</li>
+    <li><span class="m">A = 2&sup3; &times; 3&sup2; &times; 7</span> and <span class="m">B = 2&sup2; &times; 3&sup3; &times; 5</span>. Write down the HCF and the LCM of A and B in index form.</li>
+    <li>Two lighthouses flash every 24 seconds and every 36 seconds. They flash together at 20:00:00. When do they next flash together?</li>
+    <li>The HCF of two numbers is 8 and their LCM is 240. One number is 40. Find the other, and check your answer.</li>
+  </ol>
+  <p style="margin-top:12px"><button class="btn o" data-reveal>Show solutions</button></p>
+  <div class="sol">
+    <ol>
+      <li>LCM of 6 and 9 is 18, and every common multiple is a multiple of 18 &rarr;
+        <span class="ans">18, 36, 54, 72</span></li>
+      <li><span class="m">45 = 3&sup2; &times; 5</span>, <span class="m">60 = 2&sup2; &times; 3 &times; 5</span> &rarr;
+        HCF <span class="m">= 3 &times; 5 =</span> <span class="ans">15</span>,
+        LCM <span class="m">= 2&sup2; &times; 3&sup2; &times; 5 =</span> <span class="ans">180</span>
+        (check <span class="m">15 &times; 180 = 2700 = 45 &times; 60</span>)</li>
+      <li>(a) <span class="m">2+8+3+8 = 21</span>, a multiple of 3 &rarr; <span class="ans">yes</span>;
+        (b) last two digits 38, and <span class="m">38 &divide; 4 = 9.5</span> &rarr; <span class="ans">no</span>;
+        (c) <span class="m">2&minus;8+3&minus;8 = &minus;11</span> &rarr; <span class="ans">yes</span>
+        (<span class="m">2838 = 11 &times; 258</span>)</li>
+      <li>Lower powers: HCF <span class="m">=</span> <span class="ans">2&sup2; &times; 3&sup2;</span>
+        <span class="m">= 36</span>; higher powers: LCM <span class="m">=</span>
+        <span class="ans">2&sup3; &times; 3&sup3; &times; 5 &times; 7</span> <span class="m">= 7560</span></li>
+      <li><span class="m">24 = 2&sup3; &times; 3</span>, <span class="m">36 = 2&sup2; &times; 3&sup2;</span> &rarr;
+        LCM <span class="m">= 2&sup3; &times; 3&sup2; = 72</span> seconds = 1 min 12 s &rarr;
+        <span class="ans">20:01:12</span></li>
+      <li><span class="m">8 &times; 240 = 40 &times; b</span> &rarr; <span class="m">1920 = 40b</span> &rarr;
+        <span class="ans">b = 48</span>. Check: <span class="m">40 = 2&sup3; &times; 5</span>,
+        <span class="m">48 = 2<sup>4</sup> &times; 3</span>, HCF <span class="m">= 2&sup3; = 8</span> &#10003;,
+        LCM <span class="m">= 2<sup>4</sup> &times; 3 &times; 5 = 240</span> &#10003;</li>
+    </ol>
+  </div>
+</div>
+</section>
+
+<section id="key" data-nav="Key points">
+<div class="keypoints">
+  <h3>Key points to remember</h3>
+  <ul>
+    <li><b>Multiples</b> go on for ever and get bigger; <b>factors</b> stop and are never larger than the number itself.</li>
+    <li>Find factors in <b>pairs</b> from 1 outwards so you never miss one. Perfect squares have an odd number of factors.</li>
+    <li><b>HCF</b>: common primes only, each to its <b>lowest</b> power. <b>LCM</b>: every prime that appears, each to its <b>highest</b> power.</li>
+    <li>For two numbers, <b>HCF &times; LCM = the product of the numbers</b> &mdash; use it as a check, or to find a missing number. It does not work for three numbers.</li>
+    <li>Cutting, sharing or tiling a fixed amount, wanting the <b>largest</b> piece &rarr; <b>HCF</b>. Events repeating and coinciding, wanting the <b>next</b> time &rarr; <b>LCM</b>.</li>
+    <li>Sanity check every word problem: an HCF answer is <b>smaller</b> than the given numbers, an LCM answer is <b>bigger</b>.</li>
+    <li>Learn the divisibility tests for 2, 3, 4, 5, 6, 8, 9, 10 and 11 &mdash; they make prime factorisation quick and reliable.</li>
+    <li>When a question gives numbers already in index form, answer in index form. Do not multiply out unless asked.</li>
+  </ul>
+</div>
+</section>
+<div class="pager"><a class="prev" href="1-1.html"><span>&larr; Previous</span><b>1.1 Different Types of Numbers</b></a><a class="next" href="1-3.html"><span>Next &rarr;</span><b>1.3 Prime Numbers</b></a></div>
+</main>
+
+<footer class="wrap">
+  IGCSE 0580 Extended &mdash; Revision Notes &middot; 1.2 Multiples and Factors<br>
+  Prepared for classroom and independent study.
+</footer>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  var b=document.getElementById('themeBtn');
+  b.onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+
+/* ---------- progress bar + nav highlight ---------- */
+(function(){
+  var bar=document.getElementById('bar'), links=[].slice.call(document.querySelectorAll('nav.sticky a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function tick(){
+    var st=window.pageYOffset, h=document.body.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(st/h*100):0)+'%';
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<=110) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',tick,{passive:true}); window.addEventListener('resize',tick); tick();
+})();
+
+/* ---------- try-it reveal ---------- */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-reveal]'); if(!b) return;
+  var box=b.closest('.tryit'); box.classList.toggle('show');
+  b.textContent = box.classList.contains('show') ? 'Hide solutions' : 'Show solutions';
+});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs').forEach(function(t){
+  var hs=t.querySelectorAll('.heads button'), ps=t.querySelectorAll('.panes>div');
+  hs.forEach(function(h,i){ h.onclick=function(){
+    hs.forEach(function(x){x.classList.remove('on')}); ps.forEach(function(x){x.classList.remove('on')});
+    h.classList.add('on'); ps[i].classList.add('on');
+  };});
+  if(hs[0]){hs[0].classList.add('on'); ps[0].classList.add('on');}
+});
+
+/* ---------- expand/collapse all examples ---------- */
+document.querySelectorAll('[data-expandall]').forEach(function(b){
+  b.onclick=function(){
+    var open=b.dataset.state!=='open';
+    document.querySelectorAll('details.ex').forEach(function(d){ d.open=open; });
+    b.dataset.state=open?'open':'shut';
+    b.textContent=open?'Collapse all examples':'Expand all examples';
+  };
+});
+
+/* ---------- helpers available to per-lesson widget scripts ---------- */
+function el(id){ return document.getElementById(id); }
+function on(id,fn){ var n=el(id); if(!n) return; ['input','change'].forEach(function(ev){ n.addEventListener(ev,fn); }); }
+function bindAll(ids,fn){ ids.forEach(function(i){ on(i,fn); }); fn(); }
+function num(id,d){ var v=parseFloat((el(id)||{}).value); return isNaN(v)?(d===undefined?0:d):v; }
+function fx(x,n){ if(n===undefined)n=4; var r=Math.round(x*Math.pow(10,n))/Math.pow(10,n); return String(r); }
+function money(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function gcd(a,b){ a=Math.abs(a);b=Math.abs(b); while(b){var t=b;b=a%b;a=t;} return a; }
+function lcm(a,b){ return Math.abs(a*b)/gcd(a,b); }
+function primeFactors(n){ var f=[],d=2; while(d*d<=n){ while(n%d===0){f.push(d);n/=d;} d++; } if(n>1)f.push(n); return f; }
+function fracStr(a,b){ if(b<0){a=-a;b=-b;} var g=gcd(a,b)||1; a/=g;b/=g;
+  return b===1? String(a) : '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+</script>
+<script>
+/* ---- HCF / LCM explorer ---- */
+(function(){
+  var out=el('hlOut');
+
+  function pmap(n){
+    var f=primeFactors(n), m={}, i;
+    for(i=0;i<f.length;i++){ m[f[i]]=(m[f[i]]||0)+1; }
+    return m;
+  }
+  function sortedKeys(m){
+    var ks=[],k;
+    for(k in m){ if(m.hasOwnProperty(k)) ks.push(Number(k)); }
+    return ks.sort(function(a,b){ return a-b; });
+  }
+  function idxForm(m){
+    var ks=sortedKeys(m), parts=[], i;
+    for(i=0;i<ks.length;i++){
+      parts.push(ks[i]+(m[ks[i]]>1? '<sup>'+m[ks[i]]+'</sup>' : ''));
+    }
+    return parts.length? parts.join(' &times; ') : '1';
+  }
+  function longForm(m){
+    var ks=sortedKeys(m), parts=[], i, j;
+    for(i=0;i<ks.length;i++){ for(j=0;j<m[ks[i]];j++){ parts.push(ks[i]); } }
+    return parts.length? parts.join(' &times; ') : '1';
+  }
+  function valueOf(m){
+    var ks=sortedKeys(m), v=1, i, j;
+    for(i=0;i<ks.length;i++){ for(j=0;j<m[ks[i]];j++){ v*=ks[i]; } }
+    return v;
+  }
+
+  function go(){
+    var raw=[num('hlA',0),num('hlB',0),num('hlC',0)], ns=[], i, j, k, v;
+    for(i=0;i<raw.length;i++){
+      v=Math.round(raw[i]);
+      if(v>=1 && v<=100000) ns.push(v);
+    }
+    if(ns.length<2){
+      out.innerHTML='<span style="opacity:.6">Enter at least two whole numbers from 1 to 100000.</span>';
+      return;
+    }
+
+    var maps=[], allPrimes={}, ks;
+    for(i=0;i<ns.length;i++){
+      maps.push(pmap(ns[i]));
+      ks=sortedKeys(maps[i]);
+      for(j=0;j<ks.length;j++){ allPrimes[ks[j]]=1; }
+    }
+    var primes=sortedKeys(allPrimes);
+
+    var hcf={}, lcm={};
+    for(j=0;j<primes.length;j++){
+      var p=primes[j], lo=Infinity, hi=0;
+      for(i=0;i<maps.length;i++){
+        var e=maps[i][p]||0;
+        if(e<lo) lo=e;
+        if(e>hi) hi=e;
+      }
+      if(lo>0) hcf[p]=lo;
+      if(hi>0) lcm[p]=hi;
+    }
+    var hcfV=valueOf(hcf), lcmV=valueOf(lcm);
+
+    var h='<div style="margin-bottom:10px">';
+    for(i=0;i<ns.length;i++){
+      h+='<div><span class="hl">'+ns[i]+'</span> = '+longForm(maps[i])+
+         (sortedKeys(maps[i]).length? ' = '+idxForm(maps[i]) : '')+
+         (ns[i]===1? ' <span style="opacity:.6">(1 has no prime factors)</span>' :
+          (primeFactors(ns[i]).length===1? ' <span style="opacity:.6">(prime)</span>':''))+'</div>';
+    }
+    h+='</div>';
+
+    /* per-prime comparison */
+    h+='<div style="font-family:var(--mono);font-size:.88em;margin:8px 0">';
+    for(j=0;j<primes.length;j++){
+      var pp=primes[j], line='prime '+pp+': ';
+      for(i=0;i<maps.length;i++){ line+=(i?', ':'')+pp+'^'+(maps[i][pp]||0); }
+      line+=' &nbsp;&rarr;&nbsp; HCF takes '+pp+'^'+(hcf[pp]||0)+', LCM takes '+pp+'^'+(lcm[pp]||0);
+      h+='<div>'+line+'</div>';
+    }
+    h+='</div>';
+
+    var shared=sortedKeys(hcf);
+    h+='<div style="margin-top:8px">Shared prime factors: <span class="hl">'+
+       (shared.length? longForm(hcf) : 'none &mdash; the numbers are co-prime')+'</span></div>';
+
+    h+='<div style="margin-top:8px">HCF = '+(hcfV===1? '<b>1</b>' : idxForm(hcf)+' = <b>'+hcfV+'</b>')+'</div>';
+    h+='<div>LCM = '+idxForm(lcm)+' = <b>'+lcmV+'</b></div>';
+
+    if(ns.length===2){
+      h+='<div style="margin-top:8px;opacity:.75;font-size:.9em">Check: HCF &times; LCM = '+
+         hcfV+' &times; '+lcmV+' = '+(hcfV*lcmV)+' &nbsp;and&nbsp; '+ns[0]+' &times; '+ns[1]+' = '+
+         (ns[0]*ns[1])+' &#10003;</div>';
+    } else {
+      h+='<div style="margin-top:8px;opacity:.75;font-size:.9em">With three numbers the '+
+         'HCF &times; LCM = product rule no longer holds &mdash; compare the powers instead.</div>';
+    }
+    out.innerHTML=h;
+  }
+  bindAll(['hlA','hlB','hlC'],go);
+})();
+</script>
+</body>
+</html>
