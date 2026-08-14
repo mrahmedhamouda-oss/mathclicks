@@ -1,7 +1,8 @@
-# 10SAT Math Practice
+# MathClicks
 
-SAT Math practice site for 10SAT (Algebra 2 & Geometry, American Pathway, 2026–2027).
-Static site — no build step. All content lives in `data/`.
+Free IGCSE 0580 and American Pathway (Algebra 2 & Geometry) math lessons by
+Mr Ahmed Hamouda — worked examples, quizzes, and past-paper practice with mark
+schemes. Static site — no build step. All content lives in `data/`.
 
 ## Publishing lessons
 
@@ -64,11 +65,48 @@ Notes:
 - Optional `"image": "assets/images/filename.png"` for diagram questions (put the file in `assets/images/`).
 - New lesson files must also be listed in `data/manifest.json` (all 53 curriculum lessons are already there).
 
-## Passcode
+## Publishing checklist
 
-Students enter a shared passcode once per device. To change it, compute the new
-hash (`node -e "...passHash..."`) and update `PASS_HASH` in `js/app.js` — or just
-ask Claude to change it. This is a courtesy gate, not real security.
+Before pushing content changes live:
+
+1. `python3 tools/build-index.py` — regenerate `data/index.json` (a GitHub
+   Action also does this automatically if you forget).
+2. Bump the `BUST` version in `js/app.js` (e.g. `?v=1` → `?v=2`) so returning
+   students' browsers fetch the new data files.
+3. If you edited `css/style.css`, `css/game.css`, `css/lesson-embed.css` or a
+   JS file, also bump that file's `?v=` number (in `index.html` for style.css
+   and app.js; in `js/app.js` for the lazily-loaded game/lesson-embed files).
+4. GitHub Pages caches for ~10 minutes — wait a moment before checking live.
+
+## Regenerating the lesson index
+
+The site boots from `data/index.json` — a small summary (title, counts, badges)
+of every topic — and only downloads a full topic file when a lesson is opened.
+**After any change to `data/topics/`, `data/manifest.json`, or a lesson's
+`published` flag, regenerate it:**
+
+```
+python3 tools/build-index.py
+```
+
+Then bump the `BUST` version in `js/app.js` so returning students fetch the
+fresh files.
+
+## Analytics (Cloudflare Web Analytics)
+
+The site is set up for Cloudflare Web Analytics — free, privacy-friendly, no
+cookies, no consent banner needed. To switch it on:
+
+1. Log in (or sign up, no card needed) at <https://dash.cloudflare.com> and
+   open **Web Analytics** in the left sidebar.
+2. **Add a site** → enter the hostname `mrahmedhamouda-oss.github.io` →
+   Cloudflare shows you a JS snippet containing a `"token"` value. Copy that
+   token.
+3. In `index.html`, find the commented-out "Cloudflare Web Analytics" block at
+   the end of `<head>`, replace `CLOUDFLARE_TOKEN_HERE` with your token, and
+   remove the surrounding `<!--` and `-->` so the script loads.
+
+Visits appear in the Cloudflare dashboard within a few minutes of deploying.
 
 ## Preview locally
 

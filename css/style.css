@@ -34,6 +34,11 @@
   --chip-bg: #eef2fb;
   --track-bg: #e7ebf5;
 
+  /* Keyboard focus ring — solid brand blue + soft halo so it reads on light
+     surfaces AND on the dark navy hero/CTA bands */
+  --focus-ring: #1f6fbf;
+  --focus-halo: rgba(47, 143, 224, .35);
+
   --grad-hero: linear-gradient(160deg, #132455 0%, #1b2f5e 55%, #204089 100%);
   --grad-brand: linear-gradient(135deg, #1b2f5e 0%, #204089 100%);
   --grad-warm: linear-gradient(90deg, #f5a623 0%, #f7c467 100%);
@@ -94,12 +99,33 @@ h1, h2, h3, h4, h5, h6 {
 .hidden { display: none !important; }
 body.no-scroll { overflow: hidden; }
 
+/* Skip-to-content link — visually hidden until keyboard-focused */
+.skip-link {
+  position: fixed;
+  top: -10rem;
+  left: 1rem;
+  z-index: 100;
+  padding: .6rem 1.1rem;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top .15s;
+}
+.skip-link:focus { top: 1rem; }
+#main:focus { outline: none; }
+
 a { color: var(--navy-2); }
 
+/* Keyboard-only focus ring for every interactive element (links, buttons,
+   inputs, chat, game controls). No border-radius here — elements keep their
+   own shape and the outline follows it. */
 :focus-visible {
-  outline: 3px solid var(--coral);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
-  border-radius: 6px;
+  box-shadow: 0 0 0 6px var(--focus-halo);
 }
 
 @keyframes rise {
@@ -157,6 +183,31 @@ a { color: var(--navy-2); }
 }
 
 .nav-links { display: flex; gap: .2rem; margin-right: .2rem; }
+/* .nav-tools prefix outweighs the later .tool-chip display rule */
+.nav-tools .nav-menu-btn { display: none; }
+.exam-chip-short { display: none; }
+
+/* Below 768px the inline links don't fit ("American Pathway" is long) —
+   they collapse into a dropdown behind the ☰ button. */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-tools .nav-menu-btn { display: inline-flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + .35rem);
+    right: .75rem;
+    min-width: 13rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(19, 36, 85, .18);
+    padding: .4rem;
+    z-index: 60;
+  }
+  .nav-links.open .nav-link { padding: .6rem .85rem; }
+}
 .nav-link {
   font-family: var(--font-head);
   font-weight: 800;
@@ -165,6 +216,7 @@ a { color: var(--navy-2); }
   text-decoration: none;
   padding: .42rem .85rem;
   border-radius: 999px;
+  white-space: nowrap;
   transition: color .15s, background .15s;
 }
 .nav-link:hover { color: var(--navy); background: var(--chip-bg); }
@@ -343,6 +395,25 @@ h3.section-title {
   max-width: 30rem;
 }
 .hero-cta { display: flex; gap: .8rem; flex-wrap: wrap; }
+
+/* "Continue where you left off" — shown on the hero once a track is saved */
+.continue-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: 1rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: .85rem;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .28);
+  padding: .45rem .95rem;
+  border-radius: 999px;
+  transition: background .15s;
+}
+.continue-pill:hover { background: rgba(255, 255, 255, .22); }
 
 /* Orbiting-logo "planet" */
 .hero-planet { flex: 1 1 18rem; display: flex; justify-content: center; }
@@ -1105,7 +1176,7 @@ a.card:active { transform: none; }
   border-radius: 14px;
   min-width: 0;
 }
-.gridin input:focus { outline: none; border-color: var(--navy-2); box-shadow: 0 0 0 4px rgba(42, 58, 124, .16); }
+.gridin input:focus { border-color: var(--navy-2); box-shadow: 0 0 0 4px rgba(42, 58, 124, .16); }
 .gridin input.correct { border-color: var(--good); background: var(--good-soft); box-shadow: none; }
 .gridin input.incorrect { border-color: var(--bad); background: var(--bad-soft); box-shadow: none; }
 
@@ -1591,7 +1662,7 @@ a.card:active { transform: none; }
   border-radius: 14px;
   width: 100%;
 }
-.exam-input:focus { outline: none; border-color: var(--navy-2); }
+.exam-input:focus { border-color: var(--navy-2); }
 
 /* ---------- Quick-trick modal content ---------- */
 
@@ -1615,7 +1686,7 @@ a.card:active { transform: none; }
   border-radius: 12px;
   text-align: center;
 }
-.trick-input:focus { outline: none; border-color: var(--navy-2); }
+.trick-input:focus { border-color: var(--navy-2); }
 .trick-ctrl input[type="range"] { flex: 1; accent-color: var(--coral); min-width: 8rem; }
 .trick-n { font-family: var(--font-head); font-weight: 900; color: var(--navy); min-width: 3.2rem; }
 
@@ -1983,7 +2054,7 @@ a.card:active { transform: none; }
   padding: .55rem .9rem;
   min-width: 0;
 }
-.chat-form input:focus { outline: none; border-color: var(--coral); }
+.chat-form input:focus { border-color: var(--coral); }
 .chat-send {
   flex: none;
   width: 2.5rem; height: 2.5rem;
@@ -2064,13 +2135,16 @@ a.card:active { transform: none; }
 }
 
 @media (max-width: 480px) {
-  .nav-links { display: none; }
+  /* Compact exam chip so the header fits — full label swaps for "12d" */
+  #exam-chip-label { display: none; }
+  .exam-chip-short:not(:empty) { display: inline; }
+  .nav-tools { gap: .3rem; }
 }
 
 @media (max-width: 420px) {
   .card-icon { display: none; }
-  .brand-name { font-size: 1.15rem; }
-  .tool-chip { font-size: .78rem; padding: .38rem .6rem; }
+  .brand-name { font-size: 1.1rem; }
+  .tool-chip { font-size: .78rem; padding: .38rem .55rem; }
   .fab-ask .fab-label { display: none; }
   .fab-ask { padding: .85rem 1rem; font-size: 1.25rem; }
 }
@@ -2094,6 +2168,9 @@ a.card:active { transform: none; }
   --blue: #6bb0f0;
   --blue-deep: #8cc4f5;
   --blue-soft: #17233f;
+
+  --focus-ring: #8cc4f5;
+  --focus-halo: rgba(140, 196, 245, .28);
   --gold: #f5a623;
   --gold-deep: #FFD673;
   --gold-soft: #3B2F14;
