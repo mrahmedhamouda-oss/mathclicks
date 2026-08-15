@@ -654,6 +654,23 @@ function wireReveal() {
   els.forEach((e) => obs.observe(e));
 }
 
+function lessonsCard() {
+  const card = el("a", "pp-card");
+  card.href = "igcse-lessons/index.html";
+  card.appendChild(el("div", "pp-card-icon", "🎓"));
+  const body = el("div", "pp-card-body");
+  body.appendChild(el("div", "pp-card-title", "Lessons"));
+  body.appendChild(el("div", "pp-card-sub",
+    "A full teaching lesson for every topic — objectives, a starter, worked examples explained step by step, practice with solutions and an exit check."));
+  const meta = el("div", "pp-card-meta");
+  meta.appendChild(el("span", "pp-card-chip", "54 lessons"));
+  meta.appendChild(el("span", "pp-card-chip", "Number · Algebra · Graphs · Geometry · Trigonometry"));
+  body.appendChild(meta);
+  card.appendChild(body);
+  card.appendChild(el("div", "pp-card-go", "Open →"));
+  return card;
+}
+
 function revisionNotesCard() {
   const card = el("a", "pp-card");
   card.href = "igcse-notes/index.html";
@@ -693,6 +710,7 @@ function renderIgcse() {
   main.appendChild(backLink("#/", "← Home"));
   main.appendChild(el("h2", "page-title", "IGCSE Math"));
   main.appendChild(el("p", "page-sub", "Cambridge IGCSE 0580 (Extended) — pick a module to begin."));
+  main.appendChild(lessonsCard());
   main.appendChild(revisionNotesCard());
   main.appendChild(questionBankCard());
   const ig = igcseTopics();

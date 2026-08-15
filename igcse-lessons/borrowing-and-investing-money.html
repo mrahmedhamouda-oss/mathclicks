@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Borrowing and Investing Money | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on simple and compound interest, depreciation and hire purchase — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Borrowing and Investing Money</h1>
+    <p>Simple and compound interest, depreciation and hire purchase &mdash; and how to tell instantly which formula a question wants.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Calculate simple interest with <span class="m">I = Prt &divide; 100</span>, and rearrange it to find the principal, rate or time.</li>
+  <li>Calculate the final value and the interest earned under compound interest using a percentage multiplier.</li>
+  <li>Model depreciation as repeated percentage decrease with <span class="m">V = P(1 &minus; r/100)<sup>n</sup></span>.</li>
+  <li>Work out the total cost of hire purchase and compare it with the cash price.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>principal</span><span>simple interest</span><span>compound interest</span><span>multiplier</span><span>depreciation</span><span>hire purchase</span><span>deposit</span><span>instalment</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Write down the multiplier for (a) a 3.5% increase, (b) a 15% decrease.</span></summary>
+<div class="body"><div class="final">(a) 1.035 &nbsp;&nbsp;(b) 0.85</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Find 20% of <span class="m">$1250</span>.</span></summary>
+<div class="body"><div class="final">0.20 &times; 1250 = $250</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Write 9 months and 18 months as numbers of years.</span></summary>
+<div class="body"><div class="final">9 months = 0.75 years; 18 months = 1.5 years &mdash; interest formulas always need years.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Simple interest</h3>
+<p>With <b>simple interest</b> the interest is worked out on the <b>original</b> amount every single year.
+The money invested (or borrowed) is called the <b>principal</b>, and it never changes &mdash; so the interest is
+the same amount each year.</p>
+<div class="formula">I = <span class="frac"><span>P r t</span><span>100</span></span>
+<small>I = interest, P = principal, r = rate per year (%), t = time in years</small></div>
+<div class="def"><b>Key idea</b>
+The formula gives you the <b>interest only</b>. If a question asks for the <i>total amount</i> or the <i>value of
+the investment</i>, add the principal back on: <span class="m">A = P + I</span>.</div>
+<div class="warn"><b>Watch out</b>
+<span class="m">t</span> must be in <b>years</b> &mdash; nine months is <span class="m">t = 0.75</span>. And
+<span class="m">r</span> goes into the formula as the plain number 3.5, not as 0.035 &mdash; the &divide;&nbsp;100
+is already there.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">$4500 is invested at 3.5% per year simple interest for 4 years. Find (a) the interest earned, (b) the value of the investment at the end.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write down what each letter is worth.
+    <span class="work">P = 4500, &nbsp; r = 3.5, &nbsp; t = 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Substitute into <span class="m">I = Prt &divide; 100</span>.
+    <span class="work">I = (4500 &times; 3.5 &times; 4) &divide; 100 = 63 000 &divide; 100 = 630</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) The value is principal plus interest.
+    <span class="work">4500.00 + 630.00 = 5130.00</span></div></div>
+  <div class="final">(a) interest = $630.00 &nbsp;&nbsp; (b) value = $5130.00</div>
+  <div class="tip"><b>Exam tip</b> Sense-check it: one year&rsquo;s interest is <span class="m">0.035 &times; 4500 = 157.50</span>, and <span class="m">4 &times; 157.50 = 630</span>. Same answer &mdash; and it shows you understand what simple interest <i>means</i>.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Compound interest</h3>
+<p>With <b>compound interest</b> the interest earned is added to the account, and next year&rsquo;s interest is
+worked out on the <b>new, larger</b> amount. You earn interest on your interest, so the growth speeds up year
+after year.</p>
+<div class="formula">V = P(1 + <span class="frac"><span>r</span><span>100</span></span>)<sup>n</sup>
+<small>V = final value, P = principal, r = rate per year (%), n = number of years</small></div>
+<div class="grid two">
+  <div class="card"><h4>The multiplier</h4>
+    <p>An increase of <span class="m">r</span>% is a multiplier of
+    <span class="m">1 + r/100</span>: 3.5% &rarr; <span class="m">&times; 1.035</span>,
+    7% &rarr; <span class="m">&times; 1.07</span>, 12.5% &rarr; <span class="m">&times; 1.125</span>.
+    Compounding for <span class="m">n</span> years just means using that multiplier
+    <span class="m">n</span> times &mdash; which is the power.</p></div>
+  <div class="card o"><h4>Simple or compound?</h4>
+    <ul>
+      <li><b>Simple</b>: a fixed amount every year; the graph is a straight line.</li>
+      <li><b>Compound</b>: interest grows each year; the graph curves upwards.</li>
+      <li>Over 1 year they give exactly the <b>same</b> answer; after that compound always gives <b>more</b>.</li>
+    </ul></div>
+</div>
+<div class="def"><b>Key idea</b>
+This formula gives the <b>final value</b>, not the interest. &ldquo;How much is in the account&rdquo; wants
+<span class="m">V</span>; &ldquo;how much interest&rdquo; wants <span class="m">V &minus; P</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">$4500 is invested at 3.5% per year compound interest for 4 years. Find the interest earned, and how much better this is than the simple interest in the last example.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the multiplier for a 3.5% increase.
+    <span class="work">1 + 3.5 &divide; 100 = 1.035</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute with <span class="m">n = 4</span>.
+    <span class="work">V = 4500 &times; 1.035<sup>4</sup> = 4500 &times; 1.147523&hellip; = 5163.8535&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Round the value to 2 decimal places, then subtract the principal.
+    <span class="work">V = $5163.85<br>5163.85 &minus; 4500.00 = $663.85</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Compare with the simple interest of $630.00.
+    <span class="work">663.85 &minus; 630.00 = $33.85 more</span></div></div>
+  <div class="final">Interest = $663.85 &mdash; $33.85 more than simple interest</div>
+  <div class="warn"><b>Watch out</b> Keep the full value in your calculator until the very last step. Rounding <span class="m">1.035<sup>4</sup></span> to 1.15 first gives $675 and loses the accuracy mark.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Depreciation</h3>
+<p>Cars, machinery, computers and phones <b>lose</b> a percentage of their value each year. This is
+<b>depreciation</b> &mdash; compound interest running backwards.</p>
+<div class="formula">V = P(1 &minus; <span class="frac"><span>r</span><span>100</span></span>)<sup>n</sup>
+<small>Exactly the same structure &mdash; the plus sign becomes a minus sign</small></div>
+<div class="note"><b>Note</b>
+A 15% loss means a multiplier of <span class="m">1 &minus; 0.15 = 0.85</span>. Because the multiplier is less
+than 1, the value falls quickly at first and then more slowly &mdash; it never actually reaches zero.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A car is bought for $18 000. It depreciates by 15% each year. Find its value after 5 years, and the total loss in value.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the multiplier for a 15% decrease.
+    <span class="work">1 &minus; 15 &divide; 100 = 0.85</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute into <span class="m">V = P(1 &minus; r/100)<sup>n</sup></span>.
+    <span class="work">V = 18 000 &times; 0.85<sup>5</sup> = 18 000 &times; 0.443705&hellip; = 7986.6956&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Round to 2 decimal places, then find the loss.
+    <span class="work">V = $7986.70<br>18 000.00 &minus; 7986.70 = $10 013.30</span></div></div>
+  <div class="final">Value after 5 years = $7986.70; loss = $10 013.30</div>
+  <div class="warn"><b>Common error</b> Losing 15% a year for 5 years is <b>not</b> losing 75%. Repeated percentage change is never the same as adding the percentages up.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Hire purchase</h3>
+<div class="def"><b>Definition</b>
+<b>Hire purchase</b> (HP) lets you take the goods now and pay in instalments: a <b>deposit</b> first (usually a
+percentage of the cash price), then a fixed number of equal payments. The total paid is always <i>more</i> than
+the cash price &mdash; the difference is the cost of borrowing.</div>
+<div class="formula">total HP price = deposit + (number of instalments &times; instalment)
+<small>extra cost = total HP price &minus; cash price</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A washing machine has a cash price of $1250. On hire purchase a customer pays a deposit of 20% plus 24 monthly instalments of $47.50. Find (a) the total hire purchase price, (b) the extra amount paid, (c) that extra as a percentage of the cash price.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Deposit is 20% of the cash price.
+    <span class="work">0.20 &times; 1250 = $250.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Total of the instalments, then the HP total.
+    <span class="work">24 &times; 47.50 = $1140.00<br>250.00 + 1140.00 = $1390.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Compare with the cash price.
+    <span class="work">1390.00 &minus; 1250.00 = $140.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(c) Write the extra as a percentage of the <b>cash price</b>.
+    <span class="work">140 &divide; 1250 &times; 100 = 11.2%</span></div></div>
+  <div class="final">(a) $1390.00 &nbsp;&nbsp; (b) $140.00 extra &nbsp;&nbsp; (c) 11.2%</div>
+  <div class="tip"><b>Exam tip</b> The percentage is always taken from the <b>cash price</b> &mdash; the amount the customer would have paid without borrowing.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">$3200 is invested for 3 years at 4.5% per year <b>simple</b> interest. Find the interest earned and the total value.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Substitute into <span class="m">I = Prt &divide; 100</span>.
+    <span class="work">I = (3200 &times; 4.5 &times; 3) &divide; 100 = $432.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the principal for the total.
+    <span class="work">3200.00 + 432.00 = 3632.00</span></div></div>
+  <div class="final">Interest = $432.00; total value = $3632.00</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">$3200 is invested for 3 years at 4.5% per year <b>compound</b> interest. Find the value, and how much more interest this earns than Practice 1.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiplier 1.045, power 3.
+    <span class="work">V = 3200 &times; 1.045<sup>3</sup> = 3651.7316&hellip; = $3651.73</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Compare the two amounts of interest.
+    <span class="work">interest = 3651.73 &minus; 3200 = $451.73<br>451.73 &minus; 432.00 = $19.73</span></div></div>
+  <div class="final">Value = $3651.73 &mdash; $19.73 more interest than simple</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A motorbike costing $6400 depreciates by 18% per year. Find its value after 3 years.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiplier for an 18% decrease is 0.82.
+    <span class="work">V = 6400 &times; 0.82<sup>3</sup> = 6400 &times; 0.551368 = 3528.7552</span></div></div>
+  <div class="final">Value after 3 years = $3528.76</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">$5000 earns $900 simple interest in 4 years. Find the rate of interest per year.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Rearrange <span class="m">I = Prt &divide; 100</span> for <span class="m">r</span>.
+    <span class="work">r = 100I &divide; (Pt) = (100 &times; 900) &divide; (5000 &times; 4)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Evaluate.
+    <span class="work">r = 90 000 &divide; 20 000 = 4.5</span></div></div>
+  <div class="final">Rate = 4.5% per year</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A laptop has a cash price of $960. On hire purchase you pay a 15% deposit and 18 monthly instalments of $52.75. Find the extra amount paid, and express it as a percentage of the cash price.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Deposit, instalments, then the HP total.
+    <span class="work">0.15 &times; 960 = $144.00<br>18 &times; 52.75 = $949.50<br>144.00 + 949.50 = $1093.50</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Extra cost, then as a percentage of the cash price.
+    <span class="work">1093.50 &minus; 960.00 = $133.50<br>133.50 &divide; 960 &times; 100 = 13.90625</span></div></div>
+  <div class="final">Extra = $133.50, which is 13.9% (3 sf) of the cash price</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Answering with the wrong quantity</b>
+<span class="m">I = Prt &divide; 100</span> gives the <i>interest only</i>; <span class="m">V = P(1 + r/100)<sup>n</sup></span>
+gives the <i>final value</i>. Read the question: &ldquo;how much interest&rdquo; and &ldquo;how much in the
+account&rdquo; need different answers.</div>
+<div class="warn"><b>Adding percentages for repeated change</b>
+Losing 15% a year for 5 years is not losing 75% &mdash; repeated percentage change multiplies, it never adds.
+Use the multiplier raised to a power.</div>
+<div class="warn"><b>Rounding too early</b>
+Keep <span class="m">1.035<sup>4</sup></span> at full calculator accuracy and round only the final answer &mdash;
+money to 2 decimal places. Rounding the multiplier first destroys the accuracy mark.</div>
+<div class="tip"><b>Exam tip</b>
+&ldquo;Least number of complete years&rdquo; questions need no algebra: try values of <span class="m">n</span> on
+your calculator and show the value either side of the target &mdash; the one that fails and the one that works.
+That comparison is what earns the method mark.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Write down the multiplier for 6 years of 4% per year compound growth.</span></summary>
+<div class="body"><div class="final">1.04&#8310; &mdash; the 4% multiplier used six times.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">$5000 is invested at 3% per year simple interest. How much interest after 2 years?</span></summary>
+<div class="body"><div class="final">I = (5000 &times; 3 &times; 2) &divide; 100 = $300.00</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Deposit $250, then 24 instalments of $47.50. What is the total paid?</span></summary>
+<div class="body"><div class="final">250 + 24 &times; 47.50 = $1390.00</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/17-2.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a simple-vs-compound comparison tool.</span></a>
+  <a href="../igcse-question-bank/simple-and-compound-interest-questions.html"><b>Practice questions</b><span>Exam-style questions on simple and compound interest, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="earning-money.html"><span>&larr; Previous lesson</span><b>Earning Money</b></a>
+  <a class="next" href="buying-and-selling.html"><span>Next lesson &rarr;</span><b>Buying and Selling</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

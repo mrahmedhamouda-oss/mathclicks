@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rearranging Formulae | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on changing the subject of a formula — one-step rearrangements, powers and roots, fractions, and the case where the subject appears twice.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Rearranging Formulae</h1>
+    <p>Changing the subject of a formula &mdash; from one-step rearrangements to powers, roots, fractions, and the case where the new subject appears twice.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Explain what it means for a letter to be the subject of a formula, and change the subject using the balance method.</li>
+  <li>Undo squares with square roots and roots with squares, squaring every factor outside a root.</li>
+  <li>Rearrange formulae where the subject sits on top of, or underneath, a fraction.</li>
+  <li>Use the clear&ndash;expand&ndash;collect&ndash;factorise routine when the new subject appears twice.</li>
+  <li>Check any rearrangement by substituting simple numbers into both versions.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>subject</span><span>formula</span><span>rearrange</span><span>inverse operation</span><span>square root</span><span>denominator</span><span>factorise</span><span>substitute</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Solve <span class="m">5x + 3 = 18</span>.</span></summary>
+<div class="body"><div class="final">5x = 15, so x = 3 &mdash; undo the + 3 first, then the &times; 5.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">What is the inverse of squaring? And of dividing by 4?</span></summary>
+<div class="body"><div class="final">Taking the square root; multiplying by 4.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Factorise <span class="m">xy &minus; 2x</span>.</span></summary>
+<div class="body"><div class="final">x(y &minus; 2)</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; What &ldquo;make x the subject&rdquo; means</h3>
+<p>In <span class="m">v = u + at</span> the letter <span class="m">v</span> is the <b>subject</b>: it
+stands alone on one side and appears nowhere else. Rearranging a formula means rewriting it so a
+different letter becomes the subject. The method is exactly the balance method you use to solve
+equations &mdash; the same operation on both sides &mdash; but with letters, so you cannot simplify as
+you go.</p>
+<div class="def"><b>Definition</b>
+A letter is the <b>subject</b> of a formula when it appears <b>once only</b>, <b>on its own</b>, on one
+side of the equals sign. Making <span class="m">x</span> the subject means finishing with
+<span class="m">x = &hellip;</span> where the right-hand side contains no <span class="m">x</span>.</div>
+<div class="card">
+<h4>The reverse flowchart: building <span class="m">y = 5x + 3</span>, and undoing it</h4>
+<svg viewBox="0 0 740 200" role="img" aria-label="Flowchart showing x multiplied by 5 then plus 3 gives y, and the reverse chain giving x equals y minus 3 over 5">
+  <rect x="20" y="24" width="80" height="46" rx="10" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="60" y="53" font-size="18" text-anchor="middle" fill="#0f2d6b">x</text>
+  <line x1="104" y1="47" x2="196" y2="47" stroke="#1a4fa0" stroke-width="2"/>
+  <polygon points="196,47 186,42 186,52" fill="#1a4fa0"/>
+  <text x="150" y="38" font-size="14" text-anchor="middle" fill="#1a4fa0">&times; 5</text>
+  <rect x="200" y="24" width="90" height="46" rx="10" fill="#ffffff" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="245" y="53" font-size="17" text-anchor="middle" fill="#0f2d6b">5x</text>
+  <line x1="294" y1="47" x2="386" y2="47" stroke="#1a4fa0" stroke-width="2"/>
+  <polygon points="386,47 376,42 376,52" fill="#1a4fa0"/>
+  <text x="340" y="38" font-size="14" text-anchor="middle" fill="#1a4fa0">+ 3</text>
+  <rect x="390" y="24" width="110" height="46" rx="10" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="445" y="53" font-size="17" text-anchor="middle" fill="#16a34a">5x + 3 = y</text>
+  <rect x="20" y="120" width="80" height="46" rx="10" fill="#e8f0fe" stroke="#e05c2a" stroke-width="2"/>
+  <text x="60" y="149" font-size="18" text-anchor="middle" fill="#e05c2a">x</text>
+  <line x1="196" y1="143" x2="104" y2="143" stroke="#e05c2a" stroke-width="2"/>
+  <polygon points="104,143 114,138 114,148" fill="#e05c2a"/>
+  <text x="150" y="134" font-size="14" text-anchor="middle" fill="#e05c2a">&divide; 5</text>
+  <rect x="200" y="120" width="90" height="46" rx="10" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="245" y="149" font-size="16" text-anchor="middle" fill="#e05c2a">y &minus; 3</text>
+  <line x1="386" y1="143" x2="294" y2="143" stroke="#e05c2a" stroke-width="2"/>
+  <polygon points="294,143 304,138 304,148" fill="#e05c2a"/>
+  <text x="340" y="134" font-size="14" text-anchor="middle" fill="#e05c2a">&minus; 3</text>
+  <rect x="390" y="120" width="110" height="46" rx="10" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="445" y="149" font-size="17" text-anchor="middle" fill="#16a34a">y</text>
+  <text x="520" y="149" font-size="16" fill="#0f2d6b">so x = (y &minus; 3) &divide; 5</text>
+  <text x="520" y="53" font-size="13" fill="#4a5b7a">forward</text>
+  <text x="520" y="176" font-size="13" fill="#4a5b7a">reverse</text>
+</svg>
+</div>
+<div class="formula">y = 5x + 3 &nbsp;&nbsp;&#8594;&nbsp;&nbsp; x =
+<span class="frac"><span>y &minus; 3</span><span>5</span></span>
+<small>Undo the <span class="m">+ 3</span> first, then the <span class="m">&times; 5</span></small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Make <span class="m">a</span> the subject of <span class="m">v = u + at</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Get the term containing <span class="m">a</span> on its own: subtract <span class="m">u</span> from both sides.
+    <span class="work">v &minus; u = at</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">a</span> is multiplied by <span class="m">t</span>, so divide <b>both sides</b> by <span class="m">t</span>. The whole of <span class="m">v &minus; u</span> goes over the fraction line.
+    <span class="work">a = <span class="frac"><span>v &minus; u</span><span>t</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>Check with numbers.</b> Take <span class="m">u = 5</span>, <span class="m">a = 3</span>, <span class="m">t = 4</span>; then <span class="m">v = 17</span>.
+    <span class="work">(17 &minus; 5) &divide; 4 = 3 &nbsp;&#10003;</span></div></div>
+  <div class="final">a = <span class="frac"><span>v &minus; u</span><span>t</span></span></div>
+  <div class="warn"><b>Watch out</b> <span class="frac"><span>v &minus; u</span><span>t</span></span> is
+  <b>not</b> the same as <span class="m">v &minus; <span class="frac"><span>u</span><span>t</span></span></span>.
+  Dividing by <span class="m">t</span> divides <i>every</i> term on that side.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Powers and roots</h3>
+<p>Squaring and square-rooting are inverses, so they undo each other &mdash; applied to <b>both sides</b>.</p>
+<div class="grid two">
+  <div class="card p"><h4>To undo a square</h4>
+    <p>Take the square root of both sides. In a formula from a real context (a length, a time, a radius)
+    take the <b>positive</b> root only; in a pure algebra question write <span class="m">&plusmn;</span>.</p></div>
+  <div class="card o"><h4>To undo a square root</h4>
+    <p>Square both sides &mdash; and square <i>everything</i> on each side, so
+    <span class="m">(2&#8730;k)&sup2; = 4k</span>: the 2 gets squared too.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">The area of a circle is <span class="m">A = &pi;r&sup2;</span>. Make <span class="m">r</span> the subject, and find the radius of a circle of area 50 cm&sup2;.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Divide both sides by <span class="m">&pi;</span> to isolate <span class="m">r&sup2;</span>.
+    <span class="work">r&sup2; = <span class="frac"><span>A</span><span>&pi;</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square root both sides. A radius is a length, so only the positive root makes sense.
+    <span class="work">r = &#8730;(A/&pi;)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute <span class="m">A = 50</span>, keeping the full calculator value until the end.
+    <span class="work">r = &#8730;(50 &divide; &pi;) = &#8730;15.9154&hellip; = 3.9894&hellip;</span></div></div>
+  <div class="final">r = &#8730;(A/&pi;) &nbsp;&nbsp;&nbsp; r = 3.99 cm (3 s.f.)</div>
+  <div class="tip"><b>Exam tip</b> Unless the question says otherwise, give a numerical answer to
+  <b>3 significant figures</b> and do not round any intermediate value.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; When the subject sits in a fraction</h3>
+<p>Two situations, one idea: <b>multiply both sides by the denominator</b> to lift everything back onto the
+line.</p>
+<div class="grid two">
+  <div class="card"><h4>Subject on top</h4>
+    <p><span class="m">y = <span class="frac"><span>x + 1</span><span>4</span></span></span> &rarr; multiply
+    by 4 &rarr; <span class="m">4y = x + 1</span>. The fraction line already acts as a bracket round
+    <span class="m">x + 1</span>.</p></div>
+  <div class="card o"><h4>Subject underneath</h4>
+    <p><span class="m">y = <span class="frac"><span>6</span><span>x</span></span></span> &rarr; multiply by
+    <span class="m">x</span> &rarr; <span class="m">xy = 6</span> &rarr; divide by <span class="m">y</span>
+    &rarr; <span class="m">x = <span class="frac"><span>6</span><span>y</span></span></span>.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Make <span class="m">x</span> the subject of (a) <span class="m">y = <span class="frac"><span>4x &minus; 5</span><span>3</span></span></span> &nbsp;(b) <span class="m">y = <span class="frac"><span>12</span><span>x &minus; 4</span></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Multiply both sides by 3 &mdash; the whole numerator comes down.
+    <span class="work">3y = 4x &minus; 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add 5, then divide by 4.
+    <span class="work">3y + 5 = 4x &nbsp;&rarr;&nbsp; x = <span class="frac"><span>3y + 5</span><span>4</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Here <span class="m">x</span> is in the denominator, so multiply both sides by <span class="m">(x &minus; 4)</span> first.
+    <span class="work">y(x &minus; 4) = 12</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Divide by <span class="m">y</span>, then add 4. Do <b>not</b> expand the bracket &mdash; there is only one <span class="m">x</span>, so dividing is quicker.
+    <span class="work">x &minus; 4 = <span class="frac"><span>12</span><span>y</span></span> &nbsp;&rarr;&nbsp; x = <span class="frac"><span>12</span><span>y</span></span> + 4</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t"><b>Check</b> (b) with <span class="m">x = 10</span>: <span class="m">y = 12 &divide; 6 = 2</span>.
+    <span class="work">12 &divide; 2 + 4 = 10 &nbsp;&#10003;</span></div></div>
+  <div class="final">(a) x = <span class="frac"><span>3y + 5</span><span>4</span></span> &nbsp;&nbsp;&nbsp;
+    (b) x = <span class="frac"><span>12</span><span>y</span></span> + 4</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; When the new subject appears twice</h3>
+<p>This is the Extended-tier case, worth learning as a fixed routine &mdash; the marks are almost always
+awarded for the same four moves.</p>
+<div class="card g">
+<h4>The routine</h4>
+<ol>
+  <li><b>Clear all fractions</b> &mdash; multiply by every denominator.</li>
+  <li><b>Expand</b> any brackets.</li>
+  <li><b>Collect</b> every term containing the new subject on one side, everything else on the other.</li>
+  <li><b>Factorise</b> the new subject out, then <b>divide</b> by the bracket.</li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Make <span class="m">x</span> the subject of <span class="m">y = <span class="frac"><span>2x + 3</span><span>x &minus; 1</span></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply both sides by <span class="m">(x &minus; 1)</span> to clear the fraction.
+    <span class="work">y(x &minus; 1) = 2x + 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Expand &mdash; <span class="m">x</span> now appears twice, once on each side.
+    <span class="work">xy &minus; y = 2x + 3</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Collect the <span class="m">x</span> terms on the left, everything else on the right.
+    <span class="work">xy &minus; 2x = 3 + y</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><b>Factorise</b> <span class="m">x</span> out &mdash; the step examiners look for &mdash; then divide by the whole bracket.
+    <span class="work">x(y &minus; 2) = y + 3<br>x = <span class="frac"><span>y + 3</span><span>y &minus; 2</span></span></span></div></div>
+  <div class="step"><div class="n">5</div><div class="t"><b>Check</b> with <span class="m">x = 4</span>: <span class="m">y = 11/3</span>.
+    <span class="work">(11/3 + 3) &divide; (11/3 &minus; 2) = (20/3) &divide; (5/3) = 4 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = <span class="frac"><span>y + 3</span><span>y &minus; 2</span></span></div>
+  <div class="warn"><b>Watch out</b> You cannot cancel the <span class="m">y</span>s in that answer. Only
+  <b>factors</b> cancel, and <span class="m">y</span> is a term here, not a factor.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Make <span class="m">a</span> the subject of <span class="m">s = ut + &frac12;at&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Only the second term contains <span class="m">a</span>, so subtract <span class="m">ut</span> from both sides.
+    <span class="work">s &minus; ut = &frac12;at&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply both sides by 2, then divide by <span class="m">t&sup2;</span>.
+    <span class="work">2(s &minus; ut) = at&sup2;<br>a = <span class="frac"><span>2(s &minus; ut)</span><span>t&sup2;</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>Check</b> with <span class="m">u = 3, t = 4, a = 2</span>, which give <span class="m">s = 12 + &frac12;(2)(16) = 28</span>.
+    <span class="work">2(28 &minus; 12) &divide; 16 = 32 &divide; 16 = 2 &nbsp;&#10003;</span></div></div>
+  <div class="final">a = <span class="frac"><span>2(s &minus; ut)</span><span>t&sup2;</span></span></div>
+  <div class="note"><b>Note</b> <span class="frac"><span>2s &minus; 2ut</span><span>t&sup2;</span></span> is
+  the same answer written differently, and equally acceptable. What is <i>not</i> acceptable is cancelling
+  one <span class="m">t</span> from <span class="m">2ut</span> and <span class="m">t&sup2;</span> while the
+  <span class="m">2s</span> is still there.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Make <span class="m">h</span> the subject of <span class="m">A = &frac12;bh</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply both sides by 2, then divide by <span class="m">b</span>.
+    <span class="work">2A = bh &nbsp;&rarr;&nbsp; h = <span class="frac"><span>2A</span><span>b</span></span></span></div></div>
+  <div class="final">h = <span class="frac"><span>2A</span><span>b</span></span></div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Make <span class="m">r</span> the subject of <span class="m">V = &pi;r&sup2;h</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Divide both sides by <span class="m">&pi;h</span> to isolate <span class="m">r&sup2;</span>.
+    <span class="work">r&sup2; = <span class="frac"><span>V</span><span>&pi;h</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square root &mdash; positive root only, since <span class="m">r</span> is a length.
+    <span class="work">r = &#8730;(V/(&pi;h))</span></div></div>
+  <div class="final">r = &#8730;(V/(&pi;h))</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Make <span class="m">x</span> the subject of <span class="m">y = <span class="frac"><span>x &minus; 4</span><span>7</span></span> + 2</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Subtract 2 first, then multiply by 7.
+    <span class="work">y &minus; 2 = <span class="frac"><span>x &minus; 4</span><span>7</span></span><br>7(y &minus; 2) = x &minus; 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add 4 and tidy up.
+    <span class="work">x = 7y &minus; 14 + 4 = 7y &minus; 10</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>Check</b> with <span class="m">x = 11</span>: <span class="m">y = 1 + 2 = 3</span>.
+    <span class="work">7(3) &minus; 10 = 11 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = 7y &minus; 10</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Make <span class="m">t</span> the subject of <span class="m">s = <span class="frac"><span>6</span><span>t + 1</span></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply both sides by <span class="m">(t + 1)</span>, then divide by <span class="m">s</span>.
+    <span class="work">s(t + 1) = 6 &nbsp;&rarr;&nbsp; t + 1 = <span class="frac"><span>6</span><span>s</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract 1.
+    <span class="work">t = <span class="frac"><span>6</span><span>s</span></span> &minus; 1</span></div></div>
+  <div class="final">t = <span class="frac"><span>6</span><span>s</span></span> &minus; 1</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">Make <span class="m">x</span> the subject of <span class="m">y = <span class="frac"><span>3x &minus; 1</span><span>x + 2</span></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Clear the fraction and expand.
+    <span class="work">y(x + 2) = 3x &minus; 1<br>xy + 2y = 3x &minus; 1</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect the <span class="m">x</span> terms on one side, the rest on the other.
+    <span class="work">2y + 1 = 3x &minus; xy</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Factorise and divide by the bracket.
+    <span class="work">2y + 1 = x(3 &minus; y)<br>x = <span class="frac"><span>2y + 1</span><span>3 &minus; y</span></span></span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><b>Check</b> with <span class="m">x = 1</span>: <span class="m">y = 2/3</span>.
+    <span class="work">(4/3 + 1) &divide; (3 &minus; 2/3) = (7/3) &divide; (7/3) = 1 &nbsp;&#10003;</span></div></div>
+  <div class="final">x = <span class="frac"><span>2y + 1</span><span>3 &minus; y</span></span></div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Dividing only part of a side</b>
+Dividing by a letter divides <b>every term</b> on that side.
+<span class="frac"><span>v &minus; u</span><span>t</span></span> is not
+<span class="m">v &minus; <span class="frac"><span>u</span><span>t</span></span></span> &mdash; keep the
+numerator together with a bracket or the fraction line.</div>
+<div class="warn"><b>Squaring only part of a side</b>
+Squaring <span class="m">2&pi;&#8730;k</span> gives <span class="m">4&pi;&sup2;k</span>, not
+<span class="m">2&pi;&sup2;k</span>. Every factor outside the root is squared too.</div>
+<div class="warn"><b>Cancelling terms instead of factors</b>
+In <span class="m">x = <span class="frac"><span>y + 3</span><span>y &minus; 2</span></span></span> the
+<span class="m">y</span>s do not cancel. Only <b>factors</b> cancel in a fraction, never individual terms.</div>
+<div class="tip"><b>Exam tip</b>
+Check any rearrangement by putting simple numbers into the original and into your new version &mdash; they
+must hand back exactly the value you started with. It takes seconds and exposes almost every slip.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Make <span class="m">c</span> the subject of <span class="m">P = a + b + c</span>.</span></summary>
+<div class="body"><div class="final">c = P &minus; a &minus; b</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">What is the first move when making <span class="m">x</span> the subject of <span class="m">y = <span class="frac"><span>6</span><span>x</span></span></span>?</span></summary>
+<div class="body"><div class="final">Multiply both sides by x (the denominator): xy = 6, so x = 6/y.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">In the subject-appears-twice routine, which step do examiners award the key mark for?</span></summary>
+<div class="body"><div class="final">Factorising the new subject out of the collected terms &mdash; x(y &minus; 2) = y + 3 &mdash; before dividing by the bracket.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/6-3.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a rearrangement checker to explore.</span></a>
+  <a href="../igcse-question-bank/changing-the-subject-questions.html"><b>Practice questions</b><span>Exam-style changing-the-subject questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="factorising.html"><span>&larr; Previous lesson</span><b>Factorising</b></a>
+  <a class="next" href="sequences.html"><span>Next lesson &rarr;</span><b>Sequences</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triangles | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on triangles — types, the 180° angle sum, the exterior angle rule and isosceles reasoning, with worked examples and practice.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Geometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Triangles</h1>
+    <p>The angle sum, the exterior angle rule and isosceles reasoning &mdash; the three tools that unlock almost every geometry question.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Name a triangle by its sides (equilateral, isosceles, scalene) and by its angles (acute-, right- or obtuse-angled).</li>
+  <li>Use the angle sum of a triangle, <span class="m">a + b + c = 180&deg;</span>, with a correct reason.</li>
+  <li>Apply the exterior angle rule: exterior angle = sum of the two opposite interior angles.</li>
+  <li>Spot isosceles triangles and use &ldquo;base angles of an isosceles triangle&rdquo; in angle-chase questions.</li>
+  <li>Set up and solve equations when angles are given algebraically.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>equilateral</span><span>isosceles</span><span>scalene</span><span>hypotenuse</span><span>interior angle</span><span>exterior angle</span><span>base angles</span><span>apex</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Two angles on a straight line are <span class="m">x&deg;</span> and <span class="m">115&deg;</span>. Find <span class="m">x</span>.</span></summary>
+<div class="body"><div class="final">x = 180 &minus; 115 = 65 &mdash; angles on a straight line total 180&deg;.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Two parallel lines are cut by a transversal. What can you say about a pair of alternate angles?</span></summary>
+<div class="body"><div class="final">They are equal &mdash; the Z-shape between parallel lines gives equal alternate angles.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Solve <span class="m">2x + 34 = 180</span>.</span></summary>
+<div class="body"><div class="final">2x = 146, so x = 73.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Naming triangles</h3>
+<p>A triangle is named twice: once by its <b>sides</b> and once by its <b>angles</b>. A question may say
+&ldquo;the triangle is isosceles&rdquo; and expect you to supply the equal angles yourself, so learn both
+lists properly.</p>
+<div class="grid">
+  <div class="card g"><h4>Equilateral</h4>
+    <svg viewBox="0 0 240 200" role="img" aria-label="Equilateral triangle with three equal sides and three 60 degree angles">
+      <rect x="0" y="0" width="240" height="200" fill="#f7faff"/>
+      <polygon points="120,30 50,151.2 190,151.2" fill="#e9f9ef" stroke="#0f2d6b" stroke-width="2.5"/>
+      <line x1="78.9" y1="87.1" x2="91.1" y2="94.1" stroke="#e05c2a" stroke-width="2.5"/>
+      <line x1="148.9" y1="94.1" x2="161.1" y2="87.1" stroke="#e05c2a" stroke-width="2.5"/>
+      <line x1="120" y1="144.2" x2="120" y2="158.2" stroke="#e05c2a" stroke-width="2.5"/>
+      <text x="120" y="70" font-size="12" font-weight="bold" text-anchor="middle" fill="#16a34a">60&deg;</text>
+      <text x="84" y="136" font-size="12" font-weight="bold" text-anchor="middle" fill="#16a34a">60&deg;</text>
+      <text x="156" y="136" font-size="12" font-weight="bold" text-anchor="middle" fill="#16a34a">60&deg;</text>
+      <text x="120" y="182" font-size="12" text-anchor="middle" fill="#12213d">3 lines of symmetry</text>
+    </svg>
+    <p>All three sides equal, all three angles <span class="m">60&deg;</span>.</p>
+  </div>
+  <div class="card o"><h4>Isosceles</h4>
+    <svg viewBox="0 0 240 200" role="img" aria-label="Isosceles triangle with two equal sides and two equal base angles">
+      <rect x="0" y="0" width="240" height="200" fill="#f7faff"/>
+      <polygon points="120,30 55,170 185,170" fill="#fff1ea" stroke="#0f2d6b" stroke-width="2.5"/>
+      <line x1="120" y1="30" x2="120" y2="170" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5 4"/>
+      <line x1="81.2" y1="97.1" x2="93.9" y2="103" stroke="#e05c2a" stroke-width="2.5"/>
+      <line x1="146.1" y1="103" x2="158.8" y2="97.1" stroke="#e05c2a" stroke-width="2.5"/>
+      <text x="83" y="158" font-size="13" font-weight="bold" text-anchor="middle" fill="#e05c2a">x</text>
+      <text x="157" y="158" font-size="13" font-weight="bold" text-anchor="middle" fill="#e05c2a">x</text>
+      <text x="120" y="192" font-size="12" text-anchor="middle" fill="#12213d">1 line of symmetry</text>
+    </svg>
+    <p>Two sides equal. The <b>base angles</b> (opposite the equal sides) are equal.</p>
+  </div>
+  <div class="card"><h4>Scalene</h4>
+    <svg viewBox="0 0 240 200" role="img" aria-label="Scalene triangle with all sides and angles different">
+      <rect x="0" y="0" width="240" height="200" fill="#f7faff"/>
+      <polygon points="60,170 200,170 150,50" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2.5"/>
+      <text x="93" y="157" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a4fa0">53&deg;</text>
+      <text x="163" y="151" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a4fa0">67&deg;</text>
+      <text x="145" y="94" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a4fa0">60&deg;</text>
+      <text x="120" y="192" font-size="12" text-anchor="middle" fill="#12213d">no symmetry</text>
+    </svg>
+    <p>All three sides different, all three angles different.</p>
+  </div>
+  <div class="card p"><h4>Right-angled</h4>
+    <svg viewBox="0 0 240 200" role="img" aria-label="Right-angled triangle with the right angle marked by a square">
+      <rect x="0" y="0" width="240" height="200" fill="#f7faff"/>
+      <polygon points="60,170 200,170 60,60" fill="#f3edff" stroke="#0f2d6b" stroke-width="2.5"/>
+      <path d="M 60 152 L 78 152 L 78 170" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+      <text x="140" y="100" font-size="12" font-weight="bold" fill="#6d28d9">hypotenuse</text>
+      <text x="120" y="192" font-size="12" text-anchor="middle" fill="#12213d">other two angles sum to 90&deg;</text>
+    </svg>
+    <p>One angle is <span class="m">90&deg;</span>. The longest side, opposite it, is the <b>hypotenuse</b>.</p>
+  </div>
+</div>
+<div class="note"><b>By angles as well</b>
+All angles below <span class="m">90&deg;</span>: <b>acute-angled</b>. One angle above
+<span class="m">90&deg;</span>: <b>obtuse-angled</b>. A triangle can have at most one angle of
+<span class="m">90&deg;</span> or more &mdash; two would already use up the whole <span class="m">180&deg;</span>.</div>
+
+<h3>2&nbsp;&middot;&nbsp; The angle sum is always 180&deg;</h3>
+<div class="formula">a + b + c = 180&deg;
+<small>The three interior angles of any triangle</small></div>
+<div class="card">
+<h4>Why it is 180&deg;</h4>
+<p>Draw a line through the top vertex <b>parallel to the base</b>. The two outer angles at the top are
+alternate angles with the base angles, so the three angles at the top vertex are just
+<span class="m">a</span>, <span class="m">c</span> and <span class="m">b</span> rearranged &mdash; and they
+lie on a straight line.</p>
+<svg viewBox="0 0 520 290" role="img" aria-label="Proof that the angles of a triangle sum to 180 degrees using a parallel line through the apex">
+  <rect x="0" y="0" width="520" height="290" fill="#f7faff"/>
+  <line x1="80" y1="80" x2="470" y2="80" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <line x1="60" y1="230" x2="480" y2="230" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polygon points="120,230 420,230 230,80" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2.5"/>
+  <path d="M 124 73 L 132 80 L 124 87" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <path d="M 164 223 L 172 230 L 164 237" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="157.4" y="215" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">a</text>
+  <text x="377.5" y="219" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">b</text>
+  <text x="235.7" y="126" font-size="15" font-weight="bold" text-anchor="middle" fill="#6d28d9">c</text>
+  <text x="192.5" y="103" font-size="15" font-weight="bold" text-anchor="middle" fill="#1a4fa0">a</text>
+  <text x="269.7" y="98" font-size="15" font-weight="bold" text-anchor="middle" fill="#e05c2a">b</text>
+  <text x="230" y="272" font-size="13" text-anchor="middle" fill="#12213d">a + c + b = 180&deg; (angles on a straight line)</text>
+</svg>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">The angles of a triangle are <span class="m">3x&deg;</span>, <span class="m">4x&deg;</span> and <span class="m">5x&deg;</span>. Find the three angles and name the type of triangle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Use the angle sum of a triangle.
+    <span class="work">3x + 4x + 5x = 180</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Simplify and solve.
+    <span class="work">12x = 180 &nbsp;&rarr;&nbsp; x = 15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute back into each expression.
+    <span class="work">3x = 45&deg;, &nbsp; 4x = 60&deg;, &nbsp; 5x = 75&deg;<br>45 + 60 + 75 = 180 &#10003;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">All three angles are different and all are less than <span class="m">90&deg;</span>.
+    <span class="work">scalene and acute-angled</span></div></div>
+  <div class="final">45&deg;, 60&deg; and 75&deg; &mdash; a scalene, acute-angled triangle</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; The exterior angle rule</h3>
+<p>Extend one side of a triangle. The angle formed outside is the <b>exterior angle</b>, and it equals the
+<b>sum of the two opposite interior angles</b> &mdash; the two you did <i>not</i> touch.</p>
+<div class="formula">exterior angle = sum of the two opposite interior angles
+<small>Reason: exterior angle of a triangle</small></div>
+<div class="card o">
+<svg viewBox="0 0 520 290" role="img" aria-label="Triangle with one side extended, showing the exterior angle equal to the sum of the two opposite interior angles">
+  <rect x="0" y="0" width="520" height="290" fill="#f7faff"/>
+  <line x1="90" y1="230" x2="470" y2="230" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polygon points="90,230 390,230 201,97.7" fill="#fff1ea" stroke="#0f2d6b" stroke-width="2.5"/>
+  <text x="133.5" y="214" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">50&deg;</text>
+  <text x="340.4" y="219" font-size="14" font-weight="bold" text-anchor="middle" fill="#6d28d9">35&deg;</text>
+  <text x="206.9" y="147" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a4fa0">95&deg;</text>
+  <text x="405" y="187" font-size="14" font-weight="bold" text-anchor="middle" fill="#e05c2a">145&deg;</text>
+  <text x="82" y="248" font-size="13" font-weight="bold" fill="#0f2d6b">A</text>
+  <text x="386" y="250" font-size="13" font-weight="bold" fill="#0f2d6b">B</text>
+  <text x="196" y="88" font-size="13" font-weight="bold" fill="#0f2d6b">C</text>
+  <text x="474" y="248" font-size="13" font-weight="bold" fill="#0f2d6b">D</text>
+  <text x="260" y="275" font-size="13" text-anchor="middle" fill="#12213d">145 = 50 + 95 &nbsp;and&nbsp; 145 + 35 = 180</text>
+</svg>
+<p>Both routes work: add the two far angles, or take the neighbouring interior angle from
+<span class="m">180&deg;</span> (angles on a straight line). If the two routes disagree, an earlier step is wrong
+&mdash; that is a free check.</p>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">In triangle <span class="m">ABC</span>, side <span class="m">AB</span> is extended to <span class="m">D</span>. <span class="m">&#8736;CBD = 128&deg;</span> and <span class="m">&#8736;BAC = 51&deg;</span>. Find <span class="m">&#8736;ACB</span> and <span class="m">&#8736;ABC</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The exterior angle at <span class="m">B</span> equals the sum of the two opposite interior angles, at <span class="m">A</span> and <span class="m">C</span>.
+    <span class="work">128 = 51 + &#8736;ACB &nbsp;(exterior angle of a triangle)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Solve.
+    <span class="work">&#8736;ACB = 128 &minus; 51 = 77&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">&#8736;ABC</span> and the exterior angle sit on the straight line <span class="m">ABD</span>.
+    <span class="work">&#8736;ABC = 180 &minus; 128 = 52&deg; &nbsp;(angles on a straight line)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check the angle sum.
+    <span class="work">51 + 77 + 52 = 180 &#10003;</span></div></div>
+  <div class="final">&#8736;ACB = 77&deg; &nbsp;and&nbsp; &#8736;ABC = 52&deg;</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Isosceles reasoning</h3>
+<p>A large share of geometry marks comes from spotting an isosceles triangle. Two equal sides force two
+equal angles, and two equal angles force two equal sides &mdash; the rule works both ways.</p>
+<div class="def"><b>Base angles of an isosceles triangle</b>
+In a triangle with two equal sides, the angles <b>opposite</b> those sides are equal. The reason to write is
+&ldquo;base angles of an isosceles triangle&rdquo;.</div>
+<div class="grid two">
+  <div class="card g"><h4>Given the apex, find the base angles</h4>
+    <div class="formula">base angle = <span class="frac"><span>180&deg; &minus; apex</span><span>2</span></span></div>
+  </div>
+  <div class="card p"><h4>Given a base angle, find the apex</h4>
+    <div class="formula">apex = 180&deg; &minus; 2 &times; base angle</div>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Triangle <span class="m">PQR</span> has <span class="m">PQ = PR</span> and <span class="m">&#8736;QPR = 34&deg;</span>. Find <span class="m">&#8736;PQR</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">PQ = PR</span>, so the angles opposite those sides are equal &mdash; the angles at <span class="m">R</span> and <span class="m">Q</span>.
+    <span class="work">&#8736;PQR = &#8736;PRQ &nbsp;(base angles of an isosceles triangle)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Call each base angle <span class="m">x</span> and use the angle sum.
+    <span class="work">34 + x + x = 180</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Solve and check.
+    <span class="work">2x = 146 &nbsp;&rarr;&nbsp; x = 73&deg;<br>34 + 73 + 73 = 180 &#10003;</span></div></div>
+  <div class="final">&#8736;PQR = 73&deg;</div>
+  <div class="tip"><b>Exam tip</b> Write the letters of the equal sides down first. It stops you pairing the
+  wrong angles, which is the single commonest error in this topic.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Triangle <span class="m">ABC</span> has <span class="m">AB = AC</span> and <span class="m">&#8736;ABC = 68&deg;</span>. <span class="m">BC</span> is extended to <span class="m">D</span>. Find <span class="m">&#8736;BAC</span> and <span class="m">&#8736;ACD</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">AB = AC</span>, so the angles opposite them &mdash; at <span class="m">C</span> and at <span class="m">B</span> &mdash; are equal.
+    <span class="work">&#8736;ACB = 68&deg; &nbsp;(base angles of an isosceles triangle)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Use the angle sum for the apex.
+    <span class="work">&#8736;BAC = 180 &minus; 68 &minus; 68 = 44&deg; &nbsp;(angle sum of a triangle)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">&#8736;ACD</span> is the exterior angle at <span class="m">C</span>. Use either route:
+    <span class="work">&#8736;ACD = 180 &minus; 68 = 112&deg; &nbsp;(angles on a straight line)<br>or &#8736;ACD = 44 + 68 = 112&deg; &nbsp;(exterior angle of a triangle)</span></div></div>
+  <div class="final">&#8736;BAC = 44&deg; &nbsp;and&nbsp; &#8736;ACD = 112&deg;</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Find the third angle of a triangle whose other angles are (a) <span class="m">43&deg;</span> and <span class="m">78&deg;</span> &nbsp;(b) <span class="m">90&deg;</span> and <span class="m">27&deg;</span>. (c) A triangle has angles <span class="m">2y&deg;</span>, <span class="m">3y&deg;</span>, <span class="m">4y&deg;</span> &mdash; find them.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) and (b): subtract from 180.
+    <span class="work">(a) 180 &minus; 43 &minus; 78 = 59&deg; &nbsp;&nbsp; (b) 180 &minus; 90 &minus; 27 = 63&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(c) Use the angle sum to build an equation.
+    <span class="work">9y = 180 &nbsp;&rarr;&nbsp; y = 20 &nbsp;&rarr;&nbsp; 40&deg;, 60&deg;, 80&deg;</span></div></div>
+  <div class="final">(a) 59&deg; &nbsp;(b) 63&deg; &nbsp;(c) 40&deg;, 60&deg; and 80&deg;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">An isosceles triangle has an apex angle of <span class="m">96&deg;</span>. Find each base angle. Another isosceles triangle has a base angle of <span class="m">37&deg;</span> &mdash; find its apex angle and say whether it is acute- or obtuse-angled.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Base angle from the apex.
+    <span class="work">(180 &minus; 96) &divide; 2 = 84 &divide; 2 = 42&deg; &nbsp;(check: 96 + 42 + 42 = 180 &#10003;)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Apex from a base angle.
+    <span class="work">180 &minus; 2 &times; 37 = 180 &minus; 74 = 106&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">106 &gt; 90</span>, so the triangle is obtuse-angled.</div></div>
+  <div class="final">Base angles 42&deg; each; apex 106&deg;, an obtuse-angled triangle</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A triangle has an exterior angle of <span class="m">132&deg;</span>. One of the opposite interior angles is <span class="m">45&deg;</span>. Find the other two interior angles.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Exterior = sum of the two opposite interior angles.
+    <span class="work">other opposite interior = 132 &minus; 45 = 87&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The third interior angle is on a straight line with the exterior angle.
+    <span class="work">180 &minus; 132 = 48&deg; &nbsp;(check: 45 + 87 + 48 = 180 &#10003;)</span></div></div>
+  <div class="final">87&deg; and 48&deg;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">A triangle has an exterior angle of <span class="m">(4x &minus; 5)&deg;</span> and opposite interior angles <span class="m">(x + 30)&deg;</span> and <span class="m">(2x + 5)&deg;</span>. Find all three interior angles.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Apply the exterior angle rule.
+    <span class="work">4x &minus; 5 = (x + 30) + (2x + 5) = 3x + 35</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Solve.
+    <span class="work">x = 40</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Find the angles.
+    <span class="work">x + 30 = 70&deg;, &nbsp; 2x + 5 = 85&deg;, &nbsp; exterior = 155&deg;<br>third angle = 180 &minus; 155 = 25&deg; &nbsp;(check: 70 + 85 + 25 = 180 &#10003;)</span></div></div>
+  <div class="final">70&deg;, 85&deg; and 25&deg;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q"><span class="m">AB</span> is parallel to <span class="m">CD</span>, with <span class="m">P</span> on <span class="m">AB</span> and <span class="m">Q</span>, <span class="m">R</span> on <span class="m">CD</span>. <span class="m">&#8736;APQ = 62&deg;</span> and <span class="m">&#8736;BPR = 39&deg;</span>. Find the three angles of triangle <span class="m">PQR</span>, giving a reason for each.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Use the parallels for each transversal.
+    <span class="work">&#8736;PQR = 62&deg; &nbsp;and&nbsp; &#8736;PRQ = 39&deg; &nbsp;(alternate angles)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Then the angle sum &mdash; or the straight line at <span class="m">P</span>; both give the same number.
+    <span class="work">&#8736;QPR = 180 &minus; 62 &minus; 39 = 79&deg; &nbsp;(angle sum of a triangle)</span></div></div>
+  <div class="final">&#8736;PQR = 62&deg;, &nbsp; &#8736;PRQ = 39&deg;, &nbsp; &#8736;QPR = 79&deg;</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Adding the wrong angles in the exterior angle rule</b>
+The exterior angle equals the sum of the <b>two opposite</b> interior angles &mdash; not all three, and never
+the neighbouring one. Point at the two angles you are adding before you write anything.</div>
+<div class="warn"><b>Pairing the wrong angles in an isosceles triangle</b>
+The equal angles sit <b>opposite</b> the tick-marked equal sides. Never assume the top angle is the apex
+&mdash; the triangle may be drawn on its side.</div>
+<div class="warn"><b>No reasons written</b>
+&ldquo;Angle sum of a triangle&rdquo;, &ldquo;exterior angle of a triangle&rdquo;, &ldquo;base angles of an
+isosceles triangle&rdquo; &mdash; the reason is worth a mark of its own in angle-chase questions.</div>
+<div class="tip"><b>Exam tip</b>
+Always finish by checking that your three interior angles total <span class="m">180&deg;</span>. Where two
+routes exist (exterior angle rule vs straight line), do both &mdash; agreement is a free check on all your
+earlier steps.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Two angles of a triangle are <span class="m">64&deg;</span> and <span class="m">71&deg;</span>. Find the third.</span></summary>
+<div class="body"><div class="final">180 &minus; 64 &minus; 71 = 45&deg;.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">An isosceles triangle has apex <span class="m">40&deg;</span>. What are its base angles?</span></summary>
+<div class="body"><div class="final">(180 &minus; 40) &divide; 2 = 70&deg; each.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">An exterior angle of a triangle is <span class="m">110&deg;</span>. What do the two opposite interior angles add up to?</span></summary>
+<div class="body"><div class="final">110&deg; &mdash; exterior angle = sum of the two opposite interior angles.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/3-2.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a triangle angle explorer to play with.</span></a>
+  <a href="../igcse-question-bank/angles-questions.html"><b>Practice questions</b><span>Exam-style angle questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="lines-and-angles.html"><span>&larr; Previous lesson</span><b>Lines and Angles</b></a>
+  <a class="next" href="quadrilaterals.html"><span>Next lesson &rarr;</span><b>Quadrilaterals</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

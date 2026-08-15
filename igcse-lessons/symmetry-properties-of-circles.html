@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Symmetry Properties of Circles | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on the chord and tangent symmetry properties of circles — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Geometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Symmetry Properties of Circles</h1>
+    <p>Chords, tangents and the tangent kite &mdash; three symmetry results that each hand you a right-angled triangle, ready for Pythagoras' theorem.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Use the fact that the perpendicular from the centre to a chord <b>bisects</b> the chord, and apply <span class="m">r&sup2; = d&sup2; + (c &divide; 2)&sup2;</span>.</li>
+  <li>Recognise that equal chords are equidistant from the centre, and vice versa.</li>
+  <li>Mark the right angle between a <b>tangent</b> and the radius at the point of contact, and use it in calculations.</li>
+  <li>Use the equal-tangent and angle-bisecting properties of two tangents drawn from an external point.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>chord</span><span>tangent</span><span>point of contact</span><span>perpendicular bisector</span><span>equidistant</span><span>kite</span><span>congruent</span><span>hypotenuse</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">A right-angled triangle has legs 5 cm and 12 cm. How long is the hypotenuse?</span></summary>
+<div class="body"><div class="final">&#8730;(25 + 144) = &#8730;169 = 13 cm &mdash; the 5, 12, 13 triple.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">The angles of any quadrilateral add up to how many degrees?</span></summary>
+<div class="body"><div class="final">360&deg;</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">How many lines of symmetry does a circle have, and where do they all pass?</span></summary>
+<div class="body"><div class="final">Infinitely many &mdash; every line of symmetry is a diameter, so they all pass through the centre.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The perpendicular from the centre to a chord</h3>
+<p>A circle has infinitely many lines of symmetry, and every one passes through the centre. Fold a circle
+along a diameter and the two halves match exactly. Every result in this lesson is a consequence of that
+single fact.</p>
+<div class="def"><b>Property 1</b>
+The perpendicular drawn from the <b>centre</b> of a circle to a <b>chord</b> <b>bisects</b> the chord.
+Equivalently, the perpendicular bisector of any chord passes through the centre.</div>
+<div class="card">
+<h4>The right-angled triangle this creates</h4>
+<svg viewBox="0 0 340 260" role="img" aria-label="A circle with centre O, a chord AB, and the perpendicular from O to the midpoint M of AB">
+  <circle cx="170" cy="130" r="100" fill="none" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="90" y1="190" x2="250" y2="190" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="170" y1="130" x2="170" y2="190" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="170" y1="130" x2="250" y2="190" stroke="#16a34a" stroke-width="2.5"/>
+  <polyline points="170,180 180,180 180,190" fill="none" stroke="#0f2d6b" stroke-width="1.6"/>
+  <circle cx="170" cy="130" r="4.5" fill="#0f2d6b"/>
+  <circle cx="170" cy="190" r="4" fill="#e05c2a"/>
+  <text x="158" y="126" font-size="14" fill="#0f2d6b">O</text>
+  <text x="76" y="186" font-size="14" fill="#0f2d6b">A</text>
+  <text x="256" y="186" font-size="14" fill="#0f2d6b">B</text>
+  <text x="166" y="208" font-size="14" fill="#e05c2a">M</text>
+  <text x="128" y="166" font-size="13" fill="#e05c2a">d</text>
+  <text x="216" y="152" font-size="13" fill="#16a34a">r</text>
+  <text x="126" y="208" font-size="13" fill="#0f2d6b">half</text>
+  <text x="204" y="208" font-size="13" fill="#0f2d6b">half</text>
+  <line x1="126" y1="184" x2="126" y2="196" stroke="#0f2d6b" stroke-width="1.6"/>
+  <line x1="212" y1="184" x2="212" y2="196" stroke="#0f2d6b" stroke-width="1.6"/>
+</svg>
+</div>
+<div class="formula">r&sup2; = d&sup2; + (c &divide; 2)&sup2;
+<small>radius r &middot; distance from centre d &middot; chord length c</small></div>
+<div class="note"><b>Bonus fact</b>
+<b>Equal chords are equidistant from the centre</b>, and chords equidistant from the centre are equal.
+The nearer a chord is to the centre, the longer it is &mdash; the longest chord of all is the diameter,
+at distance 0.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A chord of length 24 cm is drawn in a circle of radius 13 cm. Find the distance of the chord from the centre.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Draw the perpendicular from the centre <span class="m">O</span> to the chord <span class="m">AB</span>, meeting it at <span class="m">M</span>. It bisects the chord.
+    <span class="work">AM = MB = 24 &divide; 2 = 12 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Triangle <span class="m">OMA</span> is right-angled at <span class="m">M</span>, with the radius as the hypotenuse.
+    <span class="work">OM&sup2; + 12&sup2; = 13&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Rearrange and take the square root.
+    <span class="work">OM&sup2; = 169 &minus; 144 = 25 &nbsp;&rarr;&nbsp; OM = 5</span></div></div>
+  <div class="final">The chord is 5 cm from the centre</div>
+  <div class="note"><b>Check</b> <span class="m">5&sup2; + 12&sup2; = 169 = 13&sup2;</span> &#10003; The 5, 12, 13
+  triple appears constantly in circle questions, along with 3, 4, 5 and 8, 15, 17.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; The tangent and the radius</h3>
+<p>A <b>tangent</b> is a straight line that touches the circle at exactly one point &mdash; the
+<b>point of contact</b>. By symmetry it must sit square-on to the radius drawn to that point: if it leaned
+either way, it would cut the circle twice.</p>
+<div class="def"><b>Property 2</b>
+A tangent is <b>perpendicular</b> to the radius drawn to the point of contact:
+<span class="m">angle between tangent and radius = 90&deg;</span>.</div>
+<div class="card g">
+<h4>Tangent, radius, right angle</h4>
+<svg viewBox="0 0 340 260" role="img" aria-label="A circle with a tangent touching at T and the radius OT meeting it at right angles">
+  <circle cx="170" cy="140" r="80" fill="none" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="50" y1="220" x2="290" y2="220" stroke="#16a34a" stroke-width="2.8"/>
+  <line x1="170" y1="140" x2="170" y2="220" stroke="#e05c2a" stroke-width="2.5"/>
+  <polyline points="170,208 182,208 182,220" fill="none" stroke="#0f2d6b" stroke-width="1.8"/>
+  <circle cx="170" cy="140" r="4.5" fill="#0f2d6b"/>
+  <circle cx="170" cy="220" r="4.5" fill="#16a34a"/>
+  <text x="152" y="136" font-size="14" fill="#0f2d6b">O</text>
+  <text x="164" y="242" font-size="14" fill="#16a34a">T</text>
+  <text x="140" y="188" font-size="13" fill="#e05c2a">r</text>
+  <text x="238" y="212" font-size="13" fill="#16a34a">tangent</text>
+</svg>
+</div>
+<div class="tip"><b>Exam tip</b>
+When a diagram shows a tangent, mark the right angle at the point of contact <i>before</i> you do anything
+else. Nine times out of ten that right angle is the whole question &mdash; it turns the figure into a
+right-angled triangle, ready for Pythagoras or trigonometry.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">A circle has centre <span class="m">O</span> and radius 8 cm. <span class="m">P</span> is a point 17 cm from <span class="m">O</span>, and <span class="m">PT</span> is a tangent touching the circle at <span class="m">T</span>. Find <span class="m">PT</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Draw the radius <span class="m">OT</span>. Because <span class="m">PT</span> is a tangent, angle <span class="m">OTP = 90&deg;</span>, so triangle <span class="m">OTP</span> is right-angled at <span class="m">T</span>.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">This time the hypotenuse is <span class="m">OP</span> &mdash; the side opposite the right angle, not the radius.
+    <span class="work">OT&sup2; + PT&sup2; = OP&sup2; &nbsp;&rarr;&nbsp; 8&sup2; + PT&sup2; = 17&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Solve.
+    <span class="work">PT&sup2; = 289 &minus; 64 = 225 &nbsp;&rarr;&nbsp; PT = 15</span></div></div>
+  <div class="final">PT = 15 cm</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Two tangents from an external point</h3>
+<p>From a point outside a circle you can draw exactly two tangents. The whole figure is symmetrical about
+the line joining the external point to the centre &mdash; and that one line of symmetry gives three results
+at once.</p>
+<div class="def"><b>Property 3</b>
+If tangents from an external point <span class="m">P</span> touch the circle, centre <span class="m">O</span>,
+at <span class="m">A</span> and <span class="m">B</span>, then <span class="m">PA = PB</span>,
+<span class="m">OP</span> bisects both angle <span class="m">APB</span> and angle <span class="m">AOB</span>,
+and triangles <span class="m">OAP</span> and <span class="m">OBP</span> are congruent right-angled triangles.</div>
+<div class="card p">
+<h4>The tangent kite</h4>
+<svg viewBox="0 0 400 300" role="img" aria-label="Two tangents from an external point P touching a circle at A and B, with right angles marked and the line OP drawn">
+  <circle cx="120" cy="150" r="70" fill="none" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="120" y1="150" x2="280" y2="150" stroke="#6d28d9" stroke-width="2.2" stroke-dasharray="7 5"/>
+  <line x1="120" y1="150" x2="150.6" y2="87.1" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="120" y1="150" x2="150.6" y2="212.9" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="280" y1="150" x2="150.6" y2="87.1" stroke="#16a34a" stroke-width="2.8"/>
+  <line x1="280" y1="150" x2="150.6" y2="212.9" stroke="#16a34a" stroke-width="2.8"/>
+  <polyline points="145.35,97.88 156.14,103.13 161.39,92.35" fill="none" stroke="#0f2d6b" stroke-width="1.7"/>
+  <polyline points="145.35,202.12 156.14,196.87 161.39,207.65" fill="none" stroke="#0f2d6b" stroke-width="1.7"/>
+  <circle cx="120" cy="150" r="4.5" fill="#0f2d6b"/>
+  <circle cx="280" cy="150" r="4.5" fill="#16a34a"/>
+  <circle cx="150.6" cy="87.1" r="4" fill="#e05c2a"/>
+  <circle cx="150.6" cy="212.9" r="4" fill="#e05c2a"/>
+  <text x="102" y="146" font-size="14" fill="#0f2d6b">O</text>
+  <text x="290" y="146" font-size="14" fill="#16a34a">P</text>
+  <text x="140" y="78" font-size="14" fill="#e05c2a">A</text>
+  <text x="140" y="234" font-size="14" fill="#e05c2a">B</text>
+  <text x="118" y="106" font-size="13" fill="#e05c2a">r</text>
+  <text x="216" y="106" font-size="13" fill="#16a34a">equal</text>
+  <text x="216" y="200" font-size="13" fill="#16a34a">equal</text>
+  <text x="196" y="166" font-size="13" fill="#6d28d9">OP bisects the angle</text>
+</svg>
+</div>
+<div class="grid two">
+  <div class="card"><h4>Why the triangles are congruent</h4>
+    <ul>
+      <li><b>R</b>ight angle: <span class="m">OAP = OBP = 90&deg;</span> (tangent &perp; radius)</li>
+      <li><b>H</b>ypotenuse: <span class="m">OP</span> is common to both</li>
+      <li><b>S</b>ide: <span class="m">OA = OB = r</span> (both radii)</li>
+    </ul>
+    <p>RHS congruence, so <span class="m">PA = PB</span> and the two angles at <span class="m">P</span> are equal.</p></div>
+  <div class="card o"><h4>The angle fact you will need</h4>
+    <p><span class="m">OAPB</span> is a quadrilateral, so its angles add to <span class="m">360&deg;</span>.
+    Two of them are right angles, which leaves</p>
+    <p class="m">angle AOB + angle APB = 180&deg;</p>
+    <p>Know this and most tangent-angle questions are one line of arithmetic.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Two tangents from <span class="m">P</span> touch a circle, centre <span class="m">O</span>, at <span class="m">A</span> and <span class="m">B</span>. Angle <span class="m">APB = 48&deg;</span>. Find angle <span class="m">AOB</span>, angle <span class="m">APO</span> and angle <span class="m">AOP</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Angles of quadrilateral <span class="m">OAPB</span> add to <span class="m">360&deg;</span>, and the angles at <span class="m">A</span> and <span class="m">B</span> are right angles.
+    <span class="work">angle AOB = 360&deg; &minus; 90&deg; &minus; 90&deg; &minus; 48&deg; = 132&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">OP</span> bisects angle <span class="m">APB</span>, by symmetry.
+    <span class="work">angle APO = 48&deg; &divide; 2 = 24&deg;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">In triangle <span class="m">OAP</span> the angles add to <span class="m">180&deg;</span>.
+    <span class="work">angle AOP = 180&deg; &minus; 90&deg; &minus; 24&deg; = 66&deg;</span></div></div>
+  <div class="final">angle AOB = 132&deg;, angle APO = 24&deg;, angle AOP = 66&deg;</div>
+  <div class="note"><b>Check</b> <span class="m">OP</span> also bisects angle <span class="m">AOB</span>:
+  <span class="m">132&deg; &divide; 2 = 66&deg;</span> &#10003;</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">In a circle of radius 10 cm, two parallel chords have lengths 12 cm and 16 cm. Find the distance between them when they are (a) on opposite sides of the centre, (b) on the same side.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Distance of the 12 cm chord: half of it is 6 cm.
+    <span class="work">d&#8321;&sup2; = 10&sup2; &minus; 6&sup2; = 64 &nbsp;&rarr;&nbsp; d&#8321; = 8 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Distance of the 16 cm chord: half of it is 8 cm.
+    <span class="work">d&#8322;&sup2; = 10&sup2; &minus; 8&sup2; = 36 &nbsp;&rarr;&nbsp; d&#8322; = 6 cm</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(a) On opposite sides, the centre lies between the chords, so <b>add</b>. (b) On the same side, <b>subtract</b>.
+    <span class="work">(a) 8 + 6 = 14 cm &nbsp;&nbsp; (b) 8 &minus; 6 = 2 cm</span></div></div>
+  <div class="final">(a) 14 cm &nbsp;&nbsp;&nbsp; (b) 2 cm</div>
+  <div class="warn"><b>Watch out</b> A question that just says &ldquo;two parallel chords&rdquo; has
+  <b>two</b> answers. Notice also that the longer chord (16 cm) is the one nearer the centre.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">A chord of length 30 cm is drawn in a circle of radius 17 cm. How far is the chord from the centre?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Half the chord is 15 cm; the radius is the hypotenuse.
+    <span class="work">d&sup2; = 17&sup2; &minus; 15&sup2; = 289 &minus; 225 = 64</span></div></div>
+  <div class="final">d = 8 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">A chord of length 24 cm is 9 cm from the centre of a circle. Find the radius.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Half the chord is 12 cm.
+    <span class="work">r&sup2; = 9&sup2; + 12&sup2; = 81 + 144 = 225</span></div></div>
+  <div class="final">r = 15 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q"><span class="m">PT</span> is a tangent to a circle of radius 5 cm with centre <span class="m">O</span>, and <span class="m">OP = 13</span> cm. Find <span class="m">PT</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Right angle at <span class="m">T</span>; <span class="m">OP</span> is the hypotenuse.
+    <span class="work">PT&sup2; = 13&sup2; &minus; 5&sup2; = 169 &minus; 25 = 144</span></div></div>
+  <div class="final">PT = 12 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Two tangents from <span class="m">P</span> touch a circle, centre <span class="m">O</span>, at <span class="m">A</span> and <span class="m">B</span>, and angle <span class="m">AOB = 116&deg;</span>. Find angle <span class="m">APB</span> and angle <span class="m">OPA</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">In quadrilateral <span class="m">OAPB</span> the angles at <span class="m">A</span> and <span class="m">B</span> are 90&deg;.
+    <span class="work">angle APB = 360&deg; &minus; 90&deg; &minus; 90&deg; &minus; 116&deg; = 64&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">OP</span> bisects angle <span class="m">APB</span>.
+    <span class="work">angle OPA = 64&deg; &divide; 2 = 32&deg;</span></div></div>
+  <div class="final">angle APB = 64&deg;, angle OPA = 32&deg;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A circle has radius 9 cm and <span class="m">P</span> is 14 cm from the centre. Find the length of a tangent from <span class="m">P</span>, correct to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Right angle at the point of contact.
+    <span class="work">t&sup2; = 14&sup2; &minus; 9&sup2; = 196 &minus; 81 = 115</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square root, round only at the end.
+    <span class="work">t = &#8730;115 = 10.7238&hellip;</span></div></div>
+  <div class="final">10.7 cm (3 s.f.)</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Putting the radius on the wrong side of Pythagoras</b>
+In a chord triangle the hypotenuse is always the <b>radius</b>, because it faces the right angle. Writing
+<span class="m">d&sup2; = r&sup2; + (c &divide; 2)&sup2;</span> is the single most common error in this topic.
+In a tangent triangle, though, the hypotenuse is <span class="m">OP</span> &mdash; check which side faces
+the right angle every time.</div>
+<div class="warn"><b>Using the full chord instead of half</b>
+The perpendicular from the centre bisects the chord, so only <b>half</b> the chord length goes into the
+right-angled triangle. Halve first, then square.</div>
+<div class="warn"><b>Rounding too early</b>
+Do not round <span class="m">&#8730;75</span> to 8.66 and then double it. Keep the full calculator value
+until the final line &mdash; rounding early costs an accuracy mark.</div>
+<div class="tip"><b>Exam tip</b>
+The instant you see a chord, draw the radius to one end and the perpendicular from the centre; the instant
+you see a tangent, mark the 90&deg; at the point of contact. Learn the triples
+<span class="m">3, 4, 5</span> &middot; <span class="m">5, 12, 13</span> &middot; <span class="m">8, 15, 17</span>
+&middot; <span class="m">7, 24, 25</span> &mdash; they cover most circle questions without a calculator.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">The perpendicular from the centre meets a chord of length 18 cm. How long is each half of the chord?</span></summary>
+<div class="body"><div class="final">9 cm &mdash; the perpendicular from the centre bisects the chord.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">What angle does a tangent make with the radius at the point of contact?</span></summary>
+<div class="body"><div class="final">90&deg; &mdash; tangent and radius are perpendicular.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Two tangents from a point make an angle of 40&deg; with each other. What is the angle at the centre between the two radii to the points of contact?</span></summary>
+<div class="body"><div class="final">180&deg; &minus; 40&deg; = 140&deg;</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/19-3.html"><b>Revision notes</b><span>The full interactive notes for this topic, with chord and tangent calculators to explore.</span></a>
+  <a href="../igcse-question-bank/circle-theorem-questions.html"><b>Practice questions</b><span>Exam-style circle theorem questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="symmetry-in-three-dimensions.html"><span>&larr; Previous lesson</span><b>Symmetry in Three Dimensions</b></a>
+  <a class="next" href="angle-relationships-in-circles.html"><span>Next lesson &rarr;</span><b>Angle Relationships in Circles</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

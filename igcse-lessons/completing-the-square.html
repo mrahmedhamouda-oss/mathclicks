@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Completing the Square | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on completing the square — rewriting quadratics as a perfect square plus a constant, solving exactly, and reading off the turning point.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Completing the Square</h1>
+    <p>Rewrite a quadratic as a perfect square plus a constant &mdash; then solve it exactly and read the turning point straight off the page.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Write <span class="m">x&sup2; + bx + c</span> in the form <span class="m">(x + p)&sup2; + q</span> by halving, squaring and subtracting.</li>
+  <li>Handle an odd coefficient of <span class="m">x</span> with exact fractions, and a leading coefficient by factoring it out of the first two terms.</li>
+  <li>Solve a quadratic exactly by completing the square, remembering the <span class="m">&plusmn;</span> when square-rooting.</li>
+  <li>Read the turning point and line of symmetry from <span class="m">y = a(x &minus; h)&sup2; + k</span>, and prove an expression is always positive.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>perfect square</span><span>completed square form</span><span>coefficient</span><span>surd</span><span>turning point</span><span>line of symmetry</span><span>minimum</span><span>maximum</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Expand <span class="m">(x + 4)&sup2;</span>.</span></summary>
+<div class="body"><div class="final">x&sup2; + 8x + 16 &mdash; the middle term is twice the 4.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Solve <span class="m">x&sup2; = 25</span>. How many answers are there?</span></summary>
+<div class="body"><div class="final">Two: x = 5 or x = &minus;5. Square-rooting always gives &plusmn;.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">What is <span class="m">(<span class="frac"><span>5</span><span>2</span></span>)&sup2;</span>?</span></summary>
+<div class="body"><div class="final"><span class="frac"><span>25</span><span>4</span></span> &mdash; square the top and the bottom separately.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Halve, square, subtract</h3>
+<p>A quadratic like <span class="m">x&sup2; + 6x + 5</span> is awkward because <span class="m">x</span>
+appears twice. <b>Completing the square</b> rewrites it so <span class="m">x</span> appears
+<i>once only</i>, inside a squared bracket.</p>
+<div class="formula">x&sup2; + bx + c &nbsp;=&nbsp; (x + p)&sup2; + q &nbsp;&nbsp;&nbsp;where&nbsp;&nbsp;&nbsp;
+p = <span class="frac"><span>b</span><span>2</span></span> &nbsp;&nbsp;and&nbsp;&nbsp;
+q = c &minus; p&sup2;
+<small>Halve the coefficient of x; subtract the square of what you halved</small></div>
+<p>The whole method rests on one expansion you must know cold:
+<span class="m">(x + p)&sup2; = x&sup2; + 2px + p&sup2;</span> &mdash; the coefficient of
+<span class="m">x</span> is <b>twice</b> <span class="m">p</span>, which is why you halve.</p>
+<div class="card">
+<h4>Why it is called &ldquo;completing the square&rdquo;</h4>
+<p>Think of <span class="m">x&sup2; + 6x</span> as areas: one <span class="m">x</span> by
+<span class="m">x</span> square and two strips of width 3. Slide the strips into a corner and a
+<span class="m">3 &times; 3</span> tile is missing. Add that tile to <i>complete</i> the square &mdash;
+then subtract it again so nothing changes.</p>
+<svg viewBox="0 0 640 300" role="img" aria-label="Area diagram showing x squared plus 6x completed to (x+3) squared minus 9">
+  <rect x="30" y="55" width="110" height="110" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="85" y="118" font-size="16" text-anchor="middle" fill="#0f2d6b" font-weight="bold">x&sup2;</text>
+  <rect x="140" y="55" width="55" height="110" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="167" y="118" font-size="14" text-anchor="middle" fill="#e05c2a" font-weight="bold">3x</text>
+  <rect x="30" y="165" width="110" height="55" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="85" y="198" font-size="14" text-anchor="middle" fill="#e05c2a" font-weight="bold">3x</text>
+  <rect x="140" y="165" width="55" height="55" fill="#ffffff" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="167" y="197" font-size="14" text-anchor="middle" fill="#6d28d9" font-weight="bold">9</text>
+  <text x="85" y="46" font-size="13" text-anchor="middle" fill="#4a5b7a">x</text>
+  <text x="167" y="46" font-size="13" text-anchor="middle" fill="#4a5b7a">3</text>
+  <text x="18" y="115" font-size="13" text-anchor="middle" fill="#4a5b7a">x</text>
+  <text x="18" y="198" font-size="13" text-anchor="middle" fill="#4a5b7a">3</text>
+  <text x="112" y="255" font-size="13" fill="#4a5b7a">missing corner</text>
+  <text x="250" y="145" font-size="30" fill="#1a4fa0">&rarr;</text>
+  <rect x="330" y="55" width="165" height="165" fill="#e9f9ef" stroke="#16a34a" stroke-width="2.5"/>
+  <line x1="440" y1="55" x2="440" y2="220" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="330" y1="165" x2="495" y2="165" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="412" y="145" font-size="17" text-anchor="middle" fill="#0f2d6b" font-weight="bold">(x + 3)&sup2;</text>
+  <text x="412" y="46" font-size="13" text-anchor="middle" fill="#4a5b7a">x + 3</text>
+  <text x="520" y="145" font-size="14" fill="#6d28d9">&minus; 9</text>
+  <text x="412" y="255" font-size="13" text-anchor="middle" fill="#4a5b7a">x&sup2; + 6x = (x + 3)&sup2; &minus; 9</text>
+</svg>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Write <span class="m">x&sup2; + 8x + 3</span> in the form <span class="m">(x + p)&sup2; + q</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Halve the coefficient of <span class="m">x</span> &mdash; that number goes inside the bracket.
+    <span class="work">p = 8 &divide; 2 = 4 &nbsp;&rarr;&nbsp; (x + 4)&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Expand mentally: <span class="m">(x + 4)&sup2; = x&sup2; + 8x + 16</span> &mdash; there is an unwanted +16.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract the 16 to cancel it, then add the original constant 3.
+    <span class="work">q = 3 &minus; 16 = &minus;13</span></div></div>
+  <div class="final">x&sup2; + 8x + 3 = (x + 4)&sup2; &minus; 13</div>
+  <div class="tip"><b>Exam tip</b> Always check by expanding: <span class="m">(x + 4)&sup2; &minus; 13 =
+  x&sup2; + 8x + 16 &minus; 13 = x&sup2; + 8x + 3</span>. Ten seconds, one guaranteed mark.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Write <span class="m">x&sup2; &minus; 6x + 11</span> in completed square form, and hence show it is always positive.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The coefficient of <span class="m">x</span> is <span class="m">&minus;6</span>, so <span class="m">p = &minus;3</span> &mdash; the <b>sign is kept</b> inside the bracket.
+    <span class="work">(x &minus; 3)&sup2; = x&sup2; &minus; 6x + 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract <span class="m">p&sup2; = 9</span> and add the 11.
+    <span class="work">q = 11 &minus; 9 = 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">A square is never negative, so <span class="m">(x &minus; 3)&sup2; &ge; 0</span> for every <span class="m">x</span>.
+    <span class="work">(x &minus; 3)&sup2; + 2 &ge; 2 &gt; 0</span></div></div>
+  <div class="final">x&sup2; &minus; 6x + 11 = (x &minus; 3)&sup2; + 2, whose smallest value is 2, so it is always positive</div>
+  <div class="note"><b>Note</b> &ldquo;Show it is always positive&rdquo; questions are answered <i>only</i>
+  by completing the square. Say the words &ldquo;a square is never negative&rdquo; &mdash; that is where the
+  reasoning mark lives.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Odd numbers and a leading coefficient</h3>
+<div class="grid two">
+  <div class="card o"><h4>When b is odd</h4>
+    <p>Nothing changes &mdash; <span class="m">p</span> is simply a fraction. Keep it exact, never a rounded
+    decimal: <span class="m">x&sup2; + 7x</span> gives <span class="m">p = <span class="frac"><span>7</span><span>2</span></span></span>,
+    <span class="m">p&sup2; = <span class="frac"><span>49</span><span>4</span></span></span>.</p></div>
+  <div class="card p"><h4>When the coefficient of x&sup2; is not 1</h4>
+    <p>The halving rule only works on a plain <span class="m">x&sup2;</span>. So <b>factor the leading
+    coefficient out of the first two terms only</b>, complete the square inside, then multiply back out.</p></div>
+</div>
+<div class="formula">ax&sup2; + bx + c = a<span style="font-size:1.2em">(</span>x&sup2; +
+<span class="frac"><span>b</span><span>a</span></span>x<span style="font-size:1.2em">)</span> + c
+<small>First move when a &ne; 1: the constant stays outside</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Write <span class="m">2x&sup2; + 12x + 7</span> in the form <span class="m">a(x + p)&sup2; + q</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Factor 2 out of the <span class="m">x&sup2;</span> and <span class="m">x</span> terms <b>only</b>. Leave the 7 alone.
+    <span class="work">2(x&sup2; + 6x) + 7</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Complete the square inside the bracket: half of 6 is 3, subtract <span class="m">3&sup2; = 9</span> in there.
+    <span class="work">x&sup2; + 6x = (x + 3)&sup2; &minus; 9</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Put it back &mdash; the 2 multiplies <b>everything</b> in the bracket, including the &minus;9.
+    <span class="work">2[(x + 3)&sup2; &minus; 9] + 7 = 2(x + 3)&sup2; &minus; 18 + 7</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Tidy the constants and check by expanding.
+    <span class="work">2(x + 3)&sup2; &minus; 11 = 2x&sup2; + 12x + 18 &minus; 11 = 2x&sup2; + 12x + 7 &nbsp;&#10003;</span></div></div>
+  <div class="final">2x&sup2; + 12x + 7 = 2(x + 3)&sup2; &minus; 11</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Solving by completing the square</h3>
+<p>Once <span class="m">x</span> appears only once, simply undo the operations one at a time. This is the
+method the paper demands when it says <b>&ldquo;solve by completing the square&rdquo;</b> or
+<b>&ldquo;give your answers in exact form&rdquo;</b>.</p>
+<div class="card g">
+<h4>The four moves</h4>
+<ol>
+  <li>Complete the square: <span class="m">(x + p)&sup2; + q = 0</span></li>
+  <li>Move the constant: <span class="m">(x + p)&sup2; = &minus;q</span></li>
+  <li>Square root <b>both</b> signs: <span class="m">x + p = &plusmn;&#8730;(&minus;q)</span></li>
+  <li>Subtract <span class="m">p</span>: <span class="m">x = &minus;p &plusmn; &#8730;(&minus;q)</span></li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Solve <span class="m">x&sup2; &minus; 4x &minus; 7 = 0</span> by completing the square. Give exact answers.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Half of &minus;4 is &minus;2, so start with <span class="m">(x &minus; 2)&sup2;</span> and subtract 4, then collect constants.
+    <span class="work">(x &minus; 2)&sup2; &minus; 4 &minus; 7 = 0<br>(x &minus; 2)&sup2; &minus; 11 = 0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Move the &minus;11 across.
+    <span class="work">(x &minus; 2)&sup2; = 11</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Square root both sides &mdash; with <span class="m">&plusmn;</span>. 11 is not a perfect square, so the surd stays.
+    <span class="work">x &minus; 2 = &plusmn;&#8730;11</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Add 2 to both sides.
+    <span class="work">x = 2 &plusmn; &#8730;11</span></div></div>
+  <div class="final">x = 2 + &#8730;11 &nbsp;or&nbsp; x = 2 &minus; &#8730;11 &nbsp;&nbsp;(5.32 or &minus;1.32 to 2 d.p.)</div>
+  <div class="tip"><b>Exam tip</b> &ldquo;Exact form&rdquo; means leave the surd. Only convert to decimals
+  if the question asks for decimal places or significant figures &mdash; and never round part-way through.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Reading the turning point off the form</h3>
+<p>This is the real payoff. The graph of <span class="m">y = a(x &minus; h)&sup2; + k</span> is a parabola
+whose <b>turning point (vertex)</b> is at <span class="m">(h, k)</span>, with <b>line of symmetry</b>
+<span class="m">x = h</span>.</p>
+<div class="formula">y = a(x + p)&sup2; + q &nbsp;&nbsp;&rarr;&nbsp;&nbsp; turning point at (&minus;p, q),
+&nbsp; line of symmetry x = &minus;p
+<small>Notice the sign flip: (x + 3)&sup2; gives x = &minus;3</small></div>
+<div class="grid two">
+  <div class="card g"><h4>If a &gt; 0</h4>
+    <p>The parabola opens <b>upwards</b> (a valley). The turning point is a <b>minimum</b>, and
+    <span class="m">q</span> is the smallest value the expression can take.</p></div>
+  <div class="card o"><h4>If a &lt; 0</h4>
+    <p>The parabola opens <b>downwards</b> (a hill). The turning point is a <b>maximum</b>, and
+    <span class="m">q</span> is the largest value the expression can take.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">Write <span class="m">5 + 4x &minus; x&sup2;</span> in the form <span class="m">q &minus; (x + p)&sup2;</span> and hence write down its greatest value.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Reorder and factor <span class="m">&minus;1</span> out of the <span class="m">x</span> terms. Watch every sign.
+    <span class="work">&minus;x&sup2; + 4x + 5 = &minus;(x&sup2; &minus; 4x) + 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Complete the square inside: half of &minus;4 is &minus;2.
+    <span class="work">x&sup2; &minus; 4x = (x &minus; 2)&sup2; &minus; 4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute back &mdash; the &minus;1 outside changes both signs in the bracket &mdash; and tidy.
+    <span class="work">&minus;[(x &minus; 2)&sup2; &minus; 4] + 5 = 9 &minus; (x &minus; 2)&sup2;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">You are subtracting something never negative, so the expression is largest when the square is zero, at <span class="m">x = 2</span>.
+    <span class="work">greatest value = 9 &minus; 0 = 9</span></div></div>
+  <div class="final">5 + 4x &minus; x&sup2; = 9 &minus; (x &minus; 2)&sup2;; maximum value 9 at the turning point (2, 9)</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Write <span class="m">x&sup2; + 10x + 3</span> in the form <span class="m">(x + p)&sup2; + q</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Halve 10, then subtract its square.
+    <span class="work">p = 5, &nbsp;q = 3 &minus; 25 = &minus;22</span></div></div>
+  <div class="final">(x + 5)&sup2; &minus; 22</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Write <span class="m">x&sup2; &minus; 3x + 5</span> in the form <span class="m">(x + p)&sup2; + q</span>, using fractions.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Half of &minus;3 is <span class="m">&minus;<span class="frac"><span>3</span><span>2</span></span></span>, and its square is <span class="frac"><span>9</span><span>4</span></span>.
+    <span class="work">q = 5 &minus; <span class="frac"><span>9</span><span>4</span></span> = <span class="frac"><span>20</span><span>4</span></span> &minus; <span class="frac"><span>9</span><span>4</span></span> = <span class="frac"><span>11</span><span>4</span></span></span></div></div>
+  <div class="final">(x &minus; <span class="frac"><span>3</span><span>2</span></span>)&sup2; + <span class="frac"><span>11</span><span>4</span></span></div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Write <span class="m">2x&sup2; &minus; 8x + 3</span> in the form <span class="m">a(x + p)&sup2; + q</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Factor 2 out of the first two terms.
+    <span class="work">2(x&sup2; &minus; 4x) + 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Complete the square inside, then multiply back out.
+    <span class="work">2[(x &minus; 2)&sup2; &minus; 4] + 3 = 2(x &minus; 2)&sup2; &minus; 8 + 3</span></div></div>
+  <div class="final">2(x &minus; 2)&sup2; &minus; 5</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Solve <span class="m">x&sup2; + 6x &minus; 2 = 0</span> by completing the square, giving exact answers.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Complete the square and collect constants.
+    <span class="work">(x + 3)&sup2; &minus; 9 &minus; 2 = 0 &nbsp;&rarr;&nbsp; (x + 3)&sup2; = 11</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Root with <span class="m">&plusmn;</span>, then subtract 3.
+    <span class="work">x + 3 = &plusmn;&#8730;11 &nbsp;&rarr;&nbsp; x = &minus;3 &plusmn; &#8730;11</span></div></div>
+  <div class="final">x = &minus;3 + &#8730;11 &nbsp;or&nbsp; x = &minus;3 &minus; &#8730;11 &nbsp;&nbsp;(0.32 or &minus;6.32 to 2 d.p.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">Write down the turning point and the line of symmetry of <span class="m">y = (x &minus; 4)&sup2; + 7</span>, and say whether it is a maximum or a minimum.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The bracket is <span class="m">(x &minus; 4)</span>, so <span class="m">h = 4</span>; the constant outside is 7. Since <span class="m">a = 1 &gt; 0</span> the parabola opens upwards.</div></div>
+  <div class="final">Turning point (4, 7); line of symmetry x = 4; a minimum.</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Forgetting to multiply the subtracted square by a</b>
+In <span class="m">2[(x + 3)&sup2; &minus; 9] + 7</span> the 2 multiplies the &minus;9 as well:
+<span class="m">&minus;18 + 7 = &minus;11</span>, not <span class="m">&minus;9 + 7</span>. This is the
+single most common error in the topic.</div>
+<div class="warn"><b>Dropping the &plusmn; when square-rooting</b>
+<span class="m">(x &minus; 2)&sup2; = 11</span> gives <span class="m">x &minus; 2 = &plusmn;&#8730;11</span>
+&mdash; two answers. Write the <span class="m">&plusmn;</span> the moment you take the root, not later.</div>
+<div class="warn"><b>Sign slips at the turning point</b>
+<span class="m">(x + 3)&sup2; + 2</span> has its vertex at <span class="m">(&minus;3, 2)</span>, not
+<span class="m">(3, 2)</span>. The <span class="m">x</span>-coordinate is the value that makes the bracket
+zero.</div>
+<div class="tip"><b>Exam tip</b>
+Expand your completed square before moving on &mdash; it must return the original quadratic exactly. In a
+multi-part question every later part relies on it, so this one check protects all the marks.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Complete the square: <span class="m">x&sup2; + 12x</span>.</span></summary>
+<div class="body"><div class="final">(x + 6)&sup2; &minus; 36</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">What is the turning point of <span class="m">y = (x + 1)&sup2; &minus; 5</span>?</span></summary>
+<div class="body"><div class="final">(&minus;1, &minus;5) &mdash; a minimum, since the squared term is positive.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Show that <span class="m">x&sup2; &minus; 8x + 20</span> is always positive.</span></summary>
+<div class="body"><div class="final">x&sup2; &minus; 8x + 20 = (x &minus; 4)&sup2; + 4 &ge; 4 &gt; 0, because a square is never negative.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/14-4.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a completing-the-square machine to explore.</span></a>
+  <a href="../igcse-question-bank/quadratic-equations-questions.html"><b>Practice questions</b><span>Exam-style quadratic equation questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="simultaneous-linear-equations.html"><span>&larr; Previous lesson</span><b>Simultaneous Linear Equations</b></a>
+  <a class="next" href="the-quadratic-formula.html"><span>Next lesson &rarr;</span><b>The Quadratic Formula</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

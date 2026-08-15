@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quadratic Expressions and Equations | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on expanding, factorising and solving quadratics, and reading the solutions off the parabola — with worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Quadratic Expressions and Equations</h1>
+    <p>Expanding, factorising and solving quadratics &mdash; and reading the answers straight off the parabola that goes with them.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Recognise a quadratic expression <span class="m">ax&sup2; + bx + c</span> and name its coefficients.</li>
+  <li>Expand a pair of linear brackets and collect the middle terms.</li>
+  <li>Factorise quadratics, including the difference of two squares and a common factor first.</li>
+  <li>Solve quadratic equations by factorising, using the zero-product principle.</li>
+  <li>Connect the solutions to the x-intercepts of the parabola <span class="m">y = ax&sup2; + bx + c</span>.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>quadratic</span><span>coefficient</span><span>expand</span><span>factorise</span><span>difference of two squares</span><span>root</span><span>zero-product principle</span><span>parabola</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Expand <span class="m">2x(x &minus; 3)</span>.</span></summary>
+<div class="body"><div class="final">2x&sup2; &minus; 6x</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Find two numbers with product 12 and sum 7.</span></summary>
+<div class="body"><div class="final">3 and 4</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Solve <span class="m">x + 5 = 0</span> and <span class="m">2x &minus; 6 = 0</span>.</span></summary>
+<div class="body"><div class="final">x = &minus;5 and x = 3</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; What makes an expression quadratic</h3>
+<p>An expression is <b>quadratic</b> when the highest power of the variable is <b>2</b> &mdash; there is an
+<span class="m">x&sup2;</span> term and nothing higher. That single fact controls everything else in this
+lesson: a quadratic equation usually has <b>two</b> solutions, and its graph is a curve, not a line.</p>
+<div class="def"><b>Definition</b>
+A quadratic expression can always be written as <span class="m">ax&sup2; + bx + c</span> with
+<span class="m">a &ne; 0</span>. So <span class="m">5 &minus; 2x&sup2;</span> is quadratic
+(<span class="m">a = &minus;2, b = 0, c = 5</span>), but <span class="m">4x &minus; 9</span> is linear and
+<span class="m">x&sup3; + x&sup2;</span> is cubic.</div>
+
+<p>Multiplying two linear brackets always produces a quadratic. Multiply <b>every</b> term in the first
+bracket by <b>every</b> term in the second, then collect the two middle terms.</p>
+<div class="formula">(x + p)(x + q) = x&sup2; + (p + q)x + pq
+<small>The middle coefficient is the sum, the constant is the product</small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Expand and simplify <span class="m">(2x &minus; 3)(x + 5)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply the first term of the left bracket by both terms of the right bracket.
+    <span class="work">2x &times; x = 2x&sup2; &nbsp;&nbsp; 2x &times; 5 = 10x</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now the second term, <b>keeping its minus sign</b>.
+    <span class="work">&minus;3 &times; x = &minus;3x &nbsp;&nbsp; &minus;3 &times; 5 = &minus;15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write all four terms out and collect the like terms.
+    <span class="work">2x&sup2; + 10x &minus; 3x &minus; 15 = 2x&sup2; + 7x &minus; 15</span></div></div>
+  <div class="final">(2x &minus; 3)(x + 5) = 2x&sup2; + 7x &minus; 15</div>
+  <div class="tip"><b>Exam tip</b> Check with a quick substitution. At <span class="m">x = 1</span> the brackets give
+  <span class="m">(&minus;1)(6) = &minus;6</span> and the answer gives <span class="m">2 + 7 &minus; 15 = &minus;6</span>.
+  Same value, so the expansion is almost certainly right.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Factorising a quadratic</h3>
+<p>Factorising is expanding run backwards. Because the middle coefficient is the sum and the constant is the
+product, the whole job is: <b>find two numbers that multiply to <span class="m">c</span> and add to
+<span class="m">b</span></b>. The signs of <span class="m">b</span> and <span class="m">c</span> tell you the
+signs inside the brackets <i>before</i> you hunt for numbers.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Sign of <span class="m">c</span></th><th>Sign of <span class="m">b</span></th><th>Signs in the brackets</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>positive</td><td>positive</td><td>both <b>+</b></td><td><span class="m">x&sup2; + 7x + 12 = (x + 3)(x + 4)</span></td></tr>
+<tr><td>positive</td><td>negative</td><td>both <b>&minus;</b></td><td><span class="m">x&sup2; &minus; 7x + 12 = (x &minus; 3)(x &minus; 4)</span></td></tr>
+<tr><td>negative</td><td>positive</td><td>one of each; the <b>larger</b> number is <b>+</b></td><td><span class="m">x&sup2; + x &minus; 12 = (x + 4)(x &minus; 3)</span></td></tr>
+<tr><td>negative</td><td>negative</td><td>one of each; the <b>larger</b> number is <b>&minus;</b></td><td><span class="m">x&sup2; &minus; x &minus; 12 = (x &minus; 4)(x + 3)</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="note"><b>Note</b> When <span class="m">c</span> is negative the two numbers have opposite signs,
+so you are looking for a <b>difference</b> of <span class="m">b</span>, not a sum.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Factorise (a) <span class="m">x&sup2; &minus; 9x + 20</span>&nbsp; (b) <span class="m">x&sup2; + 2x &minus; 15</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) <span class="m">c = +20</span> and <span class="m">b = &minus;9</span>,
+    so both brackets are negative. Pairs multiplying to 20: <span class="m">1&times;20, 2&times;10, 4&times;5</span>; the pair adding to 9 is <span class="m">4 + 5</span>.
+    <span class="work">x&sup2; &minus; 9x + 20 = (x &minus; 4)(x &minus; 5)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) <span class="m">c = &minus;15</span>, so one bracket is plus and one is minus.
+    The difference must be 2, so use 5 and 3; <span class="m">b</span> is positive, so the plus goes on the 5.
+    <span class="work">x&sup2; + 2x &minus; 15 = (x + 5)(x &minus; 3)</span></div></div>
+  <div class="final">(a) (x &minus; 4)(x &minus; 5) &nbsp;&nbsp; (b) (x + 5)(x &minus; 3)</div>
+  <div class="tip"><b>Exam tip</b> Expand your answer mentally before moving on. For (b):
+  <span class="m">x&sup2; &minus; 3x + 5x &minus; 15 = x&sup2; + 2x &minus; 15</span> &#10003;.</div>
+</div>
+</details>
+
+<p>When there is <b>no <span class="m">x</span> term</b> and the constant is subtracted, a special pattern
+factorises instantly &mdash; it appears in almost every paper, often disguised.</p>
+<div class="formula">a&sup2; &minus; b&sup2; = (a + b)(a &minus; b)
+<small>The difference of two squares</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Factorise completely (a) <span class="m">x&sup2; &minus; 49</span>&nbsp; (b) <span class="m">9x&sup2; &minus; 25</span>&nbsp; (c) <span class="m">2x&sup2; &minus; 50</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Write both parts as squares: <span class="m">x&sup2;</span> and <span class="m">49 = 7&sup2;</span>.
+    <span class="work">x&sup2; &minus; 49 = (x + 7)(x &minus; 7)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) <span class="m">9x&sup2; = (3x)&sup2;</span> and <span class="m">25 = 5&sup2;</span>.
+    <span class="work">9x&sup2; &minus; 25 = (3x + 5)(3x &minus; 5)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Neither 2 nor 50 is a square &mdash; but there is a common factor of 2. Take it out <b>first</b>, then use the pattern.
+    <span class="work">2x&sup2; &minus; 50 = 2(x&sup2; &minus; 25) = 2(x + 5)(x &minus; 5)</span></div></div>
+  <div class="final">(a) (x + 7)(x &minus; 7) &nbsp; (b) (3x + 5)(3x &minus; 5) &nbsp; (c) 2(x + 5)(x &minus; 5)</div>
+  <div class="warn"><b>Watch out</b> <span class="m">x&sup2; + 49</span> does <b>not</b> factorise &mdash; only a
+  <i>difference</i> of squares splits into brackets. The word &ldquo;completely&rdquo; in a question is a strong
+  hint that a common factor comes out first.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Solving by factorising</h3>
+<div class="def"><b>The zero-product principle</b>
+If <span class="m">A &times; B = 0</span> then <b><span class="m">A = 0</span> or <span class="m">B = 0</span></b>.
+Two numbers can only multiply to zero if at least one of them <i>is</i> zero.</div>
+<div class="card o">
+<h4>The method, every time</h4>
+<ol>
+  <li><b>Rearrange</b> so one side reads <span class="m">ax&sup2; + bx + c</span> and the other side is <b>0</b>.</li>
+  <li><b>Factorise</b> the left-hand side.</li>
+  <li><b>Set each bracket equal to zero</b> and solve the two little linear equations.</li>
+  <li><b>State both answers</b>, using the word &ldquo;or&rdquo;.</li>
+</ol>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 4</span><span class="q">Solve (a) <span class="m">x&sup2; + 3x &minus; 10 = 0</span>&nbsp; (b) <span class="m">x&sup2; + 5x = 24</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Already equal to zero. Product <span class="m">&minus;10</span>, sum <span class="m">+3</span>: the pair is <span class="m">+5</span> and <span class="m">&minus;2</span>.
+    <span class="work">(x + 5)(x &minus; 2) = 0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Set each bracket to zero.
+    <span class="work">x + 5 = 0 &nbsp;&rarr;&nbsp; x = &minus;5<br>x &minus; 2 = 0 &nbsp;&rarr;&nbsp; x = 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) This one is <b>not</b> equal to zero yet. Subtract 24 from both sides first.
+    <span class="work">x&sup2; + 5x &minus; 24 = 0</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Product <span class="m">&minus;24</span>, sum <span class="m">+5</span>: the pair is <span class="m">+8</span> and <span class="m">&minus;3</span>.
+    <span class="work">(x + 8)(x &minus; 3) = 0 &nbsp;&rarr;&nbsp; x = &minus;8 &nbsp;or&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">Check in the <i>original</i> form <span class="m">x&sup2; + 5x = 24</span>.
+    <span class="work">(&minus;8)&sup2; + 5(&minus;8) = 64 &minus; 40 = 24 &#10003;<br>3&sup2; + 5(3) = 9 + 15 = 24 &#10003;</span></div></div>
+  <div class="final">(a) x = &minus;5 or x = 2 &nbsp;&nbsp;&nbsp; (b) x = &minus;8 or x = 3</div>
+</div>
+</details>
+
+<p>Equations like <span class="m">x&sup2; = 5x</span> tempt everybody. Dividing both sides by
+<span class="m">x</span> gives <span class="m">x = 5</span> and looks finished &mdash; but you have divided by
+something that might be zero and <b>thrown away the root <span class="m">x = 0</span></b>. Examiners set this
+deliberately.</p>
+<div class="formula">x&sup2; = 5x &nbsp;&rarr;&nbsp; x&sup2; &minus; 5x = 0 &nbsp;&rarr;&nbsp; x(x &minus; 5) = 0 &nbsp;&rarr;&nbsp; x = 0 &nbsp;or&nbsp; x = 5
+<small>Move everything to one side and take out the common factor x</small></div>
+
+<h3>4&nbsp;&middot;&nbsp; The graph <span class="m">y = ax&sup2; + bx + c</span></h3>
+<p>Every quadratic graph is a <b>parabola</b>: a smooth, symmetrical curve with one turning point. The
+solutions of <span class="m">ax&sup2; + bx + c = 0</span> are exactly the <b>x-coordinates where the curve
+crosses the x-axis</b>, because that is where <span class="m">y = 0</span>.</p>
+<div class="grid two">
+  <div class="card">
+    <h4>What each letter does</h4>
+    <ul>
+      <li><span class="m">a &gt; 0</span>: <b>U-shaped</b> with a <b>minimum</b>; <span class="m">a &lt; 0</span>: upside down with a <b>maximum</b>.</li>
+      <li><span class="m">c</span> is the <b>y-intercept</b>: the curve passes through <span class="m">(0, c)</span>.</li>
+    </ul>
+  </div>
+  <div class="card p">
+    <h4>Symmetry and roots</h4>
+    <ul>
+      <li>The <b>line of symmetry</b> is vertical, halfway between the roots: <span class="m">x = </span><span class="frac"><span>&minus;b</span><span>2a</span></span>.</li>
+      <li>Roots are also called <b>zeros</b> or <b>x-intercepts</b> &mdash; three names for the same thing.</li>
+    </ul>
+  </div>
+</div>
+<div class="card g">
+<h4>How many times can a parabola meet the x-axis?</h4>
+<svg viewBox="0 0 640 200" role="img" aria-label="Three parabolas showing two roots, one repeated root and no real roots">
+  <g>
+    <rect x="8" y="8" width="192" height="184" rx="12" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="1.5"/>
+    <line x1="20" y1="130" x2="188" y2="130" stroke="#0f2d6b" stroke-width="2"/>
+    <path d="M 36 40 Q 104 210 172 40" fill="none" stroke="#1a4fa0" stroke-width="3"/>
+    <circle cx="63" cy="130" r="5" fill="#e05c2a"/><circle cx="145" cy="130" r="5" fill="#e05c2a"/>
+    <text x="104" y="176" font-size="13" text-anchor="middle" font-weight="bold" fill="#1a4fa0">two roots</text>
+  </g>
+  <g transform="translate(216,0)">
+    <rect x="8" y="8" width="192" height="184" rx="12" fill="#f3edff" stroke="#6d28d9" stroke-width="1.5"/>
+    <line x1="20" y1="130" x2="188" y2="130" stroke="#0f2d6b" stroke-width="2"/>
+    <path d="M 36 40 Q 104 160 172 40" fill="none" stroke="#6d28d9" stroke-width="3"/>
+    <circle cx="104" cy="130" r="5" fill="#e05c2a"/>
+    <text x="104" y="176" font-size="13" text-anchor="middle" font-weight="bold" fill="#6d28d9">one repeated root</text>
+  </g>
+  <g transform="translate(432,0)">
+    <rect x="8" y="8" width="192" height="184" rx="12" fill="#fff1ea" stroke="#e05c2a" stroke-width="1.5"/>
+    <line x1="20" y1="130" x2="188" y2="130" stroke="#0f2d6b" stroke-width="2"/>
+    <path d="M 36 30 Q 104 130 172 30" fill="none" stroke="#e05c2a" stroke-width="3"/>
+    <text x="104" y="176" font-size="13" text-anchor="middle" font-weight="bold" fill="#e05c2a">no real roots</text>
+  </g>
+</svg>
+<p style="margin-bottom:0">A quadratic that will not factorise is usually one whose curve either misses the
+axis altogether or cuts it at values that are not whole numbers.</p>
+</div>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Expand and simplify <span class="m">(x &minus; 4)(x + 7)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="work">x&sup2; + 7x &minus; 4x &minus; 28</span></div></div>
+  <div class="final">x&sup2; + 3x &minus; 28</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Factorise (a) <span class="m">x&sup2; + 9x + 18</span> &nbsp;(b) <span class="m">x&sup2; &minus; 5x &minus; 24</span> &nbsp;(c) <span class="m">x&sup2; &minus; 81</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Product 18, sum 9: use 3 and 6.
+    <span class="work">(x + 3)(x + 6)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Product <span class="m">&minus;24</span>, difference 5: use 8 and 3, minus on the 8.
+    <span class="work">(x &minus; 8)(x + 3)</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Difference of two squares with <span class="m">81 = 9&sup2;</span>.
+    <span class="work">(x + 9)(x &minus; 9)</span></div></div>
+  <div class="final">(a) (x + 3)(x + 6) &nbsp; (b) (x &minus; 8)(x + 3) &nbsp; (c) (x + 9)(x &minus; 9)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Solve <span class="m">x&sup2; = 9x &minus; 20</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Rearrange to standard form first.
+    <span class="work">x&sup2; &minus; 9x + 20 = 0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Product 20, sum <span class="m">&minus;9</span>: both brackets negative.
+    <span class="work">(x &minus; 4)(x &minus; 5) = 0</span></div></div>
+  <div class="final">x = 4 or x = 5</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Solve <span class="m">2x&sup2; = 10x</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Do <b>not</b> divide by <span class="m">x</span>. Move everything to one side and factorise.
+    <span class="work">2x&sup2; &minus; 10x = 0 &nbsp;&rarr;&nbsp; 2x(x &minus; 5) = 0</span></div></div>
+  <div class="final">x = 0 or x = 5</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A rectangle has length <span class="m">(x + 3)</span> cm and width <span class="m">(x &minus; 2)</span> cm. Its area is 24&nbsp;cm&sup2;. Find its perimeter.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Form the equation from area = length &times; width, then rearrange.
+    <span class="work">(x + 3)(x &minus; 2) = 24<br>x&sup2; + x &minus; 6 = 24 &nbsp;&rarr;&nbsp; x&sup2; + x &minus; 30 = 0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Product <span class="m">&minus;30</span>, sum <span class="m">+1</span>: use <span class="m">+6</span> and <span class="m">&minus;5</span>.
+    <span class="work">(x + 6)(x &minus; 5) = 0 &nbsp;&rarr;&nbsp; x = &minus;6 or x = 5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>Reject the impossible root</b>: <span class="m">x = &minus;6</span> gives a negative width, so <span class="m">x = 5</span>.
+    <span class="work">length = 8 cm, width = 3 cm &nbsp;(8 &times; 3 = 24 &#10003;)<br>P = 2(8 + 3) = 22 cm</span></div></div>
+  <div class="final">perimeter = 22 cm</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Using the brackets when the right-hand side is not zero</b>
+If <span class="m">(x + 1)(x + 2) = 6</span> you may <i>not</i> write <span class="m">x + 1 = 6</span> or
+<span class="m">x + 2 = 6</span>. The zero-product principle only works against <b>zero</b> &mdash; expand,
+take the 6 across, and start again.</div>
+<div class="warn"><b>Dividing both sides by <span class="m">x</span></b>
+For <span class="m">x&sup2; = 5x</span>, dividing by <span class="m">x</span> loses the root
+<span class="m">x = 0</span>. Take <span class="m">x</span> out as a factor instead &mdash; a two-mark
+quadratic nearly always wants two answers.</div>
+<div class="warn"><b>Factorising a sum of squares</b>
+<span class="m">x&sup2; + 49</span> does not factorise. Only a <i>difference</i> of two squares splits as
+<span class="m">(a + b)(a &minus; b)</span>.</div>
+<div class="tip"><b>Exam tip</b>
+After factorising, expand mentally to check; after solving, substitute both roots back into the
+<i>original</i> equation. Each check costs seconds and protects the accuracy marks.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Factorise <span class="m">x&sup2; &minus; 9</span>.</span></summary>
+<div class="body"><div class="final">(x + 3)(x &minus; 3)</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Solve <span class="m">(x &minus; 2)(x + 7) = 0</span>.</span></summary>
+<div class="body"><div class="final">x = 2 or x = &minus;7</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Where does <span class="m">y = x&sup2; &minus; 2x &minus; 8</span> cross the y-axis?</span></summary>
+<div class="body"><div class="final">At (0, &minus;8) &mdash; the y-intercept is the constant term.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/10-2.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a parabola plotter to explore.</span></a>
+  <a href="../igcse-question-bank/quadratic-equations-questions.html"><b>Practice questions</b><span>Exam-style questions on quadratic equations, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="sequences.html"><span>&larr; Previous lesson</span><b>Sequences</b></a>
+  <a class="next" href="simultaneous-linear-equations.html"><span>Next lesson &rarr;</span><b>Simultaneous Linear Equations</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

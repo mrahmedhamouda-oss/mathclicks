@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rounding and Estimating | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on rounding to decimal places and significant figures, and estimating with 1-figure rounding — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Rounding and Estimating</h1>
+    <p>Round to decimal places and significant figures without losing the accuracy mark, then use 1-figure estimates to check that any answer is sensible.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Round any number to a given number of decimal places, or to the nearest 10, 100 or 1000.</li>
+  <li>Round to a given number of significant figures, deciding correctly which zeros count.</li>
+  <li>Keep the trailing zeros that the required accuracy demands (2.40, 1.0, 20.0).</li>
+  <li>Estimate a calculation by writing every number correct to 1 significant figure.</li>
+  <li>Say whether an estimate is an over-estimate or an under-estimate, with a reason.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>deciding digit</span><span>decimal places</span><span>significant figures</span><span>place-holder zero</span><span>estimate</span><span>over-estimate</span><span>under-estimate</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">In the number <span class="m">27&thinsp;483</span>, what is the value of the digit 4?</span></summary>
+<div class="body"><div class="final">4 hundreds &mdash; 400.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Which is <span class="m">347</span> closer to: 340 or 350?</span></summary>
+<div class="body"><div class="final">350 &mdash; 347 is past the halfway mark 345.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Between which two square numbers does 48 lie?</span></summary>
+<div class="body"><div class="final">36 and 49, so &#8730;48 is between 6 and 7 (just under 7).</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The rounding rule</h3>
+<p>Rounding replaces a number by a nearby, simpler one &mdash; and the method never changes, whatever
+accuracy is asked for.</p>
+<div class="def"><b>The rounding rule</b>
+Find the <b>deciding digit</b> &mdash; the first digit you are about to throw away. If it is
+<b>5 or more</b>, round the last kept digit <b>up</b>; if it is <b>4 or less</b>, leave the last kept
+digit alone. Replace any discarded digits in front of the decimal point with zeros to hold the place
+value.</div>
+<div class="card">
+<h4>Why 347 rounds to 350</h4>
+<svg viewBox="0 0 640 150" role="img" aria-label="Number line from 340 to 350 showing that 347 is past the midpoint 345 so it rounds up to 350" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <line x1="60" y1="86" x2="600" y2="86" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="60" y1="72" x2="60" y2="100" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="600" y1="72" x2="600" y2="100" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="330" y1="60" x2="330" y2="112" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="46" y="124" font-size="14" fill="#0f2d6b">340</text>
+  <text x="310" y="124" font-size="14" fill="#6d28d9">345</text>
+  <text x="580" y="124" font-size="14" fill="#0f2d6b">350</text>
+  <text x="286" y="46" font-size="12" fill="#6d28d9">halfway</text>
+  <circle cx="438" cy="86" r="7" fill="#e05c2a"/>
+  <text x="420" y="70" font-size="14" font-weight="bold" fill="#e05c2a">347</text>
+  <path d="M446 100 L560 100" stroke="#16a34a" stroke-width="2.5" marker-end="url(#ar17)"/>
+  <defs><marker id="ar17" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+    <path d="M0 0 L9 4.5 L0 9 z" fill="#16a34a"/></marker></defs>
+  <text x="452" y="140" font-size="12.5" fill="#16a34a">past halfway, so round up to 350</text>
+</svg>
+</div>
+<p>&ldquo;2 decimal places&rdquo; (2 d.p.) means keep exactly two digits <b>after</b> the decimal point.
+For the nearest 10, 100 or 1000 the deciding digit sits to the <i>left</i> of the point instead.</p>
+<div class="warn"><b>Keep the final zero</b>
+<span class="m">2.397</span> to 2 d.p. is <span class="m">2.40</span>, <b>not</b> 2.4. Two decimal
+places were asked for, so two must appear &mdash; dropping the zero loses the accuracy mark.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Round <span class="m">7.4863</span> to (a) 3 d.p., (b) 2 d.p., (c) 1 d.p.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Keep three decimals; the deciding digit is the fourth decimal, 3 &mdash; less than 5, so nothing changes.
+    <span class="work">7.486|3 &nbsp;&rarr;&nbsp; 7.486</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Keep two decimals; the deciding digit is 6, so round the 8 up to 9.
+    <span class="work">7.48|63 &nbsp;&rarr;&nbsp; 7.49</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Keep one decimal; the deciding digit is 8, so round the 4 up to 5.
+    <span class="work">7.4|863 &nbsp;&rarr;&nbsp; 7.5</span></div></div>
+  <div class="final">(a) 7.486 &nbsp;&nbsp; (b) 7.49 &nbsp;&nbsp; (c) 7.5</div>
+  <div class="warn"><b>Never round twice</b> Always round the <b>original</b> number. Rounding in stages
+  is unsafe: <span class="m">0.449 &rarr; 0.45 &rarr; 0.5</span>, whereas 0.449 to 1 d.p. is
+  <span class="m">0.4</span>.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Significant figures</h3>
+<p>Significant figures count from the <b>first non-zero digit</b>, reading left to right &mdash; they
+tell you how many digits actually carry information, whatever the size of the number.</p>
+<div class="def"><b>Which zeros are significant?</b>
+<ul style="margin:6px 0 0">
+  <li>Zeros <b>before</b> the first non-zero digit are never significant: in <span class="m">0.00408</span> the significant figures are 4, 0, 8.</li>
+  <li>Zeros <b>between</b> significant digits always are: <span class="m">4.05</span> has 3 s.f.</li>
+  <li>Zeros at the end of a whole number are place-holders: <span class="m">46&thinsp;000</span> written to 2 s.f. has significant figures 4 and 6.</li>
+</ul></div>
+<div class="tw">
+<table>
+<thead><tr><th>Number</th><th>1 s.f.</th><th>2 s.f.</th><th>3 s.f.</th></tr></thead>
+<tbody>
+<tr><td><span class="m">45&thinsp;682</span></td><td>50&thinsp;000</td><td>46&thinsp;000</td><td>45&thinsp;700</td></tr>
+<tr><td><span class="m">8&thinsp;496</span></td><td>8&thinsp;000</td><td>8&thinsp;500</td><td>8&thinsp;500</td></tr>
+<tr><td><span class="m">0.004572</span></td><td>0.005</td><td>0.0046</td><td>0.00457</td></tr>
+<tr><td><span class="m">0.9962</span></td><td>1</td><td>1.0</td><td>0.996</td></tr>
+</tbody>
+</table>
+</div>
+<div class="tip"><b>Exam tip</b>
+Unless a question says otherwise, <b>0580 answers are given correct to 3 significant figures</b> (or
+exactly, if the answer is exact). Money goes to 2 decimal places; angles are usually asked to 1 decimal
+place.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">Write <span class="m">0.0030649</span> correct to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Find the first significant figure &mdash; the first non-zero digit. The two zeros after the point are only place-holders.
+    <span class="work">0.00<u>3</u>0649 &nbsp;&rarr;&nbsp; 1st s.f. is 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Count on: 3 (1st), 0 (2nd), 6 (3rd). The deciding digit is the next one, 4.
+    <span class="work">0.00306|49</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">4 is less than 5, so the 6 stays and everything after it goes. The leading zeros must stay &mdash; they fix the size of the number.</div></div>
+  <div class="final">0.00306 (3 s.f.)</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Round (a) <span class="m">19.97</span> to 1 decimal place, (b) <span class="m">0.9962</span> to 2 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The deciding digit is 7, so the 9 in the tenths place rounds up. That makes 10, so carry into the units column.
+    <span class="work">19.9|7 &nbsp;&rarr;&nbsp; 19.9 + 0.1 = 20.0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) The first two significant figures are 9 and 9; the deciding digit is 6, so the carry runs all the way up.
+    <span class="work">0.99|62 &nbsp;&rarr;&nbsp; 0.99 + 0.01 = 1.00 &nbsp;&rarr;&nbsp; write 1.0</span></div></div>
+  <div class="final">(a) 20.0 &nbsp;&nbsp; (b) 1.0</div>
+  <div class="warn"><b>Watch out</b> Answers of &ldquo;20&rdquo; and &ldquo;1&rdquo; would lose the mark
+  &mdash; they do not show the required accuracy.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Estimating with 1-figure rounding</h3>
+<p>An estimate is a quick, calculator-free check. The 0580 instruction is almost always the same:
+<i>&ldquo;By writing each number correct to 1 significant figure, estimate the value of&hellip;&rdquo;</i>
+You must show the rounded numbers &mdash; that line is where the method mark lives.</p>
+<div class="formula"><span class="frac"><span>38.7 &times; 5.2</span><span>0.49</span></span>
+&asymp; <span class="frac"><span>40 &times; 5</span><span>0.5</span></span>
+= <span class="frac"><span>200</span><span>0.5</span></span> = 400
+<small>Each number to 1 significant figure, then work it out exactly</small></div>
+<div class="warn"><b>Do not round the answer as well</b>
+Round the numbers <i>first</i>, then do the arithmetic <b>exactly</b>. Writing
+<span class="m">200 &divide; 0.5 = 400</span> is right; approximating again at the end throws away the
+whole point.</div>
+<p>To decide whether an estimate is too big or too small: rounding a number on the <b>top up</b> (or the
+<b>bottom down</b>) makes the estimate <b>bigger</b>; rounding the top down (or the bottom up) makes it
+<b>smaller</b>. If the roundings pull in opposite directions, compare with the calculator value. For a
+square root, trap the number between the square numbers either side:
+<span class="m">36 &lt; 48 &lt; 49</span>, so <span class="m">&#8730;48</span> is just under 7.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">By writing each number correct to 1 significant figure, estimate <span class="frac"><span>4.87 &times; 19.6</span><span>0.51 &times; 3.9</span></span>. Is it an over- or under-estimate?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Round every number to 1 s.f. &mdash; show this line, it earns the method mark.
+    <span class="work">&asymp; (5 &times; 20) &divide; (0.5 &times; 4)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Top and bottom separately, exactly.
+    <span class="work">5 &times; 20 = 100<br>0.5 &times; 4 = 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide.
+    <span class="work">100 &divide; 2 = 50</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">The roundings pull in different directions, so settle it against the exact value.
+    <span class="work">95.452 &divide; 1.989 = 47.99&hellip; &nbsp;&lt;&nbsp; 50</span></div></div>
+  <div class="final">Estimate &asymp; 50, an <b>over</b>-estimate (true value 48.0 to 3 s.f.)</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Round <span class="m">5.7648</span> to (a) 3 d.p. &nbsp;(b) 2 d.p. &nbsp;(c) 1 d.p.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The deciding digits are 8, 4 and 6 in turn.
+    <span class="work">5.764|8 &rarr; 5.765 &nbsp;&nbsp; 5.76|48 &rarr; 5.76 &nbsp;&nbsp; 5.7|648 &rarr; 5.8</span></div></div>
+  <div class="final">(a) 5.765 &nbsp;&nbsp;(b) 5.76 &nbsp;&nbsp;(c) 5.8</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Write correct to 3 significant figures: (a) <span class="m">0.045678</span> &nbsp;(b) <span class="m">27&thinsp;049</span> &nbsp;(c) <span class="m">9.0985</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Significant figures 4, 5, 6; deciding digit 7 rounds the 6 up.
+    <span class="work">0.0456|78 &rarr; 0.0457</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Significant figures 2, 7, 0; deciding digit 4 &mdash; keep, and fill with zeros.
+    <span class="work">270|49 &rarr; 27&thinsp;000</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Significant figures 9, 0, 9; deciding digit 8 rounds 9.09 up to 9.10 &mdash; keep the zero.
+    <span class="work">9.09|85 &rarr; 9.10</span></div></div>
+  <div class="final">(a) 0.0457 &nbsp;&nbsp;(b) 27&thinsp;000 &nbsp;&nbsp;(c) 9.10</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Round <span class="m">34&thinsp;682</span> to the nearest (a) 10 &nbsp;(b) 100 &nbsp;(c) 1000.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The deciding digits are 2 (units), 8 (tens) and 6 (hundreds) respectively.
+    <span class="work">(a) 34&thinsp;680 &nbsp;&nbsp;(b) 34&thinsp;700 &nbsp;&nbsp;(c) 35&thinsp;000</span></div></div>
+  <div class="final">(a) 34&thinsp;680 &nbsp;&nbsp;(b) 34&thinsp;700 &nbsp;&nbsp;(c) 35&thinsp;000</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">By writing each number correct to 1 significant figure, estimate <span class="frac"><span>58.3 &times; 0.412</span><span>2.87</span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Round each number to 1 s.f.
+    <span class="work">&asymp; (60 &times; 0.4) &divide; 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Work it out exactly.
+    <span class="work">60 &times; 0.4 = 24 &nbsp;&rarr;&nbsp; 24 &divide; 3 = 8</span></div></div>
+  <div class="final">&asymp; 8 (the true value is 8.37&hellip;, so this is an under-estimate)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">(a) By rounding each number to 1 significant figure, estimate <span class="frac"><span>9.87&sup2;</span><span>0.48 &times; 5.1</span></span>. (b) Is it an over- or under-estimate?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Round, then compute exactly.
+    <span class="work">&asymp; 10&sup2; &divide; (0.5 &times; 5) = 100 &divide; 2.5 = 40</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Compare with the exact value.
+    <span class="work">97.4169 &divide; 2.448 = 39.8&hellip; &nbsp;&lt;&nbsp; 40</span></div></div>
+  <div class="final">(a) &asymp; 40 &nbsp;&nbsp;(b) an over-estimate</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Dropping the trailing zero</b>
+2.397 to 2 d.p. is <b>2.40</b>; 0.9962 to 2 s.f. is <b>1.0</b>; 19.97 to 1 d.p. is <b>20.0</b>. The
+accuracy asked for must be visible in the answer, or the mark is gone.</div>
+<div class="warn"><b>Rounding in two stages</b>
+7.4863 &rarr; 7.49 &rarr; 7.5 happens to work, but the method is unsafe:
+<span class="m">0.449 &rarr; 0.45 &rarr; 0.5</span> is wrong, because 0.449 to 1 d.p. is 0.4. Always
+round the original number.</div>
+<div class="warn"><b>Estimating without showing the rounded numbers</b>
+An estimate question is worth two marks: one for the line of 1 s.f. numbers, one for the value. Writing
+only the final number can score zero even when it is right.</div>
+<div class="tip"><b>Exam tip</b>
+Never round mid-calculation &mdash; use <span class="m">Ans</span> or the calculator memory between
+stages. If you must write a middle value down, keep at least 4 or 5 significant figures, and round only
+the final answer to 3 s.f.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Round <span class="m">3.14159</span> to 3 decimal places.</span></summary>
+<div class="body"><div class="final">3.142 &mdash; the deciding digit 5 rounds the 1 up.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Write <span class="m">45&thinsp;682</span> correct to 2 significant figures.</span></summary>
+<div class="body"><div class="final">46&thinsp;000 &mdash; deciding digit 6 rounds up; zeros hold the place value.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Estimate <span class="m">38.7 &times; 5.2</span> using 1 s.f. rounding.</span></summary>
+<div class="body"><div class="final">40 &times; 5 = 200.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/1-7.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a rounding tool that highlights the deciding digit.</span></a>
+  <a href="../igcse-question-bank/approximation-and-estimation-questions.html"><b>Practice questions</b><span>Exam-style questions on approximation and estimation, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="order-of-operations.html"><span>&larr; Previous lesson</span><b>Order of Operations</b></a>
+  <a class="next" href="revisiting-fractions.html"><span>Next lesson &rarr;</span><b>Revisiting Fractions</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

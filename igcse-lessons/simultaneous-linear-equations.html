@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simultaneous Linear Equations | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on solving simultaneous linear equations by elimination and substitution, reading the graphical meaning, and forming equations from word problems.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Simultaneous Linear Equations</h1>
+    <p>Finding the one pair of values that satisfies two linear equations at once &mdash; by elimination, by substitution and from a graph.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Explain what it means for a pair of values to satisfy two equations at the same time.</li>
+  <li>Solve simultaneous equations by <b>elimination</b>, multiplying one or both equations when needed.</li>
+  <li>Solve simultaneous equations by <b>substitution</b>, using brackets correctly.</li>
+  <li>Interpret the solution as the point of intersection of two straight lines.</li>
+  <li>Form and solve a pair of equations from a word problem.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>simultaneous</span><span>elimination</span><span>substitution</span><span>coefficient</span><span>lowest common multiple</span><span>intersection</span><span>parallel</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Solve <span class="m">3y = 15</span>.</span></summary>
+<div class="body"><div class="final">y = 5</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Expand <span class="m">&minus;2(11 &minus; 2x)</span>.</span></summary>
+<div class="body"><div class="final">&minus;22 + 4x &mdash; note the double negative gives +4x.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">What is the lowest common multiple of 3 and 2?</span></summary>
+<div class="body"><div class="final">6</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; What a simultaneous pair means</h3>
+<p>One linear equation in two unknowns has <b>endlessly many</b> solutions: for
+<span class="m">2x + y = 11</span> you can pick almost any <span class="m">x</span> and find a
+<span class="m">y</span> to match. But there is usually exactly <b>one pair</b> that works for two equations
+at the same time, and finding it is what this lesson is about.</p>
+<div class="def"><b>Definition</b>
+<b>Simultaneous equations</b> are two (or more) equations that must be true <i>at the same time</i>. Solving
+them means finding the value of every unknown that satisfies <b>every</b> equation &mdash; two unknowns need
+two equations.</div>
+<div class="formula">x = 4, &nbsp; y = 3 &nbsp;&rarr;&nbsp; 2(4) + 3 = 11 &#10003; &nbsp;&nbsp;&nbsp; 3(4) &minus; 2(3) = 6 &#10003;
+<small>Check in BOTH equations, every time</small></div>
+
+<h3>2&nbsp;&middot;&nbsp; Method 1: elimination</h3>
+<p>Add or subtract the two equations so that one unknown <b>disappears</b>, leaving a simple linear equation.
+This only works when the coefficients of that unknown match in size, so sometimes you must multiply an
+equation first.</p>
+<div class="card o">
+<h4>Add or subtract? Look at the signs</h4>
+<p>Once the coefficients of the letter you want to remove are the <b>same size</b>:</p>
+<ul>
+  <li><b>Same signs &rarr; Subtract</b> &nbsp;(<span class="m">+3x</span> and <span class="m">+3x</span>)</li>
+  <li><b>Different signs &rarr; Add</b> &nbsp;(<span class="m">+4y</span> and <span class="m">&minus;4y</span>)</li>
+</ul>
+<p style="margin-bottom:0">Some students remember it as <b>SSS &mdash; Same Sign, Subtract</b>.</p>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Solve <span class="m">3x + 2y = 19</span> and <span class="m">3x &minus; y = 4</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Label the equations. The coefficients of <span class="m">x</span> are already both <span class="m">+3</span>.
+    <span class="work">(1)&nbsp; 3x + 2y = 19<br>(2)&nbsp; 3x &minus; y = 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Same signs, so <b>subtract</b>: (1) &minus; (2). Take great care with <span class="m">2y &minus; (&minus;y) = 3y</span>.
+    <span class="work">(3x &minus; 3x) + (2y &minus; (&minus;y)) = 19 &minus; 4<br>3y = 15 &nbsp;&rarr;&nbsp; y = 5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute <span class="m">y = 5</span> back into the <i>simpler</i> equation, (2).
+    <span class="work">3x &minus; 5 = 4 &nbsp;&rarr;&nbsp; 3x = 9 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check in <b>both</b> original equations.
+    <span class="work">(1) 3(3) + 2(5) = 9 + 10 = 19 &#10003;<br>(2) 3(3) &minus; 5 = 4 &#10003;</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 5</div>
+  <div class="warn"><b>Watch out</b> Subtracting a negative term is where most marks are lost. Write the
+  subtraction line out in full &mdash; that line itself can earn a method mark.</div>
+</div>
+</details>
+
+<p>If neither pair of coefficients matches, multiply one or both equations by whatever makes them match
+&mdash; every term on both sides, using the <b>lowest common multiple</b> of the two coefficients.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Solve <span class="m">2x + 3y = 12</span> and <span class="m">5x &minus; 2y = 11</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Neither 3 nor 2 divides into the other, so multiply <b>both</b> equations. The lowest common multiple of 3 and 2 is 6.
+    <span class="work">(1)&times;2:&nbsp; 4x + 6y = 24<br>(2)&times;3:&nbsp; 15x &minus; 6y = 33</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">+6y</span> and <span class="m">&minus;6y</span>: different signs, so <b>add</b>.
+    <span class="work">19x = 57 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute into the <b>original</b> (1) &mdash; not a scaled line &mdash; so a multiplying slip would be caught.
+    <span class="work">2(3) + 3y = 12 &nbsp;&rarr;&nbsp; 3y = 6 &nbsp;&rarr;&nbsp; y = 2</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check in both originals.
+    <span class="work">(1) 6 + 6 = 12 &#10003;<br>(2) 15 &minus; 4 = 11 &#10003;</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 2</div>
+  <div class="note"><b>Note</b> Multiply <b>every</b> term, including the number on the right-hand side.
+  Forgetting the right-hand side is the second most common error in this topic.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Method 2: substitution</h3>
+<p>Make one letter the subject of one equation, then replace that letter in the <b>other</b> equation. You
+are left with a single equation in a single unknown. It is the natural choice when one equation already
+arrives as <span class="m">y = &hellip;</span></p>
+<div class="card">
+<h4>The four steps</h4>
+<ol>
+  <li>Make <span class="m">x</span> or <span class="m">y</span> the subject of the easiest equation &mdash; pick the letter whose coefficient is <span class="m">1</span> or <span class="m">&minus;1</span> if there is one.</li>
+  <li>Substitute that expression into the <b>other</b> equation &mdash; put it in <b>brackets</b>.</li>
+  <li>Solve the resulting linear equation.</li>
+  <li>Put the value back into your subject formula for the second unknown, then check in both.</li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Solve <span class="m">2x + y = 11</span> and <span class="m">3x &minus; 2y = 6</span> by substitution.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Equation (1) has a <span class="m">y</span> with coefficient 1, so make <span class="m">y</span> the subject of it.
+    <span class="work">y = 11 &minus; 2x</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute into (2), <b>in brackets</b>.
+    <span class="work">3x &minus; 2(11 &minus; 2x) = 6</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Expand carefully: <span class="m">&minus;2 &times; &minus;2x = +4x</span>.
+    <span class="work">3x &minus; 22 + 4x = 6<br>7x = 28 &nbsp;&rarr;&nbsp; x = 4</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Back into the subject formula, then check in both equations.
+    <span class="work">y = 11 &minus; 2(4) = 3<br>(1) 2(4) + 3 = 11 &#10003; &nbsp; (2) 3(4) &minus; 2(3) = 6 &#10003;</span></div></div>
+  <div class="final">x = 4, &nbsp; y = 3</div>
+  <div class="tip"><b>Exam tip</b> Unless a question says &ldquo;use substitution&rdquo;, either method earns full
+  marks. Elimination is usually faster when every coefficient is a whole number; substitution wins when one
+  equation already gives <span class="m">y</span> in terms of <span class="m">x</span>.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; The graphical meaning and word problems</h3>
+<p>Each linear equation draws a straight line, so the pair that satisfies both equations must lie on both
+lines &mdash; it is the <b>point of intersection</b>.</p>
+<div class="grid">
+  <div class="card g"><h4>One solution</h4>
+    <p>Different gradients, so the lines cross exactly once. This is the ordinary case.</p></div>
+  <div class="card o"><h4>No solution</h4>
+    <p>Same gradient, different intercepts &mdash; the lines are <b>parallel</b>, e.g. <span class="m">y = 2x + 1</span> and <span class="m">y = 2x &minus; 3</span>.</p></div>
+  <div class="card p"><h4>Infinitely many</h4>
+    <p>One equation is a multiple of the other, so the lines are <b>identical</b>, e.g. <span class="m">x + y = 5</span> and <span class="m">2x + 2y = 10</span>.</p></div>
+</div>
+<div class="card p">
+<h4>From words to a pair of equations</h4>
+<ol>
+  <li><b>Define your letters</b> in writing, with units: &ldquo;let <span class="m">p</span> be the cost of one pen in dollars&rdquo;.</li>
+  <li>Each separate fact gives you <b>one equation</b> &mdash; two unknowns means two facts.</li>
+  <li>Keep the units consistent, solve, then answer the actual question in a sentence with units.</li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">3 pens and 2 notebooks cost $11.60. 5 pens and 4 notebooks cost $20.80. Find the cost of one pen and the cost of one notebook.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Define the letters, then write one equation per purchase.
+    <span class="work">Let p = cost of one pen ($), n = cost of one notebook ($)<br>(1)&nbsp; 3p + 2n = 11.60<br>(2)&nbsp; 5p + 4n = 20.80</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply (1) by 2 so both have <span class="m">4n</span>, then subtract (same signs).
+    <span class="work">(1)&times;2:&nbsp; 6p + 4n = 23.20<br>(6p &minus; 5p) + (4n &minus; 4n) = 23.20 &minus; 20.80<br>p = 2.40</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute into (1).
+    <span class="work">3(2.40) + 2n = 11.60 &nbsp;&rarr;&nbsp; 2n = 4.40 &nbsp;&rarr;&nbsp; n = 2.20</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check in both.
+    <span class="work">(1) 7.20 + 4.40 = 11.60 &#10003;<br>(2) 12.00 + 8.80 = 20.80 &#10003;</span></div></div>
+  <div class="final">a pen costs $2.40 and a notebook costs $2.20</div>
+  <div class="tip"><b>Exam tip</b> Money answers must be given to <b>2 decimal places</b>: write
+  <span class="m">$2.40</span>, not <span class="m">$2.4</span>.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Solve <span class="m">4x + y = 13</span> and <span class="m">2x + y = 7</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Same signs on <span class="m">y</span>, so subtract.
+    <span class="work">2x = 6 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute into the second equation.
+    <span class="work">2(3) + y = 7 &nbsp;&rarr;&nbsp; y = 1 &nbsp;&nbsp;(check: 12 + 1 = 13 &#10003;)</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 1</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Solve <span class="m">3x + 2y = 13</span> and <span class="m">x &minus; 2y = &minus;1</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">+2y</span> and <span class="m">&minus;2y</span>: different signs, so add.
+    <span class="work">4x = 12 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute into the first equation.
+    <span class="work">9 + 2y = 13 &nbsp;&rarr;&nbsp; y = 2 &nbsp;&nbsp;(check: 3 &minus; 4 = &minus;1 &#10003;)</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 2</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Use substitution to solve <span class="m">y = 3x &minus; 4</span> and <span class="m">2x + y = 11</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Replace <span class="m">y</span> in the second equation, in brackets.
+    <span class="work">2x + (3x &minus; 4) = 11 &nbsp;&rarr;&nbsp; 5x = 15 &nbsp;&rarr;&nbsp; x = 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Back into the subject formula.
+    <span class="work">y = 3(3) &minus; 4 = 5</span></div></div>
+  <div class="final">x = 3, &nbsp; y = 5</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Solve <span class="m">3x + 2y = 5</span> and <span class="m">2x + 5y = &minus;4</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Eliminate <span class="m">x</span>: multiply (1) by 2 and (2) by 3.
+    <span class="work">6x + 4y = 10<br>6x + 15y = &minus;12</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Same signs, so subtract.
+    <span class="work">11y = &minus;22 &nbsp;&rarr;&nbsp; y = &minus;2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute into (1).
+    <span class="work">3x + 2(&minus;2) = 5 &nbsp;&rarr;&nbsp; 3x = 9 &nbsp;&rarr;&nbsp; x = 3<br>check (2): 6 + (&minus;10) = &minus;4 &#10003;</span></div></div>
+  <div class="final">x = 3, &nbsp; y = &minus;2</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">4 coffees and 3 teas cost $16.10. 2 coffees and 5 teas cost $15.40. Find the cost of one coffee and one tea.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Define letters and form the equations.
+    <span class="work">(1)&nbsp; 4c + 3t = 16.10<br>(2)&nbsp; 2c + 5t = 15.40</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply (2) by 2 and subtract.
+    <span class="work">(2)&times;2:&nbsp; 4c + 10t = 30.80<br>7t = 14.70 &nbsp;&rarr;&nbsp; t = 2.10</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute into (1).
+    <span class="work">4c = 16.10 &minus; 6.30 = 9.80 &nbsp;&rarr;&nbsp; c = 2.45</span></div></div>
+  <div class="final">a coffee costs $2.45 and a tea costs $2.10</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Slipping on a double negative when subtracting</b>
+In <span class="m">2y &minus; (&minus;y)</span> the answer is <span class="m">3y</span>, not
+<span class="m">y</span>. Write the subtraction line out in full instead of doing it in your head.</div>
+<div class="warn"><b>Multiplying only the left-hand side</b>
+When you scale an equation, <b>every</b> term is multiplied &mdash; including the number on the right.
+<span class="m">x &minus; 2y = &minus;5</span> doubled is <span class="m">2x &minus; 4y = &minus;10</span>.</div>
+<div class="warn"><b>Substituting without brackets</b>
+Writing <span class="m">3x &minus; 2 &times; 11 &minus; 2x</span> instead of
+<span class="m">3x &minus; 2(11 &minus; 2x)</span> changes the sign of the second term and wrecks the answer.</div>
+<div class="tip"><b>Exam tip</b>
+Always finish by substituting your pair into <b>both</b> original equations. It takes fifteen seconds and it
+is the only way to be certain &mdash; a pair that fits one equation but not the other scores nothing.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">To eliminate <span class="m">y</span> from <span class="m">5x + 4y = 22</span> and <span class="m">3x &minus; 4y = 2</span>, do you add or subtract?</span></summary>
+<div class="body"><div class="final">Add &mdash; the signs of 4y are different. (8x = 24, so x = 3.)</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Solve <span class="m">y = x + 2</span> and <span class="m">x + y = 10</span>.</span></summary>
+<div class="body"><div class="final">x + (x + 2) = 10 gives x = 4, y = 6.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Why do <span class="m">y = 2x + 1</span> and <span class="m">y = 2x &minus; 3</span> have no simultaneous solution?</span></summary>
+<div class="body"><div class="final">Same gradient, different intercepts &mdash; the lines are parallel and never meet.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/14-1.html"><b>Revision notes</b><span>The full interactive notes for this topic, with an elimination stepper and a two-line grapher.</span></a>
+  <a href="../igcse-question-bank/simultaneous-equations-questions.html"><b>Practice questions</b><span>Exam-style questions on simultaneous equations, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="quadratic-expressions-and-equations.html"><span>&larr; Previous lesson</span><b>Quadratic Expressions and Equations</b></a>
+  <a class="next" href="completing-the-square.html"><span>Next lesson &rarr;</span><b>Completing the Square</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

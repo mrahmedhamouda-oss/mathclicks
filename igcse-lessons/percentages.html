@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percentages | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on percentages of a quantity, multipliers, percentage change and reverse percentages — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Percentages</h1>
+    <p>Percentages of a quantity, one-step multipliers for increase and decrease, percentage change and profit &mdash; then the reverse percentages that separate the top grades.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Convert freely between percentages, decimals and fractions.</li>
+  <li>Find a percentage of a quantity, and write one quantity as a percentage of another.</li>
+  <li>Increase or decrease an amount in one step using a multiplier.</li>
+  <li>Calculate percentage change, profit and loss &mdash; always over the original amount.</li>
+  <li>Solve reverse percentage problems by dividing by the multiplier.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>percentage</span><span>multiplier</span><span>percentage change</span><span>cost price</span><span>selling price</span><span>depreciation</span><span>reverse percentage</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Write 12.5% as a decimal and as a fraction in lowest terms.</span></summary>
+<div class="body"><div class="final">12.5% = 0.125 = <span class="frac"><span>1</span><span>8</span></span></div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Work out <span class="m">0.3 &times; 250</span> and <span class="m">63 &divide; 180</span>.</span></summary>
+<div class="body"><div class="final">0.3 &times; 250 = 75 and 63 &divide; 180 = 0.35.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">How many centimetres are there in 2 m?</span></summary>
+<div class="body"><div class="final">200 cm &mdash; percentages of measurements need matching units first.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Percentages, decimals and fractions</h3>
+<p>A percentage is simply a fraction with denominator 100:
+<span class="m">37% = <span class="frac"><span>37</span><span>100</span></span> = 0.37</span>. Everything
+in this lesson comes back to that one idea &mdash; if a question ever confuses you, write the percentage
+as a decimal and read the sentence again.</p>
+<div class="def"><b>Definition</b>
+To change a <b>percentage to a decimal</b>, divide by 100. To change a <b>decimal to a percentage</b>,
+multiply by 100. To change a percentage to a fraction, put it over 100 and cancel.</div>
+<div class="grid two">
+  <div class="card">
+    <h4>A percentage <i>of</i> a quantity</h4>
+    <p>Turn the percentage into a decimal and multiply.</p>
+    <p class="m">18% of 350 = 0.18 &times; 350 = 63</p>
+  </div>
+  <div class="card o">
+    <h4>One quantity <i>as</i> a percentage of another</h4>
+    <p>Write <span class="frac"><span>part</span><span>whole</span></span>, then multiply by 100. The quantity after the word <b>of</b> goes on the bottom.</p>
+    <p class="m">63 out of 180 = <span class="frac"><span>63</span><span>180</span></span> &times; 100 = 35%</p>
+  </div>
+</div>
+<div class="warn"><b>Watch out</b>
+Both quantities must be in the <b>same units</b> before you divide. To write 45&nbsp;cm as a percentage
+of 2&nbsp;m, change the 2&nbsp;m into 200&nbsp;cm first:
+<span class="m"><span class="frac"><span>45</span><span>200</span></span> &times; 100 = 22.5%</span>.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">(a) Find 18% of 350&nbsp;kg. (b) Write 63&nbsp;kg as a percentage of 180&nbsp;kg.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Write the percentage as a decimal and multiply.
+    <span class="work">18% = 0.18 &nbsp;&rarr;&nbsp; 0.18 &times; 350 = 63</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Put the part over the whole &mdash; &ldquo;of 180 kg&rdquo; makes 180 the denominator &mdash; then multiply by 100.
+    <span class="work">63 &divide; 180 = 0.35 &nbsp;&rarr;&nbsp; 0.35 &times; 100 = 35</span></div></div>
+  <div class="final">(a) 63&nbsp;kg &nbsp;&nbsp; (b) 35%</div>
+  <div class="tip"><b>Exam tip</b> The two parts run in opposite directions. If you are unsure which way
+  to divide, sanity-check the answer: 63 is roughly a third of 180, so 35% is believable.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Increase and decrease with a multiplier</h3>
+<p>Finding the percentage and then adding or subtracting it is two steps and two chances to slip &mdash;
+and it collapses completely for repeated changes. Use a <b>multiplier</b>: one number that does the whole
+job.</p>
+<div class="formula">increase by p% &rarr; &times; (1 + <span class="frac"><span>p</span><span>100</span></span>)
+&nbsp;&nbsp;&nbsp;&nbsp; decrease by p% &rarr; &times; (1 &minus; <span class="frac"><span>p</span><span>100</span></span>)
+<small>The multiplier does the change in a single step</small></div>
+<div class="tw">
+<table>
+<thead><tr><th>Change</th><th>Multiplier</th><th>Change</th><th>Multiplier</th></tr></thead>
+<tbody>
+<tr><td>increase by 5%</td><td><span class="m">1.05</span></td><td>decrease by 5%</td><td><span class="m">0.95</span></td></tr>
+<tr><td>increase by 4.5%</td><td><span class="m">1.045</span></td><td>decrease by 12%</td><td><span class="m">0.88</span></td></tr>
+<tr><td>increase by 100%</td><td><span class="m">2</span></td><td>decrease by 65%</td><td><span class="m">0.35</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="note"><b>Note</b>
+A multiplier <b>bigger than 1</b> always means an increase; between 0 and 1 always means a decrease.
+Reading a multiplier the wrong way round is the single most common error in this topic.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">A teacher earns $32&thinsp;400 per year. Her salary rises by 4.5%. Calculate her new salary.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">An increase, so the multiplier is 1 + 0.045.
+    <span class="work">multiplier = 1.045</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply the original salary by it.
+    <span class="work">32&thinsp;400 &times; 1.045 = 33&thinsp;858</span></div></div>
+  <div class="final">New salary = $33&thinsp;858</div>
+  <div class="note"><b>Check</b> The rise itself is 0.045 &times; 32&thinsp;400 = 1458, and
+  32&thinsp;400 + 1458 = 33&thinsp;858 &mdash; same answer, but the multiplier got there in one line.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Percentage change and repeated change</h3>
+<p>When a quantity changes you are often asked <i>by what percentage</i>. Compare the change with the
+<b>original</b> amount &mdash; never with the new one. For profit and loss the original is the
+<b>cost price</b>.</p>
+<div class="formula">percentage change = <span class="frac"><span>change</span><span>original amount</span></span> &times; 100
+<small>change = new value &minus; original value</small></div>
+<p>If the same change happens again and again, multiply by the multiplier again and again &mdash; that
+is just a power: <span class="m">final = original &times; (multiplier)&#8319;</span>. Combine different
+changes by multiplying their multipliers.</p>
+<div class="warn"><b>Watch out</b>
+An increase of 20% followed by a decrease of 20% does <b>not</b> return you to the start:
+<span class="m">1.2 &times; 0.8 = 0.96</span>, a 4% <i>loss</i> overall. The second percentage is taken
+of a different amount, so percentages never simply cancel.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A trader buys 24 melons for a total of $96 and sells them all at $5.20 each. Calculate his percentage profit.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Find the total money received.
+    <span class="work">24 &times; 5.20 = 124.80</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the profit: selling total minus cost total.
+    <span class="work">124.80 &minus; 96 = 28.80</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide by the <b>cost</b> price and multiply by 100.
+    <span class="work">28.80 &divide; 96 = 0.3 &nbsp;&rarr;&nbsp; 30%</span></div></div>
+  <div class="final">Percentage profit = 30%</div>
+  <div class="tip"><b>Exam tip</b> This carries 3 marks: one for the total selling price, one for the
+  profit, one for the percentage. Write all three lines even if your calculator does it in one go.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A car is bought for $18&thinsp;000. Its value depreciates by 15% each year. (a) Find its value after 3 years. (b) Find the overall percentage loss in value.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) A 15% decrease each year is multiplier 0.85, applied 3 times.
+    <span class="work">value = 18&thinsp;000 &times; 0.85&sup3;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Work out the power first, keeping every digit.
+    <span class="work">0.85&sup3; = 0.614125 &nbsp;&rarr;&nbsp; 18&thinsp;000 &times; 0.614125 = 11&thinsp;054.25</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) The overall multiplier is 0.614125, so subtract 1.
+    <span class="work">0.614125 &minus; 1 = &minus;0.385875 &rarr; &minus;38.5875%</span></div></div>
+  <div class="final">(a) $11&thinsp;054.25 &nbsp;&nbsp; (b) a loss of 38.6% (3 s.f.)</div>
+  <div class="tip"><b>Exam tip</b> Do not round 0.85&sup3; to 0.61 part-way through &mdash; rounding early
+  here changes the answer by about $25 and loses the accuracy mark.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Reverse percentages</h3>
+<p>Here you are given the amount <b>after</b> a change and asked for the amount <b>before</b> it. Going
+forwards you <b>multiply</b> by the multiplier, so going backwards you <b>divide</b> by it.</p>
+<div class="formula">original = <span class="frac"><span>amount after the change</span><span>multiplier</span></span>
+<small>Divide by the multiplier to undo the change</small></div>
+<div class="card">
+<h4>Why you cannot just add the percentage back</h4>
+<svg viewBox="0 0 640 210" role="img" aria-label="Bar diagram showing the original price as 100 percent and the sale price as 75 percent" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <text x="20" y="26" font-size="14" font-weight="bold" fill="#0f2d6b">A coat costs $63 in a 25% off sale</text>
+  <rect x="20" y="44" width="480" height="46" rx="8" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="36" y="73" font-size="14" fill="#1a4fa0">Original price = 100% = ?</text>
+  <rect x="20" y="130" width="360" height="46" rx="8" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="36" y="159" font-size="14" fill="#16a34a">Sale price = 75% = $63</text>
+  <rect x="380" y="130" width="120" height="46" rx="8" fill="#fff1ea" stroke="#e05c2a" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="392" y="159" font-size="13" fill="#e05c2a">25% off</text>
+  <path d="M525 52 L525 84" stroke="#1a4fa0" stroke-width="2"/>
+  <path d="M525 84 l-5 -9 l10 0 z" fill="#1a4fa0"/>
+  <text x="537" y="76" font-size="13" fill="#1a4fa0">&times; 0.75</text>
+  <path d="M600 168 L600 96" stroke="#e05c2a" stroke-width="2"/>
+  <path d="M600 96 l-5 9 l10 0 z" fill="#e05c2a"/>
+  <text x="600" y="196" font-size="13" fill="#e05c2a" text-anchor="middle">&divide; 0.75</text>
+</svg>
+<p>The 25% was taken off the <i>original</i> price, which you do not know yet. Adding 25% of the
+<i>sale</i> price gives <span class="m">63 &times; 1.25 = 78.75</span> &mdash; the wrong answer.</p>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">In a sale all prices are reduced by 25%. A coat costs $63 in the sale. Calculate its price before the sale.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Decide the multiplier for the change that has already happened.
+    <span class="work">25% off &rarr; multiplier = 0.75</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The sale price is 0.75 &times; the original, so divide to undo it.
+    <span class="work">original = 63 &divide; 0.75 = 84</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check by going forwards again.
+    <span class="work">84 &times; 0.75 = 63 &#10003;</span></div></div>
+  <div class="final">Price before the sale = $84</div>
+  <div class="warn"><b>Exam trap</b> The word that tells you it is a reverse percentage is a small one:
+  &ldquo;<i>after</i> a 25% reduction&rdquo;, &ldquo;<i>including</i> 15% tax&rdquo;, &ldquo;this <i>is</i>
+  a 12% increase on last year&rdquo;. Underline it before you start.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">(a) Find 12% of 45&nbsp;kg. (b) Increase $85 by 6%.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Decimal times quantity.
+    <span class="work">0.12 &times; 45 = 5.4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Multiplier 1.06.
+    <span class="work">85 &times; 1.06 = 90.10</span></div></div>
+  <div class="final">(a) 5.4&nbsp;kg &nbsp;&nbsp;(b) $90.10</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Write 27 as a percentage of 120.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Part over whole, times 100.
+    <span class="work">27 &divide; 120 = 0.225 &nbsp;&rarr;&nbsp; 22.5%</span></div></div>
+  <div class="final">22.5%</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A jacket that cost a shop $60 is sold for $51. Calculate the percentage loss.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Find the loss.
+    <span class="work">60 &minus; 51 = 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Divide by the <b>cost</b> price.
+    <span class="work">9 &divide; 60 &times; 100 = 15</span></div></div>
+  <div class="final">15% loss</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">After a reduction of 20% a bag costs $36. Calculate the price before the reduction.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiplier for the change already applied: 0.8. Divide to undo it.
+    <span class="work">36 &divide; 0.8 = 45</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Check forwards.
+    <span class="work">45 &times; 0.8 = 36 &#10003;</span></div></div>
+  <div class="final">$45</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">$4000 is invested and its value increases by 6% each year. Find (a) its value after 5 years, to the nearest dollar, and (b) the overall percentage increase, to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Repeated change is a power of the multiplier.
+    <span class="work">4000 &times; 1.06<sup>5</sup> = 4000 &times; 1.3382255&hellip; = 5352.90&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Subtract 1 from the overall multiplier.
+    <span class="work">1.06<sup>5</sup> &minus; 1 = 0.33822&hellip; &rarr; 33.8%</span></div></div>
+  <div class="final">(a) $5353 &nbsp;&nbsp;(b) 33.8%</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Dividing by the wrong amount in percentage change</b>
+The denominator is always the <b>original</b> amount &mdash; for profit and loss, the cost price.
+Dividing by the selling price is worth zero marks even if the rest of the working is perfect.</div>
+<div class="warn"><b>Adding the percentage back in a reverse problem</b>
+A coat at $63 after 25% off did not lose 25% of $63. Adding 25% back gives $78.75; dividing by the
+multiplier gives the correct $84. &ldquo;After&rdquo;, &ldquo;including&rdquo; and &ldquo;this is an
+increase on&rdquo; all signal a reverse percentage.</div>
+<div class="warn"><b>Adding percentages across repeated changes</b>
+Up 8% then down 5% is not +3%: <span class="m">1.08 &times; 0.95 = 1.026</span>, an increase of 2.6%.
+Only multipliers may be combined, never the percentages themselves.</div>
+<div class="tip"><b>Exam tip</b>
+Every percentage answer can be checked forwards in one line: original &times; multiplier should
+reproduce the given amount. Do the check &mdash; it costs ten seconds and catches the classic reverse-percentage
+error every time.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">What multiplier decreases an amount by 12%?</span></summary>
+<div class="body"><div class="final">0.88 &mdash; and any multiplier below 1 means a decrease.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Find 18% of 350.</span></summary>
+<div class="body"><div class="final">0.18 &times; 350 = 63</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">A price is $92 after a 15% increase. What was it before?</span></summary>
+<div class="body"><div class="final">92 &divide; 1.15 = $80 (check: 80 &times; 1.15 = 92).</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/5-3.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a four-mode percentage calculator to explore.</span></a>
+  <a href="../igcse-question-bank/percentages-questions.html"><b>Practice questions</b><span>Exam-style questions on percentages, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="operations-on-fractions.html"><span>&larr; Previous lesson</span><b>Operations on Fractions</b></a>
+  <a class="next" href="standard-form.html"><span>Next lesson &rarr;</span><b>Standard Form</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

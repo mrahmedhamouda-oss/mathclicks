@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tangent, Sine and Cosine Ratios | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on right-angled trigonometry — labelling sides, choosing a ratio with SOHCAHTOA, finding missing sides and angles, and elevation and depression.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Pythagoras and Trigonometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>The Tangent, Sine and Cosine Ratios</h1>
+    <p>Naming the sides relative to the angle you are using, choosing the right ratio with SOHCAHTOA, and finding missing sides and angles in right-angled triangles.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Label the <b>opposite</b>, <b>adjacent</b> and <b>hypotenuse</b> relative to the angle in use.</li>
+  <li>Choose the correct ratio with <b>SOHCAHTOA</b> and find a missing side, whether the unknown is on the top or the bottom of the fraction.</li>
+  <li>Find a missing angle from two sides using <span class="m">sin<sup>&minus;1</sup></span>, <span class="m">cos<sup>&minus;1</sup></span> and <span class="m">tan<sup>&minus;1</sup></span>.</li>
+  <li>Solve problems with <b>angles of elevation and depression</b>, and recall the exact values for 30&deg;, 45&deg; and 60&deg;.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>hypotenuse</span><span>opposite</span><span>adjacent</span><span>sine</span><span>cosine</span><span>tangent</span><span>inverse</span><span>angle of elevation</span><span>angle of depression</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">A right-angled triangle has shorter sides 6 and 8. Write down its hypotenuse.</span></summary>
+<div class="body"><div class="final">10 &mdash; by Pythagoras, since 36 + 64 = 100.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Solve <span class="m"><span class="frac"><span>x</span><span>12</span></span> = 0.5</span>.</span></summary>
+<div class="body"><div class="final">x = 12 &times; 0.5 = 6 &mdash; multiply both sides by 12.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Solve <span class="m"><span class="frac"><span>7</span><span>x</span></span> = 2</span>.</span></summary>
+<div class="body"><div class="final">x = 7 &divide; 2 = 3.5 &mdash; the unknown is on the bottom, so swap and divide.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Labelling the sides &mdash; relative to the angle</h3>
+<p>Trigonometry only works in a <b>right-angled triangle</b>. Before you can choose a ratio you must
+name the three sides. This is the step that costs more marks than any other in the whole topic,
+because two of the three names <b>change</b> depending on which angle you are working with.</p>
+<div class="def"><b>Definition</b>
+<ul style="margin:6px 0 0">
+  <li>The <b>hypotenuse</b> (H) is the side <i>opposite the right angle</i>. It is always the longest
+    side, and it <b>never changes</b>, whatever angle you use.</li>
+  <li>The <b>opposite</b> (O) is the side <i>facing</i> the angle you are using &mdash; it does not touch it.</li>
+  <li>The <b>adjacent</b> (A) is the side that touches the angle you are using and is <i>not</i> the hypotenuse.</li>
+</ul></div>
+<div class="card">
+<h4>The same triangle, two different angles</h4>
+<svg viewBox="0 0 660 250" role="img" aria-label="One right-angled triangle labelled twice: once from angle A and once from angle C, showing that opposite and adjacent swap over" style="max-width:min(100%,660px);height:auto;display:block;margin:0 auto">
+  <polygon points="35,195 235,195 235,45" fill="#1a4fa0" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="219,195 219,179 235,179" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 73,195 A 38,38 0 0,0 65.4,172.2" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="82" y="186" font-size="14" fill="#16a34a" font-weight="bold">A</text>
+  <text x="22" y="212" font-size="13" fill="currentColor">A</text>
+  <text x="238" y="212" font-size="13" fill="currentColor">B</text>
+  <text x="238" y="40" font-size="13" fill="currentColor">C</text>
+  <text x="135" y="216" font-size="13" text-anchor="middle" fill="#1a4fa0">adjacent</text>
+  <text x="245" y="124" font-size="13" fill="#e05c2a">opposite</text>
+  <text x="112" y="104" font-size="13" text-anchor="middle" fill="#6d28d9">hypotenuse</text>
+  <text x="135" y="238" font-size="13" text-anchor="middle" fill="currentColor">using angle A</text>
+  <polygon points="390,195 590,195 590,45" fill="#1a4fa0" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="574,195 574,179 590,179" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 562.8,65.4 A 34,34 0 0,0 590,79" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="556" y="92" font-size="14" fill="#16a34a" font-weight="bold">C</text>
+  <text x="377" y="212" font-size="13" fill="currentColor">A</text>
+  <text x="593" y="212" font-size="13" fill="currentColor">B</text>
+  <text x="593" y="40" font-size="13" fill="currentColor">C</text>
+  <text x="490" y="216" font-size="13" text-anchor="middle" fill="#e05c2a">opposite</text>
+  <text x="600" y="124" font-size="13" fill="#1a4fa0">adjacent</text>
+  <text x="467" y="104" font-size="13" text-anchor="middle" fill="#6d28d9">hypotenuse</text>
+  <text x="490" y="238" font-size="13" text-anchor="middle" fill="currentColor">using angle C</text>
+</svg>
+<p style="margin:10px 0 0"><span class="m">AC</span> is the hypotenuse in <b>both</b> pictures. But
+<span class="m">BC</span> is the opposite for angle <span class="m">A</span> and the adjacent for
+angle <span class="m">C</span> &mdash; they swap over.</p>
+</div>
+<div class="card g">
+<h4>The three-step labelling routine</h4>
+<ol style="margin:6px 0 0">
+  <li>Find the right angle. Label the side facing it <b>H</b>.</li>
+  <li>Find the angle you are <i>using</i> (the one you know or the one you want). Label the side facing
+    it <b>O</b>.</li>
+  <li>The remaining side is <b>A</b>.</li>
+</ol>
+</div>
+<div class="warn"><b>Watch out</b>
+Never label the sides before you have decided which angle you are using. In a two-part question you may
+have to <b>re-label the same triangle</b> half way through.</div>
+
+<h3>2&nbsp;&middot;&nbsp; SOHCAHTOA: choosing and using a ratio</h3>
+<p>In <i>every</i> right-angled triangle with the same angle <span class="m">&theta;</span>, the three
+possible pairs of sides are always in the same proportion. Those three fixed proportions are called
+the <b>sine</b>, <b>cosine</b> and <b>tangent</b> of <span class="m">&theta;</span>.</p>
+<div class="formula">sin&nbsp;&theta; = <span class="frac"><span>O</span><span>H</span></span> &nbsp;&nbsp;&nbsp;
+cos&nbsp;&theta; = <span class="frac"><span>A</span><span>H</span></span> &nbsp;&nbsp;&nbsp;
+tan&nbsp;&theta; = <span class="frac"><span>O</span><span>A</span></span>
+<small>SOH &middot; CAH &middot; TOA</small></div>
+<div class="grid two">
+  <div class="card o">
+    <h4>Reading SOHCAHTOA</h4>
+    <p><b>S</b>in = <b>O</b>pposite over <b>H</b>ypotenuse<br>
+    <b>C</b>os = <b>A</b>djacent over <b>H</b>ypotenuse<br>
+    <b>T</b>an = <b>O</b>pposite over <b>A</b>djacent</p>
+    <p>Write the letters down the side of your working every single time. It costs four seconds and
+    saves whole questions.</p>
+  </div>
+  <div class="card p">
+    <h4>Choosing the ratio</h4>
+    <p>Mark the side you <b>know</b> and the side you <b>want</b>. Ignore the third side completely
+    &mdash; you do not need it.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Know + want</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>O and H</td><td><b>sin</b></td></tr>
+        <tr><td>A and H</td><td><b>cos</b></td></tr>
+        <tr><td>O and A</td><td><b>tan</b></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="note"><b>Unknown on top or bottom?</b>
+Once the ratio is chosen the equation always has the unknown either on the <b>top</b> of the fraction
+&mdash; then <b>multiply</b>, e.g. <span class="m">x = 12 &times; sin &theta;</span> &mdash; or on the
+<b>bottom</b> &mdash; then swap and <b>divide</b>, e.g. <span class="m">x = 7 &divide; tan &theta;</span>.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">In a right-angled triangle the hypotenuse is 12&nbsp;cm and one angle is 35&deg;. Find the side opposite that angle.</span></summary>
+<div class="body">
+<svg viewBox="0 0 340 215" role="img" aria-label="Right-angled triangle with hypotenuse 12 cm, angle 35 degrees, and the opposite side marked x" style="max-width:min(100%,360px);height:auto;display:block;margin:0 auto">
+  <polygon points="45,180 234,180 234,48" fill="#1a4fa0" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="220,180 220,166 234,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 87,180 A 42,42 0 0,0 79.4,155.9" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="94" y="172" font-size="14" fill="#16a34a" font-weight="bold">35&deg;</text>
+  <text x="120" y="103" font-size="14" text-anchor="middle" fill="#1a4fa0" font-weight="bold">12 cm</text>
+  <text x="128" y="88" font-size="11" text-anchor="middle" fill="#1a4fa0">(H)</text>
+  <text x="242" y="112" font-size="14" fill="#e05c2a" font-weight="bold">x</text>
+  <text x="242" y="130" font-size="11" fill="#e05c2a">(O)</text>
+  <text x="139" y="200" font-size="12" text-anchor="middle" fill="#4a5b7a">(A) not needed</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">Label relative to the 35&deg; angle: the 12&nbsp;cm side faces the right angle so it is <b>H</b>; the side we want faces 35&deg; so it is <b>O</b>.
+    <span class="work">know H = 12, want O</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">O and H together &rarr; <b>SOH</b>, so use sine.
+    <span class="work">sin 35&deg; = x / 12</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The unknown is on the top, so multiply both sides by 12.
+    <span class="work">x = 12 &times; sin 35&deg;<br>x = 12 &times; 0.573576&hellip; = 6.8829&hellip;</span></div></div>
+  <div class="final">x = 6.88 cm (3 s.f.)</div>
+  <div class="tip"><b>Exam tip</b> Keep the full display value in your calculator. Rounding
+  <span class="m">sin 35&deg;</span> to 0.57 first gives 6.84 &mdash; a wrong answer for an accuracy mark.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">A right-angled triangle has an angle of 40&deg; and the side opposite it is 7&nbsp;cm. Find the side adjacent to that angle.</span></summary>
+<div class="body">
+<svg viewBox="0 0 340 215" role="img" aria-label="Right-angled triangle with opposite side 7 cm, angle 40 degrees, and the adjacent side marked x" style="max-width:min(100%,360px);height:auto;display:block;margin:0 auto">
+  <polygon points="45,180 202,180 202,48" fill="#e05c2a" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="188,180 188,166 202,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 87,180 A 42,42 0 0,0 77.2,153" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="94" y="172" font-size="14" fill="#16a34a" font-weight="bold">40&deg;</text>
+  <text x="210" y="112" font-size="14" fill="#1a4fa0" font-weight="bold">7 cm</text>
+  <text x="210" y="130" font-size="11" fill="#1a4fa0">(O)</text>
+  <text x="124" y="200" font-size="14" text-anchor="middle" fill="#e05c2a" font-weight="bold">x&nbsp;&nbsp;(A)</text>
+  <text x="100" y="100" font-size="12" text-anchor="middle" fill="#4a5b7a">(H)</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">Relative to 40&deg;: 7&nbsp;cm is <b>O</b>, the side we want is <b>A</b>.
+    <span class="work">know O = 7, want A</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">O and A together &rarr; <b>TOA</b>, so use tangent.
+    <span class="work">tan 40&deg; = 7 / x</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The unknown is on the <b>bottom</b>. Multiply both sides by <span class="m">x</span>, then divide by <span class="m">tan 40&deg;</span>.
+    <span class="work">x &times; tan 40&deg; = 7<br>x = 7 &divide; tan 40&deg;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Evaluate in one go.
+    <span class="work">x = 7 &divide; 0.8390996&hellip; = 8.3422&hellip;</span></div></div>
+  <div class="final">x = 8.34 cm (3 s.f.)</div>
+  <div class="warn"><b>Watch out</b> A quick sense check: 40&deg; is less than 45&deg;, so the opposite must be
+  <i>shorter</i> than the adjacent. 8.34 &gt; 7, so the answer is believable. Had you multiplied by mistake
+  you would have got 5.87, which is too small.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Finding a missing angle</h3>
+<p>If you know <b>two sides</b> and want the angle, work out the ratio as a number first, then undo the
+sine, cosine or tangent with the <b>inverse</b> function &mdash; the second function on your calculator
+keys, written <span class="m">sin<sup>&minus;1</sup></span>, <span class="m">cos<sup>&minus;1</sup></span>,
+<span class="m">tan<sup>&minus;1</sup></span>.</p>
+<div class="formula">sin&nbsp;&theta; = 0.625 &nbsp;&hArr;&nbsp; &theta; = sin<sup>&minus;1</sup>(0.625)
+<small>The inverse function answers &ldquo;which angle has this ratio?&rdquo;</small></div>
+<div class="warn"><b>Watch out</b>
+<span class="m">sin<sup>&minus;1</sup>x</span> does <b>not</b> mean
+<span class="frac"><span>1</span><span>sin x</span></span>. It is the <i>inverse operation</i>, like
+&#8730; undoing a square. Also check your calculator is in <b>degree</b> mode &mdash; a D or DEG on the
+display. In radian mode every answer in this topic is wrong.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A right-angled triangle has hypotenuse 8&nbsp;cm and one side of 5&nbsp;cm. Find the angle between the hypotenuse and the third side.</span></summary>
+<div class="body">
+<svg viewBox="0 0 340 215" role="img" aria-label="Right-angled triangle with hypotenuse 8 cm and opposite side 5 cm, unknown angle theta" style="max-width:min(100%,360px);height:auto;display:block;margin:0 auto">
+  <polygon points="45,180 210,180 210,48" fill="#6d28d9" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="196,180 196,166 210,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 87,180 A 42,42 0 0,0 77.8,153.8" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="94" y="172" font-size="14" fill="#e05c2a" font-weight="bold">&theta;</text>
+  <text x="106" y="100" font-size="14" text-anchor="middle" fill="#1a4fa0" font-weight="bold">8 cm</text>
+  <text x="114" y="85" font-size="11" text-anchor="middle" fill="#1a4fa0">(H)</text>
+  <text x="218" y="112" font-size="14" fill="#1a4fa0" font-weight="bold">5 cm</text>
+  <text x="218" y="130" font-size="11" fill="#1a4fa0">(O)</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">The 5&nbsp;cm side faces <span class="m">&theta;</span>, so it is <b>O</b>; 8&nbsp;cm faces the right angle, so it is <b>H</b>.
+    <span class="work">O = 5, H = 8 &rarr; SOH &rarr; sine</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Write the ratio as a decimal.
+    <span class="work">sin &theta; = 5 / 8 = 0.625</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Apply the inverse sine.
+    <span class="work">&theta; = sin<sup>&minus;1</sup>(0.625) = 38.6821&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 38.7&deg; (1 d.p.)</div>
+  <div class="tip"><b>Exam tip</b> Angles are normally asked to <b>1 decimal place</b>; lengths to
+  <b>3 significant figures</b>. If the question says nothing, 3 s.f. is always accepted.</div>
+</div>
+</details>
+
+<div class="card">
+<h4>The exact values you should know</h4>
+<svg viewBox="0 0 420 215" role="img" aria-label="A 45-45-90 triangle with sides 1, 1, root 2 and a 30-60-90 triangle with sides 1, root 3, 2" style="max-width:min(100%,440px);height:auto;display:block;margin:0 auto">
+  <polygon points="40,180 170,180 170,50" fill="#16a34a" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="157,180 157,167 170,167" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="60" y="173" font-size="12" fill="#16a34a" font-weight="bold">45&deg;</text>
+  <text x="146" y="70" font-size="12" fill="#16a34a" font-weight="bold">45&deg;</text>
+  <text x="105" y="197" font-size="13" text-anchor="middle" fill="currentColor">1</text>
+  <text x="178" y="120" font-size="13" fill="currentColor">1</text>
+  <text x="88" y="106" font-size="13" text-anchor="middle" fill="currentColor">&#8730;2</text>
+  <polygon points="255,180 330,180 330,50" fill="#6d28d9" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="317,180 317,167 330,167" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="272" y="172" font-size="12" fill="#6d28d9" font-weight="bold">60&deg;</text>
+  <text x="303" y="70" font-size="12" fill="#6d28d9" font-weight="bold">30&deg;</text>
+  <text x="292" y="197" font-size="13" text-anchor="middle" fill="currentColor">1</text>
+  <text x="338" y="120" font-size="13" fill="currentColor">&#8730;3</text>
+  <text x="277" y="106" font-size="13" text-anchor="middle" fill="currentColor">2</text>
+</svg>
+<div class="tw">
+<table>
+<thead><tr><th>&theta;</th><th>sin&nbsp;&theta;</th><th>cos&nbsp;&theta;</th><th>tan&nbsp;&theta;</th></tr></thead>
+<tbody>
+<tr><td>30&deg;</td><td><span class="frac"><span>1</span><span>2</span></span></td><td><span class="frac"><span>&#8730;3</span><span>2</span></span></td><td><span class="frac"><span>1</span><span>&#8730;3</span></span> = <span class="frac"><span>&#8730;3</span><span>3</span></span></td></tr>
+<tr><td>45&deg;</td><td><span class="frac"><span>1</span><span>&#8730;2</span></span> = <span class="frac"><span>&#8730;2</span><span>2</span></span></td><td><span class="frac"><span>1</span><span>&#8730;2</span></span> = <span class="frac"><span>&#8730;2</span><span>2</span></span></td><td>1</td></tr>
+<tr><td>60&deg;</td><td><span class="frac"><span>&#8730;3</span><span>2</span></span></td><td><span class="frac"><span>1</span><span>2</span></span></td><td>&#8730;3</td></tr>
+</tbody>
+</table>
+</div>
+<p style="margin:8px 0 0">If a question says <b>&ldquo;give your answer in exact form&rdquo;</b> or
+<b>&ldquo;in surd form&rdquo;</b>, it is telling you the angle is 30&deg;, 45&deg; or 60&deg; and that no
+calculator rounding is allowed. For example, with an adjacent of 6&nbsp;cm and an angle of 60&deg;:
+<span class="m">cos 60&deg; = <span class="frac"><span>6</span><span>h</span></span></span>, so
+<span class="m">h = 6 &divide; &frac12; = 12</span>&nbsp;cm exactly, and the opposite is
+<span class="m">6 tan 60&deg; = 6&#8730;3</span>&nbsp;cm.</p>
+</div>
+
+<h3>4&nbsp;&middot;&nbsp; Angles of elevation and depression</h3>
+<div class="def"><b>Definition</b>
+The <b>angle of elevation</b> is measured <i>upwards</i> from the horizontal to your line of sight.
+The <b>angle of depression</b> is measured <i>downwards</i> from the horizontal to your line of sight.
+Both are measured from the <b>horizontal</b>, never from a vertical wall or mast.</div>
+<div class="tip"><b>Exam tip</b>
+The angle of depression is <i>outside</i> the triangle you want to use. Because the horizontal at
+the top is parallel to the ground, the angle down at the far point equals the angle of depression
+(<b>alternate angles</b>). Drop it into the triangle and carry on as normal.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Amira stands 47&nbsp;m from the foot of a vertical tower. The angle of elevation of the top of the tower is 32&deg;. Find (a) the height of the tower, (b) the distance from Amira to the top.</span></summary>
+<div class="body">
+<svg viewBox="0 0 340 215" role="img" aria-label="Right-angled triangle: horizontal ground 47 metres, angle of elevation 32 degrees, tower height h, line of sight d" style="max-width:min(100%,360px);height:auto;display:block;margin:0 auto">
+  <polygon points="45,180 256,180 256,48" fill="#16a34a" fill-opacity="0.07" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="242,180 242,166 256,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 87,180 A 42,42 0 0,0 80.6,157.7" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="94" y="173" font-size="13" fill="#16a34a" font-weight="bold">32&deg;</text>
+  <text x="150" y="200" font-size="14" text-anchor="middle" fill="#1a4fa0" font-weight="bold">47 m&nbsp;&nbsp;(A)</text>
+  <text x="264" y="112" font-size="14" fill="#e05c2a" font-weight="bold">h</text>
+  <text x="264" y="130" font-size="11" fill="#e05c2a">(O)</text>
+  <text x="132" y="100" font-size="14" text-anchor="middle" fill="#e05c2a" font-weight="bold">d</text>
+  <text x="140" y="86" font-size="11" text-anchor="middle" fill="#e05c2a">(H)</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">(a) Relative to 32&deg;: 47&nbsp;m is <b>A</b>, the height is <b>O</b>. O and A &rarr; tangent.
+    <span class="work">tan 32&deg; = h / 47</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Unknown on top, so multiply.
+    <span class="work">h = 47 &times; tan 32&deg; = 47 &times; 0.624869&hellip; = 29.3688&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Now the 47&nbsp;m is still <b>A</b> but we want <b>H</b> &rarr; cosine.
+    <span class="work">cos 32&deg; = 47 / d</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Unknown on the bottom, so divide.
+    <span class="work">d = 47 &divide; cos 32&deg; = 47 &divide; 0.848048&hellip; = 55.4213&hellip;</span></div></div>
+  <div class="final">(a) h = 29.4 m &nbsp;&nbsp; (b) d = 55.4 m (3 s.f.)</div>
+  <div class="note"><b>Check</b> Pythagoras on the unrounded values:
+  <span class="m">&#8730;(47&sup2; + 29.3688&sup2;) = &#8730;3071.5 = 55.42</span> &#10003;. Notice the hypotenuse is the
+  longest side, as it must be.</div>
+</div>
+</details>
+
+<div class="card p">
+<h4>Trigonometry or Pythagoras?</h4>
+<div class="tw"><table>
+<thead><tr><th>What the question gives you</th><th>What to use</th></tr></thead>
+<tbody>
+<tr><td>Two <b>sides</b>, want the third side</td><td>Pythagoras <span class="m">a&sup2; + b&sup2; = c&sup2;</span></td></tr>
+<tr><td>Two <b>sides</b>, want an <b>angle</b></td><td>Inverse trig: <span class="m">sin<sup>&minus;1</sup></span>, <span class="m">cos<sup>&minus;1</sup></span>, <span class="m">tan<sup>&minus;1</sup></span></td></tr>
+<tr><td>One side and an <b>angle</b>, want another side</td><td>sin, cos or tan</td></tr>
+</tbody>
+</table></div>
+<p style="margin:8px 0 0">In short: <b>no angle mentioned anywhere &rarr; Pythagoras</b>. As soon as an
+angle appears, trigonometry is faster and usually the only route.</p>
+</div>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">A right-angled triangle has hypotenuse 15&nbsp;cm and an angle of 52&deg;. Find the side opposite the 52&deg; angle.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">O and H &rarr; sine, unknown on top.
+    <span class="work">sin 52&deg; = x / 15<br>x = 15 &times; sin 52&deg; = 11.820&hellip;</span></div></div>
+  <div class="final">11.8 cm (3 s.f.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">In a right-angled triangle, the side adjacent to a 63&deg; angle is 6&nbsp;cm. Find the hypotenuse.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">A and H &rarr; cosine, unknown on the bottom.
+    <span class="work">cos 63&deg; = 6 / x<br>x = 6 &divide; cos 63&deg; = 13.216&hellip;</span></div></div>
+  <div class="final">13.2 cm (3 s.f.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A right-angled triangle has hypotenuse 14&nbsp;cm and an adjacent side of 9&nbsp;cm. Find the angle between them.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">A and H &rarr; cosine. Write the ratio as a decimal first.
+    <span class="work">cos &theta; = 9 / 14 = 0.642857&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Inverse cosine.
+    <span class="work">&theta; = cos<sup>&minus;1</sup>(0.642857&hellip;) = 50.0&deg;</span></div></div>
+  <div class="final">&theta; = 50.0&deg; (1 d.p.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Write down the exact value of <span class="m">tan 60&deg;</span>, and use it to find the side opposite a 60&deg; angle when the adjacent side is 7&nbsp;cm. Leave your answer in surd form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="work">tan 60&deg; = &#8730;3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">O and A &rarr; tangent, unknown on top.
+    <span class="work">O = 7 &times; tan 60&deg; = 7&#8730;3</span></div></div>
+  <div class="final">7&#8730;3 cm (&asymp; 12.1 cm)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A ladder 4.5&nbsp;m long leans against a vertical wall with its foot 1.6&nbsp;m from the base of the wall. Find (a) the angle the ladder makes with the ground, (b) how far up the wall it reaches.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The ladder is H = 4.5 and the ground distance is A = 1.6 &rarr; cosine.
+    <span class="work">cos &theta; = 1.6 / 4.5 = 0.3555&hellip;<br>&theta; = cos<sup>&minus;1</sup>(0.3555&hellip;) = 69.17&hellip;&deg;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Two sides known and no angle needed &rarr; Pythagoras.
+    <span class="work">h = &#8730;(4.5&sup2; &minus; 1.6&sup2;) = &#8730;17.69 = 4.205&hellip;</span></div></div>
+  <div class="final">(a) 69.2&deg; (1 d.p.) &nbsp;&nbsp; (b) 4.21 m (3 s.f.)</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Labelling before choosing the angle</b>
+Opposite and adjacent <b>swap over</b> when you switch angles. Decide which angle you are using first,
+then label &mdash; and re-label for each new part of the question. Only the hypotenuse never moves.</div>
+<div class="warn"><b>Calculator in radian mode</b>
+Check for D or DEG on the display before you start. In radian mode every trig answer is wrong, and the
+error is almost impossible to spot from the working. Also remember
+<span class="m">sin<sup>&minus;1</sup>x</span> is the inverse function, not
+<span class="m">1 &divide; sin x</span>.</div>
+<div class="warn"><b>Rounding part-way through</b>
+Never round the ratio before the final line. Rounding <span class="m">sin 35&deg;</span> to 0.57 first
+turns 6.88 into 6.84 and loses the accuracy mark. Keep the full calculator value until the end.</div>
+<div class="tip"><b>Exam tip</b>
+Give lengths to <b>3 significant figures</b> and angles to <b>1 decimal place</b>, then sense-check:
+the hypotenuse must be the longest side, and against an angle under 45&deg; the opposite is shorter
+than the adjacent.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">You know the opposite and want the hypotenuse. Which ratio do you use?</span></summary>
+<div class="body"><div class="final">Sine &mdash; O and H together is SOH.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Write down the exact values of <span class="m">tan 45&deg;</span> and <span class="m">sin 30&deg;</span>.</span></summary>
+<div class="body"><div class="final">tan 45&deg; = 1 &nbsp;and&nbsp; sin 30&deg; = &frac12;.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">In <span class="m">cos 63&deg; = 6/x</span>, is the answer <span class="m">6 &times; cos 63&deg;</span> or <span class="m">6 &divide; cos 63&deg;</span>?</span></summary>
+<div class="body"><div class="final">6 &divide; cos 63&deg; &mdash; the unknown is on the bottom, so swap and divide.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/15-3.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a SOHCAHTOA solver and ratio-picker practice.</span></a>
+  <a href="../igcse-question-bank/trigonometry-questions.html"><b>Practice questions</b><span>Exam-style trigonometry questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="pythagoras-theorem.html"><span>&larr; Previous lesson</span><b>Pythagoras&rsquo; Theorem</b></a>
+  <a class="next" href="trigonometry-in-three-dimensions.html"><span>Next lesson &rarr;</span><b>Trigonometry in Three Dimensions</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

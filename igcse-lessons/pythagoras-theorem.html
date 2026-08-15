@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pythagoras' Theorem | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on Pythagoras' theorem — finding the hypotenuse or a shorter side, testing for right angles with the converse, and solving real problems.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Pythagoras and Trigonometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Pythagoras&rsquo; Theorem</h1>
+    <p>The relationship between the three sides of a right-angled triangle, and how to use it to find lengths, test for right angles and solve real problems.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Identify the <b>hypotenuse</b> of a right-angled triangle in any orientation.</li>
+  <li>Use <span class="m">a&sup2; + b&sup2; = c&sup2;</span> to find the hypotenuse (<b>add</b>) or a shorter side (<b>subtract</b>).</li>
+  <li>Use the <b>converse</b> to decide whether a triangle is right-angled, and recognise common Pythagorean triples.</li>
+  <li>Apply the theorem to hidden triangles: diagonals, ladders, coordinates, isosceles triangles and chords.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>hypotenuse</span><span>right angle</span><span>square root</span><span>converse</span><span>Pythagorean triple</span><span>surd form</span><span>3 significant figures</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Work out <span class="m">8&sup2; + 6&sup2;</span>.</span></summary>
+<div class="body"><div class="final">64 + 36 = 100</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Write down <span class="m">&#8730;225</span> and <span class="m">&#8730;169</span>.</span></summary>
+<div class="body"><div class="final">&#8730;225 = 15 &nbsp;and&nbsp; &#8730;169 = 13</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Round <span class="m">7.15192&hellip;</span> to 3 significant figures.</span></summary>
+<div class="body"><div class="final">7.15 &mdash; the fourth figure is a 1, so the third figure stays as it is.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The theorem and the hypotenuse</h3>
+<p>In <b>any</b> right-angled triangle, the square drawn on the longest side has exactly the same area as
+the two squares on the shorter sides added together. That single fact &mdash; Pythagoras&rsquo; theorem &mdash;
+is one of the most heavily used results in the whole syllabus.</p>
+<div class="def"><b>Definition</b>
+The <b>hypotenuse</b> is the side <i>opposite the right angle</i>. It is always the longest side of a
+right-angled triangle. Everything in this lesson depends on identifying it correctly first.</div>
+<div class="formula">a&sup2; + b&sup2; = c&sup2;
+<small>where <span class="m">c</span> is the hypotenuse and <span class="m">a</span>, <span class="m">b</span> are the two shorter sides</small></div>
+<div class="card">
+<h4>Why it is true &mdash; the squares picture</h4>
+<svg viewBox="50 30 380 390" role="img" aria-label="A 3-4-5 right-angled triangle with a square drawn on each side, areas 9, 16 and 25" style="max-width:min(100%,420px);height:auto;display:block;margin:0 auto">
+  <polygon points="260,60 380,150 290,270 170,180" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <rect x="80" y="180" width="90" height="90" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <rect x="170" y="270" width="120" height="120" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <polygon points="170,180 290,270 170,270" fill="#ffffff" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="170,254 186,254 186,270" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="125" y="230" font-size="14" text-anchor="middle" fill="#16a34a">area 9</text>
+  <text x="230" y="338" font-size="14" text-anchor="middle" fill="#1a4fa0">area 16</text>
+  <text x="275" y="168" font-size="14" text-anchor="middle" fill="#e05c2a">area 25</text>
+  <text x="155" y="230" font-size="14" text-anchor="end" fill="#16a34a">3</text>
+  <text x="230" y="290" font-size="14" text-anchor="middle" fill="#1a4fa0">4</text>
+  <text x="246" y="208" font-size="14" fill="#e05c2a">5</text>
+  <text x="240" y="415" font-size="15" text-anchor="middle" fill="currentColor">9 + 16 = 25</text>
+</svg>
+</div>
+<p>The right angle can be drawn anywhere on the page. Do not assume the hypotenuse is the bottom or the
+sloping side &mdash; find the right angle, then look straight across from it.</p>
+<div class="card o">
+<h4>Same rule, three orientations</h4>
+<svg viewBox="0 0 560 200" role="img" aria-label="Three right-angled triangles in different orientations with the hypotenuse marked on each" style="max-width:min(100%,560px);height:auto;display:block;margin:0 auto">
+  <polygon points="30,170 140,170 30,80" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="140" y1="170" x2="30" y2="80" stroke="#e05c2a" stroke-width="4"/>
+  <polyline points="30,156 44,156 44,170" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="100" y="112" font-size="13" fill="#e05c2a">hyp</text>
+  <polygon points="200,80 310,80 310,170" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="200" y1="80" x2="310" y2="170" stroke="#e05c2a" stroke-width="4"/>
+  <polyline points="296,80 296,94 310,94" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="216" y="138" font-size="13" fill="#e05c2a">hyp</text>
+  <polygon points="420,120 520,167 458,38" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="520" y1="167" x2="458" y2="38" stroke="#e05c2a" stroke-width="4"/>
+  <polyline points="433,126 439,113 426,107" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="500" y="100" font-size="13" fill="#e05c2a">hyp</text>
+  <text x="280" y="196" font-size="13" text-anchor="middle" fill="currentColor">the hypotenuse is always opposite the right angle</text>
+</svg>
+</div>
+<div class="warn"><b>Watch out</b>
+Pythagoras works <b>only</b> in right-angled triangles. If a triangle has no right angle you need the sine
+or cosine rule instead, not <span class="m">a&sup2; + b&sup2; = c&sup2;</span>.</div>
+
+<h3>2&nbsp;&middot;&nbsp; Finding a missing side</h3>
+<div class="grid two">
+  <div class="card g"><h4>Finding the hypotenuse &mdash; you <b>add</b></h4>
+    <p>Square both short sides, add, then square root.</p>
+    <p class="m">c = &#8730;(a&sup2; + b&sup2;)</p></div>
+  <div class="card o"><h4>Finding a shorter side &mdash; you <b>subtract</b></h4>
+    <p>Square the hypotenuse, subtract the square of the known short side, then square root.</p>
+    <p class="m">a = &#8730;(c&sup2; &minus; b&sup2;)</p></div>
+</div>
+<div class="tip"><b>Exam tip</b>
+Decide <i>before</i> you touch the calculator: is the missing side the longest one? If yes, add. If no,
+subtract. Half of all lost marks on this topic come from adding when you should have subtracted.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A right-angled triangle has shorter sides of 8&nbsp;cm and 15&nbsp;cm. Find the length of the hypotenuse.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 320 230" role="img" aria-label="Right-angled triangle with legs 8 cm and 15 cm and unknown hypotenuse x" style="max-width:min(100%,360px);height:auto;display:block;margin:0 auto">
+    <polygon points="60,190 240,190 60,94" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <polyline points="60,176 74,176 74,190" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="150" y="210" font-size="14" text-anchor="middle" fill="currentColor">15 cm</text>
+    <text x="52" y="146" font-size="14" text-anchor="end" fill="currentColor">8 cm</text>
+    <text x="164" y="130" font-size="14" fill="#e05c2a">x</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The unknown side is opposite the right angle, so it is the
+    hypotenuse. That means <b>add</b>.
+    <span class="work">a&sup2; + b&sup2; = c&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute the two shorter sides.
+    <span class="work">8&sup2; + 15&sup2; = x&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Square each number, then add.
+    <span class="work">64 + 225 = x&sup2;<br>x&sup2; = 289</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Square root. Because 289 is a perfect square the answer is exact.
+    <span class="work">x = &#8730;289 = 17</span></div></div>
+  <div class="final">hypotenuse = 17 cm</div>
+  <div class="tip"><b>Exam tip</b> Check for sense: the hypotenuse must be longer than 15 and shorter than
+  <span class="m">8 + 15 = 23</span>. 17 passes both tests.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">In triangle <span class="m">PQR</span>, angle <span class="m">Q = 90&deg;</span>, <span class="m">PR = 9.4</span>&nbsp;cm and <span class="m">QR = 6.1</span>&nbsp;cm. Find <span class="m">PQ</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 300 230" role="img" aria-label="Right-angled triangle PQR with hypotenuse PR 9.4 cm, side QR 6.1 cm and unknown side PQ" style="max-width:min(100%,340px);height:auto;display:block;margin:0 auto">
+    <polygon points="60,190 182,190 60,47" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <polyline points="60,176 74,176 74,190" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="52" y="200" font-size="13" text-anchor="end" fill="currentColor">Q</text>
+    <text x="192" y="198" font-size="13" fill="currentColor">R</text>
+    <text x="52" y="42" font-size="13" text-anchor="end" fill="currentColor">P</text>
+    <text x="121" y="210" font-size="14" text-anchor="middle" fill="currentColor">6.1 cm</text>
+    <text x="150" y="112" font-size="14" fill="#1a4fa0">9.4 cm</text>
+    <text x="52" y="120" font-size="14" text-anchor="end" fill="#e05c2a">x</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The right angle is at <span class="m">Q</span>, so the hypotenuse
+    is the side opposite it: <span class="m">PR = 9.4</span>&nbsp;cm. The missing side is a <i>shorter</i> side,
+    so <b>subtract</b>.
+    <span class="work">x&sup2; + 6.1&sup2; = 9.4&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rearrange so the unknown is on its own.
+    <span class="work">x&sup2; = 9.4&sup2; &minus; 6.1&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Square first, then subtract &mdash; never subtract the
+    lengths themselves.
+    <span class="work">x&sup2; = 88.36 &minus; 37.21 = 51.15</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Square root and round to 3 significant figures.
+    <span class="work">x = &#8730;51.15 = 7.15192&hellip;</span></div></div>
+  <div class="final">PQ = 7.15 cm (3 s.f.)</div>
+  <div class="warn"><b>Watch out</b> <span class="m">9.4 &minus; 6.1 = 3.3</span> is <b>not</b> the answer.
+  The subtraction happens between the <i>squares</i>, not the lengths.</div>
+</div>
+</details>
+
+<div class="note"><b>Exact answers or 3 significant figures</b>
+If the square root is not exact, give <b>3 significant figures</b> unless the question says otherwise. If it
+says &ldquo;give your answer in exact form&rdquo; or &ldquo;in surd form&rdquo;, leave the root and simplify:
+the diagonal of a 6&nbsp;cm square is <span class="m">&#8730;(6&sup2; + 6&sup2;) = &#8730;72 = 6&#8730;2</span>
+exactly, or 8.49&nbsp;cm to 3&nbsp;s.f.</div>
+
+<h3>3&nbsp;&middot;&nbsp; The converse: testing for a right angle</h3>
+<p>Pythagoras also works backwards. This reversed version is called the <b>converse</b>, and questions that
+say &ldquo;show that the triangle is right-angled&rdquo; are testing exactly it.</p>
+<div class="def"><b>The converse</b>
+If the square on the longest side equals the sum of the squares on the other two sides, the triangle
+<b>is</b> right-angled &mdash; and the right angle is the one <i>opposite the longest side</i>.</div>
+<div class="tw">
+<table>
+<thead><tr><th>Comparison</th><th>Conclusion</th></tr></thead>
+<tbody>
+<tr><td><span class="m">a&sup2; + b&sup2; = c&sup2;</span></td><td>right-angled</td></tr>
+<tr><td><span class="m">a&sup2; + b&sup2; &gt; c&sup2;</span></td><td>all angles acute</td></tr>
+<tr><td><span class="m">a&sup2; + b&sup2; &lt; c&sup2;</span></td><td>the largest angle is obtuse</td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Decide whether each triangle is right-angled: (a) sides 9, 40, 41 &nbsp;(b) sides 5, 7, 9.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Pick out the longest side, 41. Square the other two and add.
+    <span class="work">9&sup2; + 40&sup2; = 81 + 1600 = 1681</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square the longest side and compare.
+    <span class="work">41&sup2; = 1681 &nbsp;&nbsp;&#10003; equal</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Longest side is 9.
+    <span class="work">5&sup2; + 7&sup2; = 25 + 49 = 74<br>9&sup2; = 81</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Here <span class="m">74 &lt; 81</span>, so the two shorter sides
+    fall short &mdash; the angle opposite the 9 has opened past <span class="m">90&deg;</span>.</div></div>
+  <div class="final">(a) right-angled, with the right angle opposite the side of 41 &nbsp;&nbsp; (b) not right-angled (obtuse)</div>
+  <div class="tip"><b>Exam tip</b> Write both lines out separately and finish with a sentence:
+  &ldquo;since <span class="m">9&sup2; + 40&sup2; = 41&sup2;</span>, the triangle is right-angled&rdquo;.
+  The conclusion carries a mark of its own.</div>
+</div>
+</details>
+
+<p>A <b>Pythagorean triple</b> is a set of three whole numbers that fits the theorem exactly. Recognising
+them saves you time, and any multiple of a triple is also a triple.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Triple</th><th>Check</th><th>Useful multiples</th></tr></thead>
+<tbody>
+<tr><td><span class="m">3, 4, 5</span></td><td><span class="m">9 + 16 = 25</span></td><td>6, 8, 10 &nbsp;&middot;&nbsp; 9, 12, 15 &nbsp;&middot;&nbsp; 30, 40, 50</td></tr>
+<tr><td><span class="m">5, 12, 13</span></td><td><span class="m">25 + 144 = 169</span></td><td>10, 24, 26 &nbsp;&middot;&nbsp; 15, 36, 39</td></tr>
+<tr><td><span class="m">8, 15, 17</span></td><td><span class="m">64 + 225 = 289</span></td><td>16, 30, 34</td></tr>
+<tr><td><span class="m">7, 24, 25</span></td><td><span class="m">49 + 576 = 625</span></td><td>14, 48, 50</td></tr>
+<tr><td><span class="m">9, 40, 41</span></td><td><span class="m">81 + 1600 = 1681</span></td><td>18, 80, 82</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>4&nbsp;&middot;&nbsp; Pythagoras in real problems</h3>
+<p>Most exam questions hide the triangle inside a picture. Your first job is always the same: <b>draw the
+right-angled triangle on its own</b>, mark the right angle and label the three sides.</p>
+<div class="grid two">
+  <div class="card"><h4>Diagonal of a rectangle</h4>
+    <svg viewBox="0 0 280 170" role="img" aria-label="Rectangle 12 cm by 5 cm with a diagonal of 13 cm" style="max-width:min(100%,300px);height:auto;display:block;margin:0 auto">
+      <rect x="40" y="40" width="192" height="80" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+      <line x1="40" y1="40" x2="232" y2="120" stroke="#e05c2a" stroke-width="3"/>
+      <polyline points="40,106 54,106 54,120" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+      <text x="136" y="140" font-size="14" text-anchor="middle" fill="currentColor">12 cm</text>
+      <text x="34" y="86" font-size="14" text-anchor="end" fill="currentColor">5 cm</text>
+      <text x="150" y="80" font-size="14" fill="#e05c2a">13 cm</text>
+      <text x="136" y="162" font-size="12" text-anchor="middle" fill="currentColor">the diagonal is the hypotenuse</text>
+    </svg>
+  </div>
+  <div class="card p"><h4>Where the triangle hides</h4>
+    <ul>
+      <li><b>Ladders and ramps</b> &mdash; the ladder is the hypotenuse.</li>
+      <li><b>Rectangles and cuboids</b> &mdash; the diagonal is the hypotenuse.</li>
+      <li><b>Coordinates</b> &mdash; go across, then up.</li>
+      <li><b>Isosceles triangles</b> &mdash; drop a perpendicular to the base and it splits the base exactly in half.</li>
+      <li><b>Circles</b> &mdash; the perpendicular from the centre to a chord bisects the chord, giving a radius&ndash;half-chord triangle.</li>
+    </ul>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A 5.2&nbsp;m ladder leans against a vertical wall. Its foot is 1.8&nbsp;m from the base of the wall. How far up the wall does the ladder reach?</span></summary>
+<div class="body">
+  <svg viewBox="0 0 340 290" role="img" aria-label="Ladder 5.2 m leaning against a wall with its foot 1.8 m from the wall" style="max-width:min(100%,360px);height:auto;display:block;margin:0 auto">
+    <line x1="30" y1="250" x2="300" y2="250" stroke="#0f2d6b" stroke-width="3"/>
+    <line x1="80" y1="40" x2="80" y2="250" stroke="#0f2d6b" stroke-width="5"/>
+    <polygon points="80,250 152,250 80,55" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+    <line x1="80" y1="55" x2="152" y2="250" stroke="#e05c2a" stroke-width="4"/>
+    <polyline points="80,236 94,236 94,250" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+    <text x="116" y="270" font-size="14" text-anchor="middle" fill="currentColor">1.8 m</text>
+    <text x="72" y="150" font-size="14" text-anchor="end" fill="currentColor">h</text>
+    <text x="132" y="140" font-size="14" fill="#e05c2a">5.2 m</text>
+    <text x="230" y="120" font-size="13" text-anchor="middle" fill="currentColor">wall and ground</text>
+    <text x="230" y="140" font-size="13" text-anchor="middle" fill="currentColor">meet at 90&deg;</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The wall is vertical and the ground horizontal, so the
+    triangle is right-angled. The ladder leans across the right angle, so the ladder is the hypotenuse.
+    <span class="work">h&sup2; + 1.8&sup2; = 5.2&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract, because we want a shorter side.
+    <span class="work">h&sup2; = 27.04 &minus; 3.24 = 23.8</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Square root.
+    <span class="work">h = &#8730;23.8 = 4.87852&hellip;</span></div></div>
+  <div class="final">the ladder reaches 4.88 m up the wall (3 s.f.)</div>
+  <div class="note"><b>Note</b> Keep the full value in your calculator if the question continues &mdash; for
+  example if it then asks for the angle. Round only at the very end.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">An isosceles triangle has two sides of 13&nbsp;cm and a base of 10&nbsp;cm. Find its perpendicular height and hence its area.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 300 275" role="img" aria-label="Isosceles triangle with equal sides 13 cm, base 10 cm, split into two right-angled triangles by a height of 12 cm" style="max-width:min(100%,320px);height:auto;display:block;margin:0 auto">
+    <polygon points="150,40 70,232 230,232" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2"/>
+    <line x1="150" y1="40" x2="150" y2="232" stroke="#e05c2a" stroke-width="3" stroke-dasharray="6 4"/>
+    <polyline points="150,218 164,218 164,232" fill="none" stroke="#e05c2a" stroke-width="2"/>
+    <text x="94" y="130" font-size="14" text-anchor="end" fill="currentColor">13 cm</text>
+    <text x="208" y="130" font-size="14" fill="currentColor">13 cm</text>
+    <text x="110" y="252" font-size="14" text-anchor="middle" fill="currentColor">5 cm</text>
+    <text x="190" y="252" font-size="14" text-anchor="middle" fill="currentColor">5 cm</text>
+    <text x="158" y="150" font-size="14" fill="#e05c2a">h</text>
+    <text x="150" y="270" font-size="13" text-anchor="middle" fill="currentColor">base 10 cm</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Drop the perpendicular from the apex. In an isosceles triangle
+    it lands on the <b>midpoint</b> of the base, creating two identical right-angled triangles with base
+    <span class="m">10 &divide; 2 = 5</span>&nbsp;cm.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">In one of those, the 13&nbsp;cm side is the hypotenuse.
+    <span class="work">h&sup2; + 5&sup2; = 13&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract.
+    <span class="work">h&sup2; = 169 &minus; 25 = 144 &nbsp;&rarr;&nbsp; h = 12</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Now use <span class="m">&frac12; &times; base &times; height</span>.
+    <span class="work">area = &frac12; &times; 10 &times; 12 = 60</span></div></div>
+  <div class="final">height = 12 cm, area = 60 cm&sup2;</div>
+  <div class="warn"><b>Watch out</b> Halve the <b>base</b>, not the sloping side. Splitting the 13 is the most
+  common error here.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">A right-angled triangle has shorter sides 9&nbsp;cm and 12&nbsp;cm. Find the hypotenuse.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The unknown is the longest side, so add.
+    <span class="work">9&sup2; + 12&sup2; = 81 + 144 = 225</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="work">c = &#8730;225 = 15</span></div></div>
+  <div class="final">15 cm &mdash; a 3&times;(3, 4, 5) triple</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">The hypotenuse of a right-angled triangle is 8.5&nbsp;cm and one shorter side is 4&nbsp;cm. Find the other shorter side.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The unknown is a shorter side, so subtract.
+    <span class="work">a&sup2; = 8.5&sup2; &minus; 4&sup2; = 72.25 &minus; 16 = 56.25</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="work">a = &#8730;56.25 = 7.5</span></div></div>
+  <div class="final">7.5 cm (exact)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Is a triangle with sides 12&nbsp;cm, 35&nbsp;cm and 37&nbsp;cm right-angled? Show your working.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Longest side is 37. Compare the two totals.
+    <span class="work">12&sup2; + 35&sup2; = 144 + 1225 = 1369<br>37&sup2; = 1369</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The totals are equal, so the converse applies.</div></div>
+  <div class="final">Yes &mdash; right-angled, with the right angle opposite the 37 cm side.</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Find the distance between <span class="m">P(1, &minus;4)</span> and <span class="m">Q(7, 4)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Horizontal and vertical steps.
+    <span class="work">7 &minus; 1 = 6 &nbsp;&nbsp; 4 &minus; (&minus;4) = 8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The steps meet at a right angle, so <span class="m">PQ</span> is the hypotenuse.
+    <span class="work">d&sup2; = 6&sup2; + 8&sup2; = 36 + 64 = 100 &nbsp;&rarr;&nbsp; d = 10</span></div></div>
+  <div class="final">PQ = 10 units</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A rectangle measures 11&nbsp;cm by 7&nbsp;cm. Find the length of a diagonal, correct to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The diagonal is the hypotenuse of a right-angled triangle with legs 11 and 7.
+    <span class="work">d&sup2; = 11&sup2; + 7&sup2; = 121 + 49 = 170</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="work">d = &#8730;170 = 13.038&hellip;</span></div></div>
+  <div class="final">13.0 cm (3 s.f.)</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Subtracting the lengths instead of the squares</b>
+<span class="m">9.4 &minus; 6.1</span> is never the answer. Square first, then add or subtract, then square
+root at the end.</div>
+<div class="warn"><b>Adding when you should subtract</b>
+Adding always produces the hypotenuse. If the missing side is <i>not</i> the longest side, you must
+subtract from the square of the hypotenuse. Decide which case you are in before calculating.</div>
+<div class="warn"><b>Using Pythagoras without a right angle</b>
+The theorem only holds in right-angled triangles. In any other triangle you need the sine or cosine rule
+&mdash; and quoting <span class="m">a&sup2; + b&sup2; = c&sup2;</span> there earns nothing.</div>
+<div class="tip"><b>Exam tip</b>
+Learn the triples <span class="m">3, 4, 5</span> &nbsp;<span class="m">5, 12, 13</span>
+&nbsp;<span class="m">8, 15, 17</span> &nbsp;<span class="m">7, 24, 25</span> and their multiples &mdash;
+spotting one turns a calculation into a one-line answer, and gives you an instant check on decimals.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">The two shorter sides of a right-angled triangle are 6 and 8. Write down the hypotenuse.</span></summary>
+<div class="body"><div class="final">10 &mdash; it is 2 &times; (3, 4, 5).</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">To find a <i>shorter</i> side, do you add or subtract the squares?</span></summary>
+<div class="body"><div class="final">Subtract &mdash; square the hypotenuse and take away the square of the known short side.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">A triangle has sides 10, 24, 26. Is it right-angled?</span></summary>
+<div class="body"><div class="final">Yes &mdash; 100 + 576 = 676 = 26&sup2; (it is 2 &times; (5, 12, 13)).</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/11-1.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a Pythagoras solver to explore.</span></a>
+  <a href="../igcse-question-bank/pythagoras-theorem-questions.html"><b>Practice questions</b><span>Exam-style questions on Pythagoras&rsquo; theorem, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="understanding-congruence.html"><span>&larr; Previous lesson</span><b>Understanding Congruence</b></a>
+  <a class="next" href="the-tangent-sine-and-cosine-ratios.html"><span>Next lesson &rarr;</span><b>The Tangent, Sine and Cosine Ratios</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

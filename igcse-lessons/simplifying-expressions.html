@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simplifying Expressions | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on recognising like terms, collecting them safely, and multiplying, dividing and cancelling algebraic terms to leave an expression in its simplest form.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Simplifying Expressions</h1>
+    <p>Recognise like terms, collect them safely, and multiply, divide and cancel algebraic terms to leave an expression in its simplest form.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Decide whether two terms are <b>like terms</b> &mdash; same letters, same powers.</li>
+  <li>Collect like terms, taking the sign in front of each term with it.</li>
+  <li>Multiply terms by multiplying coefficients and <b>adding</b> indices.</li>
+  <li>Divide terms by writing a fraction, cancelling numbers and <b>subtracting</b> indices.</li>
+  <li>Form and simplify perimeter and area expressions from a diagram.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>like terms</span><span>coefficient</span><span>collect</span><span>index</span><span>cancel</span><span>HCF</span><span>perimeter</span><span>area</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">What is the HCF of 12 and 8?</span></summary>
+<div class="body"><div class="final">4 &mdash; the largest number dividing both, so <span class="frac"><span>12</span><span>8</span></span> cancels to <span class="frac"><span>3</span><span>2</span></span>.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">What is <span class="m">2&sup3;</span>?</span></summary>
+<div class="body"><div class="final">8 &mdash; 2 &times; 2 &times; 2.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">In the expression <span class="m">5x&sup2; &minus; 3x + 7</span>, what is the coefficient of <span class="m">x</span>?</span></summary>
+<div class="body"><div class="final">&minus;3 &mdash; the sign in front belongs to the term.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Like and unlike terms</h3>
+<p>Simplifying means writing the same expression with fewer terms. You can only do that when terms are
+<b>like</b> each other &mdash; and the test is stricter than most students think.</p>
+<div class="def"><b>Definition</b>
+Two terms are <b>like terms</b> if they have <b>exactly the same letters raised to exactly the same powers</b>.
+The coefficients may be different; nothing else may be.</div>
+<div class="tw">
+<table>
+<thead><tr><th>Pair of terms</th><th>Like?</th><th>Reason</th></tr></thead>
+<tbody>
+<tr><td><span class="m">3x</span> and <span class="m">7x</span></td><td><b>Yes</b></td><td>same letter, same power</td></tr>
+<tr><td><span class="m">2ab</span> and <span class="m">5ba</span></td><td><b>Yes</b></td><td>order does not matter: <span class="m">ba = ab</span></td></tr>
+<tr><td><span class="m">4x&sup2;y</span> and <span class="m">&minus;x&sup2;y</span></td><td><b>Yes</b></td><td>identical letter part <span class="m">x&sup2;y</span></td></tr>
+<tr><td><span class="m">3x</span> and <span class="m">3x&sup2;</span></td><td>No</td><td>same letter, different power</td></tr>
+<tr><td><span class="m">4x&sup2;y</span> and <span class="m">4xy&sup2;</span></td><td>No</td><td>the powers are on different letters</td></tr>
+<tr><td><span class="m">6</span> and <span class="m">6x</span></td><td>No</td><td>a constant is not like a term containing a letter</td></tr>
+</tbody>
+</table>
+</div>
+<div class="warn"><b>Watch out</b> <span class="m">x&sup2;y</span> and <span class="m">xy&sup2;</span> look
+almost identical and are <b>not</b> like terms. Test them with numbers: at
+<span class="m">x = 3</span>, <span class="m">y = 2</span> they give
+<span class="m">9 &times; 2 = 18</span> and <span class="m">3 &times; 4 = 12</span>.</div>
+
+<h3>2&nbsp;&middot;&nbsp; Collecting like terms</h3>
+<p>To collect like terms, <b>add or subtract the coefficients and leave the letter part completely
+unchanged</b>. Think of <span class="m">3x + 5x</span> as 3 boxes plus 5 boxes: you get 8 boxes, not
+8 double-boxes.</p>
+<div class="formula">3x + 5x = 8x &nbsp;&nbsp;&nbsp;&nbsp; 3x &times; 5x = 15x&sup2;
+<small>Adding keeps the power; multiplying increases it</small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Simplify <span class="m">7x + 3y &minus; 2x + 5y &minus; 4</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Identify the families, keeping each sign with its term.
+    <span class="work">x terms: +7x, &minus;2x &nbsp;&nbsp; y terms: +3y, +5y &nbsp;&nbsp; constants: &minus;4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Combine the coefficients of each family.
+    <span class="work">7 &minus; 2 = 5 &nbsp;&rarr;&nbsp; 5x &nbsp;&nbsp;&nbsp; 3 + 5 = 8 &nbsp;&rarr;&nbsp; 8y</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write the answer, constant last.
+    <span class="work">5x + 8y &minus; 4</span></div></div>
+  <div class="final">5x + 8y &minus; 4</div>
+  <div class="note"><b>Check it</b> Put <span class="m">x = 1</span>, <span class="m">y = 1</span> into both:
+  <span class="m">7 + 3 &minus; 2 + 5 &minus; 4 = 9</span> and <span class="m">5 + 8 &minus; 4 = 9</span>.
+  A quick substitution check catches almost every slip.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Simplify <span class="m">5a&sup2;b &minus; 3ab&sup2; + 2a&sup2;b + ab&sup2; &minus; a&sup2;b</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Only two families here: <span class="m">a&sup2;b</span> and <span class="m">ab&sup2;</span>. They are <b>not</b> like each other.
+    <span class="work">a&sup2;b: +5, +2, &minus;1 &nbsp;&nbsp; ab&sup2;: &minus;3, +1</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">ab&sup2;</span> on its own means <span class="m">1 &times; ab&sup2;</span> and <span class="m">&minus;a&sup2;b</span> means <span class="m">&minus;1 &times; a&sup2;b</span>.
+    <span class="work">5 + 2 &minus; 1 = 6 &nbsp;&nbsp;&nbsp; &minus;3 + 1 = &minus;2</span></div></div>
+  <div class="final">6a&sup2;b &minus; 2ab&sup2;</div>
+  <div class="note"><b>Check it</b> With <span class="m">a = 2</span>, <span class="m">b = 1</span>:
+  <span class="m">a&sup2;b = 4</span> and <span class="m">ab&sup2; = 2</span>, so the original is
+  <span class="m">20 &minus; 6 + 8 + 2 &minus; 4 = 20</span>, and the answer is
+  <span class="m">6(4) &minus; 2(2) = 20</span>.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Multiplying, dividing and cancelling</h3>
+<p>Multiplying is a different operation from collecting, and it obeys different rules. Deal with the
+<b>numbers</b> first, then each <b>letter</b> in turn.</p>
+<div class="grid two">
+  <div class="card"><h4>Multiplying</h4>
+    <ul>
+      <li>Multiply the coefficients.</li>
+      <li>For each letter, <b>add</b> the indices: <span class="m">x<sup>a</sup> &times; x<sup>b</sup> = x<sup>a+b</sup></span>.</li>
+      <li>Write letters in alphabetical order.</li>
+    </ul>
+    <p><span class="m">3a &times; 4b = 12ab</span><br>
+    <span class="m">2x &times; 5x&sup2; = 10x&sup3;</span><br>
+    <span class="m">&minus;4p &times; 3pq = &minus;12p&sup2;q</span></p></div>
+  <div class="card o"><h4>Dividing</h4>
+    <ul>
+      <li>Write it as a fraction.</li>
+      <li>Cancel the numbers using their HCF.</li>
+      <li>For each letter, <b>subtract</b> the indices: <span class="m">x<sup>a</sup> &divide; x<sup>b</sup> = x<sup>a&minus;b</sup></span>.</li>
+    </ul>
+    <p><span class="frac"><span>10x&sup3;</span><span>2x</span></span><span class="m"> = 5x&sup2;</span> &nbsp;&nbsp;
+    <span class="frac"><span>6ab</span><span>9b</span></span><span class="m"> = </span><span class="frac"><span>2a</span><span>3</span></span></p></div>
+</div>
+<div class="warn"><b>Watch out</b> A power outside a bracket applies to <b>everything</b> inside, the number
+included. <span class="m">(2x)&sup3; = 2&sup3; &times; x&sup3; = 8x&sup3;</span>, not
+<span class="m">2x&sup3;</span>. Likewise <span class="m">(3y)&sup2; = 9y&sup2;</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Simplify (a) <span class="m">3a &times; 4b</span>, (b) <span class="m">2x &times; 5x&sup2;</span>, (c) <span class="m">&minus;6m &times; 4mn</span>, (d) <span class="m">(4t)&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Numbers: <span class="m">3 &times; 4 = 12</span>. Letters: <span class="m">a &times; b = ab</span>.
+    <span class="work">12ab</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Numbers: <span class="m">2 &times; 5 = 10</span>. Letters: <span class="m">x &times; x&sup2; = x&sup3;</span>.
+    <span class="work">10x&sup3;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Numbers: <span class="m">&minus;6 &times; 4 = &minus;24</span>. Letters: <span class="m">m &times; mn = m&sup2;n</span>.
+    <span class="work">&minus;24m&sup2;n</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(d) Square the 4 as well as the <span class="m">t</span>.
+    <span class="work">(4t)&sup2; = 4&sup2;t&sup2; = 16t&sup2;</span></div></div>
+  <div class="final">(a) 12ab &nbsp; (b) 10x&sup3; &nbsp; (c) &minus;24m&sup2;n &nbsp; (d) 16t&sup2;</div>
+  <div class="warn"><b>Watch out</b> <span class="m">3a + 4a = 7a</span> but
+  <span class="m">3a &times; 4a = 12a&sup2;</span>. Adding never changes the power; multiplying always does.</div>
+</div>
+</details>
+
+<p>An algebraic fraction is simplified by cancelling factors that appear on the top <b>and</b> the bottom.
+Take the number and each letter separately.</p>
+<div class="formula"><span class="frac"><span>12x&sup3;y</span><span>8xy</span></span> = <span class="frac"><span>12</span><span>8</span></span> &times; <span class="frac"><span>x&sup3;</span><span>x</span></span> &times; <span class="frac"><span>y</span><span>y</span></span> = <span class="frac"><span>3</span><span>2</span></span> &times; x&sup2; &times; 1 = <span class="frac"><span>3x&sup2;</span><span>2</span></span>
+<small>Split the fraction, cancel each part, then recombine</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Simplify fully (a) <span class="frac"><span>15a&sup2;b</span><span>5ab&sup2;</span></span>, (b) <span class="m">4x&sup2;y &times; 3xy&sup3; &divide; 6x&sup2;y&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Numbers: <span class="m">15 &divide; 5 = 3</span>. Letters: <span class="m">a&sup2; &divide; a = a</span>; for <span class="m">b</span> the larger power is on the bottom, so a <span class="m">b</span> is left underneath.
+    <span class="work"><span class="frac"><span>3a</span><span>b</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Do the multiplication first: numbers together, then add the indices for each letter.
+    <span class="work">4x&sup2;y &times; 3xy&sup3; = 12x&sup3;y<sup>4</sup></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Now write the division as a fraction and cancel: <span class="m">12 &divide; 6 = 2</span>, <span class="m">x&sup3; &divide; x&sup2; = x</span>, <span class="m">y<sup>4</sup> &divide; y&sup2; = y&sup2;</span>.
+    <span class="work"><span class="frac"><span>12x&sup3;y<sup>4</sup></span><span>6x&sup2;y&sup2;</span></span> = 2xy&sup2;</span></div></div>
+  <div class="final">(a) <span class="frac"><span>3a</span><span>b</span></span> &nbsp;&nbsp; (b) 2xy&sup2;</div>
+  <div class="tip"><b>Exam tip</b> &ldquo;Simplify fully&rdquo; means nothing may be left to cancel. Always
+  check the numbers <i>and</i> every letter before you stop.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Perimeter and area expressions</h3>
+<p>Shape questions are the commonest place simplifying appears in the exam. Add the sides for a perimeter,
+multiply the sides for an area &mdash; then simplify.</p>
+<div class="card">
+<h4>A rectangle with a corner square removed</h4>
+<svg viewBox="0 0 470 275" role="img" aria-label="A rectangle 5x by 2x with a square of side x removed from the top right corner, all sides labelled" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <polygon points="60,120 260,120 260,170 310,170 310,220 60,220" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <rect x="260" y="120" width="50" height="50" fill="none" stroke="#e05c2a" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="160" y="111" font-size="15" text-anchor="middle" fill="#0f2d6b">4x</text>
+  <text x="252" y="151" font-size="15" text-anchor="end" fill="#0f2d6b">x</text>
+  <text x="285" y="164" font-size="15" text-anchor="middle" fill="#0f2d6b">x</text>
+  <text x="320" y="200" font-size="15" fill="#0f2d6b">x</text>
+  <text x="185" y="242" font-size="15" text-anchor="middle" fill="#0f2d6b">5x</text>
+  <text x="52" y="176" font-size="15" text-anchor="end" fill="#0f2d6b">2x</text>
+  <text x="332" y="140" font-size="13" fill="#e05c2a">square of side x</text>
+  <text x="332" y="158" font-size="13" fill="#e05c2a">removed</text>
+  <text x="185" y="266" font-size="13" text-anchor="middle" fill="#4a5b7a">whole rectangle before cutting: 5x by 2x</text>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 5</span><span class="q">The diagram shows a rectangle measuring <span class="m">5x</span> by <span class="m">2x</span> with a square of side <span class="m">x</span> cut from one corner. Find simplified expressions for (a) the area of the shape, (b) its perimeter.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Area of the whole rectangle first &mdash; multiply the two sides.
+    <span class="work">5x &times; 2x = 10x&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract the area of the square, <span class="m">x &times; x</span>. These are like terms, so they collect.
+    <span class="work">10x&sup2; &minus; x&sup2; = 9x&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Go round the shape adding all six sides.
+    <span class="work">4x + x + x + x + 5x + 2x</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Collect the coefficients: <span class="m">4 + 1 + 1 + 1 + 5 + 2 = 14</span>.
+    <span class="work">P = 14x</span></div></div>
+  <div class="final">(a) Area = 9x&sup2; &nbsp;&nbsp; (b) Perimeter = 14x</div>
+  <div class="note"><b>Interesting</b> The perimeter of the original rectangle was
+  <span class="m">2(5x) + 2(2x) = 14x</span> as well. Cutting a square from a corner removes two sides and
+  replaces them with two equal ones, so the perimeter does not change &mdash; but the area certainly does.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Simplify: (a) <span class="m">8x + 3x &minus; 5x</span>, (b) <span class="m">4a + 7b &minus; a + 2b</span>, (c) <span class="m">5m &minus; 3n &minus; 8m + n</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Collect each family, signs attached.
+    <span class="work">(a) 8 + 3 &minus; 5 = 6 &rarr; 6x<br>(b) 4a &minus; a = 3a, 7b + 2b = 9b &rarr; 3a + 9b<br>(c) 5m &minus; 8m = &minus;3m, &minus;3n + n = &minus;2n &rarr; &minus;3m &minus; 2n</span></div></div>
+  <div class="final">(a) 6x &nbsp; (b) 3a + 9b &nbsp; (c) &minus;3m &minus; 2n</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Simplify <span class="m">6p&sup2; + 4p &minus; 2p&sup2; &minus; 9p + 5</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">p&sup2;</span> and <span class="m">p</span> are different powers &mdash; separate families.
+    <span class="work">6p&sup2; &minus; 2p&sup2; = 4p&sup2; &nbsp;&nbsp; 4p &minus; 9p = &minus;5p</span></div></div>
+  <div class="final">4p&sup2; &minus; 5p + 5</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Simplify: (a) <span class="m">4a &times; 5b</span>, (b) <span class="m">3x &times; 2x&sup3;</span>, (c) <span class="m">(4t)&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Numbers first, then add indices letter by letter.
+    <span class="work">(a) 20ab<br>(b) 3 &times; 2 = 6, x &times; x&sup3; = x<sup>4</sup> &rarr; 6x<sup>4</sup><br>(c) 4&sup2;t&sup2; = 16t&sup2;</span></div></div>
+  <div class="final">(a) 20ab &nbsp; (b) 6x<sup>4</sup> &nbsp; (c) 16t&sup2;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Simplify fully: (a) <span class="frac"><span>12x&sup3;y</span><span>8xy</span></span>, (b) <span class="frac"><span>18a<sup>4</sup>b&sup2;</span><span>6a&sup2;b<sup>5</sup></span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Numbers <span class="m">12/8 = 3/2</span>; <span class="m">x&sup3;/x = x&sup2;</span>; <span class="m">y/y = 1</span>.
+    <span class="work"><span class="frac"><span>3x&sup2;</span><span>2</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Numbers <span class="m">18/6 = 3</span>; <span class="m">a<sup>4</sup>/a&sup2; = a&sup2;</span>; <span class="m">b&sup2;/b<sup>5</sup></span> leaves <span class="m">b&sup3;</span> below.
+    <span class="work"><span class="frac"><span>3a&sup2;</span><span>b&sup3;</span></span></span></div></div>
+  <div class="final">(a) <span class="frac"><span>3x&sup2;</span><span>2</span></span> &nbsp;&nbsp; (b) <span class="frac"><span>3a&sup2;</span><span>b&sup3;</span></span></div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A rectangle has length <span class="m">4x + 3</span> and width <span class="m">2x &minus; 1</span>. (a) Write a simplified expression for its perimeter. (b) A square has the same perimeter. Write a simplified expression for the length of one side of the square.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Two of each side, then collect.
+    <span class="work">P = 2(4x + 3) + 2(2x &minus; 1) = 8x + 6 + 4x &minus; 2 = 12x + 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) A square has four equal sides, so divide by 4.
+    <span class="work">(12x + 4) &divide; 4 = 3x + 1</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check at <span class="m">x = 2</span>: sides 11 and 3 give <span class="m">P = 28</span>, and <span class="m">28 &divide; 4 = 7 = 3(2) + 1</span>. &#10003;</div></div>
+  <div class="final">(a) P = 12x + 4 &nbsp;&nbsp; (b) side = 3x + 1</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Collecting unlike terms</b>
+<span class="m">x&sup2;y</span> and <span class="m">xy&sup2;</span> are not like terms, and neither are
+<span class="m">3x</span> and <span class="m">3x&sup2;</span>. Like terms need exactly the same letters to
+exactly the same powers &mdash; only then may the coefficients combine.</div>
+<div class="warn"><b>Confusing adding with multiplying</b>
+<span class="m">3a + 4a = 7a</span> but <span class="m">3a &times; 4a = 12a&sup2;</span>. Adding never
+changes the power; multiplying always does &mdash; add the indices when you multiply, subtract them when
+you divide.</div>
+<div class="warn"><b>Forgetting the number inside a bracket power</b>
+<span class="m">(2x)&sup3; = 8x&sup3;</span>, not <span class="m">2x&sup3;</span> &mdash; the power applies
+to everything inside. And a power of a power multiplies: <span class="m">(b&sup2;)&sup3; = b<sup>6</sup></span>,
+not <span class="m">b<sup>5</sup></span>.</div>
+<div class="tip"><b>Exam tip</b>
+Check any simplification by substituting a small value such as <span class="m">x = 2</span> into the
+original and into your answer &mdash; they must agree. And when the question says &ldquo;simplify
+fully&rdquo;, check the numbers <i>and</i> every letter before you stop: nothing may be left to cancel.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Simplify <span class="m">8x + 3x &minus; 5x</span>.</span></summary>
+<div class="body"><div class="final">6x &mdash; add and subtract the coefficients only.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Simplify <span class="m">2x &times; 5x&sup2;</span>.</span></summary>
+<div class="body"><div class="final">10x&sup3; &mdash; multiply the numbers, add the indices.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Simplify <span class="m">(3y)&sup2;</span>.</span></summary>
+<div class="body"><div class="final">9y&sup2; &mdash; the power squares the 3 as well as the y.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/2-3.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a like-terms sorter to explore.</span></a>
+  <a href="../igcse-question-bank/brackets-and-simplifying-questions.html"><b>Practice questions</b><span>Exam-style questions on simplifying expressions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="substitution.html"><span>&larr; Previous lesson</span><b>Substitution</b></a>
+  <a class="next" href="working-with-brackets.html"><span>Next lesson &rarr;</span><b>Working with Brackets</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

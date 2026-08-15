@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Different Types of Numbers | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on natural numbers, integers, rationals, irrationals and reals — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Different Types of Numbers</h1>
+    <p>Natural numbers, integers, rationals, irrationals and reals &mdash; learn the language and notation of number sets, then use it to classify any number you meet.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Name the number sets &mdash; natural numbers, integers, rationals, irrationals and reals &mdash; and use their symbols <span class="m">&#8469;, &#8484;, &#8474;, &#8477;</span>.</li>
+  <li>Decide whether any given number is rational or irrational, simplifying roots first.</li>
+  <li>Use the notation <span class="m">&isin;</span>, <span class="m">&notin;</span> and <span class="m">&sub;</span>, and the inequality symbols, correctly.</li>
+  <li>Convert any recurring decimal into a fraction in its lowest terms.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>natural number</span><span>integer</span><span>rational</span><span>irrational</span><span>real number</span><span>recurring decimal</span><span>reciprocal</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Write down all the square numbers between 1 and 100.</span></summary>
+<div class="body"><div class="final">1, 4, 9, 16, 25, 36, 49, 64, 81, 100</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Which is larger: <span class="m">&minus;7</span> or <span class="m">&minus;2</span>?</span></summary>
+<div class="body"><div class="final">&minus;2 &mdash; it sits further to the right on the number line, so &minus;7 &lt; &minus;2.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Without a calculator, write <span class="m">&#8730;49</span> and <span class="m">&#8730;50</span> as accurately as you can.</span></summary>
+<div class="body"><div class="final">&#8730;49 = 7 exactly; &#8730;50 is just above 7 (7.07&hellip;) and its decimal never ends.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The number sets</h3>
+<p>Every number in IGCSE belongs to one or more <b>number sets</b>. Exam questions use the names without
+explanation &mdash; &ldquo;write down an <i>irrational</i> number between 3 and 4&rdquo; &mdash; so the
+vocabulary itself earns marks.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Set</th><th>Symbol</th><th>What it contains</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td><b>Natural numbers</b></td><td><span class="m">&#8469;</span></td><td>Counting numbers, starting at 1</td><td><span class="m">1, 2, 3, 4, &hellip;</span></td></tr>
+<tr><td><b>Integers</b></td><td><span class="m">&#8484;</span></td><td>Positive and negative whole numbers and 0</td><td><span class="m">&minus;3, 0, 2</span></td></tr>
+<tr><td><b>Rational numbers</b></td><td><span class="m">&#8474;</span></td><td>Anything that can be written as a fraction <span class="frac"><span>a</span><span>b</span></span> of two integers, <span class="m">b &ne; 0</span></td><td><span class="m">&frac34;, &minus;5, 0.25, 0.3&#775;</span></td></tr>
+<tr><td><b>Irrational numbers</b></td><td>&mdash;</td><td>Cannot be written as a fraction; decimals never stop and never repeat</td><td><span class="m">&#8730;2, &pi;</span></td></tr>
+<tr><td><b>Real numbers</b></td><td><span class="m">&#8477;</span></td><td>All rationals and irrationals &mdash; every point on the number line</td><td>everything above</td></tr>
+</tbody>
+</table>
+</div>
+<div class="def"><b>Key idea</b>
+The sets are <b>nested</b>: <span class="m">&#8469; &sub; &#8484; &sub; &#8474; &sub; &#8477;</span>.
+Every natural number is an integer, every integer is rational, every rational is real. Only the
+irrationals sit outside <span class="m">&#8474;</span>.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">From the list <span class="m">&minus;6, 0, &#8730;9, &#8730;10, 3.75, &pi;, 22/7</span> write down (a) the integers, (b) the irrational numbers.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Simplify anything you can first.
+    <span class="work">&#8730;9 = 3 &nbsp;&rarr;&nbsp; an integer, not irrational</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Integers are whole numbers &mdash; positive, negative or zero.
+    <span class="work">&minus;6, &nbsp;0, &nbsp;&#8730;9</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Irrationals cannot be written as fractions.
+    <span class="m">3.75 = 15/4</span> and <span class="m">22/7</span> are fractions, so they are rational.
+    <span class="work">&#8730;10 &nbsp;and&nbsp; &pi;</span></div></div>
+  <div class="final">(a) &minus;6, 0, &#8730;9 &nbsp;&nbsp;&nbsp; (b) &#8730;10, &pi;</div>
+  <div class="warn"><b>Exam trap</b> <span class="m">22/7</span> is only an <i>approximation</i> to &pi;.
+  It is a fraction, so it is rational &mdash; &pi; itself is not.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Notation you must recognise</h3>
+<div class="grid two">
+  <div class="card">
+    <h4>Set membership</h4>
+    <ul>
+      <li><span class="m">5 &isin; &#8469;</span> &mdash; 5 <b>is an element of</b> the naturals</li>
+      <li><span class="m">&minus;5 &notin; &#8469;</span> &mdash; &minus;5 <b>is not</b> a natural number</li>
+      <li><span class="m">&#8484; &sub; &#8474;</span> &mdash; the integers are a <b>subset</b> of the rationals</li>
+    </ul>
+  </div>
+  <div class="card o">
+    <h4>Comparing numbers</h4>
+    <ul>
+      <li><span class="m">a &ne; b</span> not equal &nbsp;&middot;&nbsp; <span class="m">a &asymp; b</span> approximately equal</li>
+      <li><span class="m">a &lt; b</span> less than &nbsp;&middot;&nbsp; <span class="m">a &gt; b</span> greater than</li>
+      <li><span class="m">a &le; b</span> / <span class="m">a &ge; b</span> &mdash; less/greater than <b>or equal to</b></li>
+    </ul>
+  </div>
+</div>
+<div class="warn"><b>Watch out</b>
+With negatives the inequality can feel backwards: <span class="m">&minus;7 &lt; &minus;2</span> is
+<b>true</b>, because &minus;7 is further left on the number line. Always picture the line.</div>
+
+<h3>3&nbsp;&middot;&nbsp; Recurring decimals are rational</h3>
+<p>A rational number always gives a decimal that either <b>terminates</b> (<span class="m">0.625</span>)
+or <b>recurs</b> (<span class="m">0.272727&hellip; = 0.2&#775;7&#775;</span>). The dots sit above the
+first and last digit of the repeating block &mdash; and every recurring decimal can be turned back into
+a fraction with one piece of algebra.</p>
+<div class="formula">0.3&#775; = <span class="frac"><span>1</span><span>3</span></span> &nbsp;&nbsp;
+0.1&#775;2&#775; = <span class="frac"><span>4</span><span>33</span></span> &nbsp;&nbsp;
+0.4&#775;5&#775; = <span class="frac"><span>5</span><span>11</span></span>
+<small>Recurring decimals are always rational</small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">Write <span class="m">0.4&#775;5&#775;</span> as a fraction in its lowest terms.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Call the decimal <span class="m">x</span>.
+    <span class="work">x = 0.454545&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Two digits repeat, so multiply by <span class="m">10&sup2; = 100</span>.
+    <span class="work">100x = 45.454545&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract &mdash; the recurring tails cancel exactly.
+    <span class="work">100x &minus; x = 45.4545&hellip; &minus; 0.4545&hellip;<br>99x = 45</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Divide and simplify (top and bottom by 9).
+    <span class="work">x = 45/99 = 5/11</span></div></div>
+  <div class="final">0.4&#775;5&#775; = <span class="frac"><span>5</span><span>11</span></span></div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Write <span class="m">0.16&#775;</span> (only the 6 recurs) as a fraction.</span></summary>
+<div class="body">
+  <div class="warn"><b>Careful</b> One digit does <i>not</i> recur, so you need <b>two</b> multiplications
+  before subtracting.</div>
+  <div class="step"><div class="n">1</div><div class="t"><span class="work">x = 0.16666&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply by 10 to push the non-recurring digit past the point.
+    <span class="work">10x = 1.6666&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply by 100 so the recurring tails line up.
+    <span class="work">100x = 16.6666&hellip;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Subtract the smaller from the larger, then simplify.
+    <span class="work">90x = 15 &nbsp;&rarr;&nbsp; x = 15/90 = 1/6</span></div></div>
+  <div class="final">0.16&#775; = <span class="frac"><span>1</span><span>6</span></span></div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Special numbers worth knowing by heart</h3>
+<div class="grid">
+  <div class="card g"><h4>Square numbers</h4>
+    <p class="m">1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144</p></div>
+  <div class="card g"><h4>Cube numbers</h4>
+    <p class="m">1, 8, 27, 64, 125, 216, 1000</p></div>
+  <div class="card p"><h4>Triangular numbers</h4>
+    <p class="m">1, 3, 6, 10, 15, 21, 28</p></div>
+  <div class="card o"><h4>Reciprocals</h4>
+    <p>The reciprocal of <span class="m">a</span> is <span class="frac"><span>1</span><span>a</span></span>;
+    a number times its reciprocal is always <b>1</b>. Zero has no reciprocal.</p></div>
+</div>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">State whether each is rational or irrational: (a) <span class="m">&#8730;36</span> &nbsp;(b) <span class="m">&#8730;12</span> &nbsp;(c) <span class="m">0.8&#775;1&#775;</span> &nbsp;(d) <span class="m">2&pi;</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Simplify roots first: <span class="m">&#8730;36 = 6</span>, but 12 is not a perfect square.</div></div>
+  <div class="final">(a) rational (= 6) &nbsp;(b) irrational &nbsp;(c) rational (recurring) &nbsp;(d) irrational</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Write <span class="m">0.7&#775;</span> as a fraction in its lowest terms.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="work">x = 0.777&hellip; &nbsp;&rarr;&nbsp; 10x = 7.777&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="work">9x = 7</span></div></div>
+  <div class="final">0.7&#775; = <span class="frac"><span>7</span><span>9</span></span></div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Write <span class="m">0.2&#775;4&#775;</span> as a fraction in its lowest terms.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="work">100x = 24.2424&hellip; &nbsp;&rarr;&nbsp; 99x = 24</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Simplify by dividing top and bottom by 3.
+    <span class="work">x = 24/99 = 8/33</span></div></div>
+  <div class="final">0.2&#775;4&#775; = <span class="frac"><span>8</span><span>33</span></span></div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Write down an irrational number between 4 and 5, and one number <span class="m">n</span> between 20 and 30 for which <span class="m">&#8730;n &isin; &#8484;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Any root of a non-perfect square between <span class="m">16</span> and <span class="m">25</span> works, e.g. <span class="m">&#8730;17</span>.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">For <span class="m">&#8730;n</span> to be an integer, <span class="m">n</span> must be a perfect square &mdash; the only one between 20 and 30 is 25.</div></div>
+  <div class="final">e.g. &#8730;17 &nbsp;(irrational, 4 &lt; &#8730;17 &lt; 5); &nbsp; n = 25</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Calling &#8730;9 irrational</b>
+A root is only irrational when the number underneath is <i>not</i> a perfect square. Always simplify
+the root before you classify it.</div>
+<div class="warn"><b>Treating 22/7 as &pi;</b>
+Any fraction of two integers is rational &mdash; including 22/7. &pi; is irrational; 22/7 is just an
+approximation to it.</div>
+<div class="warn"><b>Saying &minus;9 is a natural number</b>
+The natural numbers start at 1. Negative numbers are integers, but never natural.</div>
+<div class="tip"><b>Exam tip</b>
+When converting a recurring decimal, multiply by <span class="m">10&#8319;</span> where
+<span class="m">n</span> is the <b>length of the recurring block</b> &mdash; then subtracting always
+cancels the tail exactly. Show the subtraction line: it is where the method mark lives.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">True or false: every integer is a rational number.</span></summary>
+<div class="body"><div class="final">True &mdash; any integer <span class="m">k</span> can be written as <span class="m">k/1</span>.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Write <span class="m">0.5&#775;</span> as a fraction.</span></summary>
+<div class="body"><div class="final">9x = 5, so 0.5&#775; = <span class="frac"><span>5</span><span>9</span></span></div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Give one number that is real but not rational.</span></summary>
+<div class="body"><div class="final">Any irrational, e.g. &#8730;2 or &pi;.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/1-1.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a number classifier to explore.</span></a>
+  <a href="../igcse-question-bank/number-facts-questions.html"><b>Practice questions</b><span>Exam-style questions on number facts, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="index.html"><span>&larr; Back</span><b>All lessons</b></a>
+  <a class="next" href="multiples-and-factors.html"><span>Next lesson &rarr;</span><b>Multiples and Factors</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Working with Brackets | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on expanding single, double and triple brackets, with the three special results — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Working with Brackets</h1>
+    <p>Expand single, double and triple brackets confidently &mdash; and learn the three special results every Extended candidate is expected to recognise instantly.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Expand a single bracket, including a negative multiplier, and then collect like terms.</li>
+  <li>Expand two brackets using FOIL or the grid method, keeping every sign attached to its term.</li>
+  <li>Recognise and use the perfect square and the difference of two squares.</li>
+  <li>Expand three brackets two at a time, and work nested brackets from the inside out.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>expand</span><span>like terms</span><span>FOIL</span><span>grid method</span><span>perfect square</span><span>difference of two squares</span><span>coefficient</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Simplify <span class="m">7x + 3x &minus; 4x</span>.</span></summary>
+<div class="body"><div class="final">6x &mdash; like terms add and subtract just like numbers.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Work out <span class="m">&minus;4 &times; (&minus;7)</span>.</span></summary>
+<div class="body"><div class="final">+28 &mdash; negative times negative is positive.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Simplify (a) <span class="m">x &times; x</span> &nbsp;(b) <span class="m">2x &times; 3x</span>.</span></summary>
+<div class="body"><div class="final">(a) x&sup2; &nbsp;&nbsp;(b) 6x&sup2; &mdash; multiply the numbers, then the letters.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Expanding a single bracket</h3>
+<p>To <b>expand</b> a bracket means to multiply everything inside it by the term outside, then write the answer
+without the bracket. Nothing is lost and nothing is gained &mdash; the expanded form has exactly the same value
+as the original for every value of the letter.</p>
+<div class="formula">a(b + c) = ab + ac
+<small>Multiply the outside term by <i>each</i> term inside</small></div>
+<div class="card">
+<h4>Why it works &mdash; the area model</h4>
+<p><span class="m">3(2x + 5)</span> is the area of a rectangle of height <span class="m">3</span> split into two
+pieces. The two areas must add up to the whole.</p>
+<svg viewBox="0 0 560 200" role="img" aria-label="Rectangle of height 3 split into parts of width 2x and 5" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <rect x="70" y="40" width="300" height="110" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <rect x="370" y="40" width="130" height="110" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="220" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a4fa0" font-family="monospace">2x</text>
+  <text x="435" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#e05c2a" font-family="monospace">5</text>
+  <text x="48" y="102" text-anchor="middle" font-size="16" font-weight="bold" fill="#0f2d6b" font-family="monospace">3</text>
+  <text x="220" y="104" text-anchor="middle" font-size="20" fill="#12213d" font-family="monospace">6x</text>
+  <text x="435" y="104" text-anchor="middle" font-size="20" fill="#12213d" font-family="monospace">15</text>
+  <text x="285" y="186" text-anchor="middle" font-size="15" fill="#4a5b7a" font-family="monospace">3(2x + 5) = 6x + 15</text>
+</svg>
+</div>
+<div class="warn"><b>Watch out</b>
+A <b>negative</b> multiplier is where most marks are lost. The sign outside belongs to the multiplier and must be
+applied to <i>every</i> term inside: <span class="m">&minus;4(3x &minus; 7) = &minus;12x + 28</span>, because
+<span class="m">&minus;4 &times; &minus;7 = +28</span>, not &minus;28.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Expand <span class="m">&minus;5(2x &minus; 3y + 4)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply the first term inside by <span class="m">&minus;5</span>.
+    <span class="work">&minus;5 &times; 2x = &minus;10x</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply the second term &mdash; negative times negative gives positive.
+    <span class="work">&minus;5 &times; (&minus;3y) = +15y</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply the third term.
+    <span class="work">&minus;5 &times; 4 = &minus;20</span></div></div>
+  <div class="final">&minus;10x + 15y &minus; 20</div>
+  <div class="tip"><b>Exam tip</b> Check with a substitution. At <span class="m">x = 1, y = 1</span> the original gives <span class="m">&minus;5(2 &minus; 3 + 4) = &minus;15</span> and the answer gives <span class="m">&minus;10 + 15 &minus; 20 = &minus;15</span>. They match.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Expand and simplify <span class="m">4(3x &minus; 2) &minus; 3(2x &minus; 5)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The multiplier of the second bracket is <span class="m">&minus;3</span>, not 3. Expand both brackets first.
+    <span class="work">4(3x &minus; 2) = 12x &minus; 8<br>&minus;3(2x &minus; 5) = &minus;6x + 15</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Write the full expansion, then collect the <span class="m">x</span> terms and the numbers separately.
+    <span class="work">12x &minus; 8 &minus; 6x + 15<br>12x &minus; 6x = 6x &nbsp;&nbsp; &minus;8 + 15 = +7</span></div></div>
+  <div class="final">6x + 7</div>
+  <div class="note"><b>Check</b> With <span class="m">x = 2</span>: original <span class="m">= 4(4) &minus; 3(&minus;1) = 16 + 3 = 19</span>; answer <span class="m">= 6(2) + 7 = 19</span>.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Expanding two brackets</h3>
+<p>When two brackets are multiplied together, <b>every</b> term in the first must meet <b>every</b> term in the
+second &mdash; two terms times two terms gives <b>four</b> products. FOIL (<b>F</b>irst, <b>O</b>utside,
+<b>I</b>nside, <b>L</b>ast) lists the four pairs; the grid method draws them.</p>
+<div class="tw">
+<table>
+<thead><tr><th>&times;</th><th>x</th><th>+5</th></tr></thead>
+<tbody>
+<tr><td><b>x</b></td><td><span class="m">x&sup2;</span></td><td><span class="m">5x</span></td></tr>
+<tr><td><b>+3</b></td><td><span class="m">3x</span></td><td><span class="m">15</span></td></tr>
+</tbody>
+</table>
+</div>
+<p><span class="m">(x + 3)(x + 5) = x&sup2; + 5x + 3x + 15 = x&sup2; + 8x + 15</span>. The grid never lets you
+forget a pair, and unlike FOIL it extends to brackets of any size.</p>
+<div class="tip"><b>Exam tip</b>
+Take the sign <i>with</i> the term into the grid. In <span class="m">(2x + 3)(4x &minus; 5)</span> the second
+column is <span class="m">&minus;5</span>, so its cells come out negative automatically and you never have to
+patch signs afterwards.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Expand and simplify <span class="m">(3x &minus; 4)(2x + 7)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Set out the four products, keeping each sign attached.
+    <span class="work">3x &times; 2x = 6x&sup2;<br>3x &times; (+7) = +21x<br>(&minus;4) &times; 2x = &minus;8x<br>(&minus;4) &times; (+7) = &minus;28</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Write all four, then collect the two middle terms.
+    <span class="work">6x&sup2; + 21x &minus; 8x &minus; 28<br>21x &minus; 8x = 13x</span></div></div>
+  <div class="final">6x&sup2; + 13x &minus; 28</div>
+  <div class="note"><b>Check</b> With <span class="m">x = 2</span>: original <span class="m">= (2)(11) = 22</span>; answer <span class="m">= 24 + 26 &minus; 28 = 22</span>.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Three results worth memorising</h3>
+<p>These patterns appear so often &mdash; in expanding, factorising, completing the square and surds &mdash; that
+recognising them instantly is worth real marks.</p>
+<div class="grid">
+  <div class="card">
+    <h4>General quadratic</h4>
+    <div class="formula">(x + a)(x + b) = x&sup2; + (a + b)x + ab</div>
+    <p>Sum in the middle, product at the end: <span class="m">(x + 4)(x &minus; 9) = x&sup2; &minus; 5x &minus; 36</span>.</p>
+  </div>
+  <div class="card o">
+    <h4>Perfect square</h4>
+    <div class="formula">(x + a)&sup2; = x&sup2; + 2ax + a&sup2;</div>
+    <p>Middle term is <b>twice</b> the product: <span class="m">(x &minus; 6)&sup2; = x&sup2; &minus; 12x + 36</span>.</p>
+  </div>
+  <div class="card g">
+    <h4>Difference of two squares</h4>
+    <div class="formula">(x + a)(x &minus; a) = x&sup2; &minus; a&sup2;</div>
+    <p>The middle terms cancel exactly: <span class="m">(3x + 7)(3x &minus; 7) = 9x&sup2; &minus; 49</span>.</p>
+  </div>
+</div>
+<div class="warn"><b>Watch out</b>
+<span class="m">(2x &minus; 5)&sup2;</span> is <b>not</b> <span class="m">4x&sup2; &minus; 25</span>. Squaring a
+bracket means multiplying it by itself &mdash; still four products. Test it: at <span class="m">x = 2</span>,
+<span class="m">(2x &minus; 5)&sup2; = (&minus;1)&sup2; = 1</span> but <span class="m">4x&sup2; &minus; 25 = &minus;9</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Expand (a) <span class="m">(2x &minus; 5)&sup2;</span> &nbsp;(b) <span class="m">(4y + 3)(4y &minus; 3)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Rewrite the square as a product of two brackets first &mdash; this alone prevents the classic error.
+    <span class="work">(2x &minus; 5)&sup2; = (2x &minus; 5)(2x &minus; 5)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Four products, then collect.
+    <span class="work">4x&sup2; &minus; 10x &minus; 10x + 25 = 4x&sup2; &minus; 20x + 25</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) A difference of two squares &mdash; the middle terms cancel.
+    <span class="work">16y&sup2; &minus; 12y + 12y &minus; 9 = 16y&sup2; &minus; 9</span></div></div>
+  <div class="final">(a) 4x&sup2; &minus; 20x + 25 &nbsp;&nbsp; (b) 16y&sup2; &minus; 9</div>
+  <div class="tip"><b>Exam tip</b> Difference of two squares also speeds up arithmetic: <span class="m">102 &times; 98 = (100 + 2)(100 &minus; 2) = 10 000 &minus; 4 = 9996</span>.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Three brackets, and brackets inside brackets</h3>
+<p>Never try three brackets at once. Multiply <b>any two</b> of them, simplify, then multiply the result by the
+remaining bracket &mdash; a quadratic times a linear bracket gives six products, so use a grid at the second
+stage. Write cubic answers in descending powers.</p>
+<div class="formula">(x + 2)(x + 3)(x &minus; 1) = (x&sup2; + 5x + 6)(x &minus; 1) = x&sup3; + 4x&sup2; + x &minus; 6
+<small>Two brackets first, then the third</small></div>
+<div class="def"><b>Order of work for nested brackets</b>
+1. Expand the innermost bracket. &nbsp;2. Collect like terms inside the outer bracket.
+&nbsp;3. Expand the outer bracket. &nbsp;4. Collect like terms again.
+<div class="formula" style="margin:10px 0 0">3[2x &minus; 4(x &minus; 5)] = 3[2x &minus; 4x + 20] = 3[&minus;2x + 20] = &minus;6x + 60</div></div>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Expand: (a) <span class="m">5(2x &minus; 7)</span> &nbsp;(b) <span class="m">&minus;3(4 &minus; 2x)</span> &nbsp;(c) <span class="m">2x(3x + 5)</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply every term inside by the term outside, signs included.
+    <span class="work">(a) 10x &minus; 35<br>(b) &minus;12 + 6x = 6x &minus; 12<br>(c) 6x&sup2; + 10x</span></div></div>
+  <div class="final">(a) 10x &minus; 35 &nbsp;(b) 6x &minus; 12 &nbsp;(c) 6x&sup2; + 10x</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Expand and simplify <span class="m">6(2x &minus; 1) &minus; 4(3x &minus; 5)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Expand both brackets, keeping the &minus;4 with its bracket.
+    <span class="work">12x &minus; 6 &minus; 12x + 20</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The <span class="m">x</span> terms cancel completely.
+    <span class="work">12x &minus; 12x = 0 &nbsp;&nbsp; &minus;6 + 20 = 14</span></div></div>
+  <div class="final">14</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Expand and simplify <span class="m">(2x &minus; 3)(3x + 4)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Four products, signs attached.
+    <span class="work">6x&sup2; + 8x &minus; 9x &minus; 12</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Collect the middle terms.
+    <span class="work">8x &minus; 9x = &minus;x</span></div></div>
+  <div class="final">6x&sup2; &minus; x &minus; 12</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Expand: (a) <span class="m">(x + 6)&sup2;</span> &nbsp;(b) <span class="m">(5x &minus; 2)(5x + 2)</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Perfect square &mdash; four products, middle term doubled.
+    <span class="work">x&sup2; + 6x + 6x + 36 = x&sup2; + 12x + 36</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Difference of two squares &mdash; the middle terms cancel.
+    <span class="work">25x&sup2; &minus; 4</span></div></div>
+  <div class="final">(a) x&sup2; + 12x + 36 &nbsp;&nbsp; (b) 25x&sup2; &minus; 4</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">Expand and simplify <span class="m">(x &minus; 2)(x + 1)(x + 4)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Multiply the first two brackets and simplify.
+    <span class="work">(x &minus; 2)(x + 1) = x&sup2; &minus; x &minus; 2</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply that quadratic by <span class="m">(x + 4)</span> &mdash; six products.
+    <span class="work">x&sup3; + 4x&sup2; &minus; x&sup2; &minus; 4x &minus; 2x &minus; 8</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Collect like powers, in descending order.
+    <span class="work">x&sup3; + 3x&sup2; &minus; 6x &minus; 8</span></div></div>
+  <div class="final">x&sup3; + 3x&sup2; &minus; 6x &minus; 8</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Dropping the sign of a negative multiplier</b>
+<span class="m">&minus;4(3x &minus; 7)</span> is <span class="m">&minus;12x + 28</span> &mdash; the &minus;4
+multiplies <i>both</i> terms, and negative times negative is positive.</div>
+<div class="warn"><b>Squaring the terms separately</b>
+<span class="m">(2x &minus; 5)&sup2; &ne; 4x&sup2; &minus; 25</span>. Rewrite the square as two brackets and do all
+four products: <span class="m">4x&sup2; &minus; 20x + 25</span>.</div>
+<div class="warn"><b>Missing products with bigger brackets</b>
+FOIL only works for two terms times two terms. A quadratic times a linear bracket has <b>six</b> products &mdash;
+use a grid, and take each sign into the grid with its term.</div>
+<div class="tip"><b>Exam tip</b>
+Check every expansion by substituting a value such as <span class="m">x = 2</span> into the original and into
+your answer &mdash; they must agree. Ten seconds, and it catches almost every sign slip.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Expand <span class="m">&minus;2(4x &minus; 3)</span>.</span></summary>
+<div class="body"><div class="final">&minus;8x + 6</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Expand <span class="m">(x + 6)&sup2;</span>.</span></summary>
+<div class="body"><div class="final">x&sup2; + 12x + 36 &mdash; the middle term is twice 6x.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Expand <span class="m">(5x &minus; 2)(5x + 2)</span>.</span></summary>
+<div class="body"><div class="final">25x&sup2; &minus; 4 &mdash; a difference of two squares.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/2-4.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a grid-method expander to explore.</span></a>
+  <a href="../igcse-question-bank/brackets-and-simplifying-questions.html"><b>Practice questions</b><span>Exam-style questions on brackets and simplifying, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="simplifying-expressions.html"><span>&larr; Previous lesson</span><b>Simplifying Expressions</b></a>
+  <a class="next" href="indices.html"><span>Next lesson &rarr;</span><b>Indices</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

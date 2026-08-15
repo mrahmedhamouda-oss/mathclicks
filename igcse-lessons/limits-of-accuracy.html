@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits of Accuracy | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on upper and lower bounds of rounded measurements and how to combine them in calculations — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Limits of Accuracy</h1>
+    <p>Every measurement is rounded &mdash; learn to state the upper and lower bounds of a rounded value, then combine bounds correctly in sums, differences, products and quotients.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Find the lower and upper bounds of a value rounded to any degree of accuracy &mdash; nearest unit, decimal places or significant figures.</li>
+  <li>Write the bounds as a single inequality <span class="m">LB &le; x &lt; UB</span>, with the correct signs at each end.</li>
+  <li>Choose the right combination of bounds to find the maximum or minimum of a sum, difference, product or quotient.</li>
+  <li>Use the two bounds of a calculated answer to state it to a suitable degree of accuracy.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>lower bound</span><span>upper bound</span><span>degree of accuracy</span><span>half unit</span><span>interval</span><span>significant figures</span><span>maximum</span><span>minimum</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Round <span class="m">3.6449</span> to 1 decimal place.</span></summary>
+<div class="body"><div class="final">3.6 &mdash; the next digit is 4, so the 6 stays as it is.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Round <span class="m">8347</span> to 2 significant figures.</span></summary>
+<div class="body"><div class="final">8300 &mdash; the second significant figure is the 3, and the 4 after it rounds it down.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Write down half of: (a) <span class="m">1</span> &nbsp;(b) <span class="m">0.1</span> &nbsp;(c) <span class="m">100</span>.</span></summary>
+<div class="body"><div class="final">(a) 0.5 &nbsp;(b) 0.05 &nbsp;(c) 50 &mdash; you will halve units like these all lesson.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Half a unit each way</h3>
+<p>A ruler marked in centimetres cannot tell you a length exactly. If a pencil is &ldquo;27 cm to the nearest
+centimetre&rdquo;, its true length sits somewhere in a small interval around 27. The ends of that interval are the
+<b>lower bound</b> and <b>upper bound</b>, and the exam expects you to state them precisely.</p>
+<div class="def"><b>Definition</b>
+For a value rounded to a given degree of accuracy, take <b>half of that unit</b> and go each way:
+<span class="m">lower bound = value &minus; half unit</span>, <span class="m">upper bound = value + half unit</span>.
+For 27 cm to the nearest cm the unit is 1, half of it is 0.5, so the bounds are <b>26.5</b> and <b>27.5</b>.</div>
+<div class="card">
+<h4>The interval on a number line</h4>
+<svg viewBox="0 0 640 190" role="img" aria-label="Number line showing that a length of 27 centimetres to the nearest centimetre lies between 26.5 and 27.5" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <rect x="190" y="86" width="260" height="26" fill="#e8f0fe" stroke="none"/>
+  <line x1="40" y1="112" x2="600" y2="112" stroke="#0f2d6b" stroke-width="2"/>
+  <g stroke="#0f2d6b" stroke-width="2">
+    <line x1="60" y1="104" x2="60" y2="120"/><line x1="190" y1="100" x2="190" y2="124"/>
+    <line x1="320" y1="104" x2="320" y2="120"/><line x1="450" y1="100" x2="450" y2="124"/>
+    <line x1="580" y1="104" x2="580" y2="120"/>
+  </g>
+  <g font-size="14" text-anchor="middle" fill="#0f2d6b" font-family="monospace">
+    <text x="60" y="144">26</text><text x="190" y="144">26.5</text><text x="320" y="144">27</text>
+    <text x="450" y="144">27.5</text><text x="580" y="144">28</text>
+  </g>
+  <circle cx="190" cy="112" r="7" fill="#16a34a" stroke="#0f2d6b" stroke-width="2"/>
+  <circle cx="450" cy="112" r="7" fill="#ffffff" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="190" y="70" font-size="13" text-anchor="middle" fill="#16a34a" font-family="monospace">lower bound 26.5</text>
+  <text x="190" y="52" font-size="12" text-anchor="middle" fill="#16a34a" font-family="monospace">included</text>
+  <text x="450" y="70" font-size="13" text-anchor="middle" fill="#e05c2a" font-family="monospace">upper bound 27.5</text>
+  <text x="450" y="52" font-size="12" text-anchor="middle" fill="#e05c2a" font-family="monospace">not included</text>
+  <text x="320" y="176" font-size="14" text-anchor="middle" font-weight="bold" fill="#1a4fa0" font-family="monospace">26.5 &le; length &lt; 27.5</text>
+  <text x="320" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a" font-family="monospace">everything here rounds to 27</text>
+</svg>
+</div>
+<p>Why the mixed signs? A value of exactly <span class="m">26.5</span> rounds <b>up</b> to 27, so it belongs inside
+the interval. A value of exactly <span class="m">27.5</span> rounds up to <b>28</b>, so it does not. The correct
+statement is</p>
+<div class="formula">26.5 &le; l &lt; 27.5
+<small>The upper bound is 27.5, even though the length can never actually equal it</small></div>
+<div class="warn"><b>Watch out</b>
+Never write the upper bound as 27.49 or 27.4999&hellip;. The examiner wants the exact boundary value
+<span class="m">27.5</span>, written with a <span class="m">&lt;</span> sign &mdash; and 27.5 is still the number
+you use in every calculation.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">The length of a rod is <span class="m">12.4 cm</span> correct to 1 decimal place. Write down an inequality for the true length <span class="m">l</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">1 decimal place means the value was rounded to the nearest <span class="m">0.1</span>. Halve that unit.
+    <span class="work">0.1 &divide; 2 = 0.05</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract and add the half unit.
+    <span class="work">12.4 &minus; 0.05 = 12.35<br>12.4 + 0.05 = 12.45</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Write it as one inequality: <span class="m">&le;</span> at the bottom, <span class="m">&lt;</span> at the top.</div></div>
+  <div class="final">12.35 &le; l &lt; 12.45</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Spotting the unit</h3>
+<p>The method never changes: identify the <b>unit</b> the value was rounded to, halve it, go each way. The only
+real skill is spotting the unit &mdash; especially with significant figures.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Given</th><th>Rounded to the nearest&hellip;</th><th>Half unit</th><th>Interval</th></tr></thead>
+<tbody>
+<tr><td>3400 (nearest 100)</td><td>100</td><td>50</td><td><span class="m">3350 &le; x &lt; 3450</span></td></tr>
+<tr><td>27 (nearest whole number)</td><td>1</td><td>0.5</td><td><span class="m">26.5 &le; x &lt; 27.5</span></td></tr>
+<tr><td>4.6 (1 dp)</td><td>0.1</td><td>0.05</td><td><span class="m">4.55 &le; x &lt; 4.65</span></td></tr>
+<tr><td>0.38 (2 dp)</td><td>0.01</td><td>0.005</td><td><span class="m">0.375 &le; x &lt; 0.385</span></td></tr>
+<tr><td>8300 (2 sf)</td><td>100</td><td>50</td><td><span class="m">8250 &le; x &lt; 8350</span></td></tr>
+<tr><td>0.007 (1 sf)</td><td>0.001</td><td>0.0005</td><td><span class="m">0.0065 &le; x &lt; 0.0075</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="tip"><b>Exam tip</b>
+For significant figures, underline the last significant digit and ask &ldquo;what is that digit worth?&rdquo;
+In <span class="m">8300</span> to 2 sf the last significant digit is the 3, which is worth 300, so the value was
+rounded to the nearest <b>100</b>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">The mass of a lorry is <span class="m">8300 kg</span>, correct to 2 significant figures. Write down its lower and upper bounds.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The two significant figures are the 8 and the 3. The 3 stands for 300, so the mass was rounded to the nearest 100 kg.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Half the unit is 50.
+    <span class="work">8300 &minus; 50 = 8250<br>8300 + 50 = 8350</span></div></div>
+  <div class="final">lower bound 8250 kg, upper bound 8350 kg &nbsp;(8250 &le; m &lt; 8350)</div>
+  <div class="warn"><b>Exam trap</b> Reading 8300 as &ldquo;nearest 1&rdquo; gives 8299.5 and 8300.5. Always read the stated degree of accuracy before you touch the numbers.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Calculating with bounds</h3>
+<p>When rounded measurements are combined, the answer has bounds too. The whole skill is deciding <b>which</b>
+bound of each quantity to use &mdash; and for a difference or a quotient you have to <b>mix</b> them.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Calculation</th><th>Maximum uses</th><th>Minimum uses</th></tr></thead>
+<tbody>
+<tr><td><span class="m">a + b</span></td><td><span class="m">UB<sub>a</sub> + UB<sub>b</sub></span></td><td><span class="m">LB<sub>a</sub> + LB<sub>b</sub></span></td></tr>
+<tr><td><span class="m">a &minus; b</span></td><td><span class="m">UB<sub>a</sub> &minus; LB<sub>b</sub></span></td><td><span class="m">LB<sub>a</sub> &minus; UB<sub>b</sub></span></td></tr>
+<tr><td><span class="m">a &times; b</span></td><td><span class="m">UB<sub>a</sub> &times; UB<sub>b</sub></span></td><td><span class="m">LB<sub>a</sub> &times; LB<sub>b</sub></span></td></tr>
+<tr><td><span class="m">a &divide; b</span></td><td><span class="m">UB<sub>a</sub> &divide; LB<sub>b</sub></span></td><td><span class="m">LB<sub>a</sub> &divide; UB<sub>b</sub></span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="grid two">
+  <div class="card o"><h4>Why a difference mixes the bounds</h4>
+    <p>To make <span class="m">a &minus; b</span> as <b>big</b> as possible, start with as much as possible and take
+    away as little as possible &mdash; upper bound of <span class="m">a</span>, lower bound of
+    <span class="m">b</span>. Reverse it for the minimum.</p></div>
+  <div class="card p"><h4>Why a quotient mixes them too</h4>
+    <p>A fraction is largest when the numerator is largest and the denominator is <b>smallest</b> &mdash; dividing
+    by a smaller number gives a bigger answer. So the maximum of <span class="frac"><span>a</span><span>b</span></span>
+    is <span class="frac"><span>UB<sub>a</sub></span><span>LB<sub>b</sub></span></span>.</p></div>
+</div>
+<div class="warn"><b>Watch out</b>
+Do <b>not</b> round the bounds themselves. Carry the exact boundary values through the whole calculation and round
+only the final answer &mdash; to 3 significant figures unless the question says otherwise.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A rectangle measures <span class="m">8.4 cm</span> by <span class="m">5.7 cm</span>, each correct to 1 decimal place. Find the upper and lower bounds of (a) its perimeter, (b) its area.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Half unit is 0.05, so write down all four bounds first &mdash; setting them out prevents nearly every mistake.
+    <span class="work">length: 8.35 &le; l &lt; 8.45<br>width: 5.65 &le; w &lt; 5.75</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Perimeter is a <b>sum</b>, so the largest perimeter comes from the largest sides, the smallest from the smallest.
+    <span class="work">max P = 2 &times; (8.45 + 5.75) = 28.4 cm<br>min P = 2 &times; (8.35 + 5.65) = 28 cm</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Area is a <b>product</b>: upper &times; upper and lower &times; lower.
+    <span class="work">max A = 8.45 &times; 5.75 = 48.5875 cm&sup2;<br>min A = 8.35 &times; 5.65 = 47.1775 cm&sup2;</span></div></div>
+  <div class="final">(a) 28 cm &le; P &lt; 28.4 cm &nbsp;&nbsp; (b) 47.1775 cm&sup2; &le; A &lt; 48.5875 cm&sup2;</div>
+  <div class="tip"><b>Exam tip</b> Give bounds <b>exactly</b> when they are exact, as here. Rounding 48.5875 to 48.6 turns an upper bound into something the area could actually exceed.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A runner covers <span class="m">250 m</span>, measured to the nearest 10 m, in <span class="m">20 s</span>, measured to the nearest second. Find the upper and lower bounds of her average speed, to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Bounds of the distance (half unit 5) and the time (half unit 0.5).
+    <span class="work">245 &le; d &lt; 255<br>19.5 &le; t &lt; 20.5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Speed is a <b>quotient</b>, so the fastest speed uses the longest distance in the shortest time.
+    <span class="work">max speed = 255 &divide; 19.5 = 13.0769&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The slowest speed uses the shortest distance in the longest time.
+    <span class="work">min speed = 245 &divide; 20.5 = 11.9512&hellip;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Round only now, to 3 significant figures.</div></div>
+  <div class="final">min speed = 12.0 m/s &nbsp;&nbsp; max speed = 13.1 m/s &nbsp;(3 sf)</div>
+  <div class="tip"><b>Exam tip</b> Saying &ldquo;fastest = furthest in the least time&rdquo; out loud gets the bounds the right way round every time.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Write an inequality for the true value of: (a) <span class="m">36 cm</span> to the nearest cm &nbsp;(b) <span class="m">4.70 kg</span> to 2 dp &nbsp;(c) <span class="m">1500 m</span> to the nearest 100 m.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Halve each unit: 0.5, 0.005 and 50, then go each way from the rounded value.</div></div>
+  <div class="final">(a) 35.5 &le; x &lt; 36.5 &nbsp;(b) 4.695 &le; x &lt; 4.705 &nbsp;(c) 1450 &le; x &lt; 1550</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">The population of a town is <span class="m">42 000</span>, correct to 2 significant figures. Write down the lower and upper bounds.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The second significant figure is the 2, worth 2000 &mdash; so the value was rounded to the nearest 1000, and the half unit is 500.
+    <span class="work">42 000 &minus; 500 = 41 500<br>42 000 + 500 = 42 500</span></div></div>
+  <div class="final">lower bound 41 500, upper bound 42 500</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q"><span class="m">p = 6.3</span> and <span class="m">q = 2.8</span>, each correct to 1 decimal place. Find the upper bound of <span class="m">p + q</span> and the lower bound of <span class="m">p &minus; q</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Bounds first.
+    <span class="work">6.25 &le; p &lt; 6.35<br>2.75 &le; q &lt; 2.85</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">A sum takes upper + upper; a difference <b>mixes</b>: minimum = lower of <span class="m">p</span> minus upper of <span class="m">q</span>.
+    <span class="work">UB(p + q) = 6.35 + 2.85 = 9.2<br>LB(p &minus; q) = 6.25 &minus; 2.85 = 3.4</span></div></div>
+  <div class="final">UB(p + q) = 9.2 &nbsp;&nbsp; LB(p &minus; q) = 3.4</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">A square has side <span class="m">7.5 cm</span> correct to 1 decimal place. Find the upper and lower bounds of its area.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Bounds of the side: <span class="m">7.45 &le; s &lt; 7.55</span>.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Area is <span class="m">s&sup2;</span> &mdash; a product of the side with itself, so square each bound.
+    <span class="work">min A = 7.45&sup2; = 55.5025 cm&sup2;<br>max A = 7.55&sup2; = 57.0025 cm&sup2;</span></div></div>
+  <div class="final">55.5025 cm&sup2; &le; A &lt; 57.0025 cm&sup2;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A car uses <span class="m">45 litres</span> of fuel, to the nearest litre, to travel <span class="m">560 km</span>, to the nearest 10 km. Find the maximum possible number of km per litre, to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Bounds first.
+    <span class="work">555 &le; d &lt; 565<br>44.5 &le; f &lt; 45.5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">km per litre is a quotient &mdash; the maximum uses the longest distance on the least fuel.
+    <span class="work">max = 565 &divide; 44.5 = 12.696&hellip;</span></div></div>
+  <div class="final">12.7 km per litre (3 sf)</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Writing the upper bound as 27.49 or 27.499&hellip;</b>
+The upper bound is the exact boundary value &mdash; 27.5 with a <span class="m">&lt;</span> sign. A string of 9s is
+never accepted, and it also gives wrong answers when you calculate with it.</div>
+<div class="warn"><b>Using upper with upper in a difference or quotient</b>
+<span class="m">15.65 &minus; 9.25</span> uses both upper bounds and scores nothing. A difference and a quotient
+always <b>mix</b> an upper with a lower &mdash; check against the table before you compute.</div>
+<div class="warn"><b>Rounding bounds part-way through</b>
+Carry exact boundary values through the whole calculation. Round once, at the very end, to 3 significant figures
+unless the question says otherwise.</div>
+<div class="tip"><b>Exam tip</b>
+Before any bounds calculation, write all four bounds in a little table &mdash; <span class="m">LB</span> and
+<span class="m">UB</span> for each quantity. It takes ten seconds and prevents nearly every mixing mistake, and the
+written bounds are usually worth a method mark on their own.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">A crowd is <span class="m">3400</span> to the nearest 100. Write down the bounds.</span></summary>
+<div class="body"><div class="final">Half unit 50, so 3350 &le; x &lt; 3450.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Which bounds give the <b>maximum</b> of <span class="m">a &minus; b</span>?</span></summary>
+<div class="body"><div class="final">UB of a minus LB of b &mdash; most possible take away least possible.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Write down the upper bound of <span class="m">4.6</span>, correct to 1 decimal place.</span></summary>
+<div class="body"><div class="final">4.65 &mdash; the exact boundary, used with a &lt; sign.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/13-3.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a bounds calculator to explore.</span></a>
+  <a href="../igcse-question-bank/upper-and-lower-bound-questions.html"><b>Practice questions</b><span>Exam-style questions on upper and lower bounds, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="time.html"><span>&larr; Previous lesson</span><b>Time</b></a>
+  <a class="next" href="earning-money.html"><span>Next lesson &rarr;</span><b>Earning Money</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Directed Numbers | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on ordering and calculating with positive and negative numbers — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Directed Numbers</h1>
+    <p>Reading, ordering and calculating with positive and negative numbers &mdash; the sign rules, the powers trap, and how to key it all correctly into a calculator.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Order directed numbers using their position on the number line.</li>
+  <li>Add and subtract directed numbers, simplifying pairs of adjacent signs first.</li>
+  <li>Multiply and divide with the sign rules, and evaluate powers of negative numbers.</li>
+  <li>Substitute negative values into expressions such as <span class="m">b&sup2; &minus; 4ac</span> safely, using brackets.</li>
+  <li>Solve real-life problems with temperatures, depths and money.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>directed number</span><span>number line</span><span>negative</span><span>sign rule</span><span>even power</span><span>odd power</span><span>substitution</span><span>brackets</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">The temperature is <span class="m">3&deg;C</span> and it falls by 5 degrees. What is the new temperature?</span></summary>
+<div class="body"><div class="final">&minus;2&deg;C &mdash; falling 5 from 3 takes you 2 below zero.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Work out <span class="m">7 &times; 8</span> and <span class="m">56 &divide; 4</span>.</span></summary>
+<div class="body"><div class="final">56 and 14</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Which number is smaller: <span class="m">&minus;9</span> or <span class="m">&minus;2</span>?</span></summary>
+<div class="body"><div class="final">&minus;9 &mdash; it lies further left on the number line.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The number line and ordering</h3>
+<p>A <b>directed number</b> carries a direction as well as a size: <span class="m">&minus;7&deg;C</span> is 7
+degrees <b>below</b> freezing, a submarine at <span class="m">&minus;180</span> m is 180 m below the surface,
+and a bank balance of <span class="m">&minus;$45.20</span> means you owe $45.20.</p>
+<div class="def"><b>Key idea</b>
+On the number line, numbers get <b>larger</b> as you move right and <b>smaller</b> as you move left.
+<span class="m">a &lt; b</span> simply means <span class="m">a</span> lies to the <b>left</b> of
+<span class="m">b</span>.</div>
+<svg viewBox="0 0 640 130" role="img" aria-label="A number line from minus 6 to 6 with arrows showing smaller to the left and larger to the right" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <line x1="60" y1="34" x2="300" y2="34" stroke="#1a4fa0" stroke-width="2"/>
+  <polygon points="56,34 68,29 68,39" fill="#1a4fa0"/>
+  <text x="180" y="22" font-size="12.5" text-anchor="middle" fill="#1a4fa0">smaller &middot; colder &middot; deeper</text>
+  <line x1="340" y1="34" x2="580" y2="34" stroke="#e05c2a" stroke-width="2"/>
+  <polygon points="584,34 572,29 572,39" fill="#e05c2a"/>
+  <text x="460" y="22" font-size="12.5" text-anchor="middle" fill="#e05c2a">larger &middot; warmer &middot; higher</text>
+  <line x1="12" y1="70" x2="628" y2="70" stroke="#0f2d6b" stroke-width="2"/>
+  <polygon points="628,70 617,65 617,75" fill="#0f2d6b"/>
+  <polygon points="12,70 23,65 23,75" fill="#0f2d6b"/>
+  <line x1="30" y1="62" x2="30" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="78" y1="62" x2="78" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="127" y1="62" x2="127" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="175" y1="62" x2="175" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="223" y1="62" x2="223" y2="78" stroke="#9aa8c0" stroke-width="1.3"/>
+  <line x1="272" y1="62" x2="272" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="320" y1="58" x2="320" y2="82" stroke="#e05c2a" stroke-width="2.4"/><line x1="368" y1="62" x2="368" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="417" y1="62" x2="417" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="465" y1="62" x2="465" y2="78" stroke="#9aa8c0" stroke-width="1.3"/>
+  <line x1="513" y1="62" x2="513" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="562" y1="62" x2="562" y2="78" stroke="#9aa8c0" stroke-width="1.3"/><line x1="610" y1="62" x2="610" y2="78" stroke="#9aa8c0" stroke-width="1.3"/>
+  <text x="30" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;6</text><text x="78" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;5</text><text x="127" y="98" font-size="12" text-anchor="middle" fill="#1a4fa0" font-weight="bold">&minus;4</text><text x="175" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;3</text>
+  <text x="223" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">&minus;2</text><text x="272" y="98" font-size="12" text-anchor="middle" fill="#1a4fa0" font-weight="bold">&minus;1</text><text x="320" y="98" font-size="12" text-anchor="middle" fill="#e05c2a" font-weight="bold">0</text><text x="368" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">1</text>
+  <text x="417" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">2</text><text x="465" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">3</text><text x="513" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">4</text><text x="562" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">5</text>
+  <text x="610" y="98" font-size="12" text-anchor="middle" fill="#4a5b7a">6</text>
+  <circle cx="127" cy="70" r="5" fill="#1a4fa0"/>
+  <circle cx="272" cy="70" r="5" fill="#1a4fa0"/>
+  <text x="200" y="122" font-size="12.5" text-anchor="middle" fill="#1a4fa0">&minus;4 &lt; &minus;1, because &minus;4 is further left</text>
+</svg>
+<div class="warn"><b>Watch out</b>
+The bigger the digits, the <i>smaller</i> a negative number is: <span class="m">&minus;9 &lt; &minus;2</span>
+and <span class="m">&minus;0.5 &gt; &minus;0.8</span> are both true. Never compare the digits on their own
+&mdash; picture the line every time.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Six midday temperatures are <span class="m">&minus;12, 5, &minus;3, 0, &minus;8, 2</span> (in &deg;C). (a) Write them in order, coldest first. (b) Find the difference between the highest and the lowest.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Deal with the negatives first: the one with the largest digits is
+    furthest left, so it is the smallest.
+    <span class="work">negatives, coldest first: &minus;12, &minus;8, &minus;3<br>then 0, then the positives: 2, 5</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) &ldquo;Difference&rdquo; means highest <b>minus</b> lowest, and
+    subtracting a negative adds.
+    <span class="work">5 &minus; (&minus;12) = 5 + 12 = 17</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Sense-check on the line: from &minus;12 up to 0 is 12 degrees, then 0 up to 5 is another 5.
+    <span class="work">12 + 5 = 17 &#10003;</span></div></div>
+  <div class="final">(a) &minus;12, &minus;8, &minus;3, 0, 2, 5 &nbsp;&nbsp; (b) 17&deg;C</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Adding and subtracting</h3>
+<p>Every addition or subtraction is a <b>journey along the number line</b>: start at the first number; the
+second number tells you how far and which way. When an operation sign lands next to the sign of a number,
+replace the <b>pair</b> with a single sign first.</p>
+<div class="tw">
+<table>
+<thead><tr><th>You see</th><th>Replace with</th><th>Example</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td><span class="m">+ (+a)</span></td><td><span class="m">+ a</span></td><td><span class="m">7 + (+3)</span></td><td><span class="m">7 + 3 = 10</span></td></tr>
+<tr><td><span class="m">+ (&minus;a)</span></td><td><span class="m">&minus; a</span></td><td><span class="m">7 + (&minus;3)</span></td><td><span class="m">7 &minus; 3 = 4</span></td></tr>
+<tr><td><span class="m">&minus; (+a)</span></td><td><span class="m">&minus; a</span></td><td><span class="m">7 &minus; (+3)</span></td><td><span class="m">7 &minus; 3 = 4</span></td></tr>
+<tr><td><span class="m">&minus; (&minus;a)</span></td><td><span class="m">+ a</span></td><td><span class="m">7 &minus; (&minus;3)</span></td><td><span class="m">7 + 3 = 10</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="warn"><b>Watch out</b>
+The rule applies only to <b>two signs standing next to each other</b>. In <span class="m">&minus;5 + 3</span>
+nothing combines: the answer is <span class="m">&minus;2</span>, not <span class="m">&minus;8</span>. Chanting
+&ldquo;two minuses make a plus&rdquo; without checking loses marks every single year.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Work out <span class="m">6 &minus; (&minus;4) + (&minus;9)</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Simplify each pair of adjacent signs before doing any arithmetic.
+    <span class="work">&minus; (&minus;4) &rarr; + 4 &nbsp;&nbsp; + (&minus;9) &rarr; &minus; 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Rewrite the whole expression on one clean line, then work left to right.
+    <span class="work">6 + 4 &minus; 9 = 10 &minus; 9 = 1</span></div></div>
+  <div class="final">6 &minus; (&minus;4) + (&minus;9) = 1</div>
+  <div class="tip"><b>Exam tip</b> Write out the simplified line <span class="m">6 + 4 &minus; 9</span>. It is a
+  method mark, and it stops you losing track of the signs.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Multiplying, dividing and powers</h3>
+<p>For <span class="m">&times;</span> and <span class="m">&divide;</span> the rule is simpler: work out the
+answer ignoring the signs, then decide the sign at the end.</p>
+<div class="formula">same signs &rarr; positive &nbsp;&nbsp;&nbsp;&nbsp; different signs &rarr; negative
+<small>Applies to multiplication and division only</small></div>
+<div class="tip"><b>Exam tip</b>
+For a long string of multiplications and divisions, just <b>count the negative signs</b>: an odd number of
+negatives gives a negative answer, an even number gives a positive one. So
+<span class="m">&minus;2 &times; (&minus;3) &times; (&minus;5) = &minus;30</span>.</div>
+<div class="grid two">
+  <div class="card g"><h4><span class="m">(&minus;3)&sup2; = 9</span></h4>
+    <p>The brackets say the <b>whole of</b> <span class="m">&minus;3</span> is squared:
+    <span class="m">(&minus;3) &times; (&minus;3) = 9</span>.</p></div>
+  <div class="card o"><h4><span class="m">&minus;3&sup2; = &minus;9</span></h4>
+    <p>Without brackets the power applies to the <b>3 only</b>; the minus is applied afterwards:
+    <span class="m">&minus;(3 &times; 3) = &minus;9</span>.</p></div>
+</div>
+<div class="def"><b>Key idea</b>
+A negative number raised to an <b>even</b> power is positive; raised to an <b>odd</b> power it is negative:
+<span class="m">(&minus;2)&sup2; = 4</span>, <span class="m">(&minus;2)&sup3; = &minus;8</span>,
+<span class="m">(&minus;2)<sup>4</sup> = 16</span>, <span class="m">(&minus;2)<sup>5</sup> = &minus;32</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Evaluate (a) <span class="m">&minus;20 &divide; (&minus;4) &times; (&minus;3)</span> &nbsp;(b) <span class="m">(&minus;2)&sup3; &times; (&minus;5)&sup2;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Multiplication and division have equal priority &mdash; work strictly left to right.
+    <span class="work">&minus;20 &divide; (&minus;4) = 5 &nbsp;(same signs &rarr; positive)<br>5 &times; (&minus;3) = &minus;15 &nbsp;(different signs &rarr; negative)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Odd power &rarr; negative; even power &rarr; positive.
+    <span class="work">(&minus;2)&sup3; = &minus;8 &nbsp;&nbsp; (&minus;5)&sup2; = 25</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">One negative factor, so the product is negative.
+    <span class="work">&minus;8 &times; 25 = &minus;200</span></div></div>
+  <div class="final">(a) &minus;15 &nbsp;&nbsp; (b) &minus;200</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Substituting negative values</h3>
+<p>Substitution is where the powers trap costs real marks. Build one habit: put every negative value in
+<b>brackets</b> when you substitute &mdash; on paper and on the calculator.</p>
+<div class="card p">
+<h4>Using your calculator without losing marks</h4>
+<ul>
+  <li>Use the <b><span class="m">(&minus;)</span></b> key for a negative <i>number</i> and the
+    <b><span class="m">&minus;</span></b> key for the <i>operation</i> of subtracting &mdash; they are different keys.</li>
+  <li>Bracket a negative number before a power: key <span class="m">( (&minus;) 3 ) x&sup2;</span> to get 9.
+    Keying <span class="m">(&minus;) 3 x&sup2;</span> gives &minus;9.</li>
+  <li>Put brackets round the whole numerator and the whole denominator of any fraction before dividing.</li>
+  <li>Do not round part-way through &mdash; round only the final answer.</li>
+</ul>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Find the value of <span class="m">b&sup2; &minus; 4ac</span> when <span class="m">a = 2</span>, <span class="m">b = &minus;7</span> and <span class="m">c = 3</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Substitute, putting every negative value in <b>brackets</b>.
+    <span class="work">(&minus;7)&sup2; &minus; 4 &times; 2 &times; 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Deal with the power first.
+    <span class="work">(&minus;7)&sup2; = 49</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Then the multiplication, then the subtraction.
+    <span class="work">4 &times; 2 &times; 3 = 24<br>49 &minus; 24 = 25</span></div></div>
+  <div class="final">b&sup2; &minus; 4ac = 25</div>
+  <div class="tip"><b>Exam tip</b> You will meet <span class="m">b&sup2; &minus; 4ac</span> again in the
+  quadratic formula. Writing <span class="m">&minus;7&sup2; = &minus;49</span> there turns a correct pair of
+  solutions into no solutions at all &mdash; build the bracket habit now.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Write in order, smallest first: <span class="m">&minus;4, 3, &minus;11, 0, &minus;1, 7</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Negatives first, largest digits furthest left; then 0; then the positives.</div></div>
+  <div class="final">&minus;11, &minus;4, &minus;1, 0, 3, 7</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Work out (a) <span class="m">&minus;8 + 15</span> &nbsp;(b) <span class="m">&minus;6 &minus; 9</span> &nbsp;(c) <span class="m">4 &minus; (&minus;7)</span> &nbsp;(d) <span class="m">&minus;3 + (&minus;5)</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Start at &minus;8, move 15 right. (b) Move 9 further left.
+    <span class="work">&minus;8 + 15 = 7 &nbsp;&nbsp; &minus;6 &minus; 9 = &minus;15</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(c) and (d): simplify the adjacent signs first.
+    <span class="work">4 &minus; (&minus;7) = 4 + 7 = 11<br>&minus;3 + (&minus;5) = &minus;3 &minus; 5 = &minus;8</span></div></div>
+  <div class="final">(a) 7 &nbsp;(b) &minus;15 &nbsp;(c) 11 &nbsp;(d) &minus;8</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Work out (a) <span class="m">&minus;6 &times; 7</span> &nbsp;(b) <span class="m">&minus;48 &divide; (&minus;6)</span> &nbsp;(c) <span class="m">(&minus;2)<sup>4</sup></span> &nbsp;(d) <span class="m">&minus;2<sup>4</sup></span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Different signs &rarr; negative. (b) Same signs &rarr; positive.
+    <span class="work">&minus;6 &times; 7 = &minus;42 &nbsp;&nbsp; &minus;48 &divide; (&minus;6) = 8</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(c) Even power with brackets is positive. (d) No brackets: the minus is applied after the power.
+    <span class="work">(&minus;2)<sup>4</sup> = 16 &nbsp;&nbsp; &minus;2<sup>4</sup> = &minus;(2<sup>4</sup>) = &minus;16</span></div></div>
+  <div class="final">(a) &minus;42 &nbsp;(b) 8 &nbsp;(c) 16 &nbsp;(d) &minus;16</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">At midday the temperature in Astana is <span class="m">&minus;19&deg;C</span> and in Cairo it is <span class="m">24&deg;C</span>. How much warmer is Cairo?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Difference = higher &minus; lower, and subtracting a negative adds.
+    <span class="work">24 &minus; (&minus;19) = 24 + 19 = 43</span></div></div>
+  <div class="final">Cairo is 43&deg;C warmer</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">Find the value of <span class="m">b&sup2; &minus; 4ac</span> when <span class="m">a = 3</span>, <span class="m">b = &minus;8</span> and <span class="m">c = &minus;2</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Substitute with brackets round the negatives.
+    <span class="work">(&minus;8)&sup2; &minus; 4 &times; 3 &times; (&minus;2)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Power first, then the product &mdash; and subtracting a negative adds.
+    <span class="work">64 &minus; (&minus;24) = 64 + 24 = 88</span></div></div>
+  <div class="final">b&sup2; &minus; 4ac = 88</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Combining signs that are not adjacent</b>
+In <span class="m">&minus;5 + 3</span> there is nothing to combine: the answer is
+<span class="m">&minus;2</span>, not <span class="m">&minus;8</span>. The two-signs rule only applies when an
+operation sign stands <i>directly next to</i> a number&rsquo;s sign.</div>
+<div class="warn"><b>Confusing <span class="m">&minus;3&sup2;</span> with <span class="m">(&minus;3)&sup2;</span></b>
+<span class="m">(&minus;3)&sup2; = 9</span> but <span class="m">&minus;3&sup2; = &minus;9</span>. The brackets
+decide what is being squared &mdash; on paper and on the calculator.</div>
+<div class="warn"><b>Dropping the sign from the answer</b>
+A balance of <span class="m">&minus;$13.70</span> is not the same as $13.70, and an answer of
+<span class="m">&minus;235</span> m means a depth of 235 m. The sign is part of the answer.</div>
+<div class="tip"><b>Exam tip</b>
+Substitute every negative value <b>in brackets</b>, use the calculator&rsquo;s <span class="m">(&minus;)</span>
+key for negative numbers, and bracket whole numerators and denominators before dividing.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Work out <span class="m">4 &minus; (&minus;7)</span>.</span></summary>
+<div class="body"><div class="final">11 &mdash; subtracting a negative adds.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Work out <span class="m">(&minus;2)&sup3;</span>.</span></summary>
+<div class="body"><div class="final">&minus;8 &mdash; an odd power of a negative is negative.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">True or false: <span class="m">&minus;5&sup2; = 25</span>.</span></summary>
+<div class="body"><div class="final">False &mdash; without brackets, &minus;5&sup2; = &minus;(5 &times; 5) = &minus;25.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/1-4.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a number-line journey tool to explore.</span></a>
+  <a href="../igcse-question-bank/number-facts-questions.html"><b>Practice questions</b><span>Exam-style questions on number facts, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="prime-numbers.html"><span>&larr; Previous lesson</span><b>Prime Numbers</b></a>
+  <a class="next" href="powers-roots-and-laws-of-indices.html"><span>Next lesson &rarr;</span><b>Powers, Roots and Laws of Indices</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

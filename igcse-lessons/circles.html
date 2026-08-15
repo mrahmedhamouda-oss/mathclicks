@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circles | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on circle vocabulary, circumference and area, arcs and sectors as fractions of a circle, and composite shapes.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Geometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Circles</h1>
+    <p>The vocabulary of the circle, circumference and area, arcs and sectors as fractions of a circle, and the composite shapes that use them all.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Use the circle vocabulary correctly: radius, diameter, chord, tangent, arc, sector and segment.</li>
+  <li>Calculate circumference and area with <span class="m">C = 2&pi;r</span> and <span class="m">A = &pi;r&sup2;</span>, and work backwards to a radius.</li>
+  <li>Find arc lengths, sector areas and sector perimeters using the fraction <span class="m">&theta;/360</span>.</li>
+  <li>Find areas and perimeters of composite shapes built from circles, semicircles and quadrants.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>radius</span><span>diameter</span><span>chord</span><span>tangent</span><span>arc</span><span>sector</span><span>segment</span><span>circumference</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">A circle has diameter 10 cm. What is its radius?</span></summary>
+<div class="body"><div class="final">5 cm &mdash; the radius is always half the diameter.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Work out <span class="m">7.5&sup2;</span> without a calculator.</span></summary>
+<div class="body"><div class="final">56.25 &mdash; you will square radii all lesson.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">What fraction of a full turn is (a) 180&deg;, (b) 90&deg;, (c) 45&deg;?</span></summary>
+<div class="body"><div class="final">(a) <span class="frac"><span>1</span><span>2</span></span> &nbsp;(b) <span class="frac"><span>1</span><span>4</span></span> &nbsp;(c) <span class="frac"><span>1</span><span>8</span></span></div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The language of the circle</h3>
+<p>Every circle question begins with a word: <i>chord</i>, <i>sector</i>, <i>tangent</i>, <i>segment</i>.
+If you misread one of them you solve the wrong problem, so learn this diagram until you can redraw it
+from memory.</p>
+<div class="card">
+<h4>Lines in and around a circle</h4>
+<svg viewBox="0 0 640 330" role="img" aria-label="Circle labelled with centre, radius, diameter, chord, tangent and circumference" style="max-width:min(100%,560px)">
+  <circle cx="180" cy="165" r="120" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2.5"/>
+  <line x1="60" y1="165" x2="300" y2="165" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="180" y1="165" x2="240" y2="61.1" stroke="#16a34a" stroke-width="2.5"/>
+  <line x1="102.9" y1="256.9" x2="283.9" y2="225" stroke="#e05c2a" stroke-width="2.5"/>
+  <line x1="75" y1="285" x2="300" y2="285" stroke="#6d28d9" stroke-width="2.5"/>
+  <line x1="180" y1="165" x2="180" y2="285" stroke="#6d28d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <rect x="180" y="272" width="13" height="13" fill="none" stroke="#6d28d9" stroke-width="1.4"/>
+  <circle cx="180" cy="165" r="5" fill="#0f2d6b"/>
+  <circle cx="180" cy="285" r="4.5" fill="#6d28d9"/>
+  <line x1="180" y1="36" x2="180" y2="45" stroke="#0f2d6b" stroke-width="1.4"/>
+  <text x="180" y="28" text-anchor="middle" font-size="13" fill="#0f2d6b">circumference</text>
+  <text x="120" y="157" text-anchor="middle" font-size="13" fill="#1a4fa0">diameter d</text>
+  <text x="216" y="112" font-size="13" fill="#16a34a">radius r</text>
+  <text x="212" y="158" font-size="13" fill="#0f2d6b">O</text>
+  <text x="193" y="240" text-anchor="middle" font-size="13" fill="#e05c2a">chord</text>
+  <text x="215" y="304" font-size="13" fill="#6d28d9">tangent</text>
+  <text x="370" y="60" font-size="13" fill="#0f2d6b">centre O: the middle point</text>
+  <text x="370" y="92" font-size="13" fill="#16a34a">radius r: centre to edge</text>
+  <text x="370" y="124" font-size="13" fill="#1a4fa0">diameter d = 2r: right across</text>
+  <text x="370" y="156" font-size="13" fill="#e05c2a">chord: joins 2 points on edge</text>
+  <text x="370" y="188" font-size="13" fill="#6d28d9">tangent: touches at 1 point</text>
+  <text x="370" y="220" font-size="13" fill="#0f2d6b">circumference: distance round</text>
+  <text x="370" y="256" font-size="12" fill="#4a5b7a">A tangent is always at 90&deg;</text>
+  <text x="370" y="276" font-size="12" fill="#4a5b7a">to the radius it touches.</text>
+</svg>
+</div>
+<div class="card p">
+<h4>Arcs and regions</h4>
+<svg viewBox="0 0 660 150" role="img" aria-label="Arc, sector, segment, semicircle and quadrant shown side by side" style="max-width:min(100%,560px)">
+  <circle cx="70" cy="75" r="48" fill="#ffffff" stroke="#9fb3d9" stroke-width="1.5"/>
+  <path d="M28.4 51 A48 48 0 0 1 111.6 51" fill="none" stroke="#e05c2a" stroke-width="4"/>
+  <circle cx="200" cy="75" r="48" fill="#ffffff" stroke="#9fb3d9" stroke-width="1.5"/>
+  <path d="M200 75 L158.4 51 A48 48 0 0 1 241.6 51 Z" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <circle cx="330" cy="75" r="48" fill="#ffffff" stroke="#9fb3d9" stroke-width="1.5"/>
+  <path d="M288.4 51 A48 48 0 0 1 371.6 51 Z" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+  <circle cx="460" cy="75" r="48" fill="#ffffff" stroke="#9fb3d9" stroke-width="1.5"/>
+  <path d="M412 75 A48 48 0 0 1 508 75 Z" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <circle cx="590" cy="75" r="48" fill="#ffffff" stroke="#9fb3d9" stroke-width="1.5"/>
+  <path d="M590 75 L590 27 A48 48 0 0 1 638 75 Z" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="70" y="140" text-anchor="middle" font-size="13" fill="#e05c2a">arc</text>
+  <text x="200" y="140" text-anchor="middle" font-size="13" fill="#e05c2a">sector</text>
+  <text x="330" y="140" text-anchor="middle" font-size="13" fill="#6d28d9">segment</text>
+  <text x="460" y="140" text-anchor="middle" font-size="13" fill="#16a34a">semicircle</text>
+  <text x="590" y="140" text-anchor="middle" font-size="13" fill="#1a4fa0">quadrant</text>
+</svg>
+</div>
+<div class="def"><b>Definition</b>
+An <b>arc</b> is part of the circumference. A <b>sector</b> is the pizza-slice region between two radii and
+an arc. A <b>segment</b> is the region between a <b>chord</b> and an arc. A <b>semicircle</b> is half a
+circle (<span class="m">180&deg;</span>) and a <b>quadrant</b> is a quarter (<span class="m">90&deg;</span>).</div>
+<div class="warn"><b>Watch out</b> Sector and segment sound alike but are cut differently: a sector is cut by
+two <i>radii</i>, a segment by a <i>chord</i>. Remember &ldquo;se<b>C</b>tor has a <b>C</b>entre in it&rdquo;.</div>
+
+<h3>2&nbsp;&middot;&nbsp; Circumference and area</h3>
+<p>Two formulas do most of the work &mdash; and you must know which one is a <i>length</i> (cm) and which is
+an <i>area</i> (cm&sup2;).</p>
+<div class="grid two">
+  <div class="card">
+    <h4>Circumference &mdash; a length</h4>
+    <div class="formula">C = &pi;d = 2&pi;r</div>
+    <p style="margin-bottom:0">Use <span class="m">&pi;d</span> when given the diameter, <span class="m">2&pi;r</span> when given the radius. Answer in cm, m, km.</p>
+  </div>
+  <div class="card o">
+    <h4>Area &mdash; a region</h4>
+    <div class="formula">A = &pi;r&sup2;</div>
+    <p style="margin-bottom:0">Always the <b>radius</b>, and always <b>squared before</b> multiplying by <span class="m">&pi;</span>. Answer in cm&sup2;, m&sup2;.</p>
+  </div>
+</div>
+<div class="warn"><b>Watch out</b> The single most expensive circle error is putting the diameter into
+<span class="m">A = &pi;r&sup2;</span>. If a question says &ldquo;a circle of diameter 10 cm&rdquo;, write
+<span class="m">r = 5</span> on the page <i>before</i> you touch the calculator.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A circle has radius 7.5 cm. Find its circumference and its area.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Circumference uses <span class="m">2&pi;r</span>.
+    <span class="work">C = 2 &times; &pi; &times; 7.5 = 47.1238&hellip; = 47.1 cm (3 s.f.)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Area uses <span class="m">&pi;r&sup2;</span> &mdash; square the radius first.
+    <span class="work">A = &pi; &times; 7.5&sup2; = &pi; &times; 56.25 = 176.714&hellip; = 177 cm&sup2; (3 s.f.)</span></div></div>
+  <div class="final">C = 47.1 cm &nbsp;&nbsp;&nbsp; A = 177 cm&sup2;</div>
+  <div class="note"><b>Note</b> In terms of <span class="m">&pi;</span> these are <span class="m">15&pi;</span> cm and <span class="m">56.25&pi;</span> cm&sup2;.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">(a) A circle has circumference 44 cm. Find its radius and its area. (b) A different circle has area 200 cm&sup2;. Find its radius.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Start from the formula and substitute what you know, then divide by <span class="m">2&pi;</span>.
+    <span class="work">2&pi;r = 44 &nbsp;&rarr;&nbsp; r = 44 &divide; (2&pi;) = 7.00281&hellip; = 7.00 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now the area, using the <b>unrounded</b> radius.
+    <span class="work">A = &pi; &times; 7.00281&hellip;&sup2; = 154.056&hellip; = 154 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Reverse <span class="m">A = &pi;r&sup2;</span>: divide by <span class="m">&pi;</span>, <i>then</i> square root.
+    <span class="work">r&sup2; = 200 &divide; &pi; = 63.6619&hellip; &nbsp;&rarr;&nbsp; r = &#8730;63.6619&hellip; = 7.97884&hellip;</span></div></div>
+  <div class="final">(a) r = 7.00 cm, A = 154 cm&sup2; &nbsp;&nbsp;&nbsp; (b) r = 7.98 cm</div>
+  <div class="tip"><b>Exam tip</b> Working backwards is &ldquo;undo in reverse order&rdquo;: for area, divide by <span class="m">&pi;</span> first, then square root &mdash; never square root first.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Arcs and sectors: fractions of a circle</h3>
+<p>A sector of angle <span class="m">&theta;</span> is simply the fraction
+<span class="frac"><span>&theta;</span><span>360</span></span> of the whole circle. Work out the whole circle
+first, then take that fraction &mdash; every sector question is that one idea.</p>
+<div class="formula">arc length = <span class="frac"><span>&theta;</span><span>360</span></span> &times; 2&pi;r
+&nbsp;&nbsp;&nbsp;&nbsp; sector area = <span class="frac"><span>&theta;</span><span>360</span></span> &times; &pi;r&sup2;
+<small>&theta; is the angle at the centre, in degrees</small></div>
+<div class="grid two">
+  <div class="card g">
+    <h4>Perimeter of a sector</h4>
+    <p>The boundary is the arc <b>plus the two straight radii</b>:</p>
+    <div class="formula">P = arc + 2r</div>
+    <p style="margin-bottom:0">Forgetting the <span class="m">+ 2r</span> is the classic dropped mark.</p>
+  </div>
+  <div class="card p">
+    <h4>Semicircle and quadrant</h4>
+    <p>Semicircle (<span class="m">&theta; = 180&deg;</span>): area <span class="m">&frac12;&pi;r&sup2;</span>, perimeter <span class="m">&pi;r + 2r</span> (the curve plus the diameter).</p>
+    <p style="margin-bottom:0">Quadrant (<span class="m">&theta; = 90&deg;</span>): area <span class="m">&frac14;&pi;r&sup2;</span>, perimeter <span class="frac"><span>&pi;r</span><span>2</span></span> <span class="m">+ 2r</span>.</p>
+  </div>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 3</span><span class="q">A sector has radius 9 cm and angle 140&deg;. Find its arc length, its area and its perimeter.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 520 270" role="img" aria-label="Sector of radius 9 cm and angle 140 degrees" style="max-width:min(100%,560px)">
+    <circle cx="150" cy="150" r="110" fill="none" stroke="#9fb3d9" stroke-width="1.4" stroke-dasharray="5 5"/>
+    <path d="M150 150 L150 40 A110 110 0 0 1 220.7 234.3 Z" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+    <path d="M150 92 A58 58 0 0 1 187.3 194.4" fill="none" stroke="#0f2d6b" stroke-width="1.6"/>
+    <text x="163" y="128" font-size="14" fill="#0f2d6b">140&deg;</text>
+    <text x="142" y="100" text-anchor="end" font-size="13" fill="#e05c2a">9 cm</text>
+    <circle cx="150" cy="150" r="4.5" fill="#0f2d6b"/>
+    <text x="300" y="82" font-size="14">Fraction of circle:</text>
+    <text x="300" y="112" font-size="15" fill="#e05c2a" font-weight="bold">140/360 = 7/18</text>
+    <text x="300" y="154" font-size="14">whole C = 2&pi;(9)</text>
+    <text x="300" y="182" font-size="14">whole A = &pi;(9)&sup2;</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Write down the fraction of the circle.
+    <span class="work"><span class="frac"><span>140</span><span>360</span></span> = <span class="frac"><span>7</span><span>18</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Arc length is that fraction of the whole circumference.
+    <span class="work">arc = <span class="frac"><span>140</span><span>360</span></span> &times; 2 &times; &pi; &times; 9 = 21.9911&hellip; = 22.0 cm</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Sector area is the same fraction of the whole area.
+    <span class="work">A = <span class="frac"><span>140</span><span>360</span></span> &times; &pi; &times; 9&sup2; = 98.9601&hellip; = 99.0 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Perimeter = arc + the two radii. Use the unrounded arc.
+    <span class="work">P = 21.9911&hellip; + 9 + 9 = 39.9911&hellip; = 40.0 cm</span></div></div>
+  <div class="final">arc = 22.0 cm &nbsp;&nbsp; area = 99.0 cm&sup2; &nbsp;&nbsp; perimeter = 40.0 cm</div>
+  <div class="warn"><b>Watch out</b> <span class="m">22.0</span> and <span class="m">40.0</span> keep the trailing zero &mdash; that is what 3 significant figures looks like here.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Composite shapes</h3>
+<p>Exams rarely give you a plain circle. They give you a rectangle with a semicircular end, or a square
+with a circle cut out. The method never changes:</p>
+<div class="card g">
+  <h4>The three-step method</h4>
+  <ol>
+    <li><b>Split</b> the shape into a rectangle, triangle, semicircle, quadrant &hellip; and mark the radius of each curved piece on the diagram.</li>
+    <li><b>Add or subtract</b> the areas. A hole is a subtraction.</li>
+    <li>For a <b>perimeter</b>, walk round the outside and add only the edges you actually travel along. Cut edges that are now inside the shape do not count.</li>
+  </ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A shape is a 20 cm by 12 cm rectangle with a semicircle joined to one short end. Find its area and its perimeter.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 420 230" role="img" aria-label="Rectangle 20 cm by 12 cm with a semicircle of diameter 12 cm on the right end" style="max-width:min(100%,560px)">
+    <path d="M80 50 L280 50 A60 60 0 0 1 280 170 L80 170 Z" fill="#e8f0fe" stroke="#0f2d6b" stroke-width="2.5"/>
+    <line x1="280" y1="50" x2="280" y2="170" stroke="#6d28d9" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <circle cx="280" cy="110" r="4" fill="#6d28d9"/>
+    <line x1="280" y1="110" x2="340" y2="110" stroke="#6d28d9" stroke-width="1.6"/>
+    <text x="292" y="128" font-size="12" fill="#6d28d9">r = 6</text>
+    <line x1="80" y1="190" x2="280" y2="190" stroke="#4a5b7a" stroke-width="1.2"/>
+    <text x="180" y="208" text-anchor="middle" font-size="13" fill="#4a5b7a">20 cm</text>
+    <line x1="62" y1="50" x2="62" y2="170" stroke="#4a5b7a" stroke-width="1.2"/>
+    <text x="54" y="115" text-anchor="end" font-size="13" fill="#4a5b7a">12 cm</text>
+    <text x="170" y="115" text-anchor="middle" font-size="13" fill="#0f2d6b">rectangle</text>
+    <text x="296" y="42" font-size="13" fill="#6d28d9">semicircle</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">The semicircle sits on the 12 cm end, so its <b>diameter</b> is 12 and its radius is 6.
+    <span class="work">r = 12 &divide; 2 = 6 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the two areas: rectangle plus half of <span class="m">&pi;r&sup2;</span>.
+    <span class="work">20 &times; 12 = 240 cm&sup2;<br>&frac12; &times; &pi; &times; 6&sup2; = 56.5486&hellip; cm&sup2;<br>A = 240 + 56.5486&hellip; = 296.548&hellip; = 297 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Perimeter: walk round. You travel the left end (12), two long sides (20 each) and the curve &mdash; but <b>not</b> the dashed join, because it is inside the shape.
+    <span class="work">curve = &frac12; &times; 2&pi; &times; 6 = 18.8495&hellip;<br>P = 12 + 20 + 20 + 18.8495&hellip; = 70.8495&hellip; = 70.8 cm</span></div></div>
+  <div class="final">Area = 297 cm&sup2; &nbsp;&nbsp;&nbsp; Perimeter = 70.8 cm</div>
+  <div class="warn"><b>Watch out</b> Adding the dashed 12 cm join into the perimeter is the standard trap. Trace the outline with your pencil before you add anything up.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">A circle has diameter 18 cm. Find its circumference and its area, correct to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Circumference from the diameter; radius for the area.
+    <span class="work">C = &pi; &times; 18 = 56.548&hellip; = 56.5 cm<br>r = 9 &nbsp;&rarr;&nbsp; A = &pi; &times; 81 = 254.469&hellip; = 254 cm&sup2;</span></div></div>
+  <div class="final">C = 56.5 cm &nbsp;&nbsp; A = 254 cm&sup2;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">A circle has circumference 62 cm. Find its radius.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Reverse <span class="m">C = 2&pi;r</span>.
+    <span class="work">r = 62 &divide; (2&pi;) = 9.8676&hellip;</span></div></div>
+  <div class="final">r = 9.87 cm (3 s.f.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A sector has radius 12 cm and angle 45&deg;. Find its arc length, its area and its perimeter.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Write the fraction first.
+    <span class="work"><span class="frac"><span>45</span><span>360</span></span> = <span class="frac"><span>1</span><span>8</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Take that fraction of the circumference and of the area.
+    <span class="work">arc = &#8539; &times; 2&pi; &times; 12 = 9.4247&hellip; = 9.42 cm<br>A = &#8539; &times; &pi; &times; 144 = 56.548&hellip; = 56.5 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Perimeter = arc + two radii.
+    <span class="work">P = 9.4247&hellip; + 24 = 33.4247&hellip; = 33.4 cm</span></div></div>
+  <div class="final">arc = 9.42 cm &nbsp;&nbsp; area = 56.5 cm&sup2; &nbsp;&nbsp; perimeter = 33.4 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Find the perimeter of a semicircle of diameter 20 cm.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Radius 10. The boundary is the curved half plus the straight diameter.
+    <span class="work">P = &pi; &times; 10 + 20 = 31.4159&hellip; + 20 = 51.4159&hellip;</span></div></div>
+  <div class="final">P = 51.4 cm (3 s.f.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A running track is made from a 40 m by 25 m rectangle with a semicircle of diameter 25 m at each end. Find the total area and the total perimeter of the shape.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The two semicircles make one full circle of radius <span class="m">12.5</span> m.
+    <span class="work">A = 40 &times; 25 + &pi; &times; 12.5&sup2; = 1000 + 490.87&hellip; = 1490.87&hellip; = 1490 m&sup2; (3 s.f.)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Perimeter: the two straight 40 m sides plus one full circumference. The 25 m ends are inside the shape.
+    <span class="work">P = 40 + 40 + 2&pi; &times; 12.5 = 80 + 78.539&hellip; = 158.539&hellip; = 159 m</span></div></div>
+  <div class="final">Area = 1490 m&sup2; &nbsp;&nbsp;&nbsp; Perimeter = 159 m</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Putting the diameter into A = &pi;r&sup2;</b>
+The area formula wants the <b>radius</b>, squared before multiplying by &pi;. Given a diameter, halve it on paper first &mdash; &ldquo;diameter 10&rdquo; means write <span class="m">r = 5</span> before anything else.</div>
+<div class="warn"><b>Forgetting the straight edges of a sector</b>
+The perimeter of a sector is <span class="m">arc + 2r</span>, and a semicircle&rsquo;s perimeter is <span class="m">&pi;r + 2r</span>. The curve alone is only part of the boundary.</div>
+<div class="warn"><b>Counting internal joins in a composite perimeter</b>
+When a semicircle is glued to a rectangle, the join line is <i>inside</i> the shape. Trace the outline with a pencil and add only the edges you actually walk along.</div>
+<div class="tip"><b>Exam tip</b>
+Use the &pi; key, keep the full value in the calculator, and round <b>once</b> at the very end &mdash; to 3 significant figures unless told otherwise. If the answer is wanted &ldquo;in terms of &pi;&rdquo;, do not press the &pi; key at all: write <span class="m">36&pi;</span>.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Write down the formulas for the circumference and the area of a circle.</span></summary>
+<div class="body"><div class="final">C = &pi;d = 2&pi;r (a length); &nbsp; A = &pi;r&sup2; (an area).</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">What is the difference between a sector and a segment?</span></summary>
+<div class="body"><div class="final">A sector is cut off by two radii (it contains the centre); a segment is cut off by a chord.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Find the arc length of a quadrant of radius 6 cm.</span></summary>
+<div class="body"><div class="final">&frac14; &times; 2&pi; &times; 6 = 3&pi; &asymp; 9.42 cm</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/3-5.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a circle and sector calculator to explore.</span></a>
+  <a href="../igcse-question-bank/mensuration-questions.html"><b>Practice questions</b><span>Exam-style mensuration questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="polygons.html"><span>&larr; Previous lesson</span><b>Polygons</b></a>
+  <a class="next" href="construction.html"><span>Next lesson &rarr;</span><b>Construction</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

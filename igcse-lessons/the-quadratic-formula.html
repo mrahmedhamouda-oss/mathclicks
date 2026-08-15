@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Quadratic Formula | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on the quadratic formula — identifying a, b and c, substituting safely, reading the discriminant, and giving exact surd answers.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>The Quadratic Formula</h1>
+    <p>The method that solves every quadratic &mdash; identify a, b and c, substitute safely, and read the discriminant to see how many roots there are.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Rearrange any quadratic into standard form <span class="m">ax&sup2; + bx + c = 0</span> and read off a, b and c with their signs.</li>
+  <li>Substitute into the quadratic formula inside brackets and evaluate without sign slips.</li>
+  <li>Use the discriminant <span class="m">b&sup2; &minus; 4ac</span> to state how many real solutions an equation has.</li>
+  <li>Give answers exactly in simplified surd form, or rounded to the accuracy the question demands.</li>
+  <li>Solve worded and geometric problems, rejecting roots that make no sense in context.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>quadratic</span><span>standard form</span><span>coefficient</span><span>discriminant</span><span>real solution</span><span>surd</span><span>exact form</span><span>root</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Evaluate <span class="m">(&minus;7)&sup2;</span> and <span class="m">&minus;4 &times; 2 &times; (&minus;3)</span>.</span></summary>
+<div class="body"><div class="final">(&minus;7)&sup2; = 49; &nbsp;&minus;4 &times; 2 &times; (&minus;3) = +24 &mdash; two negatives give a plus.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Simplify <span class="m">&#8730;28</span>.</span></summary>
+<div class="body"><div class="final">&#8730;28 = &#8730;4 &times; &#8730;7 = 2&#8730;7</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Rearrange <span class="m">4x&sup2; = 3x + 6</span> so that one side is zero.</span></summary>
+<div class="body"><div class="final">4x&sup2; &minus; 3x &minus; 6 = 0</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The formula and how to use it</h3>
+<p>Some quadratics refuse to factorise. The formula below solves <b>any</b> quadratic, factorising or not,
+provided you first write it in the standard form <span class="m">ax&sup2; + bx + c = 0</span> with
+everything on one side and zero on the other.</p>
+<div class="formula">x = <span class="frac"><span>&minus;b &plusmn; &#8730;(b&sup2; &minus; 4ac)</span><span>2a</span></span>
+<small>The quadratic formula &mdash; it is given on the formula sheet, but learn it anyway</small></div>
+<div class="warn"><b>Watch out</b>
+The whole of <span class="m">&minus;b &plusmn; &#8730;(b&sup2; &minus; 4ac)</span> sits over
+<span class="m">2a</span>, not just the root. On a calculator you must bracket the entire numerator.</div>
+<p>First identify <span class="m">a</span>, <span class="m">b</span> and <span class="m">c</span> &mdash;
+<b>with their signs</b>. The sign in front of a number belongs to that number, and a missing term means its
+coefficient is <b>zero</b>, not blank.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Equation</th><th>a</th><th>b</th><th>c</th><th>Comment</th></tr></thead>
+<tbody>
+<tr><td><span class="m">3x&sup2; + 5x &minus; 2 = 0</span></td><td>3</td><td>5</td><td>&minus;2</td><td>the minus belongs to the 2</td></tr>
+<tr><td><span class="m">x&sup2; &minus; 7x + 1 = 0</span></td><td>1</td><td>&minus;7</td><td>1</td><td>a lone <span class="m">x&sup2;</span> means <span class="m">a = 1</span></td></tr>
+<tr><td><span class="m">2x&sup2; &minus; 9 = 0</span></td><td>2</td><td>0</td><td>&minus;9</td><td>no <span class="m">x</span> term, so <span class="m">b = 0</span></td></tr>
+<tr><td><span class="m">4x&sup2; = 3x + 6</span></td><td>4</td><td>&minus;3</td><td>&minus;6</td><td>rearrange to <span class="m">4x&sup2; &minus; 3x &minus; 6 = 0</span> first</td></tr>
+</tbody>
+</table>
+</div>
+<p>Then substitute <b>inside brackets</b>. Never write <span class="m">&minus;&minus;7</span> &mdash; write
+<span class="m">&minus;(&minus;7)</span> and <span class="m">(&minus;7)&sup2;</span>. The brackets are what
+keep the signs right.</p>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Solve <span class="m">2x&sup2; + 5x &minus; 3 = 0</span> using the quadratic formula.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Already in standard form. Read off the coefficients with their signs.
+    <span class="work">a = 2, &nbsp; b = 5, &nbsp; c = &minus;3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute, using brackets everywhere.
+    <span class="work">x = <span class="frac"><span>&minus;(5) &plusmn; &#8730;((5)&sup2; &minus; 4(2)(&minus;3))</span><span>2(2)</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Work out under the root first. Note <span class="m">&minus;4 &times; 2 &times; (&minus;3) = +24</span>: two negatives give a plus.
+    <span class="work">25 + 24 = 49 &nbsp;&rarr;&nbsp; x = <span class="frac"><span>&minus;5 &plusmn; 7</span><span>4</span></span></span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Split into the plus case and the minus case.
+    <span class="work">x = <span class="frac"><span>2</span><span>4</span></span> = 0.5 &nbsp;&nbsp;or&nbsp;&nbsp; x = <span class="frac"><span>&minus;12</span><span>4</span></span> = &minus;3</span></div></div>
+  <div class="final">x = 0.5 &nbsp;or&nbsp; x = &minus;3</div>
+  <div class="note"><b>Check</b> <span class="m">x = 0.5</span>: <span class="m">2(0.25) + 2.5 &minus; 3 = 0</span>&nbsp;&#10003;.
+  Because the root came out exact, this one also factorises: <span class="m">(2x &minus; 1)(x + 3) = 0</span>.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Solve <span class="m">3x&sup2; &minus; 7x + 1 = 0</span>, giving your answers correct to 2 decimal places.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Coefficients &mdash; the minus stays with the 7.
+    <span class="work">a = 3, &nbsp; b = &minus;7, &nbsp; c = 1</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute with brackets: <span class="m">&minus;(&minus;7) = +7</span> and <span class="m">(&minus;7)&sup2; = +49</span>.
+    <span class="work">x = <span class="frac"><span>&minus;(&minus;7) &plusmn; &#8730;((&minus;7)&sup2; &minus; 4(3)(1))</span><span>2(3)</span></span> = <span class="frac"><span>7 &plusmn; &#8730;37</span><span>6</span></span></span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">37 is not a perfect square. Keep the full calculator value &mdash; do <b>not</b> round <span class="m">&#8730;37 = 6.0827&hellip;</span> yet.
+    <span class="work">x = (7 + 6.0827&hellip;) &divide; 6 = 2.18046&hellip;<br>x = (7 &minus; 6.0827&hellip;) &divide; 6 = 0.15287&hellip;</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Round only now, at the very end.
+    <span class="work">2.18046&hellip; &rarr; 2.18 &nbsp;&nbsp; 0.15287&hellip; &rarr; 0.15</span></div></div>
+  <div class="final">x = 2.18 &nbsp;or&nbsp; x = 0.15 &nbsp;(2 d.p.)</div>
+  <div class="warn"><b>Watch out</b> Rounding <span class="m">&#8730;37</span> part-way through can shift the
+  last digit and cost the accuracy mark. Carry the full value in your calculator.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; The discriminant b&sup2; &minus; 4ac</h3>
+<p>The expression under the root has its own name, and it decides everything about the number of solutions,
+because you cannot square-root a negative number.</p>
+<div class="def"><b>Definition</b>
+The <b>discriminant</b> of <span class="m">ax&sup2; + bx + c = 0</span> is
+<span class="m">b&sup2; &minus; 4ac</span>. Its sign tells you how many real solutions the equation has,
+and therefore how many times the graph <span class="m">y = ax&sup2; + bx + c</span> meets the
+<span class="m">x</span>-axis.</div>
+<div class="tw">
+<table>
+<thead><tr><th>Discriminant</th><th>Number of real solutions</th><th>The graph</th></tr></thead>
+<tbody>
+<tr><td><span class="m">b&sup2; &minus; 4ac &gt; 0</span></td><td><b>Two</b> different real solutions</td><td>crosses the <span class="m">x</span>-axis twice</td></tr>
+<tr><td><span class="m">b&sup2; &minus; 4ac = 0</span></td><td><b>One</b> repeated solution</td><td>touches the <span class="m">x</span>-axis at the turning point</td></tr>
+<tr><td><span class="m">b&sup2; &minus; 4ac &lt; 0</span></td><td><b>No</b> real solutions</td><td>never reaches the <span class="m">x</span>-axis</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<h4>The three cases (for a &gt; 0)</h4>
+<svg viewBox="0 0 660 240" role="img" aria-label="Three parabolas showing two roots, one repeated root and no real roots">
+  <line x1="15" y1="150" x2="195" y2="150" stroke="#9fb3d1" stroke-width="1.5"/>
+  <path d="M 25 50 Q 105 290 185 50" fill="none" stroke="#1a4fa0" stroke-width="3"/>
+  <circle cx="72.3" cy="150" r="5" fill="#e05c2a"/><circle cx="137.7" cy="150" r="5" fill="#e05c2a"/>
+  <text x="105" y="190" font-size="14" text-anchor="middle" fill="#0f2d6b" font-weight="bold">b&sup2; &minus; 4ac &gt; 0</text>
+  <text x="105" y="212" font-size="13" text-anchor="middle" fill="#4a5b7a">two real roots</text>
+  <line x1="235" y1="150" x2="415" y2="150" stroke="#9fb3d1" stroke-width="1.5"/>
+  <path d="M 245 50 Q 325 250 405 50" fill="none" stroke="#16a34a" stroke-width="3"/>
+  <circle cx="325" cy="150" r="5" fill="#e05c2a"/>
+  <text x="325" y="190" font-size="14" text-anchor="middle" fill="#0f2d6b" font-weight="bold">b&sup2; &minus; 4ac = 0</text>
+  <text x="325" y="212" font-size="13" text-anchor="middle" fill="#4a5b7a">one repeated root</text>
+  <line x1="455" y1="150" x2="635" y2="150" stroke="#9fb3d1" stroke-width="1.5"/>
+  <path d="M 465 40 Q 545 180 625 40" fill="none" stroke="#6d28d9" stroke-width="3"/>
+  <text x="545" y="190" font-size="14" text-anchor="middle" fill="#0f2d6b" font-weight="bold">b&sup2; &minus; 4ac &lt; 0</text>
+  <text x="545" y="212" font-size="13" text-anchor="middle" fill="#4a5b7a">no real roots</text>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">The equation <span class="m">x&sup2; + kx + 9 = 0</span> has exactly one solution. Find the two possible values of <span class="m">k</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">&ldquo;Exactly one solution&rdquo; means the discriminant is zero.
+    <span class="work">a = 1, &nbsp; b = k, &nbsp; c = 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Set <span class="m">b&sup2; &minus; 4ac = 0</span> and solve, remembering both roots.
+    <span class="work">k&sup2; &minus; 36 = 0 &nbsp;&rarr;&nbsp; k = &plusmn;6</span></div></div>
+  <div class="final">k = 6 or k = &minus;6</div>
+  <div class="note"><b>Check</b> <span class="m">k = 6</span> gives <span class="m">(x + 3)&sup2; = 0</span>, so
+  <span class="m">x = &minus;3</span> twice &#10003;; <span class="m">k = &minus;6</span> gives
+  <span class="m">(x &minus; 3)&sup2; = 0</span> &#10003;.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Choosing a method, and exact answers</h3>
+<div class="grid">
+  <div class="card g"><h4>Try factorising first</h4>
+    <p>If the numbers are small and a factor pair jumps out, factorising is faster and less error-prone.
+    Give it about twenty seconds.</p></div>
+  <div class="card o"><h4>Use the formula when&hellip;</h4>
+    <p>the question says <b>&ldquo;correct to 2 decimal places&rdquo;</b> or <b>&ldquo;3 significant
+    figures&rdquo;</b> &mdash; that wording tells you it will not factorise.</p></div>
+  <div class="card p"><h4>Complete the square when&hellip;</h4>
+    <p>the question says so, or asks for the turning point. The formula <i>is</i> the completed square, done
+    in general &mdash; both always give identical answers.</p></div>
+</div>
+<p>If the question says <b>exact</b>, leave the surd in. Simplify it if you can, then cancel any factor
+common to the whole numerator and the denominator.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Solve <span class="m">x&sup2; &minus; 6x + 2 = 0</span>, giving your answers in exact form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Coefficients, then substitute.
+    <span class="work">a = 1, b = &minus;6, c = 2<br>x = <span class="frac"><span>6 &plusmn; &#8730;(36 &minus; 8)</span><span>2</span></span> = <span class="frac"><span>6 &plusmn; &#8730;28</span><span>2</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Simplify the surd: <span class="m">28 = 4 &times; 7</span> and 4 is a perfect square.
+    <span class="work">&#8730;28 = &#8730;4 &times; &#8730;7 = 2&#8730;7</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Every term of the numerator now has a factor 2, so divide the whole fraction by 2.
+    <span class="work">x = <span class="frac"><span>6 &plusmn; 2&#8730;7</span><span>2</span></span> = 3 &plusmn; &#8730;7</span></div></div>
+  <div class="final">x = 3 + &#8730;7 &nbsp;or&nbsp; x = 3 &minus; &#8730;7 &nbsp;(5.65 or 0.35 to 2 d.p.)</div>
+  <div class="warn"><b>Watch out</b> You may only cancel a factor that divides <b>every</b> term. Cancelling
+  the 2 in <span class="m">(7 &plusmn; &#8730;37)/6</span> would be nonsense &mdash; 7 and &#8730;37 are not
+  multiples of 2.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Solve <span class="m">x&sup2; + 3x &minus; 5 = 0</span>, correct to 2 decimal places.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Coefficients and discriminant.
+    <span class="work">a = 1, b = 3, c = &minus;5<br>b&sup2; &minus; 4ac = 9 + 20 = 29</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Apply the formula and round at the end.
+    <span class="work">x = <span class="frac"><span>&minus;3 &plusmn; &#8730;29</span><span>2</span></span> = <span class="frac"><span>&minus;3 &plusmn; 5.3851&hellip;</span><span>2</span></span></span></div></div>
+  <div class="final">x = 1.19 &nbsp;or&nbsp; x = &minus;4.19 &nbsp;(2 d.p.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Solve <span class="m">2x&sup2; &minus; 5x &minus; 4 = 0</span>, giving your answers in exact form.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Discriminant: <span class="m">25 + 32 = 57</span>, which has no square factor.
+    <span class="work">x = <span class="frac"><span>5 &plusmn; &#8730;57</span><span>4</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Nothing cancels &mdash; 4 does not divide every term of the numerator &mdash; so this is the exact answer.
+    <span class="work">(3.14 or &minus;0.64 to 2 d.p.)</span></div></div>
+  <div class="final">x = <span class="frac"><span>5 &plusmn; &#8730;57</span><span>4</span></span></div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Use the discriminant to state the number of real solutions of (a) <span class="m">x&sup2; + 4x + 4 = 0</span> &nbsp;(b) <span class="m">2x&sup2; + x + 3 = 0</span> &nbsp;(c) <span class="m">3x&sup2; &minus; 5x &minus; 1 = 0</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Compute <span class="m">b&sup2; &minus; 4ac</span> for each.
+    <span class="work">(a) 16 &minus; 16 = 0<br>(b) 1 &minus; 24 = &minus;23<br>(c) 25 + 12 = 37</span></div></div>
+  <div class="final">(a) one repeated solution &nbsp;(b) no real solutions &nbsp;(c) two real solutions</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Solve <span class="m">3x&sup2; + 2x &minus; 8 = 0</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Discriminant: <span class="m">4 + 96 = 100 = 10&sup2;</span> &mdash; a perfect square, so the roots are exact.
+    <span class="work">x = <span class="frac"><span>&minus;2 &plusmn; 10</span><span>6</span></span></span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Take each sign in turn.
+    <span class="work">x = <span class="frac"><span>8</span><span>6</span></span> = <span class="frac"><span>4</span><span>3</span></span> &nbsp;&nbsp;or&nbsp;&nbsp; x = <span class="frac"><span>&minus;12</span><span>6</span></span> = &minus;2</span></div></div>
+  <div class="final">x = <span class="frac"><span>4</span><span>3</span></span> &nbsp;or&nbsp; x = &minus;2 &nbsp;&mdash; it factorises: (3x &minus; 4)(x + 2) = 0</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A right-angled triangle has base <span class="m">x</span> cm and height <span class="m">(x + 4)</span> cm. Its area is 15 cm&sup2;. Form a quadratic equation and solve it to find <span class="m">x</span>, correct to 2 decimal places.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Area of a triangle is <span class="m">&frac12; &times; base &times; height</span>.
+    <span class="work">&frac12;x(x + 4) = 15 &nbsp;&rarr;&nbsp; x&sup2; + 4x &minus; 30 = 0</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Discriminant <span class="m">16 + 120 = 136</span>; apply the formula.
+    <span class="work">x = <span class="frac"><span>&minus;4 &plusmn; &#8730;136</span><span>2</span></span> = &minus;2 &plusmn; &#8730;34</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>Reject the negative root</b> &mdash; a length cannot be negative &mdash; and say so in words.
+    <span class="work">x = &minus;2 + &#8730;34 = 3.8309&hellip;</span></div></div>
+  <div class="final">x = 3.83 (2 d.p.)</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Losing signs in the substitution</b>
+Write <span class="m">&minus;(&minus;7)</span> and <span class="m">(&minus;7)&sup2;</span>, never
+<span class="m">&minus;&minus;7</span>. And remember <span class="m">&minus;4ac</span> with a negative
+<span class="m">c</span> becomes a <i>plus</i>: <span class="m">&minus;4(2)(&minus;3) = +24</span>.</div>
+<div class="warn"><b>Dividing only the root by 2a</b>
+The whole numerator <span class="m">&minus;b &plusmn; &#8730;(b&sup2; &minus; 4ac)</span> sits over
+<span class="m">2a</span>. On the calculator, bracket the entire top before dividing.</div>
+<div class="warn"><b>Rounding too early</b>
+Keep <span class="m">&#8730;37 = 6.0827&hellip;</span> at full accuracy until the final line, then round to
+exactly the accuracy asked for. And with negatives, <span class="m">&minus;3.886</span> rounds to
+<span class="m">&minus;3.89</span>, not <span class="m">&minus;3.88</span>.</div>
+<div class="tip"><b>Exam tip</b>
+Write <span class="m">a = &hellip;, b = &hellip;, c = &hellip;</span> and the full substitution line on your
+script before touching the calculator. Method marks are awarded for a correct substitution even when the
+arithmetic afterwards goes wrong.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Write down a, b and c for <span class="m">4x&sup2; &minus; 9x + 2 = 0</span>.</span></summary>
+<div class="body"><div class="final">a = 4, b = &minus;9, c = 2 &mdash; the minus belongs to the 9.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">How many real solutions does <span class="m">2x&sup2; + x + 3 = 0</span> have?</span></summary>
+<div class="body"><div class="final">None &mdash; the discriminant is 1 &minus; 24 = &minus;23 &lt; 0.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">The discriminant of a quadratic works out to 49. What does that tell you?</span></summary>
+<div class="body"><div class="final">Two real solutions &mdash; and since 49 is a perfect square, the roots are exact and the quadratic would also factorise.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/14-5.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a quadratic formula calculator to explore.</span></a>
+  <a href="../igcse-question-bank/quadratic-equations-questions.html"><b>Practice questions</b><span>Exam-style quadratic equation questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="completing-the-square.html"><span>&larr; Previous lesson</span><b>Completing the Square</b></a>
+  <a class="next" href="factorising-quadratics.html"><span>Next lesson &rarr;</span><b>Factorising Quadratics</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

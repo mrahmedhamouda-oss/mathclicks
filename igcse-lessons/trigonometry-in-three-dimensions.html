@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trigonometry in Three Dimensions | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on 3D trigonometry — finding the right-angled triangle inside a solid, drawing it flat, and solving cuboids, pyramids and cones with Pythagoras and SOHCAHTOA.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Pythagoras and Trigonometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Trigonometry in Three Dimensions</h1>
+    <p>Find the right-angled triangle hiding inside the solid, redraw it flat, and solve it with Pythagoras
+    or SOHCAHTOA &mdash; cuboids, pyramids and cones all fall to the same routine.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Find a right-angled triangle inside a solid, redraw it flat and solve it.</li>
+  <li>Calculate the space diagonal of a cuboid with two applications of Pythagoras&rsquo; theorem.</li>
+  <li>Find the angle between a line and a plane using the line&rsquo;s projection.</li>
+  <li>Find the angle between two planes &mdash; including a sloping face and the base of a pyramid &mdash; and solve cones through their cross-section.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>space diagonal</span><span>projection</span><span>plane</span><span>slant height</span><span>slant edge</span><span>perpendicular</span><span>SOHCAHTOA</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">A right-angled triangle has shorter sides 6 cm and 8 cm. How long is the hypotenuse?</span></summary>
+<div class="body"><div class="final">&#8730;(36 + 64) = &#8730;100 = 10 cm</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">You know the sides opposite and adjacent to an angle. Which trig ratio finds the angle?</span></summary>
+<div class="body"><div class="final">Tangent &mdash; tan &theta; = O/A, then &theta; = tan<sup>&minus;1</sup>(O/A).</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Work out tan<sup>&minus;1</sup>(0.5) to 1 decimal place.</span></summary>
+<div class="body"><div class="final">26.6&deg;</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; The method: hunt the triangle, then draw it flat</h3>
+<p>There is no new mathematics in this topic. Every 3D question reduces to a right-angled triangle you
+already know how to solve &mdash; the only difficulty is <b>seeing</b> it inside the solid and getting
+its side lengths right.</p>
+<div class="def"><b>The routine</b>
+<ol style="margin:6px 0 0">
+  <li><b>Find</b> a right-angled triangle inside the solid that contains what you know and what you want.</li>
+  <li><b>Redraw it flat</b>, on its own, as a plain 2D triangle. Mark the right angle.</li>
+  <li><b>Fill in</b> every length you can. You will often need a first triangle just to supply a length for the second.</li>
+  <li><b>Solve</b> it with Pythagoras (no angles) or SOHCAHTOA (an angle involved).</li>
+</ol></div>
+<div class="warn"><b>Watch out</b>
+Do <b>not</b> try to do the trigonometry on the 3D picture. Lengths in a 3D sketch are distorted, and
+angles that look like right angles often are not. Once the triangle is on its own, the picture is honest again.</div>
+
+<h3>2&nbsp;&middot;&nbsp; The space diagonal of a cuboid</h3>
+<p>Label a cuboid <span class="m">ABCDEFGH</span> with <span class="m">ABCD</span> the base and
+<span class="m">E, F, G, H</span> directly above <span class="m">A, B, C, D</span>. The longest straight
+line inside it runs corner to opposite corner &mdash; here <span class="m">AG</span>. Finding it takes
+<b>two</b> applications of Pythagoras: first the base diagonal, then the vertical triangle standing on it.</p>
+<div class="formula">AC&sup2; = l&sup2; + w&sup2; &nbsp;&nbsp;&nbsp; then &nbsp;&nbsp;&nbsp;
+AG&sup2; = AC&sup2; + h&sup2; &nbsp;&nbsp;so&nbsp;&nbsp; AG = &#8730;(l&sup2; + w&sup2; + h&sup2;)
+<small>Keep AC in squared form so you never round it</small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A cuboid measures 8&nbsp;cm by 6&nbsp;cm by 5&nbsp;cm. Find the length of the space diagonal AG.</span></summary>
+<div class="body">
+<svg viewBox="0 0 660 215" role="img" aria-label="Two flat right-angled triangles: base triangle ABC with sides 8 cm and 6 cm, and triangle ACG with base 10 cm and height 5 cm">
+  <polygon points="40,180 232,180 232,36" fill="#1a4fa0" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="218,180 218,166 232,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="30" y="195" font-size="12">A</text>
+  <text x="234" y="196" font-size="12">B</text>
+  <text x="236" y="32" font-size="12">C</text>
+  <text x="136" y="199" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold">8 cm</text>
+  <text x="240" y="112" font-size="13" fill="#1a4fa0" font-weight="bold">6 cm</text>
+  <text x="112" y="100" font-size="13" text-anchor="middle" fill="#e05c2a" font-weight="bold">AC</text>
+  <text x="136" y="18" font-size="12" text-anchor="middle">Stage 1: base ABC</text>
+  <polygon points="360,180 600,180 600,60" fill="#16a34a" fill-opacity="0.08" stroke="#0f2d6b" stroke-width="2.5"/>
+  <polyline points="586,180 586,166 600,166" fill="none" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="350" y="195" font-size="12">A</text>
+  <text x="604" y="196" font-size="12">C</text>
+  <text x="604" y="56" font-size="12">G</text>
+  <text x="480" y="199" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold">10 cm</text>
+  <text x="608" y="126" font-size="13" fill="#1a4fa0" font-weight="bold">5 cm</text>
+  <text x="452" y="112" font-size="13" text-anchor="middle" fill="#e05c2a" font-weight="bold">AG</text>
+  <text x="480" y="18" font-size="12" text-anchor="middle">Stage 2: ACG</text>
+</svg>
+  <div class="step"><div class="n">1</div><div class="t">Draw the base triangle ABC flat. It is right angled at B because the base is a rectangle.
+    <span class="work">AC&sup2; = 8&sup2; + 6&sup2; = 64 + 36 = 100</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Here <span class="m">AC = 10</span> exactly, but leave it as <span class="m">AC&sup2; = 100</span> to carry forward.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Draw triangle ACG flat. The vertical edge CG is perpendicular to the base, so the right angle is at C.
+    <span class="work">AG&sup2; = AC&sup2; + CG&sup2; = 100 + 5&sup2; = 125</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Square root.
+    <span class="work">AG = &#8730;125 = 11.1803&hellip;</span></div></div>
+  <div class="final">AG = 11.2 cm (3 s.f.)</div>
+  <div class="note"><b>One-line check</b> <span class="m">&#8730;(8&sup2; + 6&sup2; + 5&sup2;) = &#8730;125 = 11.18</span> &#10003;.
+  The space diagonal must be longer than every edge and every face diagonal.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; The angle between a line and a plane</h3>
+<div class="def"><b>Definition</b>
+Drop a <b>perpendicular</b> from the far end of the line onto the plane. Join the foot of that
+perpendicular back to where the line meets the plane: that new line is the <b>projection</b> (the shadow)
+of the original line. The angle you want is between the <b>line and its projection</b>.</div>
+<p>For the space diagonal <span class="m">AG</span> and the base, the perpendicular is the vertical edge
+<span class="m">GC</span>, so the projection is the base diagonal <span class="m">AC</span> &mdash; and the
+angle is found in the same flat triangle <span class="m">ACG</span> you used for the length.</p>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">For the same 8&nbsp;cm by 6&nbsp;cm by 5&nbsp;cm cuboid, find the angle that AG makes with the base ABCD.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The angle between AG and the base is the angle inside triangle ACG at A, because AC is the projection of AG.
+    <span class="work">required angle = angle GAC</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Label relative to <span class="m">&theta;</span>: CG = 5 is <b>O</b>, AC = 10 is <b>A</b>. O and A &rarr; tangent.
+    <span class="work">tan &theta; = 5 / 10 = 0.5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Inverse tangent.
+    <span class="work">&theta; = tan<sup>&minus;1</sup>(0.5) = 26.5650&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 26.6&deg; (1 d.p.)</div>
+  <div class="tip"><b>Exam tip</b> Use <b>tangent</b> with the base diagonal rather than sine with the space
+  diagonal &mdash; tangent uses two exact numbers, while sine would need the rounded <span class="m">&#8730;125</span>.</div>
+</div>
+</details>
+
+<div class="warn"><b>Watch out</b>
+The angle is <b>never</b> measured to an edge of the solid unless that edge happens to be the projection.
+For <span class="m">AG</span> and the base, the projection is the base <i>diagonal</i>
+<span class="m">AC</span> &mdash; not the edge <span class="m">AB</span>.</div>
+
+<h3>4&nbsp;&middot;&nbsp; The angle between two planes: pyramids and cones</h3>
+<div class="def"><b>Definition</b>
+Two planes meet in a straight line. From one point on that line, draw a line in each plane
+<b>perpendicular to the line of intersection</b>. The angle between those two lines is the angle between
+the planes.</div>
+<p>For a square-based pyramid <span class="m">VABCD</span> with apex <span class="m">V</span> above the
+centre <span class="m">M</span>, keep these two triangles apart:</p>
+<div class="grid two">
+  <div class="card g"><h4>Slant edge</h4>
+    <p style="margin-bottom:0"><span class="m">VA</span>, apex to a <b>corner</b>. Its flat triangle uses
+    <b>half the base diagonal</b>, <span class="m">AM</span>.</p></div>
+  <div class="card o"><h4>Slant height</h4>
+    <p style="margin-bottom:0"><span class="m">VN</span>, apex to the <b>midpoint of an edge</b>. Its flat
+    triangle uses <b>half the base side</b>, <span class="m">MN</span>. This is the one the face&ndash;base
+    angle lives in.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A pyramid has a square base of side 10&nbsp;cm and a vertical height of 12&nbsp;cm. Find the angle between a sloping face and the base.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The face VBC meets the base along BC. Take N, the midpoint of BC. Then NV lies in the face and NM lies in the base, both perpendicular to BC.
+    <span class="work">required angle = angle VNM</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">M is the centre of the square, so MN is half the side.
+    <span class="work">MN = 10 &divide; 2 = 5 cm, &nbsp; VM = 12 cm</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Draw triangle VMN flat, right angled at M. VM = 12 is <b>O</b>, MN = 5 is <b>A</b> &rarr; tangent.
+    <span class="work">tan &theta; = 12 / 5 = 2.4<br>&theta; = tan<sup>&minus;1</sup>(2.4) = 67.3801&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 67.4&deg; (1 d.p.)</div>
+  <div class="tip"><b>Exam tip</b> The slant height comes free from the same triangle:
+  <span class="m">VN = &#8730;(12&sup2; + 5&sup2;) = &#8730;169 = 13</span> cm &mdash; the number you need for
+  the surface area of the pyramid.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A cone has base radius 6&nbsp;cm and slant height 14&nbsp;cm. Find (a) its vertical height, (b) the angle the slant height makes with the base.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Cut the cone vertically through the apex. The half cross-section is a right-angled triangle: radius along the base, height up the axis, slant height as the hypotenuse.
+    <span class="work">r = 6, &nbsp;l = 14, &nbsp;right angle at the centre</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Two sides known, no angle needed &rarr; Pythagoras. The slant height is the longest side, so subtract.
+    <span class="work">h&sup2; = 14&sup2; &minus; 6&sup2; = 196 &minus; 36 = 160<br>h = &#8730;160 = 12.6491&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) At the base rim the 6 cm radius is <b>A</b> and the 14 cm slant is <b>H</b> &rarr; cosine.
+    <span class="work">cos &theta; = 6 / 14 = 0.428571&hellip;<br>&theta; = cos<sup>&minus;1</sup>(0.428571&hellip;) = 64.6230&hellip;&deg;</span></div></div>
+  <div class="final">(a) h = 12.6 cm &nbsp;&nbsp; (b) &theta; = 64.6&deg;</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first &mdash; draw the flat triangle every time &mdash; then open the solution
+and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">A cuboid measures 9&nbsp;cm by 12&nbsp;cm by 8&nbsp;cm. Find the length of its space diagonal.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Base diagonal first.
+    <span class="work">AC&sup2; = 9&sup2; + 12&sup2; = 81 + 144 = 225</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Then the vertical triangle.
+    <span class="work">AG&sup2; = 225 + 8&sup2; = 289 &nbsp;&rarr;&nbsp; AG = &#8730;289 = 17</span></div></div>
+  <div class="final">The space diagonal is exactly 17 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">For that cuboid, find the angle the space diagonal makes with the base.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The projection is the base diagonal, <span class="m">AC = &#8730;225 = 15</span> cm.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Height 8 is <b>O</b>, AC = 15 is <b>A</b> &rarr; tangent.
+    <span class="work">tan &theta; = 8 / 15 &nbsp;&rarr;&nbsp; &theta; = tan<sup>&minus;1</sup>(0.5333&hellip;) = 28.0724&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 28.1&deg; (1 d.p.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A pyramid has a square base of side 8&nbsp;cm and a vertical height of 15&nbsp;cm. Find the slant height (apex to the midpoint of a base edge) and the angle between a sloping face and the base.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Half the base side is <span class="m">MN = 4</span> cm. Triangle VMN is right angled at M.
+    <span class="work">VN&sup2; = 15&sup2; + 4&sup2; = 225 + 16 = 241<br>VN = &#8730;241 = 15.5241&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The face&ndash;base angle sits at N: VM = 15 is <b>O</b>, MN = 4 is <b>A</b>.
+    <span class="work">tan &theta; = 15 / 4 = 3.75 &nbsp;&rarr;&nbsp; &theta; = 75.0685&hellip;&deg;</span></div></div>
+  <div class="final">slant height = 15.5 cm (3 s.f.); &nbsp; &theta; = 75.1&deg;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">A cone has base radius 9&nbsp;cm and vertical height 12&nbsp;cm. Find the angle between a slant height and the base.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">In the half cross-section the height 12 is <b>O</b> and the radius 9 is <b>A</b>.
+    <span class="work">tan &theta; = 12 / 9 = 1.3333&hellip; &nbsp;&rarr;&nbsp; &theta; = 53.1301&hellip;&deg;</span></div></div>
+  <div class="final">&theta; = 53.1&deg; (1 d.p.)</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">For the pyramid in Practice 3, find the length of a slant edge and the angle it makes with the base.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The projection of a slant edge is half the base <i>diagonal</i>.
+    <span class="work">AC&sup2; = 8&sup2; + 8&sup2; = 128 &nbsp;&rarr;&nbsp; AM = &#8730;128 &divide; 2 = 5.6568&hellip; &nbsp;(AM&sup2; = 32)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Pythagoras in triangle AMV.
+    <span class="work">VA&sup2; = 32 + 15&sup2; = 257 &nbsp;&rarr;&nbsp; VA = &#8730;257 = 16.0312&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Angle at A: VM = 15 is <b>O</b>, AM is <b>A</b>.
+    <span class="work">tan &theta; = 15 &divide; 5.6568&hellip; = 2.6516&hellip; &nbsp;&rarr;&nbsp; &theta; = 69.3352&hellip;&deg;</span></div></div>
+  <div class="final">slant edge = 16.0 cm (3 s.f.); &nbsp; &theta; = 69.3&deg;</div>
+  <div class="warn"><b>Compare</b> Slant edge 16.0 cm at 69.3&deg; versus slant height 15.5 cm at 75.1&deg;
+  &mdash; <i>edge</i> means corner, <i>face</i> means edge midpoint. Read the question carefully.</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Doing trigonometry on the 3D sketch</b>
+Lengths in a 3D drawing are distorted and its &ldquo;right angles&rdquo; often are not. Always redraw the
+triangle flat before you calculate &mdash; the flat sketch also earns method marks on its own.</div>
+<div class="warn"><b>Rounding the first triangle&rsquo;s answer</b>
+Carry the base diagonal forward in <b>squared</b> form (<span class="m">AC&sup2; = 100</span>), or store the
+full calculator value. Rounding to 3 s.f. mid-way loses accuracy marks in the final answer.</div>
+<div class="warn"><b>Measuring the angle to the wrong line</b>
+The angle between a line and a plane uses the line&rsquo;s <b>projection</b> &mdash; for a space diagonal
+that is the base <i>diagonal</i>, never a base edge. In a pyramid, mixing up the slant edge (to a corner)
+and the slant height (to an edge midpoint) changes both the length and the angle.</div>
+<div class="tip"><b>Exam tip</b>
+Every 3D answer can be sanity-checked: a space diagonal must beat every edge and face diagonal, and an
+angle of elevation must be between 0&deg; and 90&deg;. Ten seconds of checking catches most slips.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Write down the one-line formula for the space diagonal of an l &times; w &times; h cuboid.</span></summary>
+<div class="body"><div class="final">&#8730;(l&sup2; + w&sup2; + h&sup2;)</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">What is the projection of the space diagonal AG onto the base ABCD?</span></summary>
+<div class="body"><div class="final">The base diagonal AC &mdash; and the required angle is angle GAC.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">A cube has edge 5 cm. How long is its space diagonal?</span></summary>
+<div class="body"><div class="final">&#8730;(25 + 25 + 25) = &#8730;75 = 8.66 cm (3 s.f.)</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/15-9.html"><b>Revision notes</b><span>The full interactive notes for this topic, with cuboid and pyramid explorers to experiment with.</span></a>
+  <a href="../igcse-question-bank/trigonometry-questions.html"><b>Practice questions</b><span>Exam-style trigonometry questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="the-tangent-sine-and-cosine-ratios.html"><span>&larr; Previous</span><b>The Tangent, Sine and Cosine Ratios</b></a>
+  <a class="next" href="index.html"><span>More lessons &rarr;</span><b>All lessons</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order of Operations | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on BIDMAS, nested brackets, the fraction bar and calculator technique — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Order of Operations</h1>
+    <p>BIDMAS, nested brackets and the fraction bar &mdash; learn the rules that decide what a calculation actually means, and how to key it into a calculator without losing marks.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Apply BIDMAS &mdash; brackets, indices, division/multiplication, addition/subtraction &mdash; to evaluate any expression correctly.</li>
+  <li>Deal with nested brackets by working from the innermost pair outwards.</li>
+  <li>Recognise the fraction bar and the root sign as <b>hidden brackets</b> and treat them accordingly.</li>
+  <li>Explain why <span class="m">&minus;3&sup2;</span> and <span class="m">(&minus;3)&sup2;</span> are different numbers.</li>
+  <li>Key a multi-step calculation into a calculator with brackets in the right places.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>BIDMAS</span><span>brackets</span><span>indices</span><span>nested brackets</span><span>fraction bar</span><span>grouping symbol</span><span>left to right</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Work out <span class="m">6&sup2;</span>, <span class="m">2&sup3;</span> and <span class="m">&#8730;49</span>.</span></summary>
+<div class="body"><div class="final">6&sup2; = 36, &nbsp;2&sup3; = 8, &nbsp;&#8730;49 = 7</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Work out <span class="m">2 &times; (&minus;3)</span> and <span class="m">18 &minus; (&minus;6)</span>.</span></summary>
+<div class="body"><div class="final">2 &times; (&minus;3) = &minus;6; &nbsp;subtracting a negative adds, so 18 &minus; (&minus;6) = 24.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">What does <span class="m">2(9 &minus; 5)</span> mean, and what is its value?</span></summary>
+<div class="body"><div class="final">A number touching a bracket means multiply: 2 &times; (9 &minus; 5) = 2 &times; 4 = 8.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; BIDMAS &mdash; one agreed order</h3>
+<p>A calculation such as <span class="m">3 + 4 &times; 5</span> has only one correct value. Work left to
+right and you get 35; follow the agreed order and you get <b>23</b>. Your calculator follows the rules,
+so you must too.</p>
+<div class="def"><b>BIDMAS</b>
+<b>B</b>rackets &rarr; <b>I</b>ndices &rarr; <b>D</b>ivision and <b>M</b>ultiplication &rarr;
+<b>A</b>ddition and <b>S</b>ubtraction. Some books write <b>BODMAS</b> or <b>PEMDAS</b> &mdash; they mean
+exactly the same thing.</div>
+<div class="tw">
+<table>
+<thead><tr><th>Step</th><th>What it covers</th><th>Rule</th></tr></thead>
+<tbody>
+<tr><td><b>B</b>rackets</td><td><span class="m">( )</span>, <span class="m">[ ]</span> and anything acting as a bracket</td><td>Innermost bracket first, working outwards</td></tr>
+<tr><td><b>I</b>ndices</td><td>Powers <span class="m">x&sup2;, x&sup3;</span> and roots <span class="m">&#8730;x</span></td><td>Roots count as indices, so they come here too</td></tr>
+<tr><td><b>D</b>ivide and <b>M</b>ultiply</td><td><span class="m">&divide;</span> and <span class="m">&times;</span></td><td><b>Equal priority</b> &mdash; do them left to right</td></tr>
+<tr><td><b>A</b>dd and <b>S</b>ubtract</td><td><span class="m">+</span> and <span class="m">&minus;</span></td><td><b>Equal priority</b> &mdash; do them left to right</td></tr>
+</tbody>
+</table>
+</div>
+<div class="warn"><b>The most common mistake</b>
+D does <i>not</i> come before M, and A does <i>not</i> come before S &mdash; they are two pairs of equal
+rank, worked left to right. So <span class="m">20 &divide; 5 &times; 2 = 4 &times; 2 = 8</span> (not 2),
+and <span class="m">12 &minus; 4 + 3 = 8 + 3 = 11</span> (not 5).</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Work out <span class="m">7 + 3 &times; (10 &minus; 4)&sup2; &divide; 9</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><b>B</b>rackets first.
+    <span class="work">10 &minus; 4 = 6 &nbsp;&rarr;&nbsp; 7 + 3 &times; 6&sup2; &divide; 9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><b>I</b>ndices next.
+    <span class="work">6&sup2; = 36 &nbsp;&rarr;&nbsp; 7 + 3 &times; 36 &divide; 9</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><b>&times;</b> and <b>&divide;</b> from left to right &mdash; the multiplication is on the left, so it goes first.
+    <span class="work">3 &times; 36 = 108 &nbsp;&rarr;&nbsp; 7 + 108 &divide; 9<br>108 &divide; 9 = 12 &nbsp;&rarr;&nbsp; 7 + 12</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Finally the addition.
+    <span class="work">7 + 12 = 19</span></div></div>
+  <div class="final">19</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Brackets change the answer</h3>
+<p>Brackets are not decoration. The same three numbers with the same operations can give four different
+values, depending only on where the brackets sit.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Expression</th><th>Working</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><span class="m">2 + 3 &times; 4&sup2;</span></td><td><span class="m">2 + 3 &times; 16 = 2 + 48</span></td><td><b>50</b></td></tr>
+<tr><td><span class="m">(2 + 3) &times; 4&sup2;</span></td><td><span class="m">5 &times; 16</span></td><td><b>80</b></td></tr>
+<tr><td><span class="m">2 + (3 &times; 4)&sup2;</span></td><td><span class="m">2 + 12&sup2; = 2 + 144</span></td><td><b>146</b></td></tr>
+<tr><td><span class="m">((2 + 3) &times; 4)&sup2;</span></td><td><span class="m">(5 &times; 4)&sup2; = 20&sup2;</span></td><td><b>400</b></td></tr>
+</tbody>
+</table>
+</div>
+<p>When brackets sit inside brackets, always start with the <b>innermost</b> pair and work outwards.
+Square brackets <span class="m">[ ]</span> behave exactly like round ones &mdash; they just make the
+layers easier to see. Remember that a number written immediately before a bracket means multiply:
+<span class="m">4[&hellip;] = 4 &times; [&hellip;]</span>.</p>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">Work out <span class="m">4[2(9 &minus; 5) + 3&sup2;]</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Innermost bracket first.
+    <span class="work">9 &minus; 5 = 4 &nbsp;&rarr;&nbsp; 4[2 &times; 4 + 3&sup2;]</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Inside the square bracket, apply BIDMAS again: indices, then multiply, then add.
+    <span class="work">3&sup2; = 9<br>2 &times; 4 = 8<br>8 + 9 = 17</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Now the outside multiplication.
+    <span class="work">4 &times; 17 = 68</span></div></div>
+  <div class="final">68</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Hidden brackets: the fraction bar and the root sign</h3>
+<p>A horizontal fraction bar is a <b>grouping symbol</b>. Everything on the top is worked out as if it
+were in a bracket, everything on the bottom likewise, and only then do you divide. The root sign groups
+in exactly the same way.</p>
+<div class="formula"><span class="frac"><span>3&sup2; + 5 &times; 3</span><span>&#8730;49 &minus; 2 &times; 2</span></span>
+= <span class="frac"><span>9 + 15</span><span>7 &minus; 4</span></span>
+= <span class="frac"><span>24</span><span>3</span></span> = 8
+<small>The bar acts as brackets round the whole numerator and the whole denominator</small></div>
+<div class="warn"><b>Watch out</b>
+You cannot take a root term by term:
+<span class="m">&#8730;(9 + 16) = &#8730;25 = 5</span>, but
+<span class="m">&#8730;9 + &#8730;16 = 3 + 4 = 7</span>.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Evaluate <span class="frac"><span>2 &times; 3&sup3; &minus; 4</span><span>5 &minus; 3</span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Treat the numerator as a bracket. Indices first, then multiply, then subtract.
+    <span class="work">3&sup3; = 27<br>2 &times; 27 = 54<br>54 &minus; 4 = 50</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now the denominator.
+    <span class="work">5 &minus; 3 = 2</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide last of all.
+    <span class="work">50 &divide; 2 = 25</span></div></div>
+  <div class="final">25</div>
+  <div class="warn"><b>Watch out</b> Typed on one line this is
+  <span class="m">(2 &times; 3&sup3; &minus; 4) &divide; (5 &minus; 3)</span>. Leave the brackets out and
+  the calculator computes a completely different number.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Minus signs, indices and the calculator</h3>
+<div class="warn"><b>&minus;3&sup2; is not (&minus;3)&sup2;</b>
+The index binds to the 3 alone, so <span class="m">&minus;3&sup2;</span> means
+<span class="m">&minus;(3&sup2;) = &minus;9</span>. Only a bracket makes the minus sign part of the base:
+<span class="m">(&minus;3)&sup2; = (&minus;3) &times; (&minus;3) = 9</span>. Type both into your
+calculator now &mdash; it will agree.</div>
+<div class="grid two">
+  <div class="card">
+    <h4>Keying it in</h4>
+    <ul>
+      <li>Bracket the <b>whole</b> top and the <b>whole</b> bottom of a fraction, or use the fraction key.</li>
+      <li>Count that open and close brackets match before pressing <span class="m">=</span>.</li>
+      <li>A root key opens a bracket for you &mdash; close it in the right place.</li>
+    </ul>
+  </div>
+  <div class="card o">
+    <h4>The two minus keys</h4>
+    <ul>
+      <li><span class="m">(&minus;)</span> makes a number negative; <span class="m">&minus;</span> subtracts.</li>
+      <li>Never round mid-calculation &mdash; use <span class="m">Ans</span> or memory and round only the final answer.</li>
+    </ul>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Work out <span class="m">&minus;4&sup2; + (&minus;4)&sup2; + (&minus;2)&sup3;</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">In <span class="m">&minus;4&sup2;</span> the index applies to 4 only: square first, then take the negative.
+    <span class="work">&minus;4&sup2; = &minus;(4 &times; 4) = &minus;16</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The bracket makes the minus part of the base, and negative &times; negative is positive.
+    <span class="work">(&minus;4)&sup2; = (&minus;4) &times; (&minus;4) = 16</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">An <b>odd</b> power of a negative stays negative.
+    <span class="work">(&minus;2)&sup3; = (&minus;2)(&minus;2)(&minus;2) = &minus;8</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Add the three results.
+    <span class="work">&minus;16 + 16 + (&minus;8) = &minus;8</span></div></div>
+  <div class="final">&minus;8</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Work out (a) <span class="m">6 + 2 &times; 7</span> &nbsp;(b) <span class="m">(6 + 2) &times; 7</span> &nbsp;(c) <span class="m">18 &divide; 3 &times; 2</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Multiply before adding. <span class="work">6 + 14 = 20</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Bracket first. <span class="work">8 &times; 7 = 56</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) <span class="m">&divide;</span> and <span class="m">&times;</span> rank equally &mdash; left to right. <span class="work">18 &divide; 3 = 6, &nbsp;then&nbsp; 6 &times; 2 = 12</span></div></div>
+  <div class="final">(a) 20 &nbsp;&nbsp;(b) 56 &nbsp;&nbsp;(c) 12</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Work out <span class="m">5 &times; (12 &minus; 3 &times; 3) + 4</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Inside the bracket, multiply before subtracting.
+    <span class="work">3 &times; 3 = 9 &nbsp;&rarr;&nbsp; 12 &minus; 9 = 3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply, then add.
+    <span class="work">5 &times; 3 = 15 &nbsp;&rarr;&nbsp; 15 + 4 = 19</span></div></div>
+  <div class="final">19</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Work out <span class="m">2[7 + 3(6 &minus; 4)&sup2;]</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Innermost bracket, then its index.
+    <span class="work">6 &minus; 4 = 2 &nbsp;&rarr;&nbsp; 2&sup2; = 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Inside the square bracket: multiply, then add.
+    <span class="work">3 &times; 4 = 12 &nbsp;&rarr;&nbsp; 7 + 12 = 19</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Outside multiplication last.
+    <span class="work">2 &times; 19 = 38</span></div></div>
+  <div class="final">38</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Evaluate <span class="frac"><span>4&sup3; &minus; 4</span><span>2 + 3 &times; 2</span></span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Numerator as a bracket.
+    <span class="work">4&sup3; = 64 &nbsp;&rarr;&nbsp; 64 &minus; 4 = 60</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Denominator as a bracket &mdash; multiply before adding.
+    <span class="work">2 + 6 = 8</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide last.
+    <span class="work">60 &divide; 8 = 7.5</span></div></div>
+  <div class="final">7.5</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">Use a calculator to work out <span class="frac"><span>8.4 &minus; 1.7&sup2;</span><span>0.6 &times; 2.5</span></span>, correct to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Numerator: index before subtraction.
+    <span class="work">1.7&sup2; = 2.89 &nbsp;&rarr;&nbsp; 8.4 &minus; 2.89 = 5.51</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Denominator.
+    <span class="work">0.6 &times; 2.5 = 1.5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Divide, keep the full display, round only at the end.
+    <span class="work">5.51 &divide; 1.5 = 3.6733&hellip; &rarr; 3.67</span></div></div>
+  <div class="final">3.67 (3 s.f.)</div>
+  <div class="tip"><b>Keying it in</b> Type <span class="m">( 8.4 &minus; 1.7 x&sup2; ) &divide; ( 0.6 &times; 2.5 ) =</span>, or use the fraction key so the grouping is automatic.</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Doing D before M and A before S</b>
+Division/multiplication are one pair of equal rank, addition/subtraction another. Work each pair left to
+right: <span class="m">20 &divide; 5 &times; 2 = 8</span>, not 2; <span class="m">12 &minus; 4 + 3 = 11</span>, not 5.</div>
+<div class="warn"><b>Ignoring the multiplication in 18 &minus; 2(5 &minus; 8)</b>
+A very common answer is 12, from doing <span class="m">18 &minus; 2 = 16</span> first. The bracket gives
+<span class="m">&minus;3</span>, the multiplication outranks the subtraction, and
+<span class="m">18 &minus; 2 &times; (&minus;3) = 18 + 6 = 24</span>.</div>
+<div class="warn"><b>Dropping brackets on a fraction</b>
+The fraction bar groups the whole top and the whole bottom. On one calculator line you must write the
+brackets yourself &mdash; leaving them out silently computes a different expression.</div>
+<div class="tip"><b>Exam tip</b>
+Never round part-way through a calculation. Keep the full display, or use <span class="m">Ans</span> and
+the memory keys, and round only the <b>final</b> answer &mdash; to 3 significant figures unless the
+question says otherwise.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Work out <span class="m">3 + 4 &times; 5</span>.</span></summary>
+<div class="body"><div class="final">23 &mdash; multiplication before addition.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Work out <span class="m">&minus;5&sup2;</span> and <span class="m">(&minus;5)&sup2;</span>.</span></summary>
+<div class="body"><div class="final">&minus;5&sup2; = &minus;25 &nbsp;but&nbsp; (&minus;5)&sup2; = 25.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">True or false: <span class="m">20 &divide; 5 &times; 2 = 2</span>.</span></summary>
+<div class="body"><div class="final">False &mdash; left to right gives 4 &times; 2 = 8. Only 20 &divide; (5 &times; 2) equals 2.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/1-6.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a step-by-step BIDMAS evaluator to explore.</span></a>
+  <a href="../igcse-question-bank/number-facts-questions.html"><b>Practice questions</b><span>Exam-style questions on number facts, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="powers-roots-and-laws-of-indices.html"><span>&larr; Previous lesson</span><b>Powers, Roots and Laws of Indices</b></a>
+  <a class="next" href="rounding-and-estimating.html"><span>Next lesson &rarr;</span><b>Rounding and Estimating</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

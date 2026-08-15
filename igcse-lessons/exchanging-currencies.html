@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exchanging Currencies | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on reading exchange rates, converting money in both directions, allowing for commission and comparing prices in two countries.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Exchanging Currencies</h1>
+    <p>Read an exchange rate correctly, convert money in both directions, allow for commission and bank charges, and compare prices across two countries.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Read an exchange rate and decide whether to <b>multiply or divide</b> when converting.</li>
+  <li>Rewrite a rate the other way round using its <b>reciprocal</b>.</li>
+  <li>Allow for a <b>percentage commission</b> or a <b>fixed bank charge</b> in a conversion.</li>
+  <li>Compare the price of the same item in <b>two countries</b> and state the difference in the currency asked for.</li>
+  <li>Sense-check every answer and give money to <b>2 decimal places</b>.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>exchange rate</span><span>currency</span><span>convert</span><span>reciprocal</span><span>commission</span><span>multiplier</span><span>fixed charge</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Write 97.5% as a decimal multiplier.</span></summary>
+<div class="body"><div class="final">0.975 &mdash; so &ldquo;97.5% of&rdquo; means &ldquo;&times; 0.975&rdquo;.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Work out <span class="m">1 &divide; 1.25</span> without a calculator.</span></summary>
+<div class="body"><div class="final">0.8 &mdash; because 1.25 = <span class="frac"><span>5</span><span>4</span></span>, and its reciprocal is <span class="frac"><span>4</span><span>5</span></span> = 0.8.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Round 505.882&hellip; to 2 decimal places.</span></summary>
+<div class="body"><div class="final">505.88 &mdash; money answers are almost always given to 2 d.p.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Reading an exchange rate</h3>
+<p>An <b>exchange rate</b> is a conversion rate between two currencies. It is always a statement about
+<b>one</b> unit of one currency &mdash; and spotting which currency the <b>1</b> belongs to decides whether
+you multiply or divide. Get that wrong and the whole question collapses, so read the rate slowly.</p>
+<div class="def"><b>Definition</b>
+The rate <span class="m">$1 = &euro;0.85</span> means one dollar buys 0.85 euros. The <b>1</b> belongs to
+the dollar, so every dollar handed over comes back as 0.85 euros.</div>
+<div class="tw">
+<table>
+<thead><tr><th>Rate as written</th><th>One unit of&hellip;</th><th>To go that way</th><th>To come back</th></tr></thead>
+<tbody>
+<tr><td><span class="m">$1 = &euro;0.85</span></td><td>dollars</td><td>dollars &rarr; euros: <b>&times; 0.85</b></td><td>euros &rarr; dollars: <b>&divide; 0.85</b></td></tr>
+<tr><td><span class="m">&pound;1 = $1.25</span></td><td>pounds</td><td>pounds &rarr; dollars: <b>&times; 1.25</b></td><td>dollars &rarr; pounds: <b>&divide; 1.25</b></td></tr>
+<tr><td><span class="m">$1 = 3.75</span> riyals</td><td>dollars</td><td>dollars &rarr; riyals: <b>&times; 3.75</b></td><td>riyals &rarr; dollars: <b>&divide; 3.75</b></td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<h4>The two directions, in one picture</h4>
+<svg viewBox="0 0 640 200" role="img" aria-label="Diagram showing dollars multiplied by 0.85 give euros, and euros divided by 0.85 give dollars" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <rect x="40" y="60" width="180" height="80" rx="14" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="130" y="96" font-size="16" font-weight="bold" fill="#0f2d6b" text-anchor="middle">Dollars</text>
+  <text x="130" y="120" font-size="14" fill="#4a5b7a" text-anchor="middle">$500.00</text>
+  <rect x="420" y="60" width="180" height="80" rx="14" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="510" y="96" font-size="16" font-weight="bold" fill="#0f2d6b" text-anchor="middle">Euros</text>
+  <text x="510" y="120" font-size="14" fill="#4a5b7a" text-anchor="middle">&euro;425.00</text>
+  <path d="M225 84 L410 84" stroke="#e05c2a" stroke-width="3" fill="none"/>
+  <path d="M410 84 l-13 -6 l0 12 z" fill="#e05c2a"/>
+  <text x="317" y="72" font-size="14" font-weight="bold" fill="#e05c2a" text-anchor="middle">&times; 0.85</text>
+  <path d="M415 120 L230 120" stroke="#6d28d9" stroke-width="3" fill="none"/>
+  <path d="M230 120 l13 -6 l0 12 z" fill="#6d28d9"/>
+  <text x="322" y="142" font-size="14" font-weight="bold" fill="#6d28d9" text-anchor="middle">&divide; 0.85</text>
+  <text x="320" y="180" font-size="12.5" fill="#4a5b7a" text-anchor="middle">Rate: $1 = &euro;0.85</text>
+</svg>
+</div>
+<div class="formula">Should the answer be a <b>bigger</b> number or a <b>smaller</b> number?
+<small>The sense check that saves the mark &mdash; ask it before you calculate</small></div>
+<p>If <span class="m">$1 = &euro;0.85</span>, a dollar is worth less than a euro, so an amount written in
+euros is a <b>smaller number</b> than the same value in dollars. Dollars &rarr; euros must shrink the
+number (multiply by 0.85); euros &rarr; dollars must grow it (divide by 0.85). The number changes &mdash;
+the value does not.</p>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">The exchange rate is <span class="m">$1 = &euro;0.85</span>. (a) Convert $250 into euros. (b) Convert &euro;340 into dollars.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) The rate is written for one dollar and we start in dollars, so multiply.
+    <span class="work">250 &times; 0.85 = 212.5 &nbsp;&rarr;&nbsp; &euro;212.50</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Sense check: 0.85 &lt; 1, so the answer should be smaller than 250. It is.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Starting in euros &mdash; the other currency &mdash; so divide.
+    <span class="work">340 &divide; 0.85 = 400</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Check both by converting back.
+    <span class="work">212.50 &divide; 0.85 = 250 &#10003; &nbsp;&nbsp; 400 &times; 0.85 = 340 &#10003;</span></div></div>
+  <div class="final">(a) &euro;212.50 &nbsp;&nbsp;&nbsp; (b) $400.00</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Rates written the other way round</h3>
+<p>The same relationship can be written from either currency's point of view, and the two versions are
+<b>reciprocals</b> of each other.</p>
+<div class="formula">&pound;1 = $1.25 &nbsp;&hArr;&nbsp; $1 = &pound;<span class="frac"><span>1</span><span>1.25</span></span> = &pound;0.80
+<small>1.25 &times; 0.80 = 1, as it must be</small></div>
+<div class="tip"><b>Exam tip</b> If a rate makes you nervous, rewrite it so the <b>1</b> sits on the currency
+you are starting from. Then you always multiply, and there is nothing left to get wrong.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">The rate is <span class="m">&pound;1 = $1.25</span>. (a) Write the rate in the form <span class="m">$1 = &pound;&hellip;</span> (b) Convert $90 into pounds using each version of the rate.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Divide both sides by 1.25 so the dollar side becomes 1.
+    <span class="work">$1 = &pound;(1 &divide; 1.25) = &pound;0.80</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Using <span class="m">$1 = &pound;0.80</span>: we start in the currency the rate is written for, so multiply.
+    <span class="work">90 &times; 0.80 = 72</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Using <span class="m">&pound;1 = $1.25</span>: we start in the other currency, so divide. Same answer, as it must be.
+    <span class="work">90 &divide; 1.25 = 72</span></div></div>
+  <div class="final">(a) $1 = &pound;0.80 &nbsp;&nbsp;&nbsp; (b) &pound;72.00</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Commission and bank charges</h3>
+<p>A bank does not swap your money for free. It takes a <b>percentage commission</b>, a <b>fixed charge</b>,
+or both &mdash; normally in the currency you are handing over. The usual order is:
+<b>subtract the charge first, then convert what is left</b>.</p>
+<div class="grid two">
+  <div class="card o"><h4>Percentage commission</h4>
+    <p>Commission of <span class="m">2.5%</span> leaves you with <span class="m">100% &minus; 2.5% = 97.5%</span>
+    of your money &mdash; one multiplication: <span class="m">&times; 0.975</span>.</p></div>
+  <div class="card p"><h4>Fixed charge</h4>
+    <p>A flat fee such as <span class="m">$3.50</span> is simply subtracted, whatever the size of the
+    transaction. Fixed charges hurt small exchanges far more than large ones.</p></div>
+</div>
+<div class="note"><b>Note</b> For a <i>percentage</i> commission the order does not matter &mdash;
+<span class="m">(600 &times; 0.975) &times; 0.85</span> equals <span class="m">(600 &times; 0.85) &times; 0.975</span>.
+For a <i>fixed</i> charge the order matters a great deal, so read carefully which currency the fee is taken in.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A bank changes dollars into euros at <span class="m">$1 = &euro;0.85</span> and charges 2.5% commission. How many euros does a customer receive for $600?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Commission is taken from the dollars, leaving 97.5%.
+    <span class="work">600 &times; 0.975 = 585</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Convert what is left. Starting in dollars, so multiply.
+    <span class="work">585 &times; 0.85 = 497.25</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">The other order gives the same result &mdash; useful as a check.
+    <span class="work">600 &times; 0.85 = 510 &nbsp;&rarr;&nbsp; 510 &times; 0.975 = 497.25 &#10003;</span></div></div>
+  <div class="final">&euro;497.25</div>
+  <div class="warn"><b>Watch out</b> 2.5% commission does <b>not</b> mean &times; 0.25 or &times; 2.5.
+  Convert the percentage to a multiplier first: <span class="m">1 &minus; 0.025 = 0.975</span>.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Comparing prices in two countries</h3>
+<p>&ldquo;Which is cheaper?&rdquo; questions look harder than they are. You cannot compare 520 of one
+currency with 430 of another, so:</p>
+<div class="card g">
+<h4>The method</h4>
+<ol>
+  <li>Choose <b>one</b> currency to work in &mdash; usually the one the answer is asked for in.</li>
+  <li>Convert the other price into that currency.</li>
+  <li>Compare the two numbers and <b>state clearly</b> which is cheaper.</li>
+  <li>Subtract to find the difference, in the currency the question asked for.</li>
+</ol>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A camera costs $520 in the USA and &euro;430 in France. The exchange rate is <span class="m">$1 = &euro;0.85</span>. In which country is the camera cheaper, and by how much in dollars?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The answer is wanted in dollars, so work in dollars. Convert the French price &mdash; starting in euros, so divide.
+    <span class="work">430 &divide; 0.85 = 505.882&hellip; &nbsp;&rarr;&nbsp; $505.88 (2 d.p.)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Compare: $505.88 &lt; $520, so France is cheaper. Subtract using the <i>unrounded</i> value.
+    <span class="work">520 &minus; 505.882&hellip; = 14.117&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Check the same comparison in euros.
+    <span class="work">520 &times; 0.85 = 442.00 &nbsp;&rarr;&nbsp; 442 &minus; 430 = &euro;12.00<br>12 &divide; 0.85 = $14.12 &#10003;</span></div></div>
+  <div class="final">Cheaper in France, by $14.12</div>
+  <div class="warn"><b>Watch out</b> Writing &ldquo;$505.88&rdquo; scores the calculation mark but not the
+  conclusion mark. Finish with the sentence: <i>the camera is cheaper in France, by $14.12</i>.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">The rate is <span class="m">$1 = 3.75</span> riyals. (a) Convert $340 into riyals. (b) Convert 2550 riyals into dollars.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Starting in dollars, so multiply.
+    <span class="work">340 &times; 3.75 = 1275</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Starting in riyals, so divide.
+    <span class="work">2550 &divide; 3.75 = 680</span></div></div>
+  <div class="final">(a) 1275.00 riyals &nbsp;&nbsp;&nbsp; (b) $680.00</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">The rate is <span class="m">&pound;1 = $1.25</span>. (a) Write it in the form <span class="m">$1 = &pound;&hellip;</span> (b) Convert $150 into pounds.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Take the reciprocal.
+    <span class="work">$1 = &pound;(1 &divide; 1.25) = &pound;0.80</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Either multiply by 0.80 or divide by 1.25.
+    <span class="work">150 &times; 0.80 = 120 &nbsp;&nbsp; (150 &divide; 1.25 = 120 &#10003;)</span></div></div>
+  <div class="final">(a) $1 = &pound;0.80 &nbsp;&nbsp;&nbsp; (b) &pound;120.00</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A bank changes dollars into euros at <span class="m">$1 = &euro;0.85</span> and charges 3% commission. How many euros does a customer get for $400?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">3% commission leaves 97%.
+    <span class="work">400 &times; 0.97 = 388</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Convert what is left &mdash; starting in dollars, so multiply.
+    <span class="work">388 &times; 0.85 = 329.80</span></div></div>
+  <div class="final">&euro;329.80</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">A jacket costs $96 in the USA and &euro;78 in Spain, with <span class="m">$1 = &euro;0.85</span>. Which is cheaper, and by how much in dollars?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Convert the Spanish price into dollars &mdash; starting in euros, so divide.
+    <span class="work">78 &divide; 0.85 = 91.7647&hellip; &nbsp;&rarr;&nbsp; $91.76</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Compare and subtract, rounding only at the end.
+    <span class="work">96 &minus; 91.7647&hellip; = 4.235&hellip; &nbsp;&rarr;&nbsp; $4.24</span></div></div>
+  <div class="final">Cheaper in Spain, by $4.24</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">Omar changes $2000 into rupees at <span class="m">$1 = 82</span> rupees, paying 1.5% commission. He spends 119540 rupees, then changes the rest back at <span class="m">$1 = 84</span> rupees with no further charge. How many dollars does he receive?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Commission first: 1.5% taken means 98.5% remains.
+    <span class="work">2000 &times; 0.985 = 1970</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Convert to rupees &mdash; starting in dollars, so multiply.
+    <span class="work">1970 &times; 82 = 161540 rupees</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Take off what he spends.
+    <span class="work">161540 &minus; 119540 = 42000 rupees</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Coming back at the new rate, divide.
+    <span class="work">42000 &divide; 84 = 500</span></div></div>
+  <div class="final">$500.00</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Multiplying when you should divide</b>
+Converting &euro;340 at <span class="m">$1 = &euro;0.85</span> by multiplying gives 289 &mdash; which looks
+perfectly respectable. Only the sense check catches it: a dollar is the weaker unit here, so the dollar
+amount must be a <b>bigger</b> number. Do the sense check every single time.</div>
+<div class="warn"><b>Turning commission into the wrong multiplier</b>
+2.5% commission is not &times; 0.25, &times; 2.5 or &times; 0.75. Take it from 100% first:
+<span class="m">100% &minus; 2.5% = 97.5%</span>, so multiply by 0.975.</div>
+<div class="warn"><b>Not answering the question</b>
+In a &ldquo;which country is cheaper?&rdquo; question, a bare number is not a conclusion. State which
+country, and give the difference in the currency the question asked for.</div>
+<div class="tip"><b>Exam tip</b>
+Check every conversion by <b>converting back</b> &mdash; it takes five seconds and catches the
+multiply/divide error. Give money to <b>2 decimal places</b>, and never round part-way through a
+multi-step question: keep the full figure in the calculator and round only at the end.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">The rate is <span class="m">$1 = &euro;0.90</span>. Convert $200 into euros.</span></summary>
+<div class="body"><div class="final">200 &times; 0.90 = &euro;180.00</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">With the same rate, which operation converts euros into dollars?</span></summary>
+<div class="body"><div class="final">Divide by 0.90 &mdash; you are starting in the currency the 1 does <i>not</i> belong to.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">What single multiplier applies a 2% commission?</span></summary>
+<div class="body"><div class="final">&times; 0.98 &mdash; because 100% &minus; 2% = 98% remains.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/13-5.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a currency converter to explore.</span></a>
+  <a href="../igcse-question-bank/foreign-exchange-questions.html"><b>Practice questions</b><span>Exam-style questions on foreign exchange, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="buying-and-selling.html"><span>&larr; Previous lesson</span><b>Buying and Selling</b></a>
+  <a class="next" href="using-letters.html"><span>Next lesson &rarr;</span><b>Using Letters</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

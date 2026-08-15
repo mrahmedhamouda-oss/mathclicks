@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scale Drawings | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on scale drawings — reading and writing scales, converting between drawing and real life in both directions, handling areas with the squared factor, and choosing a suitable scale.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Geometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Scale Drawings</h1>
+    <p>Read a scale, convert between a drawing and real life in both directions, keep your units straight, and remember that areas scale with the factor <i>squared</i>.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Interpret a scale written as a ratio <span class="m">1 : n</span> or in words such as &ldquo;1 cm represents 2 km&rdquo;, and convert between the two forms.</li>
+  <li>Convert a length from the drawing to real life (multiply by <span class="m">n</span>) and from real life to the drawing (divide by <span class="m">n</span>).</li>
+  <li>Use the squared factor <span class="m">k&sup2;</span> when converting areas between a map and real life.</li>
+  <li>Choose a suitable, friendly scale so that a drawing is as large as possible while still fitting the space.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>scale</span><span>scale factor</span><span>ratio</span><span>map</span><span>scale drawing</span><span>area factor</span><span>plan</span><span>elevation</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Convert 350&nbsp;000 cm into metres, and then into kilometres.</span></summary>
+<div class="body"><div class="final">350&nbsp;000 cm &divide; 100 = 3500 m; 3500 &divide; 1000 = 3.5 km</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Write the ratio <span class="m">4 : 20&nbsp;000</span> in the form <span class="m">1 : n</span>.</span></summary>
+<div class="body"><div class="final">Divide both sides by 4: the ratio is 1 : 5000.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">How many cm&sup2; are there in 1 m&sup2;?</span></summary>
+<div class="body"><div class="final">1 m&sup2; = 100 cm &times; 100 cm = 10&nbsp;000 cm&sup2; &mdash; the conversion gets squared, not doubled.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; What a scale means</h3>
+<p>A <b>scale drawing</b> is a picture of something real, drawn so that every length is reduced (or enlarged)
+by the same factor. A map, a floor plan and a model aeroplane are all scale drawings, and the <b>scale</b>
+tells you how to move between the drawing and real life.</p>
+<div class="def"><b>Definition</b>
+A <b>scale</b> is the ratio <span class="m">drawing length : real length</span>, with both lengths measured
+in the <b>same unit</b>. It is written with the drawing side reduced to 1, for example
+<span class="m">1 : 50&nbsp;000</span>. The number <span class="m">n</span> in <span class="m">1 : n</span>
+is the <b>scale factor</b>.</div>
+<div class="grid two">
+  <div class="card">
+    <h4>As a ratio: <span class="m">1 : n</span></h4>
+    <p><span class="m">1 : 50&nbsp;000</span> means 1 unit on the drawing represents 50&nbsp;000 of the
+    <b>same</b> units in real life. No units are written, because it works for any unit: 1 cm represents
+    50&nbsp;000 cm, and 1 inch represents 50&nbsp;000 inches.</p>
+  </div>
+  <div class="card o">
+    <h4>In words: &ldquo;1 cm represents 2 km&rdquo;</h4>
+    <p>Here the units differ on the two sides &mdash; friendlier for a map. To turn it back into a ratio,
+    make the units match first: <span class="m">2 km = 200&nbsp;000 cm</span>, so this is the scale
+    <span class="m">1 : 200&nbsp;000</span>.</p>
+  </div>
+</div>
+<div class="card g">
+<h4>The same house, drawn to a scale of 1 cm to 2 m</h4>
+<svg viewBox="0 0 640 270" role="img" aria-label="A small drawing of a house 4 cm wide next to the real house 8 m wide" style="max-width:min(100%,560px);height:auto;display:block;margin:0 auto">
+  <defs><marker id="s1a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#e05c2a"/></marker></defs>
+  <polygon points="50,150 120,105 190,150" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <rect x="60" y="150" width="120" height="70" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <rect x="105" y="185" width="30" height="35" fill="#ffffff" stroke="#1a4fa0" stroke-width="1.5"/>
+  <line x1="60" y1="238" x2="180" y2="238" stroke="#0f2d6b" stroke-width="1.5"/>
+  <text x="120" y="256" font-size="14" text-anchor="middle" fill="#0f2d6b">4 cm</text>
+  <text x="120" y="92" font-size="13" text-anchor="middle" fill="#4a5b7a">on the drawing</text>
+  <polygon points="368,90 480,20 592,90" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <rect x="380" y="90" width="200" height="130" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <rect x="462" y="165" width="36" height="55" fill="#ffffff" stroke="#1a4fa0" stroke-width="1.5"/>
+  <line x1="380" y1="238" x2="580" y2="238" stroke="#0f2d6b" stroke-width="1.5"/>
+  <text x="480" y="256" font-size="14" text-anchor="middle" fill="#0f2d6b">8 m</text>
+  <text x="480" y="12" font-size="13" text-anchor="middle" fill="#4a5b7a">in real life</text>
+  <line x1="205" y1="150" x2="352" y2="150" stroke="#e05c2a" stroke-width="2.5" marker-end="url(#s1a)"/>
+  <text x="279" y="138" font-size="14" text-anchor="middle" fill="#e05c2a">&times; 200</text>
+  <text x="279" y="176" font-size="12" text-anchor="middle" fill="#4a5b7a">1 cm represents 2 m</text>
+  <text x="279" y="194" font-size="12" text-anchor="middle" fill="#4a5b7a">scale 1 : 200</text>
+</svg>
+</div>
+<div class="warn"><b>Watch out</b>
+A ratio scale has <b>no units</b>. Writing &ldquo;1 cm : 50&nbsp;000 km&rdquo; is wrong, and so is
+&ldquo;the scale is 50&nbsp;000&rdquo;. Write either <span class="m">1 : 50&nbsp;000</span> or
+&ldquo;1 cm represents 0.5 km&rdquo;.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">A map has a scale of <span class="m">1 : 25&nbsp;000</span>. Write this scale in the form &ldquo;1 cm represents &hellip;&rdquo;, in metres and in kilometres.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 640 190" role="img" aria-label="Chain of conversions from 1 cm on the map to 0.25 km" style="max-width:min(100%,560px);height:auto;display:block;margin:0 auto">
+    <defs><marker id="s2a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#1a4fa0"/></marker></defs>
+    <rect x="20" y="70" width="140" height="56" rx="10" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+    <text x="90" y="104" font-size="14" text-anchor="middle" fill="#0f2d6b">1 cm on map</text>
+    <line x1="163" y1="98" x2="202" y2="98" stroke="#1a4fa0" stroke-width="2" marker-end="url(#s2a)"/>
+    <text x="182" y="60" font-size="12.5" text-anchor="middle" fill="#e05c2a">&times; 25 000</text>
+    <rect x="205" y="70" width="130" height="56" rx="10" fill="#ffffff" stroke="#1a4fa0" stroke-width="2"/>
+    <text x="270" y="104" font-size="14" text-anchor="middle" fill="#0f2d6b">25 000 cm</text>
+    <line x1="338" y1="98" x2="377" y2="98" stroke="#1a4fa0" stroke-width="2" marker-end="url(#s2a)"/>
+    <text x="357" y="60" font-size="12.5" text-anchor="middle" fill="#e05c2a">&divide; 100</text>
+    <rect x="380" y="70" width="110" height="56" rx="10" fill="#ffffff" stroke="#1a4fa0" stroke-width="2"/>
+    <text x="435" y="104" font-size="14" text-anchor="middle" fill="#0f2d6b">250 m</text>
+    <line x1="493" y1="98" x2="532" y2="98" stroke="#1a4fa0" stroke-width="2" marker-end="url(#s2a)"/>
+    <text x="512" y="60" font-size="12.5" text-anchor="middle" fill="#e05c2a">&divide; 1000</text>
+    <rect x="535" y="70" width="95" height="56" rx="10" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+    <text x="582" y="104" font-size="14" text-anchor="middle" fill="#16a34a">0.25 km</text>
+    <text x="320" y="165" font-size="12.5" text-anchor="middle" fill="#4a5b7a">100 cm = 1 m&nbsp;&nbsp;&middot;&nbsp;&nbsp;1000 m = 1 km</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Start with the ratio. Both sides are in the <b>same unit</b>.
+    <span class="work">1 cm on the map &rarr; 25 000 cm in real life</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Convert centimetres to metres by dividing by 100.
+    <span class="work">25 000 &divide; 100 = 250 m</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Convert metres to kilometres by dividing by 1000.
+    <span class="work">250 &divide; 1000 = 0.25 km</span></div></div>
+  <div class="final">1 cm represents 250 m, that is 0.25 km</div>
+  <div class="tip"><b>Exam tip</b> Learn the two common ones by heart:
+  <span class="m">1 : 50&nbsp;000</span> is &ldquo;1 cm to 0.5 km&rdquo; and
+  <span class="m">1 : 100&nbsp;000</span> is &ldquo;1 cm to 1 km&rdquo;. Everything else you can build from
+  <span class="m">&divide;100</span> then <span class="m">&divide;1000</span>.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Converting in both directions</h3>
+<p>Only two operations exist, and choosing the right one is the whole battle.</p>
+<div class="grid two">
+  <div class="card">
+    <h4>Drawing &rarr; real</h4>
+    <p>You are making things <b>bigger</b>, so <b>multiply</b>.</p>
+    <div class="formula">real = drawing &times; n</div>
+  </div>
+  <div class="card o">
+    <h4>Real &rarr; drawing</h4>
+    <p>You are making things <b>smaller</b>, so <b>divide</b>.</p>
+    <div class="formula">drawing = real &divide; n</div>
+  </div>
+</div>
+<div class="tip"><b>Exam tip</b> Before you press a single calculator button, ask: &ldquo;should my answer be
+bigger or smaller than the number I started with?&rdquo; On a <span class="m">1 : 50&nbsp;000</span> map a real
+distance is always a much bigger number than the map distance. That one sentence catches nearly every
+&times;/&divide; slip.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">A map is drawn to a scale of <span class="m">1 : 50&nbsp;000</span>. (a) Two villages are 7.4 cm apart on the map. Find the real distance in km. (b) A straight road is 12 km long. How long is it on the map?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Map to real, so <b>multiply</b> by the scale factor.
+    Keep everything in centimetres first.
+    <span class="work">7.4 &times; 50 000 = 370 000 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Now convert to kilometres: divide by 100, then by 1000.
+    <span class="work">370 000 cm = 3700 m = 3.7 km</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(b) Real to map, so <b>divide</b>. Convert the real
+    length to centimetres first so the units match the scale.
+    <span class="work">12 km = 12 000 m = 1 200 000 cm</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Divide by the scale factor.
+    <span class="work">1 200 000 &divide; 50 000 = 24 cm</span></div></div>
+  <div class="final">(a) 3.7 km &nbsp;&nbsp;&nbsp; (b) 24 cm</div>
+  <div class="warn"><b>Watch out</b> Never mix units inside one calculation. Get <i>both</i> sides into
+  centimetres, do the multiplication or division, and only then convert the answer to the unit the
+  question asks for.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Maps and area &mdash; the factor gets squared</h3>
+<p>Distances on a map behave exactly as you expect: multiply by the scale factor. <b>Areas do not.</b>
+An area is a length multiplied by a length, so <b>both</b> lengths get multiplied by the scale factor.</p>
+<div class="def"><b>Key idea</b>
+If lengths are multiplied by <span class="m">k</span>, then areas are multiplied by
+<span class="m">k&sup2;</span> (and volumes by <span class="m">k&sup3;</span>).</div>
+<div class="card">
+<h4>Why the factor is squared</h4>
+<svg viewBox="0 0 640 290" role="img" aria-label="A 1 by 1 square enlarged by scale factor 3 becomes a 3 by 3 square holding nine copies" style="max-width:min(100%,560px);height:auto;display:block;margin:0 auto">
+  <defs><marker id="s3a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#e05c2a"/></marker></defs>
+  <rect x="55" y="130" width="60" height="60" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="85" y="166" font-size="14" text-anchor="middle" fill="#0f2d6b">1</text>
+  <text x="85" y="212" font-size="13" text-anchor="middle" fill="#4a5b7a">side 1</text>
+  <text x="85" y="230" font-size="13" text-anchor="middle" fill="#4a5b7a">area 1</text>
+  <line x1="140" y1="160" x2="270" y2="160" stroke="#e05c2a" stroke-width="2.5" marker-end="url(#s3a)"/>
+  <text x="205" y="148" font-size="13.5" text-anchor="middle" fill="#e05c2a">each side &times; 3</text>
+  <rect x="300" y="70" width="180" height="180" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <line x1="360" y1="70" x2="360" y2="250" stroke="#1a4fa0" stroke-width="1"/>
+  <line x1="420" y1="70" x2="420" y2="250" stroke="#1a4fa0" stroke-width="1"/>
+  <line x1="300" y1="130" x2="480" y2="130" stroke="#1a4fa0" stroke-width="1"/>
+  <line x1="300" y1="190" x2="480" y2="190" stroke="#1a4fa0" stroke-width="1"/>
+  <text x="330" y="106" font-size="13" text-anchor="middle" fill="#0f2d6b">1</text>
+  <text x="390" y="106" font-size="13" text-anchor="middle" fill="#0f2d6b">2</text>
+  <text x="450" y="106" font-size="13" text-anchor="middle" fill="#0f2d6b">3</text>
+  <text x="330" y="166" font-size="13" text-anchor="middle" fill="#0f2d6b">4</text>
+  <text x="390" y="166" font-size="13" text-anchor="middle" fill="#0f2d6b">5</text>
+  <text x="450" y="166" font-size="13" text-anchor="middle" fill="#0f2d6b">6</text>
+  <text x="330" y="226" font-size="13" text-anchor="middle" fill="#0f2d6b">7</text>
+  <text x="390" y="226" font-size="13" text-anchor="middle" fill="#0f2d6b">8</text>
+  <text x="450" y="226" font-size="13" text-anchor="middle" fill="#0f2d6b">9</text>
+  <text x="390" y="272" font-size="13" text-anchor="middle" fill="#4a5b7a">side 3, area 3&sup2; = 9</text>
+  <text x="560" y="140" font-size="14" text-anchor="middle" fill="#16a34a">length &times; k</text>
+  <text x="560" y="166" font-size="14" text-anchor="middle" fill="#16a34a">area &times; k&sup2;</text>
+</svg>
+</div>
+<p>In practice the safest route is to work out what <b>1 cm represents</b> in a sensible unit first, then
+square that number to get what <b>1 cm&sup2;</b> represents.</p>
+<div class="formula">1 cm &rarr; 0.25 km &nbsp;&nbsp;so&nbsp;&nbsp; 1 cm&sup2; &rarr; 0.25&sup2; = 0.0625 km&sup2;
+<small>Square the &ldquo;1 cm represents&rdquo; number, not the ratio</small></div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">A map has a scale of <span class="m">1 : 25&nbsp;000</span>. A forest covers 12 cm&sup2; on the map. Find the real area of the forest in km&sup2;.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Work out what 1 cm represents, in kilometres.
+    <span class="work">25 000 cm = 250 m = 0.25 km</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Square it to find what 1 cm&sup2; represents.
+    <span class="work">0.25&sup2; = 0.0625, so 1 cm&sup2; &rarr; 0.0625 km&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Multiply by the map area.
+    <span class="work">12 &times; 0.0625 = 0.75 km&sup2;</span></div></div>
+  <div class="final">real area = 0.75 km&sup2;</div>
+  <div class="note"><b>Check it the long way</b>
+  <span class="m">12 &times; 25&nbsp;000&sup2; = 7.5 &times; 10<sup>9</sup></span> cm&sup2;, and
+  <span class="m">1 km&sup2; = 10<sup>10</sup></span> cm&sup2;, so the area is
+  <span class="m">7.5 &times; 10<sup>9</sup> &divide; 10<sup>10</sup> = 0.75</span> km&sup2;. Same answer,
+  many more chances to slip.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Choosing a scale and drawing accurately</h3>
+<p>If a question says &ldquo;choose a suitable scale&rdquo;, you get the marks for a scale that makes the
+drawing <b>as large as possible while still fitting the space</b>, and that is <b>easy to work with</b>.</p>
+<div class="card p">
+<h4>How to choose a scale in three moves</h4>
+<ol>
+  <li>Find the <b>largest real length</b> you must draw.</li>
+  <li>Divide it by the space available: this is the smallest number of real units each centimetre must carry.</li>
+  <li><b>Round that up</b> to a friendly number &mdash; 1, 2, 5, 10, 20, 50, 100, 200, 500, &hellip;</li>
+</ol>
+</div>
+<div class="note"><b>Note</b> Friendly scales matter because you will have to convert several lengths by hand.
+&ldquo;1 cm to 5 m&rdquo; is pleasant; &ldquo;1 cm to 4.7 m&rdquo; is a guaranteed arithmetic slip.
+For a drawn answer, accuracy marks are usually within <span class="m">&plusmn;2 mm</span> and
+<span class="m">&plusmn;2&deg;</span>: write the scale on your drawing, label every vertex, and leave your
+construction lines showing.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A triangular field <span class="m">ABC</span> has <span class="m">AB = 40</span> m, <span class="m">AC = 30</span> m and angle <span class="m">BAC = 55&deg;</span>. (a) Choose a suitable scale for a drawing that fits inside a space 10 cm wide. (b) Make the scale drawing and use it to find the length of <span class="m">BC</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 640 300" role="img" aria-label="Scale drawing of triangle ABC with AB 8 cm, AC 6 cm and angle A 55 degrees" style="max-width:min(100%,560px);height:auto;display:block;margin:0 auto">
+    <polygon points="70,255 430,255 224.9,34.8" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+    <path d="M116,255 A46,46 0 0,0 96.4,217.3" fill="none" stroke="#e05c2a" stroke-width="2.5"/>
+    <text x="126" y="228" font-size="14" fill="#e05c2a">55&deg;</text>
+    <circle cx="70" cy="255" r="4.5" fill="#0f2d6b"/>
+    <circle cx="430" cy="255" r="4.5" fill="#0f2d6b"/>
+    <circle cx="224.9" cy="34.8" r="4.5" fill="#0f2d6b"/>
+    <text x="54" y="276" font-size="15" font-weight="bold" fill="#0f2d6b">A</text>
+    <text x="438" y="276" font-size="15" font-weight="bold" fill="#0f2d6b">B</text>
+    <text x="216" y="24" font-size="15" font-weight="bold" fill="#0f2d6b">C</text>
+    <text x="250" y="280" font-size="14" text-anchor="middle" fill="#1a4fa0">8 cm  (40 m)</text>
+    <text x="118" y="140" font-size="14" fill="#1a4fa0">6 cm</text>
+    <text x="112" y="160" font-size="13" fill="#4a5b7a">(30 m)</text>
+    <text x="348" y="142" font-size="14" fill="#16a34a">6.7 cm</text>
+    <text x="348" y="162" font-size="13" fill="#16a34a">(33.5 m)</text>
+    <text x="500" y="230" font-size="12.5" text-anchor="middle" fill="#4a5b7a">scale 1 cm to 5 m</text>
+    <text x="500" y="250" font-size="12.5" text-anchor="middle" fill="#4a5b7a">(1 : 500)</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">(a) The longest side is 40 m and it must fit in 10 cm.
+    <span class="work">40 &divide; 10 = 4, so 1 cm must carry at least 4 m</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Round <b>up</b> to a friendly value: use
+    <b>1 cm to 5 m</b>. As a ratio, 5 m = 500 cm.
+    <span class="work">scale 1 : 500</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Convert the two given sides by dividing by 5.
+    <span class="work">AB: 40 &divide; 5 = 8 cm&nbsp;&nbsp;&nbsp;AC: 30 &divide; 5 = 6 cm</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Draw <span class="m">AB = 8</span> cm. At
+    <span class="m">A</span> measure <span class="m">55&deg;</span> with a protractor, draw a ray, and mark
+    <span class="m">C</span> 6 cm along it. Join <span class="m">CB</span>.</div></div>
+  <div class="step"><div class="n">5</div><div class="t">Measure <span class="m">BC</span> on the drawing and
+    convert back by <b>multiplying</b> by 5.
+    <span class="work">BC = 6.7 cm &rarr; 6.7 &times; 5 = 33.5 m</span></div></div>
+  <div class="final">Scale 1 : 500; BC &asymp; 33.5 m</div>
+  <div class="tip"><b>Exam tip</b> A measured answer is never exact, so anything from about 33 m to 34 m
+  would score. State the scale you used &mdash; without it the examiner cannot follow your conversion.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">A map has a scale of <span class="m">1 : 200&nbsp;000</span>. Complete: 1 cm represents ___ km.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="work">200 000 cm &divide; 100 = 2000 m &divide; 1000 = 2 km</span></div></div>
+  <div class="final">1 cm represents 2 km</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">On a <span class="m">1 : 25&nbsp;000</span> map two masts are 6.8 cm apart. Find the real distance in km.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">1 cm represents 0.25 km, and map to real means multiply.
+    <span class="work">6.8 &times; 0.25 = 1.7</span></div></div>
+  <div class="final">1.7 km</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A road is 4.5 km long. How long is it on a <span class="m">1 : 50&nbsp;000</span> map?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Real to map, so divide &mdash; but match the units first.
+    <span class="work">4.5 km = 450 000 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="work">450 000 &divide; 50 000 = 9</span></div></div>
+  <div class="final">9 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">A model is built to a scale of <span class="m">1 : 20</span>. The real object is 3.6 m long and one face has area 2.4 m&sup2;. Find the model's length in cm and that face's area in cm&sup2;.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Length: convert then divide by 20.
+    <span class="work">3.6 m = 360 cm &rarr; 360 &divide; 20 = 18 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Area: the factor is squared, and so is the unit conversion.
+    <span class="work">20&sup2; = 400&nbsp;&nbsp;&middot;&nbsp;&nbsp;2.4 m&sup2; = 24 000 cm&sup2;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="work">24 000 &divide; 400 = 60</span></div></div>
+  <div class="final">length 18 cm; area 60 cm&sup2;</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A lake covers 8 cm&sup2; on a <span class="m">1 : 50&nbsp;000</span> map. Find its real area in km&sup2;.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">1 cm represents 0.5 km, so square that for area.
+    <span class="work">1 cm&sup2; &rarr; 0.5&sup2; = 0.25 km&sup2;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="work">8 &times; 0.25 = 2</span></div></div>
+  <div class="final">2 km&sup2;</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Putting units on a ratio scale</b>
+&ldquo;1 cm : 50&nbsp;000 km&rdquo; is meaningless &mdash; a ratio scale compares two lengths in the
+<i>same</i> unit, so it carries no units at all. Write <span class="m">1 : 50&nbsp;000</span>, or switch to
+words: &ldquo;1 cm represents 0.5 km&rdquo;.</div>
+<div class="warn"><b>Mixing units inside one calculation</b>
+Multiplying 12 km by a scale factor that is written in centimetres gives nonsense. Convert everything to
+centimetres, multiply or divide, and only then convert the answer to the unit the question wants.</div>
+<div class="warn"><b>Forgetting to square the factor for areas</b>
+On a <span class="m">1 : 25&nbsp;000</span> map, 1 cm&sup2; does <i>not</i> represent 25&nbsp;000 cm&sup2;
+&mdash; it represents <span class="m">25&nbsp;000&sup2;</span> cm&sup2;. And remember the unit conversions
+square too: <span class="m">1 m&sup2; = 10&nbsp;000 cm&sup2;</span>, not 100.</div>
+<div class="tip"><b>Exam tip</b>
+Before calculating, decide whether the answer should be <b>bigger</b> (drawing &rarr; real: multiply) or
+<b>smaller</b> (real &rarr; drawing: divide) than the number you started with. That single sanity check
+catches nearly every &times;/&divide; slip on this topic.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">On a <span class="m">1 : 100&nbsp;000</span> map, what does 1 cm represent in km?</span></summary>
+<div class="body"><div class="final">100&nbsp;000 cm = 1000 m = 1 km, so 1 cm represents 1 km.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">A path is 5.2 cm long on a <span class="m">1 : 500</span> plan. How long is it in real life?</span></summary>
+<div class="body"><div class="final">5.2 &times; 500 = 2600 cm = 26 m.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Lengths on a plan are multiplied by <span class="m">k</span> to get real lengths. What are areas multiplied by?</span></summary>
+<div class="body"><div class="final">k&sup2; &mdash; both lengths in an area get scaled (and volumes go by k&sup3;).</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/15-1.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a scale converter to explore.</span></a>
+  <a href="../igcse-question-bank/map-scales-questions.html"><b>Practice questions</b><span>Exam-style questions on map scales, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="construction.html"><span>&larr; Previous lesson</span><b>Construction</b></a>
+  <a class="next" href="bearings.html"><span>Next lesson &rarr;</span><b>Bearings</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

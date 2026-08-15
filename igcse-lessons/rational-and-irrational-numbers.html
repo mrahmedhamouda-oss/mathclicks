@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rational and Irrational Numbers | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on rational and irrational numbers — recognising them, proving recurring decimals rational, combining the two kinds and finding numbers in an interval.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Rational and Irrational Numbers</h1>
+    <p>What makes a number rational, how to prove it, which roots are irrational, and what happens when you add or multiply the two kinds together.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>State the definition of a rational number and decide whether any integer, decimal or root is rational or irrational.</li>
+  <li>Prove that a recurring decimal is rational by converting it into a fraction of integers.</li>
+  <li>Predict whether a sum or product of rational and irrational numbers is rational, irrational, or could be either.</li>
+  <li>Write down a rational and an irrational number lying strictly between two given bounds.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>rational</span><span>irrational</span><span>integer</span><span>terminating decimal</span><span>recurring decimal</span><span>perfect square</span><span>conjugate</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">List the perfect squares from 1 up to 144.</span></summary>
+<div class="body"><div class="final">1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Write <span class="m">0.375</span> as a fraction in its lowest terms.</span></summary>
+<div class="body"><div class="final">0.375 = <span class="frac"><span>375</span><span>1000</span></span> = <span class="frac"><span>3</span><span>8</span></span></div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">What does the notation <span class="m">0.2&#775;7&#775;</span> mean? Write out its first six decimal digits.</span></summary>
+<div class="body"><div class="final">The block 27 repeats for ever: 0.272727&hellip;</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Rational or irrational?</h3>
+<p>Every real number is either <b>rational</b> or <b>irrational</b> &mdash; there is no third option and no
+overlap. The whole topic rests on one definition, so learn it word for word.</p>
+<div class="def"><b>Definition</b>
+A number is <b>rational</b> if it can be written as <span class="frac"><span>a</span><span>b</span></span>
+where <span class="m">a</span> and <span class="m">b</span> are <b>integers</b> and <span class="m">b &ne; 0</span>.
+A number that cannot be written this way is <b>irrational</b>. The definition does not say the number must
+<i>look</i> like a fraction &mdash; only that it <b>could</b> be written as one. That is why
+<span class="m">7</span>, <span class="m">&minus;3</span>, <span class="m">0.25</span> and
+<span class="m">0.3&#775;</span> are all rational.</div>
+<div class="tw">
+<table>
+<thead><tr><th>Type of number</th><th>Rational?</th><th>Written as a fraction</th></tr></thead>
+<tbody>
+<tr><td>Any integer, e.g. <span class="m">&minus;6</span></td><td>Rational</td><td><span class="m">&minus;6/1</span></td></tr>
+<tr><td>Terminating decimal, e.g. <span class="m">0.375</span></td><td>Rational</td><td><span class="m">375/1000 = 3/8</span></td></tr>
+<tr><td>Recurring decimal, e.g. <span class="m">0.2&#775;7&#775;</span></td><td>Rational</td><td><span class="m">27/99 = 3/11</span></td></tr>
+<tr><td>Root of a perfect square, e.g. <span class="m">&#8730;49</span></td><td>Rational</td><td><span class="m">7/1</span></td></tr>
+<tr><td>Root of a non-square, e.g. <span class="m">&#8730;5</span></td><td>Irrational</td><td>impossible</td></tr>
+<tr><td><span class="m">&pi;</span> and multiples of it, e.g. <span class="m">2&pi;</span></td><td>Irrational</td><td>impossible</td></tr>
+<tr><td>Decimal that never stops or repeats, e.g. <span class="m">0.1010010001&hellip;</span></td><td>Irrational</td><td>impossible</td></tr>
+</tbody>
+</table>
+</div>
+<div class="formula">&#8730;n is rational &hArr; n is a perfect square
+<small>1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, &hellip;</small></div>
+<div class="warn"><b>Watch out</b>
+<span class="m">22/7 = 3.142857&hellip;</span> is a <i>fraction</i>, so it is rational. It is only an
+approximation to <span class="m">&pi;</span>, which is irrational. A number does not become irrational just
+because it is close to one.</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">From the list <span class="m">&#8730;64, &nbsp;&#8730;20, &nbsp;0.7&#775;, &nbsp;2&pi;, &nbsp;22/7, &nbsp;0</span>, write down the irrational numbers.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Simplify or classify each one in turn.
+    <span class="work">&#8730;64 = 8 &nbsp;&rarr;&nbsp; integer, rational<br>&#8730;20 = 2&#8730;5 &nbsp;&rarr;&nbsp; 20 is not a perfect square, irrational</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Recurring decimals are always rational.
+    <span class="work">0.7&#775; = 7/9</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">2&pi;</span> is a non-zero rational times an irrational, so it stays irrational.
+    <span class="m">22/7</span> is a fraction of integers, so it is rational, and <span class="m">0 = 0/1</span> is rational.</div></div>
+  <div class="final">irrational: &#8730;20 and 2&pi;</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Proving a recurring decimal is rational</h3>
+<p>To <b>prove</b> a recurring decimal is rational you must produce the fraction. The standard method is
+worth two or three marks, so show every line.</p>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Show that <span class="m">0.5&#775;4&#775;</span> is a rational number.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Call the number <span class="m">x</span> and write out enough digits to see the pattern.
+    <span class="work">x = 0.545454&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">The repeating block has <b>two</b> digits, so multiply by <span class="m">10&sup2; = 100</span>.
+    <span class="work">100x = 54.545454&hellip;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Subtract &mdash; the infinite tails are identical and cancel exactly.
+    <span class="work">100x &minus; x = 54.5454&hellip; &minus; 0.5454&hellip;<br>99x = 54</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Solve and cancel by 9.
+    <span class="work">x = 54/99 = 6/11</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">State the conclusion in the language of the definition:
+    <span class="m">6</span> and <span class="m">11</span> are integers with <span class="m">11 &ne; 0</span>,
+    so <span class="m">x</span> is rational.</div></div>
+  <div class="final">0.5&#775;4&#775; = <span class="frac"><span>6</span><span>11</span></span>, so it is rational</div>
+  <div class="tip"><b>Exam tip</b> Multiply by <span class="m">10<sup>k</sup></span> where
+  <span class="m">k</span> is the <i>length of the recurring block</i>. If some digits do not recur, multiply
+  twice (by <span class="m">10</span> and by <span class="m">10<sup>k+1</sup></span>) so the tails line up
+  before subtracting.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Combining the two kinds</h3>
+<p>Examiners love questions such as &ldquo;is <span class="m">p + q</span> rational or irrational?&rdquo;
+Learn which combinations are guaranteed and which depend on the numbers.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Combination</th><th>Result</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>rational + rational</td><td>always <b>rational</b></td><td><span class="m">&frac12; + 0.25 = 0.75</span></td></tr>
+<tr><td>rational + irrational</td><td>always <b>irrational</b></td><td><span class="m">3 + &#8730;2</span></td></tr>
+<tr><td>irrational + irrational</td><td><b>either</b></td><td><span class="m">&#8730;2 + &#8730;2 = 2&#8730;2</span> (irrational) but <span class="m">&#8730;2 + (1 &minus; &#8730;2) = 1</span> (rational)</td></tr>
+<tr><td>non-zero rational &times; irrational</td><td>always <b>irrational</b></td><td><span class="m">5&#8730;3, &nbsp;&pi;/4</span></td></tr>
+<tr><td>zero &times; irrational</td><td><b>rational</b></td><td><span class="m">0 &times; &#8730;7 = 0</span></td></tr>
+<tr><td>irrational &times; irrational</td><td><b>either</b></td><td><span class="m">&#8730;2 &times; &#8730;8 = 4</span> but <span class="m">&#8730;2 &times; &#8730;3 = &#8730;6</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<h4>Why rational + irrational must be irrational</h4>
+<p>Let <span class="m">r</span> be rational and <span class="m">x</span> irrational, and suppose the sum
+<span class="m">r + x</span> were rational, equal to <span class="m">s</span> say. Then
+<span class="m">x = s &minus; r</span>. But the difference of two rationals is rational (a common
+denominator makes it one fraction of integers), so <span class="m">x</span> would be rational &mdash; which
+it is not. The supposition fails, so <span class="m">r + x</span> is irrational.</p>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Let <span class="m">p = 3 + &#8730;5</span> and <span class="m">q = 3 &minus; &#8730;5</span>. Show that <span class="m">p + q</span> and <span class="m">pq</span> are both rational, but <span class="m">p</span> and <span class="m">2p</span> are not.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Add. The surd parts cancel.
+    <span class="work">p + q = (3 + &#8730;5) + (3 &minus; &#8730;5) = 6</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply. This is a difference of two squares, <span class="m">(a + b)(a &minus; b) = a&sup2; &minus; b&sup2;</span>.
+    <span class="work">pq = 3&sup2; &minus; (&#8730;5)&sup2; = 9 &minus; 5 = 4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Both results are integers, so both are rational.</div></div>
+  <div class="step"><div class="n">4</div><div class="t"><span class="m">p</span> itself is rational + irrational, so it is irrational; and
+    <span class="m">2p = 6 + 2&#8730;5</span> still contains a non-zero multiple of <span class="m">&#8730;5</span>, so it is irrational too.
+    <span class="work">p = 5.2360&hellip; &nbsp; 2p = 10.4721&hellip; (never repeat)</span></div></div>
+  <div class="final">p + q = 6 and pq = 4 are rational; p and 2p are irrational</div>
+  <div class="note"><b>Note</b> A pair like <span class="m">3 + &#8730;5</span> and
+  <span class="m">3 &minus; &#8730;5</span> is called a pair of <b>conjugates</b>. Their sum and product are
+  always rational &mdash; the fact that makes rationalising denominators work in the surds lesson.</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Finding a number in a given interval</h3>
+<p>&ldquo;Write down an irrational number between 4 and 5&rdquo; is worth one easy mark, provided you know
+the two standard tricks.</p>
+<div class="grid two">
+  <div class="card g">
+    <h4>A rational number in an interval</h4>
+    <p>Take the midpoint, or any convenient decimal that sits inside. Between <span class="m">4</span> and
+    <span class="m">5</span>: <span class="m">4.5</span>, or <span class="m">9/2</span>. Between
+    <span class="m">&#8730;2 = 1.414&hellip;</span> and <span class="m">&#8730;3 = 1.732&hellip;</span>:
+    <span class="m">1.5</span>. Always <b>check both inequalities</b> before writing it down.</p>
+  </div>
+  <div class="card o">
+    <h4>An irrational number in an interval</h4>
+    <p><b>Method 1 &mdash; square the ends.</b> Between 4 and 5, square to get 16 and 25. Any integer
+    strictly between them that is not a perfect square gives an irrational root:
+    <span class="m">&#8730;17, &#8730;18, &hellip;, &#8730;24</span>.</p>
+    <p><b>Method 2 &mdash; build a decimal.</b> Write a decimal inside the interval whose digits follow a
+    non-repeating pattern, e.g. <span class="m">4.1010010001&hellip;</span> Say in words that the pattern
+    never repeats.</p>
+  </div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Write down (a) a rational and (b) an irrational number between 4 and 5, and (c) an irrational number between 2.1 and 2.2.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Any terminating decimal or fraction in range.
+    <span class="work">4.5 &nbsp; (= 9/2, a fraction of integers)</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Square the bounds: <span class="m">4&sup2; = 16</span> and <span class="m">5&sup2; = 25</span>. Choose a non-square between them.
+    <span class="work">&#8730;17 = 4.1231&hellip; &nbsp;&nbsp; 4 &lt; &#8730;17 &lt; 5 &#10003;</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Squaring gives <span class="m">4.41</span> and <span class="m">4.84</span> &mdash; no useful integer between them, so build a decimal instead.
+    <span class="work">2.1010010001&hellip;</span>
+    The blocks of zeros grow by one each time, so the digits never settle into a repeating block.</div></div>
+  <div class="final">(a) 4.5 &nbsp; (b) &#8730;17 &nbsp; (c) 2.1010010001&hellip;</div>
+  <div class="tip"><b>Exam tip</b> For part (c) you must <i>say</i> that the pattern never repeats. Writing the
+  digits alone does not show the examiner that you understand why it is irrational.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">State whether each is rational or irrational: (a) <span class="m">&#8730;81</span> &nbsp;(b) <span class="m">&#8730;30</span> &nbsp;(c) <span class="m">0.1&#775;2&#775;</span> &nbsp;(d) <span class="m">5&pi;</span> &nbsp;(e) <span class="m">0</span></span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Simplify roots first: <span class="m">&#8730;81 = 9</span>, but 30 is not a perfect square. Recurring decimals are rational; a non-zero rational times <span class="m">&pi;</span> is irrational; <span class="m">0 = 0/1</span>.</div></div>
+  <div class="final">(a) rational (= 9) &nbsp;(b) irrational &nbsp;(c) rational &nbsp;(d) irrational &nbsp;(e) rational</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Show that <span class="m">0.4&#775;2&#775;</span> is rational by writing it as a fraction in its lowest terms.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Two digits recur, so multiply by 100 and subtract.
+    <span class="work">x = 0.4242&hellip; &nbsp;&rarr;&nbsp; 100x = 42.4242&hellip;<br>99x = 42</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Solve and cancel by 3.
+    <span class="work">x = 42/99 = 14/33</span></div></div>
+  <div class="final">0.4&#775;2&#775; = <span class="frac"><span>14</span><span>33</span></span> &mdash; a fraction of integers, so rational</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Show that <span class="m">0.83&#775;</span> (only the 3 recurs) is rational.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">One digit does not recur, so multiply twice so the tails line up.
+    <span class="work">x = 0.8333&hellip;<br>10x = 8.333&hellip; &nbsp;&nbsp; 100x = 83.333&hellip;</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Subtract and simplify by 15.
+    <span class="work">100x &minus; 10x = 90x = 75 &nbsp;&rarr;&nbsp; x = 75/90 = 5/6</span></div></div>
+  <div class="final">0.83&#775; = <span class="frac"><span>5</span><span>6</span></span>, so it is rational</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Show that <span class="m">(5 + &#8730;2)(5 &minus; &#8730;2)</span> is rational.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Use the difference of two squares.
+    <span class="work">(5 + &#8730;2)(5 &minus; &#8730;2) = 5&sup2; &minus; (&#8730;2)&sup2; = 25 &minus; 2 = 23</span></div></div>
+  <div class="final">23 &mdash; an integer, so rational</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q"><span class="m">p = 2 + &#8730;3</span> and <span class="m">q = 2 &minus; &#8730;3</span>. Work out <span class="m">p + q</span>, <span class="m">p &minus; q</span> and <span class="m">pq</span>, and state whether each is rational or irrational.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Add and subtract &mdash; watch which parts cancel.
+    <span class="work">p + q = 4 &nbsp;&nbsp; p &minus; q = 2&#8730;3</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Multiply using the difference of two squares.
+    <span class="work">pq = 2&sup2; &minus; (&#8730;3)&sup2; = 4 &minus; 3 = 1</span></div></div>
+  <div class="final">p + q = 4 rational; &nbsp; p &minus; q = 2&#8730;3 irrational; &nbsp; pq = 1 rational</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Treating 22/7 as irrational</b>
+Any fraction of two integers is rational &mdash; including 22/7. It is only an approximation to &pi;, which
+is irrational. Closeness to an irrational number proves nothing.</div>
+<div class="warn"><b>Squaring a bracket term by term</b>
+<span class="m">(1 + &#8730;2)&sup2;</span> is <b>not</b> <span class="m">1 + 2</span>. Expand properly:
+<span class="m">(1 + &#8730;2)&sup2; = 1 + 2&#8730;2 + 2 = 3 + 2&#8730;2</span>, which is irrational.</div>
+<div class="warn"><b>Assuming irrational &times; irrational is irrational</b>
+It can go either way: <span class="m">&#8730;2 &times; &#8730;8 = &#8730;16 = 4</span> is rational, while
+<span class="m">&#8730;2 &times; &#8730;3 = &#8730;6</span> is not. Always test with the actual numbers.</div>
+<div class="tip"><b>Exam tip</b>
+Your calculator only shows about ten digits, so it can never <i>prove</i> a number is irrational. Use it as a
+hint, then justify with algebra &mdash; produce the fraction, or name the non-square under the root.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Rational or irrational: <span class="m">&#8730;81</span> and <span class="m">&#8730;30</span>?</span></summary>
+<div class="body"><div class="final">&#8730;81 = 9 is rational; &#8730;30 is irrational (30 is not a perfect square).</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Is <span class="m">3 + &#8730;2</span> rational or irrational? Why?</span></summary>
+<div class="body"><div class="final">Irrational &mdash; a rational plus an irrational is always irrational.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Write <span class="m">0.7&#775;</span> as a fraction.</span></summary>
+<div class="body"><div class="final">9x = 7, so 0.7&#775; = <span class="frac"><span>7</span><span>9</span></span></div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/9-2.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a combination tester and interval finder to explore.</span></a>
+  <a href="../igcse-question-bank/rational-and-irrational-numbers-questions.html"><b>Practice questions</b><span>Exam-style questions on rational and irrational numbers, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="standard-form.html"><span>&larr; Previous lesson</span><b>Standard Form</b></a>
+  <a class="next" href="surds.html"><span>Next lesson &rarr;</span><b>Surds</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

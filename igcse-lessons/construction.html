@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Construction | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on ruler-and-compasses constructions of triangles, bisectors and perpendiculars, and the four standard loci used to shade a region.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Geometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Construction</h1>
+    <p>Ruler-and-compasses constructions of triangles, bisectors and perpendiculars, and the four standard loci used to shade a region &mdash; marks you can bank with nothing but care.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Construct triangles accurately from SSS, SAS and ASA information, choosing the right tools.</li>
+  <li>Construct the perpendicular bisector of a line and the bisector of an angle with ruler and compasses only.</li>
+  <li>Recognise the four standard loci and draw each one correctly.</li>
+  <li>Shade a region that satisfies two or more locus conditions, with the correct solid or dashed boundaries.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>compasses</span><span>arc</span><span>bisector</span><span>perpendicular</span><span>locus</span><span>equidistant</span><span>region</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">What does &ldquo;equidistant from A and B&rdquo; mean?</span></summary>
+<div class="body"><div class="final">The same distance from A as from B.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">A shape has every point exactly 5 cm from a fixed point O. What is the shape?</span></summary>
+<div class="body"><div class="final">A circle, centre O, radius 5 cm.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">In triangle ABC, angle B = 40&deg; and angle C = 65&deg;. What is angle A?</span></summary>
+<div class="body"><div class="final">180 &minus; 40 &minus; 65 = 75&deg; &mdash; angles in a triangle sum to 180&deg;.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Equipment, accuracy and arcs</h3>
+<p>Construction questions are marks you can bank, because there is no algebra to go wrong &mdash; only care.
+Bring the right kit and use it properly.</p>
+<div class="grid two">
+  <div class="card">
+    <h4>What you need</h4>
+    <ul>
+      <li>A <b>ruler</b> marked in millimetres.</li>
+      <li>A <b>pair of compasses</b> stiff enough to hold its setting &mdash; tighten the screw.</li>
+      <li>A <b>sharp pencil</b> (HB). A blunt pencil costs you the tolerance.</li>
+      <li>A <b>protractor</b>, for angles that are <i>given</i> to you.</li>
+    </ul>
+  </div>
+  <div class="card o">
+    <h4>How accurate must you be?</h4>
+    <ul>
+      <li>Lengths within <b>&plusmn;2 mm</b> of the correct value.</li>
+      <li>Angles within <b>&plusmn;2&deg;</b>.</li>
+      <li>Draw a <b>rough sketch</b> first so you know where the shape will sit on the page.</li>
+      <li>Work in pencil, not pen &mdash; but never rub out your arcs.</li>
+    </ul>
+  </div>
+</div>
+<div class="card g">
+<h4>The golden rule: leave your arcs showing</h4>
+<svg viewBox="0 0 440 170" role="img" aria-label="Two identical triangles, one with construction arcs left visible and one with the arcs rubbed out" style="max-width:min(100%,560px)">
+  <polygon points="30,110 130,110 91.2,50" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <path d="M72.9 35.8 A85.7 85.7 0 0 1 105.7 69.8" fill="none" stroke="#0f2d6b" stroke-width="1.4"/>
+  <path d="M75.3 64.1 A71.4 71.4 0 0 1 111.5 41" fill="none" stroke="#0f2d6b" stroke-width="1.4"/>
+  <text x="90" y="140" text-anchor="middle" font-size="12" fill="#16a34a">arcs left in: full marks</text>
+  <polygon points="230,110 330,110 291.2,50" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="290" y="140" text-anchor="middle" font-size="12" fill="#e05c2a">arcs rubbed out: marks lost</text>
+</svg>
+</div>
+<div class="warn"><b>Watch out</b> &ldquo;Using ruler and compasses only&rdquo; means the protractor stays in
+the case. A bisector measured with a protractor scores <b>zero</b>, even if the line is in exactly the right
+place.</div>
+
+<h3>2&nbsp;&middot;&nbsp; Constructing triangles</h3>
+<p>There are three sets of information that fix a triangle exactly. Learn which tool opens each one.</p>
+<div class="tw">
+<table>
+<thead><tr><th>You are given</th><th>Name</th><th>Tools</th><th>Method in one line</th></tr></thead>
+<tbody>
+<tr><td>Three sides</td><td>SSS</td><td>ruler + compasses</td><td>Draw the longest side, then swing an arc from each end.</td></tr>
+<tr><td>Two sides and the angle between them</td><td>SAS</td><td>ruler + protractor</td><td>Draw one side, measure the angle, mark the second side along it.</td></tr>
+<tr><td>Two angles and a side</td><td>ASA</td><td>ruler + protractor</td><td>Draw the side, draw both angles at its ends, extend until the rays meet.</td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Construct triangle <span class="m">ABC</span> with <span class="m">AB = 7</span> cm, <span class="m">AC = 6</span> cm and <span class="m">BC = 5</span> cm. Measure angle <span class="m">BAC</span>.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 400 260" role="img" aria-label="Triangle ABC constructed from three sides with the two intersecting compass arcs left visible" style="max-width:min(100%,560px)">
+    <path d="M150 64.1 A180 180 0 0 1 218.9 135.5" fill="none" stroke="#0f2d6b" stroke-width="1.5"/>
+    <path d="M155.1 123.6 A150 150 0 0 1 231.2 75.1" fill="none" stroke="#0f2d6b" stroke-width="1.5"/>
+    <polygon points="60,220 270,220 188.6,94" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+    <circle cx="188.6" cy="94" r="4" fill="#1a4fa0"/>
+    <text x="55" y="238" text-anchor="end" font-size="14" font-weight="bold">A</text>
+    <text x="278" y="238" font-size="14" font-weight="bold">B</text>
+    <text x="192" y="84" font-size="14" font-weight="bold">C</text>
+    <text x="165" y="240" text-anchor="middle" font-size="13" fill="#1a4fa0">7 cm</text>
+    <text x="106" y="150" text-anchor="middle" font-size="13" fill="#1a4fa0">6 cm</text>
+    <text x="240" y="150" text-anchor="middle" font-size="13" fill="#1a4fa0">5 cm</text>
+    <text x="300" y="70" font-size="12" fill="#0f2d6b">arc from A,</text>
+    <text x="300" y="88" font-size="12" fill="#0f2d6b">radius 6 cm</text>
+    <text x="300" y="120" font-size="12" fill="#0f2d6b">arc from B,</text>
+    <text x="300" y="138" font-size="12" fill="#0f2d6b">radius 5 cm</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Draw the <b>longest</b> side accurately with the ruler and label its ends.
+    <span class="work">AB = 7.0 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Open the compasses to 6 cm against the ruler. With the point on <span class="m">A</span>, draw an arc above the line.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Open the compasses to 5 cm. With the point on <span class="m">B</span>, draw a second arc that crosses the first. The crossing point is <span class="m">C</span>.</div></div>
+  <div class="step"><div class="n">4</div><div class="t">Join <span class="m">AC</span> and <span class="m">BC</span> with the ruler, leave both arcs on the page, and measure angle <span class="m">BAC</span> with a protractor.
+    <span class="work">angle BAC &asymp; 44&deg;</span></div></div>
+  <div class="final">C is where the arcs cross; angle BAC = 44&deg; (accept 42&deg; to 46&deg;)</div>
+  <div class="note"><b>Note</b> Starting with the longest side keeps the arcs crossing at a good wide angle, which makes the point <span class="m">C</span> easy to see.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Construct triangle <span class="m">PQR</span> with <span class="m">PQ = 6</span> cm, angle <span class="m">P = 50&deg;</span> and <span class="m">PR = 4.5</span> cm. Measure <span class="m">QR</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Draw <span class="m">PQ = 6</span> cm and label both ends.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Put the centre of the protractor exactly on <span class="m">P</span> with the base line along <span class="m">PQ</span>, and mark 50&deg; with a fine dot.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Rule a line from <span class="m">P</span> through that dot, and measure 4.5 cm along it to fix <span class="m">R</span>.</div></div>
+  <div class="step"><div class="n">4</div><div class="t">Join <span class="m">QR</span> and measure it.
+    <span class="work">QR &asymp; 4.6 cm</span></div></div>
+  <div class="final">QR = 4.6 cm (accept 4.4 cm to 4.8 cm)</div>
+  <div class="warn"><b>Watch out</b> Protractors have two scales. Angle <span class="m">P = 50&deg;</span> is clearly acute, so if your line looks obtuse you have read the wrong row of numbers.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; The two compass constructions</h3>
+<p>These appear again and again, both on their own and inside locus questions. In each one you keep the
+compasses at <b>the same setting</b> for a pair of arcs &mdash; that is what makes the construction exact.</p>
+<div class="grid two">
+  <div class="card p">
+    <h4>Perpendicular bisector of AB</h4>
+    <svg viewBox="0 0 400 300" role="img" aria-label="Perpendicular bisector of a line AB built from two pairs of equal arcs">
+      <path d="M176.4 35.1 A150 150 0 0 1 176.4 264.9" fill="none" stroke="#0f2d6b" stroke-width="1.4"/>
+      <path d="M223.6 264.9 A150 150 0 0 1 223.6 35.1" fill="none" stroke="#0f2d6b" stroke-width="1.4"/>
+      <line x1="80" y1="150" x2="320" y2="150" stroke="#6d28d9" stroke-width="2.5"/>
+      <line x1="200" y1="20" x2="200" y2="280" stroke="#e05c2a" stroke-width="2.5"/>
+      <rect x="200" y="137" width="13" height="13" fill="none" stroke="#e05c2a" stroke-width="1.4"/>
+      <circle cx="80" cy="150" r="4" fill="#6d28d9"/><circle cx="320" cy="150" r="4" fill="#6d28d9"/>
+      <circle cx="200" cy="60" r="4" fill="#e05c2a"/><circle cx="200" cy="240" r="4" fill="#e05c2a"/>
+      <text x="70" y="142" text-anchor="end" font-size="14" font-weight="bold">A</text>
+      <text x="330" y="142" font-size="14" font-weight="bold">B</text>
+      <text x="212" y="176" font-size="12" fill="#e05c2a">midpoint</text>
+    </svg>
+    <ol>
+      <li>Open the compasses to <b>more than half</b> of <span class="m">AB</span>.</li>
+      <li>Centre <span class="m">A</span>: arcs above and below the line.</li>
+      <li><b>Same radius</b>, centre <span class="m">B</span>: two more arcs, crossing the first pair.</li>
+      <li>Join the two crossing points. It cuts <span class="m">AB</span> in half at <span class="m">90&deg;</span>.</li>
+    </ol>
+  </div>
+  <div class="card g">
+    <h4>Bisector of an angle</h4>
+    <svg viewBox="0 0 400 300" role="img" aria-label="Angle bisector built from an arc across both arms and two equal arcs crossing on the bisector">
+      <line x1="80" y1="240" x2="320" y2="240" stroke="#16a34a" stroke-width="2.5"/>
+      <line x1="80" y1="240" x2="162.1" y2="14.4" stroke="#16a34a" stroke-width="2.5"/>
+      <path d="M121 127.2 A120 120 0 0 1 200 240" fill="none" stroke="#0f2d6b" stroke-width="1.4"/>
+      <path d="M176.7 153.1 A90 90 0 0 1 238 158.4" fill="none" stroke="#0f2d6b" stroke-width="1.4"/>
+      <path d="M210.7 119.4 A90 90 0 0 1 194.7 178.8" fill="none" stroke="#0f2d6b" stroke-width="1.4"/>
+      <line x1="80" y1="240" x2="299.5" y2="86.3" stroke="#e05c2a" stroke-width="2.5"/>
+      <circle cx="80" cy="240" r="4" fill="#16a34a"/>
+      <circle cx="200" cy="240" r="4" fill="#0f2d6b"/><circle cx="121" cy="127.2" r="4" fill="#0f2d6b"/>
+      <circle cx="208" cy="150.3" r="4" fill="#e05c2a"/>
+      <text x="70" y="252" text-anchor="end" font-size="14" font-weight="bold">V</text>
+      <text x="204" y="262" font-size="13" fill="#0f2d6b">P</text>
+      <text x="100" y="122" font-size="13" fill="#0f2d6b">Q</text>
+      <text x="216" y="144" font-size="13" fill="#e05c2a">R</text>
+      <text x="252" y="212" font-size="12" fill="#16a34a">equal halves</text>
+    </svg>
+    <ol>
+      <li>Centre the vertex <span class="m">V</span>: one arc crossing <b>both</b> arms, at <span class="m">P</span> and <span class="m">Q</span>.</li>
+      <li>Centre <span class="m">P</span>: an arc inside the angle.</li>
+      <li><b>Same radius</b>, centre <span class="m">Q</span>: an arc crossing it at <span class="m">R</span>.</li>
+      <li>Join <span class="m">VR</span>. The angle is now split into two equal parts.</li>
+    </ol>
+  </div>
+</div>
+<div class="def"><b>Key idea</b> Both constructions work because the arcs build a <b>rhombus</b>. Every side
+of a rhombus is equal, and its diagonals bisect each other at right angles and bisect its angles. That is
+the whole proof.</div>
+
+<h3>4&nbsp;&middot;&nbsp; Loci</h3>
+<div class="def"><b>Definition</b>
+A <b>locus</b> (plural <b>loci</b>) is the set of all the points that satisfy a rule. Read the rule, decide
+which of the four standard pictures it is, then draw it.</div>
+<div class="grid two">
+  <div class="card">
+    <h4>Fixed distance from a point &rarr; circle</h4>
+    <svg viewBox="0 0 240 180" role="img" aria-label="Locus of points 3 cm from a point P is a circle of radius 3 cm">
+      <circle cx="120" cy="90" r="60" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+      <line x1="120" y1="90" x2="180" y2="90" stroke="#1a4fa0" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <circle cx="120" cy="90" r="4" fill="#0f2d6b"/>
+      <text x="112" y="86" text-anchor="end" font-size="13" font-weight="bold">P</text>
+      <text x="150" y="82" text-anchor="middle" font-size="12" fill="#1a4fa0">3 cm</text>
+    </svg>
+    <p style="margin-bottom:0">&ldquo;Exactly 3 cm from <span class="m">P</span>&rdquo; is the circle itself; &ldquo;<b>less than</b> 3 cm&rdquo; is the region inside it.</p>
+  </div>
+  <div class="card o">
+    <h4>Fixed distance from a line &rarr; racetrack</h4>
+    <svg viewBox="0 0 240 180" role="img" aria-label="Locus of points a fixed distance from a line segment is two parallel lines with semicircular ends">
+      <path d="M60 50 H180 A40 40 0 0 1 180 130 H60 A40 40 0 0 1 60 50 Z" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+      <line x1="60" y1="90" x2="180" y2="90" stroke="#0f2d6b" stroke-width="2.5"/>
+      <circle cx="60" cy="90" r="4" fill="#0f2d6b"/><circle cx="180" cy="90" r="4" fill="#0f2d6b"/>
+      <line x1="120" y1="90" x2="120" y2="50" stroke="#e05c2a" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <text x="128" y="72" font-size="12" fill="#e05c2a">d</text>
+    </svg>
+    <p style="margin-bottom:0">Two parallel lines a distance <span class="m">d</span> away, joined by a <b>semicircle</b> at each end &mdash; the ends are the bit students forget.</p>
+  </div>
+  <div class="card p">
+    <h4>Equidistant from two points &rarr; perpendicular bisector</h4>
+    <svg viewBox="0 0 240 180" role="img" aria-label="Locus equidistant from points A and B is the perpendicular bisector of AB">
+      <line x1="70" y1="120" x2="170" y2="60" stroke="#0f2d6b" stroke-width="2" stroke-dasharray="5 4"/>
+      <line x1="78.8" y1="21.4" x2="161.2" y2="158.6" stroke="#6d28d9" stroke-width="2.5"/>
+      <rect x="112" y="82" width="14" height="14" fill="none" stroke="#6d28d9" stroke-width="1.3" transform="rotate(-31 120 90)"/>
+      <circle cx="70" cy="120" r="4.5" fill="#0f2d6b"/><circle cx="170" cy="60" r="4.5" fill="#0f2d6b"/>
+      <text x="60" y="132" text-anchor="end" font-size="13" font-weight="bold">A</text>
+      <text x="178" y="56" font-size="13" font-weight="bold">B</text>
+    </svg>
+    <p style="margin-bottom:0">&ldquo;Nearer to <span class="m">A</span> than to <span class="m">B</span>&rdquo; is the side of that line containing <span class="m">A</span>.</p>
+  </div>
+  <div class="card g">
+    <h4>Equidistant from two lines &rarr; angle bisector</h4>
+    <svg viewBox="0 0 240 180" role="img" aria-label="Locus equidistant from two lines is the bisector of the angle between them">
+      <line x1="60" y1="150" x2="220" y2="150" stroke="#0f2d6b" stroke-width="2.5"/>
+      <line x1="60" y1="150" x2="162.9" y2="27.4" stroke="#0f2d6b" stroke-width="2.5"/>
+      <line x1="60" y1="150" x2="205" y2="82.4" stroke="#16a34a" stroke-width="2.5"/>
+      <circle cx="60" cy="150" r="4" fill="#0f2d6b"/>
+      <text x="182" y="120" font-size="12" fill="#16a34a">bisector</text>
+    </svg>
+    <p style="margin-bottom:0">&ldquo;Nearer to one wall than the other&rdquo; means the angle bisector of the corner where they meet.</p>
+  </div>
+</div>
+<div class="note"><b>Shading a region</b> Draw <b>each</b> locus separately with arcs showing, decide which
+side of each boundary you want, shade only the overlap and label it <span class="m">R</span>. Use a
+<b>solid</b> boundary when equality is allowed (&ldquo;not more than 4 m&rdquo;) and a <b>dashed</b> one when
+it is not (&ldquo;less than 4 m&rdquo;).</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Two straight paths meet at a corner <span class="m">V</span>. A bench must be the same distance from both paths and exactly 5 m from <span class="m">V</span>. Describe how to find its position.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">&ldquo;Same distance from both paths&rdquo; is the locus <b>equidistant from two lines</b>, so construct the <b>bisector of angle V</b> with compasses.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">&ldquo;Exactly 5 m from <span class="m">V</span>&rdquo; is the locus a fixed distance from a point, so draw an <b>arc of radius 5 m</b> centred on <span class="m">V</span>, using the scale of the drawing.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">The bench is where the two loci <b>cross</b>. Mark it clearly with a cross and label it.</div></div>
+  <div class="final">The bench is where the angle bisector meets the arc of radius 5 m from V</div>
+  <div class="tip"><b>Exam tip</b> When a question says &ldquo;equidistant&rdquo;, it is telling you which construction to use. Two <i>points</i> &rarr; perpendicular bisector. Two <i>lines</i> &rarr; angle bisector.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A goat is tied by a 4 m rope to a post at <span class="m">A</span>. A second post at <span class="m">B</span>, 6 m from <span class="m">A</span>, has a second goat on a 4 m rope. Shade the region that <b>both</b> goats can reach.</span></summary>
+<div class="body">
+  <svg viewBox="0 0 400 240" role="img" aria-label="Two overlapping circles of radius 4 metres showing the region both goats can reach" style="max-width:min(100%,560px)">
+    <circle cx="150" cy="120" r="100" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+    <circle cx="250" cy="120" r="100" fill="#e9f9ef" fill-opacity="0.75" stroke="#16a34a" stroke-width="2"/>
+    <path d="M200 33.4 A100 100 0 0 1 200 206.6 A100 100 0 0 1 200 33.4 Z" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+    <line x1="150" y1="120" x2="250" y2="120" stroke="#0f2d6b" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <circle cx="150" cy="120" r="4.5" fill="#0f2d6b"/><circle cx="250" cy="120" r="4.5" fill="#0f2d6b"/>
+    <text x="142" y="112" text-anchor="end" font-size="14" font-weight="bold">A</text>
+    <text x="258" y="112" font-size="14" font-weight="bold">B</text>
+    <text x="200" y="140" text-anchor="middle" font-size="12" fill="#0f2d6b">6 m</text>
+    <text x="200" y="120" text-anchor="middle" font-size="15" font-weight="bold" fill="#e05c2a">R</text>
+    <text x="330" y="60" font-size="12" fill="#1a4fa0">circle: 4 m from A</text>
+    <text x="330" y="196" font-size="12" fill="#16a34a">circle: 4 m from B</text>
+  </svg>
+  <div class="step"><div class="n">1</div><div class="t">Each rope gives a locus &ldquo;not more than 4 m from a point&rdquo;, which is the region <b>inside</b> a circle of radius 4 m. Draw both circles with compasses, using the scale given.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">&ldquo;Both goats&rdquo; means the region must satisfy both conditions at once, so you want the <b>overlap</b> of the two circles.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Shade only that lens-shaped overlap and label it <span class="m">R</span>. Draw the boundaries solid, because the goat can reach exactly 4 m.</div></div>
+  <div class="final">R is the lens-shaped overlap of the two circles</div>
+  <div class="warn"><b>Watch out</b> If the posts had been more than 8 m apart the circles would not meet at all and the answer would be &ldquo;no such region&rdquo;. Always check the two loci really do cross.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Which construction gives the set of points the same distance from two fixed points <span class="m">A</span> and <span class="m">B</span>?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Two <i>points</i>, so bisect the line joining them.</div></div>
+  <div class="final">The perpendicular bisector of AB.</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">Describe the locus of points exactly 5 cm from a fixed point <span class="m">O</span>, and the locus of points less than 5 cm from <span class="m">O</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">A fixed distance from a point is always a circle; a strict inequality means the boundary is not included.</div></div>
+  <div class="final">Exactly 5 cm: a circle of radius 5 cm, centre O. Less than 5 cm: the region inside that circle, with a dashed boundary.</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">You must construct triangle <span class="m">XYZ</span> with <span class="m">XY = 8</span> cm, <span class="m">XZ = 5</span> cm and <span class="m">YZ = 6</span> cm. Which side would you draw first, and why? Outline the construction.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">This is SSS, so ruler and compasses. Draw the <b>longest</b> side first.
+    <span class="work">XY = 8.0 cm</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Arc of radius 5 cm from <span class="m">X</span>; arc of radius 6 cm from <span class="m">Y</span>. They cross at <span class="m">Z</span> &mdash; join up and leave the arcs showing.</div></div>
+  <div class="final">Draw XY = 8 cm first (the longest side), so the two arcs cross cleanly at Z.</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Explain why the perpendicular bisector construction needs the compasses opened to more than half of <span class="m">AB</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Each arc reaches at most its radius from its centre. If the radius were less than half of <span class="m">AB</span>, the arcs from <span class="m">A</span> and <span class="m">B</span> would never meet.</div></div>
+  <div class="final">With radius less than half AB the arcs never cross, so there are no crossing points to join. Equal radii also make the four points form a rhombus, which is what guarantees the bisector.</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A park is a rectangle <span class="m">PQRS</span> with <span class="m">PQ = 60</span> m and <span class="m">PS = 40</span> m. A fountain must be nearer to <span class="m">P</span> than to <span class="m">Q</span>, and not more than 25 m from <span class="m">PS</span>. Describe the two boundaries you would draw and the region you would shade.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">&ldquo;Nearer to P than to Q&rdquo; &mdash; two points, so draw the <b>perpendicular bisector of PQ</b> and keep the half containing <span class="m">P</span>.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">&ldquo;Not more than 25 m from PS&rdquo; &mdash; a fixed distance from a line inside the park, so draw a <b>line parallel to PS, 25 m from it</b>, and keep the side towards <span class="m">PS</span>. This boundary is <b>solid</b> because 25 m is allowed.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">Shade the overlap of the two half-regions and label it <span class="m">R</span>.</div></div>
+  <div class="final">Perpendicular bisector of PQ (keep P&rsquo;s side) and a solid line parallel to PS at 25 m (keep PS&rsquo;s side); R is the overlap.</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Rubbing out the construction arcs</b>
+The arcs <i>are</i> the evidence. The mark scheme says &ldquo;correct arcs&rdquo;, so a perfect answer with no arcs can only score the accuracy mark, never the method mark. Draw them clearly and leave them alone.</div>
+<div class="warn"><b>Reaching for the protractor when it is banned</b>
+&ldquo;Using ruler and compasses only&rdquo; means exactly that. A bisector measured with a protractor scores zero even if it lands in the right place &mdash; and the protractor&rsquo;s two scales also trip up SAS drawings, so check an angle looks acute when it should be.</div>
+<div class="warn"><b>Forgetting the ends and the boundary style in loci</b>
+The locus a fixed distance from a <i>segment</i> has <b>semicircular ends</b>, not square ones. And a &ldquo;less than&rdquo; condition needs a <b>dashed</b> boundary, while &ldquo;not more than&rdquo; needs a <b>solid</b> one.</div>
+<div class="tip"><b>Exam tip</b>
+&ldquo;Equidistant&rdquo; tells you which construction to use: two <b>points</b> &rarr; perpendicular bisector; two <b>lines</b> &rarr; angle bisector. Learn that pairing and locus questions become quick.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">What is the locus of points equidistant from two intersecting lines?</span></summary>
+<div class="body"><div class="final">The bisector of the angle between them.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Describe the locus of points exactly 3 cm from a point P.</span></summary>
+<div class="body"><div class="final">A circle of radius 3 cm, centre P.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Why must you leave your compass arcs on the page?</span></summary>
+<div class="body"><div class="final">They are the evidence of the method &mdash; the method marks are awarded for correct arcs.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/3-6.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a step-by-step construction viewer and a locus explorer.</span></a>
+  <a href="../igcse-question-bank/constructions-and-loci-questions.html"><b>Practice questions</b><span>Exam-style questions on constructions and loci, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="circles.html"><span>&larr; Previous lesson</span><b>Circles</b></a>
+  <a class="next" href="scale-drawings.html"><span>Next lesson &rarr;</span><b>Scale Drawings</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

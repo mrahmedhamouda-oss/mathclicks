@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Understanding Similar Triangles | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on spotting and using similar triangles — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Geometry</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Understanding Similar Triangles</h1>
+    <p>Spot similar triangles, name them in the right order, and use the scale factor to calculate missing sides.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>State what makes two triangles similar, and prove similarity from two pairs of equal angles.</li>
+  <li>Name similar triangles with the vertices in <b>corresponding order</b>.</li>
+  <li>Find and use the scale factor <span class="m">k</span> to calculate missing sides.</li>
+  <li>Recognise the standard set-ups: a line parallel to one side, and the bow tie between parallel lines.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>similar</span><span>enlargement</span><span>scale factor</span><span>corresponding</span><span>equiangular</span><span>parallel</span><span>alternate angles</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">The angles of a triangle add up to what? So if two angles are 55&deg; and 68&deg;, what is the third?</span></summary>
+<div class="body"><div class="final">180&deg;; the third angle is 180&deg; &minus; 55&deg; &minus; 68&deg; = 57&deg;.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">A line crosses two parallel lines. What can you say about the alternate angles it makes?</span></summary>
+<div class="body"><div class="final">They are equal &mdash; the Z-shape gives equal alternate angles.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Work out 12 &divide; 8 and 7.5 &times; 1.5 without a calculator.</span></summary>
+<div class="body"><div class="final">12 &divide; 8 = 1.5 and 7.5 &times; 1.5 = 11.25</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; What &ldquo;similar&rdquo; means</h3>
+<p>Two shapes are <b>similar</b> if one is an enlargement of the other: same shape, possibly different
+size. In mathematics that has a precise meaning.</p>
+<div class="def"><b>Definition</b>
+Two figures are similar if <b>(i)</b> their corresponding angles are equal, and <b>(ii)</b> their
+corresponding sides are in the same ratio. That common ratio is the <b>scale factor</b>, usually written
+<span class="m">k</span>.</div>
+<div class="card">
+<h4>The same shape at two sizes</h4>
+<svg viewBox="0 0 420 220" role="img" aria-label="Two similar triangles, the larger one 1.6 times the size">
+  <polygon points="30,190 130,190 30,130" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+  <text x="70" y="208" font-size="13" style="fill:#1a4fa0">6 cm</text>
+  <text x="4" y="164" font-size="13" style="fill:#1a4fa0">4.5</text>
+  <text x="86" y="150" font-size="13" style="fill:#1a4fa0">7.5</text>
+  <text x="24" y="126" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="18" y="204" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="132" y="204" font-size="14" style="fill:#0f2d6b">C</text>
+  <path d="M 30 178 L 42 178 L 42 190" fill="none" stroke="#16a34a" stroke-width="2"/>
+
+  <polygon points="230,190 390,190 230,94" fill="#fff1ea" stroke="#e05c2a" stroke-width="2.5"/>
+  <text x="290" y="208" font-size="13" style="fill:#e05c2a">9.6 cm</text>
+  <text x="200" y="146" font-size="13" style="fill:#e05c2a">7.2</text>
+  <text x="322" y="132" font-size="13" style="fill:#e05c2a">12</text>
+  <text x="224" y="88" font-size="14" style="fill:#0f2d6b">P</text>
+  <text x="218" y="204" font-size="14" style="fill:#0f2d6b">Q</text>
+  <text x="392" y="204" font-size="14" style="fill:#0f2d6b">R</text>
+  <path d="M 230 178 L 242 178 L 242 190" fill="none" stroke="#16a34a" stroke-width="2"/>
+  <text x="150" y="60" font-size="13" style="fill:#6d28d9">scale factor k = 1.6</text>
+  <path d="M 150 70 L 220 100" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5 4"/>
+</svg>
+<div class="formula">9.6 &divide; 6 = 7.2 &divide; 4.5 = 12 &divide; 7.5 = 1.6
+<small>every pair of corresponding sides gives the same scale factor</small></div>
+</div>
+<div class="note"><b>For triangles, angles alone are enough</b>
+If two pairs of angles are equal, the third pair follows from the 180&deg; angle sum &mdash; and
+equiangular triangles are automatically similar. So a complete similarity proof in the exam is
+<b>two pairs of equal angles, each with a reason</b>. (SSS and SAS ratio checks also work.)</div>
+<div class="warn"><b>Similar is not congruent</b>
+<b>Congruent</b> triangles are identical in shape <i>and</i> size &mdash; the special case
+<span class="m">k = 1</span>. Similar triangles need only the same shape.</div>
+
+<h3>2&nbsp;&middot;&nbsp; Naming in the correct order</h3>
+<p>When you write <span class="m">triangle ABC is similar to triangle PQR</span>, you are stating that
+<span class="m">A</span> corresponds to <span class="m">P</span>, <span class="m">B</span> to
+<span class="m">Q</span> and <span class="m">C</span> to <span class="m">R</span>. Match the
+<b>equal angles</b> first, write the triangles one above the other so matching vertices line up, then
+read the sides off pair by pair.</p>
+<div class="formula"><span class="frac"><span>PQ</span><span>AB</span></span> =
+<span class="frac"><span>QR</span><span>BC</span></span> =
+<span class="frac"><span>PR</span><span>AC</span></span> = k
+<small>corresponding sides, in matching order</small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">In triangles <span class="m">ABC</span> and <span class="m">DEF</span>, angle <span class="m">A</span> = angle <span class="m">D</span> = 55&deg; and angle <span class="m">B</span> = angle <span class="m">E</span> = 68&deg;. <span class="m">AB = 8</span> cm, <span class="m">DE = 12</span> cm and <span class="m">BC = 10</span> cm. Find <span class="m">EF</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Two pairs of angles are equal, so the third pair must be equal too and the triangles are similar in the order given.
+    <span class="work">triangle ABC is similar to triangle DEF</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Find the scale factor from the pair of sides you know completely. <span class="m">AB</span> corresponds to <span class="m">DE</span>.
+    <span class="work">k = 12 &divide; 8 = 1.5</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">BC</span> corresponds to <span class="m">EF</span>, so multiply by the scale factor.
+    <span class="work">EF = 10 &times; 1.5 = 15</span></div></div>
+  <div class="final">EF = 15 cm</div>
+  <div class="tip"><b>Exam tip</b> Before you calculate, decide whether the answer should be
+  <b>bigger or smaller</b>. Here <span class="m">DEF</span> is the larger triangle, so <span class="m">EF</span> must exceed 10 cm.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Where similar triangles hide</h3>
+<div class="card p">
+<h4>Nested triangles &mdash; a line parallel to one side</h4>
+<svg viewBox="0 0 420 230" role="img" aria-label="A line parallel to the base creates a smaller nested similar triangle">
+  <polygon points="40,200 380,200 130,40" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="85" y1="120" x2="255" y2="120" stroke="#e05c2a" stroke-width="2.5"/>
+  <path d="M 150 196 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 165 196 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 155 116 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 170 116 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <circle cx="130" cy="40" r="4" fill="#0f2d6b"/>
+  <circle cx="40" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="380" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="85" cy="120" r="4" fill="#e05c2a"/>
+  <circle cx="255" cy="120" r="4" fill="#e05c2a"/>
+  <text x="124" y="32" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="24" y="214" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="386" y="214" font-size="14" style="fill:#0f2d6b">C</text>
+  <text x="66" y="116" font-size="14" style="fill:#e05c2a">D</text>
+  <text x="262" y="116" font-size="14" style="fill:#e05c2a">E</text>
+  <text x="286" y="164" font-size="12" style="fill:#6d28d9">DE parallel to BC</text>
+</svg>
+<p>Because <span class="m">DE</span> is parallel to <span class="m">BC</span>: angle <span class="m">ADE</span> =
+angle <span class="m">ABC</span> and angle <span class="m">AED</span> = angle <span class="m">ACB</span>
+(corresponding angles), and angle <span class="m">A</span> is shared. So
+<span class="m">triangle ADE is similar to triangle ABC</span>.</p>
+<div class="warn"><b>Watch out</b> The ratio uses <b>whole sides from the apex</b>:
+<span class="m">AD / AB</span>, never <span class="m">AD / DB</span>. If the question gives you
+<span class="m">DB</span>, add it to <span class="m">AD</span> first to get <span class="m">AB</span>.</div>
+</div>
+<div class="card">
+<h4>The bow tie &mdash; two lines crossing between parallel lines</h4>
+<svg viewBox="0 0 420 230" role="img" aria-label="Bow tie arrangement of two similar triangles">
+  <line x1="40" y1="40" x2="200" y2="40" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="220" y1="200" x2="390" y2="200" stroke="#1a4fa0" stroke-width="2.5"/>
+  <line x1="40" y1="40" x2="390" y2="200" stroke="#0f2d6b" stroke-width="2"/>
+  <line x1="200" y1="40" x2="220" y2="200" stroke="#0f2d6b" stroke-width="2"/>
+  <path d="M 110 36 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <path d="M 300 196 l 8 4 l -8 4" fill="none" stroke="#6d28d9" stroke-width="2"/>
+  <circle cx="40" cy="40" r="4" fill="#0f2d6b"/>
+  <circle cx="200" cy="40" r="4" fill="#0f2d6b"/>
+  <circle cx="220" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="390" cy="200" r="4" fill="#0f2d6b"/>
+  <circle cx="207.7" cy="116.7" r="5" fill="#e05c2a"/>
+  <text x="30" y="30" font-size="14" style="fill:#0f2d6b">A</text>
+  <text x="200" y="30" font-size="14" style="fill:#0f2d6b">B</text>
+  <text x="212" y="112" font-size="14" style="fill:#e05c2a">X</text>
+  <text x="212" y="220" font-size="14" style="fill:#0f2d6b">D</text>
+  <text x="392" y="220" font-size="14" style="fill:#0f2d6b">C</text>
+</svg>
+<p>With <span class="m">AB</span> parallel to <span class="m">DC</span>, the alternate angles at
+<span class="m">A</span> and <span class="m">C</span> are equal, those at <span class="m">B</span> and
+<span class="m">D</span> are equal, and the angles at <span class="m">X</span> are vertically opposite.
+So <span class="m">triangle ABX is similar to triangle CDX</span>.</p>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 2</span><span class="q">In triangle <span class="m">ABC</span>, <span class="m">D</span> lies on <span class="m">AB</span> and <span class="m">E</span> on <span class="m">AC</span> with <span class="m">DE</span> parallel to <span class="m">BC</span>. <span class="m">AD = 6</span> cm, <span class="m">DB = 4</span> cm and <span class="m">DE = 7.5</span> cm. Find <span class="m">BC</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">DE</span> is parallel to <span class="m">BC</span>, so triangle <span class="m">ADE</span> is similar to triangle <span class="m">ABC</span> (corresponding angles, common angle <span class="m">A</span>).</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Work out the <b>whole</b> side <span class="m">AB</span>, not just <span class="m">AD</span>.
+    <span class="work">AB = AD + DB = 6 + 4 = 10 cm</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Scale factor from small to large.
+    <span class="work">k = AB &divide; AD = 10 &divide; 6 = 5/3</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t"><span class="m">DE</span> corresponds to <span class="m">BC</span>.
+    <span class="work">BC = 7.5 &times; 5/3 = 12.5</span></div></div>
+  <div class="final">BC = 12.5 cm</div>
+  <div class="warn"><b>Watch out</b> Using <span class="m">6/4</span> as the scale factor is the single
+  most common error here. That ratio compares a part with a part, not a triangle with a triangle.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q"><span class="m">AB</span> is parallel to <span class="m">DC</span>. The diagonals of trapezium <span class="m">ABCD</span> meet at <span class="m">X</span>. <span class="m">AB = 5</span> cm, <span class="m">DC = 12</span> cm and <span class="m">AX = 3.5</span> cm. Find <span class="m">XC</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">This is the bow tie. Alternate angles give angle <span class="m">BAX</span> = angle <span class="m">DCX</span> and angle <span class="m">ABX</span> = angle <span class="m">CDX</span>.
+    <span class="work">triangle ABX is similar to triangle CDX</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">AB</span> corresponds to <span class="m">CD</span>, so the scale factor is
+    <span class="work">k = 12 &divide; 5 = 2.4</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t"><span class="m">AX</span> corresponds to <span class="m">CX</span>.
+    <span class="work">XC = 3.5 &times; 2.4 = 8.4</span></div></div>
+  <div class="final">XC = 8.4 cm</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">A vertical stick 1.5 m tall casts a shadow 2.4 m long. At the same moment a tower casts a shadow 36 m long. How tall is the tower?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">The sun's rays make the same angle with the ground in both cases, and both objects are vertical, so the two right-angled triangles are equiangular and therefore similar.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">Scale factor from the shadows.
+    <span class="work">k = 36 &divide; 2.4 = 15</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Apply it to the heights.
+    <span class="work">height = 1.5 &times; 15 = 22.5</span></div></div>
+  <div class="final">The tower is 22.5 m tall</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Triangle <span class="m">ABC</span> is similar to triangle <span class="m">PQR</span> with <span class="m">AB = 5</span> cm, <span class="m">PQ = 15</span> cm and <span class="m">BC = 7</span> cm. Find <span class="m">QR</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t"><span class="m">AB</span> corresponds to <span class="m">PQ</span>.
+    <span class="work">k = 15 &divide; 5 = 3 &nbsp;&rarr;&nbsp; QR = 7 &times; 3 = 21</span></div></div>
+  <div class="final">QR = 21 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">In triangle <span class="m">ABC</span>, <span class="m">DE</span> is parallel to <span class="m">BC</span> with <span class="m">D</span> on <span class="m">AB</span> and <span class="m">E</span> on <span class="m">AC</span>. <span class="m">AD = 8</span> cm, <span class="m">AB = 20</span> cm and <span class="m">BC = 15</span> cm. Find <span class="m">DE</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Going from the large triangle to the small one, the scale factor is
+    <span class="work">k = AD &divide; AB = 8 &divide; 20 = 0.4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t"><span class="m">BC</span> corresponds to <span class="m">DE</span>.
+    <span class="work">DE = 15 &times; 0.4 = 6</span></div></div>
+  <div class="final">DE = 6 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">Two triangles have sides 3, 5, 7 and 9, 15, 20. Are they similar? Justify your answer.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Pair smallest with smallest and check all three ratios.
+    <span class="work">9/3 = 3, &nbsp; 15/5 = 3, &nbsp; 20/7 = 2.857&hellip;</span></div></div>
+  <div class="final">Not similar &mdash; the third ratio differs from the other two.</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q"><span class="m">AB</span> is parallel to <span class="m">DC</span> and the diagonals of trapezium <span class="m">ABCD</span> meet at <span class="m">X</span>. <span class="m">AB = 6</span> cm, <span class="m">DC = 9</span> cm and <span class="m">DX = 7.2</span> cm. Find <span class="m">BX</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Bow tie: triangle <span class="m">ABX</span> is similar to triangle <span class="m">CDX</span>, so
+    <span class="work">BX &divide; DX = AB &divide; DC = 6/9</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Solve for <span class="m">BX</span>.
+    <span class="work">BX = 7.2 &times; 6/9 = 4.8</span></div></div>
+  <div class="final">BX = 4.8 cm</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A photograph 15 cm wide and 10 cm high is enlarged so that its width becomes 24 cm. Find the new height.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Scale factor from the widths.
+    <span class="work">k = 24 &divide; 15 = 1.6 &nbsp;&rarr;&nbsp; height = 10 &times; 1.6 = 16</span></div></div>
+  <div class="final">16 cm</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Part-to-part ratios</b>
+With a line parallel to one side, the scale factor is <span class="m">AD / AB</span> (whole side over
+whole side), never <span class="m">AD / DB</span>. Add the parts to get the whole side before you divide.</div>
+<div class="warn"><b>Letters out of order</b>
+<span class="m">triangle ABC similar to triangle PQR</span> pins <span class="m">A</span> to
+<span class="m">P</span>, <span class="m">B</span> to <span class="m">Q</span>, <span class="m">C</span> to
+<span class="m">R</span>. Match the equal angles first, then write the letters &mdash; every ratio you
+build depends on the order.</div>
+<div class="warn"><b>Multiplying when you should divide</b>
+Check the direction of the scale factor: multiply by <span class="m">k</span> to go small &rarr; large,
+divide to go large &rarr; small. A one-second sense check &mdash; should the answer be bigger or
+smaller? &mdash; catches this every time.</div>
+<div class="tip"><b>Exam tip</b>
+To prove two triangles are similar, list <b>two pairs of equal angles with a reason for each</b>
+(corresponding angles, alternate angles, common angle, vertically opposite&hellip;). That is a complete
+proof &mdash; the third pair follows automatically from the angle sum.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">How many pairs of equal angles do you need to show two triangles are similar?</span></summary>
+<div class="body"><div class="final">Two &mdash; the third pair follows from the 180&deg; angle sum.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">Triangles are similar with scale factor 2.5. One side of the smaller is 6 cm. What is the corresponding side of the larger?</span></summary>
+<div class="body"><div class="final">6 &times; 2.5 = 15 cm</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">In triangle <span class="m">ABC</span>, <span class="m">DE</span> is parallel to <span class="m">BC</span> with <span class="m">AD = 4</span> cm and <span class="m">DB = 8</span> cm. What is the scale factor from triangle <span class="m">ADE</span> to triangle <span class="m">ABC</span>?</span></summary>
+<div class="body"><div class="final">AB = 12, so k = 12 &divide; 4 = 3 (not 8 &divide; 4 = 2).</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/11-2.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a similar triangle solver to explore.</span></a>
+  <a href="../igcse-question-bank/similarity-questions.html"><b>Practice questions</b><span>Exam-style similarity questions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="angle-relationships-in-circles.html"><span>&larr; Previous lesson</span><b>Angle Relationships in Circles</b></a>
+  <a class="next" href="understanding-similar-shapes.html"><span>Next lesson &rarr;</span><b>Understanding Similar Shapes</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

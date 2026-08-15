@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Letters | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on writing algebraic expressions — notation conventions, terms and coefficients, turning words and diagrams into algebra, and the difference between expressions, equations and formulae.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Algebra</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Using Letters</h1>
+    <p>Letters stand for numbers we do not yet know &mdash; learn the notation examiners expect, turn words and diagrams into correct expressions, and name what you have written.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Write algebra in the standard notation: <span class="m">3n</span>, not <span class="m">3 &times; n</span> or <span class="m">n3</span>.</li>
+  <li>Identify the <b>terms</b>, <b>coefficients</b> and <b>constant</b> in an expression, signs included.</li>
+  <li>Translate words such as <i>sum</i>, <i>product</i> and <i>less than</i> into correct expressions.</li>
+  <li>Form and simplify expressions from diagrams and real situations.</li>
+  <li>Tell an <b>expression</b>, <b>equation</b>, <b>formula</b>, <b>identity</b> and <b>inequality</b> apart.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>variable</span><span>expression</span><span>term</span><span>coefficient</span><span>constant</span><span>equation</span><span>formula</span><span>identity</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Work out <span class="m">3 + 2 &times; 7</span>.</span></summary>
+<div class="body"><div class="final">17 &mdash; multiplication before addition, so 3 + 14.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">What is the difference between <span class="m">5 &times; 2</span> and <span class="m">5&sup2;</span>?</span></summary>
+<div class="body"><div class="final">5 &times; 2 = 10 but 5&sup2; = 5 &times; 5 = 25 &mdash; doubling and squaring are different operations.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Subtract 12 from 30.</span></summary>
+<div class="body"><div class="final">30 &minus; 12 = 18 &mdash; the number after &ldquo;from&rdquo; is the starting amount.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Why letters, and how to write them</h3>
+<p>Arithmetic answers one question at a time; algebra answers <b>every</b> version at once. If a taxi
+charges a $3 fixed fee plus $2 per kilometre, you could work out the fare for 4 km, then 9 km, then
+12 km &mdash; or write the rule once:</p>
+<div class="formula">C = 3 + 2d
+<small>Cost in dollars for a journey of <span class="m">d</span> kilometres</small></div>
+<div class="def"><b>Definition</b>
+A <b>variable</b> is a letter standing for a number that can change (<span class="m">d</span> above).
+A <b>constant</b> is a fixed number (the 3 and the 2). An <b>expression</b> is a collection of numbers and
+letters joined by <span class="m">+</span>, <span class="m">&minus;</span>, <span class="m">&times;</span>,
+<span class="m">&divide;</span> and powers, with <b>no equals sign</b>.</div>
+<p>Algebra also has a house style. Writing <span class="m">3 &times; n</span> is not <i>wrong</i>, but no
+examiner writes it, and multiplication signs are easily mistaken for the letter <span class="m">x</span>.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Instead of&hellip;</th><th>Write</th><th>Rule</th></tr></thead>
+<tbody>
+<tr><td><span class="m">3 &times; n</span></td><td><span class="m">3n</span></td><td>Drop the <span class="m">&times;</span>; the number goes <b>in front</b> of the letter</td></tr>
+<tr><td><span class="m">1 &times; n</span></td><td><span class="m">n</span></td><td>A coefficient of 1 is not written</td></tr>
+<tr><td><span class="m">n &divide; 4</span></td><td><span class="frac"><span>n</span><span>4</span></span></td><td>Division is written as a fraction, never with <span class="m">&divide;</span></td></tr>
+<tr><td><span class="m">n &times; n</span></td><td><span class="m">n&sup2;</span></td><td>Repeated multiplication becomes a power</td></tr>
+<tr><td><span class="m">b &times; a</span></td><td><span class="m">ab</span></td><td>Letters in alphabetical order</td></tr>
+<tr><td><span class="m">2 &times; (n + 5)</span></td><td><span class="m">2(n + 5)</span></td><td>Brackets hold a whole expression together</td></tr>
+</tbody>
+</table>
+</div>
+<div class="warn"><b>Watch out</b> <span class="m">2n</span> and <span class="m">n&sup2;</span> are completely
+different: <span class="m">2n</span> means <span class="m">n + n</span> while <span class="m">n&sup2;</span>
+means <span class="m">n &times; n</span>. When <span class="m">n = 5</span> they give 10 and 25.</div>
+
+<h3>2&nbsp;&middot;&nbsp; Turning words into algebra</h3>
+<p>Most exam algebra begins as a sentence. <b>Sum</b> means add, <b>difference</b> means subtract,
+<b>product</b> means multiply, <b>quotient</b> means divide &mdash; and two phrases reverse the order of
+the words:</p>
+<div class="grid">
+  <div class="card g"><h4>More than / less than</h4>
+    <p>3 more than <span class="m">n</span> &rarr; <span class="m">n + 3</span><br>
+    3 less than <span class="m">n</span> &rarr; <span class="m">n &minus; 3</span></p></div>
+  <div class="card o"><h4>Order matters</h4>
+    <p>&ldquo;subtract <span class="m">n</span> from 12&rdquo; &rarr; <span class="m">12 &minus; n</span><br>
+    &ldquo;<span class="m">n</span> subtract 12&rdquo; &rarr; <span class="m">n &minus; 12</span></p></div>
+  <div class="card p"><h4>Consecutive numbers</h4>
+    <p>integers: <span class="m">n, &nbsp;n+1, &nbsp;n+2</span><br>
+    even: <span class="m">2n, &nbsp;2n+2, &nbsp;2n+4</span><br>
+    odd: <span class="m">2n+1, &nbsp;2n+3</span></p></div>
+</div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Write an expression for each: (a) 7 more than <span class="m">x</span>; (b) subtract <span class="m">y</span> from 20; (c) the product of 3 and <span class="m">(m + 2)</span>; (d) half of <span class="m">n</span>, then add 5; (e) 4 less than three times <span class="m">t</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) &ldquo;More than&rdquo; means add.
+    <span class="work">x + 7</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) &ldquo;Subtract <span class="m">y</span> <i>from</i> 20&rdquo; &mdash; 20 is the starting amount.
+    <span class="work">20 &minus; y</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Product means multiply, and the whole bracket is multiplied, so keep the bracket.
+    <span class="work">3(m + 2)</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">(d) Half of <span class="m">n</span> first, then add 5 &mdash; only the <span class="m">n</span> is halved.
+    <span class="work"><span class="frac"><span>n</span><span>2</span></span> + 5</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">(e) Three times <span class="m">t</span> is <span class="m">3t</span>; 4 less than that subtracts 4 from it.
+    <span class="work">3t &minus; 4</span></div></div>
+  <div class="final">(a) x + 7 &nbsp; (b) 20 &minus; y &nbsp; (c) 3(m + 2) &nbsp; (d) <span class="frac"><span>n</span><span>2</span></span> + 5 &nbsp; (e) 3t &minus; 4</div>
+  <div class="tip"><b>Exam tip</b> Compare (d) with &ldquo;half of (<span class="m">n</span> add 5)&rdquo;, which is
+  <span class="frac"><span>n + 5</span><span>2</span></span>. Read to the end of the sentence before you write.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Terms, coefficients and constants</h3>
+<p>An expression is built from <b>terms</b> &mdash; the chunks separated by <span class="m">+</span> and
+<span class="m">&minus;</span> signs. <b>The sign in front belongs to the term.</b></p>
+<div class="formula">5x&sup2; &nbsp;&minus;&nbsp; 3x &nbsp;+&nbsp; 7
+<small>Three terms: <span class="m">5x&sup2;</span>, <span class="m">&minus;3x</span> and <span class="m">7</span></small></div>
+<div class="grid two">
+  <div class="card"><h4>Coefficient</h4>
+    <p>The number multiplying the letter part. Here the coefficient of <span class="m">x&sup2;</span> is
+    <b>5</b> and the coefficient of <span class="m">x</span> is <b>&minus;3</b> &mdash; take the minus sign with it.</p></div>
+  <div class="card o"><h4>Constant term</h4>
+    <p>A term with no letter in it. Here the constant is <b>7</b>. Its value never changes, whatever
+    <span class="m">x</span> is.</p></div>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">For the expression <span class="m">9y&sup3; &minus; y + 6x &minus; 11</span>, write down (a) the number of terms, (b) the coefficient of <span class="m">y&sup3;</span>, (c) the coefficient of <span class="m">y</span>, (d) the constant term.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Split at every <span class="m">+</span> or <span class="m">&minus;</span>, keeping each sign with the term that follows it.
+    <span class="work">9y&sup3; &nbsp;|&nbsp; &minus;y &nbsp;|&nbsp; +6x &nbsp;|&nbsp; &minus;11</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(a) Count them: 4 terms. (b) The number in front of <span class="m">y&sup3;</span> is 9.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) <span class="m">&minus;y</span> means <span class="m">&minus;1 &times; y</span>, so the coefficient is <span class="m">&minus;1</span>, not 1.</div></div>
+  <div class="step"><div class="n">4</div><div class="t">(d) The term with no letter, sign included, is <span class="m">&minus;11</span>.</div></div>
+  <div class="final">(a) 4 &nbsp; (b) 9 &nbsp; (c) &minus;1 &nbsp; (d) &minus;11</div>
+</div>
+</details>
+
+<h3>4&nbsp;&middot;&nbsp; Expressions from diagrams &mdash; and what to call the result</h3>
+<p>Perimeter is the distance all the way round, so you <b>add every side</b>. If a side is not labelled,
+work it out from the sides that are.</p>
+<div class="card">
+<h4>Two shapes with algebraic sides</h4>
+<svg viewBox="0 0 640 300" role="img" aria-label="A rectangle with sides x and x plus 4, and an L-shaped compound figure with sides labelled in terms of x" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <text x="20" y="30" font-size="14" font-weight="bold" fill="#1a4fa0">Rectangle</text>
+  <rect x="50" y="80" width="200" height="110" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="150" y="70" font-size="15" text-anchor="middle" fill="#0f2d6b">x + 4</text>
+  <text x="42" y="140" font-size="15" text-anchor="end" fill="#0f2d6b">x</text>
+  <text x="150" y="222" font-size="13" text-anchor="middle" fill="#4a5b7a">P = 2x + 2(x + 4)</text>
+  <text x="150" y="244" font-size="13" text-anchor="middle" font-weight="bold" fill="#e05c2a">P = 4x + 8</text>
+  <text x="150" y="268" font-size="13" text-anchor="middle" fill="#4a5b7a">A = x(x + 4)</text>
+  <text x="352" y="30" font-size="14" font-weight="bold" fill="#6d28d9">L-shape</text>
+  <polygon points="370,250 570,250 570,170 490,170 490,50 370,50" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+  <text x="470" y="272" font-size="15" text-anchor="middle" fill="#0f2d6b">5x</text>
+  <text x="580" y="215" font-size="15" fill="#0f2d6b">2x</text>
+  <text x="530" y="162" font-size="15" text-anchor="middle" fill="#0f2d6b">2x</text>
+  <text x="500" y="115" font-size="15" fill="#0f2d6b">3x</text>
+  <text x="430" y="42" font-size="15" text-anchor="middle" fill="#0f2d6b">3x</text>
+  <text x="362" y="155" font-size="15" text-anchor="end" fill="#0f2d6b">5x</text>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Find, in terms of <span class="m">x</span>, the perimeter of the L-shape in the diagram. Then find the perimeter when <span class="m">x = 2.5</span> cm.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Go round the shape once, listing every side in order and missing none.
+    <span class="work">5x + 2x + 2x + 3x + 3x + 5x</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the coefficients: <span class="m">5 + 2 + 2 + 3 + 3 + 5 = 20</span>.
+    <span class="work">P = 20x</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Substitute <span class="m">x = 2.5</span>.
+    <span class="work">P = 20 &times; 2.5 = 50 cm</span></div></div>
+  <div class="final">P = 20x, and P = 50 cm when x = 2.5</div>
+  <div class="tip"><b>Exam tip</b> Mark each side with a small tick as you use it. Candidates lose marks far
+  more often by <i>missing a side</i> than by adding up wrongly.</div>
+</div>
+</details>
+
+<p>Finally, name what you have written &mdash; questions use these five words precisely, and
+&ldquo;simplify&rdquo; belongs to an expression while &ldquo;solve&rdquo; belongs to an equation.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Name</th><th>Test</th><th>Example</th><th>What you do with it</th></tr></thead>
+<tbody>
+<tr><td><b>Expression</b></td><td>no <span class="m">=</span> sign at all</td><td><span class="m">4x &minus; 7</span></td><td>simplify, expand, factorise, substitute</td></tr>
+<tr><td><b>Equation</b></td><td>has <span class="m">=</span>; true only for particular values</td><td><span class="m">4x &minus; 7 = 5</span></td><td>solve &mdash; here <span class="m">x = 3</span> only</td></tr>
+<tr><td><b>Formula</b></td><td>has <span class="m">=</span>; a rule linking quantities, with a subject</td><td><span class="m">A = &pi;r&sup2;</span></td><td>substitute, or rearrange the subject</td></tr>
+<tr><td><b>Identity</b></td><td>true for <i>every</i> value; written with <span class="m">&equiv;</span></td><td><span class="m">2(x + 3) &equiv; 2x + 6</span></td><td>prove, or use to rewrite</td></tr>
+<tr><td><b>Inequality</b></td><td>uses <span class="m">&lt; &gt; &le; &ge;</span></td><td><span class="m">4x &minus; 7 &gt; 5</span></td><td>solve for a <i>range</i> of values</td></tr>
+</tbody>
+</table>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">State whether each is an expression, an equation, a formula, an identity or an inequality: (a) <span class="m">7 &minus; 2k</span>; (b) <span class="m">v = u + at</span>; (c) <span class="m">3(x &minus; 1) &equiv; 3x &minus; 3</span>; (d) <span class="m">5m + 2 = 17</span>; (e) <span class="m">2y &minus; 1 &le; 9</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) No relation symbol of any kind &mdash; an expression.</div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) A rule connecting four quantities with <span class="m">v</span> as its subject &mdash; a formula.</div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Expanding the left gives exactly the right, so it holds for every <span class="m">x</span> &mdash; an identity.</div></div>
+  <div class="step"><div class="n">4</div><div class="t">(d) True only for one value (<span class="m">m = 3</span>), so it can be solved &mdash; an equation.</div></div>
+  <div class="step"><div class="n">5</div><div class="t">(e) Uses <span class="m">&le;</span>, giving a range of solutions &mdash; an inequality.</div></div>
+  <div class="final">(a) expression &nbsp; (b) formula &nbsp; (c) identity &nbsp; (d) equation &nbsp; (e) inequality</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Write an expression for: (a) 9 more than <span class="m">t</span>; (b) subtract <span class="m">k</span> from 30; (c) the product of 5 and <span class="m">(m &minus; 2)</span>; (d) one third of <span class="m">w</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Translate each phrase, watching the order in (b).</div></div>
+  <div class="final">(a) t + 9 &nbsp; (b) 30 &minus; k &nbsp; (c) 5(m &minus; 2) &nbsp; (d) <span class="frac"><span>w</span><span>3</span></span></div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">For <span class="m">7x&sup2; &minus; x + 4y &minus; 9</span> write down (a) the number of terms, (b) the coefficient of <span class="m">x&sup2;</span>, (c) the coefficient of <span class="m">x</span>, (d) the constant term.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Split into terms, signs attached.
+    <span class="work">7x&sup2; &nbsp;|&nbsp; &minus;x &nbsp;|&nbsp; +4y &nbsp;|&nbsp; &minus;9</span></div></div>
+  <div class="final">(a) 4 &nbsp; (b) 7 &nbsp; (c) &minus;1 &nbsp; (d) &minus;9</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A taxi charges a fixed $3 plus $2 per kilometre. Write a formula for the cost <span class="m">C</span> of a journey of <span class="m">d</span> km, and use it to find the cost of a 7 km journey.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Fixed part 3, variable part <span class="m">2 &times; d</span>.
+    <span class="work">C = 3 + 2d</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Substitute <span class="m">d = 7</span>.
+    <span class="work">C = 3 + 2 &times; 7 = 3 + 14 = 17</span></div></div>
+  <div class="final">C = 3 + 2d, and the 7 km journey costs $17</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q"><span class="m">n</span> is an integer. Write down the next two consecutive even numbers after <span class="m">2n</span>, and show that the sum of the three is a multiple of 6.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Even numbers rise in steps of 2.
+    <span class="work">2n + 2 &nbsp;and&nbsp; 2n + 4</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add all three and collect.
+    <span class="work">2n + (2n + 2) + (2n + 4) = 6n + 6</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Factorise so the factor of 6 is visible &mdash; this earns the &ldquo;show that&rdquo; mark.
+    <span class="work">6n + 6 = 6(n + 1)</span></div></div>
+  <div class="final">Sum = 6(n + 1), which is 6 &times; an integer, so it is a multiple of 6</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">A rectangle has width <span class="m">x</span> cm and length 3 cm more than twice the width. Write and simplify expressions for (a) the perimeter, (b) the area. (c) Find the perimeter when <span class="m">x = 5</span>.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Length = <span class="m">2x + 3</span>.
+    <span class="work">(a) P = 2x + 2(2x + 3) = 6x + 6</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">(b) Area = width &times; length.
+    <span class="work">A = x(2x + 3) = 2x&sup2; + 3x</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">(c) Substitute <span class="m">x = 5</span>, then check with the actual sides (5 and 13).
+    <span class="work">P = 6(5) + 6 = 36 &nbsp;&nbsp; check: 2(5 + 13) = 36 &#10003;</span></div></div>
+  <div class="final">(a) P = 6x + 6 &nbsp; (b) A = 2x&sup2; + 3x &nbsp; (c) 36 cm</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Reversing &ldquo;less than&rdquo; and &ldquo;subtract from&rdquo;</b>
+The words appear in the opposite order to the algebra. &ldquo;5 less than <span class="m">k</span>&rdquo; is
+<span class="m">k &minus; 5</span>, <b>not</b> <span class="m">5 &minus; k</span>, and &ldquo;subtract
+<span class="m">n</span> from 12&rdquo; is <span class="m">12 &minus; n</span>.</div>
+<div class="warn"><b>Confusing 2n with n&sup2;</b>
+<span class="m">2n</span> is <span class="m">n + n</span>; <span class="m">n&sup2;</span> is
+<span class="m">n &times; n</span>. When <span class="m">n = 5</span> they give 10 and 25 &mdash; only at
+<span class="m">n = 2</span> do they happen to agree.</div>
+<div class="warn"><b>Dropping the bracket when subtracting a whole cost</b>
+Change from $50 for a bill of <span class="m">4x + 6y</span> is <span class="m">50 &minus; (4x + 6y)
+= 50 &minus; 4x &minus; 6y</span>. Writing <span class="m">50 &minus; 4x + 6y</span> is the classic error
+&mdash; the minus applies to <i>both</i> terms.</div>
+<div class="tip"><b>Exam tip</b>
+When a question says &ldquo;let <span class="m">n</span> be the number of&hellip;&rdquo;, write that sentence
+down before you start &mdash; it earns method marks and stops you confusing two quantities. And if you are
+unsure of an expression, test it with a small number: for the ages check, <span class="m">s = 10</span>
+settles it in seconds.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Write &ldquo;3 more than twice <span class="m">n</span>&rdquo; in algebra.</span></summary>
+<div class="body"><div class="final">2n + 3 &mdash; double first, then add 3.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">In <span class="m">5x&sup2; &minus; 3x + 7</span>, what is the coefficient of <span class="m">x</span>?</span></summary>
+<div class="body"><div class="final">&minus;3 &mdash; the sign in front belongs to the term.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Is <span class="m">A = &pi;r&sup2;</span> an expression, an equation or a formula?</span></summary>
+<div class="body"><div class="final">A formula &mdash; a rule linking quantities, with A as its subject.</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/2-1.html"><b>Revision notes</b><span>The full interactive notes for this topic, with a words-to-algebra translator to explore.</span></a>
+  <a href="../igcse-question-bank/brackets-and-simplifying-questions.html"><b>Practice questions</b><span>Exam-style questions on writing and simplifying expressions, with a full mark scheme.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="exchanging-currencies.html"><span>&larr; Previous lesson</span><b>Exchanging Currencies</b></a>
+  <a class="next" href="substitution.html"><span>Next lesson &rarr;</span><b>Substitution</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

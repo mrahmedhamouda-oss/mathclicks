@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earning Money | IGCSE 0580 Extended Lessons</title>
+<meta name="description" content="A structured lesson on salaries, wages, overtime, commission and banded income tax — objectives, starter, worked examples, practice and an exit check.">
+<style>
+:root{
+  --navy:#0f2d6b; --blue:#1a4fa0; --blue-l:#e8f0fe; --orange:#e05c2a; --orange-l:#fff1ea;
+  --green:#16a34a; --green-l:#e9f9ef; --purple:#6d28d9; --purple-l:#f3edff;
+  --ink:#12213d; --ink-soft:#4a5b7a; --line:#dfe6f2; --bg:#f5f8fd; --card:#ffffff;
+  --code-bg:#f2f6fd; --shadow:0 1px 2px rgba(15,45,107,.06),0 6px 20px rgba(15,45,107,.07);
+  --radius:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono","Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --navy:#9dc0ff; --blue:#7fa8f5; --blue-l:#16233d; --orange:#ff9666; --orange-l:#3a2115;
+  --green:#4ade80; --green-l:#12301f; --purple:#c4b5fd; --purple-l:#241a3d;
+  --ink:#e8eefb; --ink-soft:#a9b8d4; --line:#26364f; --bg:#0d1522; --card:#131d2e;
+  --code-bg:#182437; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0b2050 0%,#123a86 55%,#1a4fa0 100%);
+  color:#fff;padding:38px 0 30px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+header.hero::before{content:"";position:absolute;left:-40px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(224,92,42,.18)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;
+  padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+.badge.ext{background:var(--orange);border-color:var(--orange)}
+header.hero h1{margin:0 0 8px;font-size:2.05rem;line-height:1.2;font-weight:800;position:relative;z-index:2}
+header.hero p{margin:0;color:#cfe0ff;font-size:1.03rem;max-width:64ch;position:relative;z-index:2}
+nav.sticky{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(15,45,107,.05)}
+nav.sticky .inner{display:flex;align-items:center;gap:6px;max-width:900px;margin:0 auto;padding:0 10px;
+  overflow-x:auto;scrollbar-width:none}
+nav.sticky .inner::-webkit-scrollbar{display:none}
+nav.sticky a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:600;
+  padding:12px 11px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.sticky a:hover{color:var(--blue)}
+nav.sticky a.home{color:var(--blue)}
+#themeBtn{margin-left:auto;flex:none;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:9px;cursor:pointer;font-size:15px;padding:5px 9px;line-height:1}
+#themeBtn:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:26px 0 60px}
+section{margin:0 0 30px}
+h2{font-size:1.45rem;color:var(--navy);margin:34px 0 14px;font-weight:800;
+  display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:1.1em;background:var(--orange);border-radius:3px;flex:none}
+h2 small{font-weight:600;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;
+  background:var(--blue-l);padding:3px 9px;border-radius:999px}
+h3{font-size:1.12rem;color:var(--blue);margin:22px 0 8px;font-weight:700}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:5px 0}
+a{color:var(--blue)}
+.m{font-family:var(--mono);background:var(--code-bg);border-radius:6px;padding:1px 6px;font-size:.94em;white-space:nowrap}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.15}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 4px}
+.frac>span:last-child{padding:0 4px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--blue);
+  border-radius:var(--radius);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.card.o{border-left-color:var(--orange)}
+.card.g{border-left-color:var(--green)}
+.card.p{border-left-color:var(--purple)}
+.card>h3:first-child,.card>h4:first-child{margin-top:0}
+.card h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.note,.warn,.tip,.def{border-radius:11px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:.97rem}
+.note{background:var(--blue-l);border-color:rgba(26,79,160,.28)}
+.warn{background:var(--orange-l);border-color:rgba(224,92,42,.32)}
+.tip{background:var(--green-l);border-color:rgba(22,163,74,.3)}
+.def{background:var(--purple-l);border-color:rgba(109,40,217,.28)}
+.note b:first-child,.warn b:first-child,.tip b:first-child,.def b:first-child{display:block;margin-bottom:3px}
+.note>b:first-child{color:var(--blue)} .warn>b:first-child{color:var(--orange)}
+.tip>b:first-child{color:var(--green)} .def>b:first-child{color:var(--purple)}
+.formula{background:linear-gradient(135deg,var(--blue-l),transparent);border:1px dashed rgba(26,79,160,.45);
+  border-radius:12px;padding:14px 16px;margin:14px 0;text-align:center;font-size:1.16rem;font-family:var(--mono);
+  color:var(--navy);font-weight:600;overflow-x:auto}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.72rem;color:var(--ink-soft);
+  font-weight:500;margin-top:6px;letter-spacing:.4px;text-transform:uppercase}
+.objectives{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;box-shadow:var(--shadow)}
+.objectives ul{list-style:none;padding:0;margin:0}
+.objectives li{padding-left:30px;position:relative;margin:9px 0}
+.objectives li::before{content:"\2713";position:absolute;left:0;top:0;width:21px;height:21px;
+  border-radius:50%;background:var(--green-l);color:var(--green);font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.kw{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.kw span{background:var(--purple-l);color:var(--purple);border:1px solid rgba(109,40,217,.25);
+  border-radius:999px;padding:4px 13px;font-size:.9rem;font-weight:600}
+details.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.ex summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline;list-style:none}
+details.ex summary::-webkit-details-marker{display:none}
+details.ex summary .tag{flex:none;background:var(--blue);color:#fff;border-radius:7px;padding:3px 10px;
+  font-size:12.5px;font-weight:700;white-space:nowrap}
+details.ex[data-k="starter"] summary .tag{background:var(--purple)}
+details.ex[data-k="practice"] summary .tag{background:var(--green)}
+details.ex[data-k="exit"] summary .tag{background:var(--orange)}
+details.ex summary .q{font-weight:600}
+details.ex .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue-l);color:var(--blue);
+  font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step .t{flex:1}
+.work{display:block;font-family:var(--mono);background:var(--code-bg);border-radius:9px;
+  padding:8px 12px;margin-top:6px;font-size:.95rem;overflow-x:auto}
+.final{background:var(--green-l);border:1px solid rgba(22,163,74,.3);border-radius:10px;
+  padding:10px 14px;margin:14px 0 4px;font-weight:700;color:var(--ink)}
+.final::before{content:"Answer  ";color:var(--green);font-size:.78rem;letter-spacing:.6px;text-transform:uppercase}
+.pager{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;flex-wrap:wrap}
+.pager a{flex:1;min-width:180px;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 15px;box-shadow:var(--shadow)}
+.pager a span{display:block;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.7px}
+.pager a b{color:var(--blue);font-size:.96rem}
+.pager a.next{text-align:right}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:14px 0}
+.links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);color:var(--ink)}
+.links a b{display:block;color:var(--blue)}
+.links a span{font-size:.86rem;color:var(--ink-soft)}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--blue-l);color:var(--navy);font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--ink-soft);font-size:.86rem;text-align:center;margin-top:40px}
+@media print{nav.sticky,#themeBtn,.pager{display:none!important}
+  details.ex{page-break-inside:avoid}details.ex[open] .body{display:block}}
+@media(max-width:640px){header.hero h1{font-size:1.55rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge">Cambridge IGCSE&reg; Mathematics 0580</span>
+      <span class="badge ext">Extended</span>
+      <span class="badge">Number</span>
+      <span class="badge">Lesson</span>
+    </div>
+    <h1>Earning Money</h1>
+    <p>Salaries, wages, overtime, piecework and commission &mdash; then how deductions and banded income tax turn gross pay into net pay.</p>
+  </div>
+</header>
+
+<nav class="sticky"><div class="inner">
+  <a class="home" href="index.html">&larr; All lessons</a>
+  <a href="#objectives">Objectives</a>
+  <a href="#starter">Starter</a>
+  <a href="#learn">Learn</a>
+  <a href="#practice">Practice</a>
+  <a href="#mistakes">Mistakes</a>
+  <a href="#exit">Exit check</a>
+  <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9789;</button>
+</div></nav>
+
+<main class="wrap">
+
+<section id="objectives">
+<h2>Learning objectives <small>What you will be able to do</small></h2>
+<div class="objectives"><ul>
+  <li>Convert between annual salaries and monthly or weekly pay, and calculate basic pay from hours and an hourly rate.</li>
+  <li>Calculate overtime pay using multipliers such as time and a half and double time.</li>
+  <li>Calculate earnings from piecework and from commission, including commission paid only on sales above a threshold.</li>
+  <li>Find net pay from gross pay and deductions, and work banded income tax with a tax-free allowance.</li>
+</ul></div>
+<h3>Key words</h3>
+<div class="kw"><span>salary</span><span>wage</span><span>overtime</span><span>piecework</span><span>commission</span><span>gross pay</span><span>net pay</span><span>deduction</span></div>
+</section>
+
+<section id="starter">
+<h2>Starter <small>5 minutes &mdash; before we begin</small></h2>
+<p>Answer from memory, then open each one to check.</p>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 1</span><span class="q">Work out <span class="m">46 800 &divide; 12</span>.</span></summary>
+<div class="body"><div class="final">3900 &mdash; dividing by 12 turns a yearly amount into a monthly one.</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 2</span><span class="q">Find 4% of <span class="m">$7500</span>.</span></summary>
+<div class="body"><div class="final">0.04 &times; 7500 = $300</div></div>
+</details>
+<details class="ex" data-k="starter">
+<summary><span class="tag">Starter 3</span><span class="q">Work out <span class="m">1.5 &times; 12.50</span>.</span></summary>
+<div class="body"><div class="final">18.75 &mdash; this is what &ldquo;time and a half&rdquo; does to an hourly rate of $12.50.</div></div>
+</details>
+</section>
+
+<section id="learn">
+<h2>Learn <small>Teach &middot; example &middot; together</small></h2>
+
+<h3>1&nbsp;&middot;&nbsp; Salaries, wages and basic pay</h3>
+<p>Money questions look easy and are answered badly. Almost every mark lost comes from one of three things:
+using the wrong number of weeks in a year, forgetting that overtime is paid at a <i>higher</i> rate, or giving
+money to the wrong number of decimal places.</p>
+<div class="tw">
+<table>
+<thead><tr><th></th><th>Salary</th><th>Wage</th></tr></thead>
+<tbody>
+<tr><td><b>Quoted as</b></td><td>An amount per <b>year</b></td><td>An amount per <b>hour</b> (or per item)</td></tr>
+<tr><td><b>Paid</b></td><td>Usually monthly &mdash; 12 equal payments</td><td>Usually weekly &mdash; 52 payments</td></tr>
+<tr><td><b>Extra hours</b></td><td>Normally included; no extra pay</td><td>Paid as <b>overtime</b> at a higher rate</td></tr>
+<tr><td><b>Typical wording</b></td><td>&ldquo;earns $46 800 per annum&rdquo;</td><td>&ldquo;paid $12.50 per hour&rdquo;</td></tr>
+</tbody>
+</table>
+</div>
+<div class="def"><b>Definition</b>
+<b>Basic pay</b> is the money earned for the normal, agreed hours &mdash; before any overtime, bonus or deduction:
+<span class="m">basic pay = hours worked &times; hourly rate</span>.</div>
+<div class="formula">monthly pay = <span class="frac"><span>annual salary</span><span>12</span></span>
+&nbsp;&nbsp;&nbsp;&nbsp; weekly pay = <span class="frac"><span>annual salary</span><span>52</span></span>
+<small>12 months in a year, 52 weeks in a year &mdash; never 4 weeks in a month</small></div>
+
+<details class="ex" open>
+<summary><span class="tag">Example 1</span><span class="q">Amara has an annual salary of $46 800, paid monthly. Ben is paid $12.50 per hour and works a basic 38-hour week for 52 weeks. Who earns more in a year, and by how much?</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Amara&rsquo;s monthly pay: divide the salary by 12.
+    <span class="work">46 800 &divide; 12 = $3900.00 per month</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Ben&rsquo;s weekly basic pay: hours &times; rate, then multiply by 52 weeks.
+    <span class="work">38 &times; 12.50 = $475.00 per week<br>475.00 &times; 52 = $24 700.00 per year</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Compare the two yearly amounts.
+    <span class="work">46 800.00 &minus; 24 700.00 = $22 100.00</span></div></div>
+  <div class="final">Amara earns more, by $22 100.00 per year</div>
+  <div class="tip"><b>Exam tip</b> Compare like with like &mdash; turn both amounts into the <i>same</i> period (both per year, or both per week) before you subtract.</div>
+</div>
+</details>
+
+<h3>2&nbsp;&middot;&nbsp; Overtime, piecework and commission</h3>
+<p>Hours beyond the basic week are paid at a higher rate, described as a <b>multiplier</b> of the basic hourly rate.</p>
+<div class="grid">
+  <div class="card"><h4>Time and a quarter</h4><p><span class="m">&times; 1.25</span> the basic rate</p></div>
+  <div class="card o"><h4>Time and a half</h4><p><span class="m">&times; 1.5</span> the basic rate &mdash; by far the most common in exams</p></div>
+  <div class="card g"><h4>Double time</h4><p><span class="m">&times; 2</span> the basic rate &mdash; usually Sundays or public holidays</p></div>
+</div>
+<div class="formula">total pay = (basic hours &times; rate) + (overtime hours &times; rate &times; multiplier)
+<small>Work out each block of hours separately, then add</small></div>
+<p>Not everyone is paid by the hour. Two other systems appear regularly:</p>
+<div class="grid two">
+  <div class="card p"><h4>Piecework</h4>
+    <p>Paid a fixed amount for <b>each item</b> produced: <span class="m">pay = items &times; rate per item</span>.
+    A worker paid $1.80 per item who completes 145 items earns <span class="m">145 &times; 1.80 = $261.00</span>.</p></div>
+  <div class="card o"><h4>Commission</h4>
+    <p>Paid a <b>percentage of the value sold</b>, often on top of a small basic wage:
+    <span class="m">commission = rate% &times; value of sales</span>. 3% on $8000 of sales is
+    <span class="m">0.03 &times; 8000 = $240.00</span>.</p></div>
+</div>
+<div class="note"><b>Note</b>
+Questions very often say commission is paid only on sales <b>above</b> a threshold &mdash; &ldquo;4% on all sales
+over $2000&rdquo;. Subtract the threshold <i>before</i> you take the percentage. Read that sentence twice; it is
+the single most common error in this topic.</div>
+
+<details class="ex">
+<summary><span class="tag">Example 2</span><span class="q">Ben is paid $12.50 per hour for a basic 38-hour week. One week he also works 6 hours at time and a half and 3 hours at double time. Find his total pay for that week.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Basic pay first.
+    <span class="work">38 &times; 12.50 = $475.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Time-and-a-half rate, then those hours.
+    <span class="work">1.5 &times; 12.50 = $18.75 per hour<br>6 &times; 18.75 = $112.50</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Double-time rate, then those hours.
+    <span class="work">2 &times; 12.50 = $25.00 per hour<br>3 &times; 25.00 = $75.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Add the three blocks.
+    <span class="work">475.00 + 112.50 + 75.00 = 662.50</span></div></div>
+  <div class="final">Total pay = $662.50</div>
+  <div class="tip"><b>Exam tip</b> Set the working out in three clear lines like this &mdash; if the final answer slips, the method marks are still there to be awarded.</div>
+</div>
+</details>
+
+<details class="ex">
+<summary><span class="tag">Example 3</span><span class="q">Selina is paid a basic wage of $320 per week plus 4% commission on all sales over $2000. In one week she sells goods worth $9500. Calculate her total pay for the week.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Find the sales that actually earn commission.
+    <span class="work">9500 &minus; 2000 = $7500</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Take 4% of that amount.
+    <span class="work">0.04 &times; 7500 = $300.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add the basic wage.
+    <span class="work">320.00 + 300.00 = 620.00</span></div></div>
+  <div class="final">Total pay = $620.00</div>
+  <div class="warn"><b>Common error</b> Taking 4% of the full $9500 gives $380 and a total of $700 &mdash; wrong, because the first $2000 of sales earns nothing.</div>
+</div>
+</details>
+
+<h3>3&nbsp;&middot;&nbsp; Gross pay, deductions and net pay</h3>
+<div class="def"><b>Definition</b>
+<b>Gross pay</b> is everything earned before anything is taken off. <b>Deductions</b> are the amounts removed
+&mdash; income tax, pension contributions, health insurance, union fees. <b>Net pay</b> (take-home pay) is what
+actually reaches the worker.</div>
+<div class="formula">net pay = gross pay &minus; total deductions
+<small>Also worth knowing: net pay = gross pay &times; (100 &minus; d)% if deductions are d% of gross</small></div>
+<div class="tip"><b>Exam tip</b>
+Percentage deductions are always a percentage of <b>gross</b> pay, never of the amount left over. A 5% pension on
+gross pay of $2850 is <span class="m">0.05 &times; 2850 = $142.50</span>.</div>
+
+<h3>4&nbsp;&middot;&nbsp; Income tax with an allowance and bands</h3>
+<p>Most tax systems in exam questions work in two stages: subtract a <b>tax-free allowance</b> first
+(<span class="m">taxable income = gross income &minus; allowance</span>), then cut the taxable income into
+<b>bands</b>, each with its own rate. Only the part of the income <i>inside</i> a band is charged at that
+band&rsquo;s rate.</p>
+<div class="card o">
+<h4>How the bands stack up</h4>
+<svg viewBox="0 0 640 210" role="img" aria-label="Bar diagram showing a tax-free allowance and three tax bands stacked along an income axis" style="max-width:min(100%,560px);display:block;margin:0 auto">
+  <rect x="20" y="50" width="130" height="60" rx="6" fill="#e9f9ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="85" y="78" font-size="13" text-anchor="middle" fill="#16a34a" font-weight="bold" font-family="monospace">Allowance</text>
+  <text x="85" y="96" font-size="13" text-anchor="middle" fill="#16a34a" font-family="monospace">0%</text>
+  <rect x="150" y="50" width="130" height="60" rx="6" fill="#e8f0fe" stroke="#1a4fa0" stroke-width="2"/>
+  <text x="215" y="78" font-size="13" text-anchor="middle" fill="#1a4fa0" font-weight="bold" font-family="monospace">Band 1</text>
+  <text x="215" y="96" font-size="13" text-anchor="middle" fill="#1a4fa0" font-family="monospace">10%</text>
+  <rect x="280" y="50" width="180" height="60" rx="6" fill="#fff1ea" stroke="#e05c2a" stroke-width="2"/>
+  <text x="370" y="78" font-size="13" text-anchor="middle" fill="#e05c2a" font-weight="bold" font-family="monospace">Band 2</text>
+  <text x="370" y="96" font-size="13" text-anchor="middle" fill="#e05c2a" font-family="monospace">22%</text>
+  <rect x="460" y="50" width="160" height="60" rx="6" fill="#f3edff" stroke="#6d28d9" stroke-width="2"/>
+  <text x="540" y="78" font-size="13" text-anchor="middle" fill="#6d28d9" font-weight="bold" font-family="monospace">Top band</text>
+  <text x="540" y="96" font-size="13" text-anchor="middle" fill="#6d28d9" font-family="monospace">35%</text>
+  <line x1="20" y1="130" x2="620" y2="130" stroke="#0f2d6b" stroke-width="2"/>
+  <text x="20" y="150" font-size="12" fill="#0f2d6b" font-family="monospace">$0</text>
+  <text x="150" y="150" font-size="12" text-anchor="middle" fill="#0f2d6b" font-family="monospace">9000</text>
+  <text x="280" y="150" font-size="12" text-anchor="middle" fill="#0f2d6b" font-family="monospace">21 000</text>
+  <text x="460" y="150" font-size="12" text-anchor="middle" fill="#0f2d6b" font-family="monospace">41 000</text>
+  <text x="620" y="150" font-size="12" text-anchor="end" fill="#0f2d6b" font-family="monospace">income</text>
+  <text x="20" y="182" font-size="12.5" fill="#4a5b7a" font-family="monospace">Each slice of income is taxed only at its own rate &mdash;</text>
+  <text x="20" y="200" font-size="12.5" fill="#4a5b7a" font-family="monospace">a higher band does not re-tax the earlier slices.</text>
+</svg>
+</div>
+
+<details class="ex">
+<summary><span class="tag">Example 4</span><span class="q">Income tax is charged as follows: the first $9000 is tax free; the next $12 000 is taxed at 10%; the next $20 000 at 22%; anything above that at 35%. Marco earns $58 000. Find (a) the tax he pays, (b) his net income, (c) the tax as a percentage of his income.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">(a) Take off the allowance to get the taxable income.
+    <span class="work">58 000 &minus; 9000 = $49 000 taxable</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Tax each band separately.
+    <span class="work">0.10 &times; 12 000 = $1200.00<br>0.22 &times; 20 000 = $4400.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Whatever is left goes in the top band.
+    <span class="work">49 000 &minus; 12 000 &minus; 20 000 = $17 000<br>0.35 &times; 17 000 = $5950.00</span></div></div>
+  <div class="step"><div class="n">4</div><div class="t">Add the three band amounts.
+    <span class="work">1200.00 + 4400.00 + 5950.00 = $11 550.00</span></div></div>
+  <div class="step"><div class="n">5</div><div class="t">(b) Net income = gross &minus; tax.
+    <span class="work">58 000 &minus; 11 550 = $46 450.00</span></div></div>
+  <div class="step"><div class="n">6</div><div class="t">(c) Write the tax as a fraction of the income, then multiply by 100.
+    <span class="work">11 550 &divide; 58 000 &times; 100 = 19.913&hellip; = 19.9%</span></div></div>
+  <div class="final">(a) $11 550.00 &nbsp;&nbsp; (b) $46 450.00 &nbsp;&nbsp; (c) 19.9% (3 sf)</div>
+  <div class="warn"><b>Watch out</b> Marco is a 35% taxpayer, but his <i>average</i> rate is only 19.9%. Never multiply the whole income by the top rate.</div>
+</div>
+</details>
+</section>
+
+<section id="practice">
+<h2>Practice <small>Now you try</small></h2>
+<p>Do every question on paper first, then open the solution and mark your own working.</p>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 1</span><span class="q">Lena&rsquo;s annual salary is $37 440. Find her pay (a) per month, (b) per week.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Divide by 12 for monthly, 52 for weekly.
+    <span class="work">37 440 &divide; 12 = 3120.00<br>37 440 &divide; 52 = 720.00</span></div></div>
+  <div class="final">(a) $3120.00 per month &nbsp;&nbsp; (b) $720.00 per week</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 2</span><span class="q">A worker&rsquo;s basic rate is $11.20 per hour for a 40-hour week. In one week he also works 5 hours at time and a half and 2 hours at double time. Find his gross pay.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Basic pay.
+    <span class="work">40 &times; 11.20 = $448.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Overtime blocks, each at its own rate.
+    <span class="work">1.5 &times; 11.20 = 16.80 &nbsp;&rarr;&nbsp; 5 &times; 16.80 = $84.00<br>2 &times; 11.20 = 22.40 &nbsp;&rarr;&nbsp; 2 &times; 22.40 = $44.80</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add the three blocks.
+    <span class="work">448.00 + 84.00 + 44.80 = 576.80</span></div></div>
+  <div class="final">Gross pay = $576.80</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 3</span><span class="q">A sales assistant is paid a basic wage of $250 per week plus 6% commission on her sales. One week she sells $4350 of goods. Find her total pay.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Commission first &mdash; no threshold this time, so take 6% of everything.
+    <span class="work">0.06 &times; 4350 = $261.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the basic wage.
+    <span class="work">250.00 + 261.00 = 511.00</span></div></div>
+  <div class="final">Total pay = $511.00</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 4</span><span class="q">Gross monthly pay is $3200. Deductions are income tax at 14% of gross, pension at 6% of gross, and a union fee of $12.50. Find the net pay.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Tax and pension together are 20% of gross.
+    <span class="work">0.20 &times; 3200 = $640.00</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Add the union fee, then subtract everything from gross.
+    <span class="work">640.00 + 12.50 = $652.50<br>3200.00 &minus; 652.50 = 2547.50</span></div></div>
+  <div class="final">Net pay = $2547.50</div>
+</div>
+</details>
+
+<details class="ex" data-k="practice">
+<summary><span class="tag">Practice 5</span><span class="q">Tax is charged like this: the first $8500 is tax free, the next $15 000 is taxed at 12%, and anything above that at 30%. Adeline earns $46 000. Find (a) the tax paid, (b) her net income, (c) the tax as a percentage of her income, to 3 significant figures.</span></summary>
+<div class="body">
+  <div class="step"><div class="n">1</div><div class="t">Taxable income first.
+    <span class="work">46 000 &minus; 8500 = $37 500</span></div></div>
+  <div class="step"><div class="n">2</div><div class="t">Tax each band.
+    <span class="work">0.12 &times; 15 000 = $1800.00<br>37 500 &minus; 15 000 = 22 500 &nbsp;&rarr;&nbsp; 0.30 &times; 22 500 = $6750.00</span></div></div>
+  <div class="step"><div class="n">3</div><div class="t">Add the bands, then find net income and the average rate.
+    <span class="work">1800 + 6750 = $8550.00<br>46 000 &minus; 8550 = $37 450.00<br>8550 &divide; 46 000 &times; 100 = 18.586&hellip;</span></div></div>
+  <div class="final">(a) $8550.00 &nbsp;&nbsp; (b) $37 450.00 &nbsp;&nbsp; (c) 18.6% (3 sf)</div>
+</div>
+</details>
+</section>
+
+<section id="mistakes">
+<h2>Common mistakes <small>Lose no easy marks</small></h2>
+<div class="warn"><b>Treating a month as four weeks</b>
+Twelve lots of four weeks is only 48 weeks. Yearly &harr; monthly uses 12; yearly &harr; weekly uses <b>52</b> &mdash;
+never mix the two.</div>
+<div class="warn"><b>Commission on the whole sales figure</b>
+&ldquo;4% on all sales over $2000&rdquo; means you subtract $2000 <i>first</i>. Taking the percentage of the full
+amount is the single most common error in this topic.</div>
+<div class="warn"><b>Taxing the whole income at the top rate</b>
+Banded tax charges each slice at its own rate. Subtract the allowance, fill the bands one by one, and only the
+final slice pays the top rate.</div>
+<div class="tip"><b>Exam tip</b>
+When deductions are d% of gross, the single multiplier <span class="m">&times; (100 &minus; d)/100</span> gets net
+pay in one calculator step &mdash; 15% deductions means <span class="m">net = 0.85 &times; gross</span>. And give
+every money answer to 2 decimal places unless told otherwise.</div>
+</section>
+
+<section id="exit">
+<h2>Exit check <small>Prove it before you leave</small></h2>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 1</span><span class="q">Kwame is paid $9.60 per hour and works a basic 37-hour week. Find his basic weekly pay.</span></summary>
+<div class="body"><div class="final">37 &times; 9.60 = $355.20</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 2</span><span class="q">An hourly rate is $14.40. What is the double-time rate, and the time-and-a-half rate?</span></summary>
+<div class="body"><div class="final">Double time $28.80; time and a half 1.5 &times; 14.40 = $21.60.</div></div>
+</details>
+<details class="ex" data-k="exit">
+<summary><span class="tag">Exit 3</span><span class="q">Gross pay is $2850 and total deductions are $553. Write down the net pay.</span></summary>
+<div class="body"><div class="final">2850 &minus; 553 = $2297.00</div></div>
+</details>
+
+<h3>Keep going</h3>
+<div class="links">
+  <a href="../igcse-notes/17-1.html"><b>Revision notes</b><span>The full interactive notes for this topic, with pay and banded-tax calculators to explore.</span></a>
+</div>
+
+<div class="pager">
+  <a class="prev" href="limits-of-accuracy.html"><span>&larr; Previous lesson</span><b>Limits of Accuracy</b></a>
+  <a class="next" href="borrowing-and-investing-money.html"><span>Next lesson &rarr;</span><b>Borrowing and Investing Money</b></a>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">IGCSE 0580 Extended &mdash; Lessons &middot; Prepared for classroom and independent study.</footer>
+
+<script>
+(function(){
+  var k='mathclicks.theme', h=document.documentElement;
+  try{ if(localStorage.getItem(k)==='dark') h.setAttribute('data-theme','dark'); }catch(e){}
+  document.getElementById('themeBtn').onclick=function(){
+    var d=h.getAttribute('data-theme')==='dark';
+    if(d) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem(k, d?'light':'dark'); }catch(e){}
+  };
+})();
+</script>
+</body>
+</html>
