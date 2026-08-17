@@ -6,7 +6,7 @@
 // Cache-buster for data files. Bump the number whenever you publish content
 // changes (edit a topic JSON, lesson HTML, or the manifest) so students'
 // browsers fetch the new files instead of cached ones.
-const BUST = "?v=2";
+const BUST = "?v=3";
 
 // ---------- localStorage keys ----------
 // Old "satpractice." keys are kept for best scores so nobody loses progress.

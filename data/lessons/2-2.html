@@ -1,356 +1,512 @@
-<!-- Lesson 2-2 · Solving Absolute Value Equations & Inequalities — interactive notes -->
+<!-- Lesson 2-2 · Solving Absolute Value Equations and Inequalities -->
+<div class="sat-lesson">
+<p class="lesson-objective">By the end of this page you will be able to solve absolute value equations and inequalities, recognise when an answer is extraneous or the solution set is empty, and graph every solution on a number line.</p>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Worked Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
 
-<div class="lesson-sec">
-  <div class="lesson-sec-title"><span class="num">1</span><h4>Core Concepts</h4></div>
+<section id="concepts">
+<h2>Core Concepts</h2>
 
-  <div class="concept-card">
-    <h5>📏 What is Absolute Value?</h5>
-    <p>The <strong>absolute value</strong> of a number is its <em>distance from zero</em> on the number line. Distance is always non-negative.</p>
-    <div class="key-rule">
-      <strong>Formal Definition</strong>
-      For any real numbers $a$ and $b$, if $|a| = b$ and $b \ge 0$, then $a = b$ or $a = -b$.
-    </div>
-    <p>This means every absolute value equation with a positive right side has <strong>two possible cases</strong> to consider.</p>
-  </div>
-
-  <div class="concept-card accent">
-    <h5>⚠️ Special Solution Sets</h5>
-    <ul>
-      <li><strong>Two solutions</strong> — the standard case when both cases check out.</li>
-      <li><strong>One solution (extraneous)</strong> — one case checks out, the other fails when substituted back. Discard the failing answer; it is an <strong>extraneous solution</strong>.</li>
-      <li><strong>No solution (empty set)</strong> — absolute value can never equal a negative number. The solution set is $\{\}$ or $\varnothing$.</li>
-    </ul>
-  </div>
-
-  <div class="concept-card green">
-    <h5>📋 Key Vocabulary <span class="hint">— tap a card to flip it</span></h5>
-    <div class="vocab-grid">
-      <div class="vocab-card"><div class="vc-inner">
-        <div class="vc-front">Absolute value</div>
-        <div class="vc-back">Distance from zero — always $\ge 0$</div>
-      </div></div>
-      <div class="vocab-card"><div class="vc-inner">
-        <div class="vc-front">Extraneous solution</div>
-        <div class="vc-back">An apparent solution that fails the original equation on substitution</div>
-      </div></div>
-      <div class="vocab-card"><div class="vc-inner">
-        <div class="vc-front">Empty set</div>
-        <div class="vc-back">The set with no solutions, written $\{\}$ or $\varnothing$</div>
-      </div></div>
-      <div class="vocab-card"><div class="vc-inner">
-        <div class="vc-front">Compound inequality</div>
-        <div class="vc-back">Two inequalities joined by <em>and</em> or <em>or</em></div>
-      </div></div>
-    </div>
-  </div>
+<div class="concept-card">
+<h3>1. Absolute value is a distance, not a sign rule</h3>
+<p>The <b>absolute value</b> of a number is how far that number sits from zero on the number line.
+Distance never runs backwards, so an absolute value is <b>never negative</b>.</p>
+<p>Both &minus;4 and 4 are exactly 4 units from zero, so <code>|&minus;4| = |4| = 4</code>. That single
+sentence is the whole lesson: every rule below is just distance in disguise.</p>
+<div class="info-box"><strong>The reading that unlocks everything:</strong> <code>|x &minus; a|</code> is
+the distance between <i>x</i> and <i>a</i>. So <code>|x &minus; 3| = 5</code> asks &ldquo;which numbers
+are 5 away from 3?&rdquo; &mdash; and there are always two answers, one on each side: 3 &minus; 5 = &minus;2
+and 3 + 5 = 8. You can solve a great many absolute value problems in your head this way.</div>
 </div>
 
-<div class="lesson-sec">
-  <div class="lesson-sec-title"><span class="num">2</span><h4>Solving Absolute Value Equations</h4></div>
-
-  <div class="concept-card">
-    <h5>🔢 The 4-Step Method</h5>
-    <div class="steps-list">
-      <div class="step"><span class="step-num">1</span><div class="step-content">
-        <div class="slabel">Isolate</div>
-        <p>Get the absolute value expression alone on one side of the equation.</p>
-      </div></div>
-      <div class="step"><span class="step-num">2</span><div class="step-content">
-        <div class="slabel">Write Two Cases</div>
-        <p>Set the inside expression equal to <strong>+</strong> and <strong>−</strong> the right side.</p>
-      </div></div>
-      <div class="step"><span class="step-num">3</span><div class="step-content">
-        <div class="slabel">Solve Each Case</div>
-        <p>Apply algebraic properties to solve both equations.</p>
-      </div></div>
-      <div class="step"><span class="step-num">4</span><div class="step-content">
-        <div class="slabel">Check Solutions</div>
-        <p>Substitute each answer into the <em>original</em> equation to verify. Discard any extraneous solutions.</p>
-      </div></div>
-    </div>
-  </div>
-
-  <!-- Example 1 -->
-  <div class="example-card">
-    <div class="example-header">
-      <div class="ex-label">
-        <span class="ex-badge">Example 1</span>
-        <h6>Two Solutions — Solve $2|5x + 1| - 9 = 4x + 17$</h6>
-      </div>
-      <span class="toggle-icon">▼</span>
-    </div>
-    <div class="example-body">
-      <div class="reveal-seq">
-        <div class="step"><span class="step-num">1</span><div class="step-content">
-          <div class="slabel">Isolate the absolute value</div>
-          <div class="math-block">
-            <div class="mline">$2|5x + 1| - 9 = 4x + 17$</div>
-            <div class="mline">$2|5x + 1| = 4x + 26$ <span class="note">← add 9 to both sides</span></div>
-            <div class="mline">$|5x + 1| = 2x + 13$ <span class="note">← divide both sides by 2</span></div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">2</span><div class="step-content">
-          <div class="slabel">Write two cases</div>
-          <div class="cases-grid">
-            <div class="case-box">
-              <h6>Case 1: positive</h6>
-              <div class="mline">$5x + 1 = 2x + 13$</div>
-              <div class="mline">$3x = 12$</div>
-              <div class="mline"><strong>$x = 4$</strong></div>
-            </div>
-            <div class="case-box">
-              <h6>Case 2: negative</h6>
-              <div class="mline">$5x + 1 = -(2x + 13)$</div>
-              <div class="mline">$5x + 1 = -2x - 13$</div>
-              <div class="mline">$7x = -14$</div>
-              <div class="mline"><strong>$x = -2$</strong></div>
-            </div>
-          </div>
-          <div class="warning-box">
-            <h6>⚠️ Watch Out — Distribute the Negative!</h6>
-            <p>In Case 2, the negative sign applies to the <em>entire</em> right side. Use the Distributive Property: $-(2x + 13) = -2x - 13$.</p>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">3</span><div class="step-content">
-          <div class="slabel">Check both solutions</div>
-          <div class="check-box">
-            <h6>✓ Verify $x = 4$</h6>
-            <div class="mline">$2|5(4) + 1| - 9 = 4(4) + 17$</div>
-            <div class="mline">$2|21| - 9 = 33 \Rightarrow 33 = 33$ ✓</div>
-          </div>
-          <div class="check-box">
-            <h6>✓ Verify $x = -2$</h6>
-            <div class="mline">$2|5(-2) + 1| - 9 = 4(-2) + 17$</div>
-            <div class="mline">$2|-9| - 9 = 9 \Rightarrow 9 = 9$ ✓</div>
-          </div>
-        </div></div>
-        <div class="solution-display">
-          <strong>Solution set: $\{4, -2\}$</strong><br>
-          Both values are plotted as filled dots on the number line.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Example 2 -->
-  <div class="example-card">
-    <div class="example-header">
-      <div class="ex-label">
-        <span class="ex-badge">Example 2</span>
-        <h6>Extraneous Solution — Solve $2|x + 1| - x = 3x - 4$</h6>
-      </div>
-      <span class="toggle-icon">▼</span>
-    </div>
-    <div class="example-body">
-      <div class="reveal-seq">
-        <div class="step"><span class="step-num">1</span><div class="step-content">
-          <div class="slabel">Isolate</div>
-          <div class="math-block">
-            <div class="mline">$2|x + 1| - x = 3x - 4$</div>
-            <div class="mline">$2|x + 1| = 4x - 4$ <span class="note">← add x to both sides</span></div>
-            <div class="mline">$|x + 1| = 2x - 2$ <span class="note">← divide by 2</span></div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">2</span><div class="step-content">
-          <div class="slabel">Write two cases and solve</div>
-          <div class="cases-grid">
-            <div class="case-box">
-              <h6>Case 1</h6>
-              <div class="mline">$x + 1 = 2x - 2$</div>
-              <div class="mline">$3 = x$</div>
-              <div class="mline"><strong>$x = 3$</strong></div>
-            </div>
-            <div class="case-box">
-              <h6>Case 2</h6>
-              <div class="mline">$x + 1 = -(2x - 2)$</div>
-              <div class="mline">$x + 1 = -2x + 2$</div>
-              <div class="mline">$3x = 1$</div>
-              <div class="mline"><strong>$x = \frac{1}{3}$</strong></div>
-            </div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">3</span><div class="step-content">
-          <div class="slabel">Check — one solution fails!</div>
-          <div class="check-box">
-            <h6>✓ $x = 3$ checks out</h6>
-            <div class="mline">$2|3 + 1| - 3 = 3(3) - 4 \Rightarrow 5 = 5$ ✓</div>
-          </div>
-          <div class="fail-box">
-            <h6>✗ $x = \frac{1}{3}$ is extraneous</h6>
-            <div class="mline">$2\left|\frac{1}{3} + 1\right| - \frac{1}{3} = 3\left(\frac{1}{3}\right) - 4 \Rightarrow \frac{7}{3} \ne -3$ ✗</div>
-          </div>
-        </div></div>
-        <div class="solution-display">
-          <strong>Solution set: $\{3\}$</strong> — $x = \frac{1}{3}$ is discarded as an extraneous solution.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Example 3 -->
-  <div class="example-card">
-    <div class="example-header">
-      <div class="ex-label">
-        <span class="ex-badge">Example 3</span>
-        <h6>Empty Set — Solve $|4x - 7| + 10 = 2$</h6>
-      </div>
-      <span class="toggle-icon">▼</span>
-    </div>
-    <div class="example-body">
-      <div class="reveal-seq">
-        <div class="step"><span class="step-num">1</span><div class="step-content">
-          <div class="slabel">Isolate</div>
-          <div class="math-block">
-            <div class="mline">$|4x - 7| + 10 = 2$</div>
-            <div class="mline">$|4x - 7| = -8$ <span class="note">← subtract 10</span></div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">2</span><div class="step-content">
-          <div class="slabel">Recognize the impossible case</div>
-          <p>Absolute value is <em>always $\ge 0$</em>. It can <strong>never equal a negative number</strong> like $-8$.</p>
-          <p>No further work is needed — there is no solution.</p>
-        </div></div>
-        <div class="solution-display">
-          <strong>Solution set: $\varnothing$ (empty set)</strong> — no value of $x$ satisfies this equation.
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="concept-card">
+<h3>2. Why every equation splits into two cases</h3>
+<p>If the distance from zero is 4, the number itself is either 4 or &minus;4. There is no third option.</p>
+<div class="theorem"><div class="theorem-head">Absolute Value Equations</div><div class="theorem-body">
+For any real numbers <i>a</i> and <i>b</i>, if <code>|a| = b</code> and <code>b &ge; 0</code>,
+then <code>a = b</code> <b>or</b> <code>a = &minus;b</code>.<br>
+If <code>b &lt; 0</code>, the equation has <b>no solution</b>.
+</div></div>
+<div class="steps-list">
+<div class="s"><span class="num">1</span><div><b>Isolate.</b> Get the absolute value bars alone on one side <i>before</i> you split. Splitting early is the single most common way to lose marks here.</div></div>
+<div class="s"><span class="num">2</span><div><b>Split.</b> Set the inside equal to <b>+</b> the right side, and to <b>&minus;</b> the right side.</div></div>
+<div class="s"><span class="num">3</span><div><b>Solve</b> both equations separately.</div></div>
+<div class="s"><span class="num">4</span><div><b>Check</b> each answer in the <i>original</i> equation. Any answer that fails is <b>extraneous</b> and must be thrown away.</div></div>
+</div>
+<div class="warning-box"><strong>When is checking not optional?</strong> If the right side is a plain
+positive number, both cases always work and checking is just good habit. But if the right side
+<b>contains a variable</b> (like <code>2x &minus; 2</code>), it can turn out negative &mdash; and an
+absolute value can never equal a negative. That is exactly where extraneous solutions come from,
+so you <i>must</i> check.</div>
 </div>
 
-<div class="lesson-sec">
-  <div class="lesson-sec-title"><span class="num">3</span><h4>Solving Absolute Value Inequalities</h4></div>
+<div class="concept-card">
+<h3>3. The three possible solution sets</h3>
+<p>Look at the picture in Figure 2 below and this stops being something to memorise.</p>
+<div class="vocab">
+<div class="vocab-item"><b>Two solutions</b> &mdash; the usual case, when the isolated absolute value equals a positive amount.</div>
+<div class="vocab-item"><b>One solution</b> &mdash; either the absolute value equals exactly 0, or one of the two cases turns out to be extraneous.</div>
+<div class="vocab-item"><b>No solution</b> &mdash; the absolute value is forced to equal a negative amount. Write the answer as &empty; or { }.</div>
+</div>
+</div>
 
-  <div class="concept-card">
-    <h5>🔀 The Two Rules: &lt; vs &gt;</h5>
-    <p>Absolute value inequalities split into compound inequalities based on the inequality symbol:</p>
-    <div class="table-scroll">
-      <table class="ineq-table">
-        <thead>
-          <tr><th>Form</th><th>Rewrite As</th><th>Joined by</th><th>Graph</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>$|ax + b| < c$</td><td>$-c < ax + b < c$</td><td><strong>AND</strong></td><td>Segment between two values</td></tr>
-          <tr><td>$|ax + b| \le c$</td><td>$-c \le ax + b \le c$</td><td><strong>AND</strong></td><td>Segment (endpoints included)</td></tr>
-          <tr><td>$|ax + b| > c$</td><td>$ax + b > c$ OR $ax + b < -c$</td><td><strong>OR</strong></td><td>Two rays pointing outward</td></tr>
-          <tr><td>$|ax + b| \ge c$</td><td>$ax + b \ge c$ OR $ax + b \le -c$</td><td><strong>OR</strong></td><td>Two rays (endpoints included)</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="key-rule">
-      <strong>Memory Trick</strong>
-      <strong>"Less than" → AND (between)</strong> — the solution is sandwiched between two values.<br>
-      <strong>"Greater than" → OR (outside)</strong> — the solution fans out in two directions.
-    </div>
-  </div>
+<div class="concept-card">
+<h3>4. Vocabulary</h3>
+<div class="vocab">
+<div class="vocab-item"><b>Absolute value</b> &mdash; distance from zero; always &ge; 0.</div>
+<div class="vocab-item"><b>Extraneous solution</b> &mdash; a value that comes out of correct algebra but fails the original equation.</div>
+<div class="vocab-item"><b>Empty set</b> &mdash; the solution set with nothing in it, written &empty; or { }.</div>
+<div class="vocab-item"><b>Compound inequality</b> &mdash; two inequalities joined by <i>and</i> or <i>or</i>.</div>
+<div class="vocab-item"><b>Tolerance</b> &mdash; in a real-world problem, the largest allowed distance from a target value.</div>
+</div>
+</div>
 
-  <div class="concept-card nl-card">
-    <h5>🧪 Try It — See the Two Rules in Action</h5>
-    <p>Change the symbol and sliders, and watch the solution and its graph update live.</p>
-    <div class="nl-explorer"></div>
-  </div>
+<div class="concept-card">
+<h3>5. Inequalities: &ldquo;less than&rdquo; means between, &ldquo;greater than&rdquo; means outside</h3>
+<p>Keep reading absolute value as distance. <code>|x| &lt; 5</code> asks for every number <i>closer</i>
+than 5 units to zero &mdash; those numbers are trapped <b>between</b> &minus;5 and 5.
+<code>|x| &gt; 5</code> asks for every number <i>further</i> than 5 units away &mdash; those spill
+<b>outside</b> in both directions.</p>
+<table class="tbl">
+<tr><th>Form</th><th>Rewrite as</th><th>Joined by</th><th>Graph</th></tr>
+<tr><td><code>|ax + b| &lt; c</code></td><td><code>&minus;c &lt; ax + b &lt; c</code></td><td><b>AND</b></td><td>One segment between two open circles</td></tr>
+<tr><td><code>|ax + b| &le; c</code></td><td><code>&minus;c &le; ax + b &le; c</code></td><td><b>AND</b></td><td>One segment, endpoints filled</td></tr>
+<tr><td><code>|ax + b| &gt; c</code></td><td><code>ax + b &gt; c</code> or <code>ax + b &lt; &minus;c</code></td><td><b>OR</b></td><td>Two rays pointing outward, open circles</td></tr>
+<tr><td><code>|ax + b| &ge; c</code></td><td><code>ax + b &ge; c</code> or <code>ax + b &le; &minus;c</code></td><td><b>OR</b></td><td>Two rays outward, endpoints filled</td></tr>
+</table>
+<div class="keyfact"><div class="ico">&#9733;</div><div class="txt"><b>LessThAND &mdash; GreatOR.</b>
+Less than &rarr; <b>AND</b> &rarr; the solution is squeezed <b>between</b>.
+Greater than &rarr; <b>OR</b> &rarr; the solution fans <b>outward</b>.
+Two words, and you never mix the two graphs up again.</div></div>
+</div>
 
-  <!-- Example 4 -->
-  <div class="example-card">
-    <div class="example-header">
-      <div class="ex-label">
-        <span class="ex-badge blue">Example 4</span>
-        <h6>Less-Than Inequality — Solve $|4x - 8| - 5 < 11$</h6>
-      </div>
-      <span class="toggle-icon">▼</span>
-    </div>
-    <div class="example-body">
-      <div class="reveal-seq">
-        <div class="step"><span class="step-num">1</span><div class="step-content">
-          <div class="slabel">Isolate</div>
-          <div class="math-block">
-            <div class="mline">$|4x - 8| - 5 < 11$</div>
-            <div class="mline">$|4x - 8| < 16$ <span class="note">← add 5</span></div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">2</span><div class="step-content">
-          <div class="slabel">Rewrite as AND compound inequality</div>
-          <div class="math-block">
-            <div class="mline">$-16 < 4x - 8 < 16$</div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">3</span><div class="step-content">
-          <div class="slabel">Solve both parts</div>
-          <div class="cases-grid">
-            <div class="case-box">
-              <h6>Left side</h6>
-              <div class="mline">$4x - 8 > -16$</div>
-              <div class="mline">$4x > -8$</div>
-              <div class="mline"><strong>$x > -2$</strong></div>
-            </div>
-            <div class="case-box">
-              <h6>Right side</h6>
-              <div class="mline">$4x - 8 < 16$</div>
-              <div class="mline">$4x < 24$</div>
-              <div class="mline"><strong>$x < 6$</strong></div>
-            </div>
-          </div>
-        </div></div>
-        <div class="solution-display">
-          <strong>Solution: $\{x \mid -2 < x < 6\}$</strong><br>
-          Open circles at $-2$ and $6$; shade the region between them.
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="concept-card">
+<h3>6. Two special cases worth spotting instantly</h3>
+<p>Because an absolute value is never negative, some inequalities answer themselves:</p>
+<ul>
+<li><code>|3x + 1| &lt; &minus;4</code> &mdash; a distance can never be less than a negative number.
+Solution set: <b>&empty;</b>. No work needed.</li>
+<li><code>|3x + 1| &gt; &minus;4</code> &mdash; a distance is <i>always</i> more than a negative number.
+Solution set: <b>all real numbers</b>. Again, no work needed.</li>
+</ul>
+<p>Check the sign on the right side the moment you have isolated the absolute value. It can save you the
+entire question.</p>
+</div>
+</section>
 
-  <!-- Example 5 -->
-  <div class="example-card">
-    <div class="example-header">
-      <div class="ex-label">
-        <span class="ex-badge green">Example 5</span>
-        <h6>Greater-Than Inequality — Solve $\frac{|6x + 3|}{2} + 5 \ge 14$</h6>
-      </div>
-      <span class="toggle-icon">▼</span>
-    </div>
-    <div class="example-body">
-      <div class="reveal-seq">
-        <div class="step"><span class="step-num">1</span><div class="step-content">
-          <div class="slabel">Isolate</div>
-          <div class="math-block">
-            <div class="mline">$\frac{|6x + 3|}{2} + 5 \ge 14$</div>
-            <div class="mline">$\frac{|6x + 3|}{2} \ge 9$ <span class="note">← subtract 5</span></div>
-            <div class="mline">$|6x + 3| \ge 18$ <span class="note">← multiply by 2</span></div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">2</span><div class="step-content">
-          <div class="slabel">Rewrite as OR compound inequality</div>
-          <div class="math-block">
-            <div class="mline">$6x + 3 \ge 18$ &nbsp;&nbsp;OR&nbsp;&nbsp; $6x + 3 \le -18$</div>
-          </div>
-        </div></div>
-        <div class="step"><span class="step-num">3</span><div class="step-content">
-          <div class="slabel">Solve both parts</div>
-          <div class="cases-grid">
-            <div class="case-box">
-              <h6>Case 1</h6>
-              <div class="mline">$6x + 3 \ge 18$</div>
-              <div class="mline">$6x \ge 15$</div>
-              <div class="mline"><strong>$x \ge \frac{5}{2}$</strong></div>
-            </div>
-            <div class="case-box">
-              <h6>Case 2</h6>
-              <div class="mline">$6x + 3 \le -18$</div>
-              <div class="mline">$6x \le -21$</div>
-              <div class="mline"><strong>$x \le -\frac{7}{2}$</strong></div>
-            </div>
-          </div>
-        </div></div>
-        <div class="solution-display">
-          <strong>Solution: $\{x \mid x \le -\frac{7}{2} \text{ or } x \ge \frac{5}{2}\}$</strong><br>
-          Filled dots at $-\frac{7}{2}$ and $\frac{5}{2}$; shade outward in both directions.
-        </div>
-      </div>
-    </div>
-  </div>
+<section id="figures">
+<h2>Key Figures</h2>
 
-  <div class="warning-box standalone">
-    <h6>🔑 Critical Reminder: Isolate First, Then Split</h6>
-    <p>Always isolate the absolute value expression <em>before</em> rewriting as a compound inequality. If you split too early, you'll get incorrect cases. Also: when multiplying or dividing by a negative number while solving the compound inequality, <strong>reverse the inequality symbol</strong>.</p>
-  </div>
+<figure class="fig">
+<div class="fig-title">Figure 1 &mdash; absolute value <i>is</i> distance</div>
+<svg viewBox="0 0 340 150" width="340" role="img" aria-label="number line from negative 6 to 6 showing that negative 4 and 4 are both 4 units from zero">
+  <line class="g-axis" x1="20" y1="100" x2="320" y2="100"/>
+  <line class="g-line-thin" x1="26" y1="95" x2="26" y2="105"/>
+  <line class="g-line-thin" x1="50" y1="95" x2="50" y2="105"/>
+  <line class="g-line-thin" x1="74" y1="95" x2="74" y2="105"/>
+  <line class="g-line-thin" x1="98" y1="95" x2="98" y2="105"/>
+  <line class="g-line-thin" x1="122" y1="95" x2="122" y2="105"/>
+  <line class="g-line-thin" x1="146" y1="95" x2="146" y2="105"/>
+  <line class="g-line-thin" x1="170" y1="93" x2="170" y2="107"/>
+  <line class="g-line-thin" x1="194" y1="95" x2="194" y2="105"/>
+  <line class="g-line-thin" x1="218" y1="95" x2="218" y2="105"/>
+  <line class="g-line-thin" x1="242" y1="95" x2="242" y2="105"/>
+  <line class="g-line-thin" x1="266" y1="95" x2="266" y2="105"/>
+  <line class="g-line-thin" x1="290" y1="95" x2="290" y2="105"/>
+  <line class="g-line-thin" x1="314" y1="95" x2="314" y2="105"/>
+  <text class="g-lbl-sm" x="26" y="122" text-anchor="middle">&minus;6</text>
+  <text class="g-meas" x="74" y="122" text-anchor="middle">&minus;4</text>
+  <text class="g-lbl-sm" x="122" y="122" text-anchor="middle">&minus;2</text>
+  <text class="g-lbl-sm" x="170" y="122" text-anchor="middle">0</text>
+  <text class="g-lbl-sm" x="218" y="122" text-anchor="middle">2</text>
+  <text class="g-meas" x="266" y="122" text-anchor="middle">4</text>
+  <text class="g-lbl-sm" x="314" y="122" text-anchor="middle">6</text>
+  <path class="g-angle" d="M 170 88 Q 122 52 74 88"/>
+  <path class="g-angle" d="M 170 88 Q 218 52 266 88"/>
+  <text class="g-meas g-halo" x="122" y="44" text-anchor="middle">4 units</text>
+  <text class="g-meas g-halo" x="218" y="44" text-anchor="middle">4 units</text>
+  <circle class="g-pt" cx="74" cy="100" r="5"/>
+  <circle class="g-pt" cx="266" cy="100" r="5"/>
+  <circle class="g-pt" cx="170" cy="100" r="4.2"/>
+  <text class="g-grn g-halo" x="170" y="142" text-anchor="middle">|&minus;4| = |4| = 4</text>
+</svg>
+<figcaption>Two different numbers, the same distance from zero &mdash; which is why one absolute value equation gives you two answers.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig-title">Figure 2 &mdash; why the answer is two, one, or none</div>
+<svg id="fig2" viewBox="0 0 340 300" width="340" role="img" aria-label="graph of y equals absolute value of x with three horizontal lines showing two, one and no intersections">
+  <line class="g-axis" x1="20" y1="205" x2="320" y2="205"/>
+  <line class="g-axis" x1="170" y1="234" x2="170" y2="40"/>
+  <line class="g-line-thin" x1="74" y1="201" x2="74" y2="209"/>
+  <line class="g-line-thin" x1="266" y1="201" x2="266" y2="209"/>
+  <text class="g-lbl-sm" x="70" y="224" text-anchor="end">&minus;4</text>
+  <text class="g-lbl-sm" x="272" y="224" text-anchor="start">4</text>
+  <text class="g-lbl-sm" x="164" y="224" text-anchor="end">0</text>
+  <polyline class="g-line" points="26,61 170,205 314,61"/>
+  <text class="g-lbl g-halo" x="40" y="50" text-anchor="start">y = |x|</text>
+
+  <line class="g-dash" data-part="two" x1="26" y1="109" x2="314" y2="109"/>
+  <circle class="g-pt" data-part="two" cx="74" cy="109" r="5.2"/>
+  <circle class="g-pt" data-part="two" cx="266" cy="109" r="5.2"/>
+  <text class="g-meas g-halo" data-part="two" x="322" y="109" text-anchor="start">y = 4</text>
+  <text class="g-meas g-halo" data-part="two" x="170" y="97" text-anchor="middle">two crossings &rarr; x = &plusmn;4</text>
+
+  <circle class="g-pt" data-part="one" cx="170" cy="205" r="5.2"/>
+  <text class="g-grn g-halo" data-part="one" x="200" y="197" text-anchor="start">y = 0 &rarr; one crossing</text>
+
+  <line class="g-aux" data-part="none" x1="26" y1="253" x2="314" y2="253"/>
+  <text class="g-lbl-sm g-halo" data-part="none" x="322" y="253" text-anchor="start">y = &minus;2</text>
+  <text class="g-lbl-sm g-halo" data-part="none" x="170" y="276" text-anchor="middle">the V never reaches this low &rarr; no solution</text>
+</svg>
+<div class="fig-legend">
+  <span class="fig-chip" onclick="figHi(this,'fig2','two')">|x| = 4 &rarr; two</span>
+  <span class="fig-chip" onclick="figHi(this,'fig2','one')">|x| = 0 &rarr; one</span>
+  <span class="fig-chip" onclick="figHi(this,'fig2','none')">|x| = &minus;2 &rarr; none</span>
+</div>
+<figcaption>Tap a chip to isolate one case. The graph of <i>y</i> = |x| is a V that never dips below the
+<i>x</i>-axis, so a horizontal line <i>y</i> = <i>b</i> cuts it <b>twice</b> when <i>b</i> &gt; 0,
+<b>once</b> when <i>b</i> = 0, and <b>never</b> when <i>b</i> &lt; 0. Same three cases, now visible.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig-title">Figure 3 &mdash; AND (between) versus OR (outside)</div>
+<svg viewBox="0 0 340 250" width="340" role="img" aria-label="two number lines comparing the solution of absolute value of x minus 1 less than or equal to 3 with the solution of absolute value of x minus 1 greater than 3">
+  <text class="g-meas-b" x="170" y="24" text-anchor="middle">|x &minus; 1| &le; 3 &nbsp;&rarr;&nbsp; &minus;2 &le; x &le; 4 &nbsp;(AND)</text>
+  <line class="g-axis" x1="20" y1="72" x2="320" y2="72"/>
+  <line class="g-arc" style="stroke-width:7;opacity:.85" x1="122" y1="72" x2="266" y2="72"/>
+  <line class="g-line-thin" x1="26" y1="68" x2="26" y2="76"/>
+  <line class="g-line-thin" x1="74" y1="68" x2="74" y2="76"/>
+  <line class="g-line-thin" x1="170" y1="66" x2="170" y2="78"/>
+  <line class="g-line-thin" x1="218" y1="68" x2="218" y2="76"/>
+  <line class="g-line-thin" x1="314" y1="68" x2="314" y2="76"/>
+  <circle class="g-pt" cx="122" cy="72" r="5.6"/>
+  <circle class="g-pt" cx="266" cy="72" r="5.6"/>
+  <line class="g-tick" x1="194" y1="66" x2="194" y2="78"/>
+  <text class="g-meas g-halo" x="194" y="56" text-anchor="middle">centre 1</text>
+  <text class="g-lbl-sm" x="122" y="92" text-anchor="middle">&minus;2</text>
+  <text class="g-lbl-sm" x="266" y="92" text-anchor="middle">4</text>
+  <text class="g-lbl-sm" x="26" y="92" text-anchor="middle">&minus;6</text>
+  <text class="g-lbl-sm" x="170" y="92" text-anchor="middle">0</text>
+  <text class="g-lbl-sm" x="314" y="92" text-anchor="middle">6</text>
+  <text class="g-grn g-halo" x="194" y="112" text-anchor="middle">every x within 3 of the centre</text>
+
+  <text class="g-meas-b" x="170" y="158" text-anchor="middle">|x &minus; 1| &gt; 3 &nbsp;&rarr;&nbsp; x &lt; &minus;2 or x &gt; 4 &nbsp;(OR)</text>
+  <line class="g-axis" x1="20" y1="200" x2="320" y2="200"/>
+  <line class="g-dash" style="stroke-width:7;stroke-dasharray:none;opacity:.85" x1="26" y1="200" x2="122" y2="200"/>
+  <line class="g-dash" style="stroke-width:7;stroke-dasharray:none;opacity:.85" x1="266" y1="200" x2="314" y2="200"/>
+  <line class="g-line-thin" x1="26" y1="196" x2="26" y2="204"/>
+  <line class="g-line-thin" x1="74" y1="196" x2="74" y2="204"/>
+  <line class="g-line-thin" x1="170" y1="194" x2="170" y2="206"/>
+  <line class="g-line-thin" x1="218" y1="196" x2="218" y2="204"/>
+  <line class="g-line-thin" x1="314" y1="196" x2="314" y2="204"/>
+  <circle class="g-pt-o" cx="122" cy="200" r="5.6"/>
+  <circle class="g-pt-o" cx="266" cy="200" r="5.6"/>
+  <line class="g-tick" x1="194" y1="194" x2="194" y2="206"/>
+  <text class="g-lbl-sm" x="122" y="220" text-anchor="middle">&minus;2</text>
+  <text class="g-lbl-sm" x="266" y="220" text-anchor="middle">4</text>
+  <text class="g-lbl-sm" x="26" y="220" text-anchor="middle">&minus;6</text>
+  <text class="g-lbl-sm" x="170" y="220" text-anchor="middle">0</text>
+  <text class="g-lbl-sm" x="314" y="220" text-anchor="middle">6</text>
+  <text class="g-meas g-halo" x="170" y="240" text-anchor="middle">every x more than 3 from the centre</text>
+</svg>
+<figcaption>Both inequalities are built from the same centre (1) and the same distance (3). Only the
+direction changes: <b>&le;</b> keeps the inside, <b>&gt;</b> keeps the outside. Filled circles include
+the endpoint, open circles exclude it.</figcaption>
+</figure>
+
+<div class="concept-card">
+<h3>Now move it yourself</h3>
+<p>Change the symbol and drag the two sliders. The compound inequality, the solved answer and the
+graph all update together &mdash; watch the graph flip from a segment to two rays the moment you
+switch from &lt; to &gt;.</p>
+<div class="nl-explorer"></div>
+</div>
+</section>
+
+<section id="examples">
+<h2>Worked Examples</h2>
+
+<div class="example-card"><button class="example-header" onclick="toggleExample(this)"><span class="example-label">Example 1</span><span class="example-title">Two solutions: solve 2|5x + 1| &minus; 9 = 4x + 17</span><span class="toggle-icon">+</span></button><div class="example-body">
+<div class="problem-stmt">Solve <code>2|5x + 1| &minus; 9 = 4x + 17</code> and check both answers.</div>
+<div class="solution-step"><span class="num">1</span><span class="math">2|5x + 1| = 4x + 26</span><span class="reason">Add 9 to each side</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">|5x + 1| = 2x + 13</span><span class="reason">Divide each side by 2 &mdash; now the bars are isolated</span></div>
+<div class="case-grid">
+<div class="case-box"><h4>Case 1 &mdash; positive</h4><div class="math">5x + 1 = 2x + 13<br>3x = 12<br><b>x = 4</b></div></div>
+<div class="case-box"><h4>Case 2 &mdash; negative</h4><div class="math">5x + 1 = &minus;(2x + 13)<br>5x + 1 = &minus;2x &minus; 13<br>7x = &minus;14<br><b>x = &minus;2</b></div></div>
+</div>
+<div class="warning-box"><strong>Distribute that negative!</strong> In Case 2 the minus sign belongs to
+the <i>whole</i> right side: <code>&minus;(2x + 13) = &minus;2x &minus; 13</code>, not
+<code>&minus;2x + 13</code>. This one slip accounts for most wrong answers in this lesson.</div>
+<div class="check-box"><strong>Check both:</strong> x = 4 &rarr; 2|21| &minus; 9 = 33 and 4(4) + 17 = 33 &#10003;
+&nbsp;&middot;&nbsp; x = &minus;2 &rarr; 2|&minus;9| &minus; 9 = 9 and 4(&minus;2) + 17 = 9 &#10003;</div>
+<div class="answer-box">Solution set: { &minus;2, 4 }</div>
+</div></div>
+
+<div class="example-card"><button class="example-header" onclick="toggleExample(this)"><span class="example-label">Example 2</span><span class="example-title">An extraneous solution: solve 2|x + 1| &minus; x = 3x &minus; 4</span><span class="toggle-icon">+</span></button><div class="example-body">
+<div class="problem-stmt">Solve <code>2|x + 1| &minus; x = 3x &minus; 4</code>. Notice the right side contains a variable &mdash; checking is compulsory.</div>
+<div class="solution-step"><span class="num">1</span><span class="math">2|x + 1| = 4x &minus; 4</span><span class="reason">Add x to each side</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">|x + 1| = 2x &minus; 2</span><span class="reason">Divide each side by 2</span></div>
+<div class="case-grid">
+<div class="case-box"><h4>Case 1</h4><div class="math">x + 1 = 2x &minus; 2<br>3 = x<br><b>x = 3</b></div></div>
+<div class="case-box"><h4>Case 2</h4><div class="math">x + 1 = &minus;(2x &minus; 2)<br>x + 1 = &minus;2x + 2<br>3x = 1<br><b>x = 1/3</b></div></div>
+</div>
+<div class="check-box"><strong>x = 3 survives:</strong> 2|4| &minus; 3 = 5 and 3(3) &minus; 4 = 5 &#10003;</div>
+<div class="warning-box"><strong>x = 1/3 fails:</strong> the left side gives
+2|4/3| &minus; 1/3 = 8/3 &minus; 1/3 = 7/3, but the right side gives 3(1/3) &minus; 4 = &minus;3.
+Since 7/3 &ne; &minus;3, this value is <b>extraneous</b> &mdash; discard it. You could have predicted it:
+<code>2x &minus; 2</code> is negative at x = 1/3, and an absolute value cannot equal a negative.</div>
+<div class="answer-box">Solution set: { 3 }</div>
+</div></div>
+
+<div class="example-card"><button class="example-header" onclick="toggleExample(this)"><span class="example-label">Example 3</span><span class="example-title">Empty set: solve |4x &minus; 7| + 10 = 2</span><span class="toggle-icon">+</span></button><div class="example-body">
+<div class="problem-stmt">Solve <code>|4x &minus; 7| + 10 = 2</code>.</div>
+<div class="solution-step"><span class="num">1</span><span class="math">|4x &minus; 7| = &minus;8</span><span class="reason">Subtract 10 from each side</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">stop &mdash; no case work needed</span><span class="reason">A distance can never be negative</span></div>
+<div class="answer-box">Solution set: &empty; (the empty set)</div>
+<div class="check-box"><strong>Look at Figure 2:</strong> this is the horizontal line <i>y</i> = &minus;8,
+far below the V. Nothing to intersect, nothing to solve.</div>
+</div></div>
+
+<div class="example-card"><button class="example-header" onclick="toggleExample(this)"><span class="example-label">Example 4</span><span class="example-title">Less than &rarr; AND: solve |4x &minus; 8| &minus; 5 &lt; 11</span><span class="toggle-icon">+</span></button><div class="example-body">
+<div class="problem-stmt">Solve <code>|4x &minus; 8| &minus; 5 &lt; 11</code> and graph the solution.</div>
+<div class="solution-step"><span class="num">1</span><span class="math">|4x &minus; 8| &lt; 16</span><span class="reason">Add 5 to each side &mdash; isolate first</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">&minus;16 &lt; 4x &minus; 8 &lt; 16</span><span class="reason">Less than &rarr; AND &rarr; one compound inequality</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">&minus;8 &lt; 4x &lt; 24</span><span class="reason">Add 8 to all three parts</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">&minus;2 &lt; x &lt; 6</span><span class="reason">Divide all three parts by 4</span></div>
+<figure class="fig" style="margin:12px 0 4px">
+<svg viewBox="0 0 340 90" width="340" role="img" aria-label="number line showing the open interval from negative 2 to 6">
+  <line class="g-axis" x1="20" y1="44" x2="320" y2="44"/>
+  <line class="g-arc" style="stroke-width:7;opacity:.85" x1="122" y1="44" x2="266" y2="44"/>
+  <line class="g-line-thin" x1="26" y1="40" x2="26" y2="48"/>
+  <line class="g-line-thin" x1="74" y1="40" x2="74" y2="48"/>
+  <line class="g-line-thin" x1="170" y1="38" x2="170" y2="50"/>
+  <line class="g-line-thin" x1="218" y1="40" x2="218" y2="48"/>
+  <line class="g-line-thin" x1="314" y1="40" x2="314" y2="48"/>
+  <circle class="g-pt-o" cx="122" cy="44" r="5.6"/>
+  <circle class="g-pt-o" cx="266" cy="44" r="5.6"/>
+  <text class="g-lbl-sm" x="122" y="66" text-anchor="middle">&minus;2</text>
+  <text class="g-lbl-sm" x="266" y="66" text-anchor="middle">6</text>
+  <text class="g-lbl-sm" x="170" y="66" text-anchor="middle">0</text>
+  <text class="g-lbl-sm" x="26" y="66" text-anchor="middle">&minus;6</text>
+  <text class="g-lbl-sm" x="314" y="66" text-anchor="middle">6</text>
+</svg>
+<figcaption>Open circles because the inequality is strict &mdash; &minus;2 and 6 are not included.</figcaption>
+</figure>
+<div class="answer-box">{ x | &minus;2 &lt; x &lt; 6 }</div>
+</div></div>
+
+<div class="example-card"><button class="example-header" onclick="toggleExample(this)"><span class="example-label">Example 5</span><span class="example-title">Greater than &rarr; OR: solve |6x + 3| &divide; 2 + 5 &ge; 14</span><span class="toggle-icon">+</span></button><div class="example-body">
+<div class="problem-stmt">Solve <code>|6x + 3| &divide; 2 + 5 &ge; 14</code>.</div>
+<div class="solution-step"><span class="num">1</span><span class="math">|6x + 3| &divide; 2 &ge; 9</span><span class="reason">Subtract 5 from each side</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">|6x + 3| &ge; 18</span><span class="reason">Multiply each side by 2 &mdash; bars now isolated</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">6x + 3 &ge; 18 &nbsp;OR&nbsp; 6x + 3 &le; &minus;18</span><span class="reason">Greater than &rarr; OR &rarr; two separate inequalities</span></div>
+<div class="case-grid">
+<div class="case-box"><h4>Branch 1</h4><div class="math">6x + 3 &ge; 18<br>6x &ge; 15<br><b>x &ge; 5/2</b></div></div>
+<div class="case-box"><h4>Branch 2</h4><div class="math">6x + 3 &le; &minus;18<br>6x &le; &minus;21<br><b>x &le; &minus;7/2</b></div></div>
+</div>
+<div class="warning-box"><strong>Note the flipped symbol in Branch 2.</strong> It is not a mistake and it
+is not the &ldquo;divide by a negative&rdquo; rule &mdash; it comes from the OR rewrite itself:
+<code>|A| &ge; c</code> becomes <code>A &ge; c</code> or <code>A &le; &minus;c</code>.</div>
+<div class="answer-box">{ x | x &le; &minus;7/2 or x &ge; 5/2 }</div>
+</div></div>
+
+<div class="example-card"><button class="example-header" onclick="toggleExample(this)"><span class="example-label">Example 6</span><span class="example-title">Real world: writing the inequality yourself (tolerance)</span><span class="toggle-icon">+</span></button><div class="example-body">
+<div class="problem-stmt">A bottling machine is set to fill 500 mL. A bottle passes inspection if its volume
+<i>v</i> is within 8 mL of the target. Write an absolute value inequality and find the range of acceptable volumes.</div>
+<div class="solution-step"><span class="num">1</span><span class="math">|v &minus; 500| &le; 8</span><span class="reason">&ldquo;within 8 of 500&rdquo; = distance from 500 is at most 8</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">&minus;8 &le; v &minus; 500 &le; 8</span><span class="reason">&le; &rarr; AND</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">492 &le; v &le; 508</span><span class="reason">Add 500 to all three parts</span></div>
+<div class="answer-box">|v &minus; 500| &le; 8, so any volume from 492 mL to 508 mL passes</div>
+<div class="check-box"><strong>Pattern to reuse:</strong> &ldquo;within <i>t</i> of a target <i>T</i>&rdquo;
+is always <code>|measurement &minus; T| &le; t</code>. The target goes inside the bars, the tolerance
+goes outside.</div>
+</div></div>
+</section>
+
+<section id="practice">
+<h2>Try It Yourself</h2>
+<p>Work each one on paper first, then reveal the full solution. Problems 3 and 6 are the ones that
+separate an A from a B.</p>
+
+<div class="try-box"><h4>Problem 1</h4><div class="prob">Solve |3x &minus; 5| = 13.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">3x &minus; 5 = 13 &nbsp;or&nbsp; 3x &minus; 5 = &minus;13</span><span class="reason">Bars already isolated; right side is positive, so split</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">3x = 18 &rarr; x = 6</span><span class="reason">Case 1</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">3x = &minus;8 &rarr; x = &minus;8/3</span><span class="reason">Case 2</span></div>
+<div class="answer-box">{ &minus;8/3, 6 }</div>
+<div class="check-box"><strong>Check:</strong> |3(6) &minus; 5| = |13| = 13 &#10003; &nbsp;&middot;&nbsp; |3(&minus;8/3) &minus; 5| = |&minus;13| = 13 &#10003;</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 2</h4><div class="prob">Solve |2x + 7| = &minus;4.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">right side is negative</span><span class="reason">An absolute value is a distance &mdash; never negative</span></div>
+<div class="answer-box">&empty; &mdash; no solution</div>
+<div class="check-box"><strong>Do not split this one.</strong> Splitting gives 2x + 7 = &plusmn;4 and two
+&ldquo;answers&rdquo; that both fail the check. Reading the sign first saves all that work.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 3</h4><div class="prob">Solve |x &minus; 4| = 3x. (Careful &mdash; the right side has a variable.)</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">x &minus; 4 = 3x &rarr; &minus;4 = 2x &rarr; x = &minus;2</span><span class="reason">Case 1</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">x &minus; 4 = &minus;3x &rarr; 4x = 4 &rarr; x = 1</span><span class="reason">Case 2</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">x = &minus;2: |&minus;6| = 6 but 3(&minus;2) = &minus;6</span><span class="reason">6 &ne; &minus;6 &rarr; extraneous, discard</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">x = 1: |&minus;3| = 3 and 3(1) = 3</span><span class="reason">&#10003; keep</span></div>
+<div class="answer-box">{ 1 }</div>
+<div class="check-box"><strong>Shortcut:</strong> <code>3x</code> must be &ge; 0, so any negative answer is
+doomed before you substitute. x = &minus;2 was never a candidate.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 4</h4><div class="prob">Solve |5 &minus; 2x| &lt; 9 and graph it.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">&minus;9 &lt; 5 &minus; 2x &lt; 9</span><span class="reason">Less than &rarr; AND</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">&minus;14 &lt; &minus;2x &lt; 4</span><span class="reason">Subtract 5 from all three parts</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">7 &gt; x &gt; &minus;2</span><span class="reason">Divide by &minus;2 &mdash; <b>reverse both symbols</b></span></div>
+<div class="answer-box">{ x | &minus;2 &lt; x &lt; 7 } &mdash; a segment with open circles at &minus;2 and 7</div>
+<div class="warning-box"><strong>The trap:</strong> dividing a compound inequality by a negative number
+flips <i>both</i> inequality signs. Then rewrite it with the smaller number on the left so it reads naturally.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 5</h4><div class="prob">Solve |x + 6| &ge; 2 and graph it.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">x + 6 &ge; 2 &nbsp;or&nbsp; x + 6 &le; &minus;2</span><span class="reason">Greater than or equal &rarr; OR</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">x &ge; &minus;4</span><span class="reason">Branch 1</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">x &le; &minus;8</span><span class="reason">Branch 2</span></div>
+<div class="answer-box">{ x | x &le; &minus;8 or x &ge; &minus;4 } &mdash; two rays with filled circles at &minus;8 and &minus;4</div>
+<div class="check-box"><strong>Distance reading:</strong> |x + 6| = |x &minus; (&minus;6)|, so this asks for
+every number at least 2 units from &minus;6. Going 2 left of &minus;6 gives &minus;8; going 2 right gives &minus;4. The
+answer matches the picture with no algebra at all.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 6</h4><div class="prob">A thermostat is set to 21&deg;C and holds the room within 1.5&deg;C of that setting.
+Write an absolute value inequality for the room temperature <i>T</i>, and state the range.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">|T &minus; 21| &le; 1.5</span><span class="reason">Target inside the bars, tolerance outside</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">&minus;1.5 &le; T &minus; 21 &le; 1.5</span><span class="reason">&le; &rarr; AND</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">19.5 &le; T &le; 22.5</span><span class="reason">Add 21 to all three parts</span></div>
+<div class="answer-box">|T &minus; 21| &le; 1.5, so the room stays between 19.5&deg;C and 22.5&deg;C</div>
+</div></div>
+</section>
+
+<section id="summary">
+<h2>Summary</h2>
+<table class="tbl">
+<tr><th>When you see &hellip;</th><th>What to do</th><th>Result</th></tr>
+<tr><td>Bars not alone yet</td><td>Undo the outside operations first</td><td>Never split before the absolute value is isolated</td></tr>
+<tr><td><code>|A| = c</code> with c &gt; 0</td><td>Split into A = c and A = &minus;c</td><td>Two solutions</td></tr>
+<tr><td><code>|A| = 0</code></td><td>Solve A = 0</td><td>Exactly one solution</td></tr>
+<tr><td><code>|A| = c</code> with c &lt; 0</td><td>Stop immediately</td><td>&empty; &mdash; no solution</td></tr>
+<tr><td>Right side contains a variable</td><td>Solve both cases, then substitute back</td><td>Discard any extraneous answer</td></tr>
+<tr><td><code>|A| &lt; c</code> or <code>|A| &le; c</code></td><td>Write &minus;c &lt; A &lt; c</td><td><b>AND</b> &mdash; one segment between the endpoints</td></tr>
+<tr><td><code>|A| &gt; c</code> or <code>|A| &ge; c</code></td><td>Write A &gt; c or A &lt; &minus;c</td><td><b>OR</b> &mdash; two rays pointing outward</td></tr>
+<tr><td><code>|A| &lt; </code> a negative</td><td>Stop</td><td>&empty;</td></tr>
+<tr><td><code>|A| &gt; </code> a negative</td><td>Stop</td><td>All real numbers</td></tr>
+<tr><td>&ldquo;within <i>t</i> of <i>T</i>&rdquo;</td><td>Write <code>|x &minus; T| &le; t</code></td><td>T &minus; t &le; x &le; T + t</td></tr>
+</table>
+
+<h3 style="font-size:16px;color:var(--sl-navy);margin:18px 0 6px">Every rule from this lesson</h3>
+<div class="pill-row">
+<span class="pill">|a| &ge; 0 always</span>
+<span class="pill">|a| = b &rarr; a = &plusmn;b (b &ge; 0)</span>
+<span class="pill">|x &minus; a| = distance from a</span>
+<span class="pill">|A| &lt; c &rarr; &minus;c &lt; A &lt; c</span>
+<span class="pill">|A| &gt; c &rarr; A &gt; c or A &lt; &minus;c</span>
+<span class="pill">isolate &rarr; split &rarr; solve &rarr; check</span>
+<span class="pill">&lt; open circle &middot; &le; filled circle</span>
+</div>
+
+<div class="warning-box"><strong>Common mistakes to avoid</strong>
+<ul style="margin:8px 0 0 20px">
+<li>Splitting into cases <b>before</b> the absolute value is isolated.</li>
+<li>Writing <code>&minus;(2x + 13)</code> as <code>&minus;2x + 13</code> &mdash; distribute to every term.</li>
+<li>Skipping the check when the right side contains a variable, and keeping an extraneous answer.</li>
+<li>Using AND for a &ldquo;greater than&rdquo; inequality, which produces an impossible empty answer.</li>
+<li>Forgetting to reverse the inequality signs after dividing a compound inequality by a negative.</li>
+<li>Filling in the endpoint circles for a strict <code>&lt;</code> or <code>&gt;</code>.</li>
+<li>Doing full case work on <code>|A| = &minus;5</code> instead of writing &empty; straight away.</li>
+</ul></div>
+
+<div class="keyfact"><div class="ico">&#9733;</div><div class="txt"><b>One picture to memorise:</b> the V of
+<i>y</i> = |x| sitting on the <i>x</i>-axis. A horizontal line above it cuts twice, a line through the
+vertex touches once, a line below it misses entirely &mdash; and for inequalities, &ldquo;below the
+line&rdquo; is the segment between the crossings while &ldquo;above the line&rdquo; is the two rays outside them.</div></div>
+</section>
+
+<section id="quiz">
+<div class="quiz-header"><h2>Practice Quiz</h2><p>15 questions &middot; click an answer to check it instantly</p></div>
+<div id="quiz-container"></div>
+<div class="score-panel" id="scorePanel">
+  <div class="score-big" id="scoreBig">0/15</div>
+  <div class="score-msg" id="scoreMsg"></div>
+  <button class="btn-retry" onclick="resetQuiz()">Try Again</button>
+</div>
+</section>
+
+<script>
+/* scope guard: the SPA re-runs this script on every lesson view */
+(function(){
+const questions=[
+  {q:"The absolute value of a number is best described as &hellip;",opts:["the number with its sign removed","the distance of the number from zero","the negative of the number","the number squared"],ans:1,exp:"Absolute value measures distance from zero on the number line. &ldquo;Drop the sign&rdquo; happens to give the same answer for a single number, but the distance idea is what makes |x &minus; a| and the inequality rules make sense."},
+  {q:"If |x| = 7, then x = &hellip;",opts:["7 only","&minus;7 only","7 or &minus;7","0"],ans:2,exp:"Two numbers sit 7 units from zero: 7 and &minus;7. Every absolute value equation with a positive right side has two cases."},
+  {q:"Solve |x &minus; 3| = 10.",opts:["x = 13 or x = &minus;7","x = 13 or x = 7","x = 10 or x = &minus;10","x = 7 only"],ans:0,exp:"|x &minus; 3| = 10 asks which numbers are 10 away from 3. Go 10 right: 13. Go 10 left: &minus;7. Algebraically x &minus; 3 = 10 gives 13 and x &minus; 3 = &minus;10 gives &minus;7."},
+  {q:"Solve |2x + 1| = 9.",opts:["x = 4 or x = 5","x = 4 or x = &minus;5","x = &minus;4 or x = 5","x = 9 or x = &minus;9"],ans:1,exp:"2x + 1 = 9 gives 2x = 8 so x = 4. 2x + 1 = &minus;9 gives 2x = &minus;10 so x = &minus;5."},
+  {q:"How many solutions does |3x &minus; 1| = &minus;5 have?",opts:["Two","One","None","Infinitely many"],ans:2,exp:"An absolute value is a distance, so it can never equal &minus;5. The solution set is empty: &empty;. No case work is needed."},
+  {q:"What is the correct <b>first</b> step in solving 3|x + 2| &minus; 4 = 11?",opts:["Split into x + 2 = 11 and x + 2 = &minus;11","Add 4, then divide by 3 to isolate the bars","Distribute the 3 through the bars","Square both sides"],ans:1,exp:"Isolate before you split. Add 4 to get 3|x + 2| = 15, divide by 3 to get |x + 2| = 5, and only then split into x + 2 = &plusmn;5, giving x = 3 and x = &minus;7."},
+  {q:"Solve |x + 5| = 2x &minus; 1.",opts:["x = 6 only","x = &minus;4/3 only","x = 6 or x = &minus;4/3","No solution"],ans:0,exp:"Case 1: x + 5 = 2x &minus; 1 gives x = 6, and |11| = 11 = 2(6) &minus; 1 &#10003;. Case 2: x + 5 = &minus;2x + 1 gives x = &minus;4/3, but then the right side 2(&minus;4/3) &minus; 1 = &minus;11/3 is negative, so it is extraneous."},
+  {q:"|x| &lt; 5 is equivalent to &hellip;",opts:["x &lt; 5 or x &gt; &minus;5","&minus;5 &lt; x &lt; 5","x &lt; &minus;5 or x &gt; 5","x &lt; &minus;5"],ans:1,exp:"Less than &rarr; AND &rarr; between. Every number closer than 5 units to zero lies strictly between &minus;5 and 5."},
+  {q:"|x| &gt; 5 is equivalent to &hellip;",opts:["&minus;5 &lt; x &lt; 5","x &gt; 5 only","x &lt; &minus;5 or x &gt; 5","5 &lt; x &lt; &minus;5"],ans:2,exp:"Greater than &rarr; OR &rarr; outside. Numbers further than 5 units from zero lie beyond 5 in either direction. Note that &ldquo;5 &lt; x &lt; &minus;5&rdquo; is impossible &mdash; that is what writing AND here would give you."},
+  {q:"Solve |x &minus; 2| &le; 6.",opts:["&minus;4 &le; x &le; 8","&minus;8 &le; x &le; 4","x &le; &minus;4 or x &ge; 8","&minus;6 &le; x &le; 6"],ans:0,exp:"&le; &rarr; AND: &minus;6 &le; x &minus; 2 &le; 6. Add 2 to all three parts to get &minus;4 &le; x &le; 8. As a distance: every number within 6 of 2."},
+  {q:"Solve |4x| &gt; 12.",opts:["&minus;3 &lt; x &lt; 3","x &lt; &minus;3 or x &gt; 3","x &gt; 3 only","&minus;12 &lt; x &lt; 12"],ans:1,exp:"&gt; &rarr; OR: 4x &gt; 12 or 4x &lt; &minus;12. Dividing by the positive 4 keeps both symbols, giving x &gt; 3 or x &lt; &minus;3."},
+  {q:"Solve |3 &minus; x| &lt; 1.",opts:["2 &lt; x &lt; 4","&minus;4 &lt; x &lt; &minus;2","x &lt; 2 or x &gt; 4","&minus;1 &lt; x &lt; 1"],ans:0,exp:"&minus;1 &lt; 3 &minus; x &lt; 1. Subtract 3: &minus;4 &lt; &minus;x &lt; &minus;2. Divide by &minus;1 and reverse both symbols: 4 &gt; x &gt; 2, which reads 2 &lt; x &lt; 4."},
+  {q:"Which graph matches |x &minus; 1| &ge; 4?",opts:["A segment from &minus;3 to 5 with open circles","A segment from &minus;3 to 5 with filled circles","Two rays, x &le; &minus;3 and x &ge; 5, with filled circles","Two rays, x &lt; &minus;3 and x &gt; 5, with open circles"],ans:2,exp:"&ge; &rarr; OR &rarr; two outward rays, and the &ldquo;or equal to&rdquo; part means the endpoints are included, so the circles are filled. Solving: x &minus; 1 &ge; 4 gives x &ge; 5, and x &minus; 1 &le; &minus;4 gives x &le; &minus;3."},
+  {q:"A machined part must be 12 cm long, accurate to within 0.05 cm. Which inequality models the acceptable length L?",opts:["|L &minus; 12| &le; 0.05","|L &minus; 0.05| &le; 12","|L + 12| &le; 0.05","|L &minus; 12| &ge; 0.05"],ans:0,exp:"&ldquo;Within a tolerance of a target&rdquo; puts the target inside the bars and the tolerance outside: |L &minus; 12| &le; 0.05, so 11.95 &le; L &le; 12.05. Choice D would describe the parts that must be rejected."},
+  {q:"Solving |x &minus; 1| = 2x &minus; 8 gives the candidates x = 7 and x = 3. Which is extraneous, and why?",opts:["x = 7, because it is too large","x = 3, because it makes the right side negative","Neither &mdash; both are solutions","Both &mdash; the equation has no solution"],ans:1,exp:"At x = 3 the right side is 2(3) &minus; 8 = &minus;2, and an absolute value cannot equal &minus;2, so x = 3 is extraneous. At x = 7 both sides equal 6, so x = 7 is the only solution."}
+];
+
+/* ---------- collapsible worked examples ---------- */
+function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
+/* ---------- reveal buttons (Try It answers) ---------- */
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+/* ---------- interactive figure part highlighting ---------- */
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
+/* ---------- quiz engine ---------- */
+let answered=[],total=0;
+function buildQuiz(){
+  answered=new Array(questions.length).fill(false);total=0;
+  const c=document.getElementById('quiz-container');c.innerHTML='';
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='q-card';div.id='q'+i;
+    div.innerHTML='<div class="q-num">Question '+(i+1)+' of '+questions.length+'</div><div class="q-text">'+q.q+'</div>'+(q.fig?'<div class="fig" style="margin:6px 0 14px">'+q.fig+'</div>':'')+'<div class="options">'+q.opts.map((o,j)=>'<button class="option-btn" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>').join('')+'</div><div class="feedback" id="fb'+i+'"></div>';
+    c.appendChild(div);
+  });
+  document.getElementById('scorePanel').classList.remove('show');
+}
+function pick(qi,oi){
+  if(answered[qi])return;answered[qi]=true;
+  const q=questions[qi];const card=document.getElementById('q'+qi);
+  const btns=card.querySelectorAll('.option-btn');const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.disabled=true);
+  if(oi===q.ans){btns[oi].classList.add('correct');fb.innerHTML='✓ Correct! '+q.exp;fb.className='feedback show correct';total++;}
+  else{btns[oi].classList.add('wrong');btns[q.ans].classList.add('correct');fb.innerHTML='✗ Incorrect. The answer is '+String.fromCharCode(65+q.ans)+'. '+q.exp;fb.className='feedback show wrong';}
+  if(answered.every(Boolean))showScore();
+}
+function showScore(){
+  const pct=Math.round(total/questions.length*100);
+  document.getElementById('scoreBig').textContent=total+'/'+questions.length;
+  const msgs=[[0,'Review the worked examples and try again.'],[60,'Solid start — keep practicing.'],[80,'Great job!'],[95,'Excellent — you have mastered this lesson!']];
+  let msg=msgs[0][1];for(const m of msgs){if(pct>=m[0])msg=m[1];}
+  document.getElementById('scoreMsg').textContent=pct+'% — '+msg;
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth'});
+}
+function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
+buildQuiz();
+window.toggleExample=toggleExample;window.reveal=reveal;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
+})();
+</script>
 </div>

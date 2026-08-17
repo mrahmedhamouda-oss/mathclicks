@@ -80,7 +80,7 @@
 .sat-lesson .btn-retry { padding:12px 32px;background:var(--orange);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer }
 </style>
 <p class="lesson-objective">Master the Square Root Property, completing the square, vertex form, and projectile motion</p>
-<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Examples</a><a data-jump="grapher">Graph It</a><a data-jump="quiz">Practice Quiz</a></nav>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Examples</a><a data-jump="grapher">Interactive Grapher</a><a data-jump="practice">Try It Yourself</a><a data-jump="quiz">Practice Quiz</a></nav>
 <!-- CONCEPTS -->
 <section id="concepts">
   <h2>Key Concepts</h2>
@@ -141,6 +141,84 @@
       <li>Solve for x</li>
     </ol>
   </div>
+</section>
+
+<section id="figures">
+<h2>Key Figures</h2>
+
+<figure class="fig">
+<div class="fig-title">Figure 1 &mdash; why it is called <i>completing</i> the square</div>
+<svg viewBox="0 0 340 244" width="340" role="img" aria-label="an area diagram showing x squared plus 6x needing a 3 by 3 corner square to complete a full square of side x plus 3">
+  <rect x="46" y="34" width="100" height="100" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2"/>
+  <rect x="146" y="34" width="50" height="100" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2"/>
+  <rect x="46" y="134" width="100" height="50" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2"/>
+  <rect x="146" y="134" width="50" height="50" fill="var(--sl-orange-soft)" stroke="var(--sl-orange)" stroke-width="2" stroke-dasharray="6 4"/>
+  <text class="g-lbl" x="96.0" y="26" text-anchor="middle">x</text>
+  <text class="g-meas" x="171.0" y="26" text-anchor="middle">3</text>
+  <text class="g-lbl" x="36" y="89.0" text-anchor="end">x</text>
+  <text class="g-meas" x="36" y="164.0" text-anchor="end">3</text>
+  <text class="g-lbl" x="96.0" y="90.0" text-anchor="middle">x&sup2;</text>
+  <text class="g-lbl" x="171.0" y="90.0" text-anchor="middle">3x</text>
+  <text class="g-lbl" x="96.0" y="165.0" text-anchor="middle">3x</text>
+  <text class="g-meas" x="171.0" y="164.0" text-anchor="middle">9</text>
+  <text class="g-lbl-sm" x="212" y="72" text-anchor="start">The three blue pieces</text>
+  <text class="g-meas-b" x="212" y="90" text-anchor="start">x&sup2; + 3x + 3x = x&sup2; + 6x</text>
+  <text class="g-lbl-sm" x="212" y="118" text-anchor="start">The dashed corner you</text>
+  <text class="g-lbl-sm" x="212" y="133" text-anchor="start">must add is (6/2)&sup2; =</text>
+  <text class="g-meas" x="212" y="151" text-anchor="start">9</text>
+  <text class="g-lbl-sm" x="212" y="179" text-anchor="start">Now it is a full square</text>
+  <text class="g-grn" x="212" y="197" text-anchor="start">(x + 3)&sup2;</text>
+  <text class="g-lbl-sm" x="121.0" y="208" text-anchor="middle">side = x + 3</text>
+</svg>
+<figcaption>The name is literal. Lay out <code>x&sup2; + 6x</code> as area: one x-by-x square and the
+6x split into two 3-by-x strips, one on each side. That shape is a square with a bite missing from the
+corner, and the missing piece is exactly 3 by 3 = <b>9</b>. Adding it finishes the square, whose side is
+<code>x + 3</code>. This is where <code>(b/2)&sup2;</code> comes from: you halve b so the strips are
+equal, and the corner is that half squared.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig-title">Figure 2 &mdash; vertex form tells you where the parabola moved</div>
+<svg id="l35fig2" viewBox="0 0 302 332" width="302" role="img" aria-label="the parabola y equals x squared shown dashed, and the same parabola shifted two right and five down to give the vertex at 2, negative 5">
+  <line class="g-grid" x1="18" y1="290" x2="18" y2="26"/>
+  <line class="g-grid" x1="66" y1="290" x2="66" y2="26"/>
+  <line class="g-grid" x1="162" y1="290" x2="162" y2="26"/>
+  <line class="g-grid" x1="210" y1="290" x2="210" y2="26"/>
+  <line class="g-grid" x1="258" y1="290" x2="258" y2="26"/>
+  <line class="g-grid" x1="42" y1="290" x2="258" y2="290"/>
+  <line class="g-grid" x1="42" y1="242" x2="258" y2="242"/>
+  <line class="g-grid" x1="42" y1="194" x2="258" y2="194"/>
+  <line class="g-grid" x1="42" y1="98" x2="258" y2="98"/>
+  <line class="g-grid" x1="42" y1="50" x2="258" y2="50"/>
+  <line class="g-axis" x1="36" y1="146" x2="264" y2="146"/>
+  <line class="g-axis" x1="114" y1="296" x2="114" y2="20"/>
+  <text class="g-lbl-sm" x="66" y="164" text-anchor="middle">&minus;2</text>
+  <text class="g-lbl-sm" x="162" y="164" text-anchor="middle">2</text>
+  <text class="g-lbl-sm" x="210" y="164" text-anchor="middle">4</text>
+  <text class="g-lbl-sm" x="258" y="164" text-anchor="middle">6</text>
+  <text class="g-lbl-sm" x="106" y="246" text-anchor="end">&minus;4</text>
+  <text class="g-lbl-sm" x="106" y="198" text-anchor="end">&minus;2</text>
+  <text class="g-lbl-sm" x="106" y="102" text-anchor="end">2</text>
+  <text class="g-lbl-sm" x="106" y="54" text-anchor="end">4</text>
+  <polyline class="g-aux" points="60.9,28.52 62.25,34.41 63.6,40.16 64.95,45.75 66.3,51.2 67.65,56.49 69.0,61.62 70.35,66.61 71.7,71.45 73.05,76.13 74.4,80.66 75.75,85.04 77.1,89.27 78.45,93.34 79.8,97.27 81.15,101.04 82.5,104.66 83.85,108.12 85.2,111.44 86.55,114.6 87.9,117.62 89.25,120.48 90.6,123.19 91.95,125.74 93.3,128.15 94.65,130.4 96.0,132.5 97.35,134.45 98.7,136.25 100.05,137.89 101.4,139.38 102.75,140.73 104.1,141.92 105.45,142.95 106.8,143.84 108.15,144.57 109.5,145.16 110.85,145.59 112.2,145.87 113.55,145.99 114.9,145.97 116.25,145.79 117.6,145.46 118.95,144.98 120.3,144.35 121.65,143.56 123.0,142.62 124.35,141.54 125.7,140.3 127.05,138.9 128.4,137.36 129.75,135.66 131.1,133.82 132.45,131.82 133.8,129.66 135.15,127.36 136.5,124.91 137.85,122.3 139.2,119.54 140.55,116.63 141.9,113.57 143.25,110.35 144.6,106.98 145.95,103.47 147.3,99.8 148.65,95.97 150.0,92.0 151.35,87.87 152.7,83.6 154.05,79.17 155.4,74.59 156.75,69.85 158.1,64.97 159.45,59.93 160.8,54.74 162.15,49.4 163.5,43.91 164.85,38.26 166.2,32.47 167.55,26.52"/>
+  <polyline class="g-line" points="86.55,28.8 87.9,37.22 89.25,45.48 90.6,53.58 91.95,61.54 93.3,69.35 94.65,77.0 96.0,84.5 97.35,91.85 98.7,99.05 100.05,106.09 101.4,112.99 102.75,119.73 104.1,126.32 105.45,132.75 106.8,139.04 108.15,145.17 109.5,151.16 110.85,156.99 112.2,162.66 113.55,168.19 114.9,173.57 116.25,178.79 117.6,183.86 118.95,188.78 120.3,193.55 121.65,198.16 123.0,202.62 124.35,206.94 125.7,211.1 127.05,215.1 128.4,218.96 129.75,222.66 131.1,226.22 132.45,229.62 133.8,232.87 135.15,235.96 136.5,238.91 137.85,241.7 139.2,244.34 140.55,246.83 141.9,249.17 143.25,251.35 144.6,253.38 145.95,255.27 147.3,257.0 148.65,258.57 150.0,260.0 151.35,261.27 152.7,262.4 154.05,263.37 155.4,264.19 156.75,264.85 158.1,265.37 159.45,265.73 160.8,265.94 162.15,266.0 163.5,265.91 164.85,265.66 166.2,265.26 167.55,264.72 168.9,264.02 170.25,263.16 171.6,262.16 172.95,261.0 174.3,259.7 175.65,258.24 177.0,256.62 178.35,254.86 179.7,252.95 181.05,250.88 182.4,248.66 183.75,246.29 185.1,243.77 186.45,241.09 187.8,238.26 189.15,235.29 190.5,232.16 191.85,228.87 193.2,225.44 194.55,221.85 195.9,218.12 197.25,214.23 198.6,210.18 199.95,205.99 201.3,201.65 202.65,197.15 204.0,192.5 205.35,187.7 206.7,182.75 208.05,177.64 209.4,172.39 210.75,166.98 212.1,161.42 213.45,155.7 214.8,149.84 216.15,143.82 217.5,137.66 218.85,131.34 220.2,124.87 221.55,118.24 222.9,111.47 224.25,104.54 225.6,97.46 226.95,90.23 228.3,82.85 229.65,75.31 231.0,67.62 232.35,59.79 233.7,51.8 235.05,43.65 236.4,35.36 237.75,26.91"/>
+  <circle class="g-pt-o" cx="114" cy="146" r="4.6"/>
+  <circle class="g-pt" cx="162" cy="266" r="5.4"/>
+  <text class="g-grn g-halo" x="172" y="271" text-anchor="start">(2, &minus;5)</text>
+  <line class="g-dash" x1="114" y1="146" x2="162" y2="146"/>
+  <line class="g-dash" x1="162" y1="146" x2="162" y2="266"/>
+  <text class="g-meas g-halo" x="138" y="138" text-anchor="middle">h = 2 right</text>
+  <text class="g-meas g-halo" x="170" y="206.0" text-anchor="start">k = 5 down</text>
+  <text class="g-lbl-sm g-halo" x="51.6" y="45.2" text-anchor="start">y = x&sup2;</text>
+  <text class="g-meas-b g-halo" x="151.0" y="324" text-anchor="middle">y = (x &minus; 2)&sup2; &minus; 5  is the same curve as  y = x&sup2; &minus; 4x &minus; 1</text>
+</svg>
+<figcaption>Completing the square converts <code>y = x&sup2; &minus; 4x &minus; 1</code> into
+<code>y = (x &minus; 2)&sup2; &minus; 5</code>, and the second version is readable at a glance: take the
+basic parabola <code>y = x&sup2;</code> and slide it <b>2 right</b> and <b>5 down</b>. That lands the
+vertex at (2, &minus;5). Watch the sign trap &mdash; <code>(x &minus; 2)&sup2;</code> moves the curve to
+the <i>right</i>, and the <code>&minus;5</code> sitting outside moves it straight down.</figcaption>
+</figure>
+
 </section>
 
 <!-- EXAMPLES -->
@@ -341,6 +419,67 @@
 </section>
 
 <!-- QUIZ -->
+<section id="practice">
+<h2>Try It Yourself</h2>
+
+<p>Work each one on paper first, then reveal. Problems 4 and 6 are the full method &mdash; the rest build up to it.</p>
+
+<div class="try-box"><h4>Problem 1</h4><div class="prob">Solve (x &minus; 3)&sup2; = 49.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">x &minus; 3 = &plusmn;7</span><span class="reason">Square Root Property &mdash; keep the &plusmn;</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">x = 3 + 7 = 10 &nbsp;or&nbsp; x = 3 &minus; 7 = &minus;4</span><span class="reason">Add 3 to each side, taking both branches</span></div>
+<div class="answer-box">x = 10 or x = &minus;4</div>
+<div class="check-box"><strong>Check:</strong> (10 &minus; 3)&sup2; = 49 &#10003; and (&minus;4 &minus; 3)&sup2; = (&minus;7)&sup2; = 49 &#10003;</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 2</h4><div class="prob">Solve x&sup2; = 45. Give the exact answer in simplest radical form.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">x = &plusmn;&radic;45</span><span class="reason">Square Root Property</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">&radic;45 = &radic;(9 &middot; 5) = 3&radic;5</span><span class="reason">Pull out the largest perfect square factor</span></div>
+<div class="answer-box">x = &plusmn;3&radic;5 &asymp; &plusmn;6.71</div>
+<div class="warning-box"><strong>Do not write &radic;45 &asymp; 6.7 and stop</strong> when the question asks for an exact answer. 3&radic;5 is exact; 6.71 is rounded.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 3</h4><div class="prob">What number completes the square for x&sup2; + 10x, and what does the expression factor to?</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">b = 10, so b/2 = 5</span><span class="reason">Halve the coefficient of x</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">(b/2)&sup2; = 25</span><span class="reason">Square that half &mdash; this is the corner piece in Figure 1</span></div>
+<div class="answer-box">Add 25: x&sup2; + 10x + 25 = (x + 5)&sup2;</div>
+<div class="check-box"><strong>Check by expanding:</strong> (x + 5)&sup2; = x&sup2; + 10x + 25 &#10003;. Notice the number inside the bracket is always b/2, never b.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 4</h4><div class="prob">Solve x&sup2; &minus; 6x + 2 = 0 by completing the square. Give exact answers.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">x&sup2; &minus; 6x = &minus;2</span><span class="reason">Move the constant to the right side</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">(&minus;6/2)&sup2; = 9</span><span class="reason">Find the completing number</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">x&sup2; &minus; 6x + 9 = &minus;2 + 9</span><span class="reason">Add 9 to <b>both</b> sides &mdash; this is the step people forget</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">(x &minus; 3)&sup2; = 7</span><span class="reason">Factor the perfect square</span></div>
+<div class="solution-step"><span class="num">5</span><span class="math">x &minus; 3 = &plusmn;&radic;7</span><span class="reason">Square Root Property</span></div>
+<div class="answer-box">x = 3 &plusmn; &radic;7, so x &asymp; 5.65 or x &asymp; 0.35</div>
+<div class="warning-box"><strong>Adding to one side only</strong> changes the equation into a different one. Whatever completes the square on the left must also be added on the right.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 5</h4><div class="prob">Write y = x&sup2; + 8x + 11 in vertex form and state the vertex.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">(8/2)&sup2; = 16</span><span class="reason">The completing number</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">y = (x&sup2; + 8x + 16) &minus; 16 + 11</span><span class="reason">Add 16 <b>and</b> subtract 16 &mdash; here we cannot add to &ldquo;both sides&rdquo;, so we keep the total unchanged</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">y = (x + 4)&sup2; &minus; 5</span><span class="reason">Factor, then combine &minus;16 + 11</span></div>
+<div class="answer-box">y = (x + 4)&sup2; &minus; 5, vertex (&minus;4, &minus;5), a minimum since a &gt; 0</div>
+<div class="check-box"><strong>Two checks:</strong> expanding gives x&sup2; + 8x + 16 &minus; 5 = x&sup2; + 8x + 11 &#10003;, and the formula x = &minus;b/2a = &minus;8/2 = &minus;4 confirms the vertex's x-coordinate. Note the vertex is (&minus;4, &minus;5), not (4, &minus;5) &mdash; the bracket reads (x &minus; h).</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 6</h4><div class="prob">Write y = 2x&sup2; &minus; 12x + 7 in vertex form and state the vertex. (Careful &mdash; a &ne; 1.)</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">y = 2(x&sup2; &minus; 6x) + 7</span><span class="reason">Factor 2 out of the x-terms only</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">(&minus;6/2)&sup2; = 9</span><span class="reason">Complete the square <b>inside</b> the bracket</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">y = 2(x&sup2; &minus; 6x + 9) &minus; 18 + 7</span><span class="reason">Adding 9 inside a bracket multiplied by 2 really adds 18, so subtract 18 outside</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">y = 2(x &minus; 3)&sup2; &minus; 11</span><span class="reason">Factor and combine</span></div>
+<div class="answer-box">y = 2(x &minus; 3)&sup2; &minus; 11, vertex (3, &minus;11), a minimum</div>
+<div class="warning-box"><strong>The a &ne; 1 trap:</strong> subtracting only 9 instead of 18. The 9 sits inside a bracket that is multiplied by 2, so it contributes 2 &times; 9 = 18 to the expression, and 18 is what must come back out. Check by expanding: 2(x&sup2; &minus; 6x + 9) &minus; 11 = 2x&sup2; &minus; 12x + 18 &minus; 11 = 2x&sup2; &minus; 12x + 7 &#10003;</div>
+</div></div>
+
+</section>
+
 <section id="quiz">
   <div class="quiz-header">
     <h2>📝 Practice Quiz — 15 Questions</h2>
@@ -358,6 +497,14 @@
 /* scope guard: the SPA re-runs this script on every lesson view */
 (function(){
 // ── TOGGLE EXAMPLES ──
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
 function toggleExample(btn) {
   btn.classList.toggle('open');
   const body = btn.nextElementSibling;
@@ -589,7 +736,7 @@ function showScore() {
 
 function resetQuiz() { buildQuiz(); window.scrollTo({ top: document.getElementById('quiz').offsetTop, behavior: 'smooth' }); }
 buildQuiz();
-window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+window.toggleExample=toggleExample;window.reveal=reveal;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
 })();
 </script>
 </div>

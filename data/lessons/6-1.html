@@ -1,6 +1,6 @@
 <div class="sat-lesson">
 <p class="lesson-objective">Add, subtract, multiply and divide functions, and build composite functions f&#8728;g</p>
-<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="examples">Step-by-Step Examples</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
+<nav class="lesson-jump"><a data-jump="concepts">Concepts</a><a data-jump="figures">Key Figures</a><a data-jump="examples">Step-by-Step Examples</a><a data-jump="practice">Try It Yourself</a><a data-jump="summary">Summary</a><a data-jump="quiz">Practice Quiz</a></nav>
 <section id="concepts">
   <h2>Key Concepts</h2>
 
@@ -38,6 +38,53 @@
     </div>
     <div class="warning-box"><strong>&#9888; Order matters:</strong> [f &#8728; g](x) is <em>not</em> always equal to [g &#8728; f](x). Composition is not commutative.</div>
   </div>
+
+</section>
+
+<section id="figures">
+<h2>Key Figures</h2>
+
+<figure class="fig">
+<div class="fig-title">Figure 1 &mdash; composition is a chain of machines, and order matters</div>
+<svg id="l61fig1" viewBox="0 0 340 208" width="340" role="img" aria-label="two chains of function machines showing that composing f after g gives 18 while composing g after f gives 26">
+  <text class="g-meas-b" x="170" y="18" text-anchor="middle">f(x) = 3x &nbsp;&middot;&nbsp; g(x) = 2x &minus; 4 &nbsp;&middot;&nbsp; start with x = 5</text>
+  <text class="g-lbl-sm" x="14" y="46" text-anchor="start" data-part="fg">[f &#8728; g](5) &mdash; inner function g runs first</text>
+  <g data-part="fg"><text class="g-lbl" x="14" y="82" text-anchor="start">x</text><text class="g-meas" x="30" y="78" text-anchor="start">= 5</text><line class="g-line-thin" x1="66" y1="76" x2="88" y2="76"/><polygon points="88,76 82,72 82,80" fill="var(--sl-ink-2)"/><rect x="90" y="59" width="66" height="34" rx="7" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2"/><text class="g-lbl-sm" x="123" y="81" text-anchor="middle">g: &times;2 &minus; 4</text><line class="g-line-thin" x1="156" y1="76" x2="192" y2="76"/><polygon points="192,76 186,72 186,80" fill="var(--sl-ink-2)"/><text class="g-meas" x="174" y="68" text-anchor="middle">6</text><rect x="194" y="59" width="66" height="34" rx="7" fill="var(--sl-orange-soft)" stroke="var(--sl-orange)" stroke-width="2"/><text class="g-lbl-sm" x="227" y="81" text-anchor="middle">f: &times;3</text><line class="g-line-thin" x1="260" y1="76" x2="292" y2="76"/><polygon points="292,76 286,72 286,80" fill="var(--sl-ink-2)"/><text class="g-grn" x="298" y="81" text-anchor="start">18</text></g>
+  <text class="g-lbl-sm" x="14" y="122" text-anchor="start" data-part="gf">[g &#8728; f](5) &mdash; inner function f runs first</text>
+  <g data-part="gf"><text class="g-lbl" x="14" y="158" text-anchor="start">x</text><text class="g-meas" x="30" y="154" text-anchor="start">= 5</text><line class="g-line-thin" x1="66" y1="152" x2="88" y2="152"/><polygon points="88,152 82,148 82,156" fill="var(--sl-ink-2)"/><rect x="90" y="135" width="66" height="34" rx="7" fill="var(--sl-blue-soft)" stroke="var(--sl-blue)" stroke-width="2"/><text class="g-lbl-sm" x="123" y="157" text-anchor="middle">f: &times;3</text><line class="g-line-thin" x1="156" y1="152" x2="192" y2="152"/><polygon points="192,152 186,148 186,156" fill="var(--sl-ink-2)"/><text class="g-meas" x="174" y="144" text-anchor="middle">15</text><rect x="194" y="135" width="66" height="34" rx="7" fill="var(--sl-orange-soft)" stroke="var(--sl-orange)" stroke-width="2"/><text class="g-lbl-sm" x="227" y="157" text-anchor="middle">g: &times;2 &minus; 4</text><line class="g-line-thin" x1="260" y1="152" x2="292" y2="152"/><polygon points="292,152 286,148 286,156" fill="var(--sl-ink-2)"/><text class="g-grn" x="298" y="157" text-anchor="start">26</text></g>
+  <text class="g-meas" x="170" y="196" text-anchor="middle">18 &ne; 26 &mdash; so [f &#8728; g](x) is not [g &#8728; f](x)</text>
+</svg>
+<div class="fig-legend">
+  <span class="fig-chip" onclick="figHi(this,'l61fig1','fg')">[f &#8728; g](5) = 18</span>
+  <span class="fig-chip" onclick="figHi(this,'l61fig1','gf')">[g &#8728; f](5) = 26</span>
+</div>
+<figcaption>Think of each function as a machine: a number goes in, a number comes out. Composition
+wires two machines in series, and <code>[f &#8728; g](x)</code> means the output of <b>g</b> is fed into
+<b>f</b> &mdash; so <b>g runs first</b>, even though f is written first. Swap the order and you get a
+different answer, which is why composition is not commutative.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig-title">Figure 2 &mdash; the domain has to survive both machines</div>
+<svg viewBox="0 0 340 176" width="340" role="img" aria-label="a diagram showing that the domain of f composed with g is restricted to x greater than or equal to 4">
+  <text class="g-meas-b" x="170" y="18" text-anchor="middle">f(x) = &radic;x &nbsp;&middot;&nbsp; g(x) = x &minus; 4 &nbsp;&middot;&nbsp; [f &#8728; g](x) = &radic;(x &minus; 4)</text>
+  <rect x="26" y="38" width="132" height="52" rx="9" fill="var(--sl-green-soft)" stroke="var(--sl-green)" stroke-width="1.8"/>
+  <text class="g-lbl-sm" x="92" y="58" text-anchor="middle">g accepts</text>
+  <text class="g-meas" x="92" y="78" text-anchor="middle">every real x</text>
+  <rect x="182" y="38" width="132" height="52" rx="9" fill="var(--sl-bad-soft)" stroke="var(--sl-bad-line)" stroke-width="1.8"/>
+  <text class="g-lbl-sm" x="248" y="58" text-anchor="middle">but f only accepts</text>
+  <text class="g-meas" x="248" y="78" text-anchor="middle">inputs &ge; 0</text>
+  <line class="g-line-thin" x1="158" y1="64" x2="180" y2="64"/>
+  <text class="g-lbl-sm" x="170" y="112" text-anchor="middle">so g(x) = x &minus; 4 must itself be &ge; 0</text>
+  <rect x="76" y="126" width="188" height="38" rx="9" fill="var(--sl-green-soft)" stroke="var(--sl-green)" stroke-width="1.8"/>
+  <text class="g-grn" x="170" y="150" text-anchor="middle">domain of f &#8728; g: x &ge; 4</text>
+</svg>
+<figcaption>An <i>x</i> only belongs to the domain of <code>f &#8728; g</code> if it clears two hurdles:
+g must accept it, and g's output must be something f accepts. Here g takes any real number, but f
+= &radic;x refuses negatives, so we need <code>x &minus; 4 &ge; 0</code>. The composed formula
+&radic;(x &minus; 4) happens to show this clearly, but with division the restriction can hide &mdash;
+which is why you check the <i>inner</i> function's output, not just the final simplified formula.</figcaption>
+</figure>
 
 </section>
 
@@ -200,6 +247,73 @@
 </div>
 </section>
 
+<section id="practice">
+<h2>Try It Yourself</h2>
+
+<p>Use f(x) = x&sup2; &minus; 1 and g(x) = 2x + 3 unless a problem says otherwise. Work each one out
+before revealing.</p>
+
+<div class="try-box"><h4>Problem 1</h4><div class="prob">Find (f + g)(x) and (f &minus; g)(x).</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">(f + g)(x) = (x&sup2; &minus; 1) + (2x + 3)</span><span class="reason">Add the two rules</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">= x&sup2; + 2x + 2</span><span class="reason">Combine like terms</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">(f &minus; g)(x) = (x&sup2; &minus; 1) &minus; (2x + 3)</span><span class="reason">Subtract &mdash; keep the bracket</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">= x&sup2; &minus; 2x &minus; 4</span><span class="reason">Distribute the minus to both terms</span></div>
+<div class="answer-box">(f + g)(x) = x&sup2; + 2x + 2 and (f &minus; g)(x) = x&sup2; &minus; 2x &minus; 4</div>
+<div class="warning-box"><strong>Order matters for subtraction:</strong> (g &minus; f)(x) = &minus;x&sup2; + 2x + 4, which is not the same function. Read carefully which one is being subtracted.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 2</h4><div class="prob">Find (f &middot; g)(x) and state (f/g)(x) with its restriction.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">(f &middot; g)(x) = (x&sup2; &minus; 1)(2x + 3)</span><span class="reason">Multiply the rules</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">= 2x&sup3; + 3x&sup2; &minus; 2x &minus; 3</span><span class="reason">Expand all six products and collect</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">(f/g)(x) = (x&sup2; &minus; 1)/(2x + 3)</span><span class="reason">Divide the rules</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">2x + 3 = 0 &rarr; x = &minus;3/2</span><span class="reason">Exclude wherever the denominator is zero</span></div>
+<div class="answer-box">(f &middot; g)(x) = 2x&sup3; + 3x&sup2; &minus; 2x &minus; 3; &nbsp;(f/g)(x) = (x&sup2; &minus; 1)/(2x + 3), x &ne; &minus;3/2</div>
+<div class="check-box"><strong>State the restriction even if nothing cancels.</strong> A quotient of functions is undefined wherever the bottom function is zero, and that exclusion is part of the answer.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 3</h4><div class="prob">Find [f &#8728; g](2) and [g &#8728; f](2).</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">g(2) = 2(2) + 3 = 7</span><span class="reason">For f &#8728; g the inner function g goes first</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">f(7) = 49 &minus; 1 = 48</span><span class="reason">Feed that output into f</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">f(2) = 4 &minus; 1 = 3</span><span class="reason">For g &#8728; f the inner function f goes first</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">g(3) = 2(3) + 3 = 9</span><span class="reason">Feed that output into g</span></div>
+<div class="answer-box">[f &#8728; g](2) = 48 and [g &#8728; f](2) = 9</div>
+<div class="check-box"><strong>Very different answers</strong> from the same starting number &mdash; exactly the point of Figure 1. Work strictly inside out.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 4</h4><div class="prob">Find [f &#8728; g](x) as a simplified expression.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">[f &#8728; g](x) = f(2x + 3)</span><span class="reason">Replace the input of f with the whole of g(x)</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">= (2x + 3)&sup2; &minus; 1</span><span class="reason">Wherever f had x, put (2x + 3) &mdash; brackets are essential</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">= 4x&sup2; + 12x + 9 &minus; 1</span><span class="reason">Expand the square in full</span></div>
+<div class="answer-box">[f &#8728; g](x) = 4x&sup2; + 12x + 8</div>
+<div class="check-box"><strong>Check against Problem 3:</strong> at x = 2 this gives 16 + 24 + 8 = 48 &#10003;, matching the step-by-step value. Substituting a number is the fastest way to catch a composition slip.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 5</h4><div class="prob">If p(x) = 1/x and q(x) = x &minus; 5, find [p &#8728; q](x) and its domain.</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">[p &#8728; q](x) = p(x &minus; 5) = 1/(x &minus; 5)</span><span class="reason">q runs first, and its output becomes p's input</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">p rejects an input of 0</span><span class="reason">So q(x) must not be 0</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">x &minus; 5 &ne; 0 &rarr; x &ne; 5</span><span class="reason">Exclude that value</span></div>
+<div class="answer-box">[p &#8728; q](x) = 1/(x &minus; 5), domain: all real x except x = 5</div>
+<div class="check-box"><strong>Same logic as Figure 2:</strong> the restriction comes from what the <i>outer</i> function refuses, applied to the <i>inner</i> function's output.</div>
+</div></div>
+
+<div class="try-box"><h4>Problem 6</h4><div class="prob">Given f(x) = x&sup2; &minus; 1 and g(x) = 2x + 3, is there any value of x where [f &#8728; g](x) = [g &#8728; f](x)?</div>
+<button class="reveal-btn" onclick="reveal(this)">Show Solution</button><div class="reveal-body">
+<div class="solution-step"><span class="num">1</span><span class="math">[f &#8728; g](x) = 4x&sup2; + 12x + 8</span><span class="reason">From Problem 4</span></div>
+<div class="solution-step"><span class="num">2</span><span class="math">[g &#8728; f](x) = 2(x&sup2; &minus; 1) + 3 = 2x&sup2; + 1</span><span class="reason">Substitute f into g this time</span></div>
+<div class="solution-step"><span class="num">3</span><span class="math">4x&sup2; + 12x + 8 = 2x&sup2; + 1</span><span class="reason">Set them equal</span></div>
+<div class="solution-step"><span class="num">4</span><span class="math">2x&sup2; + 12x + 7 = 0</span><span class="reason">Collect on one side</span></div>
+<div class="solution-step"><span class="num">5</span><span class="math">x = (&minus;12 &plusmn; &radic;(144 &minus; 56)) / 4 = (&minus;6 &plusmn; &radic;22)/2</span><span class="reason">Quadratic formula, then simplify &radic;88 = 2&radic;22</span></div>
+<div class="answer-box">Yes, at x = (&minus;6 &plusmn; &radic;22)/2 &asymp; &minus;0.65 and &minus;5.35</div>
+<div class="check-box"><strong>Not commutative does not mean never equal.</strong> The two compositions are different <i>functions</i>, but different functions can still agree at particular points &mdash; here at two of them.</div>
+</div></div>
+
+</section>
+
 <section id="summary">
   <h2>Summary &amp; Common Mistakes</h2>
 
@@ -261,6 +375,14 @@ const questions=[
   {q:"If f(x) = x&sup2; + 2x &minus; 8 and g(x) = x&sup2; + 8, find (f &#8728; g)(x).",opts:["x&#8308; + 16x&sup2; + 2x + 56","x&#8308; + 18x&sup2; + 72","x&#8308; + 16x&sup2; + 56","x&#8308; + 18x&sup2; + 56"],ans:1,exp:"(x&sup2; + 8)&sup2; + 2(x&sup2; + 8) &minus; 8 = x&#8308; + 16x&sup2; + 64 + 2x&sup2; + 16 &minus; 8 = x&#8308; + 18x&sup2; + 72."}
 ];
 
+function reveal(btn){const b=btn.nextElementSibling;b.classList.toggle('open');btn.textContent=b.classList.contains('open')?'Hide Solution':'Show Solution';}
+function figHi(chip,figId,cls){
+  const fig=document.getElementById(figId);
+  const on=chip.classList.contains('on');
+  fig.parentElement.querySelectorAll('.fig-chip').forEach(c=>c.classList.remove('on'));
+  fig.querySelectorAll('[data-part]').forEach(e=>e.classList.remove('g-fade'));
+  if(!on){chip.classList.add('on');fig.querySelectorAll('[data-part]').forEach(e=>{if(e.getAttribute('data-part')!==cls)e.classList.add('g-fade');});}
+}
 function toggleExample(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
 let answered=[],total=0;
 function buildQuiz(){
@@ -294,7 +416,7 @@ function showScore(){
 function resetQuiz(){buildQuiz();document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});}
 
 buildQuiz();
-window.toggleExample=toggleExample;window.pick=pick;window.resetQuiz=resetQuiz;
+window.toggleExample=toggleExample;window.reveal=reveal;window.figHi=figHi;window.pick=pick;window.resetQuiz=resetQuiz;
 })();
 </script>
 </div>
