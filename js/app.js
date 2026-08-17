@@ -183,7 +183,6 @@ function setActiveNav(view, track) {
     else if (nav === "ap") active = track === "ap";
     else if (nav === "about") active = view === "about";
     else if (nav === "game") active = view === "game";
-    else if (nav === "test") active = view === "test";
     else active = view === "home";
     a.classList.toggle("active", active);
     if (active) a.setAttribute("aria-current", "page");
@@ -698,10 +697,27 @@ function questionBankCard() {
     "Original exam-style questions for every topic — print a paper, try it under exam conditions, then mark it with the full worked answers and mark scheme."));
   const meta = el("div", "pp-card-meta");
   meta.appendChild(el("span", "pp-card-chip", "49 topics"));
-  meta.appendChild(el("span", "pp-card-chip", "490 questions · 1902 marks"));
+  meta.appendChild(el("span", "pp-card-chip", "1225 questions · 4700 marks"));
   body.appendChild(meta);
   card.appendChild(body);
   card.appendChild(el("div", "pp-card-go", "Open →"));
+  return card;
+}
+
+function igcseTestMeCard() {
+  const card = el("a", "pp-card");
+  card.href = "igcse-test-me/index.html";
+  card.appendChild(el("div", "pp-card-icon", "🎯"));
+  const body = el("div", "pp-card-body");
+  body.appendChild(el("div", "pp-card-title", "Test Me"));
+  body.appendChild(el("div", "pp-card-sub",
+    "Build your own test from the question bank — pick topics, difficulty and an optional timer, get a fresh exam-style paper, and have it marked with worked solutions and the mark scheme."));
+  const meta = el("div", "pp-card-meta");
+  meta.appendChild(el("span", "pp-card-chip", "49 topics"));
+  meta.appendChild(el("span", "pp-card-chip", "1225 questions · auto-marked"));
+  body.appendChild(meta);
+  card.appendChild(body);
+  card.appendChild(el("div", "pp-card-go", "Build a test →"));
   return card;
 }
 
@@ -713,6 +729,7 @@ function renderIgcse() {
   main.appendChild(lessonsCard());
   main.appendChild(revisionNotesCard());
   main.appendChild(questionBankCard());
+  main.appendChild(igcseTestMeCard());
   const ig = igcseTopics();
   if (!ig.length) {
     const box = el("div", "empty-note big");
@@ -868,7 +885,11 @@ function renderModules() {
     return;
   }
   main.appendChild(statsStrip(ap));
-  if (ap.some((t) => bankCount(t) > 0)) main.appendChild(testPromoCard());
+  if (ap.some((t) => bankCount(t) > 0)) {
+    // The promo card's styles live in the lazily-loaded testme.css
+    loadCssOnce("testme-css", TESTME_CSS).catch(() => {});
+    main.appendChild(testPromoCard());
+  }
   for (const m of moduleList(ap)) main.appendChild(moduleCard(m));
 }
 
